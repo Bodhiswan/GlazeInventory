@@ -1,0 +1,2178 @@
+[
+  {
+    "id": "d6367664-11ea-5591-8ac6-8904c002573a",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sp289-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SP-289 Speckled Cutie Pie Coral over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/sp289_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "4bc731bd-e5a1-596d-ae5d-78713408630b",
+        "glazeCode": "SP-289",
+        "glazeName": "Speckled Cutie Pie Coral",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SP289_cone10.jpg"
+      },
+      {
+        "id": "c0b7f91e-a1fe-53eb-b4ec-c4b802b1cf12",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "58f326a4-f641-5cd0-918c-087f0814c0a4",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw134-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-134 Eggplant over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw134_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "43cd66ed-ef55-5ea9-8773-d7fc7c0fc784",
+        "glazeCode": "SW-134",
+        "glazeName": "Eggplant",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-134_cone10.jpg"
+      },
+      {
+        "id": "3fe52659-b26a-5827-9a79-7c0777a3c00b",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "7afada73-a40a-59ed-8f2e-ba56d796a8e5",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw134-over-sw228-on-eg006-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-134 Eggplant over SW-228 Beetlewing on EG-006 Sparkle Black Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw134_over_sw228_on_eg006_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "ef6baf0b-abba-5dad-ab4c-bfd18738f10c",
+        "glazeCode": "SW-134",
+        "glazeName": "Eggplant",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-134_cone10.jpg"
+      },
+      {
+        "id": "d7b33807-c567-566a-b195-a9ef416c53a0",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "3a907149-2056-5ef9-9b1f-d82b2f500a16",
+        "glazeCode": "EG-006",
+        "glazeName": "Sparkle Black Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg006_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "83fbc67a-efb5-5ba0-8bc0-a18c4ccc0f96",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw153-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-153 Indigo Rain over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw153_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "6e3118b2-0fe1-53a4-ad95-5ce2f85c3dc8",
+        "glazeCode": "SW-153",
+        "glazeName": "Indigo Rain",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-153_cone10.jpg"
+      },
+      {
+        "id": "cdbbf6b5-8f33-5806-9929-90f7c309cbed",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "7f1a4044-ce58-5eec-80e6-b65f4f3b565b",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw153-over-sw228-on-eg006-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-153 Indigo Rain over SW-228 Beetlewing on EG-006 Sparkle Black Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw153_over_sw228_on_eg006_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "59841d37-a97f-5205-bf4a-fb8cc10c07d4",
+        "glazeCode": "SW-153",
+        "glazeName": "Indigo Rain",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-153_cone10.jpg"
+      },
+      {
+        "id": "328eec93-b42e-5dd9-88df-443121f21ee7",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "b2011366-973a-5dcb-b2af-41a372a8230b",
+        "glazeCode": "EG-006",
+        "glazeName": "Sparkle Black Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg006_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "8530bea5-a640-5def-8902-4455b13500b6",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw175-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-175 Rusted Iron over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw175_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "4359a3ec-db94-5bd5-949f-59a79cf4b82d",
+        "glazeCode": "SW-175",
+        "glazeName": "Rusted Iron",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-175_cone10.jpg"
+      },
+      {
+        "id": "5f631b7e-2a2f-522a-bee9-82aafa8ecec8",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "58e99c61-2d6f-58d3-b5d4-9fa4f8c8c6c4",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw175-over-sw228-on-eg005-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-175 Rusted Iron over SW-228 Beetlewing on EG-005 Black Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw175_over_sw228_on_eg005_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "54236b74-c5f0-5b4a-9e92-09cd5097f0c6",
+        "glazeCode": "SW-175",
+        "glazeName": "Rusted Iron",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-175_cone10.jpg"
+      },
+      {
+        "id": "356b31ff-204c-5a55-9dd1-27546595ef3c",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "0c4d0520-fa7f-5b56-a2e0-84bbd8aae32d",
+        "glazeCode": "EG-005",
+        "glazeName": "Black Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg005_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "3ceb0e37-0055-5cd3-9712-116a74ca009b",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw176-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-176 Sandstone over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw176_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "02e1b5fa-a043-55a8-9f89-09dc37b4b89a",
+        "glazeCode": "SW-176",
+        "glazeName": "Sandstone",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-176_cone10.jpg"
+      },
+      {
+        "id": "ccf66a66-b803-5b5b-a36b-7d79a3e7617e",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "ade947d1-a328-57a8-b67e-80da24b0e8b9",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw176-over-sw228-on-eg004-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-176 Sandstone over SW-228 Beetlewing on EG-004 Dark Brown Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw176_over_sw228_on_eg004_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "0aa01758-1f1e-5a33-8b11-5c251c3f6848",
+        "glazeCode": "SW-176",
+        "glazeName": "Sandstone",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-176_cone10.jpg"
+      },
+      {
+        "id": "79c82a14-f8e7-54a8-b678-a4d10e78a03f",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "02e6ff89-19fd-5d1d-821f-6cb36191a70a",
+        "glazeCode": "EG-004",
+        "glazeName": "Dark Brown Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg004_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "3df34a8d-2a3f-5457-b43f-ec98d4d30a99",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw178-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-178 Fool's Gold over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw178_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "ea2dab53-115a-571e-8b75-25f42d221e8d",
+        "glazeCode": "SW-178",
+        "glazeName": "Fool's Gold",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-178_cone10.jpg"
+      },
+      {
+        "id": "d67d6720-500a-5c66-9110-d133f0e65930",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "dc3a7d8e-43fa-53c1-bce5-3736c15c3aa2",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw178-over-sw228-on-eg007-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-178 Fool's Gold over SW-228 Beetlewing on EG-007 Terracotta Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw178_over_sw228_on_eg007_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "939dc478-fe64-5ad1-8f63-348be1c3f5ec",
+        "glazeCode": "SW-178",
+        "glazeName": "Fool's Gold",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-178_cone10.jpg"
+      },
+      {
+        "id": "287db0f7-6daa-516a-b880-ea893e8c3a26",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "57d4a2ab-026b-5cc6-b910-e649e5d5f2a3",
+        "glazeCode": "EG-007",
+        "glazeName": "Terracotta Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg007_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "41e20d43-e6e3-5257-93ef-d2a429eb645e",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw181-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-181 Night Moth over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw181_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "f17bbc7d-0806-5437-9a26-1731e2f4ae99",
+        "glazeCode": "SW-181",
+        "glazeName": "Night Moth",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-181_cone10.jpg"
+      },
+      {
+        "id": "925e6e74-24dd-5f26-bedc-f4e643498fe5",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "9e2b19ed-20ef-5e37-8058-961b0a90e9e1",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw181-over-sw228-on-eg004-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-181 Night Moth over SW-228 Beetlewing on EG-004 Dark Brown Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw181_over_sw228_on_eg004_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "348d7b37-208c-53a8-92f3-0ba1c2b91e15",
+        "glazeCode": "SW-181",
+        "glazeName": "Night Moth",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-181_cone10.jpg"
+      },
+      {
+        "id": "ce880a44-e18c-5a82-901f-d1e1e036c2d0",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "50b89573-4a46-5396-880b-da1dad0a91c0",
+        "glazeCode": "EG-004",
+        "glazeName": "Dark Brown Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg004_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "900b6262-6555-50d9-aa88-4c6dc637354a",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw190-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-190 Passion Flower over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw190_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "07c83049-d883-5204-941d-4f2604cc08c9",
+        "glazeCode": "SW-190",
+        "glazeName": "Passion Flower",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-190_cone10.jpg"
+      },
+      {
+        "id": "62a5bb85-6b28-5467-9dfb-a2798dc4fda6",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "fcf3e1c1-4e54-5b77-9593-97d12d47394d",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw190-over-sw228-on-eg005-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-190 Passion Flower over SW-228 Beetlewing on EG-005 Black Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw190_over_sw228_on_eg005_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "82fbaf4e-917b-5eaf-99d1-4fa7b5b53901",
+        "glazeCode": "SW-190",
+        "glazeName": "Passion Flower",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-190_cone10.jpg"
+      },
+      {
+        "id": "6e18abac-1afe-5e1c-8bb9-1caf888be4b0",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "c9b07d81-e115-5878-842f-29e3c03bf2b5",
+        "glazeCode": "EG-005",
+        "glazeName": "Black Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg005_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "9e63ae25-d241-51a9-8790-46788d51049d",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw195-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-195 Riptide over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw195_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "bd993924-ce09-59ac-ad1a-a98ece130421",
+        "glazeCode": "SW-195",
+        "glazeName": "Riptide",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-195_cone10.jpg"
+      },
+      {
+        "id": "90c239f0-8f1f-5242-b27c-7bcf58bcf78a",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "0d025e0c-1adf-5665-8044-04160fa24aa6",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw195-over-sw228-on-eg007-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-195 Riptide over SW-228 Beetlewing on EG-007 Terracotta Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw195_over_sw228_on_eg007_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "f698f33e-dcb2-525b-9a69-69652c286bda",
+        "glazeCode": "SW-195",
+        "glazeName": "Riptide",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-195_cone10.jpg"
+      },
+      {
+        "id": "298bf65b-4c79-5c2f-9e7c-b78331e65723",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "48515b83-0811-5c56-83cb-5fa2699a3bd3",
+        "glazeCode": "EG-007",
+        "glazeName": "Terracotta Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg007_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "27179ad0-3afb-599f-970a-5fc287e8a4eb",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw198-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-198 Rose Quartz over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw198_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "fc82d592-b48e-5f9b-a88b-327968a0ac8c",
+        "glazeCode": "SW-198",
+        "glazeName": "Rose Quartz",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-198_cone10.jpg"
+      },
+      {
+        "id": "8e193808-2f74-5ec2-b70b-df535cd566cb",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "c4c5e9ed-7f54-501a-82c7-8c81bead196d",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw198-over-sw228-on-eg003-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-198 Rose Quartz over SW-228 Beetlewing on EG-003 Brick Red Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw198_over_sw228_on_eg003_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "ecd8dd63-1fb0-56c8-be22-2476b9019125",
+        "glazeCode": "SW-198",
+        "glazeName": "Rose Quartz",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-198_cone10.jpg"
+      },
+      {
+        "id": "3d751b98-654b-5c5c-8fc0-baddebb9b348",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "752f887f-d419-54d8-b869-a7cb3f42a2b0",
+        "glazeCode": "EG-003",
+        "glazeName": "Brick Red Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg003_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "457fd618-693b-53f4-9f78-c47a070066ce",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw222-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-222 Green Jasper over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw222_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "93943203-547d-5569-916c-a5dff977e420",
+        "glazeCode": "SW-222",
+        "glazeName": "Green Jasper",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw222_cone10-scaled-1.jpg"
+      },
+      {
+        "id": "7b4aa958-1609-5947-89bf-f5ebcebcdc85",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "4a5aa488-422b-5311-91c5-c4625428d31a",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw222-over-sw228-on-eg003-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-222 Green Jasper over SW-228 Beetlewing on EG-003 Brick Red Engobe (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw222_over_sw228_on_eg003_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "af06162e-f0ca-521a-9469-da0768bc98d6",
+        "glazeCode": "SW-222",
+        "glazeName": "Green Jasper",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw222_cone10-scaled-1.jpg"
+      },
+      {
+        "id": "fbcc20d7-23c3-5ce0-9a4c-86008af0f92c",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "01577544-0536-58c7-bf80-e88d576f27f8",
+        "glazeCode": "EG-003",
+        "glazeName": "Brick Red Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg003_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "eaf779a8-984d-5643-b9f8-31a869be7153",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-cg1005-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over CG-1005 Maroon Lagoon (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_cg1005_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "ab2ee507-2d14-592e-9e70-91f870b46fa0",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10.jpg"
+      },
+      {
+        "id": "7063629b-d33c-5b9a-a02d-5829ffb1353a",
+        "glazeCode": "CG-1005",
+        "glazeName": "Maroon Lagoon",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/cg1005_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "59601f8a-4a37-53cf-9280-b848290182bb",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-el212-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over EL-212 Spotted Walnut (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_el212_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "1f8144bb-a997-5805-a8ef-611fb2fa7b08",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10.jpg"
+      },
+      {
+        "id": "efdefbb1-8442-5cee-a5fa-5fd4dcb6a686",
+        "glazeCode": "EL-212",
+        "glazeName": "Spotted Walnut",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/el212_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "036e60d4-8111-57fd-a2f4-24043a3e1c12",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sp289-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SP-289 Speckled Cutie Pie Coral (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sp289_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "3f990583-398f-5803-9052-a4f905f7da34",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10.jpg"
+      },
+      {
+        "id": "04c8438e-50c5-5356-bce4-8f4a53581b8d",
+        "glazeCode": "SP-289",
+        "glazeName": "Speckled Cutie Pie Coral",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SP289_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "1d1228a5-63f9-5d9c-bcb8-fa9d4f6c3dd1",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sw401-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SW-401 Light Flux (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sw401_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "9c4af5f3-c882-53f1-9447-2f5323284557",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "510c8b6c-1a6c-5d5b-b1ce-13a26d0719d4",
+        "glazeCode": "SW-401",
+        "glazeName": "Light Flux",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/sw-401_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "191924c9-ebb3-5b49-bb9b-4e9be7deeec9",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sw402-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SW-402 Dark Flux (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sw402_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "3ad8c220-bb95-56f1-9ff6-4c8f60ffc34b",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "1e49f0cb-7dc4-59bc-9ca6-e1191b4a9770",
+        "glazeCode": "SW-402",
+        "glazeName": "Dark Flux",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/sw-402_cone10.jpg"
+      }
+    ]
+  },
+  {
+    "id": "56424c1b-f77a-50bc-b56f-71265bf0faa6",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sw407-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SW-407 Clear Flux (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sw407_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "6d3a478b-c82f-5920-9154-44ed9615153a",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "af2df545-b0fa-5651-beeb-2e769fcc1753",
+        "glazeCode": "SW-407",
+        "glazeName": "Clear Flux",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw407_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "944b907c-34b2-5c9e-bec1-d6cd13fc9e07",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sw408-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SW-408 White Flux (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sw408_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "b09d05ef-a8be-5435-95e7-9bfbc10ffbda",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      },
+      {
+        "id": "739d2fcd-8ad9-5506-b037-4d8e7c29490a",
+        "glazeCode": "SW-408",
+        "glazeName": "White Flux",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw408_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "e49ce72e-521d-53e9-823c-f80ee711e904",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw401-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-401 Light Flux over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw401_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "26098ed1-46cf-537e-a21e-296c8ca2a3c8",
+        "glazeCode": "SW-401",
+        "glazeName": "Light Flux",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/sw-401_cone10.jpg"
+      },
+      {
+        "id": "57846fe7-057c-56e9-a2fe-7baad4b2a9e6",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "22e9beee-7893-531b-af33-5cf0b1ea4599",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw402-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-402 Dark Flux over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw402_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "a1788be4-79e9-506b-8f34-aabe5eb80882",
+        "glazeCode": "SW-402",
+        "glazeName": "Dark Flux",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/sw-402_cone10.jpg"
+      },
+      {
+        "id": "0dd1651d-6e51-556b-8987-84a133b84cf6",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "b7ca6960-062e-51b3-9d16-0961908757b7",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw407-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-407 Clear Flux over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw407_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "cb4ee043-968b-5c12-b946-d40f341c3c0e",
+        "glazeCode": "SW-407",
+        "glazeName": "Clear Flux",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw407_cone10-1.jpg"
+      },
+      {
+        "id": "eb4f329c-343e-548f-812e-beaa036e41e0",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "9ad25b11-a33b-5058-999d-54eee140e35a",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw408-over-sw228-cone10",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-408 White Flux over SW-228 Beetlewing (Cone 10)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw408_over_sw228_cone10.jpg",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 10 combinations are fired in reduction on white stoneware body.",
+    "layers": [
+      {
+        "id": "4e867872-9b84-52fc-8f3f-f8b5a10e1bd0",
+        "glazeCode": "SW-408",
+        "glazeName": "White Flux",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw408_cone10-1.jpg"
+      },
+      {
+        "id": "ea00f753-4a18-57aa-8258-07cf7f5972ad",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_cone10-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "83cd039a-3fb7-5655-bbae-a69349305e61",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw134-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-134 Eggplant over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw134_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "973ae4df-5744-5bef-b302-111275ab9140",
+        "glazeCode": "SW-134",
+        "glazeName": "Eggplant",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-134.jpg"
+      },
+      {
+        "id": "ebf55e1d-5d5b-5eb1-adda-32d68635afe8",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "1b5581c5-160e-5d4b-849d-ef937593ecdc",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw134-over-sw228-on-eg006-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-134 Eggplant over SW-228 Beetlewing on EG-006 Sparkle Black Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw134_over_sw228_on_eg006_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "ed46623d-a725-5a42-bd62-22a756506368",
+        "glazeCode": "SW-134",
+        "glazeName": "Eggplant",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-134.jpg"
+      },
+      {
+        "id": "920dbf5e-e784-5904-ba15-6df84c933072",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "6fab8665-3d1c-5c99-8c8e-0094fd1b1fa3",
+        "glazeCode": "EG-006",
+        "glazeName": "Sparkle Black Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/EG006_Sparkle_Black_Engobe.jpg"
+      }
+    ]
+  },
+  {
+    "id": "da066ceb-dfeb-5166-9828-2ce06304ab1a",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw153-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-153 Indigo Rain over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw153_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "edca3b82-1f95-5261-9c10-6b86f1c0eb19",
+        "glazeCode": "SW-153",
+        "glazeName": "Indigo Rain",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW-153-Indigo-Rain.jpg"
+      },
+      {
+        "id": "6921088d-69a6-5ef1-b0bf-bae4a685ab48",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "c60d62ea-dbde-5eb1-8e88-6d3d1b5bcb04",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw153-over-sw228-on-eg006-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-153 Indigo Rain over SW-228 Beetlewing on EG-006 Sparkle Black Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw153_over_sw228_on_eg006_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "e2f12cf3-a054-5d38-a15a-a3f9b1eaadc5",
+        "glazeCode": "SW-153",
+        "glazeName": "Indigo Rain",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW-153-Indigo-Rain.jpg"
+      },
+      {
+        "id": "9ffee187-7294-517f-ac95-7b74a8af474d",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "64870844-e2db-5c97-91b0-5c3182ab4539",
+        "glazeCode": "EG-006",
+        "glazeName": "Sparkle Black Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/EG006_Sparkle_Black_Engobe.jpg"
+      }
+    ]
+  },
+  {
+    "id": "01358b74-ad2e-512b-8a8e-597fbc0e8f8d",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw175-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-175 Rusted Iron over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw175_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "18959f5f-f024-564e-b0db-b736e0ecb762",
+        "glazeCode": "SW-175",
+        "glazeName": "Rusted Iron",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-175.jpg"
+      },
+      {
+        "id": "d9bb4c7a-a7e4-525a-99e7-90225b99b486",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "64853701-8f7d-5113-bb39-c3693fc33040",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw175-over-sw228-on-eg005-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-175 Rusted Iron over SW-228 Beetlewing on EG-005 Black Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw175_over_sw228_on_eg005_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "8405160d-7ad8-58b0-ad27-a40bc54c1fbc",
+        "glazeCode": "SW-175",
+        "glazeName": "Rusted Iron",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-175.jpg"
+      },
+      {
+        "id": "daef6533-15e9-5b18-805e-1b680621c241",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "a03e76c5-65be-58d2-ae9f-4d8a34543069",
+        "glazeCode": "EG-005",
+        "glazeName": "Black Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg005.jpg"
+      }
+    ]
+  },
+  {
+    "id": "371287c2-5049-5a7a-bc2f-691407455abe",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw176-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-176 Sandstone over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw176_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "05ffe1d1-187a-5e17-98ce-aefe2a4194bd",
+        "glazeCode": "SW-176",
+        "glazeName": "Sandstone",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-176.jpg"
+      },
+      {
+        "id": "c3af6448-c103-5634-92c9-6fc1c82fafdc",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "1a91fe61-04d8-5df5-8b1d-e4342eb955f0",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw176-over-sw228-on-eg004-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-176 Sandstone over SW-228 Beetlewing on EG-004 Dark Brown Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw176_over_sw228_on_eg004_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "d734cb90-6979-5ddd-af06-6a93117f4410",
+        "glazeCode": "SW-176",
+        "glazeName": "Sandstone",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-176.jpg"
+      },
+      {
+        "id": "7f7d46dc-a891-5db1-8450-4ed8f4278662",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "81eb3602-68e3-5b20-8f29-5ee5031594c7",
+        "glazeCode": "EG-004",
+        "glazeName": "Dark Brown Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg004.jpg"
+      }
+    ]
+  },
+  {
+    "id": "bac761e2-016e-550a-822a-b4547ac303a9",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw178-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-178 Fool's Gold over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw178_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "e25dab69-ece2-5b27-93c6-2f1621d5732b",
+        "glazeCode": "SW-178",
+        "glazeName": "Fool's Gold",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-178.jpg"
+      },
+      {
+        "id": "8db102a4-997f-5789-9ae1-338b38382f90",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "ba6e6f48-49c6-5fe1-8710-529677fbcae9",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw178-over-sw228-on-eg007-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-178 Fool's Gold over SW-228 Beetlewing on EG-007 Terracotta Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw178_over_sw228_on_eg007_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "57fc1a20-13d8-55a8-a32e-f0c565c04ce1",
+        "glazeCode": "SW-178",
+        "glazeName": "Fool's Gold",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-178.jpg"
+      },
+      {
+        "id": "99edb141-7597-5229-91e8-17b611472b5b",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "aa68280c-4623-5d2c-b341-f230b813d0a9",
+        "glazeCode": "EG-007",
+        "glazeName": "Terracotta Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/EG007_Terracotta_Engobe.jpg"
+      }
+    ]
+  },
+  {
+    "id": "f99fbff9-a160-5711-b2f4-60d01fb4742f",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw181-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-181 Night Moth over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw181_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "baf84983-ae9d-5f4e-af99-e8a09c0e45fb",
+        "glazeCode": "SW-181",
+        "glazeName": "Night Moth",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-181.jpg"
+      },
+      {
+        "id": "ce2b09a3-bf54-59b3-a6b0-25665d2989cd",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "0d89ac4e-423f-504a-924b-b879297468df",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw181-over-sw228-on-eg004-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-181 Night Moth over SW-228 Beetlewing on EG-004 Dark Brown Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw181_over_sw228_on_eg004_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "6683a76b-33cc-54ab-b79b-36eec43cb4d5",
+        "glazeCode": "SW-181",
+        "glazeName": "Night Moth",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/10/sw-181.jpg"
+      },
+      {
+        "id": "1f681c38-3279-5834-8fde-72a7914fedab",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "e437cebb-f424-5c05-9a48-c8f1ff9725ec",
+        "glazeCode": "EG-004",
+        "glazeName": "Dark Brown Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg004.jpg"
+      }
+    ]
+  },
+  {
+    "id": "88c6ad6a-86df-5876-ae8d-54ac5ba10bb1",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw190-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-190 Passion Flower over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw190_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "027f6621-d0a3-55a9-9879-5397430f8356",
+        "glazeCode": "SW-190",
+        "glazeName": "Passion Flower",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-190.jpg"
+      },
+      {
+        "id": "f09f9b8b-2c99-5c9a-9696-93743e092db0",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "e7e9bf10-3078-5fd9-b4b5-156e6d4367f6",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw190-over-sw228-on-eg005-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-190 Passion Flower over SW-228 Beetlewing on EG-005 Black Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw190_over_sw228_on_eg005_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "166a8f81-ceb6-5f7c-a7c6-4e54b6ae0517",
+        "glazeCode": "SW-190",
+        "glazeName": "Passion Flower",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-190.jpg"
+      },
+      {
+        "id": "ee0c986e-773d-54c6-b19d-85c190e1afb7",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "4af29897-d947-5bdd-9474-b0f270ed7ec6",
+        "glazeCode": "EG-005",
+        "glazeName": "Black Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg005.jpg"
+      }
+    ]
+  },
+  {
+    "id": "72a8835d-5465-511a-ac87-a7783e7d6632",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw195-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-195 Riptide over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw195_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "fb1b8930-ea69-59e3-bec0-891cddff7a8d",
+        "glazeCode": "SW-195",
+        "glazeName": "Riptide",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-195.jpg"
+      },
+      {
+        "id": "c8cdb3db-3e7f-5c8c-b109-bfd2ccfb2c8a",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "81bc06b4-25c2-5af1-8ce1-33e96c7dae02",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw195-over-sw228-on-eg007-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-195 Riptide over SW-228 Beetlewing on EG-007 Terracotta Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw195_over_sw228_on_eg007_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "77377e2c-3377-5da4-8abe-138d4b626e46",
+        "glazeCode": "SW-195",
+        "glazeName": "Riptide",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-195.jpg"
+      },
+      {
+        "id": "120f9fae-fe8f-57e8-913d-5194b83dc756",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "3c4ddd50-f28a-5690-bd8a-e8da13dc599d",
+        "glazeCode": "EG-007",
+        "glazeName": "Terracotta Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/EG007_Terracotta_Engobe.jpg"
+      }
+    ]
+  },
+  {
+    "id": "9f82e886-b834-5881-a870-589ced8ec3f7",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw198-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-198 Rose Quartz over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw198_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "19dfab96-6108-5390-9af1-2ceb179a16d5",
+        "glazeCode": "SW-198",
+        "glazeName": "Rose Quartz",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-198.jpg"
+      },
+      {
+        "id": "7cecf8bb-ca8d-5f91-b4d9-cad513829fc8",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "5bc5abcb-ff2a-548d-b33e-f2b8525ee5c7",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw198-over-sw228-on-eg003-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-198 Rose Quartz over SW-228 Beetlewing on EG-003 Brick Red Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw198_over_sw228_on_eg003_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "363ef33f-3c47-5eac-895a-1bc99279188f",
+        "glazeCode": "SW-198",
+        "glazeName": "Rose Quartz",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw-198.jpg"
+      },
+      {
+        "id": "dc9313e4-5f11-54f0-a0ce-6b198f58203c",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "ad7012dd-cb3e-5afa-813f-0fab77aba389",
+        "glazeCode": "EG-003",
+        "glazeName": "Brick Red Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg003.jpg"
+      }
+    ]
+  },
+  {
+    "id": "52b66aec-77b1-5e50-92ce-873bec633870",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw222-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-222 Green Jasper over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw222_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "aad808ad-dcf8-5df2-b121-913ce8a36fd5",
+        "glazeCode": "SW-222",
+        "glazeName": "Green Jasper",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW222_Green_Jasper.jpg"
+      },
+      {
+        "id": "97febe23-a0e6-5348-917b-a517093f83d6",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "f3ca91d3-f7f9-5f34-b6f4-32dae24c2f39",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw222-over-sw228-on-eg003-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-222 Green Jasper over SW-228 Beetlewing on EG-003 Brick Red Engobe (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw222_over_sw228_on_eg003_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "3b68de8a-7615-5fed-b73d-7ee159e80503",
+        "glazeCode": "SW-222",
+        "glazeName": "Green Jasper",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW222_Green_Jasper.jpg"
+      },
+      {
+        "id": "ec12d1ba-59a9-5793-8f77-f097d2696a97",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": "On",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "fe2805cd-012b-5c55-a7ab-a88f8ff8ed77",
+        "glazeCode": "EG-003",
+        "glazeName": "Brick Red Engobe",
+        "layerOrder": 2,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/eg003.jpg"
+      }
+    ]
+  },
+  {
+    "id": "78811f53-9290-5cab-bc52-0cdbb30a7c87",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-cg1005-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over CG-1005 Maroon Lagoon (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_cg1005_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "b4d71e65-0337-5538-96f1-ea81c233994f",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing.jpg"
+      },
+      {
+        "id": "bef442e4-2c46-586a-8328-43c20704959f",
+        "glazeCode": "CG-1005",
+        "glazeName": "Maroon Lagoon",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/cg-1005_cone6.jpg"
+      }
+    ]
+  },
+  {
+    "id": "4b1ec519-5ea8-50b9-8c27-fb49c89a9f9a",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-el212-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over EL-212 Spotted Walnut (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_el212_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "dab09955-5579-58f0-b31a-137908dbd744",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing.jpg"
+      },
+      {
+        "id": "ca3ef3ef-2ce5-5aad-ad5d-0c91a60bf205",
+        "glazeCode": "EL-212",
+        "glazeName": "Spotted Walnut",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/el-212_cone6-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "ab18abd0-edab-5200-8821-4c0b4f4e0bc7",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sp289-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SP-289 Speckled Cutie Pie Coral (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sp289_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "cb1f8983-c886-5f3a-831d-48a9ab93cffe",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing.jpg"
+      },
+      {
+        "id": "3c513de1-9b19-5e89-8672-f1d697498fdb",
+        "glazeCode": "SP-289",
+        "glazeName": "Speckled Cutie Pie Coral",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SP289_cone6.jpg"
+      }
+    ]
+  },
+  {
+    "id": "bd54fdae-e8c8-5580-8933-24c2d3e30276",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sw401-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SW-401 Light Flux (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sw401_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "f53fe323-9ff1-596e-9a6c-208d7ac03c28",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "f4c4e269-af3d-5b34-97aa-7cacf22bc949",
+        "glazeCode": "SW-401",
+        "glazeName": "Light Flux",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/sw-401.jpg"
+      }
+    ]
+  },
+  {
+    "id": "bd7ec430-33fe-587d-aea6-545c10f15419",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sw402-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SW-402 Dark Flux (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sw402_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "1a3baca4-dcd9-5ff5-aa65-2f8e00069449",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "c9e33ced-0ef2-5268-b33b-7f5d9d4d859d",
+        "glazeCode": "SW-402",
+        "glazeName": "Dark Flux",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/sw-402.jpg"
+      }
+    ]
+  },
+  {
+    "id": "fdcb684b-db59-5901-9679-fea9fc864572",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sw407-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SW-407 Clear Flux (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sw407_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "b904f746-99e6-5073-82a1-30c04d86aea9",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "e0b6c1c2-9ef0-5fa0-b4b6-56ab8c1458c2",
+        "glazeCode": "SW-407",
+        "glazeName": "Clear Flux",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW407-Clear-Flux-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "9d8a881e-9248-5dbd-a933-9b811e0fdf24",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw228-over-sw408-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-228 Beetlewing over SW-408 White Flux (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw228_over_sw408_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "13978361-f368-554f-82ce-b2d5be7cd529",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      },
+      {
+        "id": "1b3c5d85-0b85-504d-bd8a-1241badf2741",
+        "glazeCode": "SW-408",
+        "glazeName": "White Flux",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW408-White-Flux-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "d9c90270-f440-5210-b637-6785f6815020",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw401-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-401 Light Flux over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw401_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "4e6e3c9a-0963-5275-948f-919504f11fb5",
+        "glazeCode": "SW-401",
+        "glazeName": "Light Flux",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/sw-401.jpg"
+      },
+      {
+        "id": "6b9f6ec3-39d8-5e9a-ab92-fee2e0708624",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "ff3cb297-a146-5567-a363-d1558f9f72eb",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw402-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-402 Dark Flux over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw402_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "7492b608-53e5-5f5f-a9d5-1e6b81430027",
+        "glazeCode": "SW-402",
+        "glazeName": "Dark Flux",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/09/sw-402.jpg"
+      },
+      {
+        "id": "d182fe0d-24c5-544c-923a-6c18f3c049ae",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "478cb8c7-4ef7-5d0b-be68-01da7ce47f52",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw407-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-407 Clear Flux over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw407_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "28ba816e-69be-581b-b7b3-0aaae8fedb69",
+        "glazeCode": "SW-407",
+        "glazeName": "Clear Flux",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW407-Clear-Flux-1.jpg"
+      },
+      {
+        "id": "10d8227c-6ff5-5a38-b382-02bbf119f6b0",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  },
+  {
+    "id": "706e405f-e7d3-5e94-aa1e-b4d921d5a689",
+    "sourceVendor": "Mayco",
+    "sourceCollection": "glaze-combinations",
+    "sourceKey": "sw408-over-sw228-cone6",
+    "sourceUrl": "https://www.maycocolors.com/glaze-combinations/",
+    "title": "SW-408 White Flux over SW-228 Beetlewing (Cone 6)",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/sw408_over_sw228_cone6.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "clayBody": "White stoneware",
+    "applicationNotes": "Technique was achieved by brushing on two (2) layers of base glaze. Then apply two (2) layers of top glaze, letting glazes dry between coats.",
+    "firingNotes": "All Cone 6 combinations are fired in oxidation on white stoneware body.",
+    "layers": [
+      {
+        "id": "d507847e-151f-5380-a21d-ed4b52b145c4",
+        "glazeCode": "SW-408",
+        "glazeName": "White Flux",
+        "layerOrder": 0,
+        "connectorToNext": "Over",
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW408-White-Flux-1.jpg"
+      },
+      {
+        "id": "0dd9ae66-c5f0-5707-a8fb-1bc19da03823",
+        "glazeCode": "SW-228",
+        "glazeName": "Beetlewing",
+        "layerOrder": 1,
+        "connectorToNext": null,
+        "sourceImageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/03/SW228-Beetlewing-1.jpg"
+      }
+    ]
+  }
+]

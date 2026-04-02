@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #faf8f6;
+  --foreground: #1e1e1e;
+  --ink-2: #333;
+  --muted: rgba(30, 30, 30, 0.52);
+  --border: rgba(30, 30, 30, 0.10);
+  --panel: #f3f0ed;
+  --panel-strong: #f3f0ed;
+  --accent: #1e1e1e;
+  --accent-2: #6b5c50;
+  --accent-3: #6b7a56;
+  --shadow: none;
+  --tile-hover: #ece8e4;
+  --radius: 0px;
+}
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-panel: var(--panel);
+  --color-panel-strong: var(--panel-strong);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-crimson-text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: var(--foreground);
+  font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  background: var(--bg);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(30, 30, 30, 0.10);
+}
+
+.display-font {
+  font-family: var(--font-crimson-text), serif;
+}
+
+.app-grid {
+  background: none;
+}
+
+.ceramic-shadow {
+  box-shadow: none;
+}

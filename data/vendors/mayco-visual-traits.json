@@ -1,0 +1,7014 @@
+{
+  "CC-101": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.9811,
+      "White": 0.0162
+    }
+  },
+  "CC-102": {
+    "imageColors": [
+      "Cream",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.8044,
+      "White": 0.1948
+    }
+  },
+  "CC-107": {
+    "imageColors": [
+      "Yellow",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.8841,
+      "Olive": 0.0856,
+      "Cream": 0.0264
+    }
+  },
+  "CG-1001": {
+    "imageColors": [
+      "Grey",
+      "Aqua",
+      "Cream",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.32,
+      "Aqua": 0.2861,
+      "Cream": 0.2114,
+      "Blue": 0.1103,
+      "Teal": 0.0272,
+      "Yellow": 0.026,
+      "Green": 0.0176
+    }
+  },
+  "CG-1004": {
+    "imageColors": [
+      "Cream",
+      "Coral",
+      "Red",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.4093,
+      "Coral": 0.2753,
+      "Red": 0.1854,
+      "Amber": 0.0941,
+      "Grey": 0.0359
+    }
+  },
+  "CC-108": {
+    "imageColors": [
+      "Orange",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.6501,
+      "Red": 0.2444,
+      "Amber": 0.0449,
+      "Maroon": 0.0355,
+      "Coral": 0.0208
+    }
+  },
+  "CG-1003": {
+    "imageColors": [
+      "Red",
+      "Coral",
+      "Blue",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Red": 0.4466,
+      "Coral": 0.3812,
+      "Blue": 0.0648,
+      "Teal": 0.0552,
+      "Grey": 0.0311
+    }
+  },
+  "CG-1006": {
+    "imageColors": [
+      "Blue",
+      "Grey",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.5231,
+      "Grey": 0.3729,
+      "Amber": 0.0482,
+      "Cream": 0.0367,
+      "Indigo": 0.0191
+    }
+  },
+  "CG-1005": {
+    "imageColors": [
+      "Olive",
+      "Cream",
+      "Grey",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.4439,
+      "Cream": 0.1935,
+      "Grey": 0.1916,
+      "Green": 0.1177,
+      "Brown": 0.0311
+    }
+  },
+  "CG-1000": {
+    "imageColors": [
+      "Yellow",
+      "Grey",
+      "Aqua",
+      "Teal",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.358,
+      "Grey": 0.1902,
+      "Aqua": 0.1393,
+      "Teal": 0.0918,
+      "Blue": 0.0764,
+      "Green": 0.0754,
+      "Cream": 0.0349,
+      "Sage": 0.0284
+    }
+  },
+  "CG-1002": {
+    "imageColors": [
+      "Coral",
+      "Gold",
+      "Brown",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.5652,
+      "Gold": 0.2114,
+      "Brown": 0.0851,
+      "Amber": 0.0685,
+      "Orange": 0.0449
+    }
+  },
+  "CG-1007": {
+    "imageColors": [
+      "Aqua",
+      "Teal",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.5434,
+      "Teal": 0.2851,
+      "Orange": 0.06,
+      "Grey": 0.0409,
+      "Sage": 0.0334,
+      "Blue": 0.0152
+    }
+  },
+  "CG-1008": {
+    "imageColors": [
+      "Aqua",
+      "Teal",
+      "Sage",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.4767,
+      "Teal": 0.2458,
+      "Sage": 0.0629,
+      "Olive": 0.0577,
+      "Grey": 0.0382,
+      "Brown": 0.0297,
+      "Green": 0.0222,
+      "Maroon": 0.0181,
+      "Gold": 0.0172
+    }
+  },
+  "CG-1009": {
+    "imageColors": [
+      "Green",
+      "Coral",
+      "Gold",
+      "Red",
+      "Sage"
+    ],
+    "imageColorWeights": {
+      "Green": 0.2845,
+      "Coral": 0.2012,
+      "Gold": 0.1123,
+      "Red": 0.1013,
+      "Sage": 0.099,
+      "Amber": 0.0887,
+      "Yellow": 0.0851,
+      "Orange": 0.0262
+    }
+  },
+  "CG-707": {
+    "imageColors": [
+      "Orange",
+      "Brown",
+      "Maroon",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.3418,
+      "Brown": 0.3306,
+      "Maroon": 0.2141,
+      "Gold": 0.0731,
+      "Burgundy": 0.0176
+    }
+  },
+  "CG-716": {
+    "imageColors": [
+      "Gold",
+      "Orange",
+      "Maroon",
+      "Brown",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.32,
+      "Orange": 0.2159,
+      "Maroon": 0.1802,
+      "Brown": 0.1759,
+      "Olive": 0.0455
+    }
+  },
+  "CG-713": {
+    "imageColors": [
+      "Orange",
+      "Maroon",
+      "Red",
+      "Burgundy",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.347,
+      "Maroon": 0.2029,
+      "Red": 0.1181,
+      "Burgundy": 0.0621,
+      "Olive": 0.0586,
+      "Green": 0.0584,
+      "Brown": 0.0459,
+      "Teal": 0.0276,
+      "Yellow": 0.0224,
+      "Grey": 0.0212
+    }
+  },
+  "CG-722": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Blue",
+      "Yellow",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.3295,
+      "Cream": 0.2645,
+      "Blue": 0.2147,
+      "Yellow": 0.0936,
+      "Amber": 0.0511,
+      "Green": 0.0191,
+      "White": 0.0174
+    }
+  },
+  "CG-753": {
+    "imageColors": [
+      "Coral",
+      "Red",
+      "Amber",
+      "Orange",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.3781,
+      "Red": 0.3316,
+      "Amber": 0.0947,
+      "Orange": 0.0856,
+      "Gold": 0.0826,
+      "Yellow": 0.0274
+    }
+  },
+  "CG-718": {
+    "imageColors": [
+      "Teal",
+      "Olive",
+      "Navy",
+      "Brown",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.4616,
+      "Olive": 0.1728,
+      "Navy": 0.1449,
+      "Brown": 0.1011,
+      "Green": 0.0762
+    }
+  },
+  "CG-779": {
+    "imageColors": [
+      "Orange",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.8627,
+      "Maroon": 0.1142,
+      "Brown": 0.0218
+    }
+  },
+  "CG-717": {
+    "imageColors": [
+      "Yellow",
+      "Grey",
+      "Amber",
+      "Olive",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.5,
+      "Grey": 0.1281,
+      "Amber": 0.1169,
+      "Olive": 0.0704,
+      "Green": 0.0658,
+      "Gold": 0.0554,
+      "Teal": 0.0264,
+      "Sage": 0.0183
+    }
+  },
+  "CG-750": {
+    "imageColors": [
+      "Red",
+      "Coral",
+      "Amber",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Red": 0.325,
+      "Coral": 0.2899,
+      "Amber": 0.2581,
+      "Cream": 0.0804,
+      "Yellow": 0.0316
+    }
+  },
+  "CG-756": {
+    "imageColors": [
+      "Red",
+      "Orange",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Red": 0.853,
+      "Orange": 0.0901,
+      "Coral": 0.0509
+    }
+  },
+  "CG-780": {
+    "imageColors": [
+      "Brown",
+      "Olive",
+      "Orange",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.4163,
+      "Olive": 0.2436,
+      "Orange": 0.0787,
+      "Grey": 0.0747,
+      "Gold": 0.0422,
+      "Teal": 0.0347,
+      "Maroon": 0.0253,
+      "Amber": 0.0214,
+      "Navy": 0.0206
+    }
+  },
+  "CG-783": {
+    "imageColors": [
+      "Cream",
+      "Amber",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6553,
+      "Amber": 0.2378,
+      "Yellow": 0.0837,
+      "Grey": 0.0216
+    }
+  },
+  "CG-785": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.9927
+    }
+  },
+  "CG-786": {
+    "imageColors": [
+      "Teal",
+      "Navy",
+      "Black",
+      "Olive",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.2321,
+      "Navy": 0.227,
+      "Black": 0.1373,
+      "Olive": 0.0841,
+      "Maroon": 0.0748,
+      "Brown": 0.0527,
+      "Indigo": 0.0442,
+      "Orange": 0.0413,
+      "Burgundy": 0.0349,
+      "Green": 0.0347
+    }
+  },
+  "CG-788": {
+    "imageColors": [
+      "Aqua",
+      "Grey",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.6071,
+      "Grey": 0.2782,
+      "Teal": 0.1144
+    }
+  },
+  "CG-795": {
+    "imageColors": [
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.4992,
+      "Gold": 0.466,
+      "Yellow": 0.0347
+    }
+  },
+  "CG-954": {
+    "imageColors": [
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.9929
+    }
+  },
+  "CG-958": {
+    "imageColors": [
+      "Indigo",
+      "Navy",
+      "Blue",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.5073,
+      "Navy": 0.2828,
+      "Blue": 0.1356,
+      "Teal": 0.0552,
+      "Purple": 0.0191
+    }
+  },
+  "CG-962": {
+    "imageColors": [
+      "Grey",
+      "Teal",
+      "Navy",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.3654,
+      "Teal": 0.2373,
+      "Navy": 0.1821,
+      "Olive": 0.0633,
+      "Green": 0.0397,
+      "Sage": 0.0338,
+      "Blue": 0.0293
+    }
+  },
+  "CG-798": {
+    "imageColors": [
+      "Brown",
+      "Orange",
+      "Maroon",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.4911,
+      "Orange": 0.1869,
+      "Maroon": 0.1497,
+      "Gold": 0.1264,
+      "Amber": 0.0446
+    }
+  },
+  "CG-963": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.5235,
+      "Grey": 0.3565,
+      "Green": 0.0413,
+      "Yellow": 0.0326,
+      "Blue": 0.0237,
+      "Aqua": 0.0222
+    }
+  },
+  "CG-964": {
+    "imageColors": [
+      "Red",
+      "Grey",
+      "Coral",
+      "Aqua",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Red": 0.3335,
+      "Grey": 0.2593,
+      "Coral": 0.1314,
+      "Aqua": 0.1275,
+      "Orange": 0.0862,
+      "Cream": 0.0365,
+      "Teal": 0.0185
+    }
+  },
+  "CG-965": {
+    "imageColors": [
+      "Gold",
+      "Amber",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.7807,
+      "Amber": 0.1474,
+      "Yellow": 0.0604
+    }
+  },
+  "CG-968": {
+    "imageColors": [
+      "Cream",
+      "Coral",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.701,
+      "Coral": 0.1559,
+      "Amber": 0.1024,
+      "Red": 0.0399
+    }
+  },
+  "CG-970": {
+    "imageColors": [
+      "Orange",
+      "Brown",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.5538,
+      "Brown": 0.2255,
+      "Maroon": 0.2018
+    }
+  },
+  "CG-974": {
+    "imageColors": [
+      "Teal",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.7407,
+      "Green": 0.0727,
+      "Amber": 0.0448,
+      "Sage": 0.0442,
+      "Olive": 0.0421,
+      "Yellow": 0.0347
+    }
+  },
+  "CG-984": {
+    "imageColors": [
+      "Red",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Red": 0.6887,
+      "Maroon": 0.2573,
+      "Orange": 0.0278
+    }
+  },
+  "CG-969": {
+    "imageColors": [
+      "Blue",
+      "Indigo",
+      "Pink",
+      "Purple",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.5046,
+      "Indigo": 0.1474,
+      "Pink": 0.0693,
+      "Purple": 0.0687,
+      "Grey": 0.0611,
+      "Red": 0.0604,
+      "Lavender": 0.0361,
+      "Coral": 0.0233,
+      "Orange": 0.0191
+    }
+  },
+  "CG-972": {
+    "imageColors": [
+      "Red",
+      "Orange",
+      "Brown",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Red": 0.4514,
+      "Orange": 0.2957,
+      "Brown": 0.1491,
+      "Maroon": 0.0963
+    }
+  },
+  "CG-979": {
+    "imageColors": [
+      "Grey",
+      "Sage",
+      "Teal",
+      "Green",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.2878,
+      "Sage": 0.206,
+      "Teal": 0.1414,
+      "Green": 0.1408,
+      "Yellow": 0.1013,
+      "Olive": 0.0397,
+      "Cream": 0.0365,
+      "Brown": 0.0336
+    }
+  },
+  "CG-983": {
+    "imageColors": [
+      "Teal",
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.6225,
+      "Blue": 0.1682,
+      "Navy": 0.1302,
+      "Grey": 0.0436,
+      "Orange": 0.0243
+    }
+  },
+  "CG-982": {
+    "imageColors": [
+      "Coral",
+      "Amber",
+      "Red",
+      "Yellow",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.2533,
+      "Amber": 0.251,
+      "Red": 0.2093,
+      "Yellow": 0.0615,
+      "Grey": 0.0525,
+      "Olive": 0.0434,
+      "Cream": 0.0361,
+      "Gold": 0.0324,
+      "Orange": 0.0239,
+      "Brown": 0.0233
+    }
+  },
+  "CG-977": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "Brown",
+      "Olive",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.4471,
+      "Grey": 0.1283,
+      "Brown": 0.1229,
+      "Olive": 0.0754,
+      "Maroon": 0.0534,
+      "Amber": 0.0395,
+      "Orange": 0.0361,
+      "Yellow": 0.0336,
+      "Burgundy": 0.0326,
+      "White": 0.0162
+    }
+  },
+  "CG-987": {
+    "imageColors": [
+      "Gold",
+      "Orange",
+      "Green",
+      "Olive",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.2554,
+      "Orange": 0.1672,
+      "Green": 0.1526,
+      "Olive": 0.1051,
+      "Yellow": 0.0941,
+      "Sage": 0.0673,
+      "Amber": 0.0604,
+      "Coral": 0.0523,
+      "Teal": 0.0434
+    }
+  },
+  "CG-985": {
+    "imageColors": [
+      "Teal",
+      "Aqua",
+      "Blue",
+      "Navy",
+      "Burgundy"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.6136,
+      "Aqua": 0.1015,
+      "Blue": 0.0606,
+      "Navy": 0.0594,
+      "Burgundy": 0.0552,
+      "Grey": 0.0355,
+      "Indigo": 0.0195,
+      "Lavender": 0.0187,
+      "Purple": 0.0177
+    }
+  },
+  "CG1010": {
+    "imageColors": [
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.8987,
+      "Navy": 0.0554,
+      "Grey": 0.032
+    }
+  },
+  "CG1011": {
+    "imageColors": [
+      "Grey",
+      "Blue",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.586,
+      "Blue": 0.2793,
+      "Cream": 0.098,
+      "White": 0.0343
+    }
+  },
+  "CG1012": {
+    "imageColors": [
+      "Yellow",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.881,
+      "Gold": 0.119
+    }
+  },
+  "CG-991": {
+    "imageColors": [
+      "Teal",
+      "Gold",
+      "Sage",
+      "Aqua",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.3534,
+      "Gold": 0.2101,
+      "Sage": 0.1125,
+      "Aqua": 0.0702,
+      "Green": 0.0694,
+      "Olive": 0.066,
+      "Grey": 0.0565,
+      "Yellow": 0.0378,
+      "Brown": 0.0208
+    }
+  },
+  "CG-997": {
+    "imageColors": [
+      "Cream",
+      "Amber",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.5762,
+      "Amber": 0.2878,
+      "Grey": 0.0974,
+      "Yellow": 0.0384
+    }
+  },
+  "CG-990": {
+    "imageColors": [
+      "Blue",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.5181,
+      "Indigo": 0.4643
+    }
+  },
+  "CG1013": {
+    "imageColors": [
+      "Gold",
+      "Brown",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.8277,
+      "Brown": 0.0928,
+      "Orange": 0.0536,
+      "Maroon": 0.0258
+    }
+  },
+  "CG-998": {
+    "imageColors": [
+      "Grey",
+      "Red",
+      "Blue",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4846,
+      "Red": 0.2049,
+      "Blue": 0.1655,
+      "Coral": 0.0494,
+      "Pink": 0.0378,
+      "Aqua": 0.0216
+    }
+  },
+  "CG-981": {
+    "imageColors": [
+      "Grey",
+      "Amber",
+      "Cream",
+      "Coral",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.2238,
+      "Amber": 0.196,
+      "Cream": 0.1806,
+      "Coral": 0.1316,
+      "Yellow": 0.1103,
+      "Blue": 0.0652,
+      "Red": 0.0301,
+      "Orange": 0.0257,
+      "Gold": 0.0166
+    }
+  },
+  "CG-999": {
+    "imageColors": [
+      "Amber",
+      "Brown",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.6618,
+      "Brown": 0.1771,
+      "Yellow": 0.0762,
+      "Orange": 0.0336,
+      "Olive": 0.0224
+    }
+  },
+  "CG1014": {
+    "imageColors": [
+      "Pink"
+    ],
+    "imageColorWeights": {
+      "Pink": 0.968,
+      "Grey": 0.0199
+    }
+  },
+  "CG1015": {
+    "imageColors": [
+      "Olive",
+      "Yellow",
+      "Teal",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.6447,
+      "Yellow": 0.1564,
+      "Teal": 0.088,
+      "Green": 0.075,
+      "Amber": 0.0154
+    }
+  },
+  "CG1016": {
+    "imageColors": [
+      "Grey",
+      "Olive",
+      "Teal",
+      "Black"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7405,
+      "Olive": 0.0781,
+      "Teal": 0.0588,
+      "Black": 0.0461,
+      "Brown": 0.0295,
+      "Aqua": 0.023
+    }
+  },
+  "EG002": {
+    "imageColors": [
+      "Amber",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.8032,
+      "Cream": 0.1939
+    }
+  },
+  "EG003": {
+    "imageColors": [
+      "Orange",
+      "Maroon",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.7884,
+      "Maroon": 0.1397,
+      "Red": 0.072
+    }
+  },
+  "EG004": {
+    "imageColors": [
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.9815,
+      "Brown": 0.016
+    }
+  },
+  "EG005": {
+    "imageColors": [
+      "Grey",
+      "Black"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7512,
+      "Black": 0.2488
+    }
+  },
+  "EG001": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.8536,
+      "Grey": 0.1304,
+      "White": 0.016
+    }
+  },
+  "EL-103": {
+    "imageColors": [
+      "Grey",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7805,
+      "Amber": 0.1647,
+      "Yellow": 0.0243
+    }
+  },
+  "EL-106": {
+    "imageColors": [
+      "Amber",
+      "Brown",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.4726,
+      "Brown": 0.3968,
+      "Gold": 0.0718,
+      "Cream": 0.0199,
+      "Grey": 0.0177
+    }
+  },
+  "EG006": {
+    "imageColors": [
+      "Black",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Black": 0.553,
+      "Grey": 0.447
+    }
+  },
+  "EL-107": {
+    "imageColors": [
+      "Brown",
+      "Olive",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.7323,
+      "Olive": 0.0716,
+      "Amber": 0.0691,
+      "Gold": 0.0407,
+      "Orange": 0.0378
+    }
+  },
+  "EL-113": {
+    "imageColors": [
+      "Orange",
+      "Maroon",
+      "Grey",
+      "Brown",
+      "Burgundy"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.2926,
+      "Maroon": 0.2562,
+      "Grey": 0.1734,
+      "Brown": 0.0907,
+      "Burgundy": 0.0733,
+      "Gold": 0.059,
+      "Amber": 0.0204
+    }
+  },
+  "EG007": {
+    "imageColors": [
+      "Orange",
+      "Gold",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.8738,
+      "Gold": 0.0745,
+      "Coral": 0.049
+    }
+  },
+  "EL-119": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.919,
+      "Orange": 0.0403,
+      "Maroon": 0.0226
+    }
+  },
+  "EL-120": {
+    "imageColors": [
+      "Grey",
+      "Indigo",
+      "Purple",
+      "Maroon",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.2585,
+      "Indigo": 0.1734,
+      "Purple": 0.1042,
+      "Maroon": 0.1013,
+      "Orange": 0.0835,
+      "Burgundy": 0.0808,
+      "Navy": 0.0586,
+      "Lavender": 0.0517,
+      "Brown": 0.0361,
+      "Black": 0.0293
+    }
+  },
+  "EL-117": {
+    "imageColors": [
+      "Orange",
+      "Grey",
+      "Brown",
+      "Maroon",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.4008,
+      "Grey": 0.152,
+      "Brown": 0.1414,
+      "Maroon": 0.1285,
+      "Amber": 0.0694,
+      "Gold": 0.038,
+      "Burgundy": 0.0353
+    }
+  },
+  "EL-121": {
+    "imageColors": [
+      "Black",
+      "Brown",
+      "Grey",
+      "Orange",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Black": 0.3987,
+      "Brown": 0.1217,
+      "Grey": 0.0914,
+      "Orange": 0.0822,
+      "Indigo": 0.0791,
+      "Maroon": 0.0644,
+      "Burgundy": 0.039,
+      "Amber": 0.0388,
+      "Gold": 0.0282,
+      "Purple": 0.027
+    }
+  },
+  "EL-122": {
+    "imageColors": [
+      "Grey",
+      "Indigo",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.6692,
+      "Indigo": 0.113,
+      "Navy": 0.0882,
+      "Orange": 0.043,
+      "Maroon": 0.0233,
+      "Amber": 0.0193
+    }
+  },
+  "EL-124": {
+    "imageColors": [
+      "Olive",
+      "Yellow",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.8522,
+      "Yellow": 0.0731,
+      "Green": 0.0496
+    }
+  },
+  "EL-123": {
+    "imageColors": [
+      "Amber",
+      "Brown",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.826,
+      "Brown": 0.0818,
+      "Gold": 0.0583
+    }
+  },
+  "EL-125": {
+    "imageColors": [
+      "Brown",
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.8046,
+      "Amber": 0.0976,
+      "Gold": 0.0741,
+      "Grey": 0.017
+    }
+  },
+  "EL-132": {
+    "imageColors": [
+      "Maroon",
+      "Brown",
+      "Orange",
+      "Burgundy",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.1927,
+      "Brown": 0.1861,
+      "Orange": 0.1325,
+      "Burgundy": 0.0949,
+      "Grey": 0.0889,
+      "Purple": 0.0694,
+      "Lavender": 0.0671,
+      "Amber": 0.049,
+      "Gold": 0.0448,
+      "Black": 0.0322,
+      "Indigo": 0.022
+    }
+  },
+  "EL-134": {
+    "imageColors": [
+      "Indigo",
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.702,
+      "Blue": 0.1896,
+      "Navy": 0.0831,
+      "Grey": 0.0253
+    }
+  },
+  "EL-135": {
+    "imageColors": [
+      "Brown",
+      "Orange",
+      "Black",
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.6464,
+      "Orange": 0.0766,
+      "Black": 0.0619,
+      "Gold": 0.0619,
+      "Amber": 0.0488,
+      "Grey": 0.0386,
+      "Maroon": 0.015
+    }
+  },
+  "EL-136": {
+    "imageColors": [
+      "Orange",
+      "Amber",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.4005,
+      "Amber": 0.298,
+      "Red": 0.1669,
+      "Grey": 0.0353,
+      "Coral": 0.0318,
+      "Maroon": 0.0164,
+      "Gold": 0.0158
+    }
+  },
+  "EL-140": {
+    "imageColors": [
+      "Grey",
+      "Amber",
+      "Cream",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4817,
+      "Amber": 0.2953,
+      "Cream": 0.1393,
+      "Yellow": 0.0752
+    }
+  },
+  "EL-142": {
+    "imageColors": [
+      "Brown",
+      "Amber",
+      "Gold",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.7101,
+      "Amber": 0.1105,
+      "Gold": 0.0748,
+      "Olive": 0.0639,
+      "Grey": 0.0218
+    }
+  },
+  "EL-144": {
+    "imageColors": [
+      "Maroon",
+      "Orange",
+      "Grey",
+      "Brown",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.3937,
+      "Orange": 0.2664,
+      "Grey": 0.0899,
+      "Brown": 0.0835,
+      "Amber": 0.0654,
+      "Burgundy": 0.0415,
+      "Gold": 0.0318,
+      "Red": 0.016
+    }
+  },
+  "EL-137": {
+    "imageColors": [
+      "Grey",
+      "Navy",
+      "Indigo",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.6397,
+      "Navy": 0.0982,
+      "Indigo": 0.0677,
+      "Blue": 0.0476,
+      "Orange": 0.0438,
+      "Maroon": 0.0233,
+      "Amber": 0.0218
+    }
+  },
+  "EL-143": {
+    "imageColors": [
+      "Brown",
+      "Orange",
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.5864,
+      "Orange": 0.1773,
+      "Gold": 0.1146,
+      "Amber": 0.0885
+    }
+  },
+  "EL-145": {
+    "imageColors": [
+      "Orange",
+      "Brown",
+      "Maroon",
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.3771,
+      "Brown": 0.1825,
+      "Maroon": 0.1584,
+      "Gold": 0.125,
+      "Amber": 0.0791,
+      "Burgundy": 0.0326,
+      "Grey": 0.0214
+    }
+  },
+  "EL-152": {
+    "imageColors": [
+      "Navy",
+      "Teal",
+      "Blue",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.3351,
+      "Teal": 0.2953,
+      "Blue": 0.2326,
+      "Grey": 0.1209
+    }
+  },
+  "EL-146": {
+    "imageColors": [
+      "Brown",
+      "Amber",
+      "Olive",
+      "Grey",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.3891,
+      "Amber": 0.2054,
+      "Olive": 0.1896,
+      "Grey": 0.1038,
+      "Gold": 0.0909
+    }
+  },
+  "EL-153": {
+    "imageColors": [
+      "Grey",
+      "Brown",
+      "Amber",
+      "Orange",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.392,
+      "Brown": 0.1535,
+      "Amber": 0.1512,
+      "Orange": 0.1312,
+      "Olive": 0.0909,
+      "Maroon": 0.0276,
+      "Yellow": 0.0177
+    }
+  },
+  "EL-155": {
+    "imageColors": [
+      "Indigo",
+      "Maroon",
+      "Grey",
+      "Burgundy",
+      "Purple"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.2037,
+      "Maroon": 0.157,
+      "Grey": 0.1497,
+      "Burgundy": 0.1285,
+      "Purple": 0.0893,
+      "Orange": 0.0772,
+      "Red": 0.0716,
+      "Amber": 0.0453,
+      "Blue": 0.043,
+      "Lavender": 0.015
+    }
+  },
+  "EL-156": {
+    "imageColors": [
+      "Amber",
+      "Orange",
+      "Olive",
+      "Gold",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.5442,
+      "Orange": 0.178,
+      "Olive": 0.1256,
+      "Gold": 0.0503,
+      "Red": 0.0453,
+      "Yellow": 0.0307
+    }
+  },
+  "El-155": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 0.966
+    }
+  },
+  "EL-158": {
+    "imageColors": [
+      "Orange",
+      "Maroon",
+      "Amber",
+      "Burgundy",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.3316,
+      "Maroon": 0.1644,
+      "Amber": 0.1206,
+      "Burgundy": 0.0959,
+      "Brown": 0.0891,
+      "Purple": 0.0502,
+      "Grey": 0.0411,
+      "Pink": 0.0299,
+      "Indigo": 0.0266,
+      "Lavender": 0.0218
+    }
+  },
+  "EL-159": {
+    "imageColors": [
+      "Orange",
+      "Red",
+      "Amber",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.4732,
+      "Red": 0.2787,
+      "Amber": 0.1352,
+      "Maroon": 0.0637,
+      "Grey": 0.0212
+    }
+  },
+  "EL-160": {
+    "imageColors": [
+      "Brown",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.6991,
+      "Orange": 0.1514,
+      "Amber": 0.0426,
+      "Grey": 0.0399,
+      "Gold": 0.0359
+    }
+  },
+  "EL-161": {
+    "imageColors": [
+      "Orange",
+      "Maroon",
+      "Amber",
+      "Red",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.2841,
+      "Maroon": 0.2027,
+      "Amber": 0.1636,
+      "Red": 0.1588,
+      "Gold": 0.1119,
+      "Grey": 0.0343,
+      "Brown": 0.0326
+    }
+  },
+  "EL-209": {
+    "imageColors": [
+      "Brown",
+      "Olive",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.6217,
+      "Olive": 0.1672,
+      "Orange": 0.1155,
+      "Amber": 0.0421,
+      "Gold": 0.0282
+    }
+  },
+  "EL-207": {
+    "imageColors": [
+      "Grey",
+      "Amber",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7677,
+      "Amber": 0.0743,
+      "Cream": 0.0677,
+      "Blue": 0.023,
+      "Red": 0.0203
+    }
+  },
+  "EL-208": {
+    "imageColors": [
+      "Orange",
+      "Grey",
+      "Gold",
+      "Red",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.3356,
+      "Grey": 0.1709,
+      "Gold": 0.1655,
+      "Red": 0.1009,
+      "Maroon": 0.0677,
+      "Burgundy": 0.0476,
+      "Brown": 0.0473,
+      "Amber": 0.0405
+    }
+  },
+  "El-156": {
+    "imageColors": [
+      "Teal",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.8484,
+      "Green": 0.1362
+    }
+  },
+  "EL-211": {
+    "imageColors": [
+      "Orange",
+      "Brown",
+      "Gold",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.4801,
+      "Brown": 0.2155,
+      "Gold": 0.1246,
+      "Maroon": 0.1227,
+      "Grey": 0.0195
+    }
+  },
+  "EL-212": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5127,
+      "Cream": 0.2587,
+      "Amber": 0.2022,
+      "Yellow": 0.016
+    }
+  },
+  "EZ002": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 1.0
+    }
+  },
+  "EZ003": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 0.9545,
+      "Amber": 0.0287
+    }
+  },
+  "EZ010": {
+    "imageColors": [
+      "Orange",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.6065,
+      "Brown": 0.3528,
+      "Amber": 0.0177
+    }
+  },
+  "EZ011": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.9543,
+      "Amber": 0.038
+    }
+  },
+  "EZ012": {
+    "imageColors": [
+      "Brown",
+      "Olive",
+      "Orange",
+      "Maroon",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.451,
+      "Olive": 0.1902,
+      "Orange": 0.1399,
+      "Maroon": 0.0677,
+      "Amber": 0.0513,
+      "Black": 0.0378,
+      "Burgundy": 0.0312
+    }
+  },
+  "EZ013": {
+    "imageColors": [
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.6802,
+      "Navy": 0.2604,
+      "Grey": 0.0368,
+      "Indigo": 0.0203
+    }
+  },
+  "EZ018": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9761,
+      "Amber": 0.0237
+    }
+  },
+  "EZ022": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.9894
+    }
+  },
+  "EZ023": {
+    "imageColors": [
+      "Indigo",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.9217,
+      "Amber": 0.049
+    }
+  },
+  "EZ024": {
+    "imageColors": [
+      "Teal",
+      "Amber",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.8324,
+      "Amber": 0.0799,
+      "Green": 0.0627,
+      "Olive": 0.0185
+    }
+  },
+  "EZ026": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9672,
+      "Amber": 0.0204
+    }
+  },
+  "EZ027": {
+    "imageColors": [
+      "Teal",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.782,
+      "Aqua": 0.186
+    }
+  },
+  "EZ028": {
+    "imageColors": [
+      "Olive",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.7623,
+      "Green": 0.1863,
+      "Amber": 0.0345,
+      "Yellow": 0.0152
+    }
+  },
+  "EZ030": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.9977
+    }
+  },
+  "EZ031": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.9701
+    }
+  },
+  "EZ032": {
+    "imageColors": [
+      "Teal",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.8524,
+      "Aqua": 0.1057,
+      "Amber": 0.0245
+    }
+  },
+  "EZ033": {
+    "imageColors": [
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.9743
+    }
+  },
+  "EZ034": {
+    "imageColors": [
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.9468,
+      "Amber": 0.0529
+    }
+  },
+  "EZ035": {
+    "imageColors": [
+      "Indigo",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.8526,
+      "Navy": 0.115
+    }
+  },
+  "EZ037": {
+    "imageColors": [
+      "Olive",
+      "Brown",
+      "Black",
+      "Amber",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.4082,
+      "Brown": 0.2739,
+      "Black": 0.1732,
+      "Amber": 0.0592,
+      "Orange": 0.0538,
+      "Maroon": 0.0208
+    }
+  },
+  "EZ042": {
+    "imageColors": [
+      "Teal",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.515,
+      "Navy": 0.3879,
+      "Amber": 0.0392,
+      "Blue": 0.0326,
+      "Grey": 0.0206
+    }
+  },
+  "EZ047": {
+    "imageColors": [
+      "Grey",
+      "Navy",
+      "Orange",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.636,
+      "Navy": 0.157,
+      "Orange": 0.0826,
+      "Brown": 0.0538,
+      "Indigo": 0.0249,
+      "Amber": 0.0164
+    }
+  },
+  "EZ038": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.962,
+      "Amber": 0.0307
+    }
+  },
+  "EZ050": {
+    "imageColors": [
+      "Indigo",
+      "Navy",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.3848,
+      "Navy": 0.3372,
+      "Blue": 0.2606
+    }
+  },
+  "EZ055": {
+    "imageColors": [
+      "Orange",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.7033,
+      "Gold": 0.2608,
+      "Coral": 0.0255
+    }
+  },
+  "EZ057": {
+    "imageColors": [
+      "Red",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Red": 0.842,
+      "Coral": 0.1412
+    }
+  },
+  "EZ058": {
+    "imageColors": [
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.9487,
+      "Amber": 0.0482
+    }
+  },
+  "EZ063": {
+    "imageColors": [
+      "Pink",
+      "Lavender"
+    ],
+    "imageColorWeights": {
+      "Pink": 0.6472,
+      "Lavender": 0.2485,
+      "Burgundy": 0.033,
+      "Amber": 0.0285,
+      "Red": 0.0249
+    }
+  },
+  "EZ071": {
+    "imageColors": [
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.9524,
+      "Amber": 0.0289
+    }
+  },
+  "EZ101": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9836,
+      "Amber": 0.015
+    }
+  },
+  "EZ107": {
+    "imageColors": [
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.7581,
+      "Amber": 0.2074,
+      "White": 0.0345
+    }
+  },
+  "EZ075": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.973,
+      "Amber": 0.0193
+    }
+  },
+  "EZ108": {
+    "imageColors": [
+      "Coral",
+      "Orange",
+      "Red",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.619,
+      "Orange": 0.1651,
+      "Red": 0.1271,
+      "White": 0.0887
+    }
+  },
+  "EZ109": {
+    "imageColors": [
+      "Red",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9211,
+      "White": 0.0617,
+      "Coral": 0.0172
+    }
+  },
+  "EZ110": {
+    "imageColors": [
+      "Blue",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.7508,
+      "Grey": 0.2101,
+      "White": 0.037
+    }
+  },
+  "EZ111": {
+    "imageColors": [
+      "Teal",
+      "Grey",
+      "Sage"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.6651,
+      "Grey": 0.2051,
+      "Sage": 0.0573,
+      "Green": 0.0415,
+      "White": 0.0224
+    }
+  },
+  "EZ112": {
+    "imageColors": [
+      "Amber",
+      "White",
+      "Cream",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.6163,
+      "White": 0.1761,
+      "Cream": 0.1348,
+      "Coral": 0.0725
+    }
+  },
+  "FD254": {
+    "imageColors": [
+      "Black",
+      "Grey",
+      "White",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Black": 0.2973,
+      "Grey": 0.2805,
+      "White": 0.2706,
+      "Cream": 0.1105,
+      "Brown": 0.0241
+    }
+  },
+  "FN-1": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9956
+    }
+  },
+  "FD258": {
+    "imageColors": [
+      "Grey",
+      "Black",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.3929,
+      "Black": 0.2749,
+      "White": 0.2361,
+      "Navy": 0.0284,
+      "Indigo": 0.0235
+    }
+  },
+  "FN-12": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9155,
+      "Grey": 0.0845
+    }
+  },
+  "FN-10": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 0.9992
+    }
+  },
+  "FN-13": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9676,
+      "Cream": 0.0233
+    }
+  },
+  "FN-11": {
+    "imageColors": [
+      "Grey",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5216,
+      "Aqua": 0.4743
+    }
+  },
+  "FN-14": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9647,
+      "Grey": 0.0272
+    }
+  },
+  "FN-15": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "FN-16": {
+    "imageColors": [
+      "Yellow",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.6568,
+      "Gold": 0.3432
+    }
+  },
+  "FN-17": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "FN-19": {
+    "imageColors": [
+      "Indigo",
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.803,
+      "Blue": 0.1071,
+      "Navy": 0.0899
+    }
+  },
+  "FN-18": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.8848,
+      "Teal": 0.1152
+    }
+  },
+  "FN-2": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 1.0
+    }
+  },
+  "FN-20": {
+    "imageColors": [
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.9605,
+      "Sage": 0.0191,
+      "Green": 0.0174
+    }
+  },
+  "FN-201": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9915
+    }
+  },
+  "FN-202": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.7259,
+      "Grey": 0.2701
+    }
+  },
+  "FN-205": {
+    "imageColors": [
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.9001,
+      "Gold": 0.0999
+    }
+  },
+  "FN-209": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9836,
+      "Grey": 0.0164
+    }
+  },
+  "FN-21": {
+    "imageColors": [
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.9979
+    }
+  },
+  "FN-211": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 1.0
+    }
+  },
+  "FN-212": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.978,
+      "Grey": 0.022
+    }
+  },
+  "FN-213": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.9715,
+      "Indigo": 0.0189
+    }
+  },
+  "FN-214": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9763,
+      "Cream": 0.0237
+    }
+  },
+  "FN-216": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6267,
+      "Grey": 0.3733
+    }
+  },
+  "FN-218": {
+    "imageColors": [
+      "Olive",
+      "Brown",
+      "Amber",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.4915,
+      "Brown": 0.216,
+      "Amber": 0.1441,
+      "Grey": 0.0635,
+      "Gold": 0.0311
+    }
+  },
+  "FN-219": {
+    "imageColors": [
+      "Brown",
+      "Maroon",
+      "Orange",
+      "Grey",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.2344,
+      "Maroon": 0.1752,
+      "Orange": 0.1557,
+      "Grey": 0.135,
+      "Navy": 0.1111,
+      "Black": 0.0602,
+      "Burgundy": 0.0596,
+      "Amber": 0.0197,
+      "Indigo": 0.016
+    }
+  },
+  "FN-22": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.9998
+    }
+  },
+  "FN-220": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9886
+    }
+  },
+  "FN-221": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9516,
+      "Grey": 0.0484
+    }
+  },
+  "FN-23": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.9932
+    }
+  },
+  "FN-230": {
+    "imageColors": [
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Coral": 1.0
+    }
+  },
+  "FN-231": {
+    "imageColors": [
+      "Grey",
+      "Sage"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.8586,
+      "Sage": 0.1399
+    }
+  },
+  "FN-232": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9907
+    }
+  },
+  "FN-234": {
+    "imageColors": [
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.7907,
+      "Navy": 0.2089
+    }
+  },
+  "FN-235": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.5949,
+      "Grey": 0.4051
+    }
+  },
+  "FN-233": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9992
+    }
+  },
+  "FN-236": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.8989,
+      "Grey": 0.1011
+    }
+  },
+  "FN-237": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 1.0
+    }
+  },
+  "FN-238": {
+    "imageColors": [
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.9977
+    }
+  },
+  "FN-239": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9863
+    }
+  },
+  "FN-24": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 1.0
+    }
+  },
+  "FN-240": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.9799,
+      "Coral": 0.0199
+    }
+  },
+  "FN-25": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6177,
+      "Grey": 0.3823
+    }
+  },
+  "FN-27": {
+    "imageColors": [
+      "Green",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Green": 0.7976,
+      "Teal": 0.2024
+    }
+  },
+  "FN-28": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "FN-301": {
+    "imageColors": [
+      "Cream",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.5596,
+      "White": 0.413,
+      "Grey": 0.0274
+    }
+  },
+  "FN-29": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.9875
+    }
+  },
+  "FN-3": {
+    "imageColors": [
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.9597,
+      "Red": 0.0395
+    }
+  },
+  "FN-302": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.999
+    }
+  },
+  "FN-304": {
+    "imageColors": [
+      "Navy",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.6595,
+      "Indigo": 0.2394,
+      "Black": 0.0407,
+      "Grey": 0.0291,
+      "Teal": 0.0154
+    }
+  },
+  "FN-32": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.9749,
+      "Teal": 0.021
+    }
+  },
+  "FN-31": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "FN-33": {
+    "imageColors": [
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.9994
+    }
+  },
+  "FN-34": {
+    "imageColors": [
+      "Aqua",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.7033,
+      "Blue": 0.2967
+    }
+  },
+  "FN-35": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "FN-36": {
+    "imageColors": [
+      "Amber",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.6659,
+      "Coral": 0.2712,
+      "Cream": 0.0357,
+      "Grey": 0.0264
+    }
+  },
+  "FN-37": {
+    "imageColors": [
+      "Yellow",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.8825,
+      "Green": 0.1175
+    }
+  },
+  "FN-38": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 1.0
+    }
+  },
+  "FN-39": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 1.0
+    }
+  },
+  "FN-4": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "FN-40": {
+    "imageColors": [
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.9763,
+      "Coral": 0.0176
+    }
+  },
+  "FN-41": {
+    "imageColors": [
+      "Blue",
+      "Navy",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.6206,
+      "Navy": 0.2822,
+      "Indigo": 0.0972
+    }
+  },
+  "FN-42": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.6831,
+      "Teal": 0.3169
+    }
+  },
+  "FN-43": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 1.0
+    }
+  },
+  "FN-44": {
+    "imageColors": [
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.8954,
+      "Amber": 0.1046
+    }
+  },
+  "FN-45": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9674,
+      "Olive": 0.0326
+    }
+  },
+  "FN-46": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9996
+    }
+  },
+  "FN-47": {
+    "imageColors": [
+      "Red",
+      "Grey",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Red": 0.5218,
+      "Grey": 0.402,
+      "Coral": 0.0723
+    }
+  },
+  "FN-48": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9983
+    }
+  },
+  "FN-5": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9639,
+      "White": 0.0297
+    }
+  },
+  "FN-49": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "FN-51": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "FN-52": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.967,
+      "Coral": 0.0243
+    }
+  },
+  "FN-53": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 1.0
+    }
+  },
+  "FN-54": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 1.0
+    }
+  },
+  "FN-6": {
+    "imageColors": [
+      "Indigo",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.609,
+      "Navy": 0.3517,
+      "Blue": 0.0394
+    }
+  },
+  "FN-7": {
+    "imageColors": [
+      "Green",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Green": 0.6721,
+      "Olive": 0.3239
+    }
+  },
+  "FN-8": {
+    "imageColors": [
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.9529,
+      "Orange": 0.043
+    }
+  },
+  "FN-9": {
+    "imageColors": [
+      "Maroon",
+      "Orange",
+      "Brown",
+      "Burgundy",
+      "Black"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.4674,
+      "Orange": 0.2573,
+      "Brown": 0.1422,
+      "Burgundy": 0.077,
+      "Black": 0.0521
+    }
+  },
+  "FN055": {
+    "imageColors": [
+      "Cream",
+      "White",
+      "Amber",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.3162,
+      "White": 0.3081,
+      "Amber": 0.272,
+      "Coral": 0.0992
+    }
+  },
+  "FN057": {
+    "imageColors": [
+      "Blue",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.6125,
+      "Grey": 0.3816
+    }
+  },
+  "FN056": {
+    "imageColors": [
+      "Grey",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.6015,
+      "Blue": 0.3929
+    }
+  },
+  "FN058": {
+    "imageColors": [
+      "Sage",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Sage": 0.8989,
+      "Grey": 0.098
+    }
+  },
+  "FN059": {
+    "imageColors": [
+      "Cream",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.7519,
+      "White": 0.2481
+    }
+  },
+  "FN060": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.9954
+    }
+  },
+  "FN061": {
+    "imageColors": [
+      "Cream",
+      "Amber",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.82,
+      "Amber": 0.0856,
+      "White": 0.0575,
+      "Grey": 0.0208
+    }
+  },
+  "S-2701": {
+    "imageColors": [
+      "Grey",
+      "Blue",
+      "Cream",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4151,
+      "Blue": 0.3796,
+      "Cream": 0.1073,
+      "Aqua": 0.0797,
+      "Indigo": 0.0166
+    }
+  },
+  "PC-601": {
+    "imageColors": [
+      "Brown",
+      "Teal",
+      "Orange",
+      "Navy",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.3169,
+      "Teal": 0.2087,
+      "Orange": 0.1549,
+      "Navy": 0.1078,
+      "Olive": 0.0897,
+      "Green": 0.0328,
+      "Grey": 0.0268,
+      "Indigo": 0.0166
+    }
+  },
+  "S-2702": {
+    "imageColors": [
+      "Amber",
+      "Grey",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.6125,
+      "Grey": 0.2635,
+      "Blue": 0.075,
+      "Orange": 0.0197
+    }
+  },
+  "S-2708": {
+    "imageColors": [
+      "Gold",
+      "Brown",
+      "Maroon",
+      "Orange",
+      "Burgundy"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.4963,
+      "Brown": 0.1684,
+      "Maroon": 0.0849,
+      "Orange": 0.0577,
+      "Burgundy": 0.0511,
+      "Olive": 0.05,
+      "Amber": 0.0338
+    }
+  },
+  "S-2704": {
+    "imageColors": [
+      "Blue",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.7236,
+      "Indigo": 0.2639
+    }
+  },
+  "S-2715": {
+    "imageColors": [
+      "Green",
+      "Olive",
+      "Teal",
+      "Sage"
+    ],
+    "imageColorWeights": {
+      "Green": 0.5027,
+      "Olive": 0.222,
+      "Teal": 0.1543,
+      "Sage": 0.1061
+    }
+  },
+  "S-2709": {
+    "imageColors": [
+      "Gold",
+      "Brown",
+      "Orange",
+      "Maroon",
+      "Burgundy"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.5035,
+      "Brown": 0.2378,
+      "Orange": 0.0814,
+      "Maroon": 0.0694,
+      "Burgundy": 0.0457,
+      "Grey": 0.0345,
+      "Amber": 0.0164
+    }
+  },
+  "S-2716": {
+    "imageColors": [
+      "Indigo",
+      "Purple"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.9124,
+      "Purple": 0.081
+    }
+  },
+  "S-2711": {
+    "imageColors": [
+      "Teal",
+      "Blue",
+      "Grey",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.4817,
+      "Blue": 0.1871,
+      "Grey": 0.1701,
+      "Olive": 0.0631,
+      "Navy": 0.0359,
+      "Amber": 0.0314
+    }
+  },
+  "S-2723": {
+    "imageColors": [
+      "Blue",
+      "Grey",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.5559,
+      "Grey": 0.3127,
+      "Amber": 0.1142,
+      "Cream": 0.0166
+    }
+  },
+  "S-2712": {
+    "imageColors": [
+      "Blue",
+      "Grey",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.8318,
+      "Grey": 0.0575,
+      "Yellow": 0.0478,
+      "Aqua": 0.0305
+    }
+  },
+  "S-2724": {
+    "imageColors": [
+      "Brown",
+      "Orange",
+      "Maroon",
+      "Gold",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.385,
+      "Orange": 0.1769,
+      "Maroon": 0.1611,
+      "Gold": 0.146,
+      "Olive": 0.0785,
+      "Amber": 0.0347
+    }
+  },
+  "S-2714": {
+    "imageColors": [
+      "Gold",
+      "Brown",
+      "Amber",
+      "Olive",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.2895,
+      "Brown": 0.1842,
+      "Amber": 0.1508,
+      "Olive": 0.1337,
+      "Orange": 0.0758,
+      "Green": 0.0635,
+      "Maroon": 0.0453,
+      "Yellow": 0.0258
+    }
+  },
+  "S-2725": {
+    "imageColors": [
+      "Gold",
+      "Brown",
+      "Amber",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.3765,
+      "Brown": 0.2857,
+      "Amber": 0.2124,
+      "Orange": 0.0473,
+      "Olive": 0.0367,
+      "Maroon": 0.0239
+    }
+  },
+  "S-2726": {
+    "imageColors": [
+      "Cream",
+      "Amber",
+      "Brown",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.3164,
+      "Amber": 0.3025,
+      "Brown": 0.2049,
+      "Grey": 0.048,
+      "Orange": 0.0365,
+      "Gold": 0.0224,
+      "Black": 0.0187,
+      "Maroon": 0.0168,
+      "Olive": 0.0168
+    }
+  },
+  "S-2718": {
+    "imageColors": [
+      "Teal",
+      "Yellow",
+      "Amber",
+      "Grey",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.2921,
+      "Yellow": 0.1863,
+      "Amber": 0.1489,
+      "Grey": 0.1464,
+      "Green": 0.0683,
+      "Navy": 0.0567,
+      "Olive": 0.0355,
+      "Blue": 0.0332,
+      "Sage": 0.0245
+    }
+  },
+  "S-2727": {
+    "imageColors": [
+      "Red",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Red": 0.7909,
+      "Maroon": 0.0517,
+      "Grey": 0.0432,
+      "Orange": 0.0401,
+      "Coral": 0.0338
+    }
+  },
+  "SC-1": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9988
+    }
+  },
+  "S-2729": {
+    "imageColors": [
+      "Amber",
+      "Cream",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.3958,
+      "Cream": 0.2955,
+      "Coral": 0.2728,
+      "Yellow": 0.023
+    }
+  },
+  "SC-10": {
+    "imageColors": [
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Teal": 1.0
+    }
+  },
+  "SC-100": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9848
+    }
+  },
+  "SC-101": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 1.0
+    }
+  },
+  "SC-102": {
+    "imageColors": [
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Coral": 1.0
+    }
+  },
+  "SC-103": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.9996
+    }
+  },
+  "SC-104": {
+    "imageColors": [
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.8665,
+      "Navy": 0.1325
+    }
+  },
+  "SC-11": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.9867
+    }
+  },
+  "SC-12": {
+    "imageColors": [
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.9871
+    }
+  },
+  "S-2731": {
+    "imageColors": [
+      "Red",
+      "Grey",
+      "Blue",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Red": 0.571,
+      "Grey": 0.1927,
+      "Blue": 0.1024,
+      "Aqua": 0.0546,
+      "Cream": 0.0378,
+      "Pink": 0.0237
+    }
+  },
+  "SC-13": {
+    "imageColors": [
+      "Coral",
+      "Amber",
+      "Cream",
+      "Red",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.3538,
+      "Amber": 0.244,
+      "Cream": 0.1551,
+      "Red": 0.1402,
+      "Grey": 0.1061
+    }
+  },
+  "SC-15": {
+    "imageColors": [
+      "Black",
+      "Burgundy",
+      "Maroon",
+      "Brown",
+      "Lavender"
+    ],
+    "imageColorWeights": {
+      "Black": 0.3486,
+      "Burgundy": 0.2031,
+      "Maroon": 0.1943,
+      "Brown": 0.0679,
+      "Lavender": 0.059,
+      "Olive": 0.0478,
+      "Indigo": 0.0285,
+      "Orange": 0.0284
+    }
+  },
+  "SC-14": {
+    "imageColors": [
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.9568,
+      "Gold": 0.0432
+    }
+  },
+  "SC-16": {
+    "imageColors": [
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.691,
+      "White": 0.309
+    }
+  },
+  "SC-17": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9875
+    }
+  },
+  "SC-18": {
+    "imageColors": [
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7066,
+      "White": 0.2934
+    }
+  },
+  "SC-2": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SC-20": {
+    "imageColors": [
+      "Coral",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.8628,
+      "Red": 0.125
+    }
+  },
+  "SC-23": {
+    "imageColors": [
+      "Orange",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.9259,
+      "Coral": 0.0702
+    }
+  },
+  "SC-24": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.988
+    }
+  },
+  "SC-25": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 1.0
+    }
+  },
+  "SC-26": {
+    "imageColors": [
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Olive": 1.0
+    }
+  },
+  "SC-27": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 1.0
+    }
+  },
+  "SC-29": {
+    "imageColors": [
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Teal": 1.0
+    }
+  },
+  "SC-3": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 1.0
+    }
+  },
+  "SC-28": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.6236,
+      "Teal": 0.3764
+    }
+  },
+  "SC-30": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SC-31": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SC-32": {
+    "imageColors": [
+      "Teal",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.9022,
+      "Navy": 0.0978
+    }
+  },
+  "SC-33": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SC-34": {
+    "imageColors": [
+      "Orange",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.9535,
+      "Brown": 0.0465
+    }
+  },
+  "SC-35": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 1.0
+    }
+  },
+  "SC-36": {
+    "imageColors": [
+      "Olive",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.5372,
+      "Green": 0.4628
+    }
+  },
+  "SC-37": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5002,
+      "Cream": 0.4473,
+      "White": 0.0525
+    }
+  },
+  "SC-39": {
+    "imageColors": [
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Olive": 1.0
+    }
+  },
+  "SC-41": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 1.0
+    }
+  },
+  "SC-42": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 1.0
+    }
+  },
+  "SC-40": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SC-43": {
+    "imageColors": [
+      "Sage",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Sage": 0.7587,
+      "Teal": 0.2411
+    }
+  },
+  "SC-45": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 1.0
+    }
+  },
+  "SC-46": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 1.0
+    }
+  },
+  "SC-48": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 1.0
+    }
+  },
+  "SC-5": {
+    "imageColors": [
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.908,
+      "Gold": 0.0484,
+      "Yellow": 0.0436
+    }
+  },
+  "SC-50": {
+    "imageColors": [
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.9998
+    }
+  },
+  "SC-51": {
+    "imageColors": [
+      "Yellow",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.8378,
+      "Amber": 0.1622
+    }
+  },
+  "SC-52": {
+    "imageColors": [
+      "Green",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Green": 0.5475,
+      "Olive": 0.4502
+    }
+  },
+  "SC-53": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SC-54": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9904
+    }
+  },
+  "SC-55": {
+    "imageColors": [
+      "Cream",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.8804,
+      "White": 0.1181
+    }
+  },
+  "SC-58": {
+    "imageColors": [
+      "Navy",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.6804,
+      "Blue": 0.3196
+    }
+  },
+  "SC-6": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 1.0
+    }
+  },
+  "SC-60": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9985
+    }
+  },
+  "SC-65": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SC-7": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.881,
+      "Teal": 0.119
+    }
+  },
+  "SC-70": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.7859,
+      "Grey": 0.2141
+    }
+  },
+  "SC-71": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SC-72": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SC-73": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SC-74": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SC-75": {
+    "imageColors": [
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Orange": 1.0
+    }
+  },
+  "SC-76": {
+    "imageColors": [
+      "Navy",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.8337,
+      "Blue": 0.1663
+    }
+  },
+  "SC-77": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 1.0
+    }
+  },
+  "SC-78": {
+    "imageColors": [
+      "Sage"
+    ],
+    "imageColorWeights": {
+      "Sage": 0.9921
+    }
+  },
+  "SC-79": {
+    "imageColors": [
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Teal": 1.0
+    }
+  },
+  "SC-8": {
+    "imageColors": [
+      "Green",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Green": 0.6813,
+      "Olive": 0.3187
+    }
+  },
+  "SC-80": {
+    "imageColors": [
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.9778,
+      "Orange": 0.0222
+    }
+  },
+  "SC-81": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SC-83": {
+    "imageColors": [
+      "Grey",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.8393,
+      "Cream": 0.1607
+    }
+  },
+  "SC-85": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.978,
+      "Grey": 0.022
+    }
+  },
+  "SC-86": {
+    "imageColors": [
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.9578,
+      "Grey": 0.0422
+    }
+  },
+  "SC-87": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SC-88": {
+    "imageColors": [
+      "Red",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Red": 0.7276,
+      "Orange": 0.2724
+    }
+  },
+  "SC-89": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SC-9": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 1.0
+    }
+  },
+  "SC-90": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.5741,
+      "Teal": 0.4259
+    }
+  },
+  "SC-91": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 1.0
+    }
+  },
+  "SC-92": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 1.0
+    }
+  },
+  "SC-93": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 1.0
+    }
+  },
+  "SC-95": {
+    "imageColors": [
+      "Coral",
+      "Grey",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.4506,
+      "Grey": 0.4061,
+      "Cream": 0.1383
+    }
+  },
+  "SC-96": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.9763,
+      "Grey": 0.0237
+    }
+  },
+  "SC-97": {
+    "imageColors": [
+      "Orange",
+      "Gold",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.6267,
+      "Gold": 0.2976,
+      "Coral": 0.0756
+    }
+  },
+  "SC-98": {
+    "imageColors": [
+      "Olive",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.8715,
+      "Green": 0.1285
+    }
+  },
+  "SC-99": {
+    "imageColors": [
+      "Black",
+      "Burgundy"
+    ],
+    "imageColorWeights": {
+      "Black": 0.7735,
+      "Burgundy": 0.1115,
+      "Maroon": 0.044,
+      "Orange": 0.0274,
+      "Brown": 0.015
+    }
+  },
+  "SG-201": {
+    "imageColors": [
+      "Grey",
+      "White",
+      "Purple"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7338,
+      "White": 0.12,
+      "Purple": 0.048,
+      "Lavender": 0.0345,
+      "Cream": 0.0336,
+      "Burgundy": 0.0168
+    }
+  },
+  "SC105": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 1.0
+    }
+  },
+  "SG-202": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "White",
+      "Purple"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.6273,
+      "Cream": 0.0831,
+      "White": 0.0791,
+      "Purple": 0.0602,
+      "Lavender": 0.0442,
+      "Burgundy": 0.0351,
+      "Black": 0.0243,
+      "Maroon": 0.0199
+    }
+  },
+  "SG-302": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.363,
+      "Grey": 0.3528,
+      "White": 0.2841
+    }
+  },
+  "SG-401": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "Black",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6481,
+      "Grey": 0.1819,
+      "Black": 0.1074,
+      "White": 0.0475
+    }
+  },
+  "SG-402": {
+    "imageColors": [
+      "Indigo",
+      "Navy",
+      "Grey",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.5204,
+      "Navy": 0.2043,
+      "Grey": 0.1466,
+      "Blue": 0.0866,
+      "Purple": 0.0264
+    }
+  },
+  "SG-403": {
+    "imageColors": [
+      "Cream",
+      "White",
+      "Red",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.3216,
+      "White": 0.2575,
+      "Red": 0.211,
+      "Grey": 0.1908
+    }
+  },
+  "SG-404": {
+    "imageColors": [
+      "Cream",
+      "Blue",
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.4309,
+      "Blue": 0.1998,
+      "Grey": 0.1869,
+      "White": 0.18
+    }
+  },
+  "SG-405": {
+    "imageColors": [
+      "Cream",
+      "White",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.7323,
+      "White": 0.1057,
+      "Olive": 0.0984,
+      "Yellow": 0.0303,
+      "Green": 0.0187
+    }
+  },
+  "SG-407": {
+    "imageColors": [
+      "Cream",
+      "White",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.4537,
+      "White": 0.2982,
+      "Yellow": 0.2459
+    }
+  },
+  "SG-406": {
+    "imageColors": [
+      "Cream",
+      "Orange",
+      "White",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.711,
+      "Orange": 0.0876,
+      "White": 0.0872,
+      "Amber": 0.0656,
+      "Grey": 0.0235
+    }
+  },
+  "SG-408": {
+    "imageColors": [
+      "White",
+      "Cream",
+      "Grey",
+      "Coral",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "White": 0.5646,
+      "Cream": 0.1283,
+      "Grey": 0.0947,
+      "Coral": 0.0928,
+      "Red": 0.0816,
+      "Orange": 0.038
+    }
+  },
+  "SG-409": {
+    "imageColors": [
+      "White",
+      "Cream",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "White": 0.4203,
+      "Cream": 0.4043,
+      "Green": 0.1726
+    }
+  },
+  "SG-410": {
+    "imageColors": [
+      "Cream",
+      "White",
+      "Aqua",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.4689,
+      "White": 0.3212,
+      "Aqua": 0.14,
+      "Grey": 0.0698
+    }
+  },
+  "SG303": {
+    "imageColors": [
+      "White",
+      "Green",
+      "Red",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "White": 0.6883,
+      "Green": 0.0916,
+      "Red": 0.0851,
+      "Coral": 0.0664,
+      "Yellow": 0.0276,
+      "Amber": 0.0237
+    }
+  },
+  "SG304": {
+    "imageColors": [
+      "White",
+      "Grey",
+      "Red",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "White": 0.6927,
+      "Grey": 0.0903,
+      "Red": 0.0702,
+      "Cream": 0.0671,
+      "Lavender": 0.039,
+      "Pink": 0.0341
+    }
+  },
+  "SG305": {
+    "imageColors": [
+      "White",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "White": 0.7666,
+      "Blue": 0.1501,
+      "Aqua": 0.0258,
+      "Grey": 0.0179,
+      "Green": 0.0172,
+      "Sage": 0.0172
+    }
+  },
+  "SP-201": {
+    "imageColors": [
+      "Red",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Red": 0.5943,
+      "Coral": 0.4057
+    }
+  },
+  "SP-206": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9996
+    }
+  },
+  "SP-209": {
+    "imageColors": [
+      "Teal",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.6871,
+      "Aqua": 0.2452,
+      "Navy": 0.0332,
+      "Blue": 0.0179
+    }
+  },
+  "SP-212": {
+    "imageColors": [
+      "Indigo",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.9005,
+      "Navy": 0.0565,
+      "Blue": 0.0361
+    }
+  },
+  "SP-210": {
+    "imageColors": [
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.9628,
+      "Green": 0.0372
+    }
+  },
+  "SP-211": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.8042,
+      "Teal": 0.1651,
+      "Blue": 0.0307
+    }
+  },
+  "SP-213": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4082,
+      "Cream": 0.3476,
+      "Blue": 0.2438
+    }
+  },
+  "SP-216": {
+    "imageColors": [
+      "White",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "White": 0.9213,
+      "Blue": 0.0544
+    }
+  },
+  "SP-215": {
+    "imageColors": [
+      "Maroon",
+      "Burgundy",
+      "Navy",
+      "Orange",
+      "Black"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.2996,
+      "Burgundy": 0.2031,
+      "Navy": 0.1464,
+      "Orange": 0.0895,
+      "Black": 0.0876,
+      "Brown": 0.0486,
+      "Indigo": 0.0363,
+      "Purple": 0.0208,
+      "Lavender": 0.0204,
+      "Blue": 0.0197,
+      "Grey": 0.017
+    }
+  },
+  "SP-227": {
+    "imageColors": [
+      "Green",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Green": 0.8974,
+      "Olive": 0.099
+    }
+  },
+  "SP-231": {
+    "imageColors": [
+      "Blue",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.7899,
+      "Indigo": 0.1777,
+      "Navy": 0.0324
+    }
+  },
+  "SP-245": {
+    "imageColors": [
+      "Aqua",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.5696,
+      "Blue": 0.4304
+    }
+  },
+  "SP-226": {
+    "imageColors": [
+      "Olive",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.9514,
+      "Green": 0.0476
+    }
+  },
+  "SP-253": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 1.0
+    }
+  },
+  "SP-254": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Coral",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.659,
+      "Cream": 0.2326,
+      "Coral": 0.0538,
+      "Amber": 0.0457
+    }
+  },
+  "SP-260": {
+    "imageColors": [
+      "Grey",
+      "Aqua",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7695,
+      "Aqua": 0.1443,
+      "Red": 0.0698
+    }
+  },
+  "SP-270": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.8202,
+      "Grey": 0.1698
+    }
+  },
+  "SP-274": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SP-275": {
+    "imageColors": [
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.9931
+    }
+  },
+  "SP-288": {
+    "imageColors": [
+      "Red",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Red": 0.5677,
+      "Orange": 0.4252
+    }
+  },
+  "SW-002": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6993,
+      "Grey": 0.2512,
+      "White": 0.0496
+    }
+  },
+  "SW-001": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "White",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6397,
+      "Grey": 0.2348,
+      "White": 0.0629,
+      "Amber": 0.0565
+    }
+  },
+  "SW-003": {
+    "imageColors": [
+      "Grey",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9277,
+      "Cream": 0.0584
+    }
+  },
+  "SP2105": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.8829,
+      "Teal": 0.0583,
+      "White": 0.0224
+    }
+  },
+  "SP286": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6941,
+      "Grey": 0.2162,
+      "Coral": 0.0469,
+      "Amber": 0.0322
+    }
+  },
+  "SW-004": {
+    "imageColors": [
+      "Amber",
+      "Brown",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.8177,
+      "Brown": 0.0922,
+      "Cream": 0.0575,
+      "Grey": 0.0253
+    }
+  },
+  "SW-100": {
+    "imageColors": [
+      "Teal",
+      "Olive",
+      "Navy",
+      "Grey",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.561,
+      "Olive": 0.1159,
+      "Navy": 0.1107,
+      "Grey": 0.0883,
+      "Green": 0.0696,
+      "Blue": 0.0469
+    }
+  },
+  "SW-104": {
+    "imageColors": [
+      "Orange",
+      "Brown",
+      "Gold",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.3573,
+      "Brown": 0.2157,
+      "Gold": 0.1358,
+      "Grey": 0.1223,
+      "Maroon": 0.0347,
+      "Navy": 0.0334,
+      "Amber": 0.032,
+      "White": 0.0183
+    }
+  },
+  "SP289": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9684,
+      "Maroon": 0.0316
+    }
+  },
+  "SW-105": {
+    "imageColors": [
+      "Blue",
+      "Navy",
+      "Grey",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.6375,
+      "Navy": 0.1418,
+      "Grey": 0.1211,
+      "Indigo": 0.0681,
+      "White": 0.0176
+    }
+  },
+  "SW-106": {
+    "imageColors": [
+      "Cream",
+      "Amber",
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.4128,
+      "Amber": 0.2799,
+      "Grey": 0.1661,
+      "White": 0.1408
+    }
+  },
+  "SW-107": {
+    "imageColors": [
+      "Grey",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5035,
+      "Amber": 0.4107,
+      "Cream": 0.0388,
+      "White": 0.021,
+      "Yellow": 0.0193
+    }
+  },
+  "SW-108": {
+    "imageColors": [
+      "Amber",
+      "Grey",
+      "Orange",
+      "Teal",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.5008,
+      "Grey": 0.1273,
+      "Orange": 0.0916,
+      "Teal": 0.0847,
+      "Brown": 0.0667,
+      "Gold": 0.0517,
+      "White": 0.0249,
+      "Navy": 0.0216,
+      "Cream": 0.0156
+    }
+  },
+  "SW-109": {
+    "imageColors": [
+      "Teal",
+      "Grey",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.5586,
+      "Grey": 0.1752,
+      "Blue": 0.126,
+      "Amber": 0.027,
+      "Aqua": 0.0212,
+      "Brown": 0.0203,
+      "Olive": 0.0195,
+      "White": 0.017
+    }
+  },
+  "SW-110": {
+    "imageColors": [
+      "Amber",
+      "Gold",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.4024,
+      "Gold": 0.397,
+      "Orange": 0.11,
+      "Coral": 0.0444,
+      "White": 0.0187
+    }
+  },
+  "SW-113": {
+    "imageColors": [
+      "Orange",
+      "Maroon",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.4936,
+      "Maroon": 0.3231,
+      "Grey": 0.0866,
+      "Red": 0.0388,
+      "Burgundy": 0.0174,
+      "Brown": 0.0162,
+      "White": 0.016
+    }
+  },
+  "SW-111": {
+    "imageColors": [
+      "Orange",
+      "Maroon",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.4043,
+      "Maroon": 0.3302,
+      "Grey": 0.1931,
+      "Red": 0.0235,
+      "Burgundy": 0.0168
+    }
+  },
+  "SW-115": {
+    "imageColors": [
+      "Teal",
+      "Olive",
+      "Grey",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.5523,
+      "Olive": 0.1429,
+      "Grey": 0.0922,
+      "Brown": 0.0623,
+      "Navy": 0.0436,
+      "Green": 0.0415,
+      "Amber": 0.0162,
+      "Blue": 0.0154
+    }
+  },
+  "SW-116": {
+    "imageColors": [
+      "Blue",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.6312,
+      "Grey": 0.2737,
+      "White": 0.0413,
+      "Navy": 0.0289
+    }
+  },
+  "SW-117": {
+    "imageColors": [
+      "Gold",
+      "Amber",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.5054,
+      "Amber": 0.3169,
+      "Orange": 0.0893,
+      "White": 0.028,
+      "Grey": 0.028
+    }
+  },
+  "SW-119": {
+    "imageColors": [
+      "Red",
+      "Orange",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Red": 0.3895,
+      "Orange": 0.3758,
+      "Maroon": 0.2025
+    }
+  },
+  "SW-120": {
+    "imageColors": [
+      "Olive",
+      "Brown",
+      "Grey",
+      "Black",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.4574,
+      "Brown": 0.1875,
+      "Grey": 0.1233,
+      "Black": 0.0685,
+      "Orange": 0.0542,
+      "Navy": 0.0208,
+      "Indigo": 0.0181,
+      "White": 0.0156
+    }
+  },
+  "SW-121": {
+    "imageColors": [
+      "Brown",
+      "Grey",
+      "Amber",
+      "Olive",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.3318,
+      "Grey": 0.1804,
+      "Amber": 0.1289,
+      "Olive": 0.1277,
+      "Gold": 0.0594,
+      "Orange": 0.0455,
+      "Teal": 0.0367,
+      "White": 0.0251,
+      "Green": 0.0231,
+      "Cream": 0.0199
+    }
+  },
+  "SW-123": {
+    "imageColors": [
+      "Indigo",
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.581,
+      "Blue": 0.255,
+      "Navy": 0.1125,
+      "Purple": 0.0206
+    }
+  },
+  "SW-127": {
+    "imageColors": [
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.7868,
+      "Amber": 0.1279,
+      "White": 0.0257,
+      "Orange": 0.0191
+    }
+  },
+  "SW-122": {
+    "imageColors": [
+      "Orange",
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.7172,
+      "Amber": 0.1287,
+      "Gold": 0.0667,
+      "Coral": 0.0235,
+      "White": 0.0199,
+      "Red": 0.015
+    }
+  },
+  "SW-128": {
+    "imageColors": [
+      "Orange",
+      "Red",
+      "Maroon",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.701,
+      "Red": 0.0878,
+      "Maroon": 0.086,
+      "Grey": 0.0758,
+      "White": 0.0276
+    }
+  },
+  "SW-131": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "Orange",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.38,
+      "Grey": 0.3546,
+      "Orange": 0.0793,
+      "Gold": 0.0525,
+      "Amber": 0.0444,
+      "Brown": 0.0312,
+      "White": 0.0289,
+      "Red": 0.026
+    }
+  },
+  "SW-132": {
+    "imageColors": [
+      "Brown",
+      "Grey",
+      "Maroon",
+      "Orange",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.2303,
+      "Grey": 0.2116,
+      "Maroon": 0.1645,
+      "Orange": 0.1306,
+      "Navy": 0.0739,
+      "Black": 0.0625,
+      "Olive": 0.0282,
+      "Amber": 0.0262,
+      "Burgundy": 0.0212
+    }
+  },
+  "SW-133": {
+    "imageColors": [
+      "Orange",
+      "Black",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.6402,
+      "Black": 0.1248,
+      "Gold": 0.0469,
+      "Grey": 0.0407,
+      "Brown": 0.0363,
+      "Maroon": 0.0351,
+      "White": 0.0237
+    }
+  },
+  "SW-130": {
+    "imageColors": [
+      "Orange",
+      "Maroon",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.5667,
+      "Maroon": 0.2201,
+      "Red": 0.1576,
+      "Grey": 0.022
+    }
+  },
+  "SW-134": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.9851
+    }
+  },
+  "SW-135": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4844,
+      "Cream": 0.3987,
+      "White": 0.113
+    }
+  },
+  "SW-136": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Aqua",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4713,
+      "Cream": 0.3492,
+      "Aqua": 0.114,
+      "White": 0.0648
+    }
+  },
+  "SW-137": {
+    "imageColors": [
+      "Cream",
+      "Amber",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6555,
+      "Amber": 0.1647,
+      "Grey": 0.1024,
+      "Yellow": 0.0388,
+      "White": 0.0386
+    }
+  },
+  "SW-138": {
+    "imageColors": [
+      "Cream",
+      "Yellow",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.5972,
+      "Yellow": 0.2365,
+      "White": 0.1196,
+      "Grey": 0.0357
+    }
+  },
+  "SW-140": {
+    "imageColors": [
+      "Navy",
+      "Grey",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.4319,
+      "Grey": 0.3241,
+      "Teal": 0.2091,
+      "Black": 0.026
+    }
+  },
+  "SW-141": {
+    "imageColors": [
+      "White",
+      "Grey",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "White": 0.4147,
+      "Grey": 0.3376,
+      "Cream": 0.2431
+    }
+  },
+  "SW-142": {
+    "imageColors": [
+      "Aqua",
+      "Teal",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.5112,
+      "Teal": 0.3281,
+      "Grey": 0.1593
+    }
+  },
+  "SW-143": {
+    "imageColors": [
+      "Grey",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7334,
+      "Indigo": 0.175,
+      "Cream": 0.0349,
+      "Purple": 0.034,
+      "White": 0.0218
+    }
+  },
+  "SW-148": {
+    "imageColors": [
+      "Green",
+      "Yellow",
+      "Sage",
+      "Grey",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Green": 0.342,
+      "Yellow": 0.157,
+      "Sage": 0.1518,
+      "Grey": 0.1281,
+      "Teal": 0.1047,
+      "Amber": 0.0349,
+      "White": 0.032,
+      "Olive": 0.0291,
+      "Cream": 0.017
+    }
+  },
+  "SW-149": {
+    "imageColors": [
+      "Grey",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5255,
+      "Cream": 0.4333,
+      "White": 0.0413
+    }
+  },
+  "SW-150": {
+    "imageColors": [
+      "Grey",
+      "White",
+      "Aqua",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7608,
+      "White": 0.0866,
+      "Aqua": 0.082,
+      "Cream": 0.0623
+    }
+  },
+  "SW-151": {
+    "imageColors": [
+      "Maroon",
+      "Olive",
+      "Red",
+      "Green",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.3492,
+      "Olive": 0.2369,
+      "Red": 0.1431,
+      "Green": 0.1273,
+      "Orange": 0.0521,
+      "Grey": 0.0463,
+      "Brown": 0.0212,
+      "Teal": 0.0162
+    }
+  },
+  "SW-147": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Olive",
+      "Green",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5031,
+      "Cream": 0.1055,
+      "Olive": 0.0853,
+      "Green": 0.0691,
+      "Brown": 0.0496,
+      "Amber": 0.0463,
+      "Yellow": 0.0436,
+      "Orange": 0.0347,
+      "Sage": 0.0203
+    }
+  },
+  "SW-154": {
+    "imageColors": [
+      "Teal",
+      "Navy",
+      "Grey",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.6414,
+      "Navy": 0.1638,
+      "Grey": 0.0799,
+      "Blue": 0.0758,
+      "White": 0.0156
+    }
+  },
+  "SW-152": {
+    "imageColors": [
+      "Blue",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.8875,
+      "White": 0.0623,
+      "Grey": 0.0318,
+      "Indigo": 0.017
+    }
+  },
+  "SW-156": {
+    "imageColors": [
+      "Blue",
+      "Grey",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.5502,
+      "Grey": 0.3048,
+      "Navy": 0.0575,
+      "Amber": 0.028,
+      "Aqua": 0.0228
+    }
+  },
+  "SW-158": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6607,
+      "Grey": 0.1817,
+      "White": 0.1489
+    }
+  },
+  "SW-162": {
+    "imageColors": [
+      "Red",
+      "Coral",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Red": 0.5982,
+      "Coral": 0.3368,
+      "White": 0.0484
+    }
+  },
+  "SW-164": {
+    "imageColors": [
+      "Teal",
+      "Sage",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.5494,
+      "Sage": 0.3133,
+      "Green": 0.0831,
+      "Grey": 0.0282
+    }
+  },
+  "SW-170": {
+    "imageColors": [
+      "Blue",
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.8644,
+      "Grey": 0.0752,
+      "White": 0.05
+    }
+  },
+  "SW-171": {
+    "imageColors": [
+      "Teal",
+      "Green",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.586,
+      "Green": 0.1752,
+      "Grey": 0.1715,
+      "Blue": 0.0293,
+      "White": 0.0218
+    }
+  },
+  "SW-174": {
+    "imageColors": [
+      "Orange",
+      "Brown",
+      "Grey",
+      "Maroon",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.3329,
+      "Brown": 0.2529,
+      "Grey": 0.1887,
+      "Maroon": 0.1061,
+      "Amber": 0.0891,
+      "Red": 0.0285
+    }
+  },
+  "SW-176": {
+    "imageColors": [
+      "Amber",
+      "Cream",
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.5436,
+      "Cream": 0.249,
+      "Grey": 0.1028,
+      "White": 0.0484,
+      "Orange": 0.0251
+    }
+  },
+  "SW-175": {
+    "imageColors": [
+      "Orange",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.8046,
+      "Maroon": 0.0561,
+      "Red": 0.0422,
+      "Grey": 0.0376,
+      "Gold": 0.0241,
+      "White": 0.0185
+    }
+  },
+  "SW-178": {
+    "imageColors": [
+      "Orange",
+      "Brown",
+      "Maroon",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.599,
+      "Brown": 0.1352,
+      "Maroon": 0.098,
+      "Grey": 0.0654,
+      "Gold": 0.0399,
+      "Black": 0.0197
+    }
+  },
+  "SW-179": {
+    "imageColors": [
+      "Amber",
+      "Gold",
+      "Orange",
+      "Brown",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.2845,
+      "Gold": 0.2274,
+      "Orange": 0.152,
+      "Brown": 0.1431,
+      "Grey": 0.0529,
+      "Olive": 0.0403,
+      "Teal": 0.0338,
+      "Green": 0.0177,
+      "White": 0.0154
+    }
+  },
+  "SW-183": {
+    "imageColors": [
+      "Cream",
+      "Red",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.7807,
+      "Red": 0.0926,
+      "Grey": 0.0677,
+      "Coral": 0.0334,
+      "White": 0.0168
+    }
+  },
+  "SW-181": {
+    "imageColors": [
+      "Navy",
+      "Grey",
+      "Blue",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.6765,
+      "Grey": 0.1086,
+      "Blue": 0.0978,
+      "Teal": 0.0594,
+      "Indigo": 0.0247
+    }
+  },
+  "SW-182": {
+    "imageColors": [
+      "Brown",
+      "Amber",
+      "Orange",
+      "Gold",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.2936,
+      "Amber": 0.2812,
+      "Orange": 0.228,
+      "Gold": 0.1078,
+      "Coral": 0.0704
+    }
+  },
+  "SW-184": {
+    "imageColors": [
+      "Olive",
+      "Teal",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.7494,
+      "Teal": 0.091,
+      "Grey": 0.0903,
+      "Green": 0.0368,
+      "Sage": 0.0164
+    }
+  },
+  "SW-185": {
+    "imageColors": [
+      "Amber",
+      "Grey",
+      "Olive",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.408,
+      "Grey": 0.2612,
+      "Olive": 0.1044,
+      "Yellow": 0.0615,
+      "Orange": 0.0357,
+      "Green": 0.0336,
+      "Brown": 0.0305,
+      "Cream": 0.0174
+    }
+  },
+  "SW-186": {
+    "imageColors": [
+      "Blue",
+      "Teal",
+      "Grey",
+      "Navy",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.3268,
+      "Teal": 0.3212,
+      "Grey": 0.1518,
+      "Navy": 0.0748,
+      "Green": 0.064,
+      "Indigo": 0.032,
+      "Sage": 0.0278
+    }
+  },
+  "SW-187": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.6121,
+      "Cream": 0.2079,
+      "Amber": 0.1453,
+      "White": 0.0152
+    }
+  },
+  "SW-190": {
+    "imageColors": [
+      "Blue",
+      "Indigo",
+      "Grey",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.4497,
+      "Indigo": 0.2641,
+      "Grey": 0.1663,
+      "Amber": 0.0476,
+      "Yellow": 0.0357
+    }
+  },
+  "SW-193": {
+    "imageColors": [
+      "Olive",
+      "Brown",
+      "Amber",
+      "Yellow",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.5694,
+      "Brown": 0.1481,
+      "Amber": 0.0905,
+      "Yellow": 0.0639,
+      "Grey": 0.0455,
+      "Green": 0.0397,
+      "Gold": 0.0154,
+      "Orange": 0.0152
+    }
+  },
+  "SW-201": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9593,
+      "Teal": 0.0197,
+      "White": 0.0164
+    }
+  },
+  "SW-203": {
+    "imageColors": [
+      "Maroon",
+      "Orange",
+      "Grey",
+      "Black",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.4556,
+      "Orange": 0.2774,
+      "Grey": 0.06,
+      "Black": 0.0556,
+      "Gold": 0.0471,
+      "Brown": 0.0382,
+      "Burgundy": 0.0241
+    }
+  },
+  "SW-194": {
+    "imageColors": [
+      "Teal",
+      "Olive",
+      "Grey",
+      "Green",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.3748,
+      "Olive": 0.2535,
+      "Grey": 0.1537,
+      "Green": 0.0741,
+      "Brown": 0.0561,
+      "Amber": 0.023,
+      "Blue": 0.0222
+    }
+  },
+  "SW-195": {
+    "imageColors": [
+      "Olive",
+      "Amber",
+      "Grey",
+      "Green",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.2222,
+      "Amber": 0.1786,
+      "Grey": 0.1316,
+      "Green": 0.1296,
+      "Teal": 0.1242,
+      "Yellow": 0.0963,
+      "Sage": 0.0696,
+      "Brown": 0.0386
+    }
+  },
+  "SW-197": {
+    "imageColors": [
+      "Grey",
+      "Amber",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.6202,
+      "Amber": 0.2473,
+      "Cream": 0.1036
+    }
+  },
+  "SW-198": {
+    "imageColors": [
+      "Orange",
+      "Red",
+      "Pink"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.4527,
+      "Red": 0.3802,
+      "Pink": 0.1028,
+      "Grey": 0.0224,
+      "Coral": 0.0172
+    }
+  },
+  "SW-204": {
+    "imageColors": [
+      "Gold",
+      "Brown",
+      "Orange",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.5436,
+      "Brown": 0.2498,
+      "Orange": 0.1036,
+      "Amber": 0.0463,
+      "Grey": 0.0203,
+      "Maroon": 0.0174
+    }
+  },
+  "SW-205": {
+    "imageColors": [
+      "Red",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Red": 0.8057,
+      "Coral": 0.1262,
+      "Grey": 0.0405,
+      "White": 0.0168
+    }
+  },
+  "SW-211": {
+    "imageColors": [
+      "Teal",
+      "Aqua",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.6794,
+      "Aqua": 0.1956,
+      "Grey": 0.1022,
+      "White": 0.0162
+    }
+  },
+  "SW-210": {
+    "imageColors": [
+      "Amber",
+      "Brown",
+      "Olive",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.2593,
+      "Brown": 0.2442,
+      "Olive": 0.2047,
+      "Gold": 0.197,
+      "Grey": 0.0301,
+      "Orange": 0.0285
+    }
+  },
+  "SW-212": {
+    "imageColors": [
+      "Teal",
+      "Grey",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.7452,
+      "Grey": 0.1458,
+      "Navy": 0.0517,
+      "White": 0.0222,
+      "Blue": 0.0222
+    }
+  },
+  "SW-250": {
+    "imageColors": [
+      "Cream",
+      "White",
+      "Grey",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.7566,
+      "White": 0.1053,
+      "Grey": 0.0696,
+      "Amber": 0.0685
+    }
+  },
+  "SW-251": {
+    "imageColors": [
+      "Cream",
+      "White",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6684,
+      "White": 0.1896,
+      "Grey": 0.142
+    }
+  },
+  "SW-225": {
+    "imageColors": [
+      "Cream",
+      "Yellow",
+      "Grey",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.3771,
+      "Yellow": 0.2444,
+      "Grey": 0.1678,
+      "Amber": 0.1406,
+      "Green": 0.0287,
+      "Olive": 0.0201
+    }
+  },
+  "SW-253": {
+    "imageColors": [
+      "Teal",
+      "Grey",
+      "Green",
+      "Sage",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.3802,
+      "Grey": 0.2407,
+      "Green": 0.1763,
+      "Sage": 0.0939,
+      "Yellow": 0.0534,
+      "Cream": 0.0307,
+      "White": 0.0208
+    }
+  },
+  "SW-255": {
+    "imageColors": [
+      "Grey",
+      "Teal",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7024,
+      "Teal": 0.1632,
+      "Aqua": 0.1055,
+      "White": 0.0289
+    }
+  },
+  "SW-252": {
+    "imageColors": [
+      "Blue",
+      "Burgundy",
+      "Indigo",
+      "Navy",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.3596,
+      "Burgundy": 0.0978,
+      "Indigo": 0.0941,
+      "Navy": 0.091,
+      "Maroon": 0.0822,
+      "Purple": 0.0693,
+      "Grey": 0.0644,
+      "Lavender": 0.0442,
+      "Orange": 0.0309,
+      "Brown": 0.0243,
+      "Teal": 0.0158
+    }
+  },
+  "SW-403": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7598,
+      "Cream": 0.1372,
+      "Amber": 0.0818
+    }
+  },
+  "SW-402": {
+    "imageColors": [
+      "Maroon",
+      "Brown",
+      "Orange",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.4745,
+      "Brown": 0.1769,
+      "Orange": 0.1767,
+      "Red": 0.0484,
+      "Olive": 0.0399,
+      "Grey": 0.0399
+    }
+  },
+  "SW-501": {
+    "imageColors": [
+      "White",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "White": 0.8374,
+      "Grey": 0.1617
+    }
+  },
+  "SW-502": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9824,
+      "White": 0.0176
+    }
+  },
+  "SW-303": {
+    "imageColors": [
+      "Grey",
+      "White",
+      "Black",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5459,
+      "White": 0.1869,
+      "Black": 0.1076,
+      "Cream": 0.0824,
+      "Amber": 0.0403
+    }
+  },
+  "SW-301": {
+    "imageColors": [
+      "Maroon",
+      "Red",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.521,
+      "Red": 0.4064,
+      "Coral": 0.0723
+    }
+  },
+  "SW-404": {
+    "imageColors": [
+      "Black",
+      "Grey",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Black": 0.3447,
+      "Grey": 0.3142,
+      "Olive": 0.175,
+      "Brown": 0.0432,
+      "Burgundy": 0.0355,
+      "Purple": 0.0189
+    }
+  },
+  "SW-304": {
+    "imageColors": [
+      "Grey",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.6987,
+      "Cream": 0.2479,
+      "Amber": 0.033
+    }
+  },
+  "SW-406": {
+    "imageColors": [
+      "Grey",
+      "Orange",
+      "Brown",
+      "Black"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4352,
+      "Orange": 0.2328,
+      "Brown": 0.2076,
+      "Black": 0.0837,
+      "Maroon": 0.032
+    }
+  },
+  "SW-405": {
+    "imageColors": [
+      "Amber",
+      "Grey",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.4084,
+      "Grey": 0.2872,
+      "Cream": 0.2405,
+      "Brown": 0.0413,
+      "Yellow": 0.0177
+    }
+  },
+  "SW-305": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Pink"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5953,
+      "Cream": 0.2191,
+      "Pink": 0.1418,
+      "Lavender": 0.043
+    }
+  },
+  "SW-503": {
+    "imageColors": [
+      "Orange",
+      "Gold",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.8507,
+      "Gold": 0.0656,
+      "Coral": 0.0617
+    }
+  },
+  "SW-504": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9645,
+      "Pink": 0.0297
+    }
+  },
+  "SW-505": {
+    "imageColors": [
+      "Indigo",
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.5814,
+      "Blue": 0.3318,
+      "Navy": 0.0804
+    }
+  },
+  "SW-506": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.8245,
+      "Teal": 0.1692
+    }
+  },
+  "SW-507": {
+    "imageColors": [
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Green": 0.9823,
+      "White": 0.0168
+    }
+  },
+  "SW-508": {
+    "imageColors": [
+      "Black",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Black": 0.6155,
+      "Navy": 0.2087,
+      "Teal": 0.0448,
+      "Indigo": 0.0432,
+      "Grey": 0.0384
+    }
+  },
+  "SW-509": {
+    "imageColors": [
+      "Green",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Green": 0.8765,
+      "Teal": 0.07,
+      "Olive": 0.028,
+      "Grey": 0.0177
+    }
+  },
+  "SW-510": {
+    "imageColors": [
+      "Navy",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.5494,
+      "Blue": 0.4282
+    }
+  },
+  "SW-511": {
+    "imageColors": [
+      "Red",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Red": 0.8858,
+      "Coral": 0.1098
+    }
+  },
+  "SW-512": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SW-513": {
+    "imageColors": [
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.9498,
+      "Amber": 0.0266
+    }
+  },
+  "SW214": {
+    "imageColors": [
+      "Grey",
+      "Red",
+      "Burgundy",
+      "Pink",
+      "Lavender"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.2697,
+      "Red": 0.2375,
+      "Burgundy": 0.151,
+      "Pink": 0.1267,
+      "Lavender": 0.0696,
+      "Cream": 0.0467,
+      "Purple": 0.0351,
+      "Indigo": 0.0222,
+      "Blue": 0.0191
+    }
+  },
+  "SW215": {
+    "imageColors": [
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.727,
+      "Gold": 0.1478,
+      "Orange": 0.0434,
+      "Cream": 0.0386,
+      "Grey": 0.0231
+    }
+  },
+  "SW216": {
+    "imageColors": [
+      "Gold",
+      "Amber",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.7259,
+      "Amber": 0.1273,
+      "Brown": 0.0721,
+      "Orange": 0.0201,
+      "White": 0.0152
+    }
+  },
+  "SW217": {
+    "imageColors": [
+      "Teal",
+      "Grey",
+      "Blue",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.4417,
+      "Grey": 0.3453,
+      "Blue": 0.1335,
+      "Navy": 0.064
+    }
+  },
+  "SW218": {
+    "imageColors": [
+      "Amber",
+      "Brown",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.6617,
+      "Brown": 0.1437,
+      "Grey": 0.11,
+      "Olive": 0.0345,
+      "Yellow": 0.0247,
+      "Cream": 0.022
+    }
+  },
+  "SW219": {
+    "imageColors": [
+      "Gold",
+      "Amber",
+      "Teal",
+      "Olive",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.4986,
+      "Amber": 0.162,
+      "Teal": 0.0704,
+      "Olive": 0.0694,
+      "Brown": 0.0581,
+      "Grey": 0.0519,
+      "Navy": 0.0249,
+      "Orange": 0.0168
+    }
+  },
+  "SW222": {
+    "imageColors": [
+      "Maroon",
+      "Red",
+      "Orange",
+      "Burgundy",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Maroon": 0.4113,
+      "Red": 0.2238,
+      "Orange": 0.1676,
+      "Burgundy": 0.0583,
+      "Grey": 0.0532,
+      "Amber": 0.0222,
+      "White": 0.0172,
+      "Pink": 0.0156
+    }
+  },
+  "SW225": {
+    "imageColors": [
+      "Grey",
+      "Green",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4954,
+      "Green": 0.3719,
+      "Yellow": 0.0646,
+      "Olive": 0.027,
+      "Sage": 0.0235
+    }
+  },
+  "SW226": {
+    "imageColors": [
+      "Grey",
+      "Red",
+      "Cream",
+      "Teal",
+      "Pink"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.4132,
+      "Red": 0.1771,
+      "Cream": 0.1152,
+      "Teal": 0.0802,
+      "Pink": 0.0675,
+      "Blue": 0.0243,
+      "Yellow": 0.0212,
+      "Amber": 0.0208
+    }
+  },
+  "SW220": {
+    "imageColors": [
+      "Grey",
+      "Brown",
+      "Orange",
+      "Amber",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.3362,
+      "Brown": 0.261,
+      "Orange": 0.2022,
+      "Amber": 0.0583,
+      "Maroon": 0.0552,
+      "Black": 0.0401,
+      "Gold": 0.0158
+    }
+  },
+  "SW227": {
+    "imageColors": [
+      "Grey",
+      "Cream",
+      "Blue",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.3081,
+      "Cream": 0.2514,
+      "Blue": 0.218,
+      "Aqua": 0.1142,
+      "Teal": 0.043,
+      "Amber": 0.0318,
+      "White": 0.0255
+    }
+  },
+  "SW228": {
+    "imageColors": [
+      "Olive",
+      "Gold",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.6628,
+      "Gold": 0.0955,
+      "Grey": 0.0654,
+      "Green": 0.0421,
+      "Amber": 0.0347,
+      "Orange": 0.0276,
+      "Yellow": 0.021
+    }
+  },
+  "SW223": {
+    "imageColors": [
+      "Blue",
+      "Aqua",
+      "Grey",
+      "Amber",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.5548,
+      "Aqua": 0.1233,
+      "Grey": 0.1233,
+      "Amber": 0.1194,
+      "Teal": 0.0451
+    }
+  },
+  "SW231": {
+    "imageColors": [
+      "Cream",
+      "Yellow",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6047,
+      "Yellow": 0.2027,
+      "Grey": 0.1235,
+      "Blue": 0.0183,
+      "Amber": 0.0164
+    }
+  },
+  "SW224": {
+    "imageColors": [
+      "Teal",
+      "Green",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.7529,
+      "Green": 0.1684,
+      "Olive": 0.0536
+    }
+  },
+  "SW232": {
+    "imageColors": [
+      "Cream",
+      "Grey",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.61,
+      "Grey": 0.2211,
+      "Yellow": 0.0795,
+      "Blue": 0.0345,
+      "Amber": 0.0228,
+      "Green": 0.0206
+    }
+  },
+  "SW229": {
+    "imageColors": [
+      "Olive",
+      "Green",
+      "Teal",
+      "Grey",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.2029,
+      "Green": 0.1773,
+      "Teal": 0.1262,
+      "Grey": 0.1211,
+      "Gold": 0.1071,
+      "Brown": 0.0608,
+      "Maroon": 0.0505,
+      "Orange": 0.0434,
+      "Burgundy": 0.0405,
+      "Lavender": 0.016
+    }
+  },
+  "SW407": {
+    "imageColors": [
+      "Orange",
+      "Red",
+      "Maroon",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.3733,
+      "Red": 0.2261,
+      "Maroon": 0.2045,
+      "Coral": 0.1941
+    }
+  },
+  "SW230": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9635,
+      "Coral": 0.0166
+    }
+  },
+  "SW408": {
+    "imageColors": [
+      "Red",
+      "Maroon"
+    ],
+    "imageColorWeights": {
+      "Red": 0.7618,
+      "Maroon": 0.1991,
+      "Orange": 0.0214,
+      "Coral": 0.0177
+    }
+  },
+  "SW420": {
+    "imageColors": [
+      "White",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "White": 0.735,
+      "Amber": 0.2253,
+      "Cream": 0.0397
+    }
+  },
+  "SW440": {
+    "imageColors": [
+      "White",
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "White": 0.6557,
+      "Cream": 0.2865,
+      "Grey": 0.0579
+    }
+  },
+  "SW433": {
+    "imageColors": [
+      "White",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "White": 0.4678,
+      "Teal": 0.4676,
+      "Grey": 0.0332,
+      "Cream": 0.023
+    }
+  },
+  "SW428": {
+    "imageColors": [
+      "White",
+      "Orange",
+      "Red",
+      "Amber",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "White": 0.3372,
+      "Orange": 0.2328,
+      "Red": 0.1508,
+      "Amber": 0.1503,
+      "Coral": 0.1289
+    }
+  },
+  "SW429": {
+    "imageColors": [
+      "White",
+      "Red",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "White": 0.5129,
+      "Red": 0.4273,
+      "Coral": 0.0498
+    }
+  },
+  "SW422": {
+    "imageColors": [
+      "Red",
+      "White",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Red": 0.4616,
+      "White": 0.2598,
+      "Amber": 0.2448,
+      "Coral": 0.0336
+    }
+  },
+  "SW421": {
+    "imageColors": [
+      "Yellow",
+      "Amber",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.5071,
+      "Amber": 0.4331,
+      "White": 0.0546
+    }
+  },
+  "SW441": {
+    "imageColors": [
+      "Yellow",
+      "White",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.7502,
+      "White": 0.1304,
+      "Amber": 0.1034,
+      "Cream": 0.016
+    }
+  },
+  "SW442": {
+    "imageColors": [
+      "Orange",
+      "Coral",
+      "White",
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.4504,
+      "Coral": 0.3746,
+      "White": 0.1036,
+      "Red": 0.0687
+    }
+  },
+  "SW423": {
+    "imageColors": [
+      "White",
+      "Green",
+      "Amber",
+      "Olive",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "White": 0.3297,
+      "Green": 0.2992,
+      "Amber": 0.1802,
+      "Olive": 0.1426,
+      "Yellow": 0.0482
+    }
+  },
+  "SW445": {
+    "imageColors": [
+      "Aqua",
+      "White",
+      "Teal",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.4545,
+      "White": 0.2321,
+      "Teal": 0.2309,
+      "Grey": 0.0714
+    }
+  },
+  "SW444": {
+    "imageColors": [
+      "Red",
+      "Amber",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Red": 0.7701,
+      "Amber": 0.1387,
+      "Coral": 0.0559,
+      "White": 0.034
+    }
+  },
+  "SW443": {
+    "imageColors": [
+      "Red",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Red": 0.7546,
+      "White": 0.2155,
+      "Coral": 0.0176
+    }
+  },
+  "SW446": {
+    "imageColors": [
+      "Blue",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.6179,
+      "White": 0.3245,
+      "Grey": 0.0407
+    }
+  },
+  "SW447": {
+    "imageColors": [
+      "Blue",
+      "White",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.734,
+      "White": 0.1779,
+      "Grey": 0.0741
+    }
+  },
+  "SW448": {
+    "imageColors": [
+      "Grey",
+      "Black",
+      "Indigo",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.5677,
+      "Black": 0.2155,
+      "Indigo": 0.0629,
+      "Amber": 0.0623,
+      "Navy": 0.0324,
+      "Cream": 0.0287
+    }
+  },
+  "SW515": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.9479,
+      "White": 0.0278,
+      "Teal": 0.0156
+    }
+  },
+  "UG-1": {
+    "imageColors": [
+      "Navy",
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.9051,
+      "Blue": 0.0947
+    }
+  },
+  "SW424": {
+    "imageColors": [
+      "White",
+      "Blue",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "White": 0.4859,
+      "Blue": 0.4446,
+      "Cream": 0.0453,
+      "Grey": 0.0222
+    }
+  },
+  "UG-10": {
+    "imageColors": [
+      "Red",
+      "Grey",
+      "Pink"
+    ],
+    "imageColorWeights": {
+      "Red": 0.4836,
+      "Grey": 0.4599,
+      "Pink": 0.0563
+    }
+  },
+  "UG-146": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9907
+    }
+  },
+  "UG-19": {
+    "imageColors": [
+      "Aqua",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.6356,
+      "Teal": 0.3231,
+      "Blue": 0.0413
+    }
+  },
+  "UG-203": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.9882
+    }
+  },
+  "UG-2": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.9913
+    }
+  },
+  "UG-204": {
+    "imageColors": [
+      "Orange",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.9142,
+      "Coral": 0.0635,
+      "Red": 0.0224
+    }
+  },
+  "SW425": {
+    "imageColors": [
+      "Amber",
+      "Grey",
+      "White",
+      "Navy",
+      "Black"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.2847,
+      "Grey": 0.2546,
+      "White": 0.2282,
+      "Navy": 0.0907,
+      "Black": 0.0887,
+      "Teal": 0.0303
+    }
+  },
+  "UG-198": {
+    "imageColors": [
+      "Olive",
+      "Green",
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.3723,
+      "Green": 0.2234,
+      "Amber": 0.1948,
+      "Gold": 0.1713
+    }
+  },
+  "UG-206": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9853
+    }
+  },
+  "UG-207": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 1.0
+    }
+  },
+  "SW514": {
+    "imageColors": [
+      "Teal",
+      "Sage",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.5938,
+      "Sage": 0.299,
+      "Grey": 0.075,
+      "White": 0.021
+    }
+  },
+  "UG-209": {
+    "imageColors": [
+      "Teal",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.5658,
+      "Aqua": 0.4248
+    }
+  },
+  "UG-208": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9959
+    }
+  },
+  "UG-210": {
+    "imageColors": [
+      "Teal",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.7162,
+      "Green": 0.2812
+    }
+  },
+  "UG-215": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9867
+    }
+  },
+  "UG-216": {
+    "imageColors": [
+      "Red"
+    ],
+    "imageColorWeights": {
+      "Red": 0.9963
+    }
+  },
+  "UG-217": {
+    "imageColors": [
+      "Orange",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.7249,
+      "Coral": 0.2731
+    }
+  },
+  "UG-218": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 1.0
+    }
+  },
+  "UG-222": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9826,
+      "Amber": 0.0174
+    }
+  },
+  "UG-219": {
+    "imageColors": [
+      "Teal",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.6323,
+      "Aqua": 0.352
+    }
+  },
+  "UG-21": {
+    "imageColors": [
+      "Olive",
+      "Green"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.8478,
+      "Green": 0.1186,
+      "Cream": 0.0162
+    }
+  },
+  "UG-22": {
+    "imageColors": [
+      "Yellow",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.6734,
+      "Olive": 0.3065,
+      "Cream": 0.0187
+    }
+  },
+  "UG-220": {
+    "imageColors": [
+      "Green",
+      "Sage"
+    ],
+    "imageColorWeights": {
+      "Green": 0.5208,
+      "Sage": 0.451,
+      "Olive": 0.0193
+    }
+  },
+  "UG-223": {
+    "imageColors": [
+      "Coral",
+      "Gold",
+      "Orange"
+    ],
+    "imageColorWeights": {
+      "Coral": 0.5071,
+      "Gold": 0.4072,
+      "Orange": 0.0856
+    }
+  },
+  "UG-221": {
+    "imageColors": [
+      "Amber",
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.5212,
+      "Yellow": 0.4743
+    }
+  },
+  "UG-224": {
+    "imageColors": [
+      "Amber",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.5392,
+      "Cream": 0.4564
+    }
+  },
+  "UG-226": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.9747,
+      "Grey": 0.0176
+    }
+  },
+  "UG-225": {
+    "imageColors": [
+      "Blue",
+      "Indigo"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.8382,
+      "Indigo": 0.0951,
+      "Grey": 0.0368,
+      "Navy": 0.0199
+    }
+  },
+  "UG-213": {
+    "imageColors": [
+      "Orange",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Orange": 0.7886,
+      "Coral": 0.2031
+    }
+  },
+  "UG-227": {
+    "imageColors": [
+      "Blue",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.8353,
+      "Grey": 0.1645
+    }
+  },
+  "UG-229": {
+    "imageColors": [
+      "Teal",
+      "Navy"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.5241,
+      "Navy": 0.4475,
+      "Blue": 0.0162
+    }
+  },
+  "UG-230": {
+    "imageColors": [
+      "Navy",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.6046,
+      "Teal": 0.3617,
+      "Blue": 0.0218
+    }
+  },
+  "UG-231": {
+    "imageColors": [
+      "Green",
+      "Sage"
+    ],
+    "imageColorWeights": {
+      "Green": 0.5584,
+      "Sage": 0.4416
+    }
+  },
+  "UG-228": {
+    "imageColors": [
+      "Navy",
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Navy": 0.6362,
+      "Teal": 0.3218,
+      "Grey": 0.0303
+    }
+  },
+  "UG-233": {
+    "imageColors": [
+      "Sage",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Sage": 0.5214,
+      "Grey": 0.4498,
+      "Green": 0.015
+    }
+  },
+  "UG-234": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 0.9421,
+      "White": 0.0251,
+      "Amber": 0.0189
+    }
+  },
+  "UG-235": {
+    "imageColors": [
+      "Sage",
+      "Green",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Sage": 0.4076,
+      "Green": 0.3497,
+      "Grey": 0.1958,
+      "Cream": 0.0378
+    }
+  },
+  "UG-232": {
+    "imageColors": [
+      "Olive",
+      "Brown"
+    ],
+    "imageColorWeights": {
+      "Olive": 0.8738,
+      "Brown": 0.0546,
+      "Amber": 0.0272,
+      "Grey": 0.0191
+    }
+  },
+  "UG-236": {
+    "imageColors": [
+      "Grey",
+      "Cream"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.7847,
+      "Cream": 0.1547,
+      "Olive": 0.0293,
+      "Yellow": 0.0284
+    }
+  },
+  "UG-3": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9757,
+      "White": 0.0156
+    }
+  },
+  "UG-30": {
+    "imageColors": [
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.9315,
+      "Gold": 0.0662
+    }
+  },
+  "UG-50": {
+    "imageColors": [
+      "Indigo",
+      "Grey",
+      "Navy",
+      "Black"
+    ],
+    "imageColorWeights": {
+      "Indigo": 0.4045,
+      "Grey": 0.3715,
+      "Navy": 0.1379,
+      "Black": 0.0745
+    }
+  },
+  "UG-32": {
+    "imageColors": [
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Amber": 1.0
+    }
+  },
+  "UG-31": {
+    "imageColors": [
+      "Brown",
+      "Amber",
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.5698,
+      "Amber": 0.2432,
+      "Gold": 0.1591,
+      "Orange": 0.0191
+    }
+  },
+  "UG-34": {
+    "imageColors": [
+      "Brown",
+      "Olive"
+    ],
+    "imageColorWeights": {
+      "Brown": 0.8029,
+      "Olive": 0.1545,
+      "Grey": 0.0413
+    }
+  },
+  "UG-51": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.8808,
+      "Grey": 0.1059
+    }
+  },
+  "UG-46": {
+    "imageColors": [
+      "Yellow"
+    ],
+    "imageColorWeights": {
+      "Yellow": 1.0
+    }
+  },
+  "UG-53": {
+    "imageColors": [
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Grey": 0.9666,
+      "Cream": 0.0334
+    }
+  },
+  "UG-57": {
+    "imageColors": [
+      "Gold",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.6889,
+      "Amber": 0.3111
+    }
+  },
+  "UG-58": {
+    "imageColors": [
+      "Gold"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.9981
+    }
+  },
+  "UG-67": {
+    "imageColors": [
+      "Cream",
+      "Amber"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.8603,
+      "Amber": 0.1042,
+      "Grey": 0.0334
+    }
+  },
+  "UG-68": {
+    "imageColors": [
+      "Sage"
+    ],
+    "imageColorWeights": {
+      "Sage": 0.9689,
+      "Grey": 0.0264
+    }
+  },
+  "UG-72": {
+    "imageColors": [
+      "Blue",
+      "Grey",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.5453,
+      "Grey": 0.2606,
+      "White": 0.1941
+    }
+  },
+  "UG-87": {
+    "imageColors": [
+      "Amber",
+      "Cream",
+      "Coral",
+      "White"
+    ],
+    "imageColorWeights": {
+      "Amber": 0.6067,
+      "Cream": 0.1601,
+      "Coral": 0.1487,
+      "White": 0.0843
+    }
+  },
+  "UG-92": {
+    "imageColors": [
+      "Cream",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Cream": 0.6188,
+      "Grey": 0.3744
+    }
+  },
+  "UG-82": {
+    "imageColors": [
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Aqua": 0.9716,
+      "White": 0.0158
+    }
+  },
+  "UG-85": {
+    "imageColors": [
+      "Gold",
+      "Coral"
+    ],
+    "imageColorWeights": {
+      "Gold": 0.561,
+      "Coral": 0.3978,
+      "Orange": 0.0401
+    }
+  },
+  "UG-90": {
+    "imageColors": [
+      "Teal"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.9988
+    }
+  },
+  "UG-91": {
+    "imageColors": [
+      "Teal",
+      "Aqua"
+    ],
+    "imageColorWeights": {
+      "Teal": 0.8748,
+      "Aqua": 0.1134
+    }
+  },
+  "UG-93": {
+    "imageColors": [
+      "Blue",
+      "Grey"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.5301,
+      "Grey": 0.436,
+      "White": 0.0299
+    }
+  },
+  "UG-94": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.9961
+    }
+  },
+  "UG-97": {
+    "imageColors": [
+      "Blue"
+    ],
+    "imageColorWeights": {
+      "Blue": 0.9527,
+      "Navy": 0.0226,
+      "Grey": 0.0203
+    }
+  }
+}

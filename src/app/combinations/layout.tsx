@@ -1,0 +1,17 @@
+import { AppShell } from "@/components/app-shell";
+import { PublicWorkspaceShell } from "@/components/public-workspace-shell";
+import { getViewer } from "@/lib/data";
+
+export default async function PublicCombinationsLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  const viewer = await getViewer();
+
+  if (viewer) {
+    return <AppShell viewer={viewer}>{children}</AppShell>;
+  }
+
+  return <PublicWorkspaceShell>{children}</PublicWorkspaceShell>;
+}

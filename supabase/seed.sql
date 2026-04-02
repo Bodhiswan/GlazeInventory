@@ -1,0 +1,3 @@
+-- Starter data is currently managed through versioned migrations.
+-- Keep this file so `supabase db reset` and `supabase db push --include-seed`
+-- have a valid target if you later add non-migration seed data.

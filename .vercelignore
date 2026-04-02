@@ -1,0 +1,12 @@
+/.next
+/node_modules
+/data/vendor-images
+/scripts
+/supabase
+/tests
+/.env.local
+/.env.local.txt
+/dev.log
+/dev.err
+/dev-runtime.log
+/vendor-image-download.log

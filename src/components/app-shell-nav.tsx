@@ -1,0 +1,69 @@
+"use client";
+
+import Link from "next/link";
+import { Inbox, Layers3, LibraryBig, Shield, SwatchBook } from "lucide-react";
+import { usePathname } from "next/navigation";
+
+import { cn } from "@/lib/utils";
+
+const baseItems = [
+  { href: "/inventory", label: "Inventory", icon: LibraryBig },
+  { href: "/glazes", label: "Library", icon: SwatchBook },
+  { href: "/combinations", label: "Combinations", icon: Layers3 },
+];
+
+export function AppShellNav({ isAdmin, isGuest }: Readonly<{ isAdmin: boolean; isGuest: boolean }>) {
+  const pathname = usePathname();
+  const items = isAdmin
+    ? [
+        ...baseItems,
+        { href: "/admin/intake", label: "Intake", icon: Inbox },
+        { href: "/admin/moderation", label: "Moderation", icon: Shield },
+      ]
+    : baseItems;
+
+  return (
+    <nav
+      aria-label="Primary"
+      className="flex items-center gap-1"
+    >
+      {items.map((item) => {
+        const Icon = item.icon;
+        const isLocked = isGuest && item.href === "/inventory";
+        const isActive =
+          !isLocked &&
+          (pathname === item.href || pathname.startsWith(`${item.href}/`));
+
+        if (isLocked) {
+          return (
+            <div
+              key={item.href}
+              aria-disabled="true"
+              className="flex shrink-0 items-center gap-2 border border-transparent px-3 py-2 text-[10px] uppercase tracking-[0.1em] text-muted/40 sm:text-[11px] sm:tracking-[0.12em]"
+            >
+              <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+              <span>{item.label}</span>
+            </div>
+          );
+        }
+
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            aria-current={isActive ? "page" : undefined}
+            className={cn(
+              "flex shrink-0 items-center gap-2 border border-transparent px-3 py-2 text-[10px] uppercase tracking-[0.1em] transition-[background-color,color,border-color] duration-200 hover:text-foreground focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-foreground/10 sm:text-[11px] sm:tracking-[0.12em]",
+              isActive
+                ? "border-border bg-panel text-foreground"
+                : "text-muted hover:bg-panel/50",
+            )}
+          >
+            <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+            <span>{item.label}</span>
+          </Link>
+        );
+      })}
+    </nav>
+  );
+}
