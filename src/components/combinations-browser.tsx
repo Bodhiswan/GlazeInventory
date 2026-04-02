@@ -5,12 +5,20 @@ import Link from "next/link";
 import { Search, X } from "lucide-react";
 import { useDeferredValue, useEffect, useMemo, useState } from "react";
 
+import { setGlazeInventoryStateAction } from "@/app/actions";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
-import type { CombinationPost, VendorCombinationExample } from "@/lib/types";
-import { formatGlazeLabel } from "@/lib/utils";
+import type {
+  CombinationPost,
+  Glaze,
+  GlazeFiringImage,
+  InventoryCollectionState,
+  InventoryStatus,
+  VendorCombinationExample,
+} from "@/lib/types";
+import { formatGlazeLabel, pickPreferredGlazeImage } from "@/lib/utils";
 
 type CombinationsView = "all" | "possible" | "mine";
 
@@ -67,10 +75,130 @@ function buildPostSearchText(post: CombinationPost) {
     .toLowerCase();
 }
 
+function getGlazeCodeCopy(glaze?: Glaze | null, fallbackCode?: string | null, fallbackName?: string | null) {
+  return fallbackCode ?? glaze?.code ?? fallbackName ?? glaze?.name ?? "Unmatched glaze";
+}
+
+function formatExampleCodeTitle(example: VendorCombinationExample) {
+  const layerCopy = example.layers
+    .map((layer, index) => {
+      const label = getGlazeCodeCopy(layer.glaze, layer.glazeCode, layer.glazeName);
+
+      if (index === 0) {
+        return label;
+      }
+
+      const connector = example.layers[index - 1]?.connectorToNext?.trim().toLowerCase() ?? "over";
+      return `${connector} ${label}`;
+    })
+    .join(" ");
+
+  return layerCopy;
+}
+
+function extractConeLabel(value: string | null | undefined) {
+  const match = value?.match(/\bcone\b[^0-9]*([0-9]{1,2})/i) ?? value?.match(/\b([0-9]{1,2})\b/);
+  return match?.[1] ? `Cone ${match[1]}` : null;
+}
+
+function normalizeComparisonText(value: string | null | undefined) {
+  return (value ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
+}
+
+function extractPostLayerOrder(post: CombinationPost) {
+  const match = post.applicationNotes?.match(/layer order:\s*(.+?)\s+over\s+(.+?)(?:\.|$)/i);
+
+  if (!match) {
+    return null;
+  }
+
+  return {
+    top: match[1]?.trim() ?? "",
+    base: match[2]?.trim() ?? "",
+  };
+}
+
+function glazeMatchesLayerToken(glaze: Glaze, token: string) {
+  const normalizedToken = normalizeComparisonText(token);
+
+  if (!normalizedToken) {
+    return false;
+  }
+
+  const candidates = [
+    formatGlazeLabel(glaze),
+    glaze.code,
+    glaze.name,
+    [glaze.code, glaze.name].filter(Boolean).join(" "),
+  ]
+    .map((value) => normalizeComparisonText(value))
+    .filter(Boolean);
+
+  return candidates.some(
+    (candidate) =>
+      candidate === normalizedToken ||
+      candidate.includes(normalizedToken) ||
+      normalizedToken.includes(candidate),
+  );
+}
+
+function getOrderedPostGlazes(post: CombinationPost) {
+  const glazes = [...(post.glazes ?? [])];
+  const layerOrder = extractPostLayerOrder(post);
+
+  if (!layerOrder || glazes.length < 2) {
+    return glazes;
+  }
+
+  const topGlaze = glazes.find((glaze) => glazeMatchesLayerToken(glaze, layerOrder.top));
+  const baseGlaze = glazes.find(
+    (glaze) => glaze.id !== topGlaze?.id && glazeMatchesLayerToken(glaze, layerOrder.base),
+  );
+
+  if (!topGlaze || !baseGlaze) {
+    return glazes;
+  }
+
+  return [topGlaze, baseGlaze];
+}
+
+function formatPostCodeTitle(post: CombinationPost) {
+  const codes = getOrderedPostGlazes(post).map((glaze) => getGlazeCodeCopy(glaze));
+
+  if (!codes.length) {
+    return "Published combination";
+  }
+
+  return codes.length >= 2 ? `${codes[0]} over ${codes[1]}` : codes[0];
+}
+
 function getLayerRoleLabel(example: VendorCombinationExample, layerOrder: number) {
   if (layerOrder === 0) return "Top glaze";
   if (layerOrder === example.layers.length - 1) return layerOrder > 1 ? "Foundation layer" : "Base glaze";
   return "Middle layer";
+}
+
+function getPostLayerRoleLabel(post: CombinationPost, glaze: Glaze, index: number) {
+  const layerOrder = extractPostLayerOrder(post);
+
+  if (layerOrder) {
+    if (glazeMatchesLayerToken(glaze, layerOrder.top)) {
+      return "Top glaze";
+    }
+
+    if (glazeMatchesLayerToken(glaze, layerOrder.base)) {
+      return "Base glaze";
+    }
+  }
+
+  if (index === 0) {
+    return "Glaze";
+  }
+
+  return `Glaze ${index + 1}`;
 }
 
 function exampleToTile(example: VendorCombinationExample, isGuest: boolean): CombinationTile {
@@ -78,7 +206,7 @@ function exampleToTile(example: VendorCombinationExample, isGuest: boolean): Com
     id: `example-${example.id}`,
     kind: "example",
     imageUrl: example.imageUrl,
-    title: example.title,
+    title: formatExampleCodeTitle(example),
     subtitle: example.sourceVendor,
     cone: example.cone ?? null,
     badgeTone: isGuest ? "neutral" : example.viewerOwnsAllGlazes ? "success" : "accent",
@@ -95,15 +223,14 @@ function exampleToTile(example: VendorCombinationExample, isGuest: boolean): Com
 
 function postToTile(post: CombinationPost, label: string): CombinationTile {
   const imageSrc = typeof post.imagePath === "string" && post.imagePath.trim() ? post.imagePath : null;
-  const glazeNames = (post.glazes ?? []).map((g) => formatGlazeLabel(g)).join(" + ");
 
   return {
     id: `post-${post.id}`,
     kind: "post",
     imageUrl: imageSrc,
-    title: glazeNames || "Glaze combination",
+    title: formatPostCodeTitle(post),
     subtitle: label,
-    cone: null,
+    cone: extractConeLabel(post.firingNotes),
     badgeTone: "neutral",
     badgeLabel: label,
     searchText: buildPostSearchText(post),
@@ -112,11 +239,202 @@ function postToTile(post: CombinationPost, label: string): CombinationTile {
   };
 }
 
+function GlazeWishlistControl({
+  glazeId,
+  isGuest,
+  status,
+  onStatusChange,
+}: {
+  glazeId: string;
+  isGuest: boolean;
+  status: InventoryStatus | null;
+  onStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
+}) {
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  if (isGuest) {
+    return (
+      <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost", size: "sm" })}>
+        Sign in to wishlist
+      </Link>
+    );
+  }
+
+  if (status === "owned") {
+    return <Badge tone="success">On shelf</Badge>;
+  }
+
+  const isWishlisted = status === "wishlist";
+  const nextStatus: InventoryCollectionState = isWishlisted ? "none" : "wishlist";
+  const buttonLabel =
+    status === "archived" ? "Move to wishlist" : isWishlisted ? "Wishlisted" : "Wishlist glaze";
+
+  async function handleClick() {
+    setError(null);
+    setPending(true);
+
+    const result = await setGlazeInventoryStateAction({
+      glazeId,
+      status: nextStatus,
+    });
+
+    if (!result.success) {
+      setError(result.message);
+      setPending(false);
+      return;
+    }
+
+    onStatusChange(glazeId, result.status ?? nextStatus);
+    setPending(false);
+  }
+
+  return (
+    <div className="space-y-2">
+      <button
+        type="button"
+        onClick={() => {
+          void handleClick();
+        }}
+        disabled={pending}
+        className={buttonVariants({
+          variant: isWishlisted ? "primary" : "ghost",
+          size: "sm",
+        })}
+      >
+        {pending ? "Saving..." : buttonLabel}
+      </button>
+      {status === "archived" ? (
+        <p className="text-[11px] leading-5 text-muted">Currently marked empty on your shelf.</p>
+      ) : null}
+      {error ? <p className="text-[11px] leading-5 text-[#7f4026]">{error}</p> : null}
+    </div>
+  );
+}
+
+function CombinationGlazeRow({
+  roleLabel,
+  connectorLabel,
+  glaze,
+  fallbackCode,
+  fallbackName,
+  preferredCone,
+  preferredAtmosphere,
+  glazeFiringImages,
+  inventoryStatus,
+  isGuest,
+  onInventoryStatusChange,
+  showTags = false,
+}: {
+  roleLabel: string;
+  connectorLabel?: string | null;
+  glaze?: Glaze | null;
+  fallbackCode?: string | null;
+  fallbackName?: string | null;
+  preferredCone?: string | null;
+  preferredAtmosphere?: string | null;
+  glazeFiringImages: Record<string, GlazeFiringImage[]>;
+  inventoryStatus: InventoryStatus | null;
+  isGuest: boolean;
+  onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
+  showTags?: boolean;
+}) {
+  const firingImages = glaze ? glazeFiringImages[glaze.id] ?? [] : [];
+  const thumbnailUrl = glaze
+    ? pickPreferredGlazeImage(glaze, firingImages, preferredCone ?? null, preferredAtmosphere ?? null)
+    : null;
+  const thumbnailLabel = firingImages.find((image) => image.imageUrl === thumbnailUrl)?.cone ?? preferredCone ?? null;
+  const displayLabel = glaze
+    ? formatGlazeLabel(glaze)
+    : [fallbackCode, fallbackName].filter(Boolean).join(" ") || "Catalog match not linked yet";
+
+  return (
+    <div className="border border-border bg-panel px-3 py-3">
+      <div className="flex gap-3">
+        <div className="w-20 shrink-0">
+          <div className="overflow-hidden border border-border bg-white">
+            {thumbnailUrl ? (
+              <img
+                src={thumbnailUrl}
+                alt={displayLabel}
+                className="aspect-square w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            ) : (
+              <div className="flex aspect-square items-center justify-center px-2 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
+                No glaze image
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="min-w-0 flex-1 space-y-2">
+          <div className="space-y-1">
+            <p className="text-[10px] uppercase tracking-[0.16em] text-muted">{roleLabel}</p>
+            {glaze ? (
+              <Link href={`/glazes/${glaze.id}`} className="block font-semibold text-foreground hover:underline">
+                {displayLabel}
+              </Link>
+            ) : (
+              <p className="font-semibold text-foreground">{displayLabel}</p>
+            )}
+          </div>
+
+          <div className="flex flex-wrap gap-2">
+            {thumbnailLabel ? <Badge tone="neutral">{thumbnailLabel}</Badge> : null}
+            {connectorLabel ? <Badge tone="neutral">{connectorLabel} next layer</Badge> : null}
+            {showTags && glaze
+              ? (glaze.communityTags ?? [])
+                  .filter((tag) => tag.voteCount > 0)
+                  .sort((left, right) => right.voteCount - left.voteCount)
+                  .slice(0, 3)
+                  .map((tag) => (
+                    <Badge key={`${glaze.id}-${tag.slug}`} tone="neutral" className="normal-case tracking-[0.08em]">
+                      {tag.label} {tag.voteCount}
+                    </Badge>
+                  ))
+              : null}
+          </div>
+
+          <div className="flex flex-wrap items-start gap-2">
+            {glaze ? (
+              <Link href={`/glazes/${glaze.id}`} className={buttonVariants({ variant: "ghost", size: "sm" })}>
+                Open glaze
+              </Link>
+            ) : null}
+            {glaze ? (
+              <GlazeWishlistControl
+                glazeId={glaze.id}
+                isGuest={isGuest}
+                status={inventoryStatus}
+                onStatusChange={onInventoryStatusChange}
+              />
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ---------------------------------------------------------------------------
  * Detail modal for a Mayco example
  * ------------------------------------------------------------------------ */
 
-function ExampleDetail({ example }: { example: VendorCombinationExample }) {
+function ExampleDetail({
+  example,
+  glazeFiringImages,
+  inventoryStatusByGlazeId,
+  isGuest,
+  onInventoryStatusChange,
+}: {
+  example: VendorCombinationExample;
+  glazeFiringImages: Record<string, GlazeFiringImage[]>;
+  inventoryStatusByGlazeId: Record<string, InventoryStatus>;
+  isGuest: boolean;
+  onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
+}) {
   return (
     <div className="space-y-5">
       <div className="mx-auto w-full max-w-[400px] overflow-hidden border border-border bg-panel">
@@ -144,19 +462,20 @@ function ExampleDetail({ example }: { example: VendorCombinationExample }) {
 
       <div className="grid gap-3">
         {example.layers.map((layer) => (
-          <div key={layer.id} className="border border-border bg-panel px-3 py-3">
-            <p className="text-[10px] uppercase tracking-[0.16em] text-muted">
-              {getLayerRoleLabel(example, layer.layerOrder)}
-            </p>
-            <p className="mt-1 font-semibold text-foreground">
-              {layer.glaze ? formatGlazeLabel(layer.glaze) : [layer.glazeCode, layer.glazeName].filter(Boolean).join(" ")}
-            </p>
-            {layer.connectorToNext ? (
-              <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">
-                {layer.connectorToNext} next layer
-              </p>
-            ) : null}
-          </div>
+          <CombinationGlazeRow
+            key={layer.id}
+            roleLabel={getLayerRoleLabel(example, layer.layerOrder)}
+            connectorLabel={layer.connectorToNext}
+            glaze={layer.glaze}
+            fallbackCode={layer.glazeCode}
+            fallbackName={layer.glazeName}
+            preferredCone={example.cone ?? null}
+            preferredAtmosphere={example.atmosphere ?? null}
+            glazeFiringImages={glazeFiringImages}
+            inventoryStatus={layer.glaze ? inventoryStatusByGlazeId[layer.glaze.id] ?? null : null}
+            isGuest={isGuest}
+            onInventoryStatusChange={onInventoryStatusChange}
+          />
         ))}
       </div>
 
@@ -188,8 +507,22 @@ function ExampleDetail({ example }: { example: VendorCombinationExample }) {
  * Detail modal for a published post
  * ------------------------------------------------------------------------ */
 
-function PostDetail({ post }: { post: CombinationPost }) {
+function PostDetail({
+  post,
+  glazeFiringImages,
+  inventoryStatusByGlazeId,
+  isGuest,
+  onInventoryStatusChange,
+}: {
+  post: CombinationPost;
+  glazeFiringImages: Record<string, GlazeFiringImage[]>;
+  inventoryStatusByGlazeId: Record<string, InventoryStatus>;
+  isGuest: boolean;
+  onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
+}) {
   const imageSrc = typeof post.imagePath === "string" && post.imagePath.trim() ? post.imagePath : null;
+  const preferredCone = extractConeLabel(post.firingNotes);
+  const orderedGlazes = getOrderedPostGlazes(post);
 
   return (
     <div className="space-y-5">
@@ -207,25 +540,20 @@ function PostDetail({ post }: { post: CombinationPost }) {
         <span className="font-semibold text-foreground">By:</span> {post.authorName}
       </div>
 
-      {post.glazes?.length ? (
+      {orderedGlazes.length ? (
         <div className="grid gap-3">
-          {post.glazes.map((glaze) => (
-            <div key={glaze.id} className="border border-border bg-panel px-3 py-3">
-              <p className="font-semibold text-foreground">{formatGlazeLabel(glaze)}</p>
-              {(glaze.communityTags ?? []).filter((t) => t.voteCount > 0).length > 0 ? (
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {(glaze.communityTags ?? [])
-                    .filter((t) => t.voteCount > 0)
-                    .sort((a, b) => b.voteCount - a.voteCount)
-                    .slice(0, 3)
-                    .map((tag) => (
-                      <Badge key={`${glaze.id}-${tag.slug}`} tone="neutral" className="normal-case tracking-[0.08em]">
-                        {tag.label} {tag.voteCount}
-                      </Badge>
-                    ))}
-                </div>
-              ) : null}
-            </div>
+          {orderedGlazes.map((glaze, index) => (
+            <CombinationGlazeRow
+              key={glaze.id}
+              roleLabel={getPostLayerRoleLabel(post, glaze, index)}
+              glaze={glaze}
+              preferredCone={preferredCone}
+              glazeFiringImages={glazeFiringImages}
+              inventoryStatus={inventoryStatusByGlazeId[glaze.id] ?? null}
+              isGuest={isGuest}
+              onInventoryStatusChange={onInventoryStatusChange}
+              showTags
+            />
           ))}
         </div>
       ) : null}
@@ -265,23 +593,46 @@ export function CombinationsBrowser({
   publishedPosts,
   myPosts,
   isGuest,
+  glazeFiringImages,
+  inventoryStatusByGlazeId: initialInventoryStatusByGlazeId,
   initialView = "all",
 }: {
   examples: VendorCombinationExample[];
   publishedPosts: CombinationPost[];
   myPosts: CombinationPost[];
   isGuest: boolean;
+  glazeFiringImages: Record<string, GlazeFiringImage[]>;
+  inventoryStatusByGlazeId: Record<string, InventoryStatus>;
   initialView?: CombinationsView;
 }) {
   const [query, setQuery] = useState("");
   const [view, setView] = useState<CombinationsView>(initialView);
   const [activeTileId, setActiveTileId] = useState<string | null>(null);
+  const [inventoryStatusByGlazeId, setInventoryStatusByGlazeId] = useState(initialInventoryStatusByGlazeId);
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
 
   useEffect(() => {
     setView(initialView);
   }, [initialView]);
+
+  useEffect(() => {
+    setInventoryStatusByGlazeId(initialInventoryStatusByGlazeId);
+  }, [initialInventoryStatusByGlazeId]);
+
+  function handleInventoryStatusChange(glazeId: string, nextStatus: InventoryCollectionState) {
+    setInventoryStatusByGlazeId((current) => {
+      const next = { ...current };
+
+      if (nextStatus === "none") {
+        delete next[glazeId];
+      } else {
+        next[glazeId] = nextStatus;
+      }
+
+      return next;
+    });
+  }
 
   /* --- build unified tile lists ----------------------------------------- */
 
@@ -534,9 +885,21 @@ export function CombinationsBrowser({
 
             <div className="overflow-y-auto overscroll-contain p-4 sm:p-5">
               {activeTile.example ? (
-                <ExampleDetail example={activeTile.example} />
+                <ExampleDetail
+                  example={activeTile.example}
+                  glazeFiringImages={glazeFiringImages}
+                  inventoryStatusByGlazeId={inventoryStatusByGlazeId}
+                  isGuest={isGuest}
+                  onInventoryStatusChange={handleInventoryStatusChange}
+                />
               ) : activeTile.post ? (
-                <PostDetail post={activeTile.post} />
+                <PostDetail
+                  post={activeTile.post}
+                  glazeFiringImages={glazeFiringImages}
+                  inventoryStatusByGlazeId={inventoryStatusByGlazeId}
+                  isGuest={isGuest}
+                  onInventoryStatusChange={handleInventoryStatusChange}
+                />
               ) : null}
             </div>
           </div>

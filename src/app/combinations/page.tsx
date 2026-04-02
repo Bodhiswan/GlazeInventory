@@ -4,11 +4,14 @@ import { CombinationsBrowser } from "@/components/combinations-browser";
 import { PageHeader } from "@/components/page-header";
 import { buttonVariants } from "@/components/ui/button";
 import {
+  getGlazeFiringImageMap,
+  getInventory,
   getPublicGuestViewer,
   getPublishedCombinationPosts,
   getVendorCombinationExamples,
   getViewer,
 } from "@/lib/data";
+import type { InventoryStatus } from "@/lib/types";
 import { formatSearchQuery } from "@/lib/utils";
 
 type CombinationsView = "all" | "possible" | "mine";
@@ -29,6 +32,26 @@ export default async function CombinationsPage({
     getPublishedCombinationPosts(viewer.profile.id, { publicRead: isGuest }),
   ]);
   const myPosts = isGuest ? [] : publishedPosts.filter((post) => post.authorUserId === viewer.profile.id);
+  const glazeIds = Array.from(
+    new Set(
+      [
+        ...examples.flatMap((example) =>
+          example.layers
+            .map((layer) => layer.glazeId)
+            .filter((glazeId): glazeId is string => Boolean(glazeId)),
+        ),
+        ...publishedPosts.flatMap((post) => (post.glazes ?? []).map((glaze) => glaze.id)),
+      ],
+    ),
+  );
+  const [glazeFiringImages, inventory] = await Promise.all([
+    getGlazeFiringImageMap(glazeIds),
+    isGuest ? Promise.resolve([]) : getInventory(viewer.profile.id),
+  ]);
+  const inventoryStatusByGlazeId = inventory.reduce<Record<string, InventoryStatus>>((map, item) => {
+    map[item.glazeId] = item.status;
+    return map;
+  }, {});
 
   return (
     <div className="space-y-8">
@@ -62,6 +85,8 @@ export default async function CombinationsPage({
         publishedPosts={publishedPosts}
         myPosts={myPosts}
         isGuest={isGuest}
+        glazeFiringImages={glazeFiringImages}
+        inventoryStatusByGlazeId={inventoryStatusByGlazeId}
         initialView={selectedView}
       />
     </div>
