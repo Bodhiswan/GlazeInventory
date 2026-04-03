@@ -558,7 +558,7 @@ export async function requireViewer() {
   return viewer;
 }
 
-export async function getCatalogGlazes(viewerId: string) {
+export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: string) {
   const supabase = await getSupabase();
 
   if (!supabase) {
@@ -599,9 +599,9 @@ export async function getCatalogGlazes(viewerId: string) {
       formatGlazeLabel(left).localeCompare(formatGlazeLabel(right)),
     ),
   );
-}
+});
 
-export async function getInventory(viewerId: string) {
+export const getInventory = cache(async function getInventory(viewerId: string) {
   const supabase = await getSupabase();
 
   if (!supabase) {
@@ -638,7 +638,7 @@ export async function getInventory(viewerId: string) {
     ...item,
     glaze: glazesById.get(item.glaze.id) ?? item.glaze,
   }));
-}
+});
 
 export async function getInventoryFolders(viewerId: string) {
   const supabase = await getSupabase();
@@ -785,9 +785,11 @@ async function getPostCountsByPairKey() {
 }
 
 export async function getCombinationSummaries(viewerId: string) {
-  const inventory = await getInventory(viewerId);
+  const [inventory, postCounts] = await Promise.all([
+    getInventory(viewerId),
+    getPostCountsByPairKey(),
+  ]);
   const ownedGlazes = inventory.filter((item) => item.status === "owned").map((item) => item.glaze);
-  const postCounts = await getPostCountsByPairKey();
 
   return buildCombinationSummaries(ownedGlazes, postCounts);
 }
@@ -914,10 +916,12 @@ async function hydratePosts(
     createdAt: String(row.created_at),
   }));
 
-  const pairs = await getPairsByIds(basePosts.map((post) => post.combinationPairId), adminClient);
+  const [pairs, profiles] = await Promise.all([
+    getPairsByIds(basePosts.map((post) => post.combinationPairId), adminClient),
+    includeProfiles ? getProfilesByIds(basePosts.map((post) => post.authorUserId), adminClient) : Promise.resolve([]),
+  ]);
   const glazeIds = Array.from(new Set(pairs.flatMap((pair) => [pair.glazeAId, pair.glazeBId])));
   const glazes = await getGlazesByIds(viewerId, glazeIds, adminClient);
-  const profiles = includeProfiles ? await getProfilesByIds(basePosts.map((post) => post.authorUserId), adminClient) : [];
   const profilesById = new Map(profiles.map((profile) => [profile.id, profile]));
 
   return attachGlazesToPosts(basePosts, pairs, glazes).map((post) => ({

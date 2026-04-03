@@ -10,14 +10,18 @@ export default async function GlazesPage({
   const viewer = await requireViewer();
   const params = await searchParams;
   const reviewMode = params.review === "descriptions" && Boolean(viewer.profile.isAdmin);
-  const [catalog, inventory] = await Promise.all([
-    getCatalogGlazes(viewer.profile.id),
-    getInventory(viewer.profile.id),
-  ]);
+  const catalogPromise = getCatalogGlazes(viewer.profile.id);
+  const inventoryPromise = getInventory(viewer.profile.id);
+
+  const catalog = await catalogPromise;
   const commercial = catalog.filter((glaze) => glaze.sourceType === "commercial");
   const visibleBrands = new Set(ACTIVE_GLAZE_BRANDS);
   const featuredGlazes = commercial.filter((glaze) => glaze.brand && visibleBrands.has(glaze.brand as (typeof ACTIVE_GLAZE_BRANDS)[number]));
-  const firingImageMap = await getGlazeFiringImageMap(featuredGlazes.map((glaze) => glaze.id));
+
+  const [inventory, firingImageMap] = await Promise.all([
+    inventoryPromise,
+    getGlazeFiringImageMap(featuredGlazes.map((glaze) => glaze.id)),
+  ]);
   const inventoryStates = Object.fromEntries(
     inventory.map((item) => [
       item.glazeId,
