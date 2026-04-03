@@ -1,9 +1,11 @@
 import Link from "next/link";
 
-import { beginAccountCreationAction, signOutAction, updateProfilePreferencesAction } from "@/app/actions";
+import { signOutAction, updateProfilePreferencesAction } from "@/app/actions";
+import { GuestGateCallout } from "@/components/guest-gate-callout";
 import { PageHeader } from "@/components/page-header";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
+import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Select } from "@/components/ui/select";
@@ -46,35 +48,21 @@ export default async function ProfilePage({
       />
 
       {saved ? (
-        <div className="border border-accent-3/20 bg-accent-3/10 px-4 py-3 text-sm text-accent-3">
-          Profile preferences saved.
-        </div>
+        <FormBanner variant="success">Profile preferences saved.</FormBanner>
       ) : null}
 
       {error ? (
-        <div className="border border-[#bb6742]/18 bg-[#bb6742]/10 px-4 py-3 text-sm text-[#7f4026]">
-          {decodeURIComponent(error)}
-        </div>
+        <FormBanner variant="error">{decodeURIComponent(error)}</FormBanner>
       ) : null}
 
       {viewer.profile.isAnonymous ? (
-        <Panel className="space-y-4 opacity-80">
+        <Panel className="space-y-4">
           <p className="text-sm uppercase tracking-[0.2em] text-muted">Guest mode</p>
           <h2 className="display-font text-3xl tracking-tight">Profile settings need a verified account.</h2>
-          <p className="text-sm leading-6 text-muted">
-            Guest browsing is great for exploring the glaze inventory, but saved viewing defaults live
-            on your member profile so they can follow you every time you sign in.
-          </p>
-          <div className="flex flex-wrap gap-3">
-            <form action={beginAccountCreationAction}>
-              <button type="submit" className={buttonVariants({})}>
-                Create account
-              </button>
-            </form>
-            <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost" })}>
-              Sign in
-            </Link>
-          </div>
+          <GuestGateCallout
+            feature="Create an account to save your display name, studio, preferred cone, and atmosphere so the library remembers your preferences."
+            redirectTo="/profile"
+          />
         </Panel>
       ) : (
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">

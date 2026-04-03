@@ -1,8 +1,7 @@
 import Link from "next/link";
 
-import { beginAccountCreationAction } from "@/app/actions";
 import { AppShellNav } from "@/components/app-shell-nav";
-import { buttonVariants } from "@/components/ui/button";
+import { UserMenu } from "@/components/user-menu";
 import type { Viewer } from "@/lib/types";
 
 export function AppShell({
@@ -12,16 +11,7 @@ export function AppShell({
   viewer: Viewer;
   children: React.ReactNode;
 }>) {
-  const accountAction = viewer.profile.isAnonymous ? (
-    <form action={beginAccountCreationAction} className="shrink-0">
-      <button
-        type="submit"
-        className={buttonVariants({ size: "sm", className: "shrink-0" })}
-      >
-        Create account
-      </button>
-    </form>
-  ) : null;
+  const isGuest = Boolean(viewer.profile.isAnonymous);
 
   return (
     <div className="min-h-screen">
@@ -39,7 +29,7 @@ export function AppShell({
             <div className="flex min-w-0 justify-center">
               <AppShellNav
                 isAdmin={Boolean(viewer.profile.isAdmin)}
-                isGuest={Boolean(viewer.profile.isAnonymous)}
+                isGuest={isGuest}
               />
             </div>
 
@@ -50,20 +40,10 @@ export function AppShell({
                 </span>
               ) : null}
 
-              {viewer.profile.isAnonymous ? (
-                <span className="shrink-0 border border-border px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted sm:text-[11px] sm:tracking-[0.16em]">
-                  Guest
-                </span>
-              ) : (
-                <Link
-                  href="/profile"
-                  className="max-w-[9rem] truncate border border-border px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted transition-colors hover:bg-panel hover:text-foreground sm:max-w-[13rem] sm:text-[11px] sm:tracking-[0.16em]"
-                >
-                  {viewer.profile.displayName}
-                </Link>
-              )}
-
-              {accountAction}
+              <UserMenu
+                displayName={viewer.profile.displayName}
+                isGuest={isGuest}
+              />
             </div>
           </div>
         </header>

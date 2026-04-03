@@ -10,9 +10,11 @@ import {
 } from "@/app/actions";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { GlazeOwnershipPanel } from "@/components/glaze-ownership-panel";
+import { GuestGateCallout } from "@/components/guest-gate-callout";
 import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { FormBanner } from "@/components/ui/form-banner";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
 import { getGlazeDetail, getInventoryFolders, requireViewer } from "@/lib/data";
@@ -82,12 +84,9 @@ export default async function GlazeDetailPage({
               Back to library
             </Link>
             {viewer.profile.isAnonymous ? (
-              <span
-                className={buttonVariants({ className: "cursor-not-allowed opacity-50 grayscale" })}
-                aria-disabled="true"
-              >
-                Inventory locked
-              </span>
+              <Link href={`/auth/sign-up?redirectTo=${encodeURIComponent(`/glazes/${glazeId}`)}`} className={buttonVariants({})}>
+                Sign up to save glazes
+              </Link>
             ) : (
               <Link href="/inventory" className={buttonVariants({})}>
                 View inventory
@@ -98,19 +97,13 @@ export default async function GlazeDetailPage({
       />
 
       {error ? (
-        <div className="border border-[#bb6742]/18 bg-[#bb6742]/10 px-4 py-3 text-sm text-[#7f4026]">
-          {decodeURIComponent(error)}
-        </div>
+        <FormBanner variant="error">{decodeURIComponent(error)}</FormBanner>
       ) : null}
       {saved === "description" ? (
-        <div className="border border-accent-3/20 bg-accent-3/10 px-4 py-3 text-sm text-accent-3">
-          Description summary updated.
-        </div>
+        <FormBanner variant="success">Description summary updated.</FormBanner>
       ) : null}
       {saved === "shelf" ? (
-        <div className="border border-accent-3/20 bg-accent-3/10 px-4 py-3 text-sm text-accent-3">
-          Amount left updated.
-        </div>
+        <FormBanner variant="success">Amount left updated.</FormBanner>
       ) : null}
 
       <section className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
@@ -174,9 +167,10 @@ export default async function GlazeDetailPage({
 
           {glaze.sourceType === "commercial" ? (
             viewer.profile.isAnonymous ? (
-              <div className="border border-border bg-panel px-4 py-3 text-sm text-muted opacity-65">
-                Guest mode can browse this glaze, but saving it to your shelf, wishlist, or folders is locked until you sign in with a verified account.
-              </div>
+              <GuestGateCallout
+                feature="Create an account to save this glaze to your shelf, wishlist, or folders."
+                redirectTo={`/glazes/${glaze.id}`}
+              />
             ) : (
               <GlazeOwnershipPanel
                 glazeId={glaze.id}
@@ -218,9 +212,10 @@ export default async function GlazeDetailPage({
             </div>
 
             {viewer.profile.isAnonymous ? (
-              <div className="border border-border bg-panel px-4 py-3 text-sm text-muted opacity-65">
-                Guest mode can browse ratings, but leaving a star rating is locked until you sign in with a verified account.
-              </div>
+              <GuestGateCallout
+                feature="Sign up to rate this glaze and help other potters find the best options."
+                redirectTo={`/glazes/${glaze.id}`}
+              />
             ) : (
               <div className="space-y-3">
                 <p className="text-sm font-medium text-foreground">
@@ -329,23 +324,10 @@ export default async function GlazeDetailPage({
 
         <Panel className="space-y-4">
           {viewer.profile.isAnonymous ? (
-            <div className="space-y-3 opacity-65 grayscale-[0.2]">
-              <Textarea
-                placeholder="Guest mode disables commenting. Sign in with a verified account to leave notes here."
-                disabled
-              />
-              <div className="flex justify-end">
-                <span
-                  className={buttonVariants({
-                    size: "sm",
-                    className: "cursor-not-allowed opacity-60 grayscale",
-                  })}
-                  aria-disabled="true"
-                >
-                  Comments locked
-                </span>
-              </div>
-            </div>
+            <GuestGateCallout
+              feature="Create an account to leave notes about application, clay body, or firing results."
+              redirectTo={`/glazes/${glaze.id}`}
+            />
           ) : (
             <form action={addGlazeCommentAction} className="space-y-4">
               <input type="hidden" name="glazeId" value={glaze.id} />

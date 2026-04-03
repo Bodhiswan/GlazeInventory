@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { buildCombinationSummaries, parsePairKey } from "@/lib/combinations";
@@ -538,7 +539,20 @@ export async function requireViewer() {
   const viewer = await getViewer();
 
   if (!viewer) {
-    redirect("/auth/sign-in");
+    let signInUrl = "/auth/sign-in";
+
+    try {
+      const headerList = await headers();
+      const pathname = headerList.get("x-next-pathname") ?? headerList.get("x-invoke-path");
+
+      if (pathname && pathname !== "/" && pathname !== "/auth/sign-in") {
+        signInUrl = `/auth/sign-in?redirectTo=${encodeURIComponent(pathname)}`;
+      }
+    } catch {
+      /* headers unavailable outside request context */
+    }
+
+    redirect(signInUrl);
   }
 
   return viewer;

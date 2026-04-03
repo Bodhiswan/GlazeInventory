@@ -1,6 +1,5 @@
 import Link from "next/link";
 
-import { beginAccountCreationAction } from "@/app/actions";
 import { PageHeader } from "@/components/page-header";
 import { SetupCallout } from "@/components/setup-callout";
 import { Badge } from "@/components/ui/badge";
@@ -40,11 +39,9 @@ export default async function DashboardPage() {
               <Link href="/glazes" className={buttonVariants({})}>
                 Open library
               </Link>
-              <form action={beginAccountCreationAction}>
-                <button type="submit" className={buttonVariants({ variant: "ghost" })}>
-                  Create account
-                </button>
-              </form>
+              <Link href="/auth/sign-up" className={buttonVariants({ variant: "ghost" })}>
+                Create account
+              </Link>
             </>
           }
         />

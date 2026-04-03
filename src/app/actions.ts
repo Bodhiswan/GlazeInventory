@@ -265,14 +265,46 @@ export async function sendMagicLinkAction(formData: FormData) {
   redirect("/auth/sign-in?sent=1");
 }
 
+export async function signInWithGoogleAction(formData: FormData) {
+  const returnTo = formData.get("returnTo")?.toString().trim() || null;
+  const safeReturnTo = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/dashboard";
+
+  const supabase = await createSupabaseServerClient();
+
+  if (!supabase) {
+    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
+  }
+
+  const callbackUrl = `${getBaseUrl()}/auth/callback?next=${encodeURIComponent(safeReturnTo)}`;
+
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: callbackUrl,
+    },
+  });
+
+  if (error || !data.url) {
+    redirect(`/auth/sign-in?error=${encodeURIComponent(error?.message ?? "Could not start Google sign-in")}`);
+  }
+
+  redirect(data.url);
+}
+
 export async function signInWithPasswordAction(formData: FormData) {
+  const returnTo = formData.get("returnTo")?.toString().trim() || null;
+  const safeReturnTo = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/dashboard";
+
   const parsed = passwordSignInSchema.safeParse({
     email: formData.get("email")?.toString().trim(),
     password: formData.get("password")?.toString(),
   });
 
   if (!parsed.success) {
-    redirect("/auth/sign-in?error=Enter%20your%20email%20and%20password");
+    const errorUrl = returnTo
+      ? `/auth/sign-in?error=Enter%20your%20email%20and%20password&redirectTo=${encodeURIComponent(returnTo)}`
+      : "/auth/sign-in?error=Enter%20your%20email%20and%20password";
+    redirect(errorUrl);
   }
 
   const supabase = await createSupabaseServerClient();
@@ -287,10 +319,13 @@ export async function signInWithPasswordAction(formData: FormData) {
   });
 
   if (error) {
-    redirect(`/auth/sign-in?error=${encodeURIComponent(error.message)}`);
+    const errorUrl = returnTo
+      ? `/auth/sign-in?error=${encodeURIComponent(error.message)}&redirectTo=${encodeURIComponent(returnTo)}`
+      : `/auth/sign-in?error=${encodeURIComponent(error.message)}`;
+    redirect(errorUrl);
   }
 
-  redirect("/dashboard");
+  redirect(safeReturnTo);
 }
 
 export async function signUpWithPasswordAction(formData: FormData) {
@@ -395,7 +430,10 @@ export async function updatePasswordAction(formData: FormData) {
   redirect("/auth/sign-in?passwordReset=1");
 }
 
-export async function continueAsGuestAction() {
+export async function continueAsGuestAction(formData: FormData) {
+  const returnTo = formData.get("returnTo")?.toString().trim() || null;
+  const safeReturnTo = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/dashboard";
+
   const supabase = await createSupabaseServerClient();
 
   if (!supabase) {
@@ -414,7 +452,7 @@ export async function continueAsGuestAction() {
     redirect(`/auth/sign-in?error=${encodeURIComponent(error.message)}`);
   }
 
-  redirect("/dashboard");
+  redirect(safeReturnTo);
 }
 
 export async function beginAccountCreationAction() {

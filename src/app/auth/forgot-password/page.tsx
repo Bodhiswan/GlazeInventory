@@ -4,6 +4,7 @@ import Link from "next/link";
 import { sendPasswordResetAction } from "@/app/actions";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
+import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { formatSearchQuery } from "@/lib/utils";
@@ -33,15 +34,13 @@ export default async function ForgotPasswordPage({
         </div>
 
         {error ? (
-          <div className="border border-[#bb6742]/18 bg-[#bb6742]/10 px-4 py-3 text-sm text-[#7f4026]">
-            {decodeURIComponent(error)}
-          </div>
+          <FormBanner variant="error">{decodeURIComponent(error)}</FormBanner>
         ) : null}
 
         {sent ? (
-          <div className="border border-accent-3/20 bg-accent-3/10 px-4 py-3 text-sm text-accent-3">
+          <FormBanner variant="success">
             Check your email for the reset link. Open it in the same browser and we&apos;ll take you to the new password screen.
-          </div>
+          </FormBanner>
         ) : null}
 
         <form action={sendPasswordResetAction} className="grid gap-4">

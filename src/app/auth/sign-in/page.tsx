@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default async function SignInPage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; registered?: string }>;
+  searchParams: Promise<{ error?: string; registered?: string; passwordReset?: string; redirectTo?: string }>;
 }) {
   return <AuthEntryPage searchParams={searchParams} />;
 }

@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { updatePasswordAction } from "@/app/actions";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
+import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { getViewer } from "@/lib/data";
@@ -40,9 +41,7 @@ export default async function ResetPasswordPage({
         </div>
 
         {error ? (
-          <div className="border border-[#bb6742]/18 bg-[#bb6742]/10 px-4 py-3 text-sm text-[#7f4026]">
-            {decodeURIComponent(error)}
-          </div>
+          <FormBanner variant="error">{decodeURIComponent(error)}</FormBanner>
         ) : null}
 
         <form action={updatePasswordAction} className="grid gap-4">

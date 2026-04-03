@@ -7,10 +7,13 @@ export async function updateSession(request: NextRequest) {
   const env = getSupabaseEnv();
 
   if (!env) {
-    return NextResponse.next({ request });
+    const fallback = NextResponse.next({ request });
+    fallback.headers.set("x-next-pathname", request.nextUrl.pathname);
+    return fallback;
   }
 
   let response = NextResponse.next({ request });
+  response.headers.set("x-next-pathname", request.nextUrl.pathname);
 
   const supabase = createServerClient(env.url, env.anonKey, {
     cookies: {
@@ -20,6 +23,7 @@ export async function updateSession(request: NextRequest) {
       setAll(cookiesToSet) {
         cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
         response = NextResponse.next({ request });
+        response.headers.set("x-next-pathname", request.nextUrl.pathname);
         cookiesToSet.forEach(({ name, value, options }) =>
           response.cookies.set(name, value, options),
         );
