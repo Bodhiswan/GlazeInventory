@@ -8,7 +8,7 @@ export function PageHeader({
 }: {
   eyebrow?: string;
   title: string;
-  description: string;
+  description?: string;
   actions?: ReactNode;
 }) {
   return (
@@ -20,7 +20,7 @@ export function PageHeader({
         <h1 className="display-font mt-2 text-[clamp(2rem,7vw,3.6rem)] leading-[0.95] tracking-[-0.03em] text-balance">
           {title}
         </h1>
-        <p className="mt-3 max-w-none text-sm leading-6 text-muted sm:max-w-2xl">{description}</p>
+        {description ? <p className="mt-3 max-w-none text-sm leading-6 text-muted sm:max-w-2xl">{description}</p> : null}
       </div>
       {actions ? (
         <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap lg:w-auto [&>*]:w-full sm:[&>*]:w-auto [&>form]:w-full sm:[&>form]:w-auto [&>form>button]:w-full sm:[&>form>button]:w-auto">

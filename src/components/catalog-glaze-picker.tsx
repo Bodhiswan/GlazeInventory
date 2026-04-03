@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select } from "@/components/ui/select";
-import { cn } from "@/lib/utils";
+import { buildGlazeSearchIndex, cn, matchesGlazeSearch } from "@/lib/utils";
 import type { Glaze } from "@/lib/types";
 
 type CatalogGlazePickerProps = {
@@ -37,18 +37,15 @@ export function CatalogGlazePicker({ disabled, glazes }: CatalogGlazePickerProps
       return true;
     }
 
-    const haystack = [
+    const haystack = buildGlazeSearchIndex([
       glaze.brand,
       glaze.line,
       glaze.code,
       glaze.name,
       glaze.cone,
-    ]
-      .filter(Boolean)
-      .join(" ")
-      .toLowerCase();
+    ]);
 
-    return haystack.includes(normalizedQuery);
+    return matchesGlazeSearch(haystack, deferredQuery);
   });
 
   const visibleGlazes = filteredGlazes.slice(0, 60);

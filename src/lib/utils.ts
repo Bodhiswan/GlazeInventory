@@ -126,6 +126,39 @@ export function formatSearchQuery(value: string | string[] | undefined) {
   return value ?? "";
 }
 
+export function normalizeGlazeSearchText(value: string | null | undefined) {
+  return compactWhitespace((value ?? "").toLowerCase().replace(/[^a-z0-9]+/g, " "));
+}
+
+export function compactGlazeSearchText(value: string | null | undefined) {
+  return (value ?? "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+export function buildGlazeSearchIndex(values: Array<string | null | undefined>) {
+  const normalized = values
+    .map((value) => normalizeGlazeSearchText(value))
+    .filter(Boolean);
+  const compact = values
+    .map((value) => compactGlazeSearchText(value))
+    .filter((value) => value.length >= 2);
+
+  return uniqueValues([...normalized, ...compact]).join(" ");
+}
+
+export function matchesGlazeSearch(searchIndex: string, query: string) {
+  const normalizedQuery = normalizeGlazeSearchText(query);
+  const compactQuery = compactGlazeSearchText(query);
+
+  if (!normalizedQuery && !compactQuery) {
+    return true;
+  }
+
+  return (
+    (normalizedQuery ? searchIndex.includes(normalizedQuery) : false) ||
+    (compactQuery.length >= 2 ? searchIndex.includes(compactQuery) : false)
+  );
+}
+
 function compactWhitespace(value: string) {
   return value.replace(/\s+/g, " ").trim();
 }

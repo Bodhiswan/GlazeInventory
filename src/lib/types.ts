@@ -158,7 +158,7 @@ export interface VendorCombinationExampleLayer {
 
 export interface VendorCombinationExample {
   id: string;
-  sourceVendor: "Mayco";
+  sourceVendor: string;
   sourceCollection: string;
   sourceKey: string;
   sourceUrl: string;

@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 import { publishCombinationPostAction } from "@/app/actions";
 import { PageHeader } from "@/components/page-header";
 import { PublishCombinationForm } from "@/components/publish-combination-form";
@@ -12,6 +13,8 @@ export default async function PublishPage({
 }: {
   searchParams: Promise<{ error?: string }>;
 }) {
+  notFound();
+
   const viewer = await requireViewer();
   const inventory = await getInventory(viewer.profile.id);
   const ownedGlazes = inventory

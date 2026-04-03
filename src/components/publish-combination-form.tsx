@@ -8,22 +8,19 @@ import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
 import type { Glaze } from "@/lib/types";
-import { cn, formatGlazeLabel } from "@/lib/utils";
+import { buildGlazeSearchIndex, cn, formatGlazeLabel, matchesGlazeSearch } from "@/lib/utils";
 
 const coneChoices = ["Cone 06", "Cone 6", "Cone 10"] as const;
 type ConeChoice = (typeof coneChoices)[number];
 
 function buildSearchText(glaze: Glaze) {
-  return [
+  return buildGlazeSearchIndex([
     glaze.brand,
     glaze.line,
     glaze.code,
     glaze.name,
     glaze.cone,
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
+  ]);
 }
 
 function createPairKey(glazeAId: string, glazeBId: string) {
@@ -42,7 +39,7 @@ function filterGlazes(glazes: Glaze[], query: string, excludedGlazeId: string) {
       return true;
     }
 
-    return buildSearchText(glaze).includes(normalizedQuery);
+    return matchesGlazeSearch(buildSearchText(glaze), query);
   });
 }
 

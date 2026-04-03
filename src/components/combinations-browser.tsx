@@ -419,7 +419,7 @@ function CombinationGlazeRow({
 }
 
 /* ---------------------------------------------------------------------------
- * Detail modal for a Mayco example
+ * Detail modal for an imported vendor example
  * ------------------------------------------------------------------------ */
 
 function ExampleDetail({
@@ -596,6 +596,7 @@ export function CombinationsBrowser({
   glazeFiringImages,
   inventoryStatusByGlazeId: initialInventoryStatusByGlazeId,
   initialView = "all",
+  initialQuery = "",
 }: {
   examples: VendorCombinationExample[];
   publishedPosts: CombinationPost[];
@@ -604,9 +605,12 @@ export function CombinationsBrowser({
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
   initialView?: CombinationsView;
+  initialQuery?: string;
 }) {
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(initialQuery);
   const [view, setView] = useState<CombinationsView>(initialView);
+  const [showCone6, setShowCone6] = useState(true);
+  const [showCone10, setShowCone10] = useState(true);
   const [activeTileId, setActiveTileId] = useState<string | null>(null);
   const [inventoryStatusByGlazeId, setInventoryStatusByGlazeId] = useState(initialInventoryStatusByGlazeId);
   const deferredQuery = useDeferredValue(query);
@@ -669,9 +673,21 @@ export function CombinationsBrowser({
       tiles = [...exampleTiles, ...communityPostTiles];
     }
 
-    if (!normalizedQuery) return tiles;
-    return tiles.filter((tile) => tile.searchText.includes(normalizedQuery));
-  }, [view, normalizedQuery, exampleTiles, possibleExampleTiles, communityPostTiles, myPostTiles]);
+    if (normalizedQuery) {
+      tiles = tiles.filter((tile) => tile.searchText.includes(normalizedQuery));
+    }
+
+    if (!showCone6 || !showCone10) {
+      tiles = tiles.filter((tile) => {
+        const cone = tile.cone?.toLowerCase() ?? "";
+        if (cone.includes("6") && !showCone6) return false;
+        if (cone.includes("10") && !showCone10) return false;
+        return true;
+      });
+    }
+
+    return tiles;
+  }, [view, normalizedQuery, showCone6, showCone10, exampleTiles, possibleExampleTiles, communityPostTiles, myPostTiles]);
 
   const activeTile = useMemo(
     () => activeTiles.find((t) => t.id === activeTileId) ?? null,
@@ -689,11 +705,7 @@ export function CombinationsBrowser({
           <Input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder={
-              view === "mine"
-                ? "Search your published combinations by glaze, notes, or caption"
-                : "Search by glaze code, glaze name, clay body, cone, or keyword"
-            }
+            placeholder="Search by glaze code, glaze name, clay body, cone, or keyword"
             className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
           />
         </div>
@@ -714,39 +726,21 @@ export function CombinationsBrowser({
             All combinations
           </Link>
           {isGuest ? (
-            <>
-              <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost", size: "sm" })}>
-                Possible combinations
-              </Link>
-              <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost", size: "sm" })}>
-                My combinations
-              </Link>
-            </>
+            <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost", size: "sm" })}>
+              Possible combinations
+            </Link>
           ) : (
-            <>
-              <Link
-                href="/combinations?view=possible"
-                aria-current={view === "possible" ? "page" : undefined}
-                className={buttonVariants({
-                  variant: view === "possible" ? "primary" : "ghost",
-                  size: "sm",
-                })}
-                onClick={() => setView("possible")}
-              >
-                Possible combinations
-              </Link>
-              <Link
-                href="/combinations?view=mine"
-                aria-current={view === "mine" ? "page" : undefined}
-                className={buttonVariants({
-                  variant: view === "mine" ? "primary" : "ghost",
-                  size: "sm",
-                })}
-                onClick={() => setView("mine")}
-              >
-                My combinations
-              </Link>
-            </>
+            <Link
+              href="/combinations?view=possible"
+              aria-current={view === "possible" ? "page" : undefined}
+              className={buttonVariants({
+                variant: view === "possible" ? "primary" : "ghost",
+                size: "sm",
+              })}
+              onClick={() => setView("possible")}
+            >
+              Possible combinations
+            </Link>
           )}
           {query.trim() ? (
             <button
@@ -759,21 +753,37 @@ export function CombinationsBrowser({
           ) : null}
         </div>
 
+        <div className="flex flex-wrap items-center gap-4">
+          <span className="text-xs uppercase tracking-[0.18em] text-muted">Cone filter</span>
+          <label className="flex items-center gap-2 text-sm text-foreground">
+            <input
+              type="checkbox"
+              checked={showCone6}
+              onChange={(e) => setShowCone6(e.target.checked)}
+              className="accent-foreground"
+            />
+            Cone 6
+          </label>
+          <label className="flex items-center gap-2 text-sm text-foreground">
+            <input
+              type="checkbox"
+              checked={showCone10}
+              onChange={(e) => setShowCone10(e.target.checked)}
+              className="accent-foreground"
+            />
+            Cone 10
+          </label>
+        </div>
+
         {!isGuest && view === "possible" ? (
           <p className="text-sm leading-6 text-muted">
-            Showing imported Mayco examples where every matched glaze is already on your shelf.
+            Showing imported vendor examples where every matched glaze is already on your shelf.
             {activeExampleCount
               ? " These are the combinations you can test right now."
               : " Add more glazes to your inventory or switch back to All combinations for broader inspiration."}
           </p>
         ) : null}
 
-        {!isGuest && view === "mine" ? (
-          <p className="text-sm leading-6 text-muted">
-            Showing only the combinations you published. Use this tab as your own running archive
-            of fired tests and notes.
-          </p>
-        ) : null}
       </Panel>
 
       {/* tile grid */}
@@ -781,7 +791,7 @@ export function CombinationsBrowser({
         <div className="overflow-hidden border border-border bg-panel">
           <div className="flex items-center justify-between gap-3 border-b border-border/80 px-3 py-2">
             <p className="text-xs uppercase tracking-[0.18em] text-muted">
-              {view === "all" ? "All combinations" : view === "possible" ? "Possible combinations" : "My combinations"}
+              {view === "possible" ? "Possible combinations" : "All combinations"}
             </p>
             <Badge tone="neutral">{activeTiles.length}</Badge>
           </div>
@@ -832,25 +842,12 @@ export function CombinationsBrowser({
             ))}
           </div>
         </div>
-      ) : view === "mine" && !myPosts.length ? (
-        <Panel>
-          <h2 className="display-font text-3xl tracking-tight">No published combinations yet.</h2>
-          <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
-            Publish a result to start your own combinations archive here. Once you add photos and
-            notes, this tab becomes the quickest way to revisit what you have already tested.
-          </p>
-          <div className="mt-5">
-            <Link href="/publish" className={buttonVariants({})}>
-              Publish your first result
-            </Link>
-          </div>
-        </Panel>
       ) : (
         <Panel>
           <h2 className="display-font text-3xl tracking-tight">No combinations match yet.</h2>
           <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
             {view === "possible"
-              ? "There is not an imported Mayco example yet that only uses glazes currently on your shelf. Switch back to All combinations or add more glazes to your inventory."
+              ? "There is not an imported vendor example yet that only uses glazes currently on your shelf. Switch back to All combinations or add more glazes to your inventory."
               : "Try a glaze code, glaze name, cone, or clay body to narrow the results."}
           </p>
         </Panel>

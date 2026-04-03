@@ -45,7 +45,7 @@ export default async function VendorCombinationExamplePage({
       <PageHeader
         eyebrow="Combination example"
         title={example.title}
-        description="Imported from Mayco's glaze combinations library. Layer order, source photos, and glaze links are preserved here so you can move from inspiration to a test tile faster."
+        description={`Imported from ${example.sourceVendor}. Layer order, source photos, and glaze links are preserved here so you can move from inspiration to a test tile faster.`}
         actions={
           <>
             <a
@@ -54,7 +54,7 @@ export default async function VendorCombinationExamplePage({
               rel="noreferrer"
               className={buttonVariants({ variant: "ghost" })}
             >
-              Open Mayco source
+              Open source
             </a>
             {isGuest ? (
               <Link href="/auth/sign-in" className={buttonVariants({})}>

@@ -13,7 +13,6 @@ import { requireViewer } from "@/lib/data";
 import { formatSearchQuery } from "@/lib/utils";
 
 const coneOptions = ["Cone 06", "Cone 6", "Cone 10"];
-const atmosphereOptions = ["Oxidation", "Reduction"];
 
 export default async function ProfilePage({
   searchParams,
@@ -60,7 +59,7 @@ export default async function ProfilePage({
           <p className="text-sm uppercase tracking-[0.2em] text-muted">Guest mode</p>
           <h2 className="display-font text-3xl tracking-tight">Profile settings need a verified account.</h2>
           <GuestGateCallout
-            feature="Create an account to save your display name, studio, preferred cone, and atmosphere so the library remembers your preferences."
+            feature="Create an account to save your display name, studio, and preferred cone so the library remembers your preferences."
             redirectTo="/profile"
           />
         </Panel>
@@ -92,20 +91,6 @@ export default async function ProfilePage({
                     ))}
                   </Select>
                 </label>
-                <label className="grid gap-2 text-sm font-medium">
-                  Default atmosphere view
-                  <Select
-                    name="preferredAtmosphere"
-                    defaultValue={viewer.profile.preferredAtmosphere ?? ""}
-                  >
-                    <option value="">Any atmosphere</option>
-                    {atmosphereOptions.map((option) => (
-                      <option key={option} value={option}>
-                        {option}
-                      </option>
-                    ))}
-                  </Select>
-                </label>
               </div>
 
               <label className="flex items-start gap-3 border border-border bg-panel px-4 py-4 text-sm text-foreground">
@@ -116,7 +101,7 @@ export default async function ProfilePage({
                   className="mt-1 h-4 w-4 rounded border-border accent-[#2d1c16]"
                 />
                 <span className="leading-6">
-                  Only show glazes that have example images matching my preferred cone and atmosphere.
+                  Only show glazes that have example images matching my preferred cone.
                 </span>
               </label>
 
@@ -135,20 +120,18 @@ export default async function ProfilePage({
               <h2 className="display-font mt-2 text-3xl tracking-tight">Shape the glaze views around your firing context.</h2>
             </div>
             <p className="text-sm leading-6 text-muted">
-              If you choose a preferred cone or atmosphere, the library will try to show that
+              If you choose a preferred cone, the library will try to show that
               image first whenever the vendor provides it. On individual glaze pages, the matching
               firing references will be shown first as well.
             </p>
             <p className="text-sm leading-6 text-muted">
               Turning on the restriction option makes the main library view narrower: it only keeps
-              glazes that already have a matching example image for your preferred cone and
-              atmosphere settings.
+              glazes that already have a matching example image for your preferred cone.
             </p>
             <div className="border border-border bg-panel p-4">
               <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Current defaults</p>
               <div className="mt-3 space-y-2 text-sm text-muted">
                 <p>Cone: {viewer.profile.preferredCone ?? "Any cone"}</p>
-                <p>Atmosphere: {viewer.profile.preferredAtmosphere ?? "Any atmosphere"}</p>
                 <p>
                   Restrict to matching examples:{" "}
                   {viewer.profile.restrictToPreferredExamples ? "Yes" : "No"}

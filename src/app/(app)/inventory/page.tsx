@@ -1,6 +1,6 @@
 import { InventoryWorkspace } from "@/components/inventory-workspace";
 import { Panel } from "@/components/ui/panel";
-import { getGlazeFiringImageMap, getInventory, requireViewer } from "@/lib/data";
+import { getInventory, requireViewer } from "@/lib/data";
 import { formatSearchQuery } from "@/lib/utils";
 
 export default async function InventoryPage({
@@ -10,11 +10,6 @@ export default async function InventoryPage({
 }) {
   const viewer = await requireViewer();
   const inventory = await getInventory(viewer.profile.id);
-  const firingImageMap = await getGlazeFiringImageMap(
-    inventory
-      .map((item) => item.glazeId)
-      .filter((value, index, values) => values.indexOf(value) === index),
-  );
   const params = await searchParams;
   const error = formatSearchQuery(params.error);
 
@@ -43,7 +38,7 @@ export default async function InventoryPage({
       ) : (
         <InventoryWorkspace
           items={inventory}
-          firingImageMap={firingImageMap}
+          firingImageMap={{}}
           preferredCone={viewer.profile.preferredCone ?? null}
           preferredAtmosphere={viewer.profile.preferredAtmosphere ?? null}
         />

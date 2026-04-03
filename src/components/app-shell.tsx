@@ -28,7 +28,7 @@ export function AppShell({
 
             <div className="flex min-w-0 justify-center">
               <AppShellNav
-                isAdmin={Boolean(viewer.profile.isAdmin)}
+                isAdmin={false}
                 isGuest={isGuest}
               />
             </div>

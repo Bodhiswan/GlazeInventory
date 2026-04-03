@@ -41,13 +41,9 @@ export default async function CombinationDetailPage({
         actions={
           isGuest ? (
             <Link href="/auth/sign-in" className={buttonVariants({})}>
-              Sign in to publish
+              Sign in to save your shelf
             </Link>
-          ) : (
-            <Link href="/publish" className={buttonVariants({})}>
-              Publish a photo
-            </Link>
-          )
+          ) : null
         }
       />
 

@@ -265,32 +265,6 @@ export async function sendMagicLinkAction(formData: FormData) {
   redirect("/auth/sign-in?sent=1");
 }
 
-export async function signInWithGoogleAction(formData: FormData) {
-  const returnTo = formData.get("returnTo")?.toString().trim() || null;
-  const safeReturnTo = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/dashboard";
-
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
-  }
-
-  const callbackUrl = `${getBaseUrl()}/auth/callback?next=${encodeURIComponent(safeReturnTo)}`;
-
-  const { data, error } = await supabase.auth.signInWithOAuth({
-    provider: "google",
-    options: {
-      redirectTo: callbackUrl,
-    },
-  });
-
-  if (error || !data.url) {
-    redirect(`/auth/sign-in?error=${encodeURIComponent(error?.message ?? "Could not start Google sign-in")}`);
-  }
-
-  redirect(data.url);
-}
-
 export async function signInWithPasswordAction(formData: FormData) {
   const returnTo = formData.get("returnTo")?.toString().trim() || null;
   const safeReturnTo = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/dashboard";
@@ -351,7 +325,7 @@ export async function signUpWithPasswordAction(formData: FormData) {
     email: parsed.data.email,
     password: parsed.data.password,
     options: {
-      emailRedirectTo: `${getBaseUrl()}/auth/callback`,
+      emailRedirectTo: `${getBaseUrl()}/auth/callback?next=${encodeURIComponent("/dashboard")}`,
       data: {
         display_name: parsed.data.displayName,
       },

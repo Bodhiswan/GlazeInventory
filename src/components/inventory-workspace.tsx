@@ -18,7 +18,14 @@ import type {
   InventoryItem,
   InventoryStatus,
 } from "@/lib/types";
-import { cn, formatGlazeLabel, formatGlazeMeta, pickPreferredGlazeImage } from "@/lib/utils";
+import {
+  buildGlazeSearchIndex,
+  cn,
+  formatGlazeLabel,
+  formatGlazeMeta,
+  matchesGlazeSearch,
+  pickPreferredGlazeImage,
+} from "@/lib/utils";
 
 const inventorySections: Array<{
   status: InventoryStatus;
@@ -249,20 +256,19 @@ export function InventoryWorkspace({
             return true;
           }
 
-          return [
+          return matchesGlazeSearch(
+            buildGlazeSearchIndex([
             item.glaze.code,
             item.glaze.name,
             item.glaze.brand,
             item.glaze.line,
             item.personalNotes,
-          ]
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase()
-            .includes(normalizedQuery);
+            ]),
+            deferredQuery,
+          );
         })
         .sort((left, right) => formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze))),
-    [inventoryItems, normalizedQuery],
+    [inventoryItems, normalizedQuery, deferredQuery],
   );
 
   const totalCounts = useMemo(

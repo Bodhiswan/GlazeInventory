@@ -1,5 +1,5 @@
 import { GlazeCatalogExplorer } from "@/components/glaze-catalog-explorer";
-import { getCatalogGlazes, getGlazeFiringImageMap, getInventory, requireViewer } from "@/lib/data";
+import { getCatalogGlazes, getInventory, requireViewer } from "@/lib/data";
 import { ACTIVE_GLAZE_BRANDS } from "@/lib/utils";
 
 export default async function GlazesPage({
@@ -9,19 +9,15 @@ export default async function GlazesPage({
 }) {
   const viewer = await requireViewer();
   const params = await searchParams;
-  const reviewMode = params.review === "descriptions" && Boolean(viewer.profile.isAdmin);
-  const catalogPromise = getCatalogGlazes(viewer.profile.id);
-  const inventoryPromise = getInventory(viewer.profile.id);
-
-  const catalog = await catalogPromise;
+  const reviewMode = false;
+  const [catalog, inventory] = await Promise.all([
+    getCatalogGlazes(viewer.profile.id),
+    getInventory(viewer.profile.id),
+  ]);
   const commercial = catalog.filter((glaze) => glaze.sourceType === "commercial");
   const visibleBrands = new Set(ACTIVE_GLAZE_BRANDS);
   const featuredGlazes = commercial.filter((glaze) => glaze.brand && visibleBrands.has(glaze.brand as (typeof ACTIVE_GLAZE_BRANDS)[number]));
 
-  const [inventory, firingImageMap] = await Promise.all([
-    inventoryPromise,
-    getGlazeFiringImageMap(featuredGlazes.map((glaze) => glaze.id)),
-  ]);
   const inventoryStates = Object.fromEntries(
     inventory.map((item) => [
       item.glazeId,
@@ -45,11 +41,11 @@ export default async function GlazesPage({
       brandCounts={brandCounts}
       inventoryStates={inventoryStates}
       isGuest={Boolean(viewer.profile.isAnonymous)}
-      firingImageMap={firingImageMap}
+      firingImageMap={{}}
       preferredCone={viewer.profile.preferredCone ?? null}
       preferredAtmosphere={viewer.profile.preferredAtmosphere ?? null}
       restrictToPreferredExamples={Boolean(viewer.profile.restrictToPreferredExamples)}
-      isAdmin={Boolean(viewer.profile.isAdmin)}
+      isAdmin={false}
       reviewMode={reviewMode}
     />
   );

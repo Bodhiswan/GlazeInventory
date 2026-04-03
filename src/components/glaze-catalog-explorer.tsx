@@ -17,6 +17,8 @@ import {
   extractGlazeFinishTraits,
   extractQueryColorIntent,
   cn,
+  buildGlazeSearchIndex,
+  matchesGlazeSearch,
   formatGlazeLabel,
   getColorSwatch,
   getDominantGlazeColorLabel,
@@ -161,10 +163,6 @@ function toggleValue(values: string[], target: string) {
   return values.includes(target) ? values.filter((value) => value !== target) : [...values, target];
 }
 
-function toggleExclusiveValue(values: string[], target: string) {
-  return values.length === 1 && values[0] === target ? [] : [target];
-}
-
 function FilterSelectionSummary({
   values,
   onRemove,
@@ -272,7 +270,7 @@ export function GlazeCatalogExplorer({
             matchesFiringImagePreference(image, preferredCone, preferredAtmosphere),
           ),
           hasCuratedDescription: hasCuratedGlazeDescription(glaze),
-          searchText: [
+          searchText: buildGlazeSearchIndex([
             glaze.code,
             glaze.name,
             glaze.brand,
@@ -282,10 +280,7 @@ export function GlazeCatalogExplorer({
             glaze.description,
             colorTraits.join(" "),
             finishTraits.join(" "),
-          ]
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase(),
+          ]),
         };
       }),
     [glazes, firingImageMap, preferredCone, preferredAtmosphere],
@@ -315,21 +310,6 @@ export function GlazeCatalogExplorer({
     [indexedGlazes],
   );
   const brandOptionCounts = useMemo(() => new Map(brandCounts), [brandCounts]);
-  const quickBrandOptions = useMemo(
-    () =>
-      [...brandOptions]
-        .sort((left, right) => {
-          const countDelta = (brandOptionCounts.get(right) ?? 0) - (brandOptionCounts.get(left) ?? 0);
-
-          if (countDelta !== 0) {
-            return countDelta;
-          }
-
-          return left.localeCompare(right);
-        })
-        .slice(0, 3),
-    [brandOptions, brandOptionCounts],
-  );
   const familyOptionCounts = useMemo(
     () => countValues(indexedGlazes.flatMap((item) => item.familyTraits)),
     [indexedGlazes],
@@ -382,7 +362,7 @@ export function GlazeCatalogExplorer({
           return true;
         }
 
-        return item.searchText.includes(normalizedQuery);
+        return matchesGlazeSearch(item.searchText, deferredQuery);
       }),
     [
       indexedGlazes,
@@ -394,6 +374,7 @@ export function GlazeCatalogExplorer({
       finishFilters,
       coneFilters,
       normalizedQuery,
+      deferredQuery,
     ],
   );
   const brandCountBaseGlazes = useMemo(
@@ -427,7 +408,7 @@ export function GlazeCatalogExplorer({
           return true;
         }
 
-        return item.searchText.includes(normalizedQuery);
+        return matchesGlazeSearch(item.searchText, deferredQuery);
       }),
     [
       indexedGlazes,
@@ -438,6 +419,7 @@ export function GlazeCatalogExplorer({
       finishFilters,
       coneFilters,
       normalizedQuery,
+      deferredQuery,
     ],
   );
   const currentBrandCounts = useMemo(
@@ -471,16 +453,14 @@ export function GlazeCatalogExplorer({
         }
 
         if (normalizedQuery) {
-          const leftExact = [left.glaze.code, left.glaze.name]
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase()
-            .includes(normalizedQuery);
-          const rightExact = [right.glaze.code, right.glaze.name]
-            .filter(Boolean)
-            .join(" ")
-            .toLowerCase()
-            .includes(normalizedQuery);
+          const leftExact = matchesGlazeSearch(
+            buildGlazeSearchIndex([left.glaze.code, left.glaze.name]),
+            deferredQuery,
+          );
+          const rightExact = matchesGlazeSearch(
+            buildGlazeSearchIndex([right.glaze.code, right.glaze.name]),
+            deferredQuery,
+          );
 
           if (leftExact !== rightExact) {
             return rightExact ? 1 : -1;
@@ -489,7 +469,7 @@ export function GlazeCatalogExplorer({
 
         return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
       }),
-    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, normalizedQuery],
+    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, normalizedQuery, deferredQuery],
   );
 
   const hasFilters = Boolean(
@@ -526,22 +506,6 @@ export function GlazeCatalogExplorer({
     () => (normalizedQuery || activeColorRankingIntent.length ? sortedGlazes : gradientSortedGlazes),
     [normalizedQuery, activeColorRankingIntent.length, sortedGlazes, gradientSortedGlazes],
   );
-  const displayedBrandCounts = useMemo(
-    () =>
-      Array.from(
-        displayGlazes.reduce<Map<string, number>>((counts, item) => {
-          const brand = item.glaze.brand;
-
-          if (!brand) {
-            return counts;
-          }
-
-          counts.set(brand, (counts.get(brand) ?? 0) + 1);
-          return counts;
-        }, new Map()),
-      ).sort((left, right) => left[0].localeCompare(right[0])),
-    [displayGlazes],
-  );
   const visibleGradientGlazes = useMemo(
     () => displayGlazes.slice(0, visibleCount),
     [displayGlazes, visibleCount],
@@ -565,13 +529,14 @@ export function GlazeCatalogExplorer({
   const selectedFilterCount =
     brandFilters.length + familyFilters.length + colorFilters.length + finishFilters.length + coneFilters.length;
   const selectedFilterLabels = [...brandFilters, ...familyFilters, ...colorFilters, ...finishFilters, ...coneFilters];
+  const hasActiveQuery = hasFilters;
   const visibleGlazeCount = visibleGradientGlazes.length;
   const remainingGlazeCount = Math.max(displayGlazes.length - visibleGlazeCount, 0);
 
   useEffect(() => {
     const node = loadMoreRef.current;
 
-    if (!node || visibleCount >= displayGlazes.length) {
+    if (!hasActiveQuery || !node || visibleCount >= displayGlazes.length) {
       return;
     }
 
@@ -590,7 +555,7 @@ export function GlazeCatalogExplorer({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [visibleCount, displayGlazes.length]);
+  }, [hasActiveQuery, visibleCount, displayGlazes.length]);
 
   async function handleInventoryStateChange(
     glazeId: string,
@@ -667,7 +632,7 @@ export function GlazeCatalogExplorer({
           </Link>
         </div>
       ) : null}
-      <section className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_320px]">
+      <section className="grid gap-5">
         <Panel className="space-y-5">
           <div className="space-y-4">
             <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-3 sm:px-4 sm:py-4">
@@ -847,89 +812,56 @@ export function GlazeCatalogExplorer({
               ) : null}
             </div>
 
-            <div className="flex flex-wrap items-center gap-3">
-              <Badge tone="neutral">{sortedGlazes.length} results</Badge>
-              <Badge tone="neutral">
-                Showing {visibleGlazeCount} of {displayGlazes.length}
-              </Badge>
-              {isGuest ? <Badge tone="accent">Guest catalog mode</Badge> : null}
-              {remainingGlazeCount ? (
-                <>
+            {hasActiveQuery ? (
+              <div className="flex flex-wrap items-center gap-3">
+                <Badge tone="neutral">{sortedGlazes.length} results</Badge>
+                <Badge tone="neutral">
+                  Showing {visibleGlazeCount} of {displayGlazes.length}
+                </Badge>
+                {isGuest ? <Badge tone="accent">Guest catalog mode</Badge> : null}
+                {remainingGlazeCount ? (
+                  <>
+                    <button
+                      type="button"
+                      className={buttonVariants({ variant: "ghost", size: "sm" })}
+                      onClick={() =>
+                        setVisibleCount((current) =>
+                          Math.min(current + GLAZE_BATCH_STEP, displayGlazes.length),
+                        )
+                      }
+                    >
+                      Show {Math.min(GLAZE_BATCH_STEP, remainingGlazeCount)} more
+                    </button>
+                    <button
+                      type="button"
+                      className={buttonVariants({ variant: "secondary", size: "sm" })}
+                      onClick={() => setVisibleCount(displayGlazes.length)}
+                    >
+                      Show all {displayGlazes.length}
+                    </button>
+                  </>
+                ) : null}
+                {hasFilters ? (
                   <button
                     type="button"
                     className={buttonVariants({ variant: "ghost", size: "sm" })}
-                    onClick={() =>
-                      setVisibleCount((current) => Math.min(current + GLAZE_BATCH_STEP, displayGlazes.length))
-                    }
+                    onClick={() => {
+                      setQuery("");
+                      setBrandFilters([]);
+                      setFamilyFilters([]);
+                      setColorFilters([]);
+                      setFinishFilters([]);
+                      setConeFilters([]);
+                      setVisibleCount(INITIAL_GLAZE_BATCH);
+                    }}
                   >
-                    Show {Math.min(GLAZE_BATCH_STEP, remainingGlazeCount)} more
+                    Clear filters
                   </button>
-                  <button
-                    type="button"
-                    className={buttonVariants({ variant: "secondary", size: "sm" })}
-                    onClick={() => setVisibleCount(displayGlazes.length)}
-                  >
-                    Show all {displayGlazes.length}
-                  </button>
-                </>
-              ) : null}
-              {hasFilters ? (
-                <button
-                  type="button"
-                  className={buttonVariants({ variant: "ghost", size: "sm" })}
-                  onClick={() => {
-                    setQuery("");
-                    setBrandFilters([]);
-                    setFamilyFilters([]);
-                    setColorFilters([]);
-                    setFinishFilters([]);
-                    setConeFilters([]);
-                    setVisibleCount(INITIAL_GLAZE_BATCH);
-                  }}
-                >
-                  Clear filters
-                </button>
-              ) : null}
-            </div>
-
-            {quickBrandOptions.length ? (
-              <div className="grid gap-2">
-                <p className="text-[10px] uppercase tracking-[0.16em] text-muted">
-                  Quick brand views
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {quickBrandOptions.map((option) => {
-                    const optionCount = brandOptionCounts.get(option) ?? 0;
-                    const matchingCount = currentBrandCounts.get(option) ?? 0;
-                    const selected = brandFilters.length === 1 && brandFilters[0] === option;
-
-                    return (
-                      <button
-                        key={option}
-                        type="button"
-                        onClick={() => {
-                          setBrandFilters((current) => toggleExclusiveValue(current, option));
-                          setVisibleCount(INITIAL_GLAZE_BATCH);
-                        }}
-                        className={buttonVariants({
-                          variant: selected ? "primary" : "ghost",
-                          size: "sm",
-                          className: "gap-2",
-                        })}
-                        aria-pressed={selected}
-                      >
-                        <span>{option}</span>
-                        <Badge tone={selected ? "success" : "neutral"} className="px-2 py-0.5">
-                          {matchingCount !== optionCount ? `${matchingCount}/${optionCount}` : optionCount}
-                        </Badge>
-                      </button>
-                    );
-                  })}
-                </div>
+                ) : null}
               </div>
             ) : null}
 
-            {selectedFilterLabels.length ? (
+            {hasActiveQuery && selectedFilterLabels.length ? (
               <FilterSelectionSummary
                 values={selectedFilterLabels}
                 onRemove={(value) => {
@@ -1026,7 +958,7 @@ export function GlazeCatalogExplorer({
             </Panel>
           )}
 
-          {visibleCount < displayGlazes.length ? (
+          {hasActiveQuery && visibleCount < displayGlazes.length ? (
             <div
               ref={loadMoreRef}
               className="border border-dashed border-border bg-panel px-4 py-3 text-center text-sm text-muted"
@@ -1036,41 +968,6 @@ export function GlazeCatalogExplorer({
           ) : null}
         </Panel>
 
-        <div className="hidden space-y-4 xl:block">
-          <Panel className="space-y-4">
-            <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-muted">Catalog coverage</p>
-              <h2 className="display-font mt-2 text-3xl tracking-tight">Multi-brand inventory search</h2>
-            </div>
-            <p className="text-sm leading-6 text-muted">
-              The catalog keeps Mayco, AMACO, and Coyote in one place so you can search by code, keyword, or visual cues while keeping inventory actions close at hand.
-            </p>
-
-            <div className="border border-border bg-panel p-4">
-              <p className="text-xs uppercase tracking-[0.18em] text-muted">Active catalog</p>
-              <p className="mt-2 text-3xl font-semibold text-foreground">{glazes.length}</p>
-              <p className="mt-1 text-sm text-muted">Commercial glazes visible in the main catalog.</p>
-            </div>
-          </Panel>
-
-          <Panel className="space-y-4">
-            <div>
-              <p className="text-sm uppercase tracking-[0.18em] text-muted">Brands in this pass</p>
-            </div>
-            <div className="space-y-2">
-              {brandCounts.length ? (
-                displayedBrandCounts.map(([brand, count]) => (
-                  <div key={brand} className="flex items-center justify-between text-sm text-muted">
-                    <span>{brand}</span>
-                    <span>{count}</span>
-                  </div>
-                ))
-              ) : (
-                <p className="text-sm text-muted">No catalog brands are loaded right now.</p>
-              )}
-            </div>
-          </Panel>
-        </div>
       </section>
 
       {activeGridItem ? (

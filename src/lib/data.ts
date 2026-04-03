@@ -144,7 +144,7 @@ function mapInventoryStatus(value: unknown) {
 function mapVendorCombinationExample(row: Row) {
   return {
     id: String(row.id),
-    sourceVendor: "Mayco" as const,
+    sourceVendor: String(row.source_vendor ?? "Mayco"),
     sourceCollection: String(row.source_collection ?? "glaze-combinations"),
     sourceKey: String(row.source_key),
     sourceUrl: String(row.source_url),
@@ -221,28 +221,16 @@ function sortTagSummaries(tags: GlazeTagSummary[]) {
   });
 }
 
-async function getGlazeTagSummaryMap(viewerId: string, glazes: Glaze[]) {
-  const commercialGlazes = glazes.filter((glaze) => glaze.sourceType === "commercial");
-
-  if (!commercialGlazes.length) {
-    return new Map<string, GlazeTagSummary[]>();
-  }
-
+const getAllTagData = cache(async function getAllTagData(viewerId: string) {
   const supabase = await getSupabase();
 
   if (!supabase) {
-    return new Map(
-      commercialGlazes.map((glaze) => [
-        glaze.id,
-        sortTagSummaries(getDemoTagSummariesForGlaze(glaze.id, viewerId)),
-      ]),
-    );
+    return null;
   }
 
-  const glazeIds = commercialGlazes.map((glaze) => glaze.id);
   const [{ data: tags }, { data: votes }] = await Promise.all([
     supabase.from("glaze_tags").select("*").order("category").order("label"),
-    supabase.from("glaze_tag_votes").select("glaze_id,tag_id,user_id").in("glaze_id", glazeIds),
+    supabase.from("glaze_tag_votes").select("glaze_id,tag_id,user_id"),
   ]);
 
   const tagRows = (tags ?? []) as Row[];
@@ -260,6 +248,29 @@ async function getGlazeTagSummaryMap(viewerId: string, glazes: Glaze[]) {
       viewerVotes.add(key);
     }
   }
+
+  return { tagRows, counts, viewerVotes };
+});
+
+async function getGlazeTagSummaryMap(viewerId: string, glazes: Glaze[]) {
+  const commercialGlazes = glazes.filter((glaze) => glaze.sourceType === "commercial");
+
+  if (!commercialGlazes.length) {
+    return new Map<string, GlazeTagSummary[]>();
+  }
+
+  const tagData = await getAllTagData(viewerId);
+
+  if (!tagData) {
+    return new Map(
+      commercialGlazes.map((glaze) => [
+        glaze.id,
+        sortTagSummaries(getDemoTagSummariesForGlaze(glaze.id, viewerId)),
+      ]),
+    );
+  }
+
+  const { tagRows, counts, viewerVotes } = tagData;
 
   return new Map(
     commercialGlazes.map((glaze) => {
@@ -890,6 +901,7 @@ async function hydratePosts(
   options?: {
     useAdminRead?: boolean;
     includeProfiles?: boolean;
+    preloadedPairs?: CombinationPair[];
   },
 ) {
   if (!rows.length) {
@@ -916,6 +928,21 @@ async function hydratePosts(
     createdAt: String(row.created_at),
   }));
 
+  if (options?.preloadedPairs) {
+    const pairs = options.preloadedPairs;
+    const glazeIds = Array.from(new Set(pairs.flatMap((pair) => [pair.glazeAId, pair.glazeBId])));
+    const [glazes, profiles] = await Promise.all([
+      getGlazesByIds(viewerId, glazeIds, adminClient),
+      includeProfiles ? getProfilesByIds(basePosts.map((post) => post.authorUserId), adminClient) : Promise.resolve([]),
+    ]);
+    const profilesById = new Map(profiles.map((profile) => [profile.id, profile]));
+
+    return attachGlazesToPosts(basePosts, pairs, glazes).map((post) => ({
+      ...post,
+      authorName: post.displayAuthorName ?? profilesById.get(post.authorUserId)?.displayName ?? post.authorName,
+    }));
+  }
+
   const [pairs, profiles] = await Promise.all([
     getPairsByIds(basePosts.map((post) => post.combinationPairId), adminClient),
     includeProfiles ? getProfilesByIds(basePosts.map((post) => post.authorUserId), adminClient) : Promise.resolve([]),
@@ -937,26 +964,44 @@ export async function getVendorCombinationExamples(viewerId: string) {
     return [] as VendorCombinationExample[];
   }
 
-  const { data: exampleRows } = await supabase
-    .from("vendor_combination_examples")
-    .select("*")
-    .order("cone", { ascending: true })
-    .order("title", { ascending: true });
+  // Fetch each cone separately to avoid Supabase's default 1000-row limit
+  const [cone6Result, cone10Result] = await Promise.all([
+    supabase
+      .from("vendor_combination_examples")
+      .select("*, vendor_combination_example_layers(*)")
+      .eq("cone", "Cone 6")
+      .order("title", { ascending: true })
+      .limit(5000),
+    supabase
+      .from("vendor_combination_examples")
+      .select("*, vendor_combination_example_layers(*)")
+      .eq("cone", "Cone 10")
+      .order("title", { ascending: true })
+      .limit(5000),
+  ]);
+  const joinedRows = [...(cone6Result.data ?? []), ...(cone10Result.data ?? [])];
 
-  const exampleIds = (exampleRows ?? []).map((row) => String((row as Row).id));
-
-  if (!exampleIds.length) {
+  if (!joinedRows?.length) {
     return [] as VendorCombinationExample[];
   }
 
-  const { data: layerRows } = await supabase
-    .from("vendor_combination_example_layers")
-    .select("*")
-    .in("example_id", exampleIds)
-    .order("layer_order", { ascending: true })
-    .order("created_at", { ascending: true });
+  const exampleRows: Row[] = [];
+  const layerRows: Row[] = [];
 
-  return hydrateVendorCombinationExamples(viewerId, (exampleRows ?? []) as Row[], (layerRows ?? []) as Row[]);
+  for (const row of joinedRows) {
+    const { vendor_combination_example_layers: layers, ...example } = row as Row & { vendor_combination_example_layers: Row[] };
+    exampleRows.push(example as Row);
+
+    if (Array.isArray(layers)) {
+      const sorted = [...layers].sort((a, b) => {
+        const orderDiff = Number(a.layer_order ?? 0) - Number(b.layer_order ?? 0);
+        return orderDiff !== 0 ? orderDiff : String(a.created_at ?? "").localeCompare(String(b.created_at ?? ""));
+      });
+      layerRows.push(...(sorted as Row[]));
+    }
+  }
+
+  return hydrateVendorCombinationExamples(viewerId, exampleRows, layerRows);
 }
 
 export async function getVendorCombinationExample(viewerId: string, exampleId: string) {
@@ -1006,14 +1051,28 @@ export async function getCommunityPosts(search = "") {
       taggedGlazes,
     );
   } else {
-    const { data } = await supabase
+    const { data: joinedRows } = await supabase
       .from("combination_posts")
-      .select("*")
+      .select("*, combination_pairs(*)")
       .eq("visibility", "members")
       .eq("status", "published")
       .order("created_at", { ascending: false });
 
-    posts = await hydratePosts(viewer.profile.id, (data ?? []) as Row[]);
+    const postRows: Row[] = [];
+    const pairsById = new Map<string, CombinationPair>();
+
+    for (const row of joinedRows ?? []) {
+      const { combination_pairs: pairData, ...postData } = row as Row & { combination_pairs: Row | null };
+      postRows.push(postData as Row);
+      if (pairData) {
+        const pair = mapPair(pairData);
+        pairsById.set(pair.id, pair);
+      }
+    }
+
+    posts = await hydratePosts(viewer.profile.id, postRows, {
+      preloadedPairs: Array.from(pairsById.values()),
+    });
   }
 
   const query = search.trim().toLowerCase();
@@ -1087,7 +1146,7 @@ export async function getPublishedCombinationPosts(
   } else {
     let query = supabase
       .from("combination_posts")
-      .select("*")
+      .select("*, combination_pairs(*)")
       .eq("visibility", "members")
       .eq("status", "published")
       .order("created_at", { ascending: false });
@@ -1096,10 +1155,23 @@ export async function getPublishedCombinationPosts(
       query = query.eq("author_user_id", options.authorUserId);
     }
 
-    const { data } = await query;
-    posts = await hydratePosts(viewerId, (data ?? []) as Row[], {
+    const { data: joinedRows } = await query;
+    const postRows: Row[] = [];
+    const pairsById = new Map<string, CombinationPair>();
+
+    for (const row of joinedRows ?? []) {
+      const { combination_pairs: pairData, ...postData } = row as Row & { combination_pairs: Row | null };
+      postRows.push(postData as Row);
+      if (pairData) {
+        const pair = mapPair(pairData);
+        pairsById.set(pair.id, pair);
+      }
+    }
+
+    posts = await hydratePosts(viewerId, postRows, {
       useAdminRead: Boolean(adminClient),
       includeProfiles: false,
+      preloadedPairs: Array.from(pairsById.values()),
     });
   }
 

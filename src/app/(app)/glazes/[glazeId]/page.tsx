@@ -6,7 +6,6 @@ import { Star } from "lucide-react";
 import {
   addGlazeCommentAction,
   setGlazeRatingAction,
-  updateGlazeDescriptionAction,
 } from "@/app/actions";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { GlazeOwnershipPanel } from "@/components/glaze-ownership-panel";
@@ -83,6 +82,14 @@ export default async function GlazeDetailPage({
             <Link href="/glazes" className={buttonVariants({ variant: "ghost" })}>
               Back to library
             </Link>
+            {glaze.code ? (
+              <Link
+                href={`/combinations?q=${encodeURIComponent(glaze.code)}`}
+                className={buttonVariants({ variant: "ghost" })}
+              >
+                Combinations
+              </Link>
+            ) : null}
             {viewer.profile.isAnonymous ? (
               <Link href={`/auth/sign-up?redirectTo=${encodeURIComponent(`/glazes/${glazeId}`)}`} className={buttonVariants({})}>
                 Sign up to save glazes
@@ -253,68 +260,6 @@ export default async function GlazeDetailPage({
         </div>
       </section>
 
-      {viewer.profile.isAdmin ? (
-        <Panel className="space-y-4">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-muted">Description editor</p>
-            <h2 className="display-font mt-2 text-3xl tracking-tight">Write the skim-readable version.</h2>
-            <p className="mt-2 text-sm leading-6 text-muted">
-              Keep this tight and consistent so future glaze pages are faster to scan. Focus on what the glaze looks like, how it behaves, and what firing context matters most.
-            </p>
-          </div>
-
-          <form action={updateGlazeDescriptionAction} className="grid gap-4">
-            <input type="hidden" name="glazeId" value={glaze.id} />
-            <input type="hidden" name="returnTo" value={`/glazes/${glaze.id}`} />
-            <label className="grid gap-2 text-sm font-medium">
-              Overview
-              <Textarea
-                name="editorialSummary"
-                defaultValue={glaze.editorialSummary ?? ""}
-                className="min-h-24"
-                placeholder="One short paragraph. What is this glaze and why would a potter reach for it?"
-              />
-            </label>
-            <div className="grid gap-4 lg:grid-cols-3">
-              <label className="grid gap-2 text-sm font-medium">
-                Surface
-                <Textarea
-                  name="editorialSurface"
-                  defaultValue={glaze.editorialSurface ?? ""}
-                  className="min-h-24"
-                  placeholder="Glossy blue-purple surface with subtle movement and darker pooling."
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-medium">
-                Application
-                <Textarea
-                  name="editorialApplication"
-                  defaultValue={glaze.editorialApplication ?? ""}
-                  className="min-h-24"
-                  placeholder="Looks strongest with 3 coats. Watch for movement on vertical forms."
-                />
-              </label>
-              <label className="grid gap-2 text-sm font-medium">
-                Firing
-                <Textarea
-                  name="editorialFiring"
-                  defaultValue={glaze.editorialFiring ?? ""}
-                  className="min-h-24"
-                  placeholder="Most often referenced at cone 6 oxidation. Cone 10 results may differ."
-                />
-              </label>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <button type="submit" className={buttonVariants({})}>
-                Save description summary
-              </button>
-              <Link href="/glazes?review=descriptions" className={buttonVariants({ variant: "ghost" })}>
-                Back to review queue
-              </Link>
-            </div>
-          </form>
-        </Panel>
-      ) : null}
 
       <section className="space-y-4">
         <div>
