@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Camera, ChevronDown, Loader2, Search, X } from "lucide-react";
-import { memo, useCallback, useDeferredValue, useMemo, useState, type ReactNode } from "react";
+import { ChevronDown, Loader2, Search, X } from "lucide-react";
+import { memo, useCallback, useDeferredValue, useEffect, useMemo, useState, type ReactNode } from "react";
 
 import { getCatalogGlazesForScannerAction } from "@/app/actions";
 import { GlazeScanner } from "@/components/glaze-scanner";
@@ -252,23 +252,12 @@ export function InventoryWorkspace({
 }) {
   const [inventoryItems, setInventoryItems] = useState(items);
   const [query, setQuery] = useState("");
-  const [scannerOpen, setScannerOpen] = useState(false);
-  const [scannerLoading, setScannerLoading] = useState(false);
   const [catalogGlazes, setCatalogGlazes] = useState<CatalogGlazeSummary[] | null>(null);
 
-  const handleToggleScanner = useCallback(async () => {
-    if (scannerOpen) {
-      setScannerOpen(false);
-      return;
-    }
-    setScannerOpen(true);
-    if (!catalogGlazes) {
-      setScannerLoading(true);
-      const data = await getCatalogGlazesForScannerAction();
-      setCatalogGlazes(data);
-      setScannerLoading(false);
-    }
-  }, [scannerOpen, catalogGlazes]);
+  // Load catalog data on mount for the scanner
+  useEffect(() => {
+    void getCatalogGlazesForScannerAction().then(setCatalogGlazes);
+  }, []);
 
   const [openSections, setOpenSections] = useState<Record<InventoryStatus, boolean>>({
     owned: true,
@@ -401,30 +390,19 @@ export function InventoryWorkspace({
 
   return (
     <div className="space-y-6">
-      <button
-        type="button"
-        onClick={() => { void handleToggleScanner(); }}
-        className={buttonVariants({
-          variant: scannerOpen ? "ghost" : "primary",
-          className: "w-full gap-2",
-        })}
-      >
-        <Camera className="h-5 w-5" />
-        {scannerOpen ? "Close scanner" : "Scan a glaze label"}
-      </button>
-
-      {scannerOpen ? (
-        <Panel className="space-y-4">
-          {scannerLoading || !catalogGlazes ? (
-            <div className="flex items-center justify-center gap-3 py-6">
-              <Loader2 className="h-5 w-5 animate-spin text-muted" />
-              <span className="text-sm text-muted">Loading glaze catalog...</span>
-            </div>
-          ) : (
+      <Panel className="space-y-4">
+        <div className="space-y-2">
+          <span className="text-sm font-semibold text-foreground">Add a glaze</span>
+          {catalogGlazes ? (
             <GlazeScanner catalogGlazes={catalogGlazes} />
+          ) : (
+            <div className="flex items-center gap-3 border border-foreground/14 bg-white px-3 py-2.5">
+              <Search className="h-4 w-4 shrink-0 text-muted" />
+              <span className="text-sm text-muted/60">Loading catalog...</span>
+            </div>
           )}
-        </Panel>
-      ) : null}
+        </div>
+      </Panel>
 
       <Panel className="space-y-4">
         <label className="block space-y-2">
