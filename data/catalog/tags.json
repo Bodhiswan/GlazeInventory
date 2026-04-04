@@ -1,0 +1,18 @@
+[
+  {"id":"81777b09-8d32-47f6-bfa7-722d7bfed23a","slug":"easy-to-layer","label":"Easy To Layer","category":"Application","description":"Usually layers well with other glazes."},
+  {"id":"8fb49c47-4a93-4a8a-84c6-0af1e08d3055","slug":"hard-to-apply","label":"Hard To Apply","category":"Application","description":"Can be fussy, inconsistent, or difficult to apply well."},
+  {"id":"8f3cb81f-fdc4-4b70-b5bc-e1acd664734b","slug":"thick-coat-friendly","label":"Thick Coat Friendly","category":"Application","description":"Develops best when applied generously."},
+  {"id":"b460ee7a-fa8b-4bf6-b7fe-6cc0cc146f14","slug":"thin-coat-friendly","label":"Thin Coat Friendly","category":"Application","description":"Looks good even when applied on the thinner side."},
+  {"id":"30a91bb6-3949-46a0-80dd-63b6d6f6c917","slug":"runny","label":"Runny","category":"Movement","description":"Moves or flows a lot in the kiln."},
+  {"id":"07c0d1b5-508b-4f01-a66e-8ad40f0d6a8f","slug":"stable","label":"Stable","category":"Movement","description":"Stays where it is applied and does not move much in the kiln."},
+  {"id":"6f62b96b-5cd9-41bc-aa25-e639a1fd4038","slug":"opaque","label":"Opaque","category":"Opacity","description":"Covers the body or underlayers with little transparency."},
+  {"id":"32ebf22e-8042-498e-9f7b-6017f8773889","slug":"translucent","label":"Translucent","category":"Opacity","description":"Lets some underlying color show through while softening it."},
+  {"id":"d7edade0-0253-4d36-85c2-5131e649781a","slug":"transparent","label":"Transparent","category":"Opacity","description":"Lets the clay body or underglaze show through clearly."},
+  {"id":"9e9dfaa0-961a-4782-b1ea-d83d06ea2bbf","slug":"glossy","label":"Glossy","category":"Surface","description":"Finishes with a glossy or reflective surface."},
+  {"id":"607f528a-75ad-4c99-ba1f-4a04d9818a5c","slug":"matte","label":"Matte","category":"Surface","description":"Finishes with a dry or low-sheen matte surface."},
+  {"id":"da6e8af7-7519-4180-aee3-c4548a6b4d48","slug":"satin","label":"Satin","category":"Surface","description":"Lands between matte and glossy with a soft sheen."},
+  {"id":"57ea58a5-1369-42bd-89c6-a42de579e3d4","slug":"breaks-on-edges","label":"Breaks On Edges","category":"Visual","description":"Breaks over texture or edges and reveals variation there."},
+  {"id":"cb91a14b-5a37-4f2c-a3fb-63e58ffb54e8","slug":"crystalline","label":"Crystalline","category":"Visual","description":"Develops crystal growth or crystal-like blooms."},
+  {"id":"f1b1e971-e068-46be-a568-12ea9f02ef47","slug":"textured","label":"Textured","category":"Visual","description":"Creates a tactile, foamy, cratered, or visibly textured surface."},
+  {"id":"424690bc-fa70-43a3-86ce-6e1eb12dcecf","slug":"variegated","label":"Variegated","category":"Visual","description":"Shows multiple colors, pooling, or movement in one finish."}
+]

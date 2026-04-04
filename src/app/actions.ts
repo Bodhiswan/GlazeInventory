@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
+import { getAllCatalogGlazes } from "@/lib/catalog";
 import { getCatalogGlazes, getInventory, getInventoryItem, requireViewer } from "@/lib/data";
 import {
   buildAnonymizedCombinationAuthorName,
@@ -199,13 +200,7 @@ async function requireLiveSupabase() {
 }
 
 async function requireMemberSupabase(returnTo = "/auth/sign-in") {
-  const context = await requireLiveSupabase();
-
-  if (context.viewer.profile.isAnonymous) {
-    redirect(`${returnTo}?error=Guest%20mode%20is%20browse-only.%20Create%20an%20account%20to%20use%20inventory%20or%20comments.`);
-  }
-
-  return context;
+  return requireLiveSupabase();
 }
 
 async function requireAdminSupabase(returnTo = "/dashboard") {
@@ -340,10 +335,18 @@ export async function signUpWithPasswordAction(formData: FormData) {
 }
 
 export async function signOutAction() {
+  const cookieStore = await (await import("next/headers")).cookies();
   const supabase = await createSupabaseServerClient();
 
   if (supabase) {
-    await supabase.auth.signOut();
+    await supabase.auth.signOut({ scope: "local" });
+  }
+
+  // Explicitly clear all Supabase auth cookies in case signOut didn't propagate
+  for (const cookie of cookieStore.getAll()) {
+    if (cookie.name.startsWith("sb-")) {
+      cookieStore.delete(cookie.name);
+    }
   }
 
   redirect("/");
@@ -386,11 +389,7 @@ export async function updatePasswordAction(formData: FormData) {
     redirect(`/auth/reset-password?error=${encodeURIComponent(issue)}`);
   }
 
-  const { viewer, supabase } = await requireLiveSupabase();
-
-  if (viewer.profile.isAnonymous) {
-    redirect("/auth/sign-in?error=Guest%20sessions%20cannot%20reset%20a%20password");
-  }
+  const { supabase } = await requireLiveSupabase();
 
   const { error } = await supabase.auth.updateUser({
     password: parsed.data.password,
@@ -404,48 +403,6 @@ export async function updatePasswordAction(formData: FormData) {
   redirect("/auth/sign-in?passwordReset=1");
 }
 
-export async function continueAsGuestAction(formData: FormData) {
-  const returnTo = formData.get("returnTo")?.toString().trim() || null;
-  const safeReturnTo = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/dashboard";
-
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
-  }
-
-  const { error } = await supabase.auth.signInAnonymously({
-    options: {
-      data: {
-        display_name: "Guest Potter",
-      },
-    },
-  });
-
-  if (error) {
-    redirect(`/auth/sign-in?error=${encodeURIComponent(error.message)}`);
-  }
-
-  redirect(safeReturnTo);
-}
-
-export async function beginAccountCreationAction() {
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    redirect("/auth/sign-up");
-  }
-
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (user?.is_anonymous) {
-    await supabase.auth.signOut();
-  }
-
-  redirect("/auth/sign-up");
-}
 
 export async function setGlazeInventoryStateAction(input: {
   glazeId: string;
@@ -1620,4 +1577,16 @@ export async function updateProfilePreferencesAction(formData: FormData) {
   revalidateWorkspace();
   revalidatePath("/profile");
   redirect("/profile?saved=1");
+}
+
+/** Return lightweight catalog glaze data for the label scanner. */
+export async function getCatalogGlazesForScannerAction() {
+  return getAllCatalogGlazes().map((g) => ({
+    id: g.id,
+    brand: g.brand ?? null,
+    code: g.code ?? null,
+    name: g.name,
+    line: g.line ?? null,
+    imageUrl: g.imageUrl ?? null,
+  }));
 }

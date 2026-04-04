@@ -1,5 +1,5 @@
 import { GlazeCatalogExplorer } from "@/components/glaze-catalog-explorer";
-import { getCatalogGlazes, getInventory, requireViewer } from "@/lib/data";
+import { getCatalogGlazes, getGlazeFiringImageMap, getInventory, requireViewer } from "@/lib/data";
 import { ACTIVE_GLAZE_BRANDS } from "@/lib/utils";
 
 export default async function GlazesPage({
@@ -34,14 +34,15 @@ export default async function GlazesPage({
       return counts;
     }, new Map()),
   ).sort((left, right) => left[0].localeCompare(right[0]));
+  const firingImageMap = getGlazeFiringImageMap(featuredGlazes.map((g) => g.id));
 
   return (
     <GlazeCatalogExplorer
       glazes={featuredGlazes}
       brandCounts={brandCounts}
       inventoryStates={inventoryStates}
-      isGuest={Boolean(viewer.profile.isAnonymous)}
-      firingImageMap={{}}
+      isGuest={false}
+      firingImageMap={firingImageMap}
       preferredCone={viewer.profile.preferredCone ?? null}
       preferredAtmosphere={viewer.profile.preferredAtmosphere ?? null}
       restrictToPreferredExamples={Boolean(viewer.profile.restrictToPreferredExamples)}

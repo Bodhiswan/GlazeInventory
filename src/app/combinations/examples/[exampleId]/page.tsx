@@ -6,11 +6,7 @@ import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import {
-  getPublicGuestViewer,
-  getVendorCombinationExample,
-  getViewer,
-} from "@/lib/data";
+import { getVendorCombinationExample, requireViewer } from "@/lib/data";
 import type { VendorCombinationExample } from "@/lib/types";
 import { formatGlazeLabel, formatGlazeMeta } from "@/lib/utils";
 
@@ -31,8 +27,7 @@ export default async function VendorCombinationExamplePage({
 }: {
   params: Promise<{ exampleId: string }>;
 }) {
-  const viewer = (await getViewer()) ?? getPublicGuestViewer();
-  const isGuest = Boolean(viewer.profile.isAnonymous);
+  const viewer = await requireViewer();
   const { exampleId } = await params;
   const example = await getVendorCombinationExample(viewer.profile.id, exampleId);
 
@@ -56,12 +51,7 @@ export default async function VendorCombinationExamplePage({
             >
               Open source
             </a>
-            {isGuest ? (
-              <Link href="/auth/sign-in" className={buttonVariants({})}>
-                Sign in to compare with your shelf
-              </Link>
-            ) : null}
-            <Link href="/combinations" className={buttonVariants({ variant: isGuest ? "primary" : "secondary" })}>
+            <Link href="/combinations" className={buttonVariants({ variant: "secondary" })}>
               Back to combinations
             </Link>
           </>
@@ -75,15 +65,11 @@ export default async function VendorCombinationExamplePage({
               <Badge tone="neutral">{example.sourceVendor}</Badge>
               {example.cone ? <Badge tone="neutral">{example.cone}</Badge> : null}
               {example.clayBody ? <Badge tone="neutral">{example.clayBody}</Badge> : null}
-              {isGuest ? (
-                <Badge tone="neutral">Sign in to compare layers with your shelf</Badge>
-              ) : (
-                <Badge tone={example.viewerOwnsAllGlazes ? "success" : "accent"}>
-                  {example.viewerOwnsAllGlazes
-                    ? "You own every layer"
-                    : `${example.viewerOwnedLayerCount}/${example.layers.length} layers owned`}
-                </Badge>
-              )}
+              <Badge tone={example.viewerOwnsAllGlazes ? "success" : "accent"}>
+                {example.viewerOwnsAllGlazes
+                  ? "You own every layer"
+                  : `${example.viewerOwnedLayerCount}/${example.layers.length} layers owned`}
+              </Badge>
             </div>
 
             <div className="relative aspect-[4/3] overflow-hidden border border-border bg-panel">

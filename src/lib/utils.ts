@@ -92,6 +92,17 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+const BRAND_URLS: Record<string, string> = {
+  Mayco: "https://www.maycocolors.com",
+  AMACO: "https://www.amaco.com",
+  Amaco: "https://www.amaco.com",
+  Coyote: "https://www.coyoteclay.com",
+};
+
+export function getManufacturerUrl(brand: string | null | undefined): string | null {
+  return brand ? (BRAND_URLS[brand] ?? null) : null;
+}
+
 export function formatGlazeLabel(glaze: Glaze) {
   if (glaze.brand && glaze.code) {
     return `${glaze.brand} ${glaze.code} ${glaze.name}`;

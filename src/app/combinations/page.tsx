@@ -1,14 +1,10 @@
-import Link from "next/link";
-
 import { CombinationsBrowser } from "@/components/combinations-browser";
-import { PageHeader } from "@/components/page-header";
-import { buttonVariants } from "@/components/ui/button";
 import {
-  getInventory,
-  getPublicGuestViewer,
+  getGlazeFiringImageMap,
+  getInventoryOwnership,
   getPublishedCombinationPosts,
   getVendorCombinationExamples,
-  getViewer,
+  requireViewer,
 } from "@/lib/data";
 import type { InventoryStatus } from "@/lib/types";
 import { formatSearchQuery } from "@/lib/utils";
@@ -20,45 +16,44 @@ export default async function CombinationsPage({
 }: {
   searchParams: Promise<{ view?: string; q?: string }>;
 }) {
-  const viewer = (await getViewer()) ?? getPublicGuestViewer();
+  const viewer = await requireViewer();
   const params = await searchParams;
-  const isGuest = Boolean(viewer.profile.isAnonymous);
   const initialQuery = formatSearchQuery(params.q) ?? "";
   const requestedView = formatSearchQuery(params.view);
   const selectedView: CombinationsView =
-    !isGuest && (requestedView === "possible" || requestedView === "mine") ? requestedView : "all";
-  const inventoryPromise = isGuest ? Promise.resolve([]) : getInventory(viewer.profile.id);
-  const [examples, publishedPosts] = await Promise.all([
+    requestedView === "possible" || requestedView === "mine" ? requestedView : "all";
+  const [examples, publishedPosts, ownership] = await Promise.all([
     getVendorCombinationExamples(viewer.profile.id),
-    getPublishedCombinationPosts(viewer.profile.id, { publicRead: isGuest }),
+    getPublishedCombinationPosts(viewer.profile.id),
+    getInventoryOwnership(viewer.profile.id),
   ]);
-  const myPosts = isGuest ? [] : publishedPosts.filter((post) => post.authorUserId === viewer.profile.id);
-  const inventory = await inventoryPromise;
-  const inventoryStatusByGlazeId = inventory.reduce<Record<string, InventoryStatus>>((map, item) => {
+  const myPosts = publishedPosts.filter((post) => post.authorUserId === viewer.profile.id);
+  const inventoryStatusByGlazeId = ownership.reduce<Record<string, InventoryStatus>>((map, item) => {
     map[item.glazeId] = item.status;
     return map;
   }, {});
 
-  return (
-    <div className="space-y-8">
-      <PageHeader
-        eyebrow="Combinations"
-        title="Explore glaze combinations"
-        actions={
-          isGuest ? (
-            <Link href="/auth/sign-in" className={buttonVariants({})}>
-              Sign in to save your shelf
-            </Link>
-          ) : null
-        }
-      />
+  // Collect all glaze IDs from examples and posts for firing images
+  const allGlazeIds = new Set<string>();
+  for (const ex of examples) {
+    for (const layer of ex.layers) {
+      if (layer.glaze?.id) allGlazeIds.add(layer.glaze.id);
+    }
+  }
+  for (const post of publishedPosts) {
+    for (const glaze of post.glazes ?? []) {
+      allGlazeIds.add(glaze.id);
+    }
+  }
+  const glazeFiringImages = getGlazeFiringImageMap(Array.from(allGlazeIds));
 
+  return (
+    <div className="space-y-6">
       <CombinationsBrowser
         examples={examples}
         publishedPosts={publishedPosts}
         myPosts={myPosts}
-        isGuest={isGuest}
-        glazeFiringImages={{}}
+        glazeFiringImages={glazeFiringImages}
         inventoryStatusByGlazeId={inventoryStatusByGlazeId}
         initialView={selectedView}
         initialQuery={initialQuery}

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Search, X } from "lucide-react";
-import { useDeferredValue, useEffect, useMemo, useState } from "react";
+import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
 import { setGlazeInventoryStateAction } from "@/app/actions";
 import { Badge } from "@/components/ui/badge";
@@ -19,6 +19,9 @@ import type {
   VendorCombinationExample,
 } from "@/lib/types";
 import { formatGlazeLabel, pickPreferredGlazeImage } from "@/lib/utils";
+
+const INITIAL_TILE_BATCH = 48;
+const TILE_BATCH_STEP = 36;
 
 type CombinationsView = "all" | "possible" | "mine";
 
@@ -47,8 +50,12 @@ interface CombinationTile {
  * Helpers
  * ------------------------------------------------------------------------ */
 
+function stripPunctuation(text: string) {
+  return text.replace(/[^a-z0-9 ]/g, "");
+}
+
 function buildExampleSearchText(example: VendorCombinationExample) {
-  return [
+  const raw = [
     example.sourceVendor,
     example.sourceCollection,
     example.title,
@@ -66,13 +73,16 @@ function buildExampleSearchText(example: VendorCombinationExample) {
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
+  // Include a stripped copy so "sw144" matches "sw-144"
+  return `${raw} ${stripPunctuation(raw)}`;
 }
 
 function buildPostSearchText(post: CombinationPost) {
   const glazeCopy = (post.glazes ?? []).map((glaze) => formatGlazeLabel(glaze).toLowerCase()).join(" ");
-  return [post.caption ?? "", post.applicationNotes ?? "", post.firingNotes ?? "", glazeCopy]
+  const raw = [post.caption ?? "", post.applicationNotes ?? "", post.firingNotes ?? "", glazeCopy]
     .join(" ")
     .toLowerCase();
+  return `${raw} ${stripPunctuation(raw)}`;
 }
 
 function getGlazeCodeCopy(glaze?: Glaze | null, fallbackCode?: string | null, fallbackName?: string | null) {
@@ -201,7 +211,7 @@ function getPostLayerRoleLabel(post: CombinationPost, glaze: Glaze, index: numbe
   return `Glaze ${index + 1}`;
 }
 
-function exampleToTile(example: VendorCombinationExample, isGuest: boolean): CombinationTile {
+function exampleToTile(example: VendorCombinationExample): CombinationTile {
   return {
     id: `example-${example.id}`,
     kind: "example",
@@ -209,12 +219,10 @@ function exampleToTile(example: VendorCombinationExample, isGuest: boolean): Com
     title: formatExampleCodeTitle(example),
     subtitle: example.sourceVendor,
     cone: example.cone ?? null,
-    badgeTone: isGuest ? "neutral" : example.viewerOwnsAllGlazes ? "success" : "accent",
-    badgeLabel: isGuest
-      ? "Sign in to compare"
-      : example.viewerOwnsAllGlazes
-        ? "All owned"
-        : `${example.viewerOwnedLayerCount}/${example.layers.length} owned`,
+    badgeTone: example.viewerOwnsAllGlazes ? "success" : "accent",
+    badgeLabel: example.viewerOwnsAllGlazes
+      ? "All owned"
+      : `${example.viewerOwnedLayerCount}/${example.layers.length} owned`,
     searchText: buildExampleSearchText(example),
     example,
     post: null,
@@ -239,44 +247,25 @@ function postToTile(post: CombinationPost, label: string): CombinationTile {
   };
 }
 
-function GlazeWishlistControl({
+function GlazeOwnershipControl({
   glazeId,
-  isGuest,
   status,
   onStatusChange,
 }: {
   glazeId: string;
-  isGuest: boolean;
   status: InventoryStatus | null;
   onStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
 }) {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  if (isGuest) {
-    return (
-      <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost", size: "sm" })}>
-        Sign in to wishlist
-      </Link>
-    );
-  }
-
-  if (status === "owned") {
-    return <Badge tone="success">On shelf</Badge>;
-  }
-
-  const isWishlisted = status === "wishlist";
-  const nextStatus: InventoryCollectionState = isWishlisted ? "none" : "wishlist";
-  const buttonLabel =
-    status === "archived" ? "Move to wishlist" : isWishlisted ? "Wishlisted" : "Wishlist glaze";
-
-  async function handleClick() {
+  async function handleSetStatus(targetStatus: InventoryCollectionState) {
     setError(null);
     setPending(true);
 
     const result = await setGlazeInventoryStateAction({
       glazeId,
-      status: nextStatus,
+      status: targetStatus,
     });
 
     if (!result.success) {
@@ -285,34 +274,47 @@ function GlazeWishlistControl({
       return;
     }
 
-    onStatusChange(glazeId, result.status ?? nextStatus);
+    onStatusChange(glazeId, result.status ?? targetStatus);
     setPending(false);
   }
 
+  const isOwned = status === "owned";
+  const isWishlisted = status === "wishlist";
+
   return (
     <div className="space-y-2">
-      <button
-        type="button"
-        onClick={() => {
-          void handleClick();
-        }}
-        disabled={pending}
-        className={buttonVariants({
-          variant: isWishlisted ? "primary" : "ghost",
-          size: "sm",
-        })}
-      >
-        {pending ? "Saving..." : buttonLabel}
-      </button>
-      {status === "archived" ? (
-        <p className="text-[11px] leading-5 text-muted">Currently marked empty on your shelf.</p>
-      ) : null}
+      <div className="flex gap-2">
+        <button
+          type="button"
+          onClick={() => { void handleSetStatus(isOwned ? "none" : "owned"); }}
+          disabled={pending}
+          className={buttonVariants({
+            variant: isOwned ? "primary" : "ghost",
+            size: "sm",
+            className: "min-h-11 flex-1 justify-center sm:min-h-10 sm:flex-none",
+          })}
+        >
+          {pending ? "Saving..." : isOwned ? "Owned" : "I own it"}
+        </button>
+        <button
+          type="button"
+          onClick={() => { void handleSetStatus(isWishlisted ? "none" : "wishlist"); }}
+          disabled={pending}
+          className={buttonVariants({
+            variant: isWishlisted ? "primary" : "ghost",
+            size: "sm",
+            className: "min-h-11 flex-1 justify-center sm:min-h-10 sm:flex-none",
+          })}
+        >
+          {pending ? "Saving..." : isWishlisted ? "Wishlisted" : "Wishlist"}
+        </button>
+      </div>
       {error ? <p className="text-[11px] leading-5 text-[#7f4026]">{error}</p> : null}
     </div>
   );
 }
 
-function CombinationGlazeRow({
+const CombinationGlazeRow = memo(function CombinationGlazeRow({
   roleLabel,
   connectorLabel,
   glaze,
@@ -322,9 +324,7 @@ function CombinationGlazeRow({
   preferredAtmosphere,
   glazeFiringImages,
   inventoryStatus,
-  isGuest,
   onInventoryStatusChange,
-  showTags = false,
 }: {
   roleLabel: string;
   connectorLabel?: string | null;
@@ -335,88 +335,47 @@ function CombinationGlazeRow({
   preferredAtmosphere?: string | null;
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatus: InventoryStatus | null;
-  isGuest: boolean;
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
-  showTags?: boolean;
 }) {
   const firingImages = glaze ? glazeFiringImages[glaze.id] ?? [] : [];
   const thumbnailUrl = glaze
     ? pickPreferredGlazeImage(glaze, firingImages, preferredCone ?? null, preferredAtmosphere ?? null)
     : null;
-  const thumbnailLabel = firingImages.find((image) => image.imageUrl === thumbnailUrl)?.cone ?? preferredCone ?? null;
   const displayLabel = glaze
     ? formatGlazeLabel(glaze)
-    : [fallbackCode, fallbackName].filter(Boolean).join(" ") || "Catalog match not linked yet";
+    : [fallbackCode, fallbackName].filter(Boolean).join(" ") || "Unlinked glaze";
 
   return (
-    <div className="border border-border bg-panel px-3 py-3">
-      <div className="flex gap-3">
-        <div className="w-20 shrink-0">
-          <div className="overflow-hidden border border-border bg-white">
-            {thumbnailUrl ? (
-              <img
-                src={thumbnailUrl}
-                alt={displayLabel}
-                className="aspect-square w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            ) : (
-              <div className="flex aspect-square items-center justify-center px-2 text-center text-[10px] uppercase tracking-[0.16em] text-muted">
-                No glaze image
-              </div>
-            )}
-          </div>
+    <div className="border border-border bg-panel px-3 py-2.5">
+      <div className="flex items-center gap-3">
+        {/* Thumbnail */}
+        <div className="w-14 shrink-0 overflow-hidden border border-border bg-white">
+          {thumbnailUrl ? (
+            <Image src={thumbnailUrl} alt={displayLabel} width={96} height={96} sizes="56px" className="aspect-square w-full object-cover" loading="lazy" />
+          ) : (
+            <div className="flex aspect-square items-center justify-center text-[8px] uppercase tracking-[0.14em] text-muted">No img</div>
+          )}
         </div>
 
-        <div className="min-w-0 flex-1 space-y-2">
-          <div className="space-y-1">
-            <p className="text-[10px] uppercase tracking-[0.16em] text-muted">{roleLabel}</p>
-            {glaze ? (
-              <Link href={`/glazes/${glaze.id}`} className="block font-semibold text-foreground hover:underline">
-                {displayLabel}
-              </Link>
-            ) : (
-              <p className="font-semibold text-foreground">{displayLabel}</p>
-            )}
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {thumbnailLabel ? <Badge tone="neutral">{thumbnailLabel}</Badge> : null}
-            {connectorLabel ? <Badge tone="neutral">{connectorLabel} next layer</Badge> : null}
-            {showTags && glaze
-              ? (glaze.communityTags ?? [])
-                  .filter((tag) => tag.voteCount > 0)
-                  .sort((left, right) => right.voteCount - left.voteCount)
-                  .slice(0, 3)
-                  .map((tag) => (
-                    <Badge key={`${glaze.id}-${tag.slug}`} tone="neutral" className="normal-case tracking-[0.08em]">
-                      {tag.label} {tag.voteCount}
-                    </Badge>
-                  ))
-              : null}
-          </div>
-
-          <div className="flex flex-wrap items-start gap-2">
-            {glaze ? (
-              <Link href={`/glazes/${glaze.id}`} className={buttonVariants({ variant: "ghost", size: "sm" })}>
-                Open glaze
-              </Link>
-            ) : null}
-            {glaze ? (
-              <GlazeWishlistControl
-                glazeId={glaze.id}
-                isGuest={isGuest}
-                status={inventoryStatus}
-                onStatusChange={onInventoryStatusChange}
-              />
-            ) : null}
-          </div>
+        {/* Info */}
+        <div className="min-w-0 flex-1">
+          <p className="text-[10px] uppercase tracking-[0.14em] text-muted">{roleLabel}</p>
+          <p className="truncate text-sm font-semibold text-foreground">{displayLabel}</p>
+          {glaze ? (
+            <p className="truncate text-xs text-muted">{[glaze.brand, glaze.cone].filter(Boolean).join(" · ")}</p>
+          ) : null}
         </div>
       </div>
+
+      {/* Ownership actions */}
+      {glaze ? (
+        <div className="mt-2">
+          <GlazeOwnershipControl glazeId={glaze.id} status={inventoryStatus} onStatusChange={onInventoryStatusChange} />
+        </div>
+      ) : null}
     </div>
   );
-}
+});
 
 /* ---------------------------------------------------------------------------
  * Detail modal for an imported vendor example
@@ -426,78 +385,65 @@ function ExampleDetail({
   example,
   glazeFiringImages,
   inventoryStatusByGlazeId,
-  isGuest,
   onInventoryStatusChange,
 }: {
   example: VendorCombinationExample;
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
-  isGuest: boolean;
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
 }) {
   return (
-    <div className="space-y-5">
-      <div className="mx-auto w-full max-w-[400px] overflow-hidden border border-border bg-panel">
-        <Image
-          src={example.imageUrl}
-          alt={example.title}
-          width={400}
-          height={300}
-          sizes="(min-width: 640px) 400px, 100vw"
-          className="aspect-[4/3] w-full object-cover"
-        />
-      </div>
-
-      <div className="flex flex-wrap gap-2">
-        <Badge tone="neutral">{example.sourceVendor}</Badge>
-        {example.cone ? <Badge tone="neutral">{example.cone}</Badge> : null}
-        {example.atmosphere ? <Badge tone="neutral">{example.atmosphere}</Badge> : null}
-      </div>
-
-      {example.clayBody ? (
-        <div className="text-sm text-muted">
-          <span className="font-semibold text-foreground">Clay body:</span> {example.clayBody}
-        </div>
-      ) : null}
-
-      <div className="grid gap-3">
-        {example.layers.map((layer) => (
-          <CombinationGlazeRow
-            key={layer.id}
-            roleLabel={getLayerRoleLabel(example, layer.layerOrder)}
-            connectorLabel={layer.connectorToNext}
-            glaze={layer.glaze}
-            fallbackCode={layer.glazeCode}
-            fallbackName={layer.glazeName}
-            preferredCone={example.cone ?? null}
-            preferredAtmosphere={example.atmosphere ?? null}
-            glazeFiringImages={glazeFiringImages}
-            inventoryStatus={layer.glaze ? inventoryStatusByGlazeId[layer.glaze.id] ?? null : null}
-            isGuest={isGuest}
-            onInventoryStatusChange={onInventoryStatusChange}
+    <div className="space-y-4">
+      {/* Hero: combination result photo + metadata side by side */}
+      <div className="grid gap-4 sm:grid-cols-[minmax(0,280px)_1fr]">
+        <div className="overflow-hidden border border-border bg-panel">
+          <Image
+            src={example.imageUrl}
+            alt={example.title}
+            width={400}
+            height={300}
+            sizes="(min-width: 640px) 280px, 100vw"
+            className="aspect-[4/3] w-full object-cover"
           />
-        ))}
+        </div>
+        <div className="space-y-3">
+          <div className="flex flex-wrap gap-1.5">
+            <Badge tone="neutral">{example.sourceVendor}</Badge>
+            {example.cone ? <Badge tone="neutral">{example.cone}</Badge> : null}
+            {example.atmosphere ? <Badge tone="neutral">{example.atmosphere}</Badge> : null}
+          </div>
+          {example.clayBody ? (
+            <p className="text-sm text-muted"><span className="font-semibold text-foreground">Clay body:</span> {example.clayBody}</p>
+          ) : null}
+          {example.applicationNotes ? (
+            <p className="text-sm leading-6 text-muted"><span className="font-semibold text-foreground">Application:</span> {example.applicationNotes}</p>
+          ) : null}
+          {example.firingNotes ? (
+            <p className="text-sm leading-6 text-muted"><span className="font-semibold text-foreground">Firing:</span> {example.firingNotes}</p>
+          ) : null}
+        </div>
       </div>
 
-      {example.applicationNotes ? (
-        <p className="text-sm leading-6 text-muted">
-          <span className="font-semibold text-foreground">Application:</span> {example.applicationNotes}
-        </p>
-      ) : null}
-
-      {example.firingNotes ? (
-        <p className="text-sm leading-6 text-muted">
-          <span className="font-semibold text-foreground">Firing:</span> {example.firingNotes}
-        </p>
-      ) : null}
-
-      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-        <Link
-          href={`/combinations/examples/${example.id}`}
-          className={buttonVariants({ variant: "ghost", size: "sm", className: "w-full sm:w-auto" })}
-        >
-          Open full example page
-        </Link>
+      {/* Glaze layers — compact rows */}
+      <div>
+        <p className="mb-2 text-[10px] uppercase tracking-[0.16em] text-muted">Glazes in this combination</p>
+        <div className="grid gap-2">
+          {example.layers.map((layer) => (
+            <CombinationGlazeRow
+              key={layer.id}
+              roleLabel={getLayerRoleLabel(example, layer.layerOrder)}
+              connectorLabel={layer.connectorToNext}
+              glaze={layer.glaze}
+              fallbackCode={layer.glazeCode}
+              fallbackName={layer.glazeName}
+              preferredCone={example.cone ?? null}
+              preferredAtmosphere={example.atmosphere ?? null}
+              glazeFiringImages={glazeFiringImages}
+              inventoryStatus={layer.glaze ? inventoryStatusByGlazeId[layer.glaze.id] ?? null : null}
+              onInventoryStatusChange={onInventoryStatusChange}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -511,13 +457,11 @@ function PostDetail({
   post,
   glazeFiringImages,
   inventoryStatusByGlazeId,
-  isGuest,
   onInventoryStatusChange,
 }: {
   post: CombinationPost;
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
-  isGuest: boolean;
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
 }) {
   const imageSrc = typeof post.imagePath === "string" && post.imagePath.trim() ? post.imagePath : null;
@@ -525,61 +469,58 @@ function PostDetail({
   const orderedGlazes = getOrderedPostGlazes(post);
 
   return (
-    <div className="space-y-5">
-      {imageSrc ? (
-        <div className="mx-auto w-full max-w-[400px] overflow-hidden border border-border bg-panel">
-          <img
-            src={imageSrc}
-            alt={post.caption ?? "Published glaze combination"}
-            className="aspect-[4/3] w-full object-cover"
-          />
-        </div>
-      ) : null}
-
-      <div className="text-sm text-muted">
-        <span className="font-semibold text-foreground">By:</span> {post.authorName}
-      </div>
-
-      {orderedGlazes.length ? (
-        <div className="grid gap-3">
-          {orderedGlazes.map((glaze, index) => (
-            <CombinationGlazeRow
-              key={glaze.id}
-              roleLabel={getPostLayerRoleLabel(post, glaze, index)}
-              glaze={glaze}
-              preferredCone={preferredCone}
-              glazeFiringImages={glazeFiringImages}
-              inventoryStatus={inventoryStatusByGlazeId[glaze.id] ?? null}
-              isGuest={isGuest}
-              onInventoryStatusChange={onInventoryStatusChange}
-              showTags
+    <div className="space-y-4">
+      {/* Hero: combination result photo + metadata side by side */}
+      <div className="grid gap-4 sm:grid-cols-[minmax(0,280px)_1fr]">
+        {imageSrc ? (
+          <div className="overflow-hidden border border-border bg-panel">
+            <Image
+              src={imageSrc}
+              alt={post.caption ?? "Published glaze combination"}
+              width={400}
+              height={300}
+              sizes="(min-width: 640px) 280px, 100vw"
+              className="aspect-[4/3] w-full object-cover"
             />
-          ))}
+          </div>
+        ) : null}
+        <div className="space-y-3">
+          <div className="flex flex-wrap gap-1.5">
+            <Badge tone="neutral">Community</Badge>
+            {preferredCone ? <Badge tone="neutral">{preferredCone}</Badge> : null}
+          </div>
+          <p className="text-sm text-muted"><span className="font-semibold text-foreground">By:</span> {post.authorName}</p>
+          {post.caption ? (
+            <p className="text-sm leading-6 text-foreground/90">{post.caption}</p>
+          ) : null}
+          {post.applicationNotes ? (
+            <p className="text-sm leading-6 text-muted"><span className="font-semibold text-foreground">Application:</span> {post.applicationNotes}</p>
+          ) : null}
+          {post.firingNotes ? (
+            <p className="text-sm leading-6 text-muted"><span className="font-semibold text-foreground">Firing:</span> {post.firingNotes}</p>
+          ) : null}
+        </div>
+      </div>
+
+      {/* Glaze layers — compact rows */}
+      {orderedGlazes.length ? (
+        <div>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.16em] text-muted">Glazes in this combination</p>
+          <div className="grid gap-2">
+            {orderedGlazes.map((glaze, index) => (
+              <CombinationGlazeRow
+                key={glaze.id}
+                roleLabel={getPostLayerRoleLabel(post, glaze, index)}
+                glaze={glaze}
+                preferredCone={preferredCone}
+                glazeFiringImages={glazeFiringImages}
+                inventoryStatus={inventoryStatusByGlazeId[glaze.id] ?? null}
+                onInventoryStatusChange={onInventoryStatusChange}
+              />
+            ))}
+          </div>
         </div>
       ) : null}
-
-      {post.caption ? <p className="text-sm leading-6 text-foreground/90">{post.caption}</p> : null}
-
-      {post.applicationNotes ? (
-        <p className="text-sm leading-6 text-muted">
-          <span className="font-semibold text-foreground">Application:</span> {post.applicationNotes}
-        </p>
-      ) : null}
-
-      {post.firingNotes ? (
-        <p className="text-sm leading-6 text-muted">
-          <span className="font-semibold text-foreground">Firing:</span> {post.firingNotes}
-        </p>
-      ) : null}
-
-      <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-        <Link
-          href={`/combinations/${post.pairKey}`}
-          className={buttonVariants({ variant: "ghost", size: "sm", className: "w-full sm:w-auto" })}
-        >
-          Open pair detail
-        </Link>
-      </div>
     </div>
   );
 }
@@ -592,7 +533,6 @@ export function CombinationsBrowser({
   examples,
   publishedPosts,
   myPosts,
-  isGuest,
   glazeFiringImages,
   inventoryStatusByGlazeId: initialInventoryStatusByGlazeId,
   initialView = "all",
@@ -601,7 +541,6 @@ export function CombinationsBrowser({
   examples: VendorCombinationExample[];
   publishedPosts: CombinationPost[];
   myPosts: CombinationPost[];
-  isGuest: boolean;
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
   initialView?: CombinationsView;
@@ -609,10 +548,13 @@ export function CombinationsBrowser({
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [view, setView] = useState<CombinationsView>(initialView);
+  const [showCone5, setShowCone5] = useState(true);
   const [showCone6, setShowCone6] = useState(true);
   const [showCone10, setShowCone10] = useState(true);
   const [activeTileId, setActiveTileId] = useState<string | null>(null);
   const [inventoryStatusByGlazeId, setInventoryStatusByGlazeId] = useState(initialInventoryStatusByGlazeId);
+  const [visibleCount, setVisibleCount] = useState(INITIAL_TILE_BATCH);
+  const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
 
@@ -641,8 +583,8 @@ export function CombinationsBrowser({
   /* --- build unified tile lists ----------------------------------------- */
 
   const exampleTiles = useMemo(
-    () => examples.map((e) => exampleToTile(e, isGuest)),
-    [examples, isGuest],
+    () => examples.map((e) => exampleToTile(e)),
+    [examples],
   );
 
   const possibleExampleTiles = useMemo(
@@ -674,20 +616,28 @@ export function CombinationsBrowser({
     }
 
     if (normalizedQuery) {
-      tiles = tiles.filter((tile) => tile.searchText.includes(normalizedQuery));
+      const strippedQuery = stripPunctuation(normalizedQuery);
+      tiles = tiles.filter((tile) =>
+        tile.searchText.includes(normalizedQuery) ||
+        (strippedQuery !== normalizedQuery && tile.searchText.includes(strippedQuery)),
+      );
     }
 
-    if (!showCone6 || !showCone10) {
-      tiles = tiles.filter((tile) => {
-        const cone = tile.cone?.toLowerCase() ?? "";
-        if (cone.includes("6") && !showCone6) return false;
-        if (cone.includes("10") && !showCone10) return false;
-        return true;
-      });
-    }
+    tiles = tiles.filter((tile) => {
+      const cone = tile.cone ?? "";
+      const isCone5 = /\bcone\s+5\b/i.test(cone);
+      const isCone6 = /\bcone\s+6\b/i.test(cone);
+      const isCone10 = /\bcone\s+10\b/i.test(cone);
+      if (isCone5 && showCone5) return true;
+      if (isCone6 && showCone6) return true;
+      if (isCone10 && showCone10) return true;
+      if (isCone5 || isCone6 || isCone10) return false;
+      // Non-cone items (community posts without cone info) — show them
+      return !cone;
+    });
 
     return tiles;
-  }, [view, normalizedQuery, showCone6, showCone10, exampleTiles, possibleExampleTiles, communityPostTiles, myPostTiles]);
+  }, [view, normalizedQuery, showCone5, showCone6, showCone10, exampleTiles, possibleExampleTiles, communityPostTiles, myPostTiles]);
 
   const activeTile = useMemo(
     () => activeTiles.find((t) => t.id === activeTileId) ?? null,
@@ -695,6 +645,38 @@ export function CombinationsBrowser({
   );
 
   const activeExampleCount = view === "possible" ? possibleExampleTiles.length : exampleTiles.length;
+
+  /* Reset visible count when filters change */
+  useEffect(() => {
+    setVisibleCount(INITIAL_TILE_BATCH);
+  }, [view, normalizedQuery, showCone5, showCone6, showCone10]);
+
+  /* Progressive rendering — load more tiles as the user scrolls */
+  const visibleTiles = useMemo(
+    () => activeTiles.slice(0, visibleCount),
+    [activeTiles, visibleCount],
+  );
+  const remainingCount = activeTiles.length - visibleTiles.length;
+
+  useEffect(() => {
+    const node = loadMoreRef.current;
+
+    if (!node || visibleCount >= activeTiles.length) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setVisibleCount((current) => Math.min(current + TILE_BATCH_STEP, activeTiles.length));
+        }
+      },
+      { rootMargin: "900px 0px" },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [visibleCount, activeTiles.length]);
 
   return (
     <div className="space-y-6">
@@ -725,23 +707,17 @@ export function CombinationsBrowser({
           >
             All combinations
           </Link>
-          {isGuest ? (
-            <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost", size: "sm" })}>
-              Possible combinations
-            </Link>
-          ) : (
-            <Link
-              href="/combinations?view=possible"
-              aria-current={view === "possible" ? "page" : undefined}
-              className={buttonVariants({
-                variant: view === "possible" ? "primary" : "ghost",
-                size: "sm",
-              })}
-              onClick={() => setView("possible")}
-            >
-              Possible combinations
-            </Link>
-          )}
+          <Link
+            href="/combinations?view=possible"
+            aria-current={view === "possible" ? "page" : undefined}
+            className={buttonVariants({
+              variant: view === "possible" ? "primary" : "ghost",
+              size: "sm",
+            })}
+            onClick={() => setView("possible")}
+          >
+            Possible combinations
+          </Link>
           {query.trim() ? (
             <button
               type="button"
@@ -755,6 +731,15 @@ export function CombinationsBrowser({
 
         <div className="flex flex-wrap items-center gap-4">
           <span className="text-xs uppercase tracking-[0.18em] text-muted">Cone filter</span>
+          <label className="flex items-center gap-2 text-sm text-foreground">
+            <input
+              type="checkbox"
+              checked={showCone5}
+              onChange={(e) => setShowCone5(e.target.checked)}
+              className="accent-foreground"
+            />
+            Cone 5
+          </label>
           <label className="flex items-center gap-2 text-sm text-foreground">
             <input
               type="checkbox"
@@ -775,7 +760,7 @@ export function CombinationsBrowser({
           </label>
         </div>
 
-        {!isGuest && view === "possible" ? (
+        {view === "possible" ? (
           <p className="text-sm leading-6 text-muted">
             Showing imported vendor examples where every matched glaze is already on your shelf.
             {activeExampleCount
@@ -788,59 +773,94 @@ export function CombinationsBrowser({
 
       {/* tile grid */}
       {activeTiles.length ? (
-        <div className="overflow-hidden border border-border bg-panel">
-          <div className="flex items-center justify-between gap-3 border-b border-border/80 px-3 py-2">
-            <p className="text-xs uppercase tracking-[0.18em] text-muted">
-              {view === "possible" ? "Possible combinations" : "All combinations"}
-            </p>
-            <Badge tone="neutral">{activeTiles.length}</Badge>
+        <div className="space-y-4">
+          <div className="overflow-hidden border border-border bg-panel">
+            <div className="flex items-center justify-between gap-3 border-b border-border/80 px-3 py-2">
+              <p className="text-xs uppercase tracking-[0.18em] text-muted">
+                {view === "possible" ? "Possible combinations" : "All combinations"}
+              </p>
+              <Badge tone="neutral">
+                {visibleTiles.length}{visibleTiles.length !== activeTiles.length ? ` / ${activeTiles.length}` : ""}
+              </Badge>
+            </div>
+
+            <div className="grid grid-cols-2 gap-1.5 p-1.5 min-[420px]:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+              {visibleTiles.map((tile) => (
+                <button
+                  key={tile.id}
+                  type="button"
+                  onClick={() => setActiveTileId(tile.id)}
+                  className="group relative z-0 overflow-visible border border-border bg-white text-left transition-transform duration-200 hover:z-20 hover:scale-[1.02] focus-visible:z-20 focus-visible:scale-[1.02] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-foreground/20"
+                  style={{ contentVisibility: "auto", containIntrinsicSize: "220px" }}
+                >
+                  <div className="space-y-1.5 p-1.5 sm:p-2">
+                    <div className="relative overflow-hidden border border-border bg-panel">
+                      {tile.imageUrl ? (
+                        <Image
+                          src={tile.imageUrl}
+                          alt={tile.title}
+                          width={256}
+                          height={256}
+                          sizes="(min-width: 1280px) 16vw, (min-width: 1024px) 20vw, (min-width: 640px) 25vw, (min-width: 420px) 33vw, 50vw"
+                          className="aspect-square w-full object-cover bg-white transition duration-200"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
+                          No image
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="space-y-0.5">
+                      {tile.subtitle ? (
+                        <p className="text-[9px] uppercase tracking-[0.18em] text-muted sm:text-[10px]">
+                          {tile.subtitle}
+                        </p>
+                      ) : null}
+                      <h4 className="line-clamp-2 text-[13px] font-semibold leading-5 text-foreground sm:text-sm">
+                        {tile.title}
+                      </h4>
+                    </div>
+
+                    <div className="flex flex-wrap gap-1">
+                      {tile.cone ? <Badge tone="neutral">{tile.cone}</Badge> : null}
+                      <Badge tone={tile.badgeTone}>{tile.badgeLabel}</Badge>
+                    </div>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-1.5 p-1.5 min-[420px]:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-            {activeTiles.map((tile) => (
+          {remainingCount > 0 ? (
+            <div className="flex flex-wrap items-center gap-3">
               <button
-                key={tile.id}
                 type="button"
-                onClick={() => setActiveTileId(tile.id)}
-                className="group relative z-0 overflow-visible border border-border bg-white text-left transition-transform duration-200 hover:z-20 hover:scale-[1.02] focus-visible:z-20 focus-visible:scale-[1.02] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-foreground/20"
-                style={{ contentVisibility: "auto", containIntrinsicSize: "220px" }}
+                className={buttonVariants({ variant: "ghost", size: "sm" })}
+                onClick={() => setVisibleCount((c) => Math.min(c + TILE_BATCH_STEP, activeTiles.length))}
               >
-                <div className="space-y-1.5 p-1.5 sm:p-2">
-                  <div className="relative overflow-hidden border border-border bg-panel">
-                    {tile.imageUrl ? (
-                      <img
-                        src={tile.imageUrl}
-                        alt={tile.title}
-                        className="aspect-square w-full object-cover bg-white transition duration-200"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    ) : (
-                      <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
-                        No image
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="space-y-0.5">
-                    {tile.subtitle ? (
-                      <p className="text-[9px] uppercase tracking-[0.18em] text-muted sm:text-[10px]">
-                        {tile.subtitle}
-                      </p>
-                    ) : null}
-                    <h4 className="line-clamp-2 text-[13px] font-semibold leading-5 text-foreground sm:text-sm">
-                      {tile.title}
-                    </h4>
-                  </div>
-
-                  <div className="flex flex-wrap gap-1">
-                    {tile.cone ? <Badge tone="neutral">{tile.cone}</Badge> : null}
-                    <Badge tone={tile.badgeTone}>{tile.badgeLabel}</Badge>
-                  </div>
-                </div>
+                Show {Math.min(TILE_BATCH_STEP, remainingCount)} more
               </button>
-            ))}
-          </div>
+              <button
+                type="button"
+                className={buttonVariants({ variant: "secondary", size: "sm" })}
+                onClick={() => setVisibleCount(activeTiles.length)}
+              >
+                Show all {activeTiles.length}
+              </button>
+            </div>
+          ) : null}
+
+          {/* Scroll sentinel for auto-loading */}
+          {remainingCount > 0 ? (
+            <div
+              ref={loadMoreRef}
+              className="border border-dashed border-border bg-panel px-4 py-3 text-center text-sm text-muted"
+            >
+              Loading more combinations as you scroll...
+            </div>
+          ) : null}
         </div>
       ) : (
         <Panel>
@@ -860,20 +880,20 @@ export function CombinationsBrowser({
           onClick={() => setActiveTileId(null)}
         >
           <div
-            className="flex max-h-[92dvh] w-full max-w-3xl flex-col overflow-hidden border border-border bg-background sm:mt-[6vh]"
+            className="flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-background sm:mt-[4vh]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-4 sm:px-5">
-              <div>
+            <div className="flex items-center gap-3 border-b border-border px-4 py-3 sm:px-5">
+              <div className="min-w-0 flex-1">
                 {activeTile.subtitle ? (
-                  <p className="text-xs uppercase tracking-[0.18em] text-muted">{activeTile.subtitle}</p>
+                  <p className="text-[10px] uppercase tracking-[0.14em] text-muted">{activeTile.subtitle}</p>
                 ) : null}
-                <h3 className="mt-1 text-2xl font-semibold text-foreground">{activeTile.title}</h3>
+                <h3 className="truncate text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeTile.title}</h3>
               </div>
               <button
                 type="button"
                 onClick={() => setActiveTileId(null)}
-                className="inline-flex h-10 w-10 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
                 aria-label="Close combination details"
               >
                 <X className="h-4 w-4" />
@@ -886,7 +906,6 @@ export function CombinationsBrowser({
                   example={activeTile.example}
                   glazeFiringImages={glazeFiringImages}
                   inventoryStatusByGlazeId={inventoryStatusByGlazeId}
-                  isGuest={isGuest}
                   onInventoryStatusChange={handleInventoryStatusChange}
                 />
               ) : activeTile.post ? (
@@ -894,7 +913,6 @@ export function CombinationsBrowser({
                   post={activeTile.post}
                   glazeFiringImages={glazeFiringImages}
                   inventoryStatusByGlazeId={inventoryStatusByGlazeId}
-                  isGuest={isGuest}
                   onInventoryStatusChange={handleInventoryStatusChange}
                 />
               ) : null}

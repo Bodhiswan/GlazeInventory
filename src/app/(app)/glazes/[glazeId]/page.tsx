@@ -9,7 +9,6 @@ import {
 } from "@/app/actions";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { GlazeOwnershipPanel } from "@/components/glaze-ownership-panel";
-import { GuestGateCallout } from "@/components/guest-gate-callout";
 import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -22,6 +21,7 @@ import {
   formatGlazeMeta,
   getGlazeFamilyTraits,
   getGlazeSkimDescription,
+  getManufacturerUrl,
   pickPreferredGlazeImage,
 } from "@/lib/utils";
 import coyoteLocalGallery from "../../../../../data/vendors/coyote-local-gallery.json";
@@ -82,6 +82,16 @@ export default async function GlazeDetailPage({
             <Link href="/glazes" className={buttonVariants({ variant: "ghost" })}>
               Back to library
             </Link>
+            {glaze.brand && getManufacturerUrl(glaze.brand) ? (
+              <a
+                href={getManufacturerUrl(glaze.brand)!}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonVariants({ variant: "ghost" })}
+              >
+                {glaze.brand} website
+              </a>
+            ) : null}
             {glaze.code ? (
               <Link
                 href={`/combinations?q=${encodeURIComponent(glaze.code)}`}
@@ -90,15 +100,6 @@ export default async function GlazeDetailPage({
                 Combinations
               </Link>
             ) : null}
-            {viewer.profile.isAnonymous ? (
-              <Link href={`/auth/sign-up?redirectTo=${encodeURIComponent(`/glazes/${glazeId}`)}`} className={buttonVariants({})}>
-                Sign up to save glazes
-              </Link>
-            ) : (
-              <Link href="/inventory" className={buttonVariants({})}>
-                View inventory
-              </Link>
-            )}
           </>
         }
       />
@@ -173,12 +174,6 @@ export default async function GlazeDetailPage({
           </div>
 
           {glaze.sourceType === "commercial" ? (
-            viewer.profile.isAnonymous ? (
-              <GuestGateCallout
-                feature="Create an account to save this glaze to your shelf, wishlist, or folders."
-                redirectTo={`/glazes/${glaze.id}`}
-              />
-            ) : (
               <GlazeOwnershipPanel
                 glazeId={glaze.id}
                 initialStatus={detail.viewerInventoryItem?.status ?? null}
@@ -188,7 +183,6 @@ export default async function GlazeDetailPage({
                 initialFolderIds={detail.viewerInventoryItem?.folderIds ?? []}
                 folders={folders}
               />
-            )
           ) : null}
         </Panel>
 
@@ -218,12 +212,6 @@ export default async function GlazeDetailPage({
               })}
             </div>
 
-            {viewer.profile.isAnonymous ? (
-              <GuestGateCallout
-                feature="Sign up to rate this glaze and help other potters find the best options."
-                redirectTo={`/glazes/${glaze.id}`}
-              />
-            ) : (
               <div className="space-y-3">
                 <p className="text-sm font-medium text-foreground">
                   Your rating: {detail.rating.viewerRating ? `${detail.rating.viewerRating} / 5` : "Not rated yet"}
@@ -254,7 +242,6 @@ export default async function GlazeDetailPage({
                   })}
                 </div>
               </div>
-            )}
           </Panel>
 
         </div>
@@ -268,12 +255,6 @@ export default async function GlazeDetailPage({
         </div>
 
         <Panel className="space-y-4">
-          {viewer.profile.isAnonymous ? (
-            <GuestGateCallout
-              feature="Create an account to leave notes about application, clay body, or firing results."
-              redirectTo={`/glazes/${glaze.id}`}
-            />
-          ) : (
             <form action={addGlazeCommentAction} className="space-y-4">
               <input type="hidden" name="glazeId" value={glaze.id} />
               <input type="hidden" name="returnTo" value={`/glazes/${glaze.id}`} />
@@ -288,7 +269,6 @@ export default async function GlazeDetailPage({
                 </button>
               </div>
             </form>
-          )}
         </Panel>
 
         {detail.comments.length ? (

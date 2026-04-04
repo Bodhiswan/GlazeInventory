@@ -1,8 +1,9 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Search, X } from "lucide-react";
-import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
 import { setGlazeInventoryStateAction } from "@/app/actions";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";
@@ -31,6 +32,8 @@ import {
   matchesFiringImagePreference,
   matchesSmartColorSelection,
   matchesSmartFinishSelection,
+  getGlazeSkimDescription,
+  getManufacturerUrl,
   pickPreferredGlazeImage,
   summarizeGlazeColor,
   summarizeGlazeFinish,
@@ -62,7 +65,7 @@ function countValues(values: string[]) {
   }, new Map());
 }
 
-function FilterTile({
+const FilterTile = memo(function FilterTile({
   value,
   checked,
   onToggle,
@@ -116,7 +119,7 @@ function FilterTile({
       </span>
     </button>
   );
-}
+});
 
 function FilterSection({
   title,
@@ -480,6 +483,8 @@ export function GlazeCatalogExplorer({
       finishFilters.length ||
       coneFilters.length,
   );
+  /* Random hue offset so the rainbow starts at a different color each visit */
+  const [hueOffset] = useState(() => Math.random());
   const gradientSortedGlazes = useMemo(
     () =>
       [...sortedGlazes].sort((left, right) => {
@@ -490,8 +495,12 @@ export function GlazeCatalogExplorer({
           return leftFlow.bucket - rightFlow.bucket;
         }
 
-        if (Math.abs(leftFlow.position - rightFlow.position) > 0.0001) {
-          return leftFlow.position - rightFlow.position;
+        /* Shift positions by the random offset so the rainbow starts elsewhere */
+        const leftPos = leftFlow.bucket === 0 ? (leftFlow.position + hueOffset) % 1 : leftFlow.position;
+        const rightPos = rightFlow.bucket === 0 ? (rightFlow.position + hueOffset) % 1 : rightFlow.position;
+
+        if (Math.abs(leftPos - rightPos) > 0.0001) {
+          return leftPos - rightPos;
         }
 
         if (Math.abs(leftFlow.lightness - rightFlow.lightness) > 0.0001) {
@@ -500,7 +509,7 @@ export function GlazeCatalogExplorer({
 
         return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
       }),
-    [sortedGlazes],
+    [sortedGlazes, hueOffset],
   );
   const displayGlazes = useMemo(
     () => (normalizedQuery || activeColorRankingIntent.length ? sortedGlazes : gradientSortedGlazes),
@@ -818,7 +827,6 @@ export function GlazeCatalogExplorer({
                 <Badge tone="neutral">
                   Showing {visibleGlazeCount} of {displayGlazes.length}
                 </Badge>
-                {isGuest ? <Badge tone="accent">Guest catalog mode</Badge> : null}
                 {remainingGlazeCount ? (
                   <>
                     <button
@@ -909,12 +917,14 @@ export function GlazeCatalogExplorer({
                             <div className="space-y-1.5 p-1.5 sm:p-2">
                               <div className="relative overflow-hidden border border-border bg-panel">
                                 {previewImage ? (
-                                  <img
+                                  <Image
                                     src={previewImage}
                                     alt={formatGlazeLabel(glaze)}
+                                    width={256}
+                                    height={256}
+                                    sizes="(min-width: 1536px) 14vw, (min-width: 1280px) 16vw, (min-width: 1024px) 20vw, (min-width: 640px) 25vw, (min-width: 420px) 33vw, 50vw"
                                     className="aspect-square w-full object-contain bg-white transition duration-200"
                                     loading="lazy"
-                                    decoding="async"
                                   />
                                 ) : (
                                   <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
@@ -934,7 +944,7 @@ export function GlazeCatalogExplorer({
                               </div>
 
                               <div className="flex flex-wrap gap-1">
-                                {currentStatus === "owned" ? <Badge tone="success">On shelf</Badge> : null}
+                                {currentStatus === "owned" ? <Badge tone="success">Owned</Badge> : null}
                                 {currentStatus === "wishlist" ? <Badge tone="accent">Wishlist</Badge> : null}
                                 {currentStatus === "archived" ? <Badge tone="neutral">Empty</Badge> : null}
                               </div>
@@ -976,52 +986,128 @@ export function GlazeCatalogExplorer({
           onClick={() => setActiveGridGlazeId(null)}
         >
           <div
-            className="flex max-h-[92dvh] w-full max-w-3xl flex-col overflow-hidden border border-border bg-background sm:mt-[6vh]"
+            className="flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-background sm:mt-[4vh]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-4 sm:px-5">
-              <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-muted">
-                  {activeGridItem.glaze.brand} {activeGridItem.glaze.code}
-                </p>
-                <h3 className="mt-1 text-2xl font-semibold text-foreground">{activeGridItem.glaze.name}</h3>
+            {/* Sticky header — title + ownership + close all in one bar */}
+            <div className="border-b border-border px-4 py-3 sm:px-5">
+              <div className="flex items-center gap-3">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
+                    {activeGridItem.glaze.brand} {activeGridItem.glaze.code}
+                  </p>
+                  <h3 className="truncate text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeGridItem.glaze.name}</h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveGridGlazeId(null)}
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
+                  aria-label="Close glaze details"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setActiveGridGlazeId(null)}
-                className="inline-flex h-10 w-10 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
-                aria-label="Close glaze details"
-              >
-                <X className="h-4 w-4" />
-              </button>
+              {/* Ownership buttons + links — same row zone as close */}
+              <div className="mt-2 flex flex-wrap items-center gap-2">
+                <InventoryStatePicker
+                  status={optimisticInventoryStates[activeGridItem.glaze.id]?.status ?? "none"}
+                  compact
+                  showEmpty={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
+                  allowRemove={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
+                  onChange={(nextStatus) => {
+                    void handleInventoryStateChange(activeGridItem.glaze.id, nextStatus);
+                  }}
+                  pending={pendingGlazeIds.includes(activeGridItem.glaze.id)}
+                  error={ownershipErrors[activeGridItem.glaze.id] ?? null}
+                />
+                {activeGridItem.glaze.code ? (
+                  <Link
+                    href={`/combinations?q=${encodeURIComponent(activeGridItem.glaze.code)}`}
+                    className={buttonVariants({ variant: "ghost", size: "sm" })}
+                  >
+                    Combinations
+                  </Link>
+                ) : null}
+                {activeGridItem.glaze.brand && getManufacturerUrl(activeGridItem.glaze.brand) ? (
+                  <a
+                    href={getManufacturerUrl(activeGridItem.glaze.brand)!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonVariants({ variant: "ghost", size: "sm" })}
+                  >
+                    {activeGridItem.glaze.brand} website
+                  </a>
+                ) : null}
+              </div>
             </div>
 
-            <div className="overflow-y-auto overscroll-contain">
-              <div className="grid gap-4 p-4 sm:gap-5 sm:p-5 lg:grid-cols-[minmax(0,260px)_1fr]">
-                <div className="mx-auto w-full max-w-[320px] overflow-hidden border border-border bg-panel p-3 lg:mx-0">
-                  {activeGridPreviewImage ? (
-                  <img
-                    src={activeGridPreviewImage}
-                    alt={formatGlazeLabel(activeGridItem.glaze)}
-                    className="aspect-square w-full object-contain bg-white"
-                    decoding="async"
-                  />
-                ) : (
-                  <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
-                    No image
-                  </div>
-                )}
-              </div>
+            <div className="overflow-y-auto overscroll-contain p-4 sm:p-5">
 
+              <div className="grid gap-5 lg:grid-cols-[minmax(0,220px)_1fr]">
+                {/* Images column — stacked vertically with labels */}
+                <div className="mx-auto w-full max-w-[280px] space-y-2 lg:mx-0">
+                  {/* Main / preferred image */}
+                  <div className="overflow-hidden border border-border bg-panel">
+                    {activeGridPreviewImage ? (
+                      <Image
+                        src={activeGridPreviewImage}
+                        alt={formatGlazeLabel(activeGridItem.glaze)}
+                        width={384}
+                        height={384}
+                        sizes="(min-width: 1024px) 220px, 280px"
+                        className="aspect-square w-full object-contain bg-white"
+                        priority
+                      />
+                    ) : (
+                      <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
+                        No image
+                      </div>
+                    )}
+                    {(() => {
+                      const matchedImage = activeGridItem.firingImages.find((img) => img.imageUrl === activeGridPreviewImage);
+                      const label = [matchedImage?.cone, matchedImage?.atmosphere].filter(Boolean).join(" · ");
+                      return label ? (
+                        <p className="bg-panel px-2 py-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">{label}</p>
+                      ) : null;
+                    })()}
+                  </div>
+                  {/* Additional firing images */}
+                  {activeGridItem.firingImages
+                    .filter((img) => img.imageUrl !== activeGridPreviewImage)
+                    .map((img) => (
+                      <div key={img.id} className="overflow-hidden border border-border bg-panel">
+                        <Image
+                          src={img.imageUrl}
+                          alt={`${formatGlazeLabel(activeGridItem.glaze)} – ${[img.cone, img.atmosphere].filter(Boolean).join(" · ")}`}
+                          width={384}
+                          height={384}
+                          sizes="(min-width: 1024px) 220px, 280px"
+                          className="aspect-square w-full object-contain bg-white"
+                          loading="lazy"
+                        />
+                        {(() => {
+                          const label = [img.cone, img.atmosphere].filter(Boolean).join(" · ");
+                          return label ? (
+                            <p className="bg-panel px-2 py-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">{label}</p>
+                          ) : null;
+                        })()}
+                      </div>
+                    ))}
+                </div>
+
+                {/* Info column */}
                 <div className="space-y-4">
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5">
+                    <Badge tone={activeGridItem.glaze.sourceType === "commercial" ? "neutral" : "accent"}>
+                      {activeGridItem.glaze.sourceType === "commercial" ? "Commercial" : "Custom"}
+                    </Badge>
+                    {activeGridItem.glaze.cone ? <Badge tone="neutral">{activeGridItem.glaze.cone}</Badge> : null}
                     {activeGridItem.familyTraits.map((family) => (
                       <Badge key={`${activeGridItem.glaze.id}-${family}-overlay`} tone="accent">
                         {family}
                       </Badge>
                     ))}
-                    {activeGridItem.glaze.cone ? <Badge tone="neutral">{activeGridItem.glaze.cone}</Badge> : null}
-                    {activeGridItem.colorTraits.slice(0, 5).map((trait) => (
+                    {activeGridItem.colorTraits.slice(0, 4).map((trait) => (
                       <Badge key={`${activeGridItem.glaze.id}-${trait}-overlay`} tone="neutral">
                         {trait}
                       </Badge>
@@ -1029,47 +1115,39 @@ export function GlazeCatalogExplorer({
                   </div>
 
                   <div className="grid gap-2 text-sm text-muted sm:grid-cols-2">
+                    <p><span className="font-semibold text-foreground">Brand:</span> {activeGridItem.glaze.brand ?? "Unknown"}</p>
                     <p><span className="font-semibold text-foreground">Line:</span> {activeGridItem.glaze.line ?? "Unknown"}</p>
                     <p><span className="font-semibold text-foreground">Finish:</span> {activeGridItem.finishSummary}</p>
                     <p><span className="font-semibold text-foreground">Colour:</span> {activeGridItem.colorSummary}</p>
-                    <p><span className="font-semibold text-foreground">Cone:</span> {activeGridItem.glaze.cone ?? "Unknown"}</p>
                   </div>
 
-                  <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-                    <Link
-                      href={`/glazes/${activeGridItem.glaze.id}`}
-                      className={buttonVariants({ variant: "ghost", size: "sm", className: "w-full sm:w-auto" })}
-                    >
-                      Open glaze page
-                    </Link>
-                    {isGuest ? (
-                      <span
-                        className={buttonVariants({
-                          size: "sm",
-                          className: "w-full cursor-not-allowed opacity-50 grayscale sm:w-auto",
-                        })}
-                        aria-disabled="true"
-                      >
-                        Sign in to add
-                      </span>
-                    ) : (
-                      <InventoryStatePicker
-                        status={optimisticInventoryStates[activeGridItem.glaze.id]?.status ?? "none"}
-                        compact
-                        showEmpty={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
-                        allowRemove={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
-                        onChange={(nextStatus) => {
-                          void handleInventoryStateChange(activeGridItem.glaze.id, nextStatus);
-                        }}
-                        pending={pendingGlazeIds.includes(activeGridItem.glaze.id)}
-                        error={ownershipErrors[activeGridItem.glaze.id] ?? null}
-                      />
-                    )}
-                  </div>
+                  {/* Skim read panel */}
+                  {(() => {
+                    const skim = getGlazeSkimDescription(activeGridItem.glaze);
+                    return (
+                      <div className="border border-border bg-panel p-3">
+                        <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Skim read</p>
+                        <div className="mt-2 grid gap-2 text-sm leading-6 text-muted">
+                          <p><span className="font-semibold text-foreground">Overview:</span> {skim.summary}</p>
+                          <p><span className="font-semibold text-foreground">Surface:</span> {skim.surface}</p>
+                          {skim.application ? (
+                            <p><span className="font-semibold text-foreground">Application:</span> {skim.application}</p>
+                          ) : null}
+                          <p><span className="font-semibold text-foreground">Firing:</span> {skim.firing}</p>
+                        </div>
+                      </div>
+                    );
+                  })()}
 
                   {activeGridItem.glaze.description ? (
-                    <p className="text-sm leading-6 text-muted">{activeGridItem.glaze.description}</p>
+                    <details className="border border-border bg-panel px-3 py-2">
+                      <summary className="cursor-pointer list-none text-sm font-semibold text-foreground">
+                        Official vendor description
+                      </summary>
+                      <p className="mt-2 text-sm leading-6 text-muted">{activeGridItem.glaze.description}</p>
+                    </details>
                   ) : null}
+
                 </div>
               </div>
             </div>

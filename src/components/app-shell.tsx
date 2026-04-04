@@ -11,8 +11,6 @@ export function AppShell({
   viewer: Viewer;
   children: React.ReactNode;
 }>) {
-  const isGuest = Boolean(viewer.profile.isAnonymous);
-
   return (
     <div className="min-h-screen">
       <div className="mx-auto flex min-h-screen w-full max-w-[1500px] flex-col gap-4 px-3 py-3 sm:gap-5 sm:px-4 sm:py-4 lg:px-6">
@@ -27,10 +25,7 @@ export function AppShell({
             </Link>
 
             <div className="flex min-w-0 justify-center">
-              <AppShellNav
-                isAdmin={false}
-                isGuest={isGuest}
-              />
+              <AppShellNav isAdmin={false} />
             </div>
 
             <div className="col-span-2 flex min-w-0 items-center justify-end gap-2 sm:col-span-1">
@@ -40,10 +35,7 @@ export function AppShell({
                 </span>
               ) : null}
 
-              <UserMenu
-                displayName={viewer.profile.displayName}
-                isGuest={isGuest}
-              />
+              <UserMenu displayName={viewer.profile.displayName} />
             </div>
           </div>
         </header>

@@ -12,7 +12,7 @@ const baseItems = [
   { href: "/combinations", label: "Combinations", icon: Layers3 },
 ];
 
-export function AppShellNav({ isAdmin, isGuest }: Readonly<{ isAdmin: boolean; isGuest: boolean }>) {
+export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
   const pathname = usePathname();
   const items = isAdmin
     ? [
@@ -29,23 +29,7 @@ export function AppShellNav({ isAdmin, isGuest }: Readonly<{ isAdmin: boolean; i
     >
       {items.map((item) => {
         const Icon = item.icon;
-        const isLocked = isGuest && item.href === "/inventory";
-        const isActive =
-          !isLocked &&
-          (pathname === item.href || pathname.startsWith(`${item.href}/`));
-
-        if (isLocked) {
-          return (
-            <div
-              key={item.href}
-              aria-disabled="true"
-              className="flex shrink-0 items-center gap-2 border border-transparent px-3 py-2 text-[10px] uppercase tracking-[0.1em] text-muted/40 sm:text-[11px] sm:tracking-[0.12em]"
-            >
-              <Icon className="h-3.5 w-3.5" aria-hidden="true" />
-              <span>{item.label}</span>
-            </div>
-          );
-        }
+        const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
         return (
           <Link

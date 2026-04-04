@@ -33,7 +33,7 @@ export default async function HomePage({
     if (next) {
       callbackParams.set("next", next);
     } else {
-      callbackParams.set("next", "/auth/reset-password");
+      callbackParams.set("next", "/dashboard");
     }
 
     redirect(`/auth/callback?${callbackParams.toString()}`);

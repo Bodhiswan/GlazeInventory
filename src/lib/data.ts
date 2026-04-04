@@ -42,6 +42,17 @@ import type {
   Viewer,
 } from "@/lib/types";
 import { formatGlazeLabel } from "@/lib/utils";
+import {
+  getAllCatalogGlazes,
+  getCatalogGlazeById,
+  getCatalogGlazesByIds,
+  getCatalogFiringImages,
+  getCatalogFiringImageMap,
+  getAllVendorExamples,
+  getVendorExampleById,
+  getTagDefinitions,
+  type StaticExample,
+} from "@/lib/catalog";
 
 type Row = Record<string, unknown>;
 
@@ -224,16 +235,17 @@ function sortTagSummaries(tags: GlazeTagSummary[]) {
 const getAllTagData = cache(async function getAllTagData(viewerId: string) {
   const supabase = await getSupabase();
 
+  // Tag definitions come from static JSON; only votes need Supabase.
+  const tagRows = getTagDefinitions() as unknown as Row[];
+
   if (!supabase) {
-    return null;
+    return { tagRows, counts: new Map<string, number>(), viewerVotes: new Set<string>() };
   }
 
-  const [{ data: tags }, { data: votes }] = await Promise.all([
-    supabase.from("glaze_tags").select("*").order("category").order("label"),
-    supabase.from("glaze_tag_votes").select("glaze_id,tag_id,user_id"),
-  ]);
+  const { data: votes } = await supabase
+    .from("glaze_tag_votes")
+    .select("glaze_id,tag_id,user_id");
 
-  const tagRows = (tags ?? []) as Row[];
   const voteRows = (votes ?? []) as Row[];
   const counts = new Map<string, number>();
   const viewerVotes = new Set<string>();
@@ -259,18 +271,7 @@ async function getGlazeTagSummaryMap(viewerId: string, glazes: Glaze[]) {
     return new Map<string, GlazeTagSummary[]>();
   }
 
-  const tagData = await getAllTagData(viewerId);
-
-  if (!tagData) {
-    return new Map(
-      commercialGlazes.map((glaze) => [
-        glaze.id,
-        sortTagSummaries(getDemoTagSummariesForGlaze(glaze.id, viewerId)),
-      ]),
-    );
-  }
-
-  const { tagRows, counts, viewerVotes } = tagData;
+  const { tagRows, counts, viewerVotes } = await getAllTagData(viewerId);
 
   return new Map(
     commercialGlazes.map((glaze) => {
@@ -570,85 +571,54 @@ export async function requireViewer() {
 }
 
 export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: string) {
+  const glazes = getAllCatalogGlazes().sort((left, right) =>
+    formatGlazeLabel(left).localeCompare(formatGlazeLabel(right)),
+  );
+  return attachTagSummariesToGlazes(viewerId, glazes);
+});
+
+/* Lightweight ownership lookup — only id, glaze_id, status. No glaze join, no tags, no folders. */
+export const getInventoryOwnership = cache(async function getInventoryOwnership(viewerId: string) {
   const supabase = await getSupabase();
 
   if (!supabase) {
-    return attachTagSummariesToGlazes(
-      viewerId,
-      demoGlazes.filter(
-      (glaze) => !glaze.createdByUserId || glaze.createdByUserId === viewerId,
-      ).sort((left, right) => formatGlazeLabel(left).localeCompare(formatGlazeLabel(right))),
-    );
+    return demoInventory
+      .filter((item) => item.userId === viewerId)
+      .map((item) => ({ id: item.id, glazeId: item.glazeId, status: item.status }));
   }
 
-  const pageSize = 500;
-  const rows: Row[] = [];
+  const { data } = await supabase
+    .from("inventory_items")
+    .select("id,glaze_id,status")
+    .eq("user_id", viewerId);
 
-  for (let from = 0; ; from += pageSize) {
-    const { data, error } = await supabase
-      .from("glazes")
-      .select("*")
-      .or(`created_by_user_id.is.null,created_by_user_id.eq.${viewerId}`)
-      .order("created_at", { ascending: true })
-      .order("id", { ascending: true })
-      .range(from, from + pageSize - 1);
-
-    if (error || !data?.length) {
-      break;
-    }
-
-    rows.push(...(data as Row[]));
-
-    if (data.length < pageSize) {
-      break;
-    }
-  }
-
-  return attachTagSummariesToGlazes(
-    viewerId,
-    rows.map((row) => mapGlaze(row)).sort((left, right) =>
-      formatGlazeLabel(left).localeCompare(formatGlazeLabel(right)),
-    ),
-  );
+  return (data ?? []).map((row) => ({
+    id: String((row as Row).id),
+    glazeId: String((row as Row).glaze_id),
+    status: mapInventoryStatus((row as Row).status),
+  }));
 });
+
+const INVENTORY_GLAZE_COLUMNS = "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes";
 
 export const getInventory = cache(async function getInventory(viewerId: string) {
   const supabase = await getSupabase();
 
   if (!supabase) {
-    const inventory = demoInventory
+    return demoInventory
       .filter((item) => item.userId === viewerId)
       .sort((left, right) => left.glaze.name.localeCompare(right.glaze.name));
-
-    const glazes = await attachTagSummariesToGlazes(
-      viewerId,
-      inventory.map((item) => item.glaze),
-    );
-    const glazesById = new Map(glazes.map((glaze) => [glaze.id, glaze]));
-
-    return inventory.map((item) => ({
-      ...item,
-      glaze: glazesById.get(item.glaze.id) ?? item.glaze,
-    }));
   }
 
   const { data } = await supabase
     .from("inventory_items")
-    .select("id,user_id,glaze_id,status,personal_notes,glaze:glazes(*),inventory_item_folders(folder:inventory_folders(*))")
+    .select(`id,user_id,glaze_id,status,personal_notes,glaze:glazes(${INVENTORY_GLAZE_COLUMNS}),inventory_item_folders(folder:inventory_folders(*))`)
     .eq("user_id", viewerId)
     .order("created_at", { ascending: false });
 
   const inventory = (data ?? []).map((row) => mapInventoryItem(row as Row));
-  const glazes = await attachTagSummariesToGlazes(
-    viewerId,
-    inventory.map((item) => item.glaze),
-  );
-  const glazesById = new Map(glazes.map((glaze) => [glaze.id, glaze]));
 
-  return inventory.map((item) => ({
-    ...item,
-    glaze: glazesById.get(item.glaze.id) ?? item.glaze,
-  }));
+  return inventory;
 });
 
 export async function getInventoryFolders(viewerId: string) {
@@ -697,62 +667,20 @@ export async function getInventoryItem(viewerId: string, inventoryId: string) {
   return inventory.find((item) => item.id === inventoryId) ?? null;
 }
 
-export async function getGlazeFiringImageMap(glazeIds: string[]) {
-  const supabase = await getSupabase();
-
-  if (!supabase || !glazeIds.length) {
-    return {} as Record<string, GlazeFiringImage[]>;
-  }
-
-  const chunkSize = 200;
-  const rows: Row[] = [];
-
-  for (let index = 0; index < glazeIds.length; index += chunkSize) {
-    const chunk = glazeIds.slice(index, index + chunkSize);
-    const { data, error } = await supabase
-      .from("glaze_firing_images")
-      .select("*")
-      .in("glaze_id", chunk)
-      .order("sort_order", { ascending: true })
-      .order("created_at", { ascending: true });
-
-    if (error || !data?.length) {
-      continue;
-    }
-
-    rows.push(...(data as Row[]));
-  }
-
-  return rows.reduce<Record<string, GlazeFiringImage[]>>((groups, row) => {
-      const glazeId = String(row.glaze_id);
-      groups[glazeId] = [...(groups[glazeId] ?? []), mapGlazeFiringImage(row)];
-      return groups;
-    }, {});
+export function getGlazeFiringImageMap(glazeIds: string[]) {
+  return getCatalogFiringImageMap(glazeIds);
 }
 
 async function getGlazesByIds(
   viewerId: string,
   ids: string[],
-  clientOverride?: ReturnType<typeof createSupabaseAdminClient> | null,
+  _clientOverride?: ReturnType<typeof createSupabaseAdminClient> | null,
+  options?: { skipTags?: boolean },
 ) {
-  const supabase = clientOverride ?? (await getSupabase());
-
-  if (!supabase) {
-    return attachTagSummariesToGlazes(
-      viewerId,
-      demoGlazes.filter((glaze) => ids.includes(glaze.id)),
-    );
-  }
-
-  if (!ids.length) {
-    return [];
-  }
-
-  const { data } = await supabase.from("glazes").select("*").in("id", ids);
-  return attachTagSummariesToGlazes(
-    viewerId,
-    (data ?? []).map((row) => mapGlaze(row as Row)),
-  );
+  if (!ids.length) return [];
+  const glazes = getCatalogGlazesByIds(ids);
+  if (options?.skipTags) return glazes;
+  return attachTagSummariesToGlazes(viewerId, glazes);
 }
 
 async function getPostCountsByPairKey() {
@@ -767,40 +695,33 @@ async function getPostCountsByPairKey() {
       }, {});
   }
 
-  const { data: posts } = await supabase
+  /* Single JOIN query instead of two sequential fetches */
+  const { data: joinedRows } = await supabase
     .from("combination_posts")
-    .select("combination_pair_id,status")
+    .select("combination_pair_id, combination_pairs(pair_key)")
     .eq("status", "published");
 
-  const pairIds = Array.from(
-    new Set((posts ?? []).map((post) => String((post as Row).combination_pair_id))),
-  );
+  return (joinedRows ?? []).reduce<Record<string, number>>((counts, row) => {
+    const pairData = (row as Row & { combination_pairs?: Row | Row[] | null }).combination_pairs;
+    const pairSource = Array.isArray(pairData) ? pairData[0] : pairData;
+    const pairKey = pairSource ? String((pairSource as Row).pair_key) : null;
 
-  if (!pairIds.length) {
-    return {};
-  }
-
-  const { data: pairs } = await supabase.from("combination_pairs").select("*").in("id", pairIds);
-  const pairsById = new Map((pairs ?? []).map((row) => [String((row as Row).id), mapPair(row as Row)]));
-
-  return (posts ?? []).reduce<Record<string, number>>((counts, row) => {
-    const pair = pairsById.get(String((row as Row).combination_pair_id));
-
-    if (!pair) {
+    if (!pairKey) {
       return counts;
     }
 
-    counts[pair.pairKey] = (counts[pair.pairKey] ?? 0) + 1;
+    counts[pairKey] = (counts[pairKey] ?? 0) + 1;
     return counts;
   }, {});
 }
 
 export async function getCombinationSummaries(viewerId: string) {
-  const [inventory, postCounts] = await Promise.all([
-    getInventory(viewerId),
+  const [ownership, postCounts] = await Promise.all([
+    getInventoryOwnership(viewerId),
     getPostCountsByPairKey(),
   ]);
-  const ownedGlazes = inventory.filter((item) => item.status === "owned").map((item) => item.glaze);
+  const ownedGlazeIds = ownership.filter((item) => item.status === "owned").map((item) => item.glazeId);
+  const ownedGlazes = getCatalogGlazesByIds(ownedGlazeIds);
 
   return buildCombinationSummaries(ownedGlazes, postCounts);
 }
@@ -837,7 +758,7 @@ async function getProfilesByIds(
     return [];
   }
 
-  const { data } = await supabase.from("profiles").select("*").in("id", profileIds);
+  const { data } = await supabase.from("profiles").select("id,display_name,is_admin,is_anonymous").in("id", profileIds);
   return (data ?? []).map((row) => mapProfile(row as Row));
 }
 
@@ -855,13 +776,13 @@ async function hydrateVendorCombinationExamples(viewerId: string, exampleRows: R
         .filter((value): value is string => Boolean(value)),
     ),
   );
-  const [glazes, inventory] = await Promise.all([
+  const [glazes, ownership] = await Promise.all([
     getGlazesByIds(viewerId, glazeIds),
-    getInventory(viewerId),
+    getInventoryOwnership(viewerId),
   ]);
   const glazesById = new Map(glazes.map((glaze) => [glaze.id, glaze]));
   const ownedGlazeIds = new Set(
-    inventory
+    ownership
       .filter((item) => item.status === "owned")
       .map((item) => item.glazeId),
   );
@@ -957,84 +878,56 @@ async function hydratePosts(
   }));
 }
 
-export async function getVendorCombinationExamples(viewerId: string) {
-  const supabase = await getSupabase();
+function hydrateStaticExamplesWithInventory(
+  staticExamples: StaticExample[],
+  ownedGlazeIds: Set<string>,
+): VendorCombinationExample[] {
+  return staticExamples.map((ex) => {
+    const layers: VendorCombinationExampleLayer[] = ex.layers.map((layer: StaticExample["layers"][number]) => ({
+      ...layer,
+      glazeName: layer.glazeName,
+      glaze: layer.glaze ?? null,
+    }));
+    const matchedLayers = layers.filter((l) => l.glazeId);
+    const viewerOwnedLayerCount = matchedLayers.filter((l) =>
+      l.glazeId ? ownedGlazeIds.has(l.glazeId) : false,
+    ).length;
 
-  if (!supabase) {
-    return [] as VendorCombinationExample[];
+    return {
+      ...ex,
+      createdAt: "",
+      updatedAt: "",
+      layers,
+      viewerOwnsAllGlazes:
+        Boolean(layers.length) &&
+        layers.every((l) => l.glazeId && ownedGlazeIds.has(l.glazeId)),
+      viewerOwnedLayerCount,
+    };
+  });
+}
+
+export async function getVendorCombinationExamples(viewerId: string, options?: { skipInventory?: boolean }) {
+  const staticExamples = getAllVendorExamples();
+  if (options?.skipInventory) {
+    return hydrateStaticExamplesWithInventory(staticExamples, new Set());
   }
-
-  // Fetch each cone separately to avoid Supabase's default 1000-row limit
-  const [cone6Result, cone10Result] = await Promise.all([
-    supabase
-      .from("vendor_combination_examples")
-      .select("*, vendor_combination_example_layers(*)")
-      .eq("cone", "Cone 6")
-      .order("title", { ascending: true })
-      .limit(5000),
-    supabase
-      .from("vendor_combination_examples")
-      .select("*, vendor_combination_example_layers(*)")
-      .eq("cone", "Cone 10")
-      .order("title", { ascending: true })
-      .limit(5000),
-  ]);
-  const joinedRows = [...(cone6Result.data ?? []), ...(cone10Result.data ?? [])];
-
-  if (!joinedRows?.length) {
-    return [] as VendorCombinationExample[];
-  }
-
-  const exampleRows: Row[] = [];
-  const layerRows: Row[] = [];
-
-  for (const row of joinedRows) {
-    const { vendor_combination_example_layers: layers, ...example } = row as Row & { vendor_combination_example_layers: Row[] };
-    exampleRows.push(example as Row);
-
-    if (Array.isArray(layers)) {
-      const sorted = [...layers].sort((a, b) => {
-        const orderDiff = Number(a.layer_order ?? 0) - Number(b.layer_order ?? 0);
-        return orderDiff !== 0 ? orderDiff : String(a.created_at ?? "").localeCompare(String(b.created_at ?? ""));
-      });
-      layerRows.push(...(sorted as Row[]));
-    }
-  }
-
-  return hydrateVendorCombinationExamples(viewerId, exampleRows, layerRows);
+  const ownership = await getInventoryOwnership(viewerId);
+  const ownedGlazeIds = new Set(
+    ownership.filter((item) => item.status === "owned").map((item) => item.glazeId),
+  );
+  return hydrateStaticExamplesWithInventory(staticExamples, ownedGlazeIds);
 }
 
 export async function getVendorCombinationExample(viewerId: string, exampleId: string) {
-  const supabase = await getSupabase();
+  const staticExample = getVendorExampleById(exampleId);
+  if (!staticExample) return null;
 
-  if (!supabase) {
-    return null;
-  }
-
-  const { data: exampleRow } = await supabase
-    .from("vendor_combination_examples")
-    .select("*")
-    .eq("id", exampleId)
-    .maybeSingle();
-
-  if (!exampleRow) {
-    return null;
-  }
-
-  const { data: layerRows } = await supabase
-    .from("vendor_combination_example_layers")
-    .select("*")
-    .eq("example_id", exampleId)
-    .order("layer_order", { ascending: true })
-    .order("created_at", { ascending: true });
-
-  const [example] = await hydrateVendorCombinationExamples(
-    viewerId,
-    [exampleRow as Row],
-    (layerRows ?? []) as Row[],
+  const ownership = await getInventoryOwnership(viewerId);
+  const ownedGlazeIds = new Set(
+    ownership.filter((item) => item.status === "owned").map((item) => item.glazeId),
   );
-
-  return example ?? null;
+  const [result] = hydrateStaticExamplesWithInventory([staticExample], ownedGlazeIds);
+  return result ?? null;
 }
 
 export async function getCommunityPosts(search = "") {
@@ -1203,8 +1096,27 @@ export async function getCombinationDetail(
     Glaze,
   ];
 
-  const inventory = options?.publicRead ? [] : await getInventory(viewerId);
-  const inventoryForPair = inventory.filter((item) => ids.includes(item.glazeId));
+  const ownership = options?.publicRead ? [] : await getInventoryOwnership(viewerId);
+  const inventoryForPair = ownership.filter((item) => ids.includes(item.glazeId));
+
+  /* Fetch notes only for glaze IDs in this pair — avoids loading full inventory */
+  let inventoryNotes: string[] = [];
+  if (!options?.publicRead && inventoryForPair.length) {
+    const supabaseForNotes = await getSupabase();
+    if (supabaseForNotes) {
+      const { data: noteRows } = await supabaseForNotes
+        .from("inventory_items")
+        .select("personal_notes")
+        .eq("user_id", viewerId)
+        .in("glaze_id", [...ids]);
+      inventoryNotes = (noteRows ?? [])
+        .map((row) => {
+          const parsed = parseInventoryState((row as Row).personal_notes as string | null ?? null);
+          return parsed.note;
+        })
+        .filter((note): note is string => Boolean(note));
+    }
+  }
   const viewerOwnsPair = ids.every((id) => inventoryForPair.some((item) => item.glazeId === id && item.status === "owned"));
 
   const supabase = adminClient ?? (await getSupabase());
@@ -1246,56 +1158,34 @@ export async function getCombinationDetail(
     pairKey,
     glazes: orderedGlazes,
     viewerOwnsPair,
-    inventoryNotes: inventoryForPair.map((item) => item.personalNotes).filter(Boolean) as string[],
+    inventoryNotes,
     posts,
   };
 }
 
 export async function getGlazeDetail(viewerId: string, glazeId: string): Promise<GlazeDetail | null> {
+  const rawGlaze = getCatalogGlazeById(glazeId);
+  if (!rawGlaze) return null;
+
+  const glaze = (await attachTagSummariesToGlazes(viewerId, [rawGlaze]))[0];
+  const firingImages = getCatalogFiringImages(glazeId);
+
+  // User-specific data still needs Supabase
   const supabase = await getSupabase();
 
   if (!supabase) {
-    const taggedGlazes = await attachTagSummariesToGlazes(
-      viewerId,
-      demoGlazes,
-    );
-    const glaze = taggedGlazes.find((candidate) => candidate.id === glazeId);
-
-    if (!glaze) {
-      return null;
-    }
-
-    const viewerOwnsGlaze = demoInventory.some(
-      (item) => item.userId === viewerId && item.glazeId === glazeId && item.status === "owned",
-    );
-
     return {
       glaze,
-      firingImages: [],
+      firingImages,
       comments: [],
-      viewerOwnsGlaze,
-      viewerInventoryItem:
-        demoInventory.find(
-          (item) => item.userId === viewerId && item.glazeId === glazeId && item.status === "owned",
-        ) ?? null,
-      rating: {
-        averageRating: null,
-        ratingCount: 0,
-        viewerRating: null,
-      },
+      viewerOwnsGlaze: false,
+      viewerInventoryItem: null,
+      rating: { averageRating: null, ratingCount: 0, viewerRating: null },
     };
   }
 
-  const { data: glazeRow } = await supabase.from("glazes").select("*").eq("id", glazeId).maybeSingle();
-
-  if (!glazeRow) {
-    return null;
-  }
-
-  const glaze = (await attachTagSummariesToGlazes(viewerId, [mapGlaze(glazeRow as Row)]))[0];
   const [
     { data: inventoryRows },
-    { data: firingImageRows },
     { data: commentRows },
     { data: ratingRows },
   ] = await Promise.all([
@@ -1306,12 +1196,6 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
       .eq("glaze_id", glazeId)
       .limit(1),
     supabase
-      .from("glaze_firing_images")
-      .select("*")
-      .eq("glaze_id", glazeId)
-      .order("sort_order", { ascending: true })
-      .order("created_at", { ascending: true }),
-    supabase
       .from("glaze_comments")
       .select("*, author:profiles(display_name)")
       .eq("glaze_id", glazeId)
@@ -1321,10 +1205,6 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
       .select("user_id,rating")
       .eq("glaze_id", glazeId),
   ]);
-
-  const firingImages: GlazeFiringImage[] = (firingImageRows ?? []).map((row) =>
-    mapGlazeFiringImage(row as Row),
-  );
 
   const comments: GlazeComment[] = (commentRows ?? []).map((row) => {
     const rowObject = row as Row & { author?: Row | Row[] | null };
@@ -1347,11 +1227,6 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
     : null;
   const viewerRating =
     ratings.find((row) => String(row.user_id) === viewerId)?.rating ?? null;
-  const rating: GlazeRatingSummary = {
-    averageRating,
-    ratingCount,
-    viewerRating,
-  };
 
   return {
     glaze,
@@ -1359,7 +1234,7 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
     comments,
     viewerOwnsGlaze: inventoryRows?.length ? mapInventoryItem(inventoryRows[0] as Row).status === "owned" : false,
     viewerInventoryItem: inventoryRows?.length ? mapInventoryItem(inventoryRows[0] as Row) : null,
-    rating,
+    rating: { averageRating, ratingCount, viewerRating },
   };
 }
 

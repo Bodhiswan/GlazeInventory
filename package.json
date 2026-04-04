@@ -7,10 +7,15 @@
     "catalog:mayco:traits": "python scripts/infer_mayco_visual_traits.py",
     "catalog:mayco:firing-images": "python scripts/scrape_mayco_firing_images.py",
     "catalog:mayco:combinations": "python scripts/scrape_mayco_combinations.py",
+    "catalog:mayco:combination-images": "python scripts/archive_mayco_combination_images.py",
+    "catalog:amaco:combinations": "python scripts/scrape_amaco_combinations.py",
+    "catalog:amaco:combinations:export": "python scripts/export_amaco_combination_checkpoint.py",
+    "catalog:amaco:combination-images": "python scripts/archive_amaco_combination_images.py",
     "catalog:vendors": "python scripts/scrape_additional_vendor_catalogs.py",
     "catalog:vendors:traits": "python scripts/infer_vendor_visual_traits.py",
     "import:facebook": "tsx scripts/import_facebook_group.ts",
     "dev": "next dev",
+    "dev:demo": "node scripts/dev-demo.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
@@ -38,6 +43,7 @@
     "react-dom": "19.2.4",
     "stripe": "^21.0.1",
     "tailwind-merge": "^3.5.0",
+    "tesseract.js": "^7.0.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {

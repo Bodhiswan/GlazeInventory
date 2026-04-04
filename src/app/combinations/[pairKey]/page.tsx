@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants, Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
-import { getCombinationDetail, getPublicGuestViewer, getViewer } from "@/lib/data";
+import { getCombinationDetail, requireViewer } from "@/lib/data";
 import { formatGlazeLabel, formatGlazeMeta, formatSearchQuery } from "@/lib/utils";
 
 export default async function CombinationDetailPage({
@@ -18,10 +18,9 @@ export default async function CombinationDetailPage({
   params: Promise<{ pairKey: string }>;
   searchParams: Promise<{ reported?: string }>;
 }) {
-  const viewer = (await getViewer()) ?? getPublicGuestViewer();
-  const isGuest = Boolean(viewer.profile.isAnonymous);
+  const viewer = await requireViewer();
   const { pairKey } = await params;
-  const detail = await getCombinationDetail(viewer.profile.id, pairKey, { publicRead: isGuest });
+  const detail = await getCombinationDetail(viewer.profile.id, pairKey);
   const query = await searchParams;
 
   if (!detail) {
@@ -33,21 +32,10 @@ export default async function CombinationDetailPage({
       <PageHeader
         eyebrow="Combination detail"
         title={`${detail.glazes[0].name} + ${detail.glazes[1].name}`}
-        description={
-          isGuest
-            ? "Browse published member results for this glaze pairing. Sign in if you want to publish your own result or compare the pair against your shelf."
-            : "See your own notes for this pair and browse published results from other members who fired the same combination."
-        }
-        actions={
-          isGuest ? (
-            <Link href="/auth/sign-in" className={buttonVariants({})}>
-              Sign in to save your shelf
-            </Link>
-          ) : null
-        }
+        description="See your own notes for this pair and browse published results from other members who fired the same combination."
       />
 
-      {!isGuest && formatSearchQuery(query.reported) ? (
+      {formatSearchQuery(query.reported) ? (
         <div className="border border-accent-3/20 bg-accent-3/10 px-4 py-3 text-sm text-accent-3">
           Report submitted. Admins can now review it.
         </div>
@@ -57,7 +45,7 @@ export default async function CombinationDetailPage({
         <Panel className="space-y-5">
           <div className="flex items-center gap-3">
             <Badge tone={detail.viewerOwnsPair ? "success" : "neutral"}>
-              {detail.viewerOwnsPair ? "You own both glazes" : isGuest ? "Published community pairing" : "Pair exists in community"}
+              {detail.viewerOwnsPair ? "You own both glazes" : "Pair exists in community"}
             </Badge>
           </div>
           <div className="grid gap-4">
@@ -78,14 +66,8 @@ export default async function CombinationDetailPage({
             ))}
           </div>
           <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-muted">
-              {isGuest ? "Member context" : "Your private notes"}
-            </p>
-            {isGuest ? (
-              <p className="mt-3 text-sm text-muted">
-                Sign in to compare this pair against your inventory and keep your own private notes on the glazes you test together.
-              </p>
-            ) : detail.inventoryNotes.length ? (
+            <p className="text-sm uppercase tracking-[0.2em] text-muted">Your private notes</p>
+            {detail.inventoryNotes.length ? (
               <ul className="mt-3 space-y-2 text-sm leading-6 text-muted">
                 {detail.inventoryNotes.map((note, index) => (
                   <li key={`${note}-${index}`}>{note}</li>
@@ -108,30 +90,26 @@ export default async function CombinationDetailPage({
             detail.posts.map((post) => (
               <div key={post.id} className="space-y-4">
                 <PostCard post={post} showStatus={post.status !== "published"} />
-                {!isGuest ? (
-                  <Panel>
-                    <form action={reportPostAction} className="grid gap-3">
-                      <input type="hidden" name="postId" value={post.id} />
-                      <input type="hidden" name="pairKey" value={detail.pairKey} />
-                      <p className="text-sm font-semibold">Report this post</p>
-                      <Textarea
-                        name="reason"
-                        placeholder="Why should an admin review this image or caption?"
-                      />
-                      <Button type="submit" variant="ghost">
-                        Submit report
-                      </Button>
-                    </form>
-                  </Panel>
-                ) : null}
+                <Panel>
+                  <form action={reportPostAction} className="grid gap-3">
+                    <input type="hidden" name="postId" value={post.id} />
+                    <input type="hidden" name="pairKey" value={detail.pairKey} />
+                    <p className="text-sm font-semibold">Report this post</p>
+                    <Textarea
+                      name="reason"
+                      placeholder="Why should an admin review this image or caption?"
+                    />
+                    <Button type="submit" variant="ghost">
+                      Submit report
+                    </Button>
+                  </form>
+                </Panel>
               </div>
             ))
           ) : (
             <Panel>
               <p className="text-sm leading-6 text-muted">
-                {isGuest
-                  ? "No member has published a public result for this pair yet."
-                  : "Be the first member to publish a glaze test for this pairing."}
+                Be the first member to publish a glaze test for this pairing.
               </p>
             </Panel>
           )}

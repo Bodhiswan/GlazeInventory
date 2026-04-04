@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import { signOutAction, updateProfilePreferencesAction } from "@/app/actions";
-import { GuestGateCallout } from "@/components/guest-gate-callout";
 import { PageHeader } from "@/components/page-header";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
@@ -35,13 +34,11 @@ export default async function ProfilePage({
             <Link href="/glazes" className={buttonVariants({ variant: "ghost" })}>
               Back to library
             </Link>
-            {!viewer.profile.isAnonymous ? (
-              <form action={signOutAction}>
-                <button type="submit" className={buttonVariants({ variant: "ghost" })}>
-                  Sign out
-                </button>
-              </form>
-            ) : null}
+            <form action={signOutAction}>
+              <button type="submit" className={buttonVariants({ variant: "ghost" })}>
+                Sign out
+              </button>
+            </form>
           </>
         }
       />
@@ -54,16 +51,6 @@ export default async function ProfilePage({
         <FormBanner variant="error">{decodeURIComponent(error)}</FormBanner>
       ) : null}
 
-      {viewer.profile.isAnonymous ? (
-        <Panel className="space-y-4">
-          <p className="text-sm uppercase tracking-[0.2em] text-muted">Guest mode</p>
-          <h2 className="display-font text-3xl tracking-tight">Profile settings need a verified account.</h2>
-          <GuestGateCallout
-            feature="Create an account to save your display name, studio, and preferred cone so the library remembers your preferences."
-            redirectTo="/profile"
-          />
-        </Panel>
-      ) : (
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <Panel>
             <form action={updateProfilePreferencesAction} className="grid gap-5">
@@ -140,7 +127,6 @@ export default async function ProfilePage({
             </div>
           </Panel>
         </div>
-      )}
     </div>
   );
 }

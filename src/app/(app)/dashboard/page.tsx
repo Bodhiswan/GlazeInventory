@@ -5,76 +5,17 @@ import { SetupCallout } from "@/components/setup-callout";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getCatalogGlazes, getInventory, getInventoryFolders, requireViewer } from "@/lib/data";
-import { ACTIVE_GLAZE_BRANDS } from "@/lib/utils";
+import { getInventory, getInventoryFolders, requireViewer } from "@/lib/data";
 
 export default async function DashboardPage() {
   const viewer = await requireViewer();
-  const [inventory, catalog, folders] = await Promise.all([
+  const [inventory, folders] = await Promise.all([
     getInventory(viewer.profile.id),
-    getCatalogGlazes(viewer.profile.id),
     getInventoryFolders(viewer.profile.id),
   ]);
   const ownedItems = inventory.filter((item) => item.status === "owned");
   const wishlistItems = inventory.filter((item) => item.status === "wishlist");
   const emptyItems = inventory.filter((item) => item.status === "archived");
-  const commercialCount = catalog.filter(
-    (glaze) =>
-      glaze.sourceType === "commercial" &&
-      glaze.brand &&
-      ACTIVE_GLAZE_BRANDS.includes(glaze.brand as (typeof ACTIVE_GLAZE_BRANDS)[number]),
-  ).length;
-
-  if (viewer.profile.isAnonymous) {
-    return (
-      <div className="space-y-8">
-        {viewer.mode === "demo" ? <SetupCallout compact /> : null}
-
-        <PageHeader
-          eyebrow="Guest mode"
-          title="Browse the glaze inventory first."
-          description="Guest browsing lets you explore the commercial catalog and glaze pages, but account-only tools stay locked until you create an account."
-          actions={
-            <>
-              <Link href="/glazes" className={buttonVariants({})}>
-                Open library
-              </Link>
-              <Link href="/auth/sign-up" className={buttonVariants({ variant: "ghost" })}>
-                Create account
-              </Link>
-            </>
-          }
-        />
-
-        <section className="grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">
-          <Panel className="space-y-4">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-muted">What you can do next</p>
-            <h2 className="display-font text-3xl tracking-tight">Open the commercial catalog and start exploring.</h2>
-            <p className="text-sm leading-6 text-muted">
-              You can search {commercialCount} commercial glazes by code, name, brand, colour, finish, cone, and description right now.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link href="/glazes" className={buttonVariants({})}>
-                Open library
-              </Link>
-            </div>
-          </Panel>
-
-          <Panel className="space-y-4">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Create an account to unlock</p>
-            <div className="space-y-3 text-sm leading-6 text-muted">
-              <p>Save glazes to your own inventory instead of remembering what is on the shelf.</p>
-              <p>Keep a wishlist of glazes you want to buy or test later.</p>
-              <p>Create custom folders for projects, clay bodies, classes, or buying plans.</p>
-              <p>Set profile defaults so glaze pages prefer the firing temperature and atmosphere you actually use.</p>
-              <p>Leave comments and studio notes directly under each glaze.</p>
-            </div>
-            <Badge tone="success">Verified account unlocks inventory tools</Badge>
-          </Panel>
-        </section>
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-8">
@@ -89,21 +30,9 @@ export default async function DashboardPage() {
             <Link href="/glazes" className={buttonVariants({})}>
               Open library
             </Link>
-            {viewer.profile.isAnonymous ? (
-              <span
-                className={buttonVariants({
-                  variant: "ghost",
-                  className: "cursor-not-allowed opacity-50 grayscale",
-                })}
-                aria-disabled="true"
-              >
-                Inventory locked
-              </span>
-            ) : (
-              <Link href="/inventory" className={buttonVariants({ variant: "ghost" })}>
-                View inventory
-              </Link>
-            )}
+            <Link href="/inventory" className={buttonVariants({ variant: "ghost" })}>
+              View inventory
+            </Link>
           </>
         }
       />
@@ -138,22 +67,9 @@ export default async function DashboardPage() {
               <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Your inventory</p>
               <h2 className="display-font mt-2 text-3xl tracking-tight">Pieces you can act on right now</h2>
             </div>
-            {viewer.profile.isAnonymous ? (
-              <span
-                className={buttonVariants({
-                  variant: "ghost",
-                  size: "sm",
-                  className: "cursor-not-allowed opacity-50 grayscale",
-                })}
-                aria-disabled="true"
-              >
-                Inventory locked
-              </span>
-            ) : (
-              <Link href="/inventory" className={buttonVariants({ variant: "ghost", size: "sm" })}>
-                View inventory
-              </Link>
-            )}
+            <Link href="/inventory" className={buttonVariants({ variant: "ghost", size: "sm" })}>
+              View inventory
+            </Link>
           </div>
 
           <div className="grid gap-4">
@@ -167,7 +83,7 @@ export default async function DashboardPage() {
                 </div>
                 <div className="flex flex-wrap items-center gap-3">
                   <Badge tone={item.status === "owned" ? "success" : "accent"}>
-                    {item.status === "owned" ? "On shelf" : "Wishlist"}
+                    {item.status === "owned" ? "Owned" : "Wishlist"}
                   </Badge>
                   <Link
                     href={`/glazes/${item.glaze.id}`}
@@ -181,9 +97,7 @@ export default async function DashboardPage() {
             {!ownedItems.length && !wishlistItems.length ? (
               <Panel>
                 <p className="text-sm leading-6 text-muted">
-                  {viewer.profile.isAnonymous
-                    ? "Guest browsing is active. Open the library to explore, then sign in to start building a shelf."
-                    : "You have not saved anything yet. Start in the library and put some on your shelf or wishlist."}
+                  You have not saved anything yet. Start in the library and put some on your shelf or wishlist.
                 </p>
               </Panel>
             ) : null}
@@ -203,21 +117,9 @@ export default async function DashboardPage() {
               <Link href="/glazes" className={buttonVariants({})}>
                 Open library
               </Link>
-              {viewer.profile.isAnonymous ? (
-                <span
-                  className={buttonVariants({
-                    variant: "ghost",
-                    className: "cursor-not-allowed opacity-50 grayscale",
-                  })}
-                  aria-disabled="true"
-                >
-                  Inventory locked
-                </span>
-              ) : (
-                <Link href="/inventory" className={buttonVariants({ variant: "ghost" })}>
-                  Review inventory
-                </Link>
-              )}
+              <Link href="/inventory" className={buttonVariants({ variant: "ghost" })}>
+                Review inventory
+              </Link>
             </div>
           </Panel>
         </div>

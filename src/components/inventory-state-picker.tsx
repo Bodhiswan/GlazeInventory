@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const visibleStates: InventoryStatus[] = ["owned", "wishlist", "archived"];
 
 const stateLabels: Record<InventoryStatus, string> = {
-  owned: "On shelf",
+  owned: "I own it",
   wishlist: "Wishlist",
   archived: "Empty",
 };

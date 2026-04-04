@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 import {
-  continueAsGuestAction,
   signInWithPasswordAction,
 } from "@/app/actions";
 import { SubmitButton } from "@/components/submit-button";
@@ -110,22 +109,10 @@ export async function AuthEntryPage({
             </SubmitButton>
           </form>
 
-          <div className="border-t border-border pt-5 space-y-3">
+          <div className="border-t border-border pt-5">
             <Link href={signUpHref} className={buttonVariants({ variant: "ghost", className: "w-full" })}>
               Create a new account
             </Link>
-            <form action={continueAsGuestAction}>
-              {redirectTo ? <input type="hidden" name="returnTo" value={redirectTo} /> : null}
-              <button
-                type="submit"
-                className={buttonVariants({ variant: "ghost", className: "w-full" })}
-              >
-                Continue as guest
-              </button>
-            </form>
-            <p className="text-center text-xs leading-5 text-muted">
-              Guest mode lets you browse the catalog. Inventory, comments, and ratings require a verified account.
-            </p>
           </div>
         </Panel>
       </div>

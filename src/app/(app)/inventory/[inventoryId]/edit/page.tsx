@@ -19,10 +19,6 @@ export default async function EditInventoryItemPage({
 }) {
   const viewer = await requireViewer();
 
-  if (viewer.profile.isAnonymous) {
-    redirect("/inventory?error=Guest%20mode%20cannot%20edit%20inventory");
-  }
-
   const { inventoryId } = await params;
   const query = await searchParams;
   const item = await getInventoryItem(viewer.profile.id, inventoryId);

@@ -29,11 +29,23 @@ const remotePatterns: RemotePattern[] = [
     hostname: "archive.maycocolors.com",
     pathname: "/wp-content/uploads/**",
   },
+  {
+    protocol: "https" as const,
+    hostname: "cdn11.bigcommerce.com",
+  },
+  {
+    protocol: "https" as const,
+    hostname: "amaco.com",
+  },
 ];
 
 const nextConfig: NextConfig = {
   images: {
     remotePatterns,
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+    deviceSizes: [640, 750, 828, 1080, 1200],
+    imageSizes: [64, 96, 128, 256, 384],
   },
   turbopack: {
     root: path.resolve(__dirname),

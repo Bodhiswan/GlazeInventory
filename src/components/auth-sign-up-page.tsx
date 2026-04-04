@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { beginAccountCreationAction, signUpWithPasswordAction } from "@/app/actions";
+import { signUpWithPasswordAction } from "@/app/actions";
 import { SubmitButton } from "@/components/submit-button";
 import { FormBanner } from "@/components/ui/form-banner";
 import { buttonVariants } from "@/components/ui/button";
@@ -22,31 +22,6 @@ export async function AuthSignUpPage({
   const redirectTo = formatSearchQuery(params.redirectTo);
 
   if (viewer) {
-    if (viewer.profile.isAnonymous) {
-      return (
-        <main className="mx-auto flex min-h-screen w-full max-w-[480px] items-center px-6 py-12">
-          <Panel className="w-full space-y-6">
-            <p className="text-sm uppercase tracking-[0.24em] text-muted">Guest session active</p>
-            <h1 className="display-font text-4xl tracking-tight">Leave guest mode to create an account.</h1>
-            <p className="max-w-xl text-sm leading-6 text-muted">
-              Guest browsing is still signed in. We&apos;ll clear that temporary session first, then
-              take you straight into the verified account form.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <form action={beginAccountCreationAction}>
-                <button type="submit" className={buttonVariants({})}>
-                  Continue to sign up
-                </button>
-              </form>
-              <Link href="/dashboard" className={buttonVariants({ variant: "ghost" })}>
-                Back to dashboard
-              </Link>
-            </div>
-          </Panel>
-        </main>
-      );
-    }
-
     return (
       <main className="mx-auto flex min-h-screen w-full max-w-[480px] items-center px-6 py-12">
         <Panel className="w-full space-y-6">

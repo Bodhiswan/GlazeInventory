@@ -1,8 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Search, X } from "lucide-react";
-import { useDeferredValue, useMemo, useState, type ReactNode } from "react";
+import { Camera, ChevronDown, Loader2, Search, X } from "lucide-react";
+import { memo, useCallback, useDeferredValue, useMemo, useState, type ReactNode } from "react";
+
+import { getCatalogGlazesForScannerAction } from "@/app/actions";
+import { GlazeScanner } from "@/components/glaze-scanner";
 
 import { setGlazeInventoryStateAction, updateInventoryItemNotesAction } from "@/app/actions";
 import { GlazeShelfForm } from "@/components/glaze-shelf-form";
@@ -34,7 +38,7 @@ const inventorySections: Array<{
 }> = [
   {
     status: "owned",
-    label: "On shelf",
+    label: "Owned",
     helper: "Glazes you have on hand right now.",
   },
   {
@@ -93,7 +97,7 @@ function InventorySection({
   );
 }
 
-function InventoryTile({
+const InventoryTile = memo(function InventoryTile({
   item,
   imageUrl,
   onClick,
@@ -115,12 +119,14 @@ function InventoryTile({
       <div className="space-y-2 p-2">
         <div className="relative overflow-hidden border border-border bg-panel">
           {imageUrl ? (
-            <img
+            <Image
               src={imageUrl}
               alt={formatGlazeLabel(item.glaze)}
+              width={256}
+              height={256}
+              sizes="(min-width: 1280px) 20vw, (min-width: 640px) 33vw, 50vw"
               className="aspect-square w-full object-cover bg-white"
               loading="lazy"
-              decoding="async"
             />
           ) : (
             <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
@@ -141,7 +147,7 @@ function InventoryTile({
 
         <div className="flex flex-wrap gap-1">
           <Badge tone={item.status === "owned" ? "success" : item.status === "wishlist" ? "accent" : "neutral"}>
-            {item.status === "owned" ? "On shelf" : item.status === "wishlist" ? "Wishlist" : "Empty"}
+            {item.status === "owned" ? "Owned" : item.status === "wishlist" ? "Wishlist" : "Empty"}
           </Badge>
           {item.status === "owned" ? <Badge tone="neutral">{fillLevel}</Badge> : null}
           {item.status === "owned" && quantity > 1 ? <Badge tone="neutral">Qty {quantity}</Badge> : null}
@@ -153,7 +159,7 @@ function InventoryTile({
       </div>
     </button>
   );
-}
+});
 
 function InventoryNotesForm({
   inventoryId,
@@ -224,6 +230,15 @@ function InventoryNotesForm({
   );
 }
 
+type CatalogGlazeSummary = {
+  id: string;
+  brand: string | null;
+  code: string | null;
+  name: string;
+  line: string | null;
+  imageUrl: string | null;
+};
+
 export function InventoryWorkspace({
   items,
   firingImageMap,
@@ -237,6 +252,24 @@ export function InventoryWorkspace({
 }) {
   const [inventoryItems, setInventoryItems] = useState(items);
   const [query, setQuery] = useState("");
+  const [scannerOpen, setScannerOpen] = useState(false);
+  const [scannerLoading, setScannerLoading] = useState(false);
+  const [catalogGlazes, setCatalogGlazes] = useState<CatalogGlazeSummary[] | null>(null);
+
+  const handleToggleScanner = useCallback(async () => {
+    if (scannerOpen) {
+      setScannerOpen(false);
+      return;
+    }
+    setScannerOpen(true);
+    if (!catalogGlazes) {
+      setScannerLoading(true);
+      const data = await getCatalogGlazesForScannerAction();
+      setCatalogGlazes(data);
+      setScannerLoading(false);
+    }
+  }, [scannerOpen, catalogGlazes]);
+
   const [openSections, setOpenSections] = useState<Record<InventoryStatus, boolean>>({
     owned: true,
     wishlist: false,
@@ -368,6 +401,31 @@ export function InventoryWorkspace({
 
   return (
     <div className="space-y-6">
+      <button
+        type="button"
+        onClick={() => { void handleToggleScanner(); }}
+        className={buttonVariants({
+          variant: scannerOpen ? "ghost" : "primary",
+          className: "w-full gap-2",
+        })}
+      >
+        <Camera className="h-5 w-5" />
+        {scannerOpen ? "Close scanner" : "Scan a glaze label"}
+      </button>
+
+      {scannerOpen ? (
+        <Panel className="space-y-4">
+          {scannerLoading || !catalogGlazes ? (
+            <div className="flex items-center justify-center gap-3 py-6">
+              <Loader2 className="h-5 w-5 animate-spin text-muted" />
+              <span className="text-sm text-muted">Loading glaze catalog...</span>
+            </div>
+          ) : (
+            <GlazeScanner catalogGlazes={catalogGlazes} />
+          )}
+        </Panel>
+      ) : null}
+
       <Panel className="space-y-4">
         <label className="block space-y-2">
           <span className="text-sm font-semibold text-foreground">Search your inventory</span>
@@ -466,41 +524,102 @@ export function InventoryWorkspace({
             className="flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-background sm:mt-[6vh]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-4 border-b border-border px-4 py-4 sm:px-5">
-              <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-muted">
-                  {[activeItem.glaze.brand, activeItem.glaze.code].filter(Boolean).join(" ")}
-                </p>
-                <h2 className="mt-1 text-2xl font-semibold text-foreground">{activeItem.glaze.name}</h2>
+            {/* Sticky header — title + status + close all in one zone */}
+            <div className="border-b border-border px-4 py-3 sm:px-5">
+              <div className="flex items-center gap-3">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
+                    {[activeItem.glaze.brand, activeItem.glaze.code].filter(Boolean).join(" ")}
+                  </p>
+                  <h2 className="truncate text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeItem.glaze.name}</h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setActiveItemId(null)}
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
+                  aria-label="Close inventory glaze details"
+                >
+                  <X className="h-4 w-4" />
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setActiveItemId(null)}
-                className="inline-flex h-10 w-10 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
-                aria-label="Close inventory glaze details"
-              >
-                <X className="h-4 w-4" />
-              </button>
+              {/* Status picker + nav — right below title, stays visible */}
+              <div className="mt-2 flex flex-wrap items-center gap-2">
+                <InventoryStatePicker
+                  status={activeItem.status}
+                  compact
+                  pending={pendingGlazeIds.includes(activeItem.glazeId)}
+                  error={statusErrors[activeItem.id] ?? null}
+                  onChange={(nextStatus) => {
+                    void handleStatusChange(activeItem, nextStatus);
+                  }}
+                />
+                {activeItem.glaze.code ? (
+                  <Link
+                    href={`/combinations?q=${encodeURIComponent(activeItem.glaze.code)}`}
+                    className={buttonVariants({ variant: "ghost", size: "sm" })}
+                  >
+                    Combinations
+                  </Link>
+                ) : null}
+              </div>
             </div>
 
             <div className="overflow-y-auto overscroll-contain">
-              <div className="grid gap-4 p-4 sm:gap-5 sm:p-5 lg:grid-cols-[minmax(0,280px)_1fr]">
-                <div className="mx-auto w-full max-w-[340px] space-y-3 lg:mx-0">
-                  <div className="overflow-hidden border border-border bg-panel p-3">
+              <div className="grid gap-4 p-4 sm:gap-5 sm:p-5 lg:grid-cols-[minmax(0,220px)_1fr]">
+                {/* Images column — stacked vertically with labels */}
+                <div className="mx-auto w-full max-w-[280px] space-y-2 lg:mx-0">
+                  {/* Main / preferred image */}
+                  <div className="overflow-hidden border border-border bg-panel">
                     {(preferredImages[activeItem.glazeId] ?? activeItem.glaze.imageUrl) ? (
-                      <img
+                      <Image
                         src={preferredImages[activeItem.glazeId] ?? activeItem.glaze.imageUrl ?? ""}
                         alt={formatGlazeLabel(activeItem.glaze)}
-                        className="aspect-square w-full object-cover bg-white"
-                        decoding="async"
+                        width={384}
+                        height={384}
+                        sizes="(min-width: 1024px) 220px, 280px"
+                        className="aspect-square w-full object-contain bg-white"
+                        priority
                       />
                     ) : (
                       <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
                         No image
                       </div>
                     )}
+                    {(() => {
+                      const images = firingImageMap[activeItem.glazeId] ?? [];
+                      const matchedImage = images.find((img) => img.imageUrl === preferredImages[activeItem.glazeId]);
+                      const label = [matchedImage?.cone, matchedImage?.atmosphere].filter(Boolean).join(" · ");
+                      return label ? (
+                        <p className="bg-panel px-2 py-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">{label}</p>
+                      ) : null;
+                    })()}
                   </div>
+                  {/* Additional firing images */}
+                  {(firingImageMap[activeItem.glazeId] ?? [])
+                    .filter((img) => img.imageUrl !== preferredImages[activeItem.glazeId])
+                    .map((img) => (
+                      <div key={img.id} className="overflow-hidden border border-border bg-panel">
+                        <Image
+                          src={img.imageUrl}
+                          alt={`${formatGlazeLabel(activeItem.glaze)} – ${[img.cone, img.atmosphere].filter(Boolean).join(" · ")}`}
+                          width={384}
+                          height={384}
+                          sizes="(min-width: 1024px) 220px, 280px"
+                          className="aspect-square w-full object-contain bg-white"
+                          loading="lazy"
+                        />
+                        {(() => {
+                          const label = [img.cone, img.atmosphere].filter(Boolean).join(" · ");
+                          return label ? (
+                            <p className="bg-panel px-2 py-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">{label}</p>
+                          ) : null;
+                        })()}
+                      </div>
+                    ))}
+                </div>
 
+                <div className="space-y-4">
+                  {/* Status badges */}
                   <div className="flex flex-wrap gap-2">
                     <Badge
                       tone={
@@ -512,7 +631,7 @@ export function InventoryWorkspace({
                       }
                     >
                       {activeItem.status === "owned"
-                        ? "On shelf"
+                        ? "Owned"
                         : activeItem.status === "wishlist"
                           ? "Wishlist"
                           : "Empty"}
@@ -525,34 +644,6 @@ export function InventoryWorkspace({
                     ) : null}
                     {activeItem.glaze.cone ? <Badge tone="neutral">{activeItem.glaze.cone}</Badge> : null}
                   </div>
-                </div>
-
-                <div className="space-y-4">
-                  <div>
-                    <p className="text-sm leading-6 text-muted">{formatGlazeMeta(activeItem.glaze)}</p>
-                    {activeItem.glaze.description ? (
-                      <p className="mt-3 text-sm leading-6 text-muted">{activeItem.glaze.description}</p>
-                    ) : null}
-                  </div>
-
-                  <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-                    <Link
-                      href={`/glazes/${activeItem.glaze.id}`}
-                      className={buttonVariants({ variant: "ghost", size: "sm", className: "w-full sm:w-auto" })}
-                    >
-                      Open glaze page
-                    </Link>
-                  </div>
-
-                  <InventoryStatePicker
-                    status={activeItem.status}
-                    compact
-                    pending={pendingGlazeIds.includes(activeItem.glazeId)}
-                    error={statusErrors[activeItem.id] ?? null}
-                    onChange={(nextStatus) => {
-                      void handleStatusChange(activeItem, nextStatus);
-                    }}
-                  />
 
                   {activeItem.status === "owned" ? (
                     <GlazeShelfForm
@@ -575,6 +666,9 @@ export function InventoryWorkspace({
                       }}
                     />
                   ) : null}
+
+                  {/* Glaze info */}
+                  <p className="text-sm leading-6 text-muted">{formatGlazeMeta(activeItem.glaze)}</p>
 
                   <InventoryNotesForm
                     key={activeItem.id}

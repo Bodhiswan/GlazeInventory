@@ -22,7 +22,7 @@ export default async function ResetPasswordPage({
 }) {
   const viewer = await getViewer();
 
-  if (!viewer || viewer.mode === "demo" || viewer.profile.isAnonymous) {
+  if (!viewer || viewer.mode === "demo") {
     redirect("/auth/sign-in?error=Open%20your%20password%20reset%20email%20to%20set%20a%20new%20password");
   }
 
