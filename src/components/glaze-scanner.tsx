@@ -1,11 +1,12 @@
 "use client";
 
-import { Camera, Loader2, RotateCcw, Check } from "lucide-react";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { Camera, Loader2, RotateCcw, Check, Search } from "lucide-react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { setGlazeInventoryStateAction } from "@/app/actions";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import type { Glaze } from "@/lib/types";
 import { buildGlazeSearchIndex, formatGlazeLabel, matchesGlazeSearch } from "@/lib/utils";
 
@@ -16,6 +17,15 @@ interface ScoredMatch {
   score: number;
   imageUrl: string | null;
 }
+
+type CatalogEntry = {
+  id: string;
+  brand: string | null;
+  code: string | null;
+  name: string;
+  line: string | null;
+  imageUrl: string | null;
+};
 
 /** Score a glaze against OCR tokens — higher = better match */
 function scoreGlazeMatch(glaze: Glaze, tokens: string[]): number {
@@ -69,22 +79,150 @@ function extractSearchTokens(ocrText: string): string[] {
   return [...words, ...compounds];
 }
 
+/**
+ * Pre-process image for better OCR: convert to high-contrast grayscale.
+ * Colorful bottle labels with decorative fonts read much better this way.
+ */
+function preprocessImage(dataUrl: string): Promise<string> {
+  return new Promise((resolve) => {
+    const img = new window.Image();
+    img.onload = () => {
+      const canvas = document.createElement("canvas");
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) {
+        resolve(dataUrl);
+        return;
+      }
+
+      ctx.drawImage(img, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+
+      // Convert to grayscale and boost contrast
+      for (let i = 0; i < data.length; i += 4) {
+        // Luminance-weighted grayscale
+        let gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+
+        // Boost contrast: stretch the histogram
+        gray = Math.min(255, Math.max(0, (gray - 80) * 1.8));
+
+        data[i] = gray;
+        data[i + 1] = gray;
+        data[i + 2] = gray;
+      }
+
+      ctx.putImageData(imageData, 0, 0);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.onerror = () => resolve(dataUrl);
+    img.src = dataUrl;
+  });
+}
+
+/** Match row used by both OCR and manual search results */
+function MatchRow({
+  match,
+  isAdded,
+  isPending,
+  onAdd,
+}: {
+  match: ScoredMatch;
+  isAdded: boolean;
+  isPending: boolean;
+  onAdd: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      disabled={isAdded || isPending}
+      onClick={onAdd}
+      className={`flex items-center gap-3 border px-3 py-3 text-left transition-colors ${
+        isAdded
+          ? "border-foreground/20 bg-foreground/[0.04]"
+          : "border-border bg-white hover:border-foreground/30 hover:bg-panel/50"
+      }`}
+    >
+      <div className="w-12 shrink-0 overflow-hidden border border-border bg-panel">
+        {match.imageUrl ? (
+          <img
+            src={match.imageUrl}
+            alt={formatGlazeLabel(match.glaze)}
+            className="aspect-square w-full object-cover"
+          />
+        ) : (
+          <div className="flex aspect-square items-center justify-center text-[7px] uppercase tracking-[0.14em] text-muted">
+            No img
+          </div>
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
+          {match.glaze.brand} {match.glaze.code}
+        </p>
+        <p className="truncate text-sm font-semibold text-foreground">
+          {match.glaze.name}
+        </p>
+        {match.glaze.line ? (
+          <p className="truncate text-xs text-muted">{match.glaze.line}</p>
+        ) : null}
+      </div>
+      {isPending ? (
+        <Loader2 className="h-4 w-4 shrink-0 animate-spin text-muted" />
+      ) : isAdded ? (
+        <Badge tone="neutral">
+          <Check className="mr-1 inline h-3 w-3" />
+          Added
+        </Badge>
+      ) : null}
+    </button>
+  );
+}
+
 export function GlazeScanner({
   catalogGlazes,
 }: {
-  catalogGlazes: Array<{ id: string; brand: string | null; code: string | null; name: string; line: string | null; imageUrl: string | null }>;
+  catalogGlazes: CatalogEntry[];
 }) {
   const [phase, setPhase] = useState<ScanPhase>("ready");
   const [ocrText, setOcrText] = useState<string>("");
   const [matches, setMatches] = useState<ScoredMatch[]>([]);
+  const [manualQuery, setManualQuery] = useState("");
   const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
   const [pendingId, setPendingId] = useState<string | null>(null);
   const [addError, setAddError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  // Build search indexes once
+  const searchIndexes = useMemo(() => {
+    const map = new Map<string, string>();
+    for (const g of catalogGlazes) {
+      map.set(g.id, buildGlazeSearchIndex([g.brand, g.code, g.name, g.line]));
+    }
+    return map;
+  }, [catalogGlazes]);
+
+  // Manual search results
+  const manualResults = useMemo(() => {
+    const q = manualQuery.trim();
+    if (q.length < 2) return [];
+
+    return catalogGlazes
+      .filter((g) => {
+        const idx = searchIndexes.get(g.id) ?? "";
+        return matchesGlazeSearch(idx, q);
+      })
+      .slice(0, 8)
+      .map((g) => ({
+        glaze: g as Glaze,
+        score: 0,
+        imageUrl: g.imageUrl,
+      }));
+  }, [manualQuery, catalogGlazes, searchIndexes]);
+
   // Auto-open camera on mount
   useEffect(() => {
-    // Small delay so the DOM is ready (mobile browsers need this)
     const timer = setTimeout(() => {
       fileInputRef.current?.click();
     }, 100);
@@ -95,11 +233,15 @@ export function GlazeScanner({
     setPhase("processing");
     setOcrText("");
     setMatches([]);
+    setManualQuery("");
     setAddError(null);
 
     try {
+      // Pre-process for better read on colorful labels
+      const processed = await preprocessImage(imageData);
+
       const Tesseract = await import("tesseract.js");
-      const result = await Tesseract.recognize(imageData, "eng", {
+      const result = await Tesseract.recognize(processed, "eng", {
         logger: () => {},
       });
 
@@ -127,13 +269,12 @@ export function GlazeScanner({
       setMatches(scored);
       setPhase("results");
     } catch {
-      setOcrText("Could not read text from image. Try a clearer photo of the label.");
+      setOcrText("Could not read text from image. Try a clearer photo or search manually below.");
       setMatches([]);
       setPhase("results");
     }
   }, [catalogGlazes]);
 
-  // Capture → auto-run OCR (no preview step)
   const handleCapture = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -147,7 +288,6 @@ export function GlazeScanner({
     event.target.value = "";
   }, [runOcr]);
 
-  // Tap match → add immediately
   const handleAddGlaze = useCallback(async (match: ScoredMatch) => {
     if (addedIds.has(match.glaze.id) || pendingId) return;
 
@@ -172,6 +312,10 @@ export function GlazeScanner({
   const openCamera = useCallback(() => {
     fileInputRef.current?.click();
   }, []);
+
+  // Which results to show — manual search takes priority when typing
+  const activeResults = manualQuery.trim().length >= 2 ? manualResults : matches;
+  const showingManual = manualQuery.trim().length >= 2;
 
   return (
     <div className="space-y-3">
@@ -206,75 +350,46 @@ export function GlazeScanner({
         </div>
       ) : null}
 
-      {/* ── RESULTS: Tap to add ── */}
+      {/* ── RESULTS: OCR matches + manual search fallback ── */}
       {phase === "results" ? (
         <div className="space-y-3">
-          {matches.length ? (
+          {/* Manual search — always available as fallback */}
+          <div className="flex items-center gap-3 border border-foreground/14 bg-white px-3 py-2.5">
+            <Search className="h-4 w-4 shrink-0 text-muted" />
+            <Input
+              value={manualQuery}
+              onChange={(e) => setManualQuery(e.target.value)}
+              placeholder={matches.length ? "Not right? Search by code or name" : "Search by code or name (e.g. CG-718)"}
+              className="border-0 bg-transparent px-0 text-sm shadow-none"
+            />
+          </div>
+
+          {activeResults.length ? (
             <div>
               <p className="mb-2 text-sm font-semibold text-foreground">
-                Tap to add to your inventory
+                {showingManual ? "Search results" : "Tap to add to your inventory"}
               </p>
               <div className="grid gap-2">
-                {matches.map((match) => {
-                  const isAdded = addedIds.has(match.glaze.id);
-                  const isPending = pendingId === match.glaze.id;
-
-                  return (
-                    <button
-                      key={match.glaze.id}
-                      type="button"
-                      disabled={isAdded || isPending}
-                      onClick={() => { void handleAddGlaze(match); }}
-                      className={`flex items-center gap-3 border px-3 py-3 text-left transition-colors ${
-                        isAdded
-                          ? "border-foreground/20 bg-foreground/[0.04]"
-                          : "border-border bg-white hover:border-foreground/30 hover:bg-panel/50"
-                      }`}
-                    >
-                      <div className="w-12 shrink-0 overflow-hidden border border-border bg-panel">
-                        {match.imageUrl ? (
-                          <img
-                            src={match.imageUrl}
-                            alt={formatGlazeLabel(match.glaze)}
-                            className="aspect-square w-full object-cover"
-                          />
-                        ) : (
-                          <div className="flex aspect-square items-center justify-center text-[7px] uppercase tracking-[0.14em] text-muted">
-                            No img
-                          </div>
-                        )}
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
-                          {match.glaze.brand} {match.glaze.code}
-                        </p>
-                        <p className="truncate text-sm font-semibold text-foreground">
-                          {match.glaze.name}
-                        </p>
-                        {match.glaze.line ? (
-                          <p className="truncate text-xs text-muted">{match.glaze.line}</p>
-                        ) : null}
-                      </div>
-                      {isPending ? (
-                        <Loader2 className="h-4 w-4 shrink-0 animate-spin text-muted" />
-                      ) : isAdded ? (
-                        <Badge tone="neutral">
-                          <Check className="mr-1 inline h-3 w-3" />
-                          Added
-                        </Badge>
-                      ) : (
-                        <Badge tone="neutral">{Math.round(match.score)}</Badge>
-                      )}
-                    </button>
-                  );
-                })}
+                {activeResults.map((match) => (
+                  <MatchRow
+                    key={match.glaze.id}
+                    match={match}
+                    isAdded={addedIds.has(match.glaze.id)}
+                    isPending={pendingId === match.glaze.id}
+                    onAdd={() => { void handleAddGlaze(match); }}
+                  />
+                ))}
               </div>
             </div>
           ) : (
             <div className="border border-dashed border-border bg-panel px-4 py-6 text-center">
-              <p className="text-sm font-semibold text-foreground">No matching glazes found</p>
+              <p className="text-sm font-semibold text-foreground">
+                {showingManual ? "No glazes match your search" : "No matching glazes found"}
+              </p>
               <p className="mt-1 text-xs text-muted">
-                Try a clearer photo with the glaze code visible.
+                {showingManual
+                  ? "Try a different code or name."
+                  : "Type the glaze code or name in the search box above."}
               </p>
             </div>
           )}
@@ -284,12 +399,14 @@ export function GlazeScanner({
           ) : null}
 
           {/* OCR debug — collapsed */}
-          <details className="border border-border bg-panel px-3 py-2">
-            <summary className="cursor-pointer list-none text-[10px] uppercase tracking-[0.16em] text-muted">
-              Text read from label
-            </summary>
-            <p className="mt-2 whitespace-pre-wrap text-xs leading-5 text-muted">{ocrText || "No text detected"}</p>
-          </details>
+          {ocrText ? (
+            <details className="border border-border bg-panel px-3 py-2">
+              <summary className="cursor-pointer list-none text-[10px] uppercase tracking-[0.16em] text-muted">
+                Text read from label
+              </summary>
+              <p className="mt-2 whitespace-pre-wrap text-xs leading-5 text-muted">{ocrText}</p>
+            </details>
+          ) : null}
 
           <button
             type="button"
