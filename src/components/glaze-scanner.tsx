@@ -1,16 +1,13 @@
 "use client";
 
-import { Camera, Loader2, RotateCcw, Check, Search } from "lucide-react";
+import { Camera, Loader2, Check, Search } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { setGlazeInventoryStateAction } from "@/app/actions";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import type { Glaze } from "@/lib/types";
 import { buildGlazeSearchIndex, formatGlazeLabel, matchesGlazeSearch } from "@/lib/utils";
-
-type ScanPhase = "ready" | "processing" | "results";
 
 interface ScoredMatch {
   glaze: Glaze;
@@ -80,8 +77,8 @@ function extractSearchTokens(ocrText: string): string[] {
 }
 
 /**
- * Pre-process image for better OCR: convert to high-contrast grayscale.
- * Colorful bottle labels with decorative fonts read much better this way.
+ * Pre-process image for better OCR: convert to high-contrast grayscale
+ * with adaptive thresholding to handle colorful labels.
  */
 function preprocessImage(dataUrl: string): Promise<string> {
   return new Promise((resolve) => {
@@ -98,19 +95,29 @@ function preprocessImage(dataUrl: string): Promise<string> {
 
       ctx.drawImage(img, 0, 0);
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
+      const d = imageData.data;
 
-      // Convert to grayscale and boost contrast
-      for (let i = 0; i < data.length; i += 4) {
-        // Luminance-weighted grayscale
-        let gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
+      // Pass 1: find min/max luminance for adaptive stretch
+      let minL = 255;
+      let maxL = 0;
+      for (let i = 0; i < d.length; i += 4) {
+        const gray = d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114;
+        if (gray < minL) minL = gray;
+        if (gray > maxL) maxL = gray;
+      }
 
-        // Boost contrast: stretch the histogram
-        gray = Math.min(255, Math.max(0, (gray - 80) * 1.8));
+      const range = maxL - minL || 1;
 
-        data[i] = gray;
-        data[i + 1] = gray;
-        data[i + 2] = gray;
+      // Pass 2: adaptive contrast stretch + binarize
+      for (let i = 0; i < d.length; i += 4) {
+        let gray = d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114;
+        // Stretch to full 0-255 range
+        gray = ((gray - minL) / range) * 255;
+        // Sharpen: push toward black or white
+        gray = gray < 140 ? 0 : 255;
+        d[i] = gray;
+        d[i + 1] = gray;
+        d[i + 2] = gray;
       }
 
       ctx.putImageData(imageData, 0, 0);
@@ -121,7 +128,7 @@ function preprocessImage(dataUrl: string): Promise<string> {
   });
 }
 
-/** Match row used by both OCR and manual search results */
+/** Match row — shared by OCR and manual search results */
 function MatchRow({
   match,
   isAdded,
@@ -185,14 +192,15 @@ export function GlazeScanner({
 }: {
   catalogGlazes: CatalogEntry[];
 }) {
-  const [phase, setPhase] = useState<ScanPhase>("ready");
+  const [ocrMatches, setOcrMatches] = useState<ScoredMatch[]>([]);
   const [ocrText, setOcrText] = useState<string>("");
-  const [matches, setMatches] = useState<ScoredMatch[]>([]);
+  const [ocrRunning, setOcrRunning] = useState(false);
   const [manualQuery, setManualQuery] = useState("");
   const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
   const [pendingId, setPendingId] = useState<string | null>(null);
   const [addError, setAddError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Build search indexes once
   const searchIndexes = useMemo(() => {
@@ -221,57 +229,72 @@ export function GlazeScanner({
       }));
   }, [manualQuery, catalogGlazes, searchIndexes]);
 
-  // Auto-open camera on mount
+  // Focus search input on mount
   useEffect(() => {
-    const timer = setTimeout(() => {
-      fileInputRef.current?.click();
-    }, 100);
-    return () => clearTimeout(timer);
+    searchInputRef.current?.focus();
   }, []);
 
   const runOcr = useCallback(async (imageData: string) => {
-    setPhase("processing");
+    setOcrRunning(true);
     setOcrText("");
-    setMatches([]);
-    setManualQuery("");
+    setOcrMatches([]);
     setAddError(null);
 
     try {
-      // Pre-process for better read on colorful labels
       const processed = await preprocessImage(imageData);
 
       const Tesseract = await import("tesseract.js");
-      const result = await Tesseract.recognize(processed, "eng", {
-        logger: () => {},
-      });
 
-      const text = result.data.text;
-      setOcrText(text);
+      // Try both the processed and original image, take whichever gets more matches
+      const [processedResult, originalResult] = await Promise.all([
+        Tesseract.recognize(processed, "eng", { logger: () => {} }),
+        Tesseract.recognize(imageData, "eng", { logger: () => {} }),
+      ]);
 
-      const tokens = extractSearchTokens(text);
+      const processedText = processedResult.data.text;
+      const originalText = originalResult.data.text;
 
-      if (!tokens.length) {
-        setMatches([]);
-        setPhase("results");
-        return;
+      // Score both and keep whichever set has better top match
+      function scoreAll(text: string) {
+        const tokens = extractSearchTokens(text);
+        if (!tokens.length) return { text, matches: [] as ScoredMatch[] };
+
+        const scored = catalogGlazes
+          .map((glaze) => ({
+            glaze: glaze as Glaze,
+            score: scoreGlazeMatch(glaze as Glaze, tokens),
+            imageUrl: glaze.imageUrl,
+          }))
+          .filter((m) => m.score > 0)
+          .sort((a, b) => b.score - a.score)
+          .slice(0, 8);
+
+        return { text, matches: scored };
       }
 
-      const scored: ScoredMatch[] = catalogGlazes
-        .map((glaze) => ({
-          glaze: glaze as Glaze,
-          score: scoreGlazeMatch(glaze as Glaze, tokens),
-          imageUrl: glaze.imageUrl,
-        }))
-        .filter((m) => m.score > 0)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, 8);
+      const pResult = scoreAll(processedText);
+      const oResult = scoreAll(originalText);
 
-      setMatches(scored);
-      setPhase("results");
+      // Pick whichever produced a higher top score
+      const best = (pResult.matches[0]?.score ?? 0) >= (oResult.matches[0]?.score ?? 0)
+        ? pResult
+        : oResult;
+
+      setOcrText(best.text);
+      setOcrMatches(best.matches);
+
+      // If OCR found something, auto-populate the search with the best guess
+      if (!best.matches.length && originalText.trim()) {
+        // Extract the most promising code-like token for the search box
+        const codeMatch = originalText.match(/[A-Z]{1,4}[\s-]*\d{2,4}/i);
+        if (codeMatch) {
+          setManualQuery(codeMatch[0].trim());
+        }
+      }
     } catch {
-      setOcrText("Could not read text from image. Try a clearer photo or search manually below.");
-      setMatches([]);
-      setPhase("results");
+      setOcrText("Could not read the label. Search manually below.");
+    } finally {
+      setOcrRunning(false);
     }
   }, [catalogGlazes]);
 
@@ -309,12 +332,8 @@ export function GlazeScanner({
     setAddedIds((prev) => new Set(prev).add(match.glaze.id));
   }, [addedIds, pendingId]);
 
-  const openCamera = useCallback(() => {
-    fileInputRef.current?.click();
-  }, []);
-
   // Which results to show — manual search takes priority when typing
-  const activeResults = manualQuery.trim().length >= 2 ? manualResults : matches;
+  const activeResults = manualQuery.trim().length >= 2 ? manualResults : ocrMatches;
   const showingManual = manualQuery.trim().length >= 2;
 
   return (
@@ -330,93 +349,74 @@ export function GlazeScanner({
         aria-hidden="true"
       />
 
-      {/* ── READY: Waiting for photo ── */}
-      {phase === "ready" ? (
+      {/* Search + scan in one row */}
+      <div className="flex gap-2">
+        <div className="flex min-w-0 flex-1 items-center gap-3 border border-foreground/14 bg-white px-3 py-2.5">
+          <Search className="h-4 w-4 shrink-0 text-muted" />
+          <input
+            ref={searchInputRef}
+            value={manualQuery}
+            onChange={(e) => setManualQuery(e.target.value)}
+            placeholder="Type code or name (e.g. CG-718)"
+            className="min-w-0 flex-1 border-0 bg-transparent text-sm text-foreground outline-none placeholder:text-muted/60"
+          />
+        </div>
         <button
           type="button"
-          onClick={openCamera}
-          className={buttonVariants({ variant: "ghost", className: "w-full gap-2" })}
+          disabled={ocrRunning}
+          onClick={() => fileInputRef.current?.click()}
+          className={buttonVariants({ variant: "ghost", className: "shrink-0 gap-2 px-3" })}
+          title="Scan a label with your camera"
         >
-          <Camera className="h-4 w-4" />
-          Take a photo of a glaze label
-        </button>
-      ) : null}
-
-      {/* ── PROCESSING: Loading state ── */}
-      {phase === "processing" ? (
-        <div className="flex flex-col items-center gap-3 border border-border bg-panel px-4 py-8">
-          <Loader2 className="h-8 w-8 animate-spin text-muted" />
-          <p className="text-sm text-muted">Reading label...</p>
-        </div>
-      ) : null}
-
-      {/* ── RESULTS: OCR matches + manual search fallback ── */}
-      {phase === "results" ? (
-        <div className="space-y-3">
-          {/* Manual search — always available as fallback */}
-          <div className="flex items-center gap-3 border border-foreground/14 bg-white px-3 py-2.5">
-            <Search className="h-4 w-4 shrink-0 text-muted" />
-            <Input
-              value={manualQuery}
-              onChange={(e) => setManualQuery(e.target.value)}
-              placeholder={matches.length ? "Not right? Search by code or name" : "Search by code or name (e.g. CG-718)"}
-              className="border-0 bg-transparent px-0 text-sm shadow-none"
-            />
-          </div>
-
-          {activeResults.length ? (
-            <div>
-              <p className="mb-2 text-sm font-semibold text-foreground">
-                {showingManual ? "Search results" : "Tap to add to your inventory"}
-              </p>
-              <div className="grid gap-2">
-                {activeResults.map((match) => (
-                  <MatchRow
-                    key={match.glaze.id}
-                    match={match}
-                    isAdded={addedIds.has(match.glaze.id)}
-                    isPending={pendingId === match.glaze.id}
-                    onAdd={() => { void handleAddGlaze(match); }}
-                  />
-                ))}
-              </div>
-            </div>
+          {ocrRunning ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
-            <div className="border border-dashed border-border bg-panel px-4 py-6 text-center">
-              <p className="text-sm font-semibold text-foreground">
-                {showingManual ? "No glazes match your search" : "No matching glazes found"}
-              </p>
-              <p className="mt-1 text-xs text-muted">
-                {showingManual
-                  ? "Try a different code or name."
-                  : "Type the glaze code or name in the search box above."}
-              </p>
-            </div>
+            <Camera className="h-4 w-4" />
           )}
+          <span className="hidden sm:inline">
+            {ocrRunning ? "Reading..." : "Scan"}
+          </span>
+        </button>
+      </div>
 
-          {addError ? (
-            <p className="text-xs text-[#7f4026]">{addError}</p>
-          ) : null}
-
-          {/* OCR debug — collapsed */}
-          {ocrText ? (
-            <details className="border border-border bg-panel px-3 py-2">
-              <summary className="cursor-pointer list-none text-[10px] uppercase tracking-[0.16em] text-muted">
-                Text read from label
-              </summary>
-              <p className="mt-2 whitespace-pre-wrap text-xs leading-5 text-muted">{ocrText}</p>
-            </details>
-          ) : null}
-
-          <button
-            type="button"
-            onClick={openCamera}
-            className={buttonVariants({ variant: "ghost", className: "w-full gap-2" })}
-          >
-            <RotateCcw className="h-4 w-4" />
-            Scan another label
-          </button>
+      {/* Results list */}
+      {activeResults.length ? (
+        <div>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.16em] text-muted">
+            {showingManual ? "Search results" : "Matches from label"} — tap to add
+          </p>
+          <div className="grid gap-2">
+            {activeResults.map((match) => (
+              <MatchRow
+                key={match.glaze.id}
+                match={match}
+                isAdded={addedIds.has(match.glaze.id)}
+                isPending={pendingId === match.glaze.id}
+                onAdd={() => { void handleAddGlaze(match); }}
+              />
+            ))}
+          </div>
         </div>
+      ) : manualQuery.trim().length >= 2 ? (
+        <p className="py-3 text-center text-xs text-muted">No glazes match "{manualQuery}"</p>
+      ) : ocrMatches.length === 0 && ocrText ? (
+        <p className="py-3 text-center text-xs text-muted">
+          No matches from scan. Type a code or name above to search.
+        </p>
+      ) : null}
+
+      {addError ? (
+        <p className="text-xs text-[#7f4026]">{addError}</p>
+      ) : null}
+
+      {/* OCR debug — collapsed */}
+      {ocrText ? (
+        <details className="border border-border bg-panel px-3 py-2">
+          <summary className="cursor-pointer list-none text-[10px] uppercase tracking-[0.16em] text-muted">
+            Text read from label
+          </summary>
+          <p className="mt-2 whitespace-pre-wrap text-xs leading-5 text-muted">{ocrText}</p>
+        </details>
       ) : null}
     </div>
   );
