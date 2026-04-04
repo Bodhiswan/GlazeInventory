@@ -1590,3 +1590,80 @@ export async function getCatalogGlazesForScannerAction() {
     imageUrl: g.imageUrl ?? null,
   }));
 }
+
+/** Use Gemini Vision to read a glaze label from a photo. */
+export async function recognizeGlazeLabelAction(input: {
+  imageBase64: string;
+  mimeType: string;
+}): Promise<{
+  success: boolean;
+  brand: string | null;
+  code: string | null;
+  name: string | null;
+  line: string | null;
+  rawText: string | null;
+  error: string | null;
+}> {
+  const apiKey = process.env.GOOGLE_API_KEY ?? process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return { success: false, brand: null, code: null, name: null, line: null, rawText: null, error: "Vision API not configured." };
+  }
+
+  try {
+    const { GoogleGenAI } = await import("@google/genai");
+    const ai = new GoogleGenAI({ apiKey });
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.0-flash",
+      contents: [
+        {
+          inlineData: {
+            mimeType: input.mimeType,
+            data: input.imageBase64,
+          },
+        },
+        {
+          text: `You are looking at a photo of a ceramic glaze bottle or label. Extract the following information and return ONLY valid JSON with no markdown formatting:
+
+{
+  "brand": "the manufacturer (e.g. Mayco, AMACO, Coyote, Spectrum, Duncan)",
+  "code": "the product code (e.g. CG-718, SW-116, LG-10, HF-26)",
+  "name": "the color/glaze name (e.g. Blue Caprice, Sea Salt)",
+  "line": "the product line (e.g. Jungle Gems, Stoneware, Elements, Sahara)"
+}
+
+If you cannot determine a field, set it to null. Focus on reading the product code — it's the most important identifier. Look for patterns like 2-3 letters followed by a dash and numbers.`,
+        },
+      ],
+    });
+
+    const text = response.text?.trim() ?? "";
+
+    // Parse JSON from response (handle markdown code blocks)
+    let jsonStr = text;
+    const fenced = text.match(/```(?:json)?\s*([\s\S]*?)```/);
+    if (fenced) jsonStr = fenced[1].trim();
+
+    const parsed = JSON.parse(jsonStr);
+
+    return {
+      success: true,
+      brand: parsed.brand ?? null,
+      code: parsed.code ?? null,
+      name: parsed.name ?? null,
+      line: parsed.line ?? null,
+      rawText: text,
+      error: null,
+    };
+  } catch (e) {
+    return {
+      success: false,
+      brand: null,
+      code: null,
+      name: null,
+      line: null,
+      rawText: null,
+      error: e instanceof Error ? e.message : "Failed to read label.",
+    };
+  }
+}

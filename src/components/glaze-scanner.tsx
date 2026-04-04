@@ -3,7 +3,7 @@
 import { Camera, Loader2, Check, Search } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { setGlazeInventoryStateAction } from "@/app/actions";
+import { recognizeGlazeLabelAction, setGlazeInventoryStateAction } from "@/app/actions";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import type { Glaze } from "@/lib/types";
@@ -24,111 +24,51 @@ type CatalogEntry = {
   imageUrl: string | null;
 };
 
-/** Score a glaze against OCR tokens — higher = better match */
-function scoreGlazeMatch(glaze: Glaze, tokens: string[]): number {
-  const searchIndex = buildGlazeSearchIndex([
-    glaze.brand,
-    glaze.code,
-    glaze.name,
-    glaze.line,
-  ]);
-
+/** Score a glaze against vision result fields */
+function scoreVisionMatch(
+  glaze: CatalogEntry,
+  vision: { brand: string | null; code: string | null; name: string | null; line: string | null },
+): number {
   let score = 0;
 
-  for (const token of tokens) {
-    if (!token || token.length < 2) continue;
+  const norm = (s: string | null) => (s ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
 
-    if (matchesGlazeSearch(searchIndex, token)) {
-      score += token.length;
+  // Exact code match is the strongest signal
+  if (vision.code && norm(glaze.code) && norm(glaze.code) === norm(vision.code)) {
+    score += 100;
+  }
 
-      const normCode = (glaze.code ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
-      const normToken = token.toLowerCase().replace(/[^a-z0-9]/g, "");
-      if (normCode && normCode === normToken) {
-        score += 50;
-      }
+  // Brand match
+  if (vision.brand && norm(glaze.brand) && norm(glaze.brand) === norm(vision.brand)) {
+    score += 30;
+  }
 
-      const normBrand = (glaze.brand ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
-      if (normBrand && normBrand === normToken) {
+  // Name match (fuzzy — check if vision name is contained or vice versa)
+  if (vision.name && glaze.name) {
+    const vName = norm(vision.name);
+    const gName = norm(glaze.name);
+    if (vName && gName) {
+      if (gName === vName) {
+        score += 40;
+      } else if (gName.includes(vName) || vName.includes(gName)) {
         score += 20;
       }
+    }
+  }
+
+  // Line match
+  if (vision.line && glaze.line) {
+    const vLine = norm(vision.line);
+    const gLine = norm(glaze.line);
+    if (vLine && gLine && (gLine === vLine || gLine.includes(vLine) || vLine.includes(gLine))) {
+      score += 15;
     }
   }
 
   return score;
 }
 
-/** Extract meaningful tokens from OCR text */
-function extractSearchTokens(ocrText: string): string[] {
-  const raw = ocrText
-    .replace(/[^a-zA-Z0-9\-\/\s]/g, " ")
-    .replace(/\s+/g, " ")
-    .trim()
-    .toLowerCase();
-
-  const words = raw.split(" ").filter((w) => w.length >= 2);
-
-  const compounds: string[] = [];
-  for (let i = 0; i < words.length - 1; i++) {
-    compounds.push(`${words[i]}-${words[i + 1]}`);
-    compounds.push(`${words[i]}${words[i + 1]}`);
-  }
-
-  return [...words, ...compounds];
-}
-
-/**
- * Pre-process image for better OCR: convert to high-contrast grayscale
- * with adaptive thresholding to handle colorful labels.
- */
-function preprocessImage(dataUrl: string): Promise<string> {
-  return new Promise((resolve) => {
-    const img = new window.Image();
-    img.onload = () => {
-      const canvas = document.createElement("canvas");
-      canvas.width = img.width;
-      canvas.height = img.height;
-      const ctx = canvas.getContext("2d");
-      if (!ctx) {
-        resolve(dataUrl);
-        return;
-      }
-
-      ctx.drawImage(img, 0, 0);
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const d = imageData.data;
-
-      // Pass 1: find min/max luminance for adaptive stretch
-      let minL = 255;
-      let maxL = 0;
-      for (let i = 0; i < d.length; i += 4) {
-        const gray = d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114;
-        if (gray < minL) minL = gray;
-        if (gray > maxL) maxL = gray;
-      }
-
-      const range = maxL - minL || 1;
-
-      // Pass 2: adaptive contrast stretch + binarize
-      for (let i = 0; i < d.length; i += 4) {
-        let gray = d[i] * 0.299 + d[i + 1] * 0.587 + d[i + 2] * 0.114;
-        // Stretch to full 0-255 range
-        gray = ((gray - minL) / range) * 255;
-        // Sharpen: push toward black or white
-        gray = gray < 140 ? 0 : 255;
-        d[i] = gray;
-        d[i + 1] = gray;
-        d[i + 2] = gray;
-      }
-
-      ctx.putImageData(imageData, 0, 0);
-      resolve(canvas.toDataURL("image/png"));
-    };
-    img.onerror = () => resolve(dataUrl);
-    img.src = dataUrl;
-  });
-}
-
-/** Match row — shared by OCR and manual search results */
+/** Match row — shared by vision and manual search results */
 function MatchRow({
   match,
   isAdded,
@@ -192,13 +132,14 @@ export function GlazeScanner({
 }: {
   catalogGlazes: CatalogEntry[];
 }) {
-  const [ocrMatches, setOcrMatches] = useState<ScoredMatch[]>([]);
-  const [ocrText, setOcrText] = useState<string>("");
-  const [ocrRunning, setOcrRunning] = useState(false);
+  const [visionMatches, setVisionMatches] = useState<ScoredMatch[]>([]);
+  const [visionLabel, setVisionLabel] = useState<string>("");
+  const [scanning, setScanning] = useState(false);
   const [manualQuery, setManualQuery] = useState("");
   const [addedIds, setAddedIds] = useState<Set<string>>(new Set());
   const [pendingId, setPendingId] = useState<string | null>(null);
   const [addError, setAddError] = useState<string | null>(null);
+  const [scanError, setScanError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -234,82 +175,60 @@ export function GlazeScanner({
     searchInputRef.current?.focus();
   }, []);
 
-  const runOcr = useCallback(async (imageData: string) => {
-    setOcrRunning(true);
-    setOcrText("");
-    setOcrMatches([]);
-    setAddError(null);
-
-    try {
-      const processed = await preprocessImage(imageData);
-
-      const Tesseract = await import("tesseract.js");
-
-      // Try both the processed and original image, take whichever gets more matches
-      const [processedResult, originalResult] = await Promise.all([
-        Tesseract.recognize(processed, "eng", { logger: () => {} }),
-        Tesseract.recognize(imageData, "eng", { logger: () => {} }),
-      ]);
-
-      const processedText = processedResult.data.text;
-      const originalText = originalResult.data.text;
-
-      // Score both and keep whichever set has better top match
-      function scoreAll(text: string) {
-        const tokens = extractSearchTokens(text);
-        if (!tokens.length) return { text, matches: [] as ScoredMatch[] };
-
-        const scored = catalogGlazes
-          .map((glaze) => ({
-            glaze: glaze as Glaze,
-            score: scoreGlazeMatch(glaze as Glaze, tokens),
-            imageUrl: glaze.imageUrl,
-          }))
-          .filter((m) => m.score > 0)
-          .sort((a, b) => b.score - a.score)
-          .slice(0, 8);
-
-        return { text, matches: scored };
-      }
-
-      const pResult = scoreAll(processedText);
-      const oResult = scoreAll(originalText);
-
-      // Pick whichever produced a higher top score
-      const best = (pResult.matches[0]?.score ?? 0) >= (oResult.matches[0]?.score ?? 0)
-        ? pResult
-        : oResult;
-
-      setOcrText(best.text);
-      setOcrMatches(best.matches);
-
-      // If OCR found something, auto-populate the search with the best guess
-      if (!best.matches.length && originalText.trim()) {
-        // Extract the most promising code-like token for the search box
-        const codeMatch = originalText.match(/[A-Z]{1,4}[\s-]*\d{2,4}/i);
-        if (codeMatch) {
-          setManualQuery(codeMatch[0].trim());
-        }
-      }
-    } catch {
-      setOcrText("Could not read the label. Search manually below.");
-    } finally {
-      setOcrRunning(false);
-    }
-  }, [catalogGlazes]);
-
   const handleCapture = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = () => {
-      void runOcr(reader.result as string);
+    reader.onload = async () => {
+      const dataUrl = reader.result as string;
+
+      // Extract base64 and mime type
+      const match = dataUrl.match(/^data:(image\/\w+);base64,(.+)$/);
+      if (!match) return;
+
+      const [, mimeType, imageBase64] = match;
+
+      setScanning(true);
+      setScanError(null);
+      setVisionMatches([]);
+      setVisionLabel("");
+
+      const result = await recognizeGlazeLabelAction({ imageBase64, mimeType });
+
+      if (!result.success) {
+        setScanError(result.error ?? "Could not read the label.");
+        setScanning(false);
+        return;
+      }
+
+      // Build a label string for display
+      const parts = [result.brand, result.code, result.name].filter(Boolean);
+      setVisionLabel(parts.join(" · ") || "Could not read label");
+
+      // If we got a code, pre-fill the search box
+      if (result.code) {
+        setManualQuery(result.code);
+      }
+
+      // Score all catalog glazes against the vision result
+      const scored = catalogGlazes
+        .map((g) => ({
+          glaze: g as Glaze,
+          score: scoreVisionMatch(g, result),
+          imageUrl: g.imageUrl,
+        }))
+        .filter((m) => m.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 8);
+
+      setVisionMatches(scored);
+      setScanning(false);
     };
     reader.readAsDataURL(file);
 
     event.target.value = "";
-  }, [runOcr]);
+  }, [catalogGlazes]);
 
   const handleAddGlaze = useCallback(async (match: ScoredMatch) => {
     if (addedIds.has(match.glaze.id) || pendingId) return;
@@ -333,7 +252,7 @@ export function GlazeScanner({
   }, [addedIds, pendingId]);
 
   // Which results to show — manual search takes priority when typing
-  const activeResults = manualQuery.trim().length >= 2 ? manualResults : ocrMatches;
+  const activeResults = manualQuery.trim().length >= 2 ? manualResults : visionMatches;
   const showingManual = manualQuery.trim().length >= 2;
 
   return (
@@ -363,21 +282,41 @@ export function GlazeScanner({
         </div>
         <button
           type="button"
-          disabled={ocrRunning}
+          disabled={scanning}
           onClick={() => fileInputRef.current?.click()}
           className={buttonVariants({ variant: "ghost", className: "shrink-0 gap-2 px-3" })}
           title="Scan a label with your camera"
         >
-          {ocrRunning ? (
+          {scanning ? (
             <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
             <Camera className="h-4 w-4" />
           )}
           <span className="hidden sm:inline">
-            {ocrRunning ? "Reading..." : "Scan"}
+            {scanning ? "Reading..." : "Scan"}
           </span>
         </button>
       </div>
+
+      {/* Scanning state */}
+      {scanning ? (
+        <div className="flex items-center justify-center gap-3 border border-border bg-panel px-4 py-6">
+          <Loader2 className="h-5 w-5 animate-spin text-muted" />
+          <p className="text-sm text-muted">Reading glaze label...</p>
+        </div>
+      ) : null}
+
+      {/* Vision read result label */}
+      {visionLabel && !scanning ? (
+        <p className="text-xs text-muted">
+          Read from label: <strong className="text-foreground">{visionLabel}</strong>
+        </p>
+      ) : null}
+
+      {/* Scan error */}
+      {scanError ? (
+        <p className="text-xs text-[#7f4026]">{scanError}</p>
+      ) : null}
 
       {/* Results list */}
       {activeResults.length ? (
@@ -397,26 +336,16 @@ export function GlazeScanner({
             ))}
           </div>
         </div>
-      ) : manualQuery.trim().length >= 2 ? (
+      ) : !scanning && manualQuery.trim().length >= 2 ? (
         <p className="py-3 text-center text-xs text-muted">No glazes match "{manualQuery}"</p>
-      ) : ocrMatches.length === 0 && ocrText ? (
+      ) : !scanning && visionMatches.length === 0 && visionLabel ? (
         <p className="py-3 text-center text-xs text-muted">
-          No matches from scan. Type a code or name above to search.
+          No catalog match found. Try typing the code above.
         </p>
       ) : null}
 
       {addError ? (
         <p className="text-xs text-[#7f4026]">{addError}</p>
-      ) : null}
-
-      {/* OCR debug — collapsed */}
-      {ocrText ? (
-        <details className="border border-border bg-panel px-3 py-2">
-          <summary className="cursor-pointer list-none text-[10px] uppercase tracking-[0.16em] text-muted">
-            Text read from label
-          </summary>
-          <p className="mt-2 whitespace-pre-wrap text-xs leading-5 text-muted">{ocrText}</p>
-        </details>
       ) : null}
     </div>
   );
