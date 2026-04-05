@@ -1,5 +1,6 @@
 "use client";
 
+import { Trash2 } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
 
 import { Badge } from "@/components/ui/badge";
@@ -13,6 +14,13 @@ import { buildGlazeSearchIndex, cn, formatGlazeLabel, matchesGlazeSearch } from 
 const coneChoices = ["Cone 06", "Cone 6", "Cone 10"] as const;
 type ConeChoice = (typeof coneChoices)[number];
 
+const MAX_LAYERS = 4;
+const MIN_LAYERS = 2;
+
+/* ---------------------------------------------------------------------------
+ * Glaze search helpers
+ * ------------------------------------------------------------------------ */
+
 function buildSearchText(glaze: Glaze) {
   return buildGlazeSearchIndex([
     glaze.brand,
@@ -23,22 +31,12 @@ function buildSearchText(glaze: Glaze) {
   ]);
 }
 
-function createPairKey(glazeAId: string, glazeBId: string) {
-  return [glazeAId, glazeBId].sort().join("--");
-}
-
-function filterGlazes(glazes: Glaze[], query: string, excludedGlazeId: string) {
+function filterGlazes(glazes: Glaze[], query: string, excludedIds: Set<string>) {
   const normalizedQuery = query.trim().toLowerCase();
 
   return glazes.filter((glaze) => {
-    if (excludedGlazeId && glaze.id === excludedGlazeId) {
-      return false;
-    }
-
-    if (!normalizedQuery) {
-      return true;
-    }
-
+    if (excludedIds.has(glaze.id)) return false;
+    if (!normalizedQuery) return true;
     return matchesGlazeSearch(buildSearchText(glaze), query);
   });
 }
@@ -47,70 +45,81 @@ function renderGlazeOptionLabel(glaze: Glaze) {
   return [glaze.brand, glaze.code, glaze.name].filter(Boolean).join(" · ");
 }
 
+/* ---------------------------------------------------------------------------
+ * Layer combobox
+ * ------------------------------------------------------------------------ */
+
 function GlazeCombobox({
   disabled,
-  emptyText,
-  excludedGlazeId,
+  excludedIds,
   glazes,
-  helperText,
   label,
-  placeholder,
-  query,
   roleLabel,
+  query,
   selectedGlazeId,
   onQueryChange,
   onSelect,
+  onRemove,
+  removable,
 }: {
   disabled: boolean;
-  emptyText: string;
-  excludedGlazeId: string;
+  excludedIds: Set<string>;
   glazes: Glaze[];
-  helperText: string;
   label: string;
-  placeholder: string;
-  query: string;
   roleLabel: string;
+  query: string;
   selectedGlazeId: string;
   onQueryChange: (value: string) => void;
   onSelect: (glazeId: string) => void;
+  onRemove?: () => void;
+  removable: boolean;
 }) {
   const deferredQuery = useDeferredValue(query);
   const filteredGlazes = useMemo(
-    () => filterGlazes(glazes, deferredQuery, excludedGlazeId).slice(0, 12),
-    [deferredQuery, excludedGlazeId, glazes],
+    () => filterGlazes(glazes, deferredQuery, excludedIds).slice(0, 12),
+    [deferredQuery, excludedIds, glazes],
   );
   const selectedGlaze = glazes.find((glaze) => glaze.id === selectedGlazeId) ?? null;
 
   return (
-    <Panel className="space-y-4">
-      <div className="flex flex-wrap items-center gap-2">
-        <Badge tone="neutral">{label}</Badge>
-        <p className="text-[10px] uppercase tracking-[0.16em] text-muted">{roleLabel}</p>
+    <Panel className="space-y-3">
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge tone="neutral">{label}</Badge>
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">{roleLabel}</p>
+        </div>
+        {removable ? (
+          <button
+            type="button"
+            onClick={onRemove}
+            disabled={disabled}
+            className="flex items-center gap-1 text-xs text-muted transition hover:text-foreground"
+          >
+            <Trash2 className="h-3 w-3" />
+            Remove
+          </button>
+        ) : null}
       </div>
 
-      <label className="grid gap-2">
-        <span className="text-sm font-medium text-foreground">{helperText}</span>
-        <Input
-          value={query}
-          onChange={(event) => {
-            const nextValue = event.target.value;
-            onQueryChange(nextValue);
-
-            if (
-              selectedGlaze &&
-              nextValue.trim().toLowerCase() !== renderGlazeOptionLabel(selectedGlaze).toLowerCase()
-            ) {
-              onSelect("");
-            }
-          }}
-          placeholder={placeholder}
-          disabled={disabled}
-        />
-      </label>
+      <Input
+        value={query}
+        onChange={(event) => {
+          const nextValue = event.target.value;
+          onQueryChange(nextValue);
+          if (
+            selectedGlaze &&
+            nextValue.trim().toLowerCase() !== renderGlazeOptionLabel(selectedGlaze).toLowerCase()
+          ) {
+            onSelect("");
+          }
+        }}
+        placeholder="Search by brand, code, name, or cone"
+        disabled={disabled}
+      />
 
       <div className="border border-border bg-panel">
         {filteredGlazes.length ? (
-          <div className="max-h-72 overflow-y-auto">
+          <div className="max-h-48 overflow-y-auto">
             {filteredGlazes.map((glaze) => {
               const selected = glaze.id === selectedGlazeId;
 
@@ -124,7 +133,7 @@ function GlazeCombobox({
                     onQueryChange(renderGlazeOptionLabel(glaze));
                   }}
                   className={cn(
-                    "flex w-full flex-col gap-1 border-b border-border px-4 py-3 text-left transition last:border-b-0",
+                    "flex w-full flex-col gap-0.5 border-b border-border px-4 py-2.5 text-left transition last:border-b-0",
                     selected
                       ? "bg-foreground text-white"
                       : "bg-transparent text-foreground hover:bg-white",
@@ -139,18 +148,37 @@ function GlazeCombobox({
             })}
           </div>
         ) : (
-          <div className="px-4 py-4 text-sm text-muted">{emptyText}</div>
+          <div className="px-4 py-3 text-sm text-muted">No matches. Try a shorter search.</div>
         )}
       </div>
 
       <p className="text-xs leading-5 text-muted">
         {selectedGlaze
           ? `${roleLabel}: ${formatGlazeLabel(selectedGlaze)}`
-          : `${filteredGlazes.length} matches shown. Keep typing to narrow further.`}
+          : `${filteredGlazes.length} matches shown.`}
       </p>
     </Panel>
   );
 }
+
+/* ---------------------------------------------------------------------------
+ * Layer state type
+ * ------------------------------------------------------------------------ */
+
+interface LayerState {
+  query: string;
+  glazeId: string;
+}
+
+function getLayerRole(index: number, total: number) {
+  if (index === 0) return "Top layer";
+  if (index === total - 1) return total > 2 ? "Base layer" : "Bottom layer";
+  return `Middle layer ${index}`;
+}
+
+/* ---------------------------------------------------------------------------
+ * Main form
+ * ------------------------------------------------------------------------ */
 
 export function PublishCombinationForm({
   disabled,
@@ -159,91 +187,155 @@ export function PublishCombinationForm({
   disabled: boolean;
   glazes: Glaze[];
 }) {
-  const [topQuery, setTopQuery] = useState("");
-  const [baseQuery, setBaseQuery] = useState("");
-  const [topGlazeId, setTopGlazeId] = useState("");
-  const [baseGlazeId, setBaseGlazeId] = useState("");
+  const [layers, setLayers] = useState<LayerState[]>([
+    { query: "", glazeId: "" },
+    { query: "", glazeId: "" },
+  ]);
   const [coneChoice, setConeChoice] = useState<ConeChoice | "">("");
 
-  const selectedTopGlaze = glazes.find((glaze) => glaze.id === topGlazeId) ?? null;
-  const selectedBaseGlaze = glazes.find((glaze) => glaze.id === baseGlazeId) ?? null;
-  const pairKey = topGlazeId && baseGlazeId ? createPairKey(topGlazeId, baseGlazeId) : "";
-  const layerOrderSummary =
-    selectedTopGlaze && selectedBaseGlaze
-      ? `${formatGlazeLabel(selectedTopGlaze)} over ${formatGlazeLabel(selectedBaseGlaze)}`
-      : null;
+  const selectedIds = useMemo(
+    () => new Set(layers.map((l) => l.glazeId).filter(Boolean)),
+    [layers],
+  );
+
+  const filledLayerCount = layers.filter((l) => l.glazeId).length;
+  const canPublish = filledLayerCount >= MIN_LAYERS && !!coneChoice && !disabled;
+
+  const layerSummary = layers
+    .filter((l) => l.glazeId)
+    .map((l) => {
+      const glaze = glazes.find((g) => g.id === l.glazeId);
+      return glaze ? formatGlazeLabel(glaze) : "?";
+    })
+    .join(" over ");
+
+  function updateLayer(index: number, update: Partial<LayerState>) {
+    setLayers((current) =>
+      current.map((layer, i) => (i === index ? { ...layer, ...update } : layer)),
+    );
+  }
+
+  function addLayer() {
+    if (layers.length >= MAX_LAYERS) return;
+    setLayers((current) => [...current, { query: "", glazeId: "" }]);
+  }
+
+  function removeLayer(index: number) {
+    if (layers.length <= MIN_LAYERS) return;
+    setLayers((current) => current.filter((_, i) => i !== index));
+  }
 
   return (
     <div className="grid gap-6">
-      <input type="hidden" name="topGlazeId" value={topGlazeId} />
-      <input type="hidden" name="baseGlazeId" value={baseGlazeId} />
-      <input type="hidden" name="pairKey" value={pairKey} />
+      {/* Hidden inputs for all layer glaze IDs */}
+      {layers.map((layer, index) => (
+        <input
+          key={`hidden-layer-${index}`}
+          type="hidden"
+          name={`layer${index + 1}GlazeId`}
+          value={layer.glazeId}
+        />
+      ))}
       <input type="hidden" name="coneValue" value={coneChoice} />
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <GlazeCombobox
-          disabled={disabled}
-          emptyText="No top-glaze matches yet. Try a shorter code, brand, or glaze name."
-          excludedGlazeId={baseGlazeId}
-          glazes={glazes}
-          helperText="Type to narrow the glaze that sits on top, then pick it from the inline dropdown."
-          label="Layer 1"
-          placeholder="Search top glaze by brand, code, name, or cone"
-          query={topQuery}
-          roleLabel="Top glaze"
-          selectedGlazeId={topGlazeId}
-          onQueryChange={setTopQuery}
-          onSelect={setTopGlazeId}
-        />
-        <GlazeCombobox
-          disabled={disabled}
-          emptyText="No base-glaze matches yet. Try a shorter code, brand, or glaze name."
-          excludedGlazeId={topGlazeId}
-          glazes={glazes}
-          helperText="Type to narrow the glaze that sits underneath, then pick it from the inline dropdown."
-          label="Layer 2"
-          placeholder="Search base glaze by brand, code, name, or cone"
-          query={baseQuery}
-          roleLabel="Base glaze"
-          selectedGlazeId={baseGlazeId}
-          onQueryChange={setBaseQuery}
-          onSelect={setBaseGlazeId}
-        />
+      {/* --- Glaze layers --- */}
+      <div>
+        <div className="mb-3 flex items-center justify-between">
+          <p className="text-[10px] uppercase tracking-[0.2em] text-muted">
+            Glaze layers ({layers.length}/{MAX_LAYERS})
+          </p>
+          {layers.length < MAX_LAYERS ? (
+            <button
+              type="button"
+              onClick={addLayer}
+              disabled={disabled}
+              className="text-xs font-medium text-foreground underline underline-offset-4 transition hover:text-muted"
+            >
+              + Add layer
+            </button>
+          ) : null}
+        </div>
+
+        <div className="grid gap-3 md:grid-cols-2">
+          {layers.map((layer, index) => {
+            const otherIds = new Set(
+              layers
+                .filter((_, i) => i !== index)
+                .map((l) => l.glazeId)
+                .filter(Boolean),
+            );
+
+            return (
+              <GlazeCombobox
+                key={index}
+                disabled={disabled}
+                excludedIds={otherIds}
+                glazes={glazes}
+                label={`Layer ${index + 1}`}
+                roleLabel={getLayerRole(index, layers.length)}
+                query={layer.query}
+                selectedGlazeId={layer.glazeId}
+                onQueryChange={(value) => updateLayer(index, { query: value })}
+                onSelect={(glazeId) => updateLayer(index, { glazeId })}
+                onRemove={() => removeLayer(index)}
+                removable={layers.length > MIN_LAYERS}
+              />
+            );
+          })}
+        </div>
       </div>
 
-      <Panel className="space-y-4">
+      {/* --- Layer order summary --- */}
+      <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone={layerOrderSummary ? "success" : "neutral"}>
-            {layerOrderSummary ? "Layer order ready" : "Choose both layers"}
+          <Badge tone={filledLayerCount >= MIN_LAYERS ? "success" : "neutral"}>
+            {filledLayerCount >= MIN_LAYERS ? "Layers ready" : "Choose layers"}
           </Badge>
-          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Ordered result</p>
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Layer order</p>
         </div>
-
-        <div className="border border-border bg-panel px-4 py-4">
+        <div className="border border-border bg-panel px-4 py-3">
           <p className="text-sm leading-6 text-foreground/90">
-            {layerOrderSummary
-              ? layerOrderSummary
-              : "Pick a top glaze and a base glaze to lock the order before publishing."}
+            {filledLayerCount >= MIN_LAYERS
+              ? layerSummary
+              : "Pick at least two glaze layers to lock the order before publishing."}
           </p>
         </div>
+      </Panel>
+
+      {/* --- Images --- */}
+      <Panel className="space-y-4">
+        <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Photos</p>
 
         <label className="grid gap-2">
-          <span className="text-sm font-medium text-foreground">Upload the fired example photo</span>
-          <Input name="image" type="file" accept="image/*" required disabled={disabled} />
+          <span className="text-sm font-medium text-foreground">
+            Post-firing photo <span className="text-muted">(required)</span>
+          </span>
+          <Input name="postFiringImage" type="file" accept="image/*" required disabled={disabled} />
           <span className="text-xs leading-5 text-muted">
-            Use the clearest fired photo you have. Cropped close-ups are fine if they show the surface response well.
+            Show the fired surface clearly. Cropped close-ups work well.
+          </span>
+        </label>
+
+        <label className="grid gap-2">
+          <span className="text-sm font-medium text-foreground">
+            Pre-firing photo <span className="text-muted">(optional)</span>
+          </span>
+          <Input name="preFiringImage" type="file" accept="image/*" disabled={disabled} />
+          <span className="text-xs leading-5 text-muted">
+            Helpful for showing application thickness, overlap areas, or raw glaze placement before the kiln.
           </span>
         </label>
       </Panel>
 
-      <Panel className="space-y-4">
+      {/* --- Cone selector --- */}
+      <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
           <Badge tone={coneChoice ? "success" : "neutral"}>{coneChoice || "Pick one cone"}</Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Firing temperature</p>
         </div>
 
         <div className="grid gap-2">
-          <p className="text-sm font-medium text-foreground">Which firing range does this result belong to?</p>
+          <p className="text-sm font-medium text-foreground">Which firing range?</p>
           <div className="flex flex-wrap gap-3">
             {coneChoices.map((choice) => {
               const selected = choice === coneChoice;
@@ -266,57 +358,59 @@ export function PublishCombinationForm({
               );
             })}
           </div>
-          <p className="text-xs leading-5 text-muted">
-            Pick one of the supported firing groups so the example stays filterable later.
-          </p>
         </div>
       </Panel>
 
-      <div className="grid gap-3">
-        <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Result notes</p>
-        <label className="grid gap-2">
-          <span className="text-sm font-medium text-foreground">
-            What happened once it came out of the kiln?
-          </span>
-          <Textarea
-            name="caption"
-            placeholder="Describe the visual result, clay body, and the main surprise or takeaway from the firing."
-          />
-        </label>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2">
+      {/* --- Notes fields --- */}
+      <div className="grid gap-4">
         <div className="grid gap-3">
-          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Application</p>
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Glazing process</p>
           <label className="grid gap-2">
             <span className="text-sm font-medium text-foreground">How did you apply the layers?</span>
             <Textarea
-              name="applicationNotes"
+              name="glazingProcess"
               placeholder="Number of coats, overlap area, dip or brush details, and any thickness notes."
             />
           </label>
         </div>
 
         <div className="grid gap-3">
-          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Firing</p>
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Thoughts</p>
           <label className="grid gap-2">
             <span className="text-sm font-medium text-foreground">
-              What kiln context should another potter know?
+              What happened once it came out of the kiln?
             </span>
             <Textarea
-              name="firingNotes"
-              placeholder="Cone, atmosphere, cool-down, shelf position, clay body, or anything unusual that affected the result."
+              name="notes"
+              placeholder="Describe the visual result, clay body, surprises, or takeaways."
             />
+          </label>
+        </div>
+
+        <div className="grid gap-3">
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Kiln specifics</p>
+          <label className="grid gap-2">
+            <span className="text-sm font-medium text-foreground">
+              Anything unusual about the firing?
+            </span>
+            <Textarea
+              name="kilnNotes"
+              placeholder="Only needed if not a regular oxidation firing. Reduction, slow cool, special schedule, shelf position, etc."
+            />
+            <span className="text-xs leading-5 text-muted">
+              Leave blank for standard oxidation firings — only fill this in if you did something different.
+            </span>
           </label>
         </div>
       </div>
 
+      {/* --- Submit --- */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
         <p className="text-sm text-muted">
-          Published examples help other members compare your ordered layering result against vendor references.
+          Published examples appear in combinations and help other members compare layering results.
         </p>
-        <Button type="submit" disabled={disabled || !layerOrderSummary || !coneChoice}>
-          Publish member example
+        <Button type="submit" disabled={!canPublish}>
+          Publish combination
         </Button>
       </div>
     </div>

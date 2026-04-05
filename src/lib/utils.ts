@@ -4,7 +4,7 @@ import { twMerge } from "tailwind-merge";
 import vendorVisualTraits from "@data/vendors/vendor-visual-traits.json";
 import type { Glaze, GlazeFiringImage } from "@/lib/types";
 
-export const ACTIVE_GLAZE_BRANDS = ["Mayco", "AMACO", "Coyote"] as const;
+export const ACTIVE_GLAZE_BRANDS = ["Mayco", "AMACO", "Coyote", "Duncan", "Spectrum", "Speedball"] as const;
 export const GLAZE_FAMILY_LABELS = [
   "Underglaze",
   "Translucent underglaze",
@@ -29,11 +29,14 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     "Stroke & Coat": ["Low-fire gloss color"],
     "Speckled Stroke & Coat": ["Low-fire gloss color"],
     Foundations: ["Low-fire gloss color"],
+    "Low Fire Clear": ["Durable functional"],
     "Stoneware Engobes": ["Engobe"],
     "Stoneware Clear": ["Durable functional"],
     Stoneware: ["Reactive effects"],
     "Stoneware Specialty": ["Reactive effects"],
     "Elements and Elements Chunkies": ["Reactive effects"],
+    Elements: ["Reactive effects"],
+    "Elements Chunkies": ["Reactive effects"],
     "Jungle Gems": ["Reactive effects"],
     "Pottery Cascade": ["Reactive effects"],
     Flux: ["Reactive effects"],
@@ -86,6 +89,68 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     "Mottled Glazes": ["Reactive effects"],
     "Texas Two-Step Oilspot Glazes": ["Reactive effects"],
   },
+  Duncan: {
+    "E-Z Stroke® Translucent Underglazes": ["Translucent underglaze"],
+    "French Dimensions™": ["Specialty additive"],
+    "Clear Glazes": ["Durable functional"],
+  },
+  Spectrum: {
+    "100 Series Crackle Glazes": ["Crawl / crackle"],
+    "150 Series Metallic Glazes": ["Reactive effects"],
+    "200 Series Rhinestone Glazes": ["Reactive effects"],
+    "250 Series Satin Glazes": ["Satin / matte functional"],
+    "300 Series Majolica Glazes": ["Low-fire gloss color"],
+    "700 Series Opaque Gloss Glazes": ["Low-fire gloss color"],
+    "800 Series Semi-Transparent Glazes": ["Low-fire gloss color"],
+    "850 Series Raku Glazes": ["Reactive effects"],
+    "900 Series Low Stone Glazes": ["Satin / matte functional"],
+    "1100 Series Clear Gloss Glazes": ["Durable functional"],
+    "1100 Series Clear Satin Glazes": ["Satin / matte functional"],
+    "1100 Series Clear Crackle Glazes": ["Crawl / crackle"],
+    "1100 Series Opaque Gloss Glazes": ["Durable functional"],
+    "1100 Series Opaque Satin Glazes": ["Satin / matte functional"],
+    "1100 Series Metallic Glazes": ["Reactive effects"],
+    "1100 Series Reactive Glazes": ["Reactive effects"],
+    "1100 Series Textured Glazes": ["Reactive effects"],
+    "1200 Series Cone 9/10 Glazes": ["Durable functional"],
+    "1400 Series Shino Glazes": ["Shino", "Reactive effects"],
+    "1420 Series Ash Glazes": ["Reactive effects"],
+    "1430 Series Floating Glazes": ["Reactive effects"],
+    "1460 Series Celadon Glazes": ["Celadon"],
+    "1500 Series NOVA Glazes": ["Reactive effects"],
+  },
+  Speedball: {
+    Underglazes: ["Underglaze"],
+    "Mid-Fire Glazes": ["Reactive effects"],
+    "Mid-Fire Flux Glazes": ["Reactive effects"],
+    "Earthenware Glazes": ["Low-fire gloss color"],
+  },
+  Laguna: {
+    "EZ Stroke Low-Fire": ["Underglaze"],
+    "Silky Underglaze": ["Underglaze"],
+    "Moroccan Fusion": ["Reactive effects"],
+    "Moroccan Color": ["Low-fire gloss color"],
+    "Moroccan Sand Clear": ["Durable functional"],
+    "Laguna Glazes High-Fire (Cone 10)": ["Durable functional"],
+    "Vintage High-Fire (Cone 10)": ["Durable functional"],
+    "WC High-Fire (Cone 10)": ["Durable functional"],
+    "Versa-5": ["Durable functional"],
+    "SG Studio Glazes": ["Durable functional"],
+    "Flameware (Cone 10)": ["Durable functional"],
+    "Crystal Blossom": ["Reactive effects"],
+    "Watercolor Crackle": ["Crawl / crackle"],
+    "Watercolor Mystic": ["Reactive effects"],
+    "Reactive Glazes": ["Reactive effects"],
+    "Designer Effects - Dry Lake": ["Crawl / crackle"],
+    "Designer Effects - Metallic": ["Reactive effects"],
+    Raku: ["Reactive effects"],
+  },
+  Northcote: {
+    "Midfire Glaze": ["Durable functional"],
+    "Midfire Glaze - Gloss": ["Durable functional"],
+    "Midfire Glaze - Pearl": ["Satin / matte functional"],
+    "Midfire Glaze - Chun": ["Reactive effects"],
+  },
 };
 
 export function cn(...inputs: ClassValue[]) {
@@ -97,6 +162,9 @@ const BRAND_URLS: Record<string, string> = {
   AMACO: "https://www.amaco.com",
   Amaco: "https://www.amaco.com",
   Coyote: "https://www.coyoteclay.com",
+  Duncan: "https://www.maycocolors.com/duncan/",
+  Spectrum: "https://www.spectrumglazes.com",
+  Speedball: "https://www.speedballart.com",
 };
 
 export function getManufacturerUrl(brand: string | null | undefined): string | null {
@@ -442,7 +510,7 @@ export function summarizeGlazeFinish(glaze: Glaze) {
     return glaze.finishNotes.trim();
   }
 
-  return "Unclassified";
+  return null;
 }
 
 export function extractGlazeColorTraits(glaze: Glaze) {
@@ -487,10 +555,10 @@ export function getDominantGlazeColorLabel(glaze: Glaze) {
   const palette = getGlazeColorPalette(glaze);
 
   if (palette.length) {
-    return palette[0]?.label ?? "Unclassified";
+    return palette[0]?.label ?? null;
   }
 
-  return extractGlazeColorTraits(glaze)[0] ?? "Unclassified";
+  return extractGlazeColorTraits(glaze)[0] ?? null;
 }
 
 export function getGlazeColorFlowPosition(glaze: Glaze) {
@@ -554,7 +622,7 @@ export function summarizeGlazeColor(glaze: Glaze) {
     return glaze.colorNotes.trim();
   }
 
-  return "Unclassified";
+  return null;
 }
 
 export function hasCuratedGlazeDescription(glaze: Glaze) {
@@ -569,7 +637,7 @@ export function hasCuratedGlazeDescription(glaze: Glaze) {
 export function getGlazeSkimDescription(glaze: Glaze) {
   const derivedSurface =
     [summarizeGlazeFinish(glaze), summarizeGlazeColor(glaze)]
-      .filter((value) => value && value !== "Unclassified")
+      .filter(Boolean)
       .join(" surface · ") || "Surface notes have not been edited yet.";
 
   return {
@@ -763,10 +831,22 @@ export function pickPreferredGlazeImage(
     return glaze.imageUrl;
   }
 
-  const matchingImages = firingImages.filter((image) =>
+  const exactMatches = firingImages.filter((image) =>
     matchesFiringImagePreference(image, preferredCone, preferredAtmosphere),
   );
-  const candidateImages = matchingImages.length ? matchingImages : firingImages;
+  const coneMatches = preferredCone
+    ? firingImages.filter((image) => image.cone === preferredCone)
+    : [];
+  const atmosphereMatches = preferredAtmosphere
+    ? firingImages.filter((image) => image.atmosphere === preferredAtmosphere)
+    : [];
+  const candidateImages = exactMatches.length
+    ? exactMatches
+    : coneMatches.length
+      ? coneMatches
+      : atmosphereMatches.length
+        ? atmosphereMatches
+        : firingImages;
   const bestFiringImage = [...candidateImages].sort(
     (left, right) => getImageUrlQualityScore(right.imageUrl) - getImageUrlQualityScore(left.imageUrl),
   )[0];

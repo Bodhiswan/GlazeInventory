@@ -12,6 +12,7 @@ import requests
 MAYCO_SWATCH_TABLE_URL = "https://www.maycocolors.com/color-swatches-csv-download/"
 USER_AGENT = "GlazeLibraryCatalogBot/1.0 (+https://glaze-library.app)"
 CATALOG_JSON_PATH = Path("data/vendors/mayco-glazes.json")
+COMBINATIONS_JSON_PATH = Path("data/vendors/mayco-combinations.json")
 OUTPUT_JSON_PATH = Path("data/vendors/mayco-firing-images.json")
 OUTPUT_SQL_PATH = Path("supabase/migrations/20260402014500_import_mayco_firing_images.sql")
 
@@ -62,6 +63,55 @@ def load_catalog_codes() -> set[str]:
     }
 
 
+def get_sort_order(cone_label: str) -> int:
+    if cone_label == "Cone 6":
+        return 20
+    if cone_label == "Cone 10":
+        return 30
+    return 10
+
+
+def backfill_entries_from_combinations(
+    entries_by_key: dict[tuple[str, str], FiringImageEntry],
+    catalog_codes: set[str],
+) -> None:
+    if not COMBINATIONS_JSON_PATH.exists():
+        return
+
+    combinations = json.loads(COMBINATIONS_JSON_PATH.read_text(encoding="utf-8"))
+
+    for combination in combinations:
+        cone_label = normalize_whitespace(str(combination.get("cone") or ""))
+        atmosphere = combination.get("atmosphere")
+
+        if not cone_label:
+            continue
+
+        for layer in combination.get("layers", []):
+            code = normalize_code(str(layer.get("glazeCode") or ""))
+            image_url = normalize_whitespace(str(layer.get("sourceImageUrl") or ""))
+
+            if not code or not image_url:
+                continue
+
+            if catalog_codes and code not in catalog_codes:
+                continue
+
+            key = (code, cone_label)
+
+            if key in entries_by_key:
+                continue
+
+            entries_by_key[key] = {
+                "code": code,
+                "label": cone_label,
+                "cone": cone_label,
+                "atmosphere": normalize_whitespace(str(atmosphere)) or None,
+                "imageUrl": image_url,
+                "sortOrder": get_sort_order(cone_label),
+            }
+
+
 def build_entries() -> list[FiringImageEntry]:
     page = fetch_text(MAYCO_SWATCH_TABLE_URL)
     catalog_codes = load_catalog_codes()
@@ -84,12 +134,6 @@ def build_entries() -> list[FiringImageEntry]:
             continue
 
         cone_label = normalize_whitespace(cone)
-        sort_order = 10
-
-        if cone_label == "Cone 6":
-            sort_order = 20
-        elif cone_label == "Cone 10":
-            sort_order = 30
 
         key = (normalized_code, cone_label)
         entries_by_key[key] = {
@@ -98,8 +142,10 @@ def build_entries() -> list[FiringImageEntry]:
             "cone": cone_label,
             "atmosphere": None,
             "imageUrl": image_url,
-            "sortOrder": sort_order,
+            "sortOrder": get_sort_order(cone_label),
         }
+
+    backfill_entries_from_combinations(entries_by_key, catalog_codes)
 
     return sorted(entries_by_key.values(), key=lambda entry: (entry["code"], entry["sortOrder"], entry["label"]))
 

@@ -5758,5 +5758,525 @@
     "description": "Cone 06 oxidation (large photo): Bright Blue will fire matte without addition of a clear glaze. To intensify color or for use on dinnerware, apply clear or matte clear glaze. Cone 6 oxidation (small photo \u2013 left): Color concentration occurs. Recommended clear glaze is SW-001 Stoneware Clear. Cone 10 reduction (small image \u2013 right): Color slightly fades. Recommended clear glaze is SW-001 Stoneware Clear.",
     "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/12/UG-97_cone10.jpg",
     "sourceUrl": "https://www.maycocolors.com/product/ug-97-bright-blue/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-101",
+    "name": "Stoned Denim",
+    "cone": "Cone 5-10",
+    "description": "Variegated blue glaze that breaks brown. Thinner application yields more brown; thicker application produces more blue.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/10/SW-101-Stoned-Denim-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-101-stoned-denim/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-112",
+    "name": "Tiger's Eye",
+    "cone": "Cone 5 / Cone 6 / Cone 10",
+    "description": "Breaks from a glossy deep brownish-red to frothy amber depending on application thickness. One to two coats produce browns and reds; three to five coats result in more glaze movement and color variation.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-112-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-112-tigers-eye/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-118",
+    "name": "Sea Salt",
+    "cone": "Cone 6 / Cone 10",
+    "description": "A white matte glaze that contains a sage green crystal. As the crystal melts, green blooms appear in the glaze, producing a foamy, textured fired finish.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/10/SW-118-Sea-Salt-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-118-sea-salt/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-129",
+    "name": "Copper Float",
+    "cone": "Cone 5 / Cone 6 / Cone 10",
+    "description": "Rich and complex midrange glaze with hues varying from reds, to coppers to gun metal blacks. Predominate coloration is dark rusty red. Surface is satin-matte when fired to cone 5 or 6. Finish flattens at cone 10, color changes to warm brown with copper mottling.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-129.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-129-copper-float/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-146",
+    "name": "Aurora Green",
+    "cone": "Cone 6 / Cone 10",
+    "description": "Stoneware crystal glaze producing mottled aqua gloss glaze with light brown and large black crystals at cone 6; shifts to variegated pink/blue/green at cone 10.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-146-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-146-aurora-green/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-153",
+    "name": "Indigo Rain",
+    "cone": "Cone 6 / Cone 10",
+    "description": "Matte white glaze that contains a two-toned purple and violet crystal. At Cone 6, crystals create a subtle effect. At Cone 10, the color darkens to light gray/purple tones as crystals melt.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/10/SW-153-Indigo-Rain-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-153-indigo-rain/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-155",
+    "name": "Winter Wood",
+    "cone": "Cone 6 / Cone 10",
+    "description": "A matte white stoneware crystal glaze with brown crystals that melt during firing. Cone 6 oxidation: Matte white with melting brown crystals. Cone 10 reduction: Translucent golden brown.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/10/SW-155-Winter-Wood-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-155-winter-wood/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-165",
+    "name": "Lavender Mist",
+    "cone": "Cone 6 / Cone 10",
+    "description": "A semi-opaque gloss glaze that displays shades of lavender and brown. Thicker applications yield more opaque, uniform color.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-165.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-165-lavender-mist/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-166",
+    "name": "Norse Blue",
+    "cone": "Cone 6 / Cone 10",
+    "description": "Semi-opaque blue gloss glaze that displays shades of light blue and green. Variation depends on application thickness. Thinner applications break translucent, while thicker coats appear more homogenous.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-166.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-166-norse-blue/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-167",
+    "name": "Sand & Sea",
+    "cone": "Cone 5 / Cone 6 / Cone 10",
+    "description": "Semi-opaque gloss glaze that displays shades of light green and gold. Thicker application yields homogenous color; thinner areas break translucent with darker pooling around textures. Reduction at Cone 10 shifts to cream/gray/brown.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-167.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-167-sand-sea/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-168",
+    "name": "Coral Sands",
+    "cone": "Cone 6 / Cone 10",
+    "description": "A semi-opaque gloss glaze that displays shades of orange, yellow, and pink. Application thickness affects color homogeneity; thinner areas break translucent and pool darker around textures. Cone 10 reduction shifts to pink/brown.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-168.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-168-coral-sands/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-169",
+    "name": "Frosted Lemon",
+    "cone": "Cone 6 / Cone 10",
+    "description": "Semi-opaque gloss yellow glaze that displays shades of yellow and white. Cone 6: Yellow and white variation. Cone 10: Light pink/purple.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-169.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-169-frosted-lemon/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-172",
+    "name": "Macadamia",
+    "cone": "Cone 6 / Cone 10",
+    "description": "Creamy vanilla matte glaze that adds accents of gold. A stoneware matte that varies based on application thickness, breaking over texture with possible glossy blue pooling. Cone 10 reduction: variegated gray/cream.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-172.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-172-macadamia/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-173",
+    "name": "Amber Quartz",
+    "cone": "Cone 6 / Cone 10",
+    "description": "A warm amber matte glaze that adds accents of tan and brown. The variation of the glaze is dependent on application. Thicker applications yield more uniform color, while thinner areas break translucent. Cone 10 reduction: glossy purple/blue more prominent.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-173.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-173-amber-quartz/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-177",
+    "name": "Raspberry Mist",
+    "cone": "Cone 5 / Cone 6 / Cone 10",
+    "description": "A gloss, semi-opaque glaze that displays shades of dark and light pink. Thicker applications produce more uniform color, while thinner applications appear brighter and more translucent. The glaze darkens to deep red in reduction firing.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-177.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-177-raspberry-mist/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-180",
+    "name": "Desert Dusk",
+    "cone": "Cone 6 / Cone 10",
+    "description": "A warm amber matte glaze with crystals that melt into a glossy purple and blue. Heavier crystal application will produce more color variation. Cone 10 reduction shows more prominent glossy purple/blue tones.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-180-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-180-desert-dusk/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "code": "SW-189",
+    "name": "Cenote",
+    "cone": "Cone 6 / Cone 10",
+    "description": "Semi-opaque, sky blue gloss glaze that has a variety of brown crystals that melt during firing. At cone 10, the base color darkens and crystals become darker and more defined.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/03/SW-189.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-189-cenote/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Flux",
+    "code": "SW-401",
+    "name": "Light Flux",
+    "cone": "Cone 6 / Cone 10",
+    "description": "Flux is a flowing glaze developed for use with other stoneware glazes to enhance the movement, promote reactions and interesting effects. Appears as a translucent cream color when used alone. Exhibits increased movement at cone 10.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-401.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-401-light-flux/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Washes",
+    "code": "SW-302",
+    "name": "Rutile Wash",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Washes are highly concentrated metallic glaze colorants for glazing and body staining. Cone 6 oxidation: Opaque deep rust red with slight sheen. Cone 10 reduction: Darkens. Cone 06 oxidation: Opaque mustard yellow with dry finish. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/10/SW-302_cone6.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sw-302-rutile-wash/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-101",
+    "name": "Oyster Shell",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Glossy, pale gray glaze that breaks a darker gray. Semi-Transparent at 3 coats. At Cone 6, it transforms to opaque cream that breaks over texture and pools white. This glaze WILL move.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-101.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-101-oyster-shell/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-110",
+    "name": "Mudslide",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Matte, variegated brownish taupe glaze with an orangish brown stain. At Cone 6, the color transforms to gold/yellow that breaks over texture with enhanced mobility. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-110.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-110-mudslide/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-118",
+    "name": "Blue Grotto",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "A glossy, denim blue glaze with a dark gray stain. Designed to simulate mid-range glazes at low-fire temperatures. It moves readily, so application thickness should be reduced toward the bottom of vertical pieces.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-118-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-118-blue-grotto/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-127",
+    "name": "Rose Granite",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Glossy, orangish pink glaze that breaks dark pink at Cone 06. At Cone 6, it becomes semi-translucent red/brown that breaks over texture and pools blue.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-127.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-127-rose-granite/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-128",
+    "name": "Wheat",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Glossy, mustard yellow with an orangish brown stain at Cone 06. At Cone 6, it becomes semi-translucent, variegated gold/cream/brown that breaks over texture and pools cream.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-128.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-128-wheat/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-129",
+    "name": "Slate",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Glossy, mottled dark and light gray glaze with a dark brown stain at Cone 06. Changes to semi-translucent variegated brown/blue at Cone 6, with enhanced mobility.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-129.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-129-slate/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-130",
+    "name": "Sea Green",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "A glossy, blueish teal glaze that breaks dark blueish teal at three coats at Cone 06. At Cone 6, transforms to semi-translucent, variegated olive green/blue. The glaze has significant mobility.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-130-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-130-sea-green/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-131",
+    "name": "Turtle Shell",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "A glossy, greenish teal glaze that breaks dark greenish teal at three coats at cone 06. At cone 6, it transforms into a semi-translucent, variegated olive green/blue that pools darker over textured areas.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-131.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-131-turtle-shell/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-133",
+    "name": "Autumn",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Glossy, variegated yellowish orange glaze with an orangish brown stain. Semi-transparent at three coats.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-133.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-133-autumn/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-149",
+    "name": "Lavender Flower",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Glossy, rich purple glaze that breaks blue at Cone 06 oxidation. This glaze is mobile and requires careful application on vertical pieces to prevent run-off.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-149.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-149-lavender-flower/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-154",
+    "name": "Sea Mist Green",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Sea Mist is a glossy, pale blueish teal green glaze that breaks a darker, blueish green. Semi-transparent at 3 coats. Not dinnerware safe. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/el-154-scaled.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-154-sea-mist-green/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements",
+    "code": "EL-157",
+    "name": "Leaf Green",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Glossy, dark yellow-green glaze that breaks a darker green. Semi-Transparent at 3 coats. Darkens at Cone 6. Not dinnerware safe. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/01/el-157-scaled.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-157-leaf-green/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Elements Chunkies",
+    "code": "EL-204",
+    "name": "Glowing Embers",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Matte, variegated brownish taupe glaze with an orangish brown stain featuring small and medium tan crystals. At Cone 6 oxidation: gold/brown base with brown crystals, enhanced mobility. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/el-204.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/el-204-glowing-embers/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Jungle Gems",
+    "code": "CG-980",
+    "name": "Coral Puff",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "A translucent pink crystal glaze with white and blue/green crystals and blue specks. At higher temperatures, the base fades and crystals melt with potential surface issues. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/cg-980.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/cg-980-coral-puff/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Jungle Gems",
+    "code": "CG-986",
+    "name": "Smoke & Fire",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Translucent gray base glaze with white and orange crystals that melt/bloom and cobalt blue specks. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/cg-986.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/cg-986-smoke-fire/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Jungle Gems",
+    "code": "CG-993",
+    "name": "Lavender Sprigs",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Semi-translucent, light gray base glaze with a variety of purple/brown crystals that melt. Glass frit pieces burst into colorful patterns during firing. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/cg-993.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/cg-993-lavender-sprigs/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Jungle Gems",
+    "code": "CG-994",
+    "name": "Field & Flowers",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Opaque green base glaze with a variety of red, orange, black, and brown crystals. Glass frit pieces burst into color during firing. Discontinued.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/cg-994.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/cg-994-field-flowers/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Pottery Cascade",
+    "code": "PC-602",
+    "name": "White Cascade",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Pottery Cascade are moving, flowing glazes, commonly used under or over other glazes to create reactions and movement. This glaze has minimal movement and maintains applied patterns while introducing white tones to other colors.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/pc-602.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/pc-602-white-cascade/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Raku",
+    "code": "RK-100",
+    "name": "Black Metallic",
+    "cone": "Raku",
+    "description": "Highly reflective, dark metallic finish following proper Raku Firing. Results vary due to the unpredictable nature of the firing technique. Not dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/rk-100.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/rk-100-black-metallic/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Raku",
+    "code": "RK-101",
+    "name": "Copper Metallic",
+    "cone": "Raku",
+    "description": "Develops a glossy copper color with various iridescent shades. Due to the unpredictable nature of this firing technique, results will vary with every firing. Not dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/rk-101.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/rk-101-copper-metallic/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Raku",
+    "code": "RK-103",
+    "name": "White Crackle",
+    "cone": "Raku",
+    "description": "Develops a fine crackle pattern over a white gloss surface following a proper Raku Firing. Results vary due to the unpredictable nature of the technique. Not dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/rk-103.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/rk-103-white-crackle/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Raku",
+    "code": "RK-105",
+    "name": "Copper Penny",
+    "cone": "Raku",
+    "description": "Develops a bright glossy copper finish with various iridescent shades of blue and purple following a proper raku firing. Results vary due to the unpredictable nature of the firing technique. Not dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/rk-105.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/rk-105-copper-penny/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Raku",
+    "code": "RK-106",
+    "name": "Peacock Matte",
+    "cone": "Raku",
+    "description": "Develops a matte copper color with various iridescent shades of blue and purple following a proper raku firing. Results vary due to the unpredictable nature of the firing technique. Not dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/rk-106.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/rk-106-peacock-matte/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Raku",
+    "code": "RK-107",
+    "name": "Oil Slick",
+    "cone": "Raku",
+    "description": "Develops a mix of dark blue, green, and purple tones following a proper raku firing. Results vary due to the unpredictable nature of the firing technique. Not dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/rk-107.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/rk-107-oil-slick/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "NT-BR",
+    "name": "Clear One Brushing",
+    "cone": "Cone 06 / Cone 6",
+    "description": "A fast-drying, gloss-finish brushing clear glaze that preserves and enhances the surface of your work. Compatible with Chrome Tin pigments and luster. Dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/nt-br-600x600.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/nt-br-clear-one-brushing/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "S-2101",
+    "name": "Crystal Clear Brushing",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Preserve and enhance the surface of your work. Note: may not be compatible with all Red Clays as a blueish haze may appear after firing. Cone 06: clean, clear surface and gloss finish. Cone 6: blistering/pinholing can occur.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/s-2101.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/s-2101-crystal-clear-brushing/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "C-300",
+    "name": "Matte Transparent",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Matte Transparent clear glaze forms an impervious barrier that protects against liquids, dirt, and abrasion. At Cone 06, the finish is matte. At Cone 6, it becomes glossy. Two coats recommended for Cone 06; one coat for Cone 6.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/c-300.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/c-300-matte-transparent/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "PB001",
+    "name": "Pure Brilliance Clear Brushing",
+    "cone": "Cone 06",
+    "description": "A high-performance gloss clear glaze that provides a sparkling protective finish with fast and stable dry time and craze-resistant properties. Works over various underglazes including Fundamentals and EZ Stroke.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/pb001.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/pb001-pure-brilliance-clear-brushing/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "IN1001",
+    "name": "Envision Clear",
+    "cone": "Cone 06",
+    "description": "Duncan Envision Clear glazes are made to give consistently true-color finishes and outstanding brushability for ease of application. Provides a sparkling, gloss protective finish. Overglaze compatible.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/in1001.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/in1001-envision-clear/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "SN351",
+    "name": "Satin Clear",
+    "cone": "Cone 06",
+    "description": "Produces a smooth, opaque matte clear finish with only two coats. Can be successfully used over opaque and translucent underglazes. Dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/sn351.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sn351-satin-clear/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "NT-CLR",
+    "name": "Clear One Dipping",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Fast drying dipping clear glaze with gloss finish. Compatible with Chrome Tin pigments and luster. Preserves and enhances ceramic surfaces.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/nt-clr.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/nt-clr-clear-one-dipping/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "S-2000",
+    "name": "Crystal Clear Dipping",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Preserve and enhance the surface of your work with Mayco Dipping Clear Glazes. Cone 06 oxidation provides clean, clear surface. Cone 6: blistering/pinholing may occur.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/s-2000.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/s-2000-crystal-clear-dipping/"
+  },
+  {
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "code": "PBDIP",
+    "name": "Pure Brilliance Clear Dipping",
+    "cone": "Cone 06",
+    "description": "A high-performance gloss clear dipping glaze featuring fast and stable dry time and craze-resistant properties. Enhances underglaze colors with brilliant shine and superior protection. Dinnerware safe.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/pbdip.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/pbdip-pure-brilliance-clear-dipping/"
   }
 ]

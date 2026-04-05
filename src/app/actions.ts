@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-import { getAllCatalogGlazes } from "@/lib/catalog";
+import { getAllCatalogGlazes, getCatalogGlazeById } from "@/lib/catalog";
 import { getCatalogGlazes, getInventory, getInventoryItem, requireViewer } from "@/lib/data";
 import {
   buildAnonymizedCombinationAuthorName,
@@ -956,127 +956,201 @@ export async function updateGlazeInventoryAmountAction(input: {
   };
 }
 
-export async function publishCombinationPostAction(formData: FormData) {
+export async function publishUserCombinationAction(formData: FormData) {
   const { viewer, supabase } = await requireMemberSupabase("/publish");
-  const requestedPairKey = formData.get("pairKey")?.toString() ?? "";
-  const topGlazeId = formData.get("topGlazeId")?.toString() ?? "";
-  const baseGlazeId = formData.get("baseGlazeId")?.toString() ?? "";
-  const coneValue = formData.get("coneValue")?.toString() ?? "";
-  const file = formData.get("image");
+
+  // --- Parse layer glaze IDs (up to 4) ---
+  const layerGlazeIds: string[] = [];
+  for (let i = 1; i <= 4; i++) {
+    const glazeId = formData.get(`layer${i}GlazeId`)?.toString()?.trim();
+    if (glazeId) layerGlazeIds.push(glazeId);
+  }
+
+  if (layerGlazeIds.length < 2) {
+    redirect("/publish?error=Add%20at%20least%20two%20glaze%20layers%20before%20publishing");
+  }
+
+  // Validate ownership
   const inventory = await getInventory(viewer.profile.id);
-  const ownedItems = inventory.filter((item) => item.status === "owned");
-  const ownedByGlazeId = new Map(ownedItems.map((item) => [item.glazeId, item]));
+  const ownedByGlazeId = new Set(
+    inventory.filter((item) => item.status === "owned").map((item) => item.glazeId),
+  );
+
+  for (const glazeId of layerGlazeIds) {
+    if (!ownedByGlazeId.has(glazeId)) {
+      redirect("/publish?error=All%20layers%20must%20use%20glazes%20you%20own");
+    }
+  }
+
+  // --- Cone ---
+  const coneValue = formData.get("coneValue")?.toString() ?? "";
   const validConeValues = new Set(["Cone 06", "Cone 6", "Cone 10"]);
-
-  let pairKey = requestedPairKey;
-
-  if (topGlazeId || baseGlazeId) {
-    if (!topGlazeId || !baseGlazeId) {
-      redirect("/publish?error=Choose%20both%20glazes%20before%20publishing");
-    }
-
-    if (topGlazeId === baseGlazeId) {
-      redirect("/publish?error=Choose%20two%20different%20glazes%20for%20the%20layer%20order");
-    }
-
-    const topItem = ownedByGlazeId.get(topGlazeId);
-    const baseItem = ownedByGlazeId.get(baseGlazeId);
-
-    if (!topItem || !baseItem) {
-      redirect("/publish?error=Choose%20glazes%20you%20currently%20own");
-    }
-
-    pairKey = createPairKey(topGlazeId, baseGlazeId);
-  }
-
-  const pair = parsePairKey(pairKey);
-
-  if (!pair) {
-    redirect("/publish?error=Choose%20a%20valid%20combination");
-  }
-
-  if (!ownedByGlazeId.has(pair[0]) || !ownedByGlazeId.has(pair[1])) {
-    redirect("/publish?error=Only%20owned%20glaze%20pairs%20can%20be%20published");
-  }
-
   if (!validConeValues.has(coneValue)) {
     redirect("/publish?error=Choose%20Cone%2006,%20Cone%206,%20or%20Cone%2010%20before%20publishing");
   }
 
-  if (!(file instanceof File) || !file.size) {
-    redirect("/publish?error=Upload%20an%20image%20file");
+  // --- Post-firing image (required) ---
+  const postFiringFile = formData.get("postFiringImage");
+  if (!(postFiringFile instanceof File) || !postFiringFile.size) {
+    redirect("/publish?error=Upload%20a%20post-firing%20image");
   }
-
-  if (!file.type.startsWith("image/")) {
+  if (!postFiringFile.type.startsWith("image/")) {
     redirect("/publish?error=Only%20image%20uploads%20are%20supported");
   }
-
-  if (file.size > 5 * 1024 * 1024) {
+  if (postFiringFile.size > 5 * 1024 * 1024) {
     redirect("/publish?error=Images%20must%20be%20under%205MB");
   }
 
-  const sanitizedName = file.name.replace(/[^a-zA-Z0-9.-]/g, "-");
-  const storagePath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitizedName}`;
-  const uploadBuffer = new Uint8Array(await file.arrayBuffer());
+  // --- Pre-firing image (optional) ---
+  const preFiringFile = formData.get("preFiringImage");
+  const hasPreFiringImage =
+    preFiringFile instanceof File && preFiringFile.size > 0;
+  if (hasPreFiringImage) {
+    if (!preFiringFile.type.startsWith("image/")) {
+      redirect("/publish?error=Only%20image%20uploads%20are%20supported");
+    }
+    if (preFiringFile.size > 5 * 1024 * 1024) {
+      redirect("/publish?error=Images%20must%20be%20under%205MB");
+    }
+  }
 
-  const { error: uploadError } = await supabase.storage
-    .from("glaze-posts")
-    .upload(storagePath, uploadBuffer, {
-      contentType: file.type,
+  // --- Upload post-firing image ---
+  const sanitize = (name: string) => name.replace(/[^a-zA-Z0-9.-]/g, "-");
+  const postFiringPath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(postFiringFile.name)}`;
+  const postFiringBuffer = new Uint8Array(await postFiringFile.arrayBuffer());
+
+  const { error: postUpErr } = await supabase.storage
+    .from("user-combination-images")
+    .upload(postFiringPath, postFiringBuffer, {
+      contentType: postFiringFile.type,
       upsert: false,
     });
 
-  if (uploadError) {
-    redirect(`/publish?error=${encodeURIComponent(uploadError.message)}`);
+  if (postUpErr) {
+    redirect(`/publish?error=${encodeURIComponent(postUpErr.message)}`);
   }
 
-  const { data: publicData } = supabase.storage.from("glaze-posts").getPublicUrl(storagePath);
+  const { data: postFiringPublic } = supabase.storage
+    .from("user-combination-images")
+    .getPublicUrl(postFiringPath);
 
-  const { data: pairRecord, error: pairError } = await supabase
-    .from("combination_pairs")
-    .upsert(
-      {
-        glaze_a_id: pair[0],
-        glaze_b_id: pair[1],
-        pair_key: pairKey,
-      },
-      { onConflict: "pair_key" },
-    )
+  // --- Upload pre-firing image (if provided) ---
+  let preFiringPublicUrl: string | null = null;
+
+  if (hasPreFiringImage) {
+    const preFiringPath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(preFiringFile.name)}`;
+    const preFiringBuffer = new Uint8Array(await preFiringFile.arrayBuffer());
+
+    const { error: preUpErr } = await supabase.storage
+      .from("user-combination-images")
+      .upload(preFiringPath, preFiringBuffer, {
+        contentType: preFiringFile.type,
+        upsert: false,
+      });
+
+    if (!preUpErr) {
+      const { data: preFiringPublic } = supabase.storage
+        .from("user-combination-images")
+        .getPublicUrl(preFiringPath);
+      preFiringPublicUrl = preFiringPublic.publicUrl;
+    }
+  }
+
+  // --- Build title from glaze labels ---
+  const glazeLabels = layerGlazeIds.map((gid) => {
+    const item = inventory.find((inv) => inv.glazeId === gid);
+    return item ? formatGlazeLabel(item.glaze) : "Glaze";
+  });
+  const title =
+    glazeLabels.length === 2
+      ? `${glazeLabels[0]} over ${glazeLabels[1]}`
+      : glazeLabels.join(" / ");
+
+  // --- Insert example row ---
+  const { data: exampleRow, error: insertErr } = await supabase
+    .from("user_combination_examples")
+    .insert({
+      author_user_id: viewer.profile.id,
+      title,
+      post_firing_image_path: postFiringPublic.publicUrl,
+      pre_firing_image_path: preFiringPublicUrl,
+      cone: coneValue,
+      atmosphere: normalizeOptional(formData.get("atmosphere")) ?? "oxidation",
+      glazing_process: normalizeOptional(formData.get("glazingProcess")),
+      notes: normalizeOptional(formData.get("notes")),
+      kiln_notes: normalizeOptional(formData.get("kilnNotes")),
+      visibility: "members",
+      status: "published",
+    })
     .select("id")
     .single();
 
-  if (pairError || !pairRecord) {
-    redirect(`/publish?error=${encodeURIComponent(pairError?.message ?? "Could not create pair")}`);
+  if (insertErr || !exampleRow) {
+    redirect(`/publish?error=${encodeURIComponent(insertErr?.message ?? "Could not save example")}`);
   }
 
-  const topItem = topGlazeId ? ownedByGlazeId.get(topGlazeId) ?? null : null;
-  const baseItem = baseGlazeId ? ownedByGlazeId.get(baseGlazeId) ?? null : null;
-  const layerOrderNote =
-    topItem && baseItem
-      ? `Layer order: ${formatGlazeLabel(topItem.glaze)} over ${formatGlazeLabel(baseItem.glaze)}.`
-      : null;
-  const typedApplicationNotes = normalizeOptional(formData.get("applicationNotes"));
-  const applicationNotes = [layerOrderNote, typedApplicationNotes].filter(Boolean).join(" ") || null;
-  const typedFiringNotes = normalizeOptional(formData.get("firingNotes"));
-  const firingNotes = [`Cone: ${coneValue}.`, typedFiringNotes].filter(Boolean).join(" ") || null;
+  // --- Insert layers ---
+  const layerRows = layerGlazeIds.map((glazeId, index) => ({
+    example_id: exampleRow.id,
+    glaze_id: glazeId,
+    layer_order: index + 1,
+  }));
 
-  const { error } = await supabase.from("combination_posts").insert({
-    author_user_id: viewer.profile.id,
-    combination_pair_id: pairRecord.id,
-    image_path: publicData.publicUrl,
-    caption: normalizeOptional(formData.get("caption")),
-    application_notes: applicationNotes,
-    firing_notes: firingNotes,
-    visibility: "members",
-    status: "published",
-  });
+  const { error: layerErr } = await supabase
+    .from("user_combination_example_layers")
+    .insert(layerRows);
 
-  if (error) {
-    redirect(`/publish?error=${encodeURIComponent(error.message)}`);
+  if (layerErr) {
+    // Clean up the parent row if layers fail
+    await supabase.from("user_combination_examples").delete().eq("id", exampleRow.id);
+    redirect(`/publish?error=${encodeURIComponent(layerErr.message)}`);
   }
 
   revalidateWorkspace();
-  redirect(`/combinations/${pairKey}`);
+  redirect("/combinations?view=mine");
+}
+
+export async function deleteUserCombinationAction(formData: FormData) {
+  const { viewer, supabase } = await requireMemberSupabase("/combinations");
+  const exampleId = formData.get("exampleId")?.toString();
+
+  if (!exampleId) {
+    redirect("/combinations?error=Missing%20example%20id");
+  }
+
+  // Verify ownership (RLS enforces this too, but be explicit)
+  const { data: example } = await supabase
+    .from("user_combination_examples")
+    .select("id, author_user_id, post_firing_image_path, pre_firing_image_path")
+    .eq("id", exampleId)
+    .single();
+
+  if (!example) {
+    redirect("/combinations?error=Example%20not%20found");
+  }
+
+  if (example.author_user_id !== viewer.profile.id && !viewer.profile.isAdmin) {
+    redirect("/combinations?error=You%20can%20only%20delete%20your%20own%20examples");
+  }
+
+  // Delete storage files
+  const pathsToDelete: string[] = [];
+  for (const urlField of [example.post_firing_image_path, example.pre_firing_image_path]) {
+    if (urlField) {
+      const match = urlField.match(/user-combination-images\/(.+)$/);
+      if (match?.[1]) pathsToDelete.push(match[1]);
+    }
+  }
+
+  if (pathsToDelete.length) {
+    await supabase.storage.from("user-combination-images").remove(pathsToDelete);
+  }
+
+  // Cascade deletes layers automatically
+  await supabase.from("user_combination_examples").delete().eq("id", exampleId);
+
+  revalidateWorkspace();
+  redirect("/combinations?view=mine");
 }
 
 export async function reportPostAction(formData: FormData) {
@@ -1626,7 +1700,7 @@ export async function recognizeGlazeLabelAction(input: {
           text: `You are looking at a photo of a ceramic glaze bottle or label. Extract the following information and return ONLY valid JSON with no markdown formatting:
 
 {
-  "brand": "the manufacturer (e.g. Mayco, AMACO, Coyote, Spectrum, Duncan)",
+  "brand": "the manufacturer (e.g. Mayco, AMACO, Coyote, Spectrum, Duncan, Speedball)",
   "code": "the product code (e.g. CG-718, SW-116, LG-10, HF-26)",
   "name": "the color/glaze name (e.g. Blue Caprice, Sea Salt)",
   "line": "the product line (e.g. Jungle Gems, Stoneware, Elements, Sahara)"
@@ -1666,4 +1740,28 @@ If you cannot determine a field, set it to null. Focus on reading the product co
       error: e instanceof Error ? e.message : "Failed to read label.",
     };
   }
+}
+
+// ─── Analytics ────────────────────────────────────────────────────────────────
+
+export async function trackBuyClickAction(formData: FormData): Promise<void> {
+  const glazeId = formData.get("glazeId") as string | null;
+  const storeId = formData.get("storeId") as string | null;
+  const storeName = formData.get("storeName") as string | null;
+  const url = formData.get("url") as string | null;
+
+  if (!url) return;
+
+  const supabase = await createSupabaseServerClient();
+  if (!supabase) { redirect(url); }
+  const { data: { user } } = await supabase.auth.getUser();
+
+  await supabase.from("analytics_events").insert({
+    event_type: "buy_click",
+    user_id: user?.id ?? null,
+    glaze_id: glazeId || null,
+    metadata: { store_id: storeId, store_name: storeName, url },
+  });
+
+  redirect(url);
 }

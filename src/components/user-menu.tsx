@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { LogOut, User } from "lucide-react";
-import { useRef, useState, useEffect } from "react";
+import { Loader2, LogOut, User } from "lucide-react";
+import { useRef, useState, useEffect, useTransition } from "react";
 
 import { signOutAction } from "@/app/actions";
 
@@ -12,6 +12,7 @@ export function UserMenu({
   displayName: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -38,6 +39,12 @@ export function UserMenu({
     }
   }, [open]);
 
+  function handleSignOut() {
+    startTransition(async () => {
+      await signOutAction();
+    });
+  }
+
   return (
     <div ref={menuRef} className="relative">
       <button
@@ -61,16 +68,19 @@ export function UserMenu({
             Profile
           </Link>
           <div className="border-t border-border" />
-          <form action={signOutAction}>
-            <button
-              type="submit"
-              onClick={() => setOpen(false)}
-              className="flex w-full items-center gap-2.5 px-4 py-3 text-left text-sm text-muted transition-colors hover:bg-panel hover:text-foreground"
-            >
+          <button
+            type="button"
+            disabled={isPending}
+            onClick={handleSignOut}
+            className="flex w-full items-center gap-2.5 px-4 py-3 text-left text-sm text-muted transition-colors hover:bg-panel hover:text-foreground"
+          >
+            {isPending ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
               <LogOut className="h-3.5 w-3.5" />
-              Sign out
-            </button>
-          </form>
+            )}
+            {isPending ? "Signing out..." : "Sign out"}
+          </button>
         </div>
       ) : null}
     </div>

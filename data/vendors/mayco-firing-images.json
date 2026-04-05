@@ -9496,6 +9496,22 @@
     "sortOrder": 30
   },
   {
+    "code": "SW155",
+    "label": "Cone 6",
+    "cone": "Cone 6",
+    "atmosphere": "oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/10/SW-155-Winter-Wood.jpg",
+    "sortOrder": 20
+  },
+  {
+    "code": "SW155",
+    "label": "Cone 10",
+    "cone": "Cone 10",
+    "atmosphere": "reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-155_cone10.jpg",
+    "sortOrder": 30
+  },
+  {
     "code": "SW156",
     "label": "Cone 6",
     "cone": "Cone 6",

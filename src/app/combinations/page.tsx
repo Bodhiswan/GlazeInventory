@@ -3,6 +3,7 @@ import {
   getGlazeFiringImageMap,
   getInventoryOwnership,
   getPublishedCombinationPosts,
+  getUserCombinationExamples,
   getVendorCombinationExamples,
   requireViewer,
 } from "@/lib/data";
@@ -22,10 +23,11 @@ export default async function CombinationsPage({
   const requestedView = formatSearchQuery(params.view);
   const selectedView: CombinationsView =
     requestedView === "possible" || requestedView === "mine" ? requestedView : "all";
-  const [examples, publishedPosts, ownership] = await Promise.all([
+  const [examples, publishedPosts, ownership, userExamples] = await Promise.all([
     getVendorCombinationExamples(viewer.profile.id),
     getPublishedCombinationPosts(viewer.profile.id),
     getInventoryOwnership(viewer.profile.id),
+    getUserCombinationExamples(viewer.profile.id),
   ]);
   const myPosts = publishedPosts.filter((post) => post.authorUserId === viewer.profile.id);
   const inventoryStatusByGlazeId = ownership.reduce<Record<string, InventoryStatus>>((map, item) => {
@@ -33,7 +35,7 @@ export default async function CombinationsPage({
     return map;
   }, {});
 
-  // Collect all glaze IDs from examples and posts for firing images
+  // Collect all glaze IDs from examples, posts, and user examples for firing images
   const allGlazeIds = new Set<string>();
   for (const ex of examples) {
     for (const layer of ex.layers) {
@@ -45,6 +47,11 @@ export default async function CombinationsPage({
       allGlazeIds.add(glaze.id);
     }
   }
+  for (const ue of userExamples) {
+    for (const layer of ue.layers) {
+      if (layer.glaze?.id) allGlazeIds.add(layer.glaze.id);
+    }
+  }
   const glazeFiringImages = getGlazeFiringImageMap(Array.from(allGlazeIds));
 
   return (
@@ -53,10 +60,12 @@ export default async function CombinationsPage({
         examples={examples}
         publishedPosts={publishedPosts}
         myPosts={myPosts}
+        userExamples={userExamples}
         glazeFiringImages={glazeFiringImages}
         inventoryStatusByGlazeId={inventoryStatusByGlazeId}
         initialView={selectedView}
         initialQuery={initialQuery}
+        viewerUserId={viewer.profile.id}
       />
     </div>
   );

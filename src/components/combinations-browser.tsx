@@ -11,12 +11,14 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
+import { deleteUserCombinationAction } from "@/app/actions";
 import type {
   CombinationPost,
   Glaze,
   GlazeFiringImage,
   InventoryCollectionState,
   InventoryStatus,
+  UserCombinationExample,
   VendorCombinationExample,
 } from "@/lib/types";
 import { formatGlazeLabel, pickPreferredGlazeImage } from "@/lib/utils";
@@ -30,7 +32,7 @@ type CombinationsView = "all" | "possible" | "mine";
  * Unified tile type — wraps both Mayco examples and published posts so
  * they render identically in the compact grid.
  * ------------------------------------------------------------------------ */
-type TileKind = "example" | "post";
+type TileKind = "example" | "post" | "userExample";
 
 interface CombinationTile {
   id: string;
@@ -45,6 +47,7 @@ interface CombinationTile {
   /* original payloads for the detail modal */
   example: VendorCombinationExample | null;
   post: CombinationPost | null;
+  userExample: UserCombinationExample | null;
 }
 
 /* ---------------------------------------------------------------------------
@@ -227,6 +230,50 @@ function exampleToTile(example: VendorCombinationExample): CombinationTile {
     searchText: buildExampleSearchText(example),
     example,
     post: null,
+    userExample: null,
+  };
+}
+
+function buildUserExampleSearchText(ue: UserCombinationExample) {
+  const raw = [
+    ue.title,
+    ue.cone,
+    ue.atmosphere,
+    ue.glazingProcess,
+    ue.notes,
+    ue.kilnNotes,
+    ue.authorName,
+    ...ue.layers.flatMap((l) => (l.glaze ? [formatGlazeLabel(l.glaze), l.glaze.code, l.glaze.name] : [])),
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+  return `${raw} ${stripPunctuation(raw)}`;
+}
+
+function userExampleToTile(ue: UserCombinationExample): CombinationTile {
+  const layerLabels = ue.layers.map((l) =>
+    l.glaze ? (l.glaze.code ?? l.glaze.name ?? "Glaze") : "Glaze",
+  );
+  const title = layerLabels.length >= 2
+    ? `${layerLabels[0]} over ${layerLabels.slice(1).join(" over ")}`
+    : layerLabels[0] ?? "User combination";
+
+  return {
+    id: `ue-${ue.id}`,
+    kind: "userExample",
+    imageUrl: ue.postFiringImageUrl,
+    title,
+    subtitle: `By ${ue.authorName}`,
+    cone: ue.cone ?? null,
+    badgeTone: ue.viewerOwnsAllGlazes ? "success" : "accent",
+    badgeLabel: ue.viewerOwnsAllGlazes
+      ? "All owned"
+      : `${ue.viewerOwnedLayerCount}/${ue.layers.length} owned`,
+    searchText: buildUserExampleSearchText(ue),
+    example: null,
+    post: null,
+    userExample: ue,
   };
 }
 
@@ -245,6 +292,7 @@ function postToTile(post: CombinationPost, label: string): CombinationTile {
     searchText: buildPostSearchText(post),
     example: null,
     post,
+    userExample: null,
   };
 }
 
@@ -529,6 +577,131 @@ function PostDetail({
 }
 
 /* ---------------------------------------------------------------------------
+ * Detail modal for a user combination example
+ * ------------------------------------------------------------------------ */
+
+function UserExampleDetail({
+  userExample,
+  glazeFiringImages,
+  inventoryStatusByGlazeId,
+  onInventoryStatusChange,
+  viewerUserId,
+}: {
+  userExample: UserCombinationExample;
+  glazeFiringImages: Record<string, GlazeFiringImage[]>;
+  inventoryStatusByGlazeId: Record<string, InventoryStatus>;
+  onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
+  viewerUserId: string | null;
+}) {
+  const isOwner = viewerUserId === userExample.authorUserId;
+
+  function getUserExampleLayerRole(index: number, total: number) {
+    if (index === 0) return "Top layer";
+    if (index === total - 1) return total > 2 ? "Base layer" : "Bottom layer";
+    return `Middle layer ${index}`;
+  }
+
+  return (
+    <div className="space-y-4">
+      {/* Hero: post-firing + optional pre-firing photos */}
+      <div className="grid gap-4 sm:grid-cols-[minmax(0,280px)_1fr]">
+        <div className="space-y-2">
+          <div className="overflow-hidden border border-border bg-panel">
+            <Image
+              src={userExample.postFiringImageUrl}
+              alt={userExample.title}
+              width={400}
+              height={300}
+              sizes="(min-width: 640px) 280px, 100vw"
+              className="aspect-[4/3] w-full object-cover"
+            />
+          </div>
+          <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Post-firing</p>
+
+          {userExample.preFiringImageUrl ? (
+            <>
+              <div className="overflow-hidden border border-border bg-panel">
+                <Image
+                  src={userExample.preFiringImageUrl}
+                  alt={`${userExample.title} (pre-firing)`}
+                  width={400}
+                  height={300}
+                  sizes="(min-width: 640px) 280px, 100vw"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+              </div>
+              <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Pre-firing</p>
+            </>
+          ) : null}
+        </div>
+
+        <div className="space-y-3">
+          <div className="flex flex-wrap gap-1.5">
+            <Badge tone="neutral">Member</Badge>
+            {userExample.cone ? <Badge tone="neutral">{userExample.cone}</Badge> : null}
+            {userExample.atmosphere && userExample.atmosphere !== "oxidation" ? (
+              <Badge tone="accent">{userExample.atmosphere}</Badge>
+            ) : null}
+          </div>
+          <p className="text-sm text-muted">
+            <span className="font-semibold text-foreground">By:</span> {userExample.authorName}
+          </p>
+          {userExample.glazingProcess ? (
+            <p className="text-sm leading-6 text-muted">
+              <span className="font-semibold text-foreground">Process:</span> {userExample.glazingProcess}
+            </p>
+          ) : null}
+          {userExample.notes ? (
+            <p className="text-sm leading-6 text-foreground/90">{userExample.notes}</p>
+          ) : null}
+          {userExample.kilnNotes ? (
+            <p className="text-sm leading-6 text-muted">
+              <span className="font-semibold text-foreground">Kiln:</span> {userExample.kilnNotes}
+            </p>
+          ) : null}
+        </div>
+      </div>
+
+      {/* Glaze layers */}
+      {userExample.layers.length ? (
+        <div>
+          <p className="mb-2 text-[10px] uppercase tracking-[0.16em] text-muted">
+            Glazes in this combination ({userExample.layers.length} layer{userExample.layers.length === 1 ? "" : "s"})
+          </p>
+          <div className="grid gap-2">
+            {userExample.layers.map((layer, index) => (
+              <CombinationGlazeRow
+                key={layer.id}
+                roleLabel={getUserExampleLayerRole(index, userExample.layers.length)}
+                glaze={layer.glaze}
+                preferredCone={userExample.cone ?? null}
+                preferredAtmosphere={userExample.atmosphere ?? null}
+                glazeFiringImages={glazeFiringImages}
+                inventoryStatus={layer.glaze ? inventoryStatusByGlazeId[layer.glaze.id] ?? null : null}
+                onInventoryStatusChange={onInventoryStatusChange}
+              />
+            ))}
+          </div>
+        </div>
+      ) : null}
+
+      {/* Delete button for the author */}
+      {isOwner ? (
+        <form action={deleteUserCombinationAction} className="border-t border-border pt-4">
+          <input type="hidden" name="exampleId" value={userExample.id} />
+          <button
+            type="submit"
+            className="text-sm font-medium text-[#7f4026] underline underline-offset-4 transition hover:text-[#bb6742]"
+          >
+            Delete this combination
+          </button>
+        </form>
+      ) : null}
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
  * Main browser component
  * ------------------------------------------------------------------------ */
 
@@ -536,18 +709,22 @@ export function CombinationsBrowser({
   examples,
   publishedPosts,
   myPosts,
+  userExamples = [],
   glazeFiringImages,
   inventoryStatusByGlazeId: initialInventoryStatusByGlazeId,
   initialView = "all",
   initialQuery = "",
+  viewerUserId = null,
 }: {
   examples: VendorCombinationExample[];
   publishedPosts: CombinationPost[];
   myPosts: CombinationPost[];
+  userExamples?: UserCombinationExample[];
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
   initialView?: CombinationsView;
   initialQuery?: string;
+  viewerUserId?: string | null;
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [view, setView] = useState<CombinationsView>(initialView);
@@ -605,17 +782,27 @@ export function CombinationsBrowser({
     [myPosts],
   );
 
+  const userExampleTiles = useMemo(
+    () => userExamples.map((ue) => userExampleToTile(ue)),
+    [userExamples],
+  );
+
+  const myUserExampleTiles = useMemo(
+    () => userExampleTiles.filter((t) => t.userExample?.authorUserId === viewerUserId),
+    [userExampleTiles, viewerUserId],
+  );
+
   /* --- apply search & view filter --------------------------------------- */
 
   const activeTiles = useMemo(() => {
     let tiles: CombinationTile[];
 
     if (view === "mine") {
-      tiles = myPostTiles;
+      tiles = [...myPostTiles, ...myUserExampleTiles];
     } else if (view === "possible") {
       tiles = possibleExampleTiles;
     } else {
-      tiles = [...exampleTiles, ...communityPostTiles];
+      tiles = [...exampleTiles, ...communityPostTiles, ...userExampleTiles];
     }
 
     if (normalizedQuery) {
@@ -730,6 +917,12 @@ export function CombinationsBrowser({
               Clear search
             </button>
           ) : null}
+          <Link
+            href="/publish"
+            className={buttonVariants({ variant: "ghost", size: "sm" })}
+          >
+            + Share your result
+          </Link>
         </div>
 
         <div className="flex flex-wrap items-center gap-4">
@@ -910,6 +1103,14 @@ export function CombinationsBrowser({
                   glazeFiringImages={glazeFiringImages}
                   inventoryStatusByGlazeId={inventoryStatusByGlazeId}
                   onInventoryStatusChange={handleInventoryStatusChange}
+                />
+              ) : activeTile.userExample ? (
+                <UserExampleDetail
+                  userExample={activeTile.userExample}
+                  glazeFiringImages={glazeFiringImages}
+                  inventoryStatusByGlazeId={inventoryStatusByGlazeId}
+                  onInventoryStatusChange={handleInventoryStatusChange}
+                  viewerUserId={viewerUserId}
                 />
               ) : activeTile.post ? (
                 <PostDetail

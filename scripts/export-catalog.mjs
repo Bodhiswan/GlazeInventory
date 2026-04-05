@@ -72,30 +72,15 @@ async function fetchViaSql(sql) {
     maxBuffer: 50 * 1024 * 1024,
   });
 
-  // Parse CSV output from supabase db query
-  // The output is pipe-separated, so we parse it manually
-  const lines = result.trim().split("\n");
-  if (lines.length < 2) return [];
+  const jsonStart = result.indexOf("{");
+  const jsonEnd = result.lastIndexOf("}");
 
-  // First line is headers with pipes
-  const headerLine = lines[0];
-  const colNames = headerLine.split("|").map((h) => h.trim());
-
-  // Skip the separator line (line[1] is dashes)
-  const rows = [];
-  for (let i = 2; i < lines.length; i++) {
-    const line = lines[i].trim();
-    if (!line || line.startsWith("(")) continue; // skip count line
-    const values = line.split("|").map((v) => v.trim());
-    const row = {};
-    for (let j = 0; j < colNames.length; j++) {
-      const val = values[j];
-      row[colNames[j]] = val === "" || val === undefined ? null : val;
-    }
-    rows.push(row);
+  if (jsonStart !== -1 && jsonEnd !== -1 && jsonEnd > jsonStart) {
+    const payload = JSON.parse(result.slice(jsonStart, jsonEnd + 1));
+    return Array.isArray(payload.rows) ? payload.rows : [];
   }
 
-  return rows;
+  throw new Error("Could not parse JSON output from `supabase db query`.");
 }
 
 async function main() {
@@ -165,8 +150,8 @@ async function main() {
       label: img.label,
       cone: img.cone,
       atmosphere: img.atmosphere,
-      image_url: img.image_url,
-      sort_order: img.sort_order,
+      imageUrl: img.image_url,
+      sortOrder: img.sort_order,
     });
   }
 

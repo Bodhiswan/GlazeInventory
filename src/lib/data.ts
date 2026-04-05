@@ -38,6 +38,8 @@ import type {
   IntakeStatus,
   ModerationItem,
   Report,
+  UserCombinationExample,
+  UserCombinationExampleLayer,
   UserProfile,
   Viewer,
 } from "@/lib/types";
@@ -1034,6 +1036,70 @@ export async function getPublishedPostsByAuthor(viewerId: string, search = "") {
       .toLowerCase()
       .includes(query);
     });
+}
+
+export async function getUserCombinationExamples(viewerId: string) {
+  const supabase = await getSupabase();
+
+  if (!supabase) {
+    return [] as UserCombinationExample[];
+  }
+
+  const { data: exampleRows } = await supabase
+    .from("user_combination_examples")
+    .select("*, user_combination_example_layers(*), profiles!author_user_id(display_name)")
+    .eq("status", "published")
+    .order("created_at", { ascending: false })
+    .limit(200);
+
+  if (!exampleRows?.length) {
+    return [] as UserCombinationExample[];
+  }
+
+  const ownership = await getInventoryOwnership(viewerId);
+  const ownedGlazeIds = new Set(
+    ownership.filter((item) => item.status === "owned").map((item) => item.glazeId),
+  );
+
+  return exampleRows.map((row: Row & { user_combination_example_layers?: Row[]; profiles?: Row | null }) => {
+    const rawLayers = (row.user_combination_example_layers ?? []) as Row[];
+    const sortedLayers = rawLayers
+      .sort((a, b) => Number(a.layer_order) - Number(b.layer_order));
+
+    const layers: UserCombinationExampleLayer[] = sortedLayers.map((layer) => {
+      const glazeId = String(layer.glaze_id);
+      const glaze = getCatalogGlazeById(glazeId);
+      return {
+        id: String(layer.id),
+        exampleId: String(row.id),
+        glazeId,
+        glaze,
+        layerOrder: Number(layer.layer_order),
+      };
+    });
+
+    const ownedCount = layers.filter((l) => l.glazeId && ownedGlazeIds.has(l.glazeId)).length;
+    const profileData = row.profiles as Row | null;
+
+    return {
+      id: String(row.id),
+      authorUserId: String(row.author_user_id),
+      authorName: profileData ? String(profileData.display_name) : "Unknown",
+      title: String(row.title ?? ""),
+      postFiringImageUrl: String(row.post_firing_image_path ?? ""),
+      preFiringImageUrl: row.pre_firing_image_path ? String(row.pre_firing_image_path) : null,
+      cone: String(row.cone ?? ""),
+      atmosphere: row.atmosphere ? String(row.atmosphere) : null,
+      glazingProcess: row.glazing_process ? String(row.glazing_process) : null,
+      notes: row.notes ? String(row.notes) : null,
+      kilnNotes: row.kiln_notes ? String(row.kiln_notes) : null,
+      status: "published" as const,
+      createdAt: String(row.created_at),
+      layers,
+      viewerOwnsAllGlazes: layers.length > 0 && ownedCount === layers.length,
+      viewerOwnedLayerCount: ownedCount,
+    } satisfies UserCombinationExample;
+  });
 }
 
 export async function getPublishedCombinationPosts(

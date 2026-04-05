@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Inbox, Layers3, LibraryBig, Shield, SwatchBook } from "lucide-react";
+import { BarChart3, Layers3, LibraryBig, SwatchBook } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
@@ -17,8 +17,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
   const items = isAdmin
     ? [
         ...baseItems,
-        { href: "/admin/intake", label: "Intake", icon: Inbox },
-        { href: "/admin/moderation", label: "Moderation", icon: Shield },
+        { href: "/admin/analytics", label: "Analytics", icon: BarChart3 },
       ]
     : baseItems;
 

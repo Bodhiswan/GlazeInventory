@@ -5,9 +5,10 @@ import json
 import re
 import uuid
 from dataclasses import dataclass, field
+from datetime import date
 from html.parser import HTMLParser
 from pathlib import Path
-from typing import TypedDict
+from typing import Any, TypedDict
 from urllib.parse import urlparse
 
 import requests
@@ -16,7 +17,7 @@ import requests
 MAYCO_COMBINATIONS_URL = "https://www.maycocolors.com/glaze-combinations/"
 USER_AGENT = "GlazeLibraryCatalogBot/1.0 (+https://glaze-library.app)"
 OUTPUT_JSON_PATH = Path("data/vendors/mayco-combinations.json")
-OUTPUT_SQL_PATH = Path("supabase/migrations/20260402204000_import_mayco_combination_examples.sql")
+OUTPUT_SQL_PATH = Path("supabase/migrations/20260403110000_refresh_mayco_combination_examples.sql")
 SOURCE_VENDOR = "Mayco"
 SOURCE_COLLECTION = "glaze-combinations"
 UUID_NAMESPACE = uuid.UUID("a13f18f4-67eb-4275-903f-8d86e55a43a6")
@@ -40,6 +41,7 @@ ATMOSPHERE_BY_CONE = {
     "Cone 10": "reduction",
 }
 GLAZE_LABEL_PATTERN = re.compile(r"^\s*([A-Z]{1,4}-?\d{2,4}[A-Z]?)\s+(.+?)\s*$")
+FWP_JSON_PATTERN = re.compile(r"FWP_JSON\s*=\s*(\{.*?\});", re.DOTALL)
 
 
 class LayerEntry(TypedDict):
@@ -65,6 +67,12 @@ class CombinationEntry(TypedDict):
     applicationNotes: str | None
     firingNotes: str | None
     layers: list[LayerEntry]
+
+
+class FacetConfig(TypedDict):
+    ajaxUrl: str
+    totalRows: int
+    totalPages: int
 
 
 @dataclass
@@ -145,10 +153,64 @@ def slugify(value: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
 
 
-def fetch_text(url: str) -> str:
-    response = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
+def create_session() -> requests.Session:
+    session = requests.Session()
+    session.headers.update({"User-Agent": USER_AGENT})
+    return session
+
+
+def parse_facet_config(page_html: str) -> FacetConfig:
+    match = FWP_JSON_PATTERN.search(page_html)
+
+    if not match:
+        raise RuntimeError("Could not locate FacetWP configuration on the Mayco combinations page.")
+
+    raw_config = json.loads(match.group(1))
+    pager = (
+        raw_config.get("preload_data", {})
+        .get("settings", {})
+        .get("pager", {})
+    )
+    ajax_url = normalize_whitespace(raw_config.get("ajaxurl", ""))
+    total_rows = int(pager.get("total_rows") or 0)
+    total_pages = int(pager.get("total_pages") or 0)
+
+    if not ajax_url or total_rows <= 0 or total_pages <= 0:
+        raise RuntimeError("Mayco FacetWP configuration did not include a usable AJAX URL or pager.")
+
+    return {
+        "ajaxUrl": ajax_url,
+        "totalRows": total_rows,
+        "totalPages": total_pages,
+    }
+
+
+def build_refresh_payload(page_number: int) -> dict[str, str]:
+    return {
+        "action": "facetwp_refresh",
+        "data[http_params][uri]": "glaze-combinations",
+        "data[template]": "glaze_combos",
+        "data[extras][sort]": "default",
+        "data[soft_refresh]": "0",
+        "data[is_bfcache]": "1",
+        "data[first_load]": "0",
+        "data[paged]": str(page_number),
+    }
+
+
+def fetch_combo_page(session: requests.Session, facet_config: FacetConfig, page_number: int) -> dict[str, Any]:
+    response = session.post(
+        facet_config["ajaxUrl"],
+        data=build_refresh_payload(page_number),
+        timeout=60,
+    )
     response.raise_for_status()
-    return response.text
+    payload = response.json()
+
+    if not isinstance(payload, dict) or "template" not in payload:
+        raise RuntimeError(f"Unexpected FacetWP response for page {page_number}.")
+
+    return payload
 
 
 def get_class_tokens(node: Node) -> set[str]:
@@ -216,7 +278,33 @@ def derive_connector_sequence(title: str, labels: list[str]) -> list[str | None]
     return connectors
 
 
-def source_key_from_url(image_url: str, title: str, cone: str | None) -> str:
+def source_key_from_recipe(
+    title: str,
+    cone: str | None,
+    layers: list[LayerEntry],
+    image_url: str,
+) -> str:
+    parts: list[str] = []
+
+    for layer in layers:
+        layer_token = (
+            normalize_code(layer["glazeCode"]).lower()
+            if layer["glazeCode"]
+            else slugify(layer["glazeName"])
+        )
+
+        if layer_token:
+            parts.append(layer_token)
+
+        if layer["connectorToNext"]:
+            parts.append(slugify(layer["connectorToNext"]))
+
+    if cone:
+        parts.append(slugify(cone))
+
+    if parts:
+        return "-".join(parts)
+
     path = urlparse(image_url).path
     stem = Path(path).stem
 
@@ -226,10 +314,50 @@ def source_key_from_url(image_url: str, title: str, cone: str | None) -> str:
     return slugify(f"{title}-{cone or 'unknown'}")
 
 
-def build_entries() -> list[CombinationEntry]:
-    page = fetch_text(MAYCO_COMBINATIONS_URL)
+def extract_upload_priority(image_url: str) -> int:
+    match = re.search(r"/wp-content/uploads/(\d{4})/(\d{2})/", image_url)
+
+    if not match:
+        return 0
+
+    year, month = match.groups()
+    return int(year) * 100 + int(month)
+
+
+def choose_preferred_entry(current: CombinationEntry, candidate: CombinationEntry) -> CombinationEntry:
+    def score(entry: CombinationEntry) -> tuple[int, int, int, int]:
+        image_url = entry["imageUrl"]
+        return (
+            0 if "woocommerce-placeholder" in image_url else 1,
+            extract_upload_priority(image_url),
+            sum(1 for layer in entry["layers"] if layer["sourceImageUrl"]),
+            len(image_url),
+        )
+
+    return candidate if score(candidate) > score(current) else current
+
+
+def dedupe_entries(entries: list[CombinationEntry]) -> tuple[list[CombinationEntry], int]:
+    deduped: dict[str, CombinationEntry] = {}
+    duplicate_rows = 0
+
+    for entry in entries:
+        source_key = entry["sourceKey"]
+        existing = deduped.get(source_key)
+
+        if existing is None:
+            deduped[source_key] = entry
+            continue
+
+        duplicate_rows += 1
+        deduped[source_key] = choose_preferred_entry(existing, entry)
+
+    return list(deduped.values()), duplicate_rows
+
+
+def parse_combo_entries(template_html: str) -> list[CombinationEntry]:
     parser = TreeBuilder()
-    parser.feed(page)
+    parser.feed(template_html)
 
     combo_nodes = find_all(
         parser.root,
@@ -267,8 +395,6 @@ def build_entries() -> list[CombinationEntry]:
         )
         image_url = normalize_whitespace(main_anchor.attrs.get("href", ""))
         cone = inner_text(cone_nodes[0]) if cone_nodes else None
-        source_key = source_key_from_url(image_url, main_caption, cone)
-        example_id = str(uuid.uuid5(UUID_NAMESPACE, f"example:{source_key}"))
 
         layer_labels = [
             normalize_whitespace(html.unescape(anchor.attrs.get("data-caption", "")))
@@ -281,7 +407,7 @@ def build_entries() -> list[CombinationEntry]:
             glaze_code, glaze_name = extract_product_code_and_name(label)
             layers.append(
                 {
-                    "id": str(uuid.uuid5(UUID_NAMESPACE, f"layer:{source_key}:{index}")),
+                    "id": "",
                     "glazeCode": glaze_code,
                     "glazeName": glaze_name,
                     "layerOrder": index,
@@ -289,6 +415,11 @@ def build_entries() -> list[CombinationEntry]:
                     "sourceImageUrl": normalize_whitespace(anchor.attrs.get("href", "")) or None,
                 }
             )
+
+        source_key = source_key_from_recipe(main_caption, cone, layers, image_url)
+        example_id = str(uuid.uuid5(UUID_NAMESPACE, f"example:{source_key}"))
+        for index, layer in enumerate(layers):
+            layer["id"] = str(uuid.uuid5(UUID_NAMESPACE, f"layer:{source_key}:{index}"))
 
         entries.append(
             {
@@ -307,6 +438,43 @@ def build_entries() -> list[CombinationEntry]:
                 "layers": layers,
             }
         )
+
+    return sorted(entries, key=lambda entry: ((entry["cone"] or ""), entry["title"].lower()))
+
+
+def build_entries() -> list[CombinationEntry]:
+    session = create_session()
+    initial_page = session.get(MAYCO_COMBINATIONS_URL, timeout=30)
+    initial_page.raise_for_status()
+    facet_config = parse_facet_config(initial_page.text)
+
+    raw_entries: list[CombinationEntry] = []
+
+    for page_number in range(1, facet_config["totalPages"] + 1):
+        payload = fetch_combo_page(session, facet_config, page_number)
+        template_html = str(payload.get("template") or "")
+
+        if not template_html.strip():
+            raise RuntimeError(f"FacetWP page {page_number} returned an empty template.")
+
+        page_entries = parse_combo_entries(template_html)
+        raw_entries.extend(page_entries)
+        print(
+            f"Fetched Mayco combination page {page_number}/{facet_config['totalPages']} "
+            f"({len(page_entries)} entries).",
+            flush=True,
+        )
+
+    if len(raw_entries) != facet_config["totalRows"]:
+        raise RuntimeError(
+            f"Expected {facet_config['totalRows']} combinations from Mayco, parsed {len(raw_entries)}."
+        )
+
+    entries, duplicate_rows = dedupe_entries(raw_entries)
+    print(
+        f"Collapsed {duplicate_rows} duplicate Mayco rows into {len(entries)} unique combinations.",
+        flush=True,
+    )
 
     return sorted(entries, key=lambda entry: ((entry["cone"] or ""), entry["title"].lower()))
 
@@ -373,7 +541,13 @@ def create_sql(entries: list[CombinationEntry]) -> str:
 
     return "\n".join(
         [
-            "-- Generated by scripts/scrape_mayco_combinations.py from maycocolors.com on 2026-04-02.",
+            f"-- Generated by scripts/scrape_mayco_combinations.py from maycocolors.com on {date.today().isoformat()}.",
+            "begin;",
+            "",
+            "delete from public.vendor_combination_examples",
+            "where source_vendor = 'Mayco'",
+            "  and source_collection = 'glaze-combinations';",
+            "",
             "insert into public.vendor_combination_examples (",
             "  id,",
             "  source_vendor,",
@@ -390,20 +564,7 @@ def create_sql(entries: list[CombinationEntry]) -> str:
             ")",
             "values",
             ",\n".join(example_rows),
-            "on conflict (source_key)",
-            "do update",
-            "set",
-            "  source_vendor = excluded.source_vendor,",
-            "  source_collection = excluded.source_collection,",
-            "  source_url = excluded.source_url,",
-            "  title = excluded.title,",
-            "  image_url = excluded.image_url,",
-            "  cone = excluded.cone,",
-            "  atmosphere = excluded.atmosphere,",
-            "  clay_body = excluded.clay_body,",
-            "  application_notes = excluded.application_notes,",
-            "  firing_notes = excluded.firing_notes,",
-            "  updated_at = now();",
+            ";",
             "",
             "insert into public.vendor_combination_example_layers (",
             "  id,",
@@ -417,14 +578,9 @@ def create_sql(entries: list[CombinationEntry]) -> str:
             ")",
             "values",
             ",\n".join(layer_rows),
-            "on conflict (example_id, layer_order)",
-            "do update",
-            "set",
-            "  glaze_id = excluded.glaze_id,",
-            "  glaze_code = excluded.glaze_code,",
-            "  glaze_name = excluded.glaze_name,",
-            "  connector_to_next = excluded.connector_to_next,",
-            "  source_image_url = excluded.source_image_url;",
+            ";",
+            "",
+            "commit;",
             "",
         ]
     )

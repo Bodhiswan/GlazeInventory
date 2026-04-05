@@ -176,6 +176,33 @@ export interface VendorCombinationExample {
   viewerOwnedLayerCount: number;
 }
 
+export interface UserCombinationExampleLayer {
+  id: string;
+  exampleId: string;
+  glazeId: string;
+  glaze?: Glaze | null;
+  layerOrder: number;
+}
+
+export interface UserCombinationExample {
+  id: string;
+  authorUserId: string;
+  authorName: string;
+  title: string;
+  postFiringImageUrl: string;
+  preFiringImageUrl?: string | null;
+  cone: string;
+  atmosphere?: string | null;
+  glazingProcess?: string | null;
+  notes?: string | null;
+  kilnNotes?: string | null;
+  status: PostStatus;
+  createdAt: string;
+  layers: UserCombinationExampleLayer[];
+  viewerOwnsAllGlazes: boolean;
+  viewerOwnedLayerCount: number;
+}
+
 export interface GlazeDetail {
   glaze: Glaze;
   firingImages: GlazeFiringImage[];

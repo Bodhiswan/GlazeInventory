@@ -1,5 +1,4 @@
-import { notFound } from "next/navigation";
-import { publishCombinationPostAction } from "@/app/actions";
+import { publishUserCombinationAction } from "@/app/actions";
 import { PageHeader } from "@/components/page-header";
 import { PublishCombinationForm } from "@/components/publish-combination-form";
 import { SetupCallout } from "@/components/setup-callout";
@@ -13,8 +12,6 @@ export default async function PublishPage({
 }: {
   searchParams: Promise<{ error?: string }>;
 }) {
-  notFound();
-
   const viewer = await requireViewer();
   const inventory = await getInventory(viewer.profile.id);
   const ownedGlazes = inventory
@@ -32,8 +29,8 @@ export default async function PublishPage({
     <div className="space-y-8">
       <PageHeader
         eyebrow="Publish"
-        title="Share a kiln-tested pairing"
-        description="Document your result the same way the imported vendor examples do: show the fired surface, explain how the layers were applied, and leave enough kiln context for another maker to repeat or avoid the result."
+        title="Share a kiln-tested combination"
+        description="Document your result so other members can repeat or avoid it: show the fired surface, explain how the layers were applied, and leave enough kiln context for someone else to learn from."
       />
 
       {viewer.mode === "demo" ? <SetupCallout compact /> : null}
@@ -48,7 +45,7 @@ export default async function PublishPage({
           <Panel className="space-y-5">
             <div className="flex flex-wrap gap-2">
               <Badge tone="neutral">Member example</Badge>
-              <Badge tone="neutral">Pair-based publish</Badge>
+              <Badge tone="neutral">Up to 4 layers</Badge>
               <Badge tone="accent">Notes matter</Badge>
             </div>
 
@@ -83,10 +80,10 @@ export default async function PublishPage({
             <p className="text-sm uppercase tracking-[0.2em] text-muted">Prompts</p>
             <div className="grid gap-3">
               <p className="border border-border bg-panel px-4 py-3 text-sm text-foreground/90">
-                “Two brushed coats of the base, one heavier overlap on the rim, and the top glaze broke blue where it thinned.”
+                "Two brushed coats of the base, one heavier overlap on the rim, and the top glaze broke blue where it thinned."
               </p>
               <p className="border border-border bg-panel px-4 py-3 text-sm text-foreground/90">
-                “Cone 6 oxidation on speckled buff stoneware with a slow cool. The overlap ran more on the front shelf than my test tile.”
+                "Cone 6 oxidation on speckled buff stoneware with a slow cool. The overlap ran more on the front shelf than my test tile."
               </p>
             </div>
           </Panel>
@@ -97,7 +94,7 @@ export default async function PublishPage({
             <p className="text-sm uppercase tracking-[0.2em] text-muted">Member submission</p>
             <h2 className="display-font text-3xl tracking-tight">Build a documented example</h2>
             <p className="max-w-2xl text-sm leading-6 text-muted">
-              This publishes into the member examples area for the pair you choose below. The better the notes, the more useful the result becomes later.
+              This publishes into the combinations area. Choose 2-4 glaze layers, upload your result photo, and add enough notes for the example to be useful.
             </p>
           </div>
 
@@ -107,7 +104,7 @@ export default async function PublishPage({
             </div>
           ) : null}
 
-          <form action={publishCombinationPostAction} className="grid gap-6">
+          <form action={publishUserCombinationAction} className="grid gap-6">
             <PublishCombinationForm
               disabled={viewer.mode === "demo" || ownedGlazes.length < 2}
               glazes={ownedGlazes}

@@ -111,7 +111,7 @@ export default async function DashboardPage() {
           </div>
           <Panel className="space-y-4">
             <p className="text-sm leading-6 text-muted">
-              Browse Mayco, AMACO, and Coyote glazes, save them to your shelf or wishlist directly from the library, and use folders to organize them around actual projects.
+              Browse Mayco, AMACO, Coyote, Duncan, Spectrum, and Speedball glazes, save them to your shelf or wishlist directly from the library, and use folders to organize them around actual projects.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link href="/glazes" className={buttonVariants({})}>

@@ -194,11 +194,23 @@ def collect_references() -> list[Reference]:
         VENDOR_DATA_DIR / "mayco-glazes.json",
         VENDOR_DATA_DIR / "amaco-glazes.json",
         VENDOR_DATA_DIR / "coyote-glazes.json",
+        VENDOR_DATA_DIR / "duncan-glazes.json",
+        VENDOR_DATA_DIR / "spectrum-glazes.json",
+        VENDOR_DATA_DIR / "speedball-glazes.json",
+        VENDOR_DATA_DIR / "chrysanthos-glazes.json",
+        VENDOR_DATA_DIR / "laguna-glazes.json",
+        VENDOR_DATA_DIR / "northcote-glazes.json",
     ]
     firing_files = [
         VENDOR_DATA_DIR / "mayco-firing-images.json",
         VENDOR_DATA_DIR / "amaco-firing-images.json",
         VENDOR_DATA_DIR / "coyote-firing-images.json",
+        VENDOR_DATA_DIR / "duncan-firing-images.json",
+        VENDOR_DATA_DIR / "spectrum-firing-images.json",
+        VENDOR_DATA_DIR / "speedball-firing-images.json",
+        VENDOR_DATA_DIR / "chrysanthos-firing-images.json",
+        VENDOR_DATA_DIR / "laguna-firing-images.json",
+        VENDOR_DATA_DIR / "northcote-firing-images.json",
     ]
 
     references: list[Reference] = []

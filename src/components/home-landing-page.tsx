@@ -6,7 +6,7 @@ import { getViewer } from "@/lib/data";
 const features = [
   {
     label: "Glaze Library",
-    description: "Browse 1,100+ glazes from Mayco, AMACO, and Coyote with firing images, community ratings, and surface tags.",
+    description: "Browse 1,300+ glazes from Mayco, AMACO, Coyote, Duncan, Spectrum, and Speedball with firing images, community ratings, and surface tags.",
   },
   {
     label: "Combination Explorer",
@@ -64,7 +64,7 @@ export async function HomeLandingPage() {
               Your glaze shelf, searchable and organised.
             </h1>
             <p className="mt-6 max-w-[540px] text-[15px] leading-7 text-muted">
-              Search 1,100+ commercial glazes, explore 4,600+ tested combinations with photos,
+              Search 1,300+ commercial glazes, explore 4,600+ tested combinations with photos,
               and track what you own so you always know what to reach for next.
             </p>
 
@@ -150,6 +150,9 @@ export async function HomeLandingPage() {
               <span className="border border-border px-3 py-1.5">Mayco</span>
               <span className="border border-border px-3 py-1.5">AMACO</span>
               <span className="border border-border px-3 py-1.5">Coyote</span>
+              <span className="border border-border px-3 py-1.5">Duncan</span>
+              <span className="border border-border px-3 py-1.5">Spectrum</span>
+              <span className="border border-border px-3 py-1.5">Speedball</span>
               <span className="border border-border px-3 py-1.5">Cone 5 / 6 / 10</span>
             </div>
 

@@ -25,7 +25,7 @@ export function AppShell({
             </Link>
 
             <div className="flex min-w-0 justify-center">
-              <AppShellNav isAdmin={false} />
+              <AppShellNav isAdmin={viewer.profile.isAdmin === true} />
             </div>
 
             <div className="col-span-2 flex min-w-0 items-center justify-end gap-2 sm:col-span-1">

@@ -9,6 +9,8 @@ import glazesJson from "../../data/catalog/glazes.json";
 import examplesJson from "../../data/catalog/combination-examples.json";
 import firingImagesJson from "../../data/catalog/firing-images.json";
 import tagsJson from "../../data/catalog/tags.json";
+import spectrumLocalImagesJson from "../../data/vendors/spectrum-local-images.json";
+import speedballLocalImagesJson from "../../data/vendors/speedball-local-images.json";
 
 import type {
   Glaze,
@@ -28,9 +30,18 @@ type ExampleRow = (typeof examplesJson)[number];
 type FiringImageEntry = { id: string; label: string; cone: string | null; atmosphere: string | null; imageUrl: string; sortOrder: number };
 type TagRow = (typeof tagsJson)[number];
 
+const SPECTRUM_LOCAL_IMAGES = spectrumLocalImagesJson as Record<string, string>;
+const SPEEDBALL_LOCAL_IMAGES = speedballLocalImagesJson as Record<string, string>;
+
 function getBundledVendorImageUrl(brand: string | null, code: string | null) {
   if (brand === "Coyote" && code?.trim()) {
     return `/vendor-images/coyote/${code.toLowerCase()}.jpg`;
+  }
+  if (brand === "Spectrum" && code?.trim()) {
+    return SPECTRUM_LOCAL_IMAGES[code] ?? null;
+  }
+  if (brand === "Speedball" && code?.trim()) {
+    return SPEEDBALL_LOCAL_IMAGES[code] ?? null;
   }
   return null;
 }
