@@ -56,6 +56,12 @@ import {
 
 type Row = Record<string, unknown>;
 
+const catalogGlazeByCode = new Map(
+  getAllCatalogGlazes()
+    .filter((glaze) => Boolean(glaze.code))
+    .map((glaze) => [glaze.code!.toLowerCase(), glaze] as const),
+);
+
 function getBundledVendorImageUrl(brand: unknown, code: unknown) {
   if (brand === "Coyote" && typeof code === "string" && code.trim()) {
     return `/vendor-images/coyote/${code.toLowerCase()}.jpg`;
@@ -772,7 +778,18 @@ async function hydrateVendorCombinationExamples(viewerId: string, exampleRows: R
   const glazeIds = Array.from(
     new Set(
       layers
-        .map((layer) => layer.glazeId)
+        .flatMap((layer) => {
+          if (layer.glazeId) {
+            return [layer.glazeId];
+          }
+
+          if (layer.glazeCode) {
+            const matchedGlaze = catalogGlazeByCode.get(layer.glazeCode.toLowerCase());
+            return matchedGlaze ? [matchedGlaze.id] : [];
+          }
+
+          return [];
+        })
         .filter((value): value is string => Boolean(value)),
     ),
   );
@@ -787,9 +804,15 @@ async function hydrateVendorCombinationExamples(viewerId: string, exampleRows: R
       .map((item) => item.glazeId),
   );
   const layersByExampleId = layers.reduce<Map<string, VendorCombinationExampleLayer[]>>((groups, layer) => {
+    const matchedGlaze = layer.glazeId
+      ? glazesById.get(layer.glazeId) ?? null
+      : layer.glazeCode
+        ? catalogGlazeByCode.get(layer.glazeCode.toLowerCase()) ?? null
+        : null;
     const hydratedLayer = {
       ...layer,
-      glaze: layer.glazeId ? glazesById.get(layer.glazeId) ?? null : null,
+      glazeId: layer.glazeId ?? matchedGlaze?.id ?? null,
+      glaze: matchedGlaze,
     };
 
     groups.set(layer.exampleId, [...(groups.get(layer.exampleId) ?? []), hydratedLayer]);
@@ -1378,4 +1401,289 @@ export async function getModerationQueue(): Promise<ModerationItem[]> {
     post,
     reports: mappedReports.filter((report) => report.postId === post.id),
   }));
+}
+
+// ─── Admin Analytics ──────────────────────────────────────────────────────────
+
+export interface AnalyticsDashboard {
+  stats: {
+    totalUsers: number;
+    newUsers7d: number;
+    newUsers30d: number;
+    usersWithInventory: number;
+    totalInventoryItems: number;
+    totalPublishedPosts: number;
+    totalBuyClicks: number;
+    totalRatings: number;
+    totalComments: number;
+  };
+  topGlazesByInventory: Array<{
+    id: string;
+    name: string;
+    brand: string | null;
+    code: string | null;
+    count: number;
+  }>;
+  topGlazesByBuyClicks: Array<{
+    id: string;
+    name: string;
+    brand: string | null;
+    code: string | null;
+    count: number;
+  }>;
+  recentUsers: Array<{
+    id: string;
+    email: string;
+    displayName: string | null;
+    createdAt: string;
+    inventoryCount: number;
+  }>;
+  recentBuyClicks: Array<{
+    id: string;
+    glazeName: string | null;
+    glazeBrand: string | null;
+    storeName: string | null;
+    createdAt: string;
+  }>;
+  buyClicksByStore: Array<{ storeName: string; count: number }>;
+}
+
+export interface AdminUserDetail {
+  profile: {
+    id: string;
+    email: string;
+    displayName: string | null;
+    studioName: string | null;
+    location: string | null;
+    preferredCone: string | null;
+    preferredAtmosphere: string | null;
+    createdAt: string;
+  };
+  inventory: {
+    owned: Array<{ id: string; glazeId: string; name: string; brand: string | null; code: string | null; fillLevel: string; quantity: number; notes: string | null }>;
+    wishlist: Array<{ id: string; glazeId: string; name: string; brand: string | null; code: string | null }>;
+    archived: Array<{ id: string; glazeId: string; name: string; brand: string | null; code: string | null }>;
+  };
+  activity: {
+    ratingsCount: number;
+    commentsCount: number;
+    buyClicks: Array<{ glazeName: string | null; glazeBrand: string | null; storeName: string | null; createdAt: string }>;
+    postsCount: number;
+  };
+}
+
+export async function getAdminUserDetail(userId: string): Promise<AdminUserDetail | null> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) throw new Error("Admin client unavailable");
+  type Row = Record<string, unknown>;
+
+  // Fetch profile and inventory in parallel
+  const [{ data: profileRow }, { data: invRows }] = await Promise.all([
+    admin.from("profiles").select("*").eq("id", userId).single(),
+    admin.from("inventory_items").select("id, glaze_id, status, personal_notes").eq("user_id", userId),
+  ]);
+  if (!profileRow) return null;
+  const p = profileRow as Row;
+
+  // Get glaze IDs to fetch details
+  const glazeIds = [...new Set((invRows ?? []).map((r) => (r as Row).glaze_id as string))];
+  const { data: glazeRows } = glazeIds.length
+    ? await admin.from("glazes").select("id, name, brand, code").in("id", glazeIds)
+    : { data: [] };
+  const glazeMap: Record<string, { name: string; brand: string | null; code: string | null }> = {};
+  for (const g of glazeRows ?? []) {
+    const gr = g as Row;
+    glazeMap[String(gr.id)] = { name: String(gr.name), brand: gr.brand as string | null, code: gr.code as string | null };
+  }
+
+  // Parse inventory into buckets
+  const owned: AdminUserDetail["inventory"]["owned"] = [];
+  const wishlist: AdminUserDetail["inventory"]["wishlist"] = [];
+  const archived: AdminUserDetail["inventory"]["archived"] = [];
+
+  for (const row of invRows ?? []) {
+    const r = row as Row;
+    const glazeId = String(r.glaze_id);
+    const glaze = glazeMap[glazeId] ?? { name: "Unknown", brand: null, code: null };
+    const status = String(r.status);
+    const invState = parseInventoryState(r.personal_notes as string | null);
+
+    if (status === "owned") {
+      owned.push({ id: String(r.id), glazeId, ...glaze, fillLevel: invState.fillLevel, quantity: invState.quantity, notes: invState.note });
+    } else if (status === "wishlist") {
+      wishlist.push({ id: String(r.id), glazeId, ...glaze });
+    } else {
+      archived.push({ id: String(r.id), glazeId, ...glaze });
+    }
+  }
+
+  // Activity: ratings, comments, buy clicks, posts
+  const [ratingsRes, commentsRes, buyClicksRes, postsRes] = await Promise.all([
+    admin.from("glaze_ratings").select("id", { count: "exact", head: true }).eq("user_id", userId),
+    admin.from("glaze_comments").select("id", { count: "exact", head: true }).eq("author_user_id", userId),
+    admin.from("analytics_events").select("glaze_id, metadata, created_at").eq("event_type", "buy_click").eq("user_id", userId).order("created_at", { ascending: false }).limit(20),
+    admin.from("combination_posts").select("id", { count: "exact", head: true }).eq("author_user_id", userId),
+  ]);
+
+  // Resolve glaze names for buy clicks
+  const buyGlazeIds = (buyClicksRes.data ?? []).map((r) => (r as Row).glaze_id as string).filter(Boolean);
+  const { data: buyGlazeRows } = buyGlazeIds.length
+    ? await admin.from("glazes").select("id, name, brand").in("id", buyGlazeIds)
+    : { data: [] };
+  const buyGlazeMap: Record<string, { name: string; brand: string | null }> = {};
+  for (const g of buyGlazeRows ?? []) {
+    buyGlazeMap[String((g as Row).id)] = { name: String((g as Row).name), brand: (g as Row).brand as string | null };
+  }
+
+  const buyClicks = (buyClicksRes.data ?? []).map((row) => {
+    const r = row as Row;
+    const meta = r.metadata as { store_name?: string } | null;
+    const g = r.glaze_id ? buyGlazeMap[r.glaze_id as string] : null;
+    return { glazeName: g?.name ?? null, glazeBrand: g?.brand ?? null, storeName: meta?.store_name ?? null, createdAt: String(r.created_at) };
+  });
+
+  return {
+    profile: {
+      id: String(p.id),
+      email: String(p.email ?? ""),
+      displayName: p.display_name ? String(p.display_name) : null,
+      studioName: p.studio_name ? String(p.studio_name) : null,
+      location: p.location ? String(p.location) : null,
+      preferredCone: p.preferred_cone ? String(p.preferred_cone) : null,
+      preferredAtmosphere: p.preferred_atmosphere ? String(p.preferred_atmosphere) : null,
+      createdAt: String(p.created_at),
+    },
+    inventory: { owned, wishlist, archived },
+    activity: {
+      ratingsCount: ratingsRes.count ?? 0,
+      commentsCount: commentsRes.count ?? 0,
+      buyClicks,
+      postsCount: postsRes.count ?? 0,
+    },
+  };
+}
+
+export async function getAnalyticsDashboard(): Promise<AnalyticsDashboard> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) throw new Error("Admin client unavailable");
+  type Row = Record<string, unknown>;
+
+  const now = Date.now();
+
+  // ── Counts ──
+  const [
+    totalUsersRes,
+    newUsers7dRes,
+    newUsers30dRes,
+    totalInventoryRes,
+    postsRes,
+    buyClicksRes,
+    ratingsRes,
+    commentsRes,
+  ] = await Promise.all([
+    admin.from("profiles").select("id", { count: "exact", head: true }),
+    admin.from("profiles").select("id", { count: "exact", head: true }).gte("created_at", new Date(now - 7 * 86400000).toISOString()),
+    admin.from("profiles").select("id", { count: "exact", head: true }).gte("created_at", new Date(now - 30 * 86400000).toISOString()),
+    admin.from("inventory_items").select("id", { count: "exact", head: true }),
+    admin.from("combination_posts").select("id", { count: "exact", head: true }).eq("status", "published"),
+    admin.from("analytics_events").select("id", { count: "exact", head: true }).eq("event_type", "buy_click"),
+    admin.from("glaze_ratings").select("id", { count: "exact", head: true }),
+    admin.from("glaze_comments").select("id", { count: "exact", head: true }),
+  ]);
+
+  // ── Top glazes by inventory: flat queries, no joins ──
+  const { data: invItems } = await admin.from("inventory_items").select("glaze_id, user_id");
+  const glazeIdCounts: Record<string, number> = {};
+  for (const row of invItems ?? []) {
+    const id = (row as Row).glaze_id as string;
+    glazeIdCounts[id] = (glazeIdCounts[id] ?? 0) + 1;
+  }
+  const topGlazeIds = Object.entries(glazeIdCounts).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([id]) => id);
+  const { data: topGlazeRows } = topGlazeIds.length
+    ? await admin.from("glazes").select("id, name, brand, code, created_by_user_id").in("id", topGlazeIds).is("created_by_user_id", null)
+    : { data: [] };
+  const topGlazesByInventory = (topGlazeRows ?? [])
+    .map((g) => ({ id: String((g as Row).id), name: String((g as Row).name), brand: (g as Row).brand as string | null, code: (g as Row).code as string | null, count: glazeIdCounts[String((g as Row).id)] ?? 0 }))
+    .sort((a, b) => b.count - a.count);
+
+  // ── Distinct users with inventory (reuse the invItems query) ──
+  const distinctUserIds = new Set((invItems ?? []).map((r) => (r as Row).user_id as string));
+
+  // ── Buy clicks: flat queries ──
+  const { data: buyClickRows } = await admin.from("analytics_events").select("id, glaze_id, metadata, created_at").eq("event_type", "buy_click").order("created_at", { ascending: false }).limit(1000);
+
+  // Buy clicks by store
+  const storeMap: Record<string, number> = {};
+  const buyGlazeIdCounts: Record<string, number> = {};
+  for (const row of buyClickRows ?? []) {
+    const r = row as Row;
+    const meta = r.metadata as { store_name?: string } | null;
+    const storeName = meta?.store_name ?? "Unknown";
+    storeMap[storeName] = (storeMap[storeName] ?? 0) + 1;
+    if (r.glaze_id) buyGlazeIdCounts[r.glaze_id as string] = (buyGlazeIdCounts[r.glaze_id as string] ?? 0) + 1;
+  }
+  const buyClicksByStore = Object.entries(storeMap).map(([storeName, count]) => ({ storeName, count })).sort((a, b) => b.count - a.count);
+
+  // Top glazes by buy clicks
+  const topBuyGlazeIds = Object.entries(buyGlazeIdCounts).sort((a, b) => b[1] - a[1]).slice(0, 10).map(([id]) => id);
+  const { data: topBuyGlazeRows } = topBuyGlazeIds.length
+    ? await admin.from("glazes").select("id, name, brand, code").in("id", topBuyGlazeIds)
+    : { data: [] };
+  const topGlazesByBuyClicks = (topBuyGlazeRows ?? [])
+    .map((g) => ({ id: String((g as Row).id), name: String((g as Row).name), brand: (g as Row).brand as string | null, code: (g as Row).code as string | null, count: buyGlazeIdCounts[String((g as Row).id)] ?? 0 }))
+    .sort((a, b) => b.count - a.count);
+
+  // Recent buy clicks with glaze names
+  const recentClickGlazeIds = (buyClickRows ?? []).slice(0, 20).map((r) => (r as Row).glaze_id as string).filter(Boolean);
+  const { data: recentClickGlazes } = recentClickGlazeIds.length
+    ? await admin.from("glazes").select("id, name, brand").in("id", recentClickGlazeIds)
+    : { data: [] };
+  const glazeById: Record<string, { name: string; brand: string | null }> = {};
+  for (const g of recentClickGlazes ?? []) {
+    glazeById[String((g as Row).id)] = { name: String((g as Row).name), brand: (g as Row).brand as string | null };
+  }
+  const recentBuyClicks = (buyClickRows ?? []).slice(0, 20).map((row) => {
+    const r = row as Row;
+    const meta = r.metadata as { store_name?: string } | null;
+    const g = r.glaze_id ? glazeById[r.glaze_id as string] : null;
+    return { id: String(r.id), glazeName: g?.name ?? null, glazeBrand: g?.brand ?? null, storeName: meta?.store_name ?? null, createdAt: String(r.created_at) };
+  });
+
+  // ── Recent users ──
+  const { data: recentUsersData } = await admin.from("profiles").select("id, email, display_name, created_at").order("created_at", { ascending: false }).limit(25);
+  const recentUserIds = (recentUsersData ?? []).map((u) => (u as Row).id as string);
+  const { data: invByUser } = recentUserIds.length
+    ? await admin.from("inventory_items").select("user_id").in("user_id", recentUserIds)
+    : { data: [] };
+  const invCountByUser: Record<string, number> = {};
+  for (const row of invByUser ?? []) {
+    const uid = (row as Row).user_id as string;
+    invCountByUser[uid] = (invCountByUser[uid] ?? 0) + 1;
+  }
+  const recentUsers = (recentUsersData ?? []).map((u) => ({
+    id: String((u as Row).id),
+    email: String((u as Row).email ?? ""),
+    displayName: (u as Row).display_name ? String((u as Row).display_name) : null,
+    createdAt: String((u as Row).created_at),
+    inventoryCount: invCountByUser[String((u as Row).id)] ?? 0,
+  }));
+
+  return {
+    stats: {
+      totalUsers: totalUsersRes.count ?? 0,
+      newUsers7d: newUsers7dRes.count ?? 0,
+      newUsers30d: newUsers30dRes.count ?? 0,
+      usersWithInventory: distinctUserIds.size,
+      totalInventoryItems: totalInventoryRes.count ?? 0,
+      totalPublishedPosts: postsRes.count ?? 0,
+      totalBuyClicks: buyClicksRes.count ?? 0,
+      totalRatings: ratingsRes.count ?? 0,
+      totalComments: commentsRes.count ?? 0,
+    },
+    topGlazesByInventory,
+    topGlazesByBuyClicks,
+    recentUsers,
+    recentBuyClicks,
+    buyClicksByStore,
+  };
 }

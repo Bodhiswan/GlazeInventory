@@ -6,6 +6,7 @@ import { ChevronDown, Loader2, Search, X } from "lucide-react";
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useState, type ReactNode } from "react";
 
 import { getCatalogGlazesForScannerAction } from "@/app/actions";
+import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeScanner } from "@/components/glaze-scanner";
 
 import { setGlazeInventoryStateAction, updateInventoryItemNotesAction } from "@/app/actions";
@@ -124,7 +125,7 @@ const InventoryTile = memo(function InventoryTile({
               alt={formatGlazeLabel(item.glaze)}
               width={256}
               height={256}
-              sizes="(min-width: 1280px) 20vw, (min-width: 640px) 33vw, 50vw"
+              sizes="(min-width: 640px) 200px, 50vw"
               className="aspect-square w-full object-cover bg-white"
               loading="lazy"
             />
@@ -647,6 +648,10 @@ export function InventoryWorkspace({
 
                   {/* Glaze info */}
                   <p className="text-sm leading-6 text-muted">{formatGlazeMeta(activeItem.glaze)}</p>
+
+                  {activeItem.glaze.sourceType === "commercial" ? (
+                    <BuyLinksDropdown glaze={activeItem.glaze} />
+                  ) : null}
 
                   <InventoryNotesForm
                     key={activeItem.id}

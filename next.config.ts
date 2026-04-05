@@ -37,15 +37,36 @@ const remotePatterns: RemotePattern[] = [
     protocol: "https" as const,
     hostname: "amaco.com",
   },
+  {
+    protocol: "https" as const,
+    hostname: "www.spectrumglazes.com",
+    pathname: "/wp-content/uploads/**",
+  },
+  {
+    protocol: "https" as const,
+    hostname: "cdn.powered-by-nitrosell.com",
+    pathname: "/product_images/**",
+  },
+  {
+    protocol: "https" as const,
+    hostname: "www.coyoteclay.com",
+  },
+  {
+    protocol: "https" as const,
+    hostname: "cdn.shopify.com",
+    pathname: "/s/files/**",
+  },
 ];
 
 const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "2mb",
+    },
+  },
   images: {
     remotePatterns,
-    formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
-    deviceSizes: [640, 750, 828, 1080, 1200],
-    imageSizes: [64, 96, 128, 256, 384],
+    unoptimized: true,
   },
   turbopack: {
     root: path.resolve(__dirname),

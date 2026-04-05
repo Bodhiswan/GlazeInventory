@@ -6,6 +6,7 @@ import { ChevronDown, Search, X } from "lucide-react";
 import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
 import { setGlazeInventoryStateAction } from "@/app/actions";
+import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -48,10 +49,10 @@ type IndexedGlaze = {
   colorTraits: string[];
   finishTraits: string[];
   coneTraits: string[];
-  colorSummary: string;
-  finishSummary: string;
+  colorSummary: string | null;
+  finishSummary: string | null;
   colorPalette: Array<{ label: string; weight: number; swatch: string }>;
-  dominantColor: string;
+  dominantColor: string | null;
   firingImages: GlazeFiringImage[];
   hasPreferredExamples: boolean;
   hasCuratedDescription: boolean;
@@ -231,9 +232,9 @@ export function GlazeCatalogExplorer({
   const [coneFilters, setConeFilters] = useState<string[]>([]);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [openFilterSections, setOpenFilterSections] = useState<Record<FilterSectionKey, boolean>>({
-    brands: true,
+    brands: false,
     families: false,
-    colors: true,
+    colors: false,
     finishes: false,
     cones: false,
   });
@@ -922,7 +923,7 @@ export function GlazeCatalogExplorer({
                                     alt={formatGlazeLabel(glaze)}
                                     width={256}
                                     height={256}
-                                    sizes="(min-width: 1536px) 14vw, (min-width: 1280px) 16vw, (min-width: 1024px) 20vw, (min-width: 640px) 25vw, (min-width: 420px) 33vw, 50vw"
+                                    sizes="(min-width: 640px) 200px, 50vw"
                                     className="aspect-square w-full object-contain bg-white transition duration-200"
                                     loading="lazy"
                                   />
@@ -940,7 +941,7 @@ export function GlazeCatalogExplorer({
                                 <h4 className="line-clamp-2 text-[13px] font-semibold leading-5 text-foreground sm:text-sm">
                                   {glaze.name}
                                 </h4>
-                                <p className="hidden line-clamp-1 text-xs text-muted sm:block">{item.finishSummary}</p>
+                                {item.finishSummary ? <p className="hidden line-clamp-1 text-xs text-muted sm:block">{item.finishSummary}</p> : null}
                               </div>
 
                               <div className="flex flex-wrap gap-1">
@@ -1097,6 +1098,9 @@ export function GlazeCatalogExplorer({
 
                 {/* Info column */}
                 <div className="space-y-4">
+                  {/* Buy from store */}
+                  <BuyLinksDropdown glaze={activeGridItem.glaze} />
+
                   <div className="flex flex-wrap gap-1.5">
                     <Badge tone={activeGridItem.glaze.sourceType === "commercial" ? "neutral" : "accent"}>
                       {activeGridItem.glaze.sourceType === "commercial" ? "Commercial" : "Custom"}
@@ -1117,8 +1121,8 @@ export function GlazeCatalogExplorer({
                   <div className="grid gap-2 text-sm text-muted sm:grid-cols-2">
                     <p><span className="font-semibold text-foreground">Brand:</span> {activeGridItem.glaze.brand ?? "Unknown"}</p>
                     <p><span className="font-semibold text-foreground">Line:</span> {activeGridItem.glaze.line ?? "Unknown"}</p>
-                    <p><span className="font-semibold text-foreground">Finish:</span> {activeGridItem.finishSummary}</p>
-                    <p><span className="font-semibold text-foreground">Colour:</span> {activeGridItem.colorSummary}</p>
+                    {activeGridItem.finishSummary ? <p><span className="font-semibold text-foreground">Finish:</span> {activeGridItem.finishSummary}</p> : null}
+                    {activeGridItem.colorSummary ? <p><span className="font-semibold text-foreground">Colour:</span> {activeGridItem.colorSummary}</p> : null}
                   </div>
 
                   {/* Skim read panel */}

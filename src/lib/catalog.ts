@@ -97,6 +97,12 @@ function buildGlazeIndex() {
 
 const _glazes = buildGlazeIndex();
 
+const _glazeByCode = new Map(
+  _glazes.list
+    .filter((glaze) => Boolean(glaze.code))
+    .map((glaze) => [glaze.code!.toLowerCase(), glaze] as const),
+);
+
 function buildExampleIndex() {
   return examplesJson.map((row: ExampleRow) => ({
     id: row.id,
@@ -111,22 +117,29 @@ function buildExampleIndex() {
     clayBody: row.clay_body ?? null,
     applicationNotes: row.application_notes ?? null,
     firingNotes: row.firing_notes ?? null,
-    layers: (row.layers ?? []).map((layer: ExampleRow["layers"][number]) => ({
-      id: layer.id,
-      exampleId: row.id,
-      glazeId: layer.glaze_id ?? null,
-      glazeCode: layer.glaze_code ?? null,
-      glazeName: layer.glaze_name ?? "",
-      layerOrder: layer.layer_order ?? 0,
-      connectorToNext: layer.connector_to_next ?? null,
-      sourceImageUrl: layer.source_image_url ?? null,
-      glaze: layer.glaze_id ? _glazes.byId.get(layer.glaze_id) ?? null : null,
-    })),
+    layers: (row.layers ?? []).map((layer: ExampleRow["layers"][number]) => {
+      const glaze = (layer.glaze_id ? _glazes.byId.get(layer.glaze_id) : null)
+        ?? (layer.glaze_code ? _glazeByCode.get(layer.glaze_code.toLowerCase()) : null)
+        ?? null;
+
+      return {
+        id: layer.id,
+        exampleId: row.id,
+        glazeId: glaze?.id ?? layer.glaze_id ?? null,
+        glazeCode: layer.glaze_code ?? null,
+        glazeName: layer.glaze_name ?? "",
+        layerOrder: layer.layer_order ?? 0,
+        connectorToNext: layer.connector_to_next ?? null,
+        sourceImageUrl: layer.source_image_url ?? null,
+        glaze,
+      };
+    }),
   }));
 }
 
 const _examples = buildExampleIndex();
 const _examplesById = new Map(_examples.map((e) => [e.id, e]));
+
 
 function buildFiringImageIndex() {
   const map = new Map<string, GlazeFiringImage[]>();

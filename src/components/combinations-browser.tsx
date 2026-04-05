@@ -6,6 +6,7 @@ import { Search, X } from "lucide-react";
 import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
 import { setGlazeInventoryStateAction } from "@/app/actions";
+import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -316,10 +317,10 @@ function GlazeOwnershipControl({
 
 const CombinationGlazeRow = memo(function CombinationGlazeRow({
   roleLabel,
-  connectorLabel,
   glaze,
   fallbackCode,
   fallbackName,
+  fallbackImageUrl,
   preferredCone,
   preferredAtmosphere,
   glazeFiringImages,
@@ -327,10 +328,10 @@ const CombinationGlazeRow = memo(function CombinationGlazeRow({
   onInventoryStatusChange,
 }: {
   roleLabel: string;
-  connectorLabel?: string | null;
   glaze?: Glaze | null;
   fallbackCode?: string | null;
   fallbackName?: string | null;
+  fallbackImageUrl?: string | null;
   preferredCone?: string | null;
   preferredAtmosphere?: string | null;
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
@@ -338,9 +339,10 @@ const CombinationGlazeRow = memo(function CombinationGlazeRow({
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
 }) {
   const firingImages = glaze ? glazeFiringImages[glaze.id] ?? [] : [];
-  const thumbnailUrl = glaze
+  const preferredThumbnailUrl = glaze
     ? pickPreferredGlazeImage(glaze, firingImages, preferredCone ?? null, preferredAtmosphere ?? null)
     : null;
+  const thumbnailUrl = preferredThumbnailUrl ?? fallbackImageUrl ?? null;
   const displayLabel = glaze
     ? formatGlazeLabel(glaze)
     : [fallbackCode, fallbackName].filter(Boolean).join(" ") || "Unlinked glaze";
@@ -369,8 +371,9 @@ const CombinationGlazeRow = memo(function CombinationGlazeRow({
 
       {/* Ownership actions */}
       {glaze ? (
-        <div className="mt-2">
+        <div className="mt-2 space-y-2">
           <GlazeOwnershipControl glazeId={glaze.id} status={inventoryStatus} onStatusChange={onInventoryStatusChange} />
+          {glaze.sourceType === "commercial" ? <BuyLinksDropdown glaze={glaze} /> : null}
         </div>
       ) : null}
     </div>
@@ -432,10 +435,10 @@ function ExampleDetail({
             <CombinationGlazeRow
               key={layer.id}
               roleLabel={getLayerRoleLabel(example, layer.layerOrder)}
-              connectorLabel={layer.connectorToNext}
               glaze={layer.glaze}
               fallbackCode={layer.glazeCode}
               fallbackName={layer.glazeName}
+              fallbackImageUrl={layer.sourceImageUrl ?? null}
               preferredCone={example.cone ?? null}
               preferredAtmosphere={example.atmosphere ?? null}
               glazeFiringImages={glazeFiringImages}
@@ -801,7 +804,7 @@ export function CombinationsBrowser({
                           alt={tile.title}
                           width={256}
                           height={256}
-                          sizes="(min-width: 1280px) 16vw, (min-width: 1024px) 20vw, (min-width: 640px) 25vw, (min-width: 420px) 33vw, 50vw"
+                          sizes="(min-width: 640px) 200px, 50vw"
                           className="aspect-square w-full object-cover bg-white transition duration-200"
                           loading="lazy"
                         />
