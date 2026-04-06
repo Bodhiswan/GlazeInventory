@@ -24,7 +24,7 @@
     "dev": "next dev",
     "dev:demo": "node scripts/dev-demo.mjs",
     "dev:test": "node scripts/dev-test.mjs",
-    "dev:test:stop": "supabase stop",
+    "dev:test:stop": "npx supabase stop",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",

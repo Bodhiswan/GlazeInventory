@@ -78,9 +78,14 @@ BEGIN
     now()
   ) ON CONFLICT DO NOTHING;
 
+  -- The on_auth_user_created trigger auto-creates a profile row from
+  -- raw_user_meta_data, but without studio_name/location. Use DO UPDATE
+  -- so those fields are populated regardless of trigger ordering.
   INSERT INTO public.profiles (id, email, display_name, studio_name, location)
   VALUES (test_user_id, 'test@glazelibrary.app', 'Test Potter', 'Test Studio', 'Local Dev')
-  ON CONFLICT (id) DO NOTHING;
+  ON CONFLICT (id) DO UPDATE SET
+    studio_name = EXCLUDED.studio_name,
+    location    = EXCLUDED.location;
 
   -- =========================================================
   -- 2. Look up 5 glazes from the catalog (loaded by migrations)
@@ -91,8 +96,8 @@ BEGIN
   SELECT id INTO glaze_4 FROM public.glazes WHERE code = 'C-11'   LIMIT 1;
   SELECT id INTO glaze_5 FROM public.glazes WHERE code = 'SW-101' LIMIT 1;
 
-  -- Guard: skip user-level seed if catalog glazes are missing
-  IF glaze_1 IS NULL OR glaze_2 IS NULL THEN
+  -- Guard: skip user-level seed if any catalog glazes are missing
+  IF glaze_1 IS NULL OR glaze_2 IS NULL OR glaze_3 IS NULL OR glaze_4 IS NULL OR glaze_5 IS NULL THEN
     RAISE NOTICE 'Seed: catalog glazes not found — skipping user-level data.';
     RETURN;
   END IF;

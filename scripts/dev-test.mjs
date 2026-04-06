@@ -54,7 +54,10 @@ try {
 console.log("  ✔ Docker is running.");
 
 // ── 2. Start Supabase (idempotent) ──────────────────────────
-run("npx supabase start", "Starting local Supabase");
+if (!run("npx supabase start", "Starting local Supabase")) {
+  console.error("\n✖ Supabase failed to start. Check Docker and port availability.\n");
+  process.exit(1);
+}
 
 // ── 3. Reset DB (migrations + seed) ─────────────────────────
 if (!run("npx supabase db reset", "Resetting database (migrations + seed)")) {
