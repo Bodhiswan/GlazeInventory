@@ -80,14 +80,60 @@ try {
   }
 }
 
-// ── 4. Load .env.local.test and start Next.js ────────────────
-const testEnv = parseEnvFile(resolve(root, ".env.local.test"));
+// ── 4. Restart auth + gateway (required after DB reset) ─────
+// supabase db reset recreates the auth schema, but GoTrue keeps a stale
+// connection. Restarting auth and the API gateway fixes this.
+console.log("\n▶ Restarting auth services...");
+try {
+  execSync("docker restart supabase_auth_glaze-library supabase_kong_glaze-library", {
+    cwd: root,
+    stdio: "ignore",
+    timeout: 30_000,
+  });
+  // Give GoTrue time to reconnect to the database
+  execSync("node -e \"setTimeout(()=>{},8000)\"", { stdio: "ignore" });
+  console.log("  ✔ Auth services restarted.");
+} catch {
+  console.warn("  ⚠ Could not restart auth services (non-fatal).\n");
+}
 
+// ── 5. Read keys from running Supabase instance ─────────────
+// The CLI generates keys dynamically — we parse them from `supabase status`.
+console.log("\n▶ Reading local Supabase keys...");
+let statusOutput;
+try {
+  statusOutput = execSync("npx supabase status", { cwd: root, encoding: "utf-8" });
+} catch {
+  console.error("\n✖ Could not read Supabase status.\n");
+  process.exit(1);
+}
+
+function extractField(output, label) {
+  const re = new RegExp(`${label}\\s*│\\s*(\\S+)`);
+  const m = output.match(re);
+  return m?.[1] ?? "";
+}
+
+const supabaseUrl = extractField(statusOutput, "Project URL");
+const publishableKey = extractField(statusOutput, "Publishable");
+const secretKey = extractField(statusOutput, "Secret");
+
+if (!publishableKey || !secretKey) {
+  console.error("\n✖ Could not parse Supabase keys from status output.\n");
+  process.exit(1);
+}
+
+console.log(`  URL:  ${supabaseUrl}`);
+console.log(`  Key:  ${publishableKey.slice(0, 20)}...`);
+
+// ── 5. Start Next.js pointed at local Supabase ──────────────
 const env = {
   ...process.env,
-  ...testEnv,
-  // Ensure the legacy anon key alias is also set
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: testEnv.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY,
+  NEXT_PUBLIC_SUPABASE_URL: supabaseUrl,
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: publishableKey,
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: publishableKey,
+  SUPABASE_SERVICE_ROLE_KEY: secretKey,
+  NEXT_PUBLIC_SITE_URL: "http://localhost:3000",
 };
 
 console.log("\n▶ Starting Next.js dev server (local Supabase)...\n");

@@ -40,7 +40,12 @@ BEGIN
     created_at,
     updated_at,
     confirmation_token,
-    recovery_token
+    recovery_token,
+    email_change,
+    email_change_token_new,
+    phone,
+    phone_change,
+    phone_change_token
   ) VALUES (
     test_user_id,
     '00000000-0000-0000-0000-000000000000',
@@ -53,6 +58,11 @@ BEGIN
     '{"display_name":"Test Potter"}',
     now(),
     now(),
+    '',
+    '',
+    '',
+    '',
+    '',
     '',
     ''
   ) ON CONFLICT (id) DO NOTHING;
