@@ -60,9 +60,24 @@ if (!run("npx supabase start", "Starting local Supabase")) {
 }
 
 // ── 3. Reset DB (migrations + seed) ─────────────────────────
-if (!run("npx supabase db reset", "Resetting database (migrations + seed)")) {
-  console.error("\n✖ Database reset failed. Check migration errors above.\n");
-  process.exit(1);
+// supabase db reset may exit non-zero due to a storage health-check timeout
+// even when migrations + seed succeeded. Capture output to check for real failures.
+console.log("\n▶ Resetting database (migrations + seed)...");
+try {
+  execSync("npx supabase db reset", {
+    cwd: root,
+    stdio: ["inherit", "inherit", "pipe"],
+    timeout: 300_000,
+  });
+} catch (e) {
+  const stderr = e.stderr?.toString() ?? "";
+  // If the only error is a storage/container timeout, warn but continue
+  if (stderr.includes("context deadline exceeded") && !stderr.includes("ERROR")) {
+    console.warn("\n⚠ Storage health-check timed out (non-fatal). Continuing...\n");
+  } else {
+    console.error("\n✖ Database reset failed. Check migration errors above.\n");
+    process.exit(1);
+  }
 }
 
 // ── 4. Load .env.local.test and start Next.js ────────────────

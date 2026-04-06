@@ -94,7 +94,7 @@ BEGIN
   SELECT id INTO glaze_2 FROM public.glazes WHERE code = 'SW-152' LIMIT 1;
   SELECT id INTO glaze_3 FROM public.glazes WHERE code = 'PC-20'  LIMIT 1;
   SELECT id INTO glaze_4 FROM public.glazes WHERE code = 'C-11'   LIMIT 1;
-  SELECT id INTO glaze_5 FROM public.glazes WHERE code = 'SW-101' LIMIT 1;
+  SELECT id INTO glaze_5 FROM public.glazes WHERE code = 'SW-100' LIMIT 1;
 
   -- Guard: skip user-level seed if any catalog glazes are missing
   IF glaze_1 IS NULL OR glaze_2 IS NULL OR glaze_3 IS NULL OR glaze_4 IS NULL OR glaze_5 IS NULL THEN

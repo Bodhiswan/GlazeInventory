@@ -12,6 +12,12 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev:demo"],
       "port": 3000
+    },
+    {
+      "name": "dev:test",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/dev-test.mjs"],
+      "port": 3000
     }
   ]
 }
