@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { updateProfilePreferencesAction } from "@/app/actions";
+import { updateProfilePreferencesAction } from "@/app/actions/profile";
 import { ChatsTab } from "./chats-tab";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
