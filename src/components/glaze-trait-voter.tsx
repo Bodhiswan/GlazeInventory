@@ -1,4 +1,4 @@
-import { toggleGlazeTagVoteAction } from "@/app/actions";
+import { toggleGlazeTagVoteAction } from "@/app/actions/glazes";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { Glaze } from "@/lib/types";

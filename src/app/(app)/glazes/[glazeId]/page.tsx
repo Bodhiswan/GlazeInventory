@@ -3,10 +3,8 @@ import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { Heart } from "lucide-react";
 
-import {
-  addGlazeCommentAction,
-  toggleGlazeFavouriteAction,
-} from "@/app/actions";
+import { addGlazeCommentAction } from "@/app/actions";
+import { toggleGlazeFavouriteAction } from "@/app/actions/glazes";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { GlazeOwnershipPanel } from "@/components/glaze-ownership-panel";
 import { PageHeader } from "@/components/page-header";

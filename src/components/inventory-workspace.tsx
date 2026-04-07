@@ -5,12 +5,12 @@ import Link from "next/link";
 import { ChevronDown, Heart, Loader2, Search, X } from "lucide-react";
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useState, type ReactNode } from "react";
 
-import { getCatalogGlazesForScannerAction } from "@/app/actions";
+import { getCatalogGlazesForScannerAction } from "@/app/actions/glazes";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeScanner } from "@/components/glaze-scanner";
 
 import { setGlazeInventoryStateAction, updateInventoryItemNotesAction } from "@/app/actions/inventory";
-import { toggleFavouriteInlineAction } from "@/app/actions";
+import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
 import { GlazeShelfForm } from "@/components/glaze-shelf-form";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";
 import { Badge } from "@/components/ui/badge";

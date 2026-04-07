@@ -6,7 +6,7 @@ import { ChevronDown, Heart, Search, X } from "lucide-react";
 import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
 import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
-import { toggleFavouriteInlineAction } from "@/app/actions";
+import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
 import { CommunityImagesPanel } from "@/components/community-images-panel";
