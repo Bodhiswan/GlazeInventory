@@ -7,6 +7,7 @@ import { SectionErrorBoundary } from "@/components/section-error-boundary";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
+import { StatTile } from "@/components/ui/stat-tile";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Select } from "@/components/ui/select";
@@ -134,7 +135,7 @@ export default async function ProfilePage({
               Turning on the restriction option makes the main library view narrower: it only keeps
               glazes that already have a matching example image for your preferred cone.
             </p>
-            <div className="border border-border bg-panel p-4">
+            <Panel>
               <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Current defaults</p>
               <div className="mt-3 space-y-2 text-sm text-muted">
                 <p>Cone: {viewer.profile.preferredCone ?? "Any cone"}</p>
@@ -143,31 +144,22 @@ export default async function ProfilePage({
                   {viewer.profile.restrictToPreferredExamples ? "Yes" : "No"}
                 </p>
               </div>
-            </div>
+            </Panel>
 
             <SectionErrorBoundary>
               {(viewer.profile.points ?? 0) > 0 ? (
-                <div className="border border-border bg-panel p-4">
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Contribution points</p>
-                  <div className="mt-3 flex items-baseline gap-3">
-                    <span className="text-2xl font-semibold tabular-nums text-foreground">
-                      {(viewer.profile.points ?? 0).toLocaleString()}
-                    </span>
-                    <span className="text-sm text-muted">pts</span>
-                  </div>
-                  {rank > 0 ? (
-                    <p className="mt-1 text-sm text-muted">#{rank} globally</p>
-                  ) : null}
-                </div>
+                <StatTile
+                  label="Contribution points"
+                  value={`${(viewer.profile.points ?? 0).toLocaleString()} pts`}
+                  sublabel={rank > 0 ? `#${rank} globally` : undefined}
+                />
               ) : null}
             </SectionErrorBoundary>
 
             {viewer.profile.contributionsDisabled && !viewer.profile.isAdmin ? (
-              <div className="border border-amber-200 bg-amber-50 p-4">
-                <p className="text-sm text-amber-800">
-                  Your contribution access has been disabled after repeated policy violations. Contact support if you believe this is an error.
-                </p>
-              </div>
+              <FormBanner variant="error">
+                Your contribution access has been disabled after repeated policy violations. Contact support if you believe this is an error.
+              </FormBanner>
             ) : null}
           </Panel>
         </div>
