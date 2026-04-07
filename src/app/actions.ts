@@ -754,15 +754,6 @@ export async function createCustomGlazeAction(formData: FormData) {
     metadata: { glaze_id: glaze.id, name: parsed.data.name, brand: parsed.data.brand ?? null },
   });
 
-  void awardPoints(
-    viewer.profile.id,
-    viewer.profile.isAdmin ?? false,
-    "glaze_added",
-    10,
-    glaze.id,
-    "glaze",
-  );
-
   const { error: inventoryError } = await supabase.from("inventory_items").insert({
     user_id: viewer.profile.id,
     glaze_id: glaze.id,
@@ -778,6 +769,15 @@ export async function createCustomGlazeAction(formData: FormData) {
   if (inventoryError) {
     redirect(`/glazes/new?error=${encodeURIComponent(inventoryError.message)}`);
   }
+
+  void awardPoints(
+    viewer.profile.id,
+    viewer.profile.isAdmin ?? false,
+    "glaze_added",
+    10,
+    glaze.id,
+    "glaze",
+  );
 
   // --- Upload image if provided ---
   const imageFile = formData.get("image");
@@ -1646,6 +1646,9 @@ export async function addGlazeCommentInlineAction(
   body: string,
 ): Promise<{ error?: string; authorName?: string }> {
   const { viewer, supabase } = await requireMemberSupabase("/glazes");
+  if (viewer.profile.contributionsDisabled) {
+    return { error: "Your contribution access has been disabled" };
+  }
   const trimmed = body.trim();
   if (trimmed.length < 2) return { error: "Comment must be at least 2 characters." };
   if (trimmed.length > 1000) return { error: "Comment must be under 1000 characters." };
@@ -1657,6 +1660,15 @@ export async function addGlazeCommentInlineAction(
   });
 
   if (error) return { error: error.message };
+
+  void awardPoints(
+    viewer.profile.id,
+    viewer.profile.isAdmin ?? false,
+    "comment_left",
+    0.1,
+    undefined,
+    "comment",
+  );
 
   revalidateWorkspace();
   return { authorName: viewer.profile.displayName };
