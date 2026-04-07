@@ -1,7 +1,9 @@
 "use client";
 
 import { memo } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { ChevronDown, Search, X } from "lucide-react";
+import { toggleValue } from "./combination-utils";
 
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -135,16 +137,12 @@ export interface CombinationFiltersProps {
   hasFilters: boolean;
   resetFilters: () => void;
   INITIAL_TILE_BATCH: number;
-  setVisibleCount: (count: number) => void;
+  setVisibleCount: Dispatch<SetStateAction<number>>;
 }
 
 /* ---------------------------------------------------------------------------
  * CombinationFilters
  * ------------------------------------------------------------------------ */
-
-function toggleValue(values: string[], target: string) {
-  return values.includes(target) ? values.filter((value) => value !== target) : [...values, target];
-}
 
 export function CombinationFilters({
   query,
