@@ -13,7 +13,7 @@ import {
 } from "@/app/actions";
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";
-import { getModerationQueue } from "@/lib/data";
+import { getModerationQueue } from "@/lib/data/admin";
 import { requireViewer } from "@/lib/data/users";
 import type {
   ModerationCombination,

@@ -46,8 +46,8 @@ function normalizeVendorImageUrl(value: unknown) {
   }
 
   const normalized = value.trim()
-    .replace(/ā|â€™|â/g, "'")
-    .replace(/ā|ā|â€œ|â€|â|â/g, "")
+    .replace(/ā|â€™|â/g, "'")
+    .replace(/ā|ā|â€œ|â€|â|â/g, "")
     .replace(/\s+/g, " ");
 
   try {
@@ -246,6 +246,7 @@ async function getSignedExternalExampleAssetUrls(storagePaths: string[]) {
     signedUrls.filter((entry): entry is readonly [string, string] => Boolean(entry)),
   );
 }
+
 
 
 async function getGlazesByIds(
@@ -1305,5 +1306,3 @@ export async function getUserPointsBreakdown(
       points: pts,
     }));
 }
-
-

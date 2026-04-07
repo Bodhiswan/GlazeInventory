@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AppShellNav } from "@/components/app-shell-nav";
 import { ChangelogBanner } from "@/components/changelog-banner";
 import { UserMenu } from "@/components/user-menu";
-import { getUserPointsBreakdown } from "@/lib/data";
+import { getUserPointsBreakdown } from "@/lib/data/admin";
 import { getUnreadDirectMessageCount } from "@/lib/data/community";
 import type { Viewer } from "@/lib/types";
 

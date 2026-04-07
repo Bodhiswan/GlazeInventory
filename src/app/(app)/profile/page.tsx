@@ -8,7 +8,7 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Select } from "@/components/ui/select";
-import { getUserPointsRank } from "@/lib/data";
+import { getUserPointsRank } from "@/lib/data/admin";
 import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 

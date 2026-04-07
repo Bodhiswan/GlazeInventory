@@ -5,7 +5,7 @@ import { SetupCallout } from "@/components/setup-callout";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getWeeklyLeaderboard } from "@/lib/data";
+import { getWeeklyLeaderboard } from "@/lib/data/admin";
 import { getInventory, getInventoryFolders } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
 

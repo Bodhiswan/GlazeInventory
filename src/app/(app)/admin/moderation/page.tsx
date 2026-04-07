@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/page-header";
 import { PostCard } from "@/components/post-card";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getReportedPostsQueue } from "@/lib/data";
+import { getReportedPostsQueue } from "@/lib/data/admin";
 import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 
