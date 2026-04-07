@@ -7,62 +7,8 @@ import { z } from "zod";
 
 import { requireViewer } from "@/lib/data/users";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { awardPoints } from "@/lib/points";
-
-function normalizeOptional(value: FormDataEntryValue | null) {
-  const normalized = value?.toString().trim();
-  return normalized ? normalized : null;
-}
-
-function revalidateWorkspace() {
-  [
-    "/dashboard",
-    "/inventory",
-    "/glazes",
-    "/inventory/new",
-    "/glazes/new",
-    "/combinations",
-    "/community",
-    "/publish",
-    "/admin/moderation",
-    "/admin/intake",
-  ].forEach(
-    (path) => revalidatePath(path),
-  );
-}
-
-async function requireLiveSupabase() {
-  const viewer = await requireViewer();
-
-  if (viewer.mode === "demo") {
-    redirect("/dashboard?demo=readonly");
-  }
-
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
-  }
-
-  return { viewer, supabase };
-}
-
-async function requireMemberSupabase(returnTo = "/auth/sign-in") {
-  return requireLiveSupabase();
-}
-
-async function requireContributingMember(returnTo = "/contribute") {
-  const context = await requireMemberSupabase(returnTo);
-  if (context.viewer.profile.contributionsDisabled) {
-    redirect(
-      `${returnTo}?error=${encodeURIComponent(
-        "Your contribution access has been disabled after repeated policy violations",
-      )}`,
-    );
-  }
-  return context;
-}
+import { normalizeOptional, revalidateWorkspace, requireMemberSupabase, requireContributingMember } from "./_shared";
 
 export async function reportPostAction(formData: FormData) {
   const { viewer, supabase } = await requireMemberSupabase("/community");
@@ -201,47 +147,6 @@ export async function addGlazeCommentAction(formData: FormData) {
   revalidateWorkspace();
   revalidatePath(returnTo);
   redirect(returnTo);
-}
-
-export async function adminEditCommunityFiringImageAction(formData: FormData): Promise<void> {
-  const viewer = await requireViewer();
-  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
-
-  const imageId = formData.get("imageId") as string | null;
-  if (!imageId) return;
-
-  const label = (formData.get("label") as string | null)?.trim() || null;
-  const cone = (formData.get("cone") as string | null)?.trim() || null;
-  const atmosphere = (formData.get("atmosphere") as string | null)?.trim() || null;
-
-  const admin = createSupabaseAdminClient();
-  if (!admin) return;
-
-  const update: Record<string, unknown> = {};
-  if (label !== null) update.label = label;
-  if (cone !== null) update.cone = cone;
-  if (atmosphere !== null) update.atmosphere = atmosphere;
-
-  if (Object.keys(update).length > 0) {
-    await admin.from("community_firing_images").update(update).eq("id", imageId);
-  }
-
-  revalidatePath("/admin/analytics/moderation");
-}
-
-export async function adminDeleteCommunityFiringImageAction(formData: FormData): Promise<void> {
-  const viewer = await requireViewer();
-  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
-
-  const imageId = formData.get("imageId") as string | null;
-  if (!imageId) return;
-
-  const admin = createSupabaseAdminClient();
-  if (!admin) return;
-
-  await admin.from("community_firing_images").delete().eq("id", imageId);
-
-  revalidatePath("/admin/analytics/moderation");
 }
 
 export async function uploadCommunityFiringImageAction(formData: FormData): Promise<{ error: string } | { success: true }> {

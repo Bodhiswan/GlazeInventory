@@ -4,10 +4,10 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { getAllCatalogGlazes } from "@/lib/catalog";
-import { requireViewer } from "@/lib/data/users";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { awardPoints } from "@/lib/points";
 import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
+import { normalizeOptional, revalidateWorkspace, requireMemberSupabase, requireContributingMember } from "./_shared";
 
 const glazeTagVoteSchema = z.object({
   glazeId: z.string().uuid(),
@@ -28,56 +28,6 @@ const glazeDescriptionEditorSchema = z.object({
   editorialFiring: z.string().max(280).optional(),
   returnTo: z.string().min(1).max(200).optional(),
 });
-
-function normalizeOptional(value: FormDataEntryValue | null) {
-  const normalized = value?.toString().trim();
-  return normalized ? normalized : null;
-}
-
-function revalidateWorkspace() {
-  [
-    "/dashboard",
-    "/inventory",
-    "/glazes",
-    "/inventory/new",
-    "/glazes/new",
-    "/combinations",
-    "/community",
-    "/publish",
-    "/admin/moderation",
-    "/admin/intake",
-  ].forEach(
-    (path) => revalidatePath(path),
-  );
-}
-
-async function requireMemberSupabase(returnTo = "/auth/sign-in") {
-  const viewer = await requireViewer();
-
-  if (viewer.mode === "demo") {
-    redirect("/dashboard?demo=readonly");
-  }
-
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
-  }
-
-  return { viewer, supabase };
-}
-
-async function requireContributingMember(returnTo = "/contribute") {
-  const context = await requireMemberSupabase(returnTo);
-  if (context.viewer.profile.contributionsDisabled) {
-    redirect(
-      `${returnTo}?error=${encodeURIComponent(
-        "Your contribution access has been disabled after repeated policy violations",
-      )}`,
-    );
-  }
-  return context;
-}
 
 export async function toggleOwnedGlazeAction(input: { glazeId: string; owned: boolean }) {
   const result = await setGlazeInventoryStateAction({

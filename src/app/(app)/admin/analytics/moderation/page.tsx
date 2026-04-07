@@ -2,15 +2,15 @@ import { format } from "date-fns";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-import { adminEditCombinationAction } from "@/app/actions/combinations";
 import {
   adminApproveSubmissionAction,
+  adminEditCombinationAction,
+  adminEditCommunityFiringImageAction,
   adminEditCustomGlazeAction,
   adminPermanentDeleteSubmissionAction,
   adminRejectSubmissionAction,
   adminReopenSubmissionAction,
 } from "@/app/actions/admin";
-import { adminEditCommunityFiringImageAction } from "@/app/actions/community";
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";
 import { getModerationQueue } from "@/lib/data/admin";

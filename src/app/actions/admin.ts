@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { getCatalogGlazes } from "@/lib/data/inventory";
+import { getCatalogGlazeById } from "@/lib/catalog";
 import { requireViewer } from "@/lib/data/users";
 import {
   buildAnonymizedCombinationAuthorName,
@@ -14,7 +15,7 @@ import {
 } from "@/lib/external-example-intakes";
 import { createPairKey, parsePairKey } from "@/lib/combinations";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { normalizeOptional, revalidateWorkspace, requireMemberSupabase, requireAdminSupabase } from "./_shared";
 
 const externalExampleMatchSchema = z.object({
   mentionId: z.string().uuid(),
@@ -37,58 +38,6 @@ const externalExampleStatusSchema = z.object({
 const externalExamplePublishSchema = z.object({
   intakeId: z.string().uuid(),
 });
-
-function normalizeOptional(value: FormDataEntryValue | null) {
-  const normalized = value?.toString().trim();
-  return normalized ? normalized : null;
-}
-
-function revalidateWorkspace() {
-  [
-    "/dashboard",
-    "/inventory",
-    "/glazes",
-    "/inventory/new",
-    "/glazes/new",
-    "/combinations",
-    "/community",
-    "/publish",
-    "/admin/moderation",
-    "/admin/intake",
-  ].forEach(
-    (path) => revalidatePath(path),
-  );
-}
-
-async function requireLiveSupabase() {
-  const viewer = await requireViewer();
-
-  if (viewer.mode === "demo") {
-    redirect("/dashboard?demo=readonly");
-  }
-
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
-  }
-
-  return { viewer, supabase };
-}
-
-async function requireMemberSupabase(returnTo = "/auth/sign-in") {
-  return requireLiveSupabase();
-}
-
-async function requireAdminSupabase(returnTo = "/dashboard") {
-  const context = await requireMemberSupabase(returnTo);
-
-  if (!context.viewer.profile.isAdmin) {
-    redirect(`${returnTo}?error=Studio%20admin%20access%20is%20required`);
-  }
-
-  return context;
-}
 
 function buildExternalExampleReturnPath(intakeId: string, suffix?: string) {
   const basePath = `/admin/intake/${intakeId}`;
@@ -614,4 +563,159 @@ export async function adminFlagFalseContributionAction(input: {
 
   revalidatePath("/admin/analytics");
   return { success: true };
+}
+
+export async function adminArchiveCombinationAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const exampleId = formData.get("exampleId") as string | null;
+  const action = formData.get("action") as string | null; // "archive" | "restore"
+  if (!exampleId || !action) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  await admin
+    .from("user_combination_examples")
+    .update({ status: action === "archive" ? "hidden" : "published" })
+    .eq("id", exampleId);
+
+  revalidatePath("/admin/analytics");
+  revalidatePath("/combinations");
+}
+
+export async function adminEditCombinationAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const exampleId = formData.get("exampleId") as string | null;
+  if (!exampleId) return;
+
+  const title = (formData.get("title") as string | null)?.trim() || null;
+  const cone = (formData.get("cone") as string | null)?.trim() || null;
+  const atmosphere = (formData.get("atmosphere") as string | null)?.trim() || null;
+  const notes = (formData.get("notes") as string | null)?.trim() || null;
+  const status = (formData.get("status") as string | null)?.trim() || null;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  const update: Record<string, unknown> = {};
+  if (title !== null) update.title = title;
+  if (cone !== null) update.cone = cone;
+  if (atmosphere !== null) update.atmosphere = atmosphere;
+  if (notes !== null) update.notes = notes;
+  if (status !== null) update.status = status;
+
+  if (Object.keys(update).length > 0) {
+    await admin.from("user_combination_examples").update(update).eq("id", exampleId);
+  }
+
+  revalidatePath("/admin/analytics/moderation");
+  revalidatePath("/admin/analytics");
+  revalidatePath("/combinations");
+}
+
+export async function adminGetCombinationPreviewAction(id: string): Promise<{
+  id: string;
+  title: string;
+  authorName: string;
+  authorUserId: string;
+  postFiringImageUrl: string;
+  preFiringImageUrl: string | null;
+  cone: string;
+  atmosphere: string | null;
+  glazingProcess: string | null;
+  notes: string | null;
+  kilnNotes: string | null;
+  status: string;
+  createdAt: string;
+  layers: Array<{ id: string; glazeId: string; glazeName: string | null; glazeBrand: string | null; layerOrder: number }>;
+} | null> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) return null;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return null;
+
+  type Row = Record<string, unknown>;
+  const { data: row } = await admin
+    .from("user_combination_examples")
+    .select("*, user_combination_example_layers(*), profiles!author_user_id(display_name)")
+    .eq("id", id)
+    .single();
+
+  if (!row) return null;
+  const r = row as Row;
+  const rawLayers = ((r.user_combination_example_layers ?? []) as Row[])
+    .sort((a, b) => Number(a.layer_order) - Number(b.layer_order));
+
+  return {
+    id: String(r.id),
+    title: String(r.title ?? ""),
+    authorName: r.profiles ? String((r.profiles as Row).display_name ?? "Unknown") : "Unknown",
+    authorUserId: String(r.author_user_id),
+    postFiringImageUrl: String(r.post_firing_image_path ?? ""),
+    preFiringImageUrl: r.pre_firing_image_path ? String(r.pre_firing_image_path) : null,
+    cone: String(r.cone ?? ""),
+    atmosphere: r.atmosphere ? String(r.atmosphere) : null,
+    glazingProcess: r.glazing_process ? String(r.glazing_process) : null,
+    notes: r.notes ? String(r.notes) : null,
+    kilnNotes: r.kiln_notes ? String(r.kiln_notes) : null,
+    status: String(r.status ?? ""),
+    createdAt: String(r.created_at),
+    layers: rawLayers.map((layer) => {
+      const glazeId = String(layer.glaze_id);
+      const glaze = getCatalogGlazeById(glazeId);
+      return {
+        id: String(layer.id),
+        glazeId,
+        glazeName: glaze?.name ?? null,
+        glazeBrand: glaze?.brand ?? null,
+        layerOrder: Number(layer.layer_order),
+      };
+    }),
+  };
+}
+
+export async function adminEditCommunityFiringImageAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const imageId = formData.get("imageId") as string | null;
+  if (!imageId) return;
+
+  const label = (formData.get("label") as string | null)?.trim() || null;
+  const cone = (formData.get("cone") as string | null)?.trim() || null;
+  const atmosphere = (formData.get("atmosphere") as string | null)?.trim() || null;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  const update: Record<string, unknown> = {};
+  if (label !== null) update.label = label;
+  if (cone !== null) update.cone = cone;
+  if (atmosphere !== null) update.atmosphere = atmosphere;
+
+  if (Object.keys(update).length > 0) {
+    await admin.from("community_firing_images").update(update).eq("id", imageId);
+  }
+
+  revalidatePath("/admin/analytics/moderation");
+}
+
+export async function adminDeleteCommunityFiringImageAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const imageId = formData.get("imageId") as string | null;
+  if (!imageId) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  await admin.from("community_firing_images").delete().eq("id", imageId);
+
+  revalidatePath("/admin/analytics/moderation");
 }

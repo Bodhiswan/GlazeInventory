@@ -4,7 +4,7 @@ import { X } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useState } from "react";
 
-import { adminGetCombinationPreviewAction } from "@/app/actions/combinations";
+import { adminGetCombinationPreviewAction } from "@/app/actions/admin";
 
 type CombinationPreview = Awaited<ReturnType<typeof adminGetCombinationPreviewAction>>;
 

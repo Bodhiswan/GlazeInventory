@@ -1,11 +1,10 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getBaseUrl } from "@/lib/env";
-import { requireViewer } from "@/lib/data/users";
+import { revalidateWorkspace, requireLiveSupabase } from "./_shared";
 
 const magicLinkSchema = z.object({
   email: z.email(),
@@ -54,39 +53,6 @@ function friendlyAuthError(message: string): string {
     return "Incorrect email or password.";
   }
   return message;
-}
-
-function revalidateWorkspace() {
-  [
-    "/dashboard",
-    "/inventory",
-    "/glazes",
-    "/inventory/new",
-    "/glazes/new",
-    "/combinations",
-    "/community",
-    "/publish",
-    "/admin/moderation",
-    "/admin/intake",
-  ].forEach(
-    (path) => revalidatePath(path),
-  );
-}
-
-async function requireLiveSupabase() {
-  const viewer = await requireViewer();
-
-  if (viewer.mode === "demo") {
-    redirect("/dashboard?demo=readonly");
-  }
-
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
-  }
-
-  return { viewer, supabase };
 }
 
 export async function sendMagicLinkAction(formData: FormData) {

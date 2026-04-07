@@ -4,8 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-import { requireViewer } from "@/lib/data/users";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { normalizeOptional, revalidateWorkspace, requireMemberSupabase } from "./_shared";
 
 const profilePreferencesSchema = z.object({
   displayName: z.string().min(2).max(40),
@@ -15,48 +14,6 @@ const profilePreferencesSchema = z.object({
   preferredAtmosphere: z.string().max(40).optional(),
   restrictToPreferredExamples: z.boolean().optional(),
 });
-
-function normalizeOptional(value: FormDataEntryValue | null) {
-  const normalized = value?.toString().trim();
-  return normalized ? normalized : null;
-}
-
-function revalidateWorkspace() {
-  [
-    "/dashboard",
-    "/inventory",
-    "/glazes",
-    "/inventory/new",
-    "/glazes/new",
-    "/combinations",
-    "/community",
-    "/publish",
-    "/admin/moderation",
-    "/admin/intake",
-  ].forEach(
-    (path) => revalidatePath(path),
-  );
-}
-
-async function requireLiveSupabase() {
-  const viewer = await requireViewer();
-
-  if (viewer.mode === "demo") {
-    redirect("/dashboard?demo=readonly");
-  }
-
-  const supabase = await createSupabaseServerClient();
-
-  if (!supabase) {
-    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
-  }
-
-  return { viewer, supabase };
-}
-
-async function requireMemberSupabase(returnTo = "/auth/sign-in") {
-  return requireLiveSupabase();
-}
 
 export async function updateProfilePreferencesAction(formData: FormData) {
   const { viewer, supabase } = await requireMemberSupabase("/profile");
