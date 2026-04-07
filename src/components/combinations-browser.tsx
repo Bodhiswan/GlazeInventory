@@ -1,17 +1,20 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Search, X } from "lucide-react";
+import { ChevronDown, Heart, Search, X } from "lucide-react";
 import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
-import { setGlazeInventoryStateAction } from "@/app/actions";
+import {
+  deleteUserCombinationAction,
+  setGlazeInventoryStateAction,
+  toggleFavouriteInlineAction,
+} from "@/app/actions";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
+import { CombinationCommentsPanel } from "@/components/glaze-comments-panel";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
-import { deleteUserCombinationAction } from "@/app/actions";
 import type {
   CombinationPost,
   Glaze,
@@ -21,12 +24,12 @@ import type {
   UserCombinationExample,
   VendorCombinationExample,
 } from "@/lib/types";
-import { formatGlazeLabel, pickPreferredGlazeImage } from "@/lib/utils";
+import { cn, formatGlazeLabel, pickPreferredGlazeImage } from "@/lib/utils";
 
 const INITIAL_TILE_BATCH = 48;
 const TILE_BATCH_STEP = 36;
 
-type CombinationsView = "all" | "possible" | "mine";
+type CombinationsView = "all" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
 
 /* ---------------------------------------------------------------------------
  * Unified tile type — wraps both Mayco examples and published posts so
@@ -34,13 +37,23 @@ type CombinationsView = "all" | "possible" | "mine";
  * ------------------------------------------------------------------------ */
 type TileKind = "example" | "post" | "userExample";
 
+interface TileLayer {
+  code: string | null;
+  name: string;
+}
+
+type TileOwnership = "all" | "plus1" | "default";
+
 interface CombinationTile {
   id: string;
   kind: TileKind;
   imageUrl: string | null;
   title: string;
+  /** Structured layer info for the stacked tile display */
+  tileLayers: TileLayer[];
   subtitle: string | null;
   cone: string | null;
+  ownership: TileOwnership;
   badgeTone: "success" | "accent" | "neutral";
   badgeLabel: string;
   searchText: string;
@@ -216,13 +229,26 @@ function getPostLayerRoleLabel(post: CombinationPost, glaze: Glaze, index: numbe
 }
 
 function exampleToTile(example: VendorCombinationExample): CombinationTile {
+  const tileLayers: TileLayer[] = example.layers.map((layer) => ({
+    code: layer.glazeCode ?? layer.glaze?.code ?? null,
+    name: layer.glazeName ?? layer.glaze?.name ?? "Glaze",
+  }));
+
+  const ownership: TileOwnership = example.viewerOwnsAllGlazes
+    ? "all"
+    : example.viewerOwnedLayerCount >= example.layers.length - 1
+      ? "plus1"
+      : "default";
+
   return {
     id: `example-${example.id}`,
     kind: "example",
     imageUrl: example.imageUrl,
     title: formatExampleCodeTitle(example),
+    tileLayers,
     subtitle: example.sourceVendor,
     cone: example.cone ?? null,
+    ownership,
     badgeTone: example.viewerOwnsAllGlazes ? "success" : "accent",
     badgeLabel: example.viewerOwnsAllGlazes
       ? "All owned"
@@ -252,6 +278,11 @@ function buildUserExampleSearchText(ue: UserCombinationExample) {
 }
 
 function userExampleToTile(ue: UserCombinationExample): CombinationTile {
+  const tileLayers: TileLayer[] = ue.layers.map((l) => ({
+    code: l.glaze?.code ?? null,
+    name: l.glaze?.name ?? "Glaze",
+  }));
+
   const layerLabels = ue.layers.map((l) =>
     l.glaze ? (l.glaze.code ?? l.glaze.name ?? "Glaze") : "Glaze",
   );
@@ -259,13 +290,21 @@ function userExampleToTile(ue: UserCombinationExample): CombinationTile {
     ? `${layerLabels[0]} over ${layerLabels.slice(1).join(" over ")}`
     : layerLabels[0] ?? "User combination";
 
+  const ownership: TileOwnership = ue.viewerOwnsAllGlazes
+    ? "all"
+    : ue.viewerOwnedLayerCount >= ue.layers.length - 1
+      ? "plus1"
+      : "default";
+
   return {
     id: `ue-${ue.id}`,
     kind: "userExample",
     imageUrl: ue.postFiringImageUrl,
     title,
+    tileLayers,
     subtitle: `By ${ue.authorName}`,
     cone: ue.cone ?? null,
+    ownership,
     badgeTone: ue.viewerOwnsAllGlazes ? "success" : "accent",
     badgeLabel: ue.viewerOwnsAllGlazes
       ? "All owned"
@@ -279,14 +318,21 @@ function userExampleToTile(ue: UserCombinationExample): CombinationTile {
 
 function postToTile(post: CombinationPost, label: string): CombinationTile {
   const imageSrc = typeof post.imagePath === "string" && post.imagePath.trim() ? post.imagePath : null;
+  const orderedGlazes = getOrderedPostGlazes(post);
+  const tileLayers: TileLayer[] = orderedGlazes.map((g) => ({
+    code: g.code ?? null,
+    name: g.name,
+  }));
 
   return {
     id: `post-${post.id}`,
     kind: "post",
     imageUrl: imageSrc,
     title: formatPostCodeTitle(post),
+    tileLayers,
     subtitle: label,
     cone: extractConeLabel(post.firingNotes),
+    ownership: "default" as TileOwnership,
     badgeTone: "neutral",
     badgeLabel: label,
     searchText: buildPostSearchText(post),
@@ -294,6 +340,125 @@ function postToTile(post: CombinationPost, label: string): CombinationTile {
     post,
     userExample: null,
   };
+}
+
+/* ---------------------------------------------------------------------------
+ * Filter helpers (mirrors glaze-catalog-explorer pattern)
+ * ------------------------------------------------------------------------ */
+
+function toggleValue(values: string[], target: string) {
+  return values.includes(target) ? values.filter((value) => value !== target) : [...values, target];
+}
+
+const FilterTile = memo(function FilterTile({
+  value,
+  checked,
+  onToggle,
+  count,
+  countLabel,
+}: {
+  value: string;
+  checked: boolean;
+  onToggle: (value: string) => void;
+  count?: number;
+  countLabel?: string;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={checked}
+      onClick={() => onToggle(value)}
+      className={cn(
+        "grid min-h-[76px] content-between gap-3 border px-3 py-3 text-left transition-colors",
+        checked
+          ? "border-foreground bg-white text-foreground"
+          : "border-border bg-background hover:border-foreground/25 hover:bg-white",
+      )}
+    >
+      <span className="flex items-center gap-2">
+        <span
+          className={cn(
+            "flex h-5 w-5 items-center justify-center border text-[10px] uppercase tracking-[0.14em] transition-colors",
+            checked
+              ? "border-foreground bg-foreground text-white"
+              : "border-border bg-panel text-transparent",
+          )}
+          aria-hidden="true"
+        >
+          x
+        </span>
+        <span className="text-sm font-medium leading-5">{value}</span>
+      </span>
+      <span className="flex items-center justify-between gap-3 text-[10px] uppercase tracking-[0.16em] text-muted">
+        <span>{countLabel ?? (count !== undefined ? `${count} combinations` : "Toggle")}</span>
+        <span className={checked ? "text-foreground" : ""}>{checked ? "Selected" : "Add"}</span>
+      </span>
+    </button>
+  );
+});
+
+function FilterSection({
+  title,
+  optionCount,
+  selectedCount,
+  open,
+  onToggle,
+  children,
+}: {
+  title: string;
+  optionCount: number;
+  selectedCount: number;
+  open: boolean;
+  onToggle: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="border border-border bg-background">
+      <button
+        type="button"
+        onClick={onToggle}
+        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-white"
+        aria-expanded={open}
+      >
+        <span className="space-y-1">
+          <span className="block text-sm font-medium text-foreground">{title}</span>
+          <span className="block text-[10px] uppercase tracking-[0.16em] text-muted">
+            {optionCount} option{optionCount === 1 ? "" : "s"}
+          </span>
+        </span>
+        <span className="flex items-center gap-2">
+          {selectedCount ? <Badge tone="neutral">{selectedCount} selected</Badge> : null}
+          <ChevronDown
+            className={cn("h-4 w-4 text-muted transition-transform", open ? "rotate-180" : "")}
+          />
+        </span>
+      </button>
+      {open ? <div className="border-t border-border p-3 sm:p-4">{children}</div> : null}
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------------------------
+ * Brand extraction helpers
+ * ------------------------------------------------------------------------ */
+
+function extractTileBrands(tile: CombinationTile): string[] {
+  if (tile.example) {
+    return tile.example.layers
+      .map((l) => l.glaze?.brand)
+      .filter((b): b is string => !!b);
+  }
+  if (tile.userExample) {
+    return tile.userExample.layers
+      .map((l) => l.glaze?.brand)
+      .filter((b): b is string => !!b);
+  }
+  if (tile.post) {
+    return (tile.post.glazes ?? [])
+      .map((g) => g.brand)
+      .filter((b): b is string => !!b);
+  }
+  return [];
 }
 
 function GlazeOwnershipControl({
@@ -685,7 +850,9 @@ function UserExampleDetail({
         </div>
       ) : null}
 
-      {/* Delete button for the author */}
+      <CombinationCommentsPanel exampleId={userExample.id} />
+
+      {/* Archive button for the author */}
       {isOwner ? (
         <form action={deleteUserCombinationAction} className="border-t border-border pt-4">
           <input type="hidden" name="exampleId" value={userExample.id} />
@@ -693,7 +860,7 @@ function UserExampleDetail({
             type="submit"
             className="text-sm font-medium text-[#7f4026] underline underline-offset-4 transition hover:text-[#bb6742]"
           >
-            Delete this combination
+            Archive this combination
           </button>
         </form>
       ) : null}
@@ -715,6 +882,7 @@ export function CombinationsBrowser({
   initialView = "all",
   initialQuery = "",
   viewerUserId = null,
+  favouriteCombinationIds = [],
 }: {
   examples: VendorCombinationExample[];
   publishedPosts: CombinationPost[];
@@ -725,14 +893,20 @@ export function CombinationsBrowser({
   initialView?: CombinationsView;
   initialQuery?: string;
   viewerUserId?: string | null;
+  favouriteCombinationIds?: string[];
 }) {
   const [query, setQuery] = useState(initialQuery);
   const [view, setView] = useState<CombinationsView>(initialView);
+  const [brandFilters, setBrandFilters] = useState<string[]>([]);
   const [showCone5, setShowCone5] = useState(true);
   const [showCone6, setShowCone6] = useState(true);
   const [showCone10, setShowCone10] = useState(true);
+  const [filtersOpen, setFiltersOpen] = useState(false);
+  const [openFilterSections, setOpenFilterSections] = useState<Record<string, boolean>>({});
   const [activeTileId, setActiveTileId] = useState<string | null>(null);
   const [inventoryStatusByGlazeId, setInventoryStatusByGlazeId] = useState(initialInventoryStatusByGlazeId);
+  const [favouritedCombinationIds, setFavouritedCombinationIds] = useState<Set<string>>(() => new Set(favouriteCombinationIds));
+  const [pendingFavouriteIds, setPendingFavouriteIds] = useState<string[]>([]);
   const [visibleCount, setVisibleCount] = useState(INITIAL_TILE_BATCH);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const deferredQuery = useDeferredValue(query);
@@ -760,16 +934,41 @@ export function CombinationsBrowser({
     });
   }
 
+  async function handleFavouriteToggle(combinationId: string) {
+    if (pendingFavouriteIds.includes(combinationId)) return;
+    const wasFavourited = favouritedCombinationIds.has(combinationId);
+    setPendingFavouriteIds((current) => [...current, combinationId]);
+    setFavouritedCombinationIds((current) => {
+      const next = new Set(current);
+      wasFavourited ? next.delete(combinationId) : next.add(combinationId);
+      return next;
+    });
+    const result = await toggleFavouriteInlineAction("combination", combinationId);
+    if (result.error) {
+      setFavouritedCombinationIds((current) => {
+        const next = new Set(current);
+        wasFavourited ? next.add(combinationId) : next.delete(combinationId);
+        return next;
+      });
+    }
+    setPendingFavouriteIds((current) => current.filter((id) => id !== combinationId));
+  }
+
+  function resetFilters() {
+    setView("all");
+    setQuery("");
+    setBrandFilters([]);
+    setShowCone5(true);
+    setShowCone6(true);
+    setShowCone10(true);
+    setVisibleCount(INITIAL_TILE_BATCH);
+  }
+
   /* --- build unified tile lists ----------------------------------------- */
 
   const exampleTiles = useMemo(
     () => examples.map((e) => exampleToTile(e)),
     [examples],
-  );
-
-  const possibleExampleTiles = useMemo(
-    () => exampleTiles.filter((t) => t.example?.viewerOwnsAllGlazes),
-    [exampleTiles],
   );
 
   const communityPostTiles = useMemo(
@@ -792,27 +991,116 @@ export function CombinationsBrowser({
     [userExampleTiles, viewerUserId],
   );
 
-  /* --- apply search & view filter --------------------------------------- */
+  /* Stable random seed per session so shuffle order doesn't change on re-render */
+  const [shuffleSeed] = useState(() => Math.random());
+
+  /* Every tile in the full pool (for brand extraction), shuffled for variety */
+  const allTiles = useMemo(() => {
+    const tiles = [...exampleTiles, ...communityPostTiles, ...userExampleTiles];
+    // Fisher-Yates shuffle with seeded PRNG for stability
+    let seed = Math.floor(shuffleSeed * 2147483647) || 1;
+    for (let i = tiles.length - 1; i > 0; i--) {
+      seed = (seed * 16807) % 2147483647;
+      const j = Math.floor(seed % (i + 1));
+      [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+    }
+    return tiles;
+  }, [exampleTiles, communityPostTiles, userExampleTiles, shuffleSeed]);
+
+  /* --- view filter counts (for filter tiles) --- */
+
+  const possibleTiles = useMemo(
+    () => allTiles.filter((t) => {
+      if (t.example) return t.example.viewerOwnsAllGlazes;
+      if (t.userExample) return t.userExample.viewerOwnsAllGlazes;
+      return false;
+    }),
+    [allTiles],
+  );
+
+  const plus1Tiles = useMemo(
+    () => allTiles.filter((t) => {
+      if (t.example) {
+        return !t.example.viewerOwnsAllGlazes &&
+          t.example.viewerOwnedLayerCount >= t.example.layers.length - 1;
+      }
+      if (t.userExample) {
+        return !t.userExample.viewerOwnsAllGlazes &&
+          t.userExample.viewerOwnedLayerCount >= t.userExample.layers.length - 1;
+      }
+      return false;
+    }),
+    [allTiles],
+  );
+
+  const mineTiles = useMemo(
+    () => [...myPostTiles, ...myUserExampleTiles],
+    [myPostTiles, myUserExampleTiles],
+  );
+
+  const manufacturerTiles = useMemo(
+    () => exampleTiles,
+    [exampleTiles],
+  );
+
+  /* --- brand options --- */
+
+  const brandOptions = useMemo(() => {
+    const brandSet = new Set<string>();
+    for (const tile of allTiles) {
+      for (const brand of extractTileBrands(tile)) {
+        brandSet.add(brand);
+      }
+    }
+    return Array.from(brandSet).sort((a, b) => a.localeCompare(b));
+  }, [allTiles]);
+
+  const brandOptionCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const tile of allTiles) {
+      const brands = new Set(extractTileBrands(tile));
+      for (const brand of brands) {
+        counts.set(brand, (counts.get(brand) ?? 0) + 1);
+      }
+    }
+    return counts;
+  }, [allTiles]);
+
+  /* --- apply view + brand + search filters ----------------------------- */
 
   const activeTiles = useMemo(() => {
     let tiles: CombinationTile[];
 
-    if (view === "mine") {
-      tiles = [...myPostTiles, ...myUserExampleTiles];
-    } else if (view === "possible") {
-      tiles = possibleExampleTiles;
-    } else {
-      tiles = [...exampleTiles, ...communityPostTiles, ...userExampleTiles];
+    switch (view) {
+      case "mine":
+        tiles = mineTiles;
+        break;
+      case "possible":
+        tiles = possibleTiles;
+        break;
+      case "plus1":
+        tiles = plus1Tiles;
+        break;
+      case "user":
+        tiles = [...userExampleTiles, ...communityPostTiles];
+        break;
+      case "manufacturer":
+        tiles = manufacturerTiles;
+        break;
+      default:
+        tiles = allTiles;
     }
 
-    if (normalizedQuery) {
-      const strippedQuery = stripPunctuation(normalizedQuery);
-      tiles = tiles.filter((tile) =>
-        tile.searchText.includes(normalizedQuery) ||
-        (strippedQuery !== normalizedQuery && tile.searchText.includes(strippedQuery)),
-      );
+    // Brand filter — every layer's brand must be in the selected set
+    if (brandFilters.length) {
+      tiles = tiles.filter((tile) => {
+        const brands = extractTileBrands(tile);
+        if (!brands.length) return false;
+        return brands.every((b) => brandFilters.includes(b));
+      });
     }
 
+    // Cone filter
     tiles = tiles.filter((tile) => {
       const cone = tile.cone ?? "";
       const isCone5 = /\bcone\s+5\b/i.test(cone);
@@ -822,24 +1110,32 @@ export function CombinationsBrowser({
       if (isCone6 && showCone6) return true;
       if (isCone10 && showCone10) return true;
       if (isCone5 || isCone6 || isCone10) return false;
-      // Non-cone items (community posts without cone info) — show them
       return !cone;
     });
 
+    // Text search
+    if (normalizedQuery) {
+      const strippedQuery = stripPunctuation(normalizedQuery);
+      tiles = tiles.filter((tile) =>
+        tile.searchText.includes(normalizedQuery) ||
+        (strippedQuery !== normalizedQuery && tile.searchText.includes(strippedQuery)),
+      );
+    }
+
     return tiles;
-  }, [view, normalizedQuery, showCone5, showCone6, showCone10, exampleTiles, possibleExampleTiles, communityPostTiles, myPostTiles]);
+  }, [view, normalizedQuery, brandFilters, showCone5, showCone6, showCone10, allTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles]);
 
   const activeTile = useMemo(
     () => activeTiles.find((t) => t.id === activeTileId) ?? null,
     [activeTiles, activeTileId],
   );
 
-  const activeExampleCount = view === "possible" ? possibleExampleTiles.length : exampleTiles.length;
+  const hasFilters = view !== "all" || brandFilters.length > 0 || query.trim().length > 0 || !showCone5 || !showCone6 || !showCone10;
 
   /* Reset visible count when filters change */
   useEffect(() => {
     setVisibleCount(INITIAL_TILE_BATCH);
-  }, [view, normalizedQuery, showCone5, showCone6, showCone10]);
+  }, [view, normalizedQuery, brandFilters, showCone5, showCone6, showCone10]);
 
   /* Progressive rendering — load more tiles as the user scrolls */
   const visibleTiles = useMemo(
@@ -868,9 +1164,23 @@ export function CombinationsBrowser({
     return () => observer.disconnect();
   }, [visibleCount, activeTiles.length]);
 
+  /* --- view filter definitions ------------------------------------------ */
+
+  const viewFilters: { key: CombinationsView; label: string; count: number }[] = [
+    { key: "possible", label: "Possible combinations", count: possibleTiles.length },
+    { key: "plus1", label: "+1 combinations", count: plus1Tiles.length },
+    { key: "mine", label: "My combinations", count: mineTiles.length },
+    { key: "user", label: "User combinations", count: userExampleTiles.length + communityPostTiles.length },
+    { key: "manufacturer", label: "Manufacturer combinations", count: manufacturerTiles.length },
+  ];
+
+  const viewLabel =
+    view === "all" ? "All combinations"
+    : viewFilters.find((f) => f.key === view)?.label ?? "All combinations";
+
   return (
     <div className="space-y-6">
-      {/* search + view tabs */}
+      {/* search + filters */}
       <Panel className="space-y-4">
         <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-3 sm:px-4 sm:py-4">
           <Search className="h-4 w-4 text-muted" />
@@ -880,51 +1190,108 @@ export function CombinationsBrowser({
             placeholder="Search by glaze code, glaze name, clay body, cone, or keyword"
             className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
           />
+          {query.trim() ? (
+            <button type="button" onClick={() => setQuery("")} className="text-muted hover:text-foreground">
+              <X className="h-4 w-4" />
+            </button>
+          ) : null}
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
           <Badge tone="neutral">
             {activeTiles.length} result{activeTiles.length === 1 ? "" : "s"}
           </Badge>
-          <Link
-            href="/combinations"
-            aria-current={view === "all" ? "page" : undefined}
+          <button
+            type="button"
+            onClick={() => { setView("mine"); setBrandFilters([]); setVisibleCount(INITIAL_TILE_BATCH); }}
             className={buttonVariants({
-              variant: view === "all" ? "primary" : "ghost",
+              variant: view === "mine" ? "primary" : "ghost",
+              size: "lg",
+            })}
+          >
+            My Combinations
+          </button>
+          <button
+            type="button"
+            onClick={() => setFiltersOpen((c) => !c)}
+            className={buttonVariants({
+              variant: hasFilters ? "primary" : "ghost",
               size: "sm",
             })}
-            onClick={() => setView("all")}
           >
-            All combinations
-          </Link>
-          <Link
-            href="/combinations?view=possible"
-            aria-current={view === "possible" ? "page" : undefined}
-            className={buttonVariants({
-              variant: view === "possible" ? "primary" : "ghost",
-              size: "sm",
-            })}
-            onClick={() => setView("possible")}
-          >
-            Possible combinations
-          </Link>
-          {query.trim() ? (
-            <button
-              type="button"
-              onClick={() => setQuery("")}
-              className={buttonVariants({ variant: "ghost", size: "sm" })}
-            >
-              Clear search
-            </button>
-          ) : null}
-          <Link
+            {filtersOpen ? "Hide filters" : "Filters"}
+          </button>
+          <a
             href="/publish"
             className={buttonVariants({ variant: "ghost", size: "sm" })}
           >
             + Share your result
-          </Link>
+          </a>
+          {hasFilters ? (
+            <button
+              type="button"
+              onClick={resetFilters}
+              className={buttonVariants({ variant: "ghost", size: "sm" })}
+            >
+              Clear filters
+            </button>
+          ) : null}
         </div>
 
+        {/* Expandable filter sections */}
+        {filtersOpen ? (
+          <div className="space-y-2">
+            {/* View filter */}
+            <FilterSection
+              title="View"
+              optionCount={viewFilters.length}
+              selectedCount={view !== "all" ? 1 : 0}
+              open={openFilterSections.view ?? true}
+              onToggle={() => setOpenFilterSections((c) => ({ ...c, view: !(c.view ?? true) }))}
+            >
+              <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                {viewFilters.map((filter) => (
+                  <FilterTile
+                    key={filter.key}
+                    value={filter.label}
+                    count={filter.count}
+                    checked={view === filter.key}
+                    onToggle={() => {
+                      setView((current) => current === filter.key ? "all" : filter.key);
+                      setVisibleCount(INITIAL_TILE_BATCH);
+                    }}
+                  />
+                ))}
+              </div>
+            </FilterSection>
+
+            {/* Brand filter */}
+            <FilterSection
+              title="Brands"
+              optionCount={brandOptions.length}
+              selectedCount={brandFilters.length}
+              open={openFilterSections.brands ?? false}
+              onToggle={() => setOpenFilterSections((c) => ({ ...c, brands: !(c.brands ?? false) }))}
+            >
+              <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                {brandOptions.map((option) => (
+                  <FilterTile
+                    key={option}
+                    value={option}
+                    count={brandOptionCounts.get(option)}
+                    checked={brandFilters.includes(option)}
+                    onToggle={(value) => {
+                      setBrandFilters((current) => toggleValue(current, value));
+                      setVisibleCount(INITIAL_TILE_BATCH);
+                    }}
+                  />
+                ))}
+              </div>
+            </FilterSection>
+          </div>
+        ) : null}
+
+        {/* Cone filter */}
         <div className="flex flex-wrap items-center gap-4">
           <span className="text-xs uppercase tracking-[0.18em] text-muted">Cone filter</span>
           <label className="flex items-center gap-2 text-sm text-foreground">
@@ -956,15 +1323,35 @@ export function CombinationsBrowser({
           </label>
         </div>
 
-        {view === "possible" ? (
-          <p className="text-sm leading-6 text-muted">
-            Showing imported vendor examples where every matched glaze is already on your shelf.
-            {activeExampleCount
-              ? " These are the combinations you can test right now."
-              : " Add more glazes to your inventory or switch back to All combinations for broader inspiration."}
-          </p>
+        {/* Active filter summary chips */}
+        {hasFilters ? (
+          <div className="flex flex-wrap items-center gap-2">
+            {view !== "all" ? (
+              <button
+                type="button"
+                onClick={() => { setView("all"); setVisibleCount(INITIAL_TILE_BATCH); }}
+                className="flex items-center gap-1.5 border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-foreground transition hover:bg-foreground/[0.04]"
+              >
+                {viewLabel}
+                <X className="h-3 w-3 text-muted" />
+              </button>
+            ) : null}
+            {brandFilters.map((brand) => (
+              <button
+                key={brand}
+                type="button"
+                onClick={() => {
+                  setBrandFilters((current) => current.filter((b) => b !== brand));
+                  setVisibleCount(INITIAL_TILE_BATCH);
+                }}
+                className="flex items-center gap-1.5 border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-foreground transition hover:bg-foreground/[0.04]"
+              >
+                {brand}
+                <X className="h-3 w-3 text-muted" />
+              </button>
+            ))}
+          </div>
         ) : null}
-
       </Panel>
 
       {/* tile grid */}
@@ -973,7 +1360,7 @@ export function CombinationsBrowser({
           <div className="overflow-hidden border border-border bg-panel">
             <div className="flex items-center justify-between gap-3 border-b border-border/80 px-3 py-2">
               <p className="text-xs uppercase tracking-[0.18em] text-muted">
-                {view === "possible" ? "Possible combinations" : "All combinations"}
+                {viewLabel}
               </p>
               <Badge tone="neutral">
                 {visibleTiles.length}{visibleTiles.length !== activeTiles.length ? ` / ${activeTiles.length}` : ""}
@@ -1008,16 +1395,39 @@ export function CombinationsBrowser({
                       )}
                     </div>
 
-                    <div className="space-y-0.5">
-                      {tile.subtitle ? (
-                        <p className="text-[9px] uppercase tracking-[0.18em] text-muted sm:text-[10px]">
-                          {tile.subtitle}
-                        </p>
-                      ) : null}
-                      <h4 className="line-clamp-2 text-[13px] font-semibold leading-5 text-foreground sm:text-sm">
-                        {tile.title}
-                      </h4>
-                    </div>
+                    {/* Stacked layer display */}
+                    {tile.tileLayers.length >= 2 ? (
+                      <div className="space-y-0">
+                        {tile.tileLayers.map((layer, layerIdx) => (
+                          <div key={layerIdx}>
+                            {layerIdx > 0 ? (
+                              <div className="border-t border-foreground/10" />
+                            ) : null}
+                            <div className="flex items-baseline gap-1.5 px-0.5 py-1">
+                              {layer.code ? (
+                                <span className="shrink-0 text-[9px] uppercase tracking-[0.1em] text-muted/70 sm:text-[10px]">
+                                  {layer.code}
+                                </span>
+                              ) : null}
+                              <span className="text-[11px] font-semibold leading-tight text-foreground line-clamp-1 sm:text-xs">
+                                {layer.name}
+                              </span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="space-y-0.5">
+                        {tile.subtitle ? (
+                          <p className="text-[9px] uppercase tracking-[0.18em] text-muted sm:text-[10px]">
+                            {tile.subtitle}
+                          </p>
+                        ) : null}
+                        <h4 className="line-clamp-2 text-[13px] font-semibold leading-5 text-foreground sm:text-sm">
+                          {tile.title}
+                        </h4>
+                      </div>
+                    )}
 
                     <div className="flex flex-wrap gap-1">
                       {tile.cone ? <Badge tone="neutral">{tile.cone}</Badge> : null}
@@ -1063,7 +1473,11 @@ export function CombinationsBrowser({
           <h2 className="display-font text-3xl tracking-tight">No combinations match yet.</h2>
           <p className="mt-3 max-w-xl text-sm leading-6 text-muted">
             {view === "possible"
-              ? "There is not an imported vendor example yet that only uses glazes currently on your shelf. Switch back to All combinations or add more glazes to your inventory."
+              ? "No combination exists yet that only uses glazes on your shelf. Switch to All combinations or add more glazes to your inventory."
+              : view === "plus1"
+              ? "No combination is just one glaze away from your shelf. Try adding more glazes to your inventory."
+              : view === "mine"
+              ? "You haven't published any combinations yet. Share a kiln-tested result to see it here."
               : "Try a glaze code, glaze name, cone, or clay body to narrow the results."}
           </p>
         </Panel>
@@ -1086,6 +1500,27 @@ export function CombinationsBrowser({
                 ) : null}
                 <h3 className="truncate text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeTile.title}</h3>
               </div>
+              {(() => {
+                const combinationId = activeTile.example?.id ?? activeTile.post?.id ?? activeTile.userExample?.id ?? null;
+                if (!combinationId || !viewerUserId) return null;
+                const isFavourited = favouritedCombinationIds.has(combinationId);
+                const isPending = pendingFavouriteIds.includes(combinationId);
+                return (
+                  <button
+                    type="button"
+                    disabled={isPending}
+                    onClick={() => void handleFavouriteToggle(combinationId)}
+                    className={`inline-flex items-center gap-1.5 border px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] transition disabled:opacity-50 ${
+                      isFavourited
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-border bg-white text-muted hover:text-foreground"
+                    }`}
+                  >
+                    <Heart className={`h-3.5 w-3.5 ${isFavourited ? "fill-current" : ""}`} />
+                    {isFavourited ? "Favourited" : "Favourite"}
+                  </button>
+                );
+              })()}
               <button
                 type="button"
                 onClick={() => setActiveTileId(null)}

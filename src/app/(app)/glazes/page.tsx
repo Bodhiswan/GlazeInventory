@@ -1,5 +1,5 @@
 import { GlazeCatalogExplorer } from "@/components/glaze-catalog-explorer";
-import { getCatalogGlazes, getGlazeFiringImageMap, getInventory, requireViewer } from "@/lib/data";
+import { getCatalogGlazes, getFavouriteIds, getGlazeFiringImageMap, getInventory, requireViewer } from "@/lib/data";
 import { ACTIVE_GLAZE_BRANDS } from "@/lib/utils";
 
 export default async function GlazesPage({
@@ -10,13 +10,18 @@ export default async function GlazesPage({
   const viewer = await requireViewer();
   const params = await searchParams;
   const reviewMode = false;
-  const [catalog, inventory] = await Promise.all([
+  const [catalog, inventory, favouriteGlazeIds] = await Promise.all([
     getCatalogGlazes(viewer.profile.id),
     getInventory(viewer.profile.id),
+    getFavouriteIds(viewer.profile.id, "glaze"),
   ]);
   const commercial = catalog.filter((glaze) => glaze.sourceType === "commercial");
+  const custom = catalog.filter((glaze) => glaze.sourceType === "nonCommercial");
   const visibleBrands = new Set(ACTIVE_GLAZE_BRANDS);
-  const featuredGlazes = commercial.filter((glaze) => glaze.brand && visibleBrands.has(glaze.brand as (typeof ACTIVE_GLAZE_BRANDS)[number]));
+  const featuredGlazes = [
+    ...commercial.filter((glaze) => glaze.brand && visibleBrands.has(glaze.brand as (typeof ACTIVE_GLAZE_BRANDS)[number])),
+    ...custom,
+  ];
 
   const inventoryStates = Object.fromEntries(
     inventory.map((item) => [
@@ -27,8 +32,9 @@ export default async function GlazesPage({
       },
     ]),
   );
+  const commercialFeatured = featuredGlazes.filter((glaze) => glaze.sourceType === "commercial");
   const brandCounts = Array.from(
-    featuredGlazes.reduce<Map<string, number>>((counts, glaze) => {
+    commercialFeatured.reduce<Map<string, number>>((counts, glaze) => {
       const brand = glaze.brand ?? "Other";
       counts.set(brand, (counts.get(brand) ?? 0) + 1);
       return counts;
@@ -48,6 +54,7 @@ export default async function GlazesPage({
       restrictToPreferredExamples={Boolean(viewer.profile.restrictToPreferredExamples)}
       isAdmin={false}
       reviewMode={reviewMode}
+      favouriteGlazeIds={favouriteGlazeIds}
     />
   );
 }

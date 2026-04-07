@@ -2,6 +2,7 @@
 
 import { Trash2 } from "lucide-react";
 import { useDeferredValue, useMemo, useState } from "react";
+import { useFormStatus } from "react-dom";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -115,9 +116,10 @@ function GlazeCombobox({
         }}
         placeholder="Search by brand, code, name, or cone"
         disabled={disabled}
+        className="border-foreground/20 bg-white shadow-sm"
       />
 
-      <div className="border border-border bg-panel">
+      <div className="border border-foreground/15 bg-white shadow-sm">
         {filteredGlazes.length ? (
           <div className="max-h-48 overflow-y-auto">
             {filteredGlazes.map((glaze) => {
@@ -133,10 +135,10 @@ function GlazeCombobox({
                     onQueryChange(renderGlazeOptionLabel(glaze));
                   }}
                   className={cn(
-                    "flex w-full flex-col gap-0.5 border-b border-border px-4 py-2.5 text-left transition last:border-b-0",
+                    "flex w-full flex-col gap-0.5 border-b border-foreground/10 px-4 py-2.5 text-left transition last:border-b-0",
                     selected
                       ? "bg-foreground text-white"
-                      : "bg-transparent text-foreground hover:bg-white",
+                      : "bg-white text-foreground hover:bg-foreground/[0.04]",
                   )}
                 >
                   <span className="text-sm font-medium">{renderGlazeOptionLabel(glaze)}</span>
@@ -148,7 +150,15 @@ function GlazeCombobox({
             })}
           </div>
         ) : (
-          <div className="px-4 py-3 text-sm text-muted">No matches. Try a shorter search.</div>
+          <div className="px-4 py-3 space-y-1">
+            <p className="text-sm text-muted">No matches. Try a shorter search.</p>
+            <a
+              href="/glazes/new?returnTo=/publish"
+              className="text-xs font-medium text-foreground underline underline-offset-4 hover:text-muted transition"
+            >
+              Can&apos;t find it? Add a custom glaze →
+            </a>
+          </div>
         )}
       </div>
 
@@ -174,6 +184,19 @@ function getLayerRole(index: number, total: number) {
   if (index === 0) return "Top layer";
   if (index === total - 1) return total > 2 ? "Base layer" : "Bottom layer";
   return `Middle layer ${index}`;
+}
+
+/* ---------------------------------------------------------------------------
+ * Submit button — uses useFormStatus to show pending state
+ * ------------------------------------------------------------------------ */
+
+function PublishSubmitButton({ canPublish }: { canPublish: boolean }) {
+  const { pending } = useFormStatus();
+  return (
+    <Button type="submit" disabled={!canPublish || pending}>
+      {pending ? "Publishing…" : "Publish combination"}
+    </Button>
+  );
 }
 
 /* ---------------------------------------------------------------------------
@@ -241,7 +264,7 @@ export function PublishCombinationForm({
       {/* --- Glaze layers --- */}
       <div>
         <div className="mb-3 flex items-center justify-between">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-muted">
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">
             Glaze layers ({layers.length}/{MAX_LAYERS})
           </p>
           {layers.length < MAX_LAYERS ? (
@@ -293,8 +316,8 @@ export function PublishCombinationForm({
           </Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Layer order</p>
         </div>
-        <div className="border border-border bg-panel px-4 py-3">
-          <p className="text-sm leading-6 text-foreground/90">
+        <div className="border border-foreground/15 bg-white px-4 py-3 shadow-sm">
+          <p className="text-sm leading-6 text-foreground">
             {filledLayerCount >= MIN_LAYERS
               ? layerSummary
               : "Pick at least two glaze layers to lock the order before publishing."}
@@ -304,13 +327,13 @@ export function PublishCombinationForm({
 
       {/* --- Images --- */}
       <Panel className="space-y-4">
-        <p className="text-[10px] uppercase tracking-[0.2em] text-muted">Photos</p>
+        <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Photos</p>
 
         <label className="grid gap-2">
           <span className="text-sm font-medium text-foreground">
             Post-firing photo <span className="text-muted">(required)</span>
           </span>
-          <Input name="postFiringImage" type="file" accept="image/*" required disabled={disabled} />
+          <Input name="postFiringImage" type="file" accept="image/*" required disabled={disabled} className="border-foreground/20 bg-white shadow-sm" />
           <span className="text-xs leading-5 text-muted">
             Show the fired surface clearly. Cropped close-ups work well.
           </span>
@@ -320,7 +343,7 @@ export function PublishCombinationForm({
           <span className="text-sm font-medium text-foreground">
             Pre-firing photo <span className="text-muted">(optional)</span>
           </span>
-          <Input name="preFiringImage" type="file" accept="image/*" disabled={disabled} />
+          <Input name="preFiringImage" type="file" accept="image/*" disabled={disabled} className="border-foreground/20 bg-white shadow-sm" />
           <span className="text-xs leading-5 text-muted">
             Helpful for showing application thickness, overlap areas, or raw glaze placement before the kiln.
           </span>
@@ -349,8 +372,8 @@ export function PublishCombinationForm({
                   className={cn(
                     "border px-4 py-3 text-sm uppercase tracking-[0.14em] transition",
                     selected
-                      ? "border-foreground bg-foreground text-white"
-                      : "border-border bg-panel text-foreground hover:bg-white",
+                      ? "border-foreground bg-foreground text-white shadow-sm"
+                      : "border-foreground/20 bg-white text-foreground shadow-sm hover:bg-foreground/[0.04]",
                   )}
                 >
                   {choice}
@@ -370,6 +393,7 @@ export function PublishCombinationForm({
             <Textarea
               name="glazingProcess"
               placeholder="Number of coats, overlap area, dip or brush details, and any thickness notes."
+              className="border-foreground/20 bg-white shadow-sm"
             />
           </label>
         </div>
@@ -383,6 +407,7 @@ export function PublishCombinationForm({
             <Textarea
               name="notes"
               placeholder="Describe the visual result, clay body, surprises, or takeaways."
+              className="border-foreground/20 bg-white shadow-sm"
             />
           </label>
         </div>
@@ -396,6 +421,7 @@ export function PublishCombinationForm({
             <Textarea
               name="kilnNotes"
               placeholder="Only needed if not a regular oxidation firing. Reduction, slow cool, special schedule, shelf position, etc."
+              className="border-foreground/20 bg-white shadow-sm"
             />
             <span className="text-xs leading-5 text-muted">
               Leave blank for standard oxidation firings — only fill this in if you did something different.
@@ -409,9 +435,7 @@ export function PublishCombinationForm({
         <p className="text-sm text-muted">
           Published examples appear in combinations and help other members compare layering results.
         </p>
-        <Button type="submit" disabled={!canPublish}>
-          Publish combination
-        </Button>
+        <PublishSubmitButton canPublish={canPublish} />
       </div>
     </div>
   );

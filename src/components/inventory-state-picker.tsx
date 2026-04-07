@@ -12,6 +12,11 @@ const stateLabels: Record<InventoryStatus, string> = {
   archived: "Empty",
 };
 
+const pillBase = "inline-flex items-center border text-[10px] uppercase tracking-[0.14em] transition px-3 py-1.5 disabled:opacity-50";
+const pillActive = "border-foreground bg-foreground text-background";
+const pillGhost = "border-border bg-white text-muted hover:text-foreground";
+const pillDanger = "border-[#7f2d22] bg-[#7f2d22] text-white";
+
 export function InventoryStatePicker({
   status,
   onChange,
@@ -20,6 +25,7 @@ export function InventoryStatePicker({
   allowRemove = true,
   showEmpty = true,
   compact = false,
+  tiny = false,
 }: {
   status: InventoryCollectionState;
   onChange: (nextStatus: InventoryCollectionState) => void;
@@ -28,6 +34,7 @@ export function InventoryStatePicker({
   allowRemove?: boolean;
   showEmpty?: boolean;
   compact?: boolean;
+  tiny?: boolean;
 }) {
   return (
     <div className="space-y-2">
@@ -47,13 +54,16 @@ export function InventoryStatePicker({
               key={value}
               type="button"
               onClick={() => onChange(value)}
-            className={buttonVariants({
-              variant: active ? "primary" : "ghost",
-              size: compact ? "sm" : "md",
-              className: compact
-                ? "min-h-11 flex-1 justify-center sm:min-h-10 sm:flex-none"
-                : "min-h-11",
-            })}
+              className={tiny
+                ? cn(pillBase, active ? pillActive : pillGhost)
+                : buttonVariants({
+                    variant: active ? "primary" : "ghost",
+                    size: compact ? "sm" : "md",
+                    className: compact
+                      ? "min-h-11 flex-1 justify-center sm:min-h-10 sm:flex-none"
+                      : "min-h-11",
+                  })
+              }
           >
               {stateLabels[value]}
             </button>
@@ -63,13 +73,16 @@ export function InventoryStatePicker({
           <button
             type="button"
             onClick={() => onChange("none")}
-            className={buttonVariants({
-              variant: status === "none" ? "danger" : "ghost",
-              size: compact ? "sm" : "md",
-              className: compact
-                ? "min-h-11 flex-1 justify-center sm:min-h-10 sm:flex-none"
-                : "min-h-11",
-            })}
+            className={tiny
+              ? cn(pillBase, status === "none" ? pillDanger : pillGhost)
+              : buttonVariants({
+                  variant: status === "none" ? "danger" : "ghost",
+                  size: compact ? "sm" : "md",
+                  className: compact
+                    ? "min-h-11 flex-1 justify-center sm:min-h-10 sm:flex-none"
+                    : "min-h-11",
+                })
+            }
           >
             Remove
           </button>

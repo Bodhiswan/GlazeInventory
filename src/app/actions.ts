@@ -18,6 +18,7 @@ import { createPairKey, parsePairKey } from "@/lib/combinations";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { formatGlazeLabel } from "@/lib/utils";
+import { CUSTOM_GLAZE_ATMOSPHERE_VALUES, CUSTOM_GLAZE_CONE_VALUES } from "@/lib/glaze-constants";
 
 const magicLinkSchema = z.object({
   email: z.email(),
@@ -96,11 +97,11 @@ const customGlazeSchema = z.object({
   brand: z.string().max(80).optional(),
   line: z.string().max(80).optional(),
   code: z.string().max(40).optional(),
-  cone: z.string().max(40).optional(),
-  atmosphere: z.string().max(40).optional(),
-  finishNotes: z.string().max(200).optional(),
-  colorNotes: z.string().max(200).optional(),
-  recipeNotes: z.string().max(500).optional(),
+  cone: z.enum(CUSTOM_GLAZE_CONE_VALUES),
+  atmosphere: z.enum(CUSTOM_GLAZE_ATMOSPHERE_VALUES).optional(),
+  colors: z.string().max(500).optional(),
+  finishes: z.string().max(300).optional(),
+  notes: z.string().max(500).optional(),
   personalNotes: z.string().max(500).optional(),
 });
 
@@ -116,9 +117,8 @@ const glazeCommentSchema = z.object({
   returnTo: z.string().min(1).max(200).optional(),
 });
 
-const glazeRatingSchema = z.object({
+const glazeFavouriteSchema = z.object({
   glazeId: z.string().uuid(),
-  rating: z.coerce.number().int().min(1).max(5),
   returnTo: z.string().min(1).max(200).optional(),
 });
 
@@ -173,6 +173,7 @@ function revalidateWorkspace() {
     "/inventory",
     "/glazes",
     "/inventory/new",
+    "/glazes/new",
     "/combinations",
     "/community",
     "/publish",
@@ -231,6 +232,20 @@ function buildExternalExampleFiringSummary(parserOutput: unknown) {
   return parts.length ? parts.join(" · ") : null;
 }
 
+function friendlyAuthError(message: string): string {
+  const lower = message.toLowerCase();
+  if (lower.includes("rate") && lower.includes("limit") || lower.includes("too many") || lower.includes("exceeded")) {
+    return "Too many attempts — please wait a minute and try again.";
+  }
+  if (lower.includes("email not confirmed")) {
+    return "Check your inbox for a confirmation email before signing in.";
+  }
+  if (lower.includes("invalid login credentials")) {
+    return "Incorrect email or password.";
+  }
+  return message;
+}
+
 export async function sendMagicLinkAction(formData: FormData) {
   const parsed = magicLinkSchema.safeParse({
     email: formData.get("email")?.toString().trim(),
@@ -254,7 +269,7 @@ export async function sendMagicLinkAction(formData: FormData) {
   });
 
   if (error) {
-    redirect(`/auth/sign-in?error=${encodeURIComponent(error.message)}`);
+    redirect(`/auth/sign-in?error=${encodeURIComponent(friendlyAuthError(error.message))}`);
   }
 
   redirect("/auth/sign-in?sent=1");
@@ -288,9 +303,10 @@ export async function signInWithPasswordAction(formData: FormData) {
   });
 
   if (error) {
+    const msg = friendlyAuthError(error.message);
     const errorUrl = returnTo
-      ? `/auth/sign-in?error=${encodeURIComponent(error.message)}&redirectTo=${encodeURIComponent(returnTo)}`
-      : `/auth/sign-in?error=${encodeURIComponent(error.message)}`;
+      ? `/auth/sign-in?error=${encodeURIComponent(msg)}&redirectTo=${encodeURIComponent(returnTo)}`
+      : `/auth/sign-in?error=${encodeURIComponent(msg)}`;
     redirect(errorUrl);
   }
 
@@ -328,7 +344,7 @@ export async function signUpWithPasswordAction(formData: FormData) {
   });
 
   if (error) {
-    redirect(`/auth/sign-in?error=${encodeURIComponent(error.message)}`);
+    redirect(`/auth/sign-in?error=${encodeURIComponent(friendlyAuthError(error.message))}`);
   }
 
   redirect("/auth/sign-in?registered=1");
@@ -372,7 +388,7 @@ export async function sendPasswordResetAction(formData: FormData) {
   });
 
   if (error) {
-    redirect(`/auth/forgot-password?error=${encodeURIComponent(error.message)}`);
+    redirect(`/auth/forgot-password?error=${encodeURIComponent(friendlyAuthError(error.message))}`);
   }
 
   redirect("/auth/forgot-password?sent=1");
@@ -643,22 +659,57 @@ export async function addCatalogGlazeToInventoryAction(formData: FormData) {
 }
 
 export async function createCustomGlazeAction(formData: FormData) {
-  const { viewer, supabase } = await requireMemberSupabase("/glazes");
+  const { viewer, supabase } = await requireMemberSupabase("/glazes/new");
+  const returnTo = normalizeOptional(formData.get("returnTo")) ?? "/inventory";
+
   const parsed = customGlazeSchema.safeParse({
     name: formData.get("name")?.toString().trim(),
     brand: normalizeOptional(formData.get("brand")) ?? undefined,
     line: normalizeOptional(formData.get("line")) ?? undefined,
     code: normalizeOptional(formData.get("code")) ?? undefined,
-    cone: normalizeOptional(formData.get("cone")) ?? undefined,
+    cone: formData.get("cone")?.toString().trim(),
     atmosphere: normalizeOptional(formData.get("atmosphere")) ?? undefined,
-    finishNotes: normalizeOptional(formData.get("finishNotes")) ?? undefined,
-    colorNotes: normalizeOptional(formData.get("colorNotes")) ?? undefined,
-    recipeNotes: normalizeOptional(formData.get("recipeNotes")) ?? undefined,
+    colors: normalizeOptional(formData.get("colors")) ?? undefined,
+    finishes: normalizeOptional(formData.get("finishes")) ?? undefined,
+    notes: normalizeOptional(formData.get("notes")) ?? undefined,
     personalNotes: normalizeOptional(formData.get("personalNotes")) ?? undefined,
   });
 
   if (!parsed.success) {
-    redirect("/inventory/new?error=Add%20at%20least%20a%20name%20for%20the%20custom%20glaze");
+    const firstIssue = parsed.error.issues[0]?.message ?? "Check the form for errors";
+    redirect(`/glazes/new?error=${encodeURIComponent(firstIssue)}`);
+  }
+
+  const nameNorm = parsed.data.name.toLowerCase();
+  const brandNorm = parsed.data.brand?.toLowerCase() ?? null;
+
+  // Check against the static catalog for exact name+brand matches
+  const catalogDupe = getAllCatalogGlazes().find(
+    (g) =>
+      g.name.toLowerCase() === nameNorm &&
+      (g.brand?.toLowerCase() ?? null) === brandNorm,
+  );
+  if (catalogDupe) {
+    redirect(
+      `/glazes/new?error=${encodeURIComponent(`This glaze already exists in the catalog — search for "${parsed.data.name}" in the library`)}`,
+    );
+  }
+
+  // Check the user's own custom glazes for exact duplicates
+  const { data: existingCustom } = await supabase
+    .from("glazes")
+    .select("id,name,brand")
+    .eq("source_type", "nonCommercial")
+    .eq("created_by_user_id", viewer.profile.id)
+    .ilike("name", parsed.data.name);
+
+  const customDupe = (existingCustom ?? []).find(
+    (row) => ((row.brand as string | null)?.toLowerCase() ?? null) === brandNorm,
+  );
+  if (customDupe) {
+    redirect(
+      `/glazes/new?error=${encodeURIComponent("You have already added a custom glaze with this name")}`,
+    );
   }
 
   const { data: glaze, error: glazeError } = await supabase
@@ -669,18 +720,17 @@ export async function createCustomGlazeAction(formData: FormData) {
       brand: parsed.data.brand ?? null,
       line: parsed.data.line ?? null,
       code: parsed.data.code ?? null,
-      cone: parsed.data.cone ?? null,
+      cone: parsed.data.cone,
       atmosphere: parsed.data.atmosphere ?? null,
-      finish_notes: parsed.data.finishNotes ?? null,
-      color_notes: parsed.data.colorNotes ?? null,
-      recipe_notes: parsed.data.recipeNotes ?? null,
+      color_notes: parsed.data.colors ?? null,
+      finish_notes: [parsed.data.finishes, parsed.data.notes].filter(Boolean).join(". ") || null,
       created_by_user_id: viewer.profile.id,
     })
     .select("id")
     .single();
 
   if (glazeError || !glaze) {
-    redirect(`/inventory/new?error=${encodeURIComponent(glazeError?.message ?? "Could not create glaze")}`);
+    redirect(`/glazes/new?error=${encodeURIComponent(glazeError?.message ?? "Could not create glaze")}`);
   }
 
   const { error: inventoryError } = await supabase.from("inventory_items").insert({
@@ -696,11 +746,11 @@ export async function createCustomGlazeAction(formData: FormData) {
   });
 
   if (inventoryError) {
-    redirect(`/inventory/new?error=${encodeURIComponent(inventoryError.message)}`);
+    redirect(`/glazes/new?error=${encodeURIComponent(inventoryError.message)}`);
   }
 
   revalidateWorkspace();
-  redirect("/inventory");
+  redirect(`${returnTo}?customGlazeAdded=1`);
 }
 
 export async function updateInventoryItemAction(formData: FormData) {
@@ -970,15 +1020,30 @@ export async function publishUserCombinationAction(formData: FormData) {
     redirect("/publish?error=Add%20at%20least%20two%20glaze%20layers%20before%20publishing");
   }
 
-  // Validate ownership
-  const inventory = await getInventory(viewer.profile.id);
-  const ownedByGlazeId = new Set(
-    inventory.filter((item) => item.status === "owned").map((item) => item.glazeId),
-  );
+  // Validate glaze IDs: catalog glazes use static JSON IDs, custom glazes use DB IDs.
+  // The layer table FK was dropped (see migration 20260407120000) because the DB assigns
+  // different UUIDs to catalog glazes than the static JSON IDs used as identifiers.
+  const allCatalogGlazes = getAllCatalogGlazes();
+  const catalogGlazeMap = new Map(allCatalogGlazes.map((g) => [g.id, g]));
 
-  for (const glazeId of layerGlazeIds) {
-    if (!ownedByGlazeId.has(glazeId)) {
-      redirect("/publish?error=All%20layers%20must%20use%20glazes%20you%20own");
+  const customGlazeIds = layerGlazeIds.filter((id) => !catalogGlazeMap.has(id));
+  const customGlazeLabelMap = new Map<string, string>();
+
+  if (customGlazeIds.length > 0) {
+    const { data: dbCustomGlazes } = await supabase
+      .from("glazes")
+      .select("id, name, brand, source_type, created_by_user_id")
+      .in("id", customGlazeIds);
+    const dbCustomMap = new Map((dbCustomGlazes ?? []).map((g) => [g.id as string, g]));
+    for (const glazeId of customGlazeIds) {
+      const dbGlaze = dbCustomMap.get(glazeId);
+      if (!dbGlaze || dbGlaze.source_type !== "nonCommercial" || dbGlaze.created_by_user_id !== viewer.profile.id) {
+        redirect("/publish?error=One%20or%20more%20selected%20glazes%20could%20not%20be%20found");
+      }
+      customGlazeLabelMap.set(
+        glazeId,
+        [dbGlaze.brand, dbGlaze.name].filter(Boolean).join(" ") || String(dbGlaze.name),
+      );
     }
   }
 
@@ -1048,18 +1113,21 @@ export async function publishUserCombinationAction(formData: FormData) {
         upsert: false,
       });
 
-    if (!preUpErr) {
-      const { data: preFiringPublic } = supabase.storage
-        .from("user-combination-images")
-        .getPublicUrl(preFiringPath);
-      preFiringPublicUrl = preFiringPublic.publicUrl;
+    if (preUpErr) {
+      redirect(`/publish?error=${encodeURIComponent(preUpErr.message)}`);
     }
+
+    const { data: preFiringPublic } = supabase.storage
+      .from("user-combination-images")
+      .getPublicUrl(preFiringPath);
+    preFiringPublicUrl = preFiringPublic.publicUrl;
   }
 
   // --- Build title from glaze labels ---
   const glazeLabels = layerGlazeIds.map((gid) => {
-    const item = inventory.find((inv) => inv.glazeId === gid);
-    return item ? formatGlazeLabel(item.glaze) : "Glaze";
+    const catalogGlaze = catalogGlazeMap.get(gid);
+    if (catalogGlaze) return formatGlazeLabel(catalogGlaze);
+    return customGlazeLabelMap.get(gid) ?? "Glaze";
   });
   const title =
     glazeLabels.length === 2
@@ -1107,7 +1175,7 @@ export async function publishUserCombinationAction(formData: FormData) {
   }
 
   revalidateWorkspace();
-  redirect("/combinations?view=mine");
+  redirect("/combinations?view=mine&published=1");
 }
 
 export async function deleteUserCombinationAction(formData: FormData) {
@@ -1130,24 +1198,14 @@ export async function deleteUserCombinationAction(formData: FormData) {
   }
 
   if (example.author_user_id !== viewer.profile.id && !viewer.profile.isAdmin) {
-    redirect("/combinations?error=You%20can%20only%20delete%20your%20own%20examples");
+    redirect("/combinations?error=You%20can%20only%20archive%20your%20own%20examples");
   }
 
-  // Delete storage files
-  const pathsToDelete: string[] = [];
-  for (const urlField of [example.post_firing_image_path, example.pre_firing_image_path]) {
-    if (urlField) {
-      const match = urlField.match(/user-combination-images\/(.+)$/);
-      if (match?.[1]) pathsToDelete.push(match[1]);
-    }
-  }
-
-  if (pathsToDelete.length) {
-    await supabase.storage.from("user-combination-images").remove(pathsToDelete);
-  }
-
-  // Cascade deletes layers automatically
-  await supabase.from("user_combination_examples").delete().eq("id", exampleId);
+  // Archive instead of delete — admins can still view archived items
+  await supabase
+    .from("user_combination_examples")
+    .update({ status: "hidden" })
+    .eq("id", exampleId);
 
   revalidateWorkspace();
   redirect("/combinations?view=mine");
@@ -1504,6 +1562,48 @@ export async function toggleGlazeTagVoteAction(formData: FormData) {
   redirect(returnTo);
 }
 
+export async function addGlazeCommentInlineAction(
+  glazeId: string,
+  body: string,
+): Promise<{ error?: string; authorName?: string }> {
+  const { viewer, supabase } = await requireMemberSupabase("/glazes");
+  const trimmed = body.trim();
+  if (trimmed.length < 2) return { error: "Comment must be at least 2 characters." };
+  if (trimmed.length > 1000) return { error: "Comment must be under 1000 characters." };
+
+  const { error } = await supabase.from("glaze_comments").insert({
+    glaze_id: glazeId,
+    author_user_id: viewer.profile.id,
+    body: trimmed,
+  });
+
+  if (error) return { error: error.message };
+
+  revalidateWorkspace();
+  return { authorName: viewer.profile.displayName };
+}
+
+export async function addCombinationCommentInlineAction(
+  exampleId: string,
+  body: string,
+): Promise<{ error?: string; authorName?: string }> {
+  const { viewer, supabase } = await requireMemberSupabase("/combinations");
+  const trimmed = body.trim();
+  if (trimmed.length < 2) return { error: "Comment must be at least 2 characters." };
+  if (trimmed.length > 1000) return { error: "Comment must be under 1000 characters." };
+
+  const { error } = await supabase.from("combination_comments").insert({
+    example_id: exampleId,
+    author_user_id: viewer.profile.id,
+    body: trimmed,
+  });
+
+  if (error) return { error: error.message };
+
+  revalidateWorkspace();
+  return { authorName: viewer.profile.displayName };
+}
+
 export async function addGlazeCommentAction(formData: FormData) {
   const { viewer, supabase } = await requireMemberSupabase("/glazes");
   const parsed = glazeCommentSchema.safeParse({
@@ -1533,31 +1633,68 @@ export async function addGlazeCommentAction(formData: FormData) {
   redirect(returnTo);
 }
 
-export async function setGlazeRatingAction(formData: FormData) {
+export async function toggleFavouriteInlineAction(
+  targetType: "glaze" | "combination",
+  targetId: string,
+): Promise<{ favourited: boolean; error?: string }> {
   const { viewer, supabase } = await requireMemberSupabase("/glazes");
-  const parsed = glazeRatingSchema.safeParse({
+
+  const { data: existing } = await supabase
+    .from("user_favourites")
+    .select("id")
+    .eq("user_id", viewer.profile.id)
+    .eq("target_type", targetType)
+    .eq("target_id", targetId)
+    .limit(1)
+    .single();
+
+  if (existing) {
+    const { error } = await supabase.from("user_favourites").delete().eq("id", existing.id);
+    if (error) return { favourited: true, error: error.message };
+    revalidateWorkspace();
+    return { favourited: false };
+  } else {
+    const { error } = await supabase.from("user_favourites").insert({
+      user_id: viewer.profile.id,
+      target_type: targetType,
+      target_id: targetId,
+    });
+    if (error) return { favourited: false, error: error.message };
+    revalidateWorkspace();
+    return { favourited: true };
+  }
+}
+
+export async function toggleGlazeFavouriteAction(formData: FormData) {
+  const { viewer, supabase } = await requireMemberSupabase("/glazes");
+  const parsed = glazeFavouriteSchema.safeParse({
     glazeId: formData.get("glazeId"),
-    rating: formData.get("rating"),
     returnTo: normalizeOptional(formData.get("returnTo")) ?? undefined,
   });
 
   const returnTo = parsed.success ? parsed.data.returnTo ?? "/glazes" : "/glazes";
 
   if (!parsed.success) {
-    redirect(`${returnTo}?error=Choose%20a%20rating%20between%201%20and%205`);
+    redirect(returnTo);
   }
 
-  const { error } = await supabase.from("glaze_ratings").upsert(
-    {
-      glaze_id: parsed.data.glazeId,
-      user_id: viewer.profile.id,
-      rating: parsed.data.rating,
-    },
-    { onConflict: "glaze_id,user_id" },
-  );
+  const { data: existing } = await supabase
+    .from("user_favourites")
+    .select("id")
+    .eq("user_id", viewer.profile.id)
+    .eq("target_type", "glaze")
+    .eq("target_id", parsed.data.glazeId)
+    .limit(1)
+    .single();
 
-  if (error) {
-    redirect(`${returnTo}?error=${encodeURIComponent(error.message)}`);
+  if (existing) {
+    await supabase.from("user_favourites").delete().eq("id", existing.id);
+  } else {
+    await supabase.from("user_favourites").insert({
+      user_id: viewer.profile.id,
+      target_type: "glaze",
+      target_id: parsed.data.glazeId,
+    });
   }
 
   revalidateWorkspace();

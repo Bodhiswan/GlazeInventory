@@ -55,11 +55,6 @@ export interface GlazeComment {
   createdAt: string;
 }
 
-export interface GlazeRatingSummary {
-  averageRating: number | null;
-  ratingCount: number;
-  viewerRating: number | null;
-}
 
 export interface Glaze {
   id: string;
@@ -203,13 +198,35 @@ export interface UserCombinationExample {
   viewerOwnedLayerCount: number;
 }
 
+export interface CombinationComment {
+  id: string;
+  exampleId: string;
+  authorUserId: string;
+  authorName: string;
+  body: string;
+  createdAt: string;
+}
+
+export interface CombinationRatingSummary {
+  averageRating: number | null;
+  ratingCount: number;
+  viewerRating: number | null;
+}
+
+export interface UserFavourite {
+  id: string;
+  targetType: "glaze" | "combination";
+  targetId: string;
+  createdAt: string;
+}
+
 export interface GlazeDetail {
   glaze: Glaze;
   firingImages: GlazeFiringImage[];
   comments: GlazeComment[];
   viewerOwnsGlaze: boolean;
   viewerInventoryItem?: InventoryItem | null;
-  rating: GlazeRatingSummary;
+  viewerHasFavourited: boolean;
 }
 
 export interface Report {

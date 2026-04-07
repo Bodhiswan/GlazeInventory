@@ -1,0 +1,138 @@
+{
+  "id": "amaco-blog/amaco-fall-layering-favorites",
+  "sourceType": "amaco-blog-post",
+  "sourceName": "AMACO Blog",
+  "title": "Amaco Fall Layering Favorites",
+  "sourceUrl": "https://amaco.com/resources/blog/amaco-fall-layering-favorites",
+  "cone": "Cone 6",
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "Ah, fall! The time of year when we can embrace coziness without feeling chilled. Time for hot cocoa, crisp nights, apple picking and sweaters. Time to put out our autumn decor and drink from our favorite mugs. If you find yourself in the studio, ready to glaze some mugs or other pieces, here are some of my favorite autumn-themed glaze combos, just ripe for the picking! Ripe Wheat PC-68 Golden Honey over PCF-60 Sun Beam This combination reminds me of fields of ripe wheat, bales of straw, and cornfields. Warm and welcoming as a pot of honey, I love the depth these two yellow glazes give each other. 2 coats over 2 coats, fired to cone 6 on A-Mix White Stoneware. Blackberry Harvest PC-57 Smokey Merlot over SH-46 Matcha Matte Shino Smokey Merlot is one of the Potter\u2019s Choice glazes that can look different depending on what it\u2019s paired with, in this case the warm green of Matcha Matte Shino. Matcha Matte is rustic and earthy, showing a dark brown where thinner and its green color where applied thicker and in texture. Smokey Merlot is a rich purple-red gloss that can be grayer alone or more purple when applied over Obsidian. With Matcha Matte, Smokey Merlot shows its dark ruby side, looking like blackberry syrup. The contrast of dark burgundy with satiny brown and green is so inviting. This mug is 3 coats of PC-57 Smokey Merlot over 3 coats of SH46 Matcha Matte Shino, fired to cone 6 on A-Mix White Stoneware. Purple Magic PC-66 Cosmic Oil Spot over C-57 Mulberry This combo is magical and mystical, perfect for Halloween! The deep purple of Mulberry is enhanced by the dark sparkle of Cosmic Oil Spot. Perfect for potions bottles. This is 3 coats of PC66 Cosmic Oil Spot over 3 coats of C-57 Mulberry Celadon, fired to cone 6 on A-Mix White Stoneware. Maple Butter PCF-18 Honeydew over PC-59 Deep Firebrick For fluid drama, Potters Choice Flux glazes over a stable PC like Deep Firebrick is a great way to play with layers and flow. Honeydew flows over Deep Firebrick, creating lovely patterns. This cup is 2 coats of PC-59 Deep Firebrick all over, followed by 2 coats of PCF-18 Honeydew just on the top third of the cup. It was fired to cone 6 on A-Mix White Stoneware. Corn Maze CR-61 Speckled Yellow Crawl over SM-53 Cayenne Crawls over Satin Mattes are really stable, and so much fun! To me this combo looks like an ear of corn, or dry cracked earth. I want to drink a hot cider from it on a cool evening. 2 coats of CR-61 Speckled Yellow over 3 coats of SM-53 Cayenne, fired to cone 5 on A-Mix White Stoneware. Now I\u2019m going to have a cup of cocoa and enjoy the cooler weather. What are your favorite fall glazes and glaze combinations?",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "PC-68",
+      "name": "Golden Honey",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PCF-60",
+      "name": "Sunbeam",
+      "line": "Potter's Choice Flux"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-57",
+      "name": "Smokey Merlot",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "SH-46",
+      "name": "Matcha Matte",
+      "line": "Shino"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-66",
+      "name": "Cosmic Oilspot",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-57",
+      "name": "Mulberry",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PCF-18",
+      "name": "Honeydew",
+      "line": "Potter's Choice Flux"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-59",
+      "name": "Deep Firebrick",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "CR-61",
+      "name": "Speckled Yellow",
+      "line": "Crawls"
+    },
+    {
+      "brand": "AMACO",
+      "code": "SM-53",
+      "name": "Cayenne",
+      "line": "Satin Matte"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc437cb8da1",
+      "sha256": "5ac499939e11dfd12731ca4177ab430a3c4ead5233b554973681fbd888c30986",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "02.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc437446a09",
+      "sha256": "101e23947b5307f1e797a83f524fab85acc0290e26c2394a4125be50f7403d77",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "03.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc43b2e0b0c",
+      "sha256": "a3a0b92321b6741645488545c4019ad3507b8df8fbc08608ecc6ee3fa6c7e354",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "04.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc43d676f13",
+      "sha256": "75f0dc0a536a23f110bd7a4be2800be665c2f37c9c011aca639e54ee0c92309d",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "05.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc4406ee543",
+      "sha256": "270a356d7ff488da54af6f6db8a3313eb715ce5ce9a5a646c59c43be07104720",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "06.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc4418b72bf",
+      "sha256": "325e5601eff6e8ba1171488f2c706d4b659011e1564db79ea13ac5e60351c486",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "07.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc443a1d078",
+      "sha256": "02b3fe02209932729d3aebf761d66fc663ce9abdab9a734b4ea82bb9ff3d4d37",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "08.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc44721222e",
+      "sha256": "e052835195aff307a0bbfa3e80737a3dffe9ef6dc2bff2a1bde75389270646eb",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "09.jpg",
+      "remoteUrl": "https://amaco.com/asset/68cc447d0ff1f",
+      "sha256": "8bb68cc4eb2dd63421d7a3cfe029d26fa181948b30cb5b83b5eece78668e860d",
+      "width": 900,
+      "height": 1200
+    }
+  ]
+}

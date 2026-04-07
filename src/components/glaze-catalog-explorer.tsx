@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Search, X } from "lucide-react";
+import { ChevronDown, Heart, Search, X } from "lucide-react";
 import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
-import { setGlazeInventoryStateAction } from "@/app/actions";
+import { setGlazeInventoryStateAction, toggleFavouriteInlineAction } from "@/app/actions";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
+import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -212,6 +213,7 @@ export function GlazeCatalogExplorer({
   restrictToPreferredExamples,
   isAdmin,
   reviewMode,
+  favouriteGlazeIds = [],
 }: {
   glazes: Glaze[];
   brandCounts: Array<[string, number]>;
@@ -223,6 +225,7 @@ export function GlazeCatalogExplorer({
   restrictToPreferredExamples: boolean;
   isAdmin: boolean;
   reviewMode: boolean;
+  favouriteGlazeIds?: string[];
 }) {
   const [query, setQuery] = useState("");
   const [brandFilters, setBrandFilters] = useState<string[]>([]);
@@ -243,6 +246,8 @@ export function GlazeCatalogExplorer({
   const [optimisticInventoryStates, setOptimisticInventoryStates] = useState(inventoryStates);
   const [pendingGlazeIds, setPendingGlazeIds] = useState<string[]>([]);
   const [ownershipErrors, setOwnershipErrors] = useState<Record<string, string | null>>({});
+  const [favouritedGlazeIds, setFavouritedGlazeIds] = useState<Set<string>>(() => new Set(favouriteGlazeIds));
+  const [pendingFavouriteIds, setPendingFavouriteIds] = useState<string[]>([]);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   const deferredQuery = useDeferredValue(query);
@@ -630,6 +635,26 @@ export function GlazeCatalogExplorer({
     setPendingGlazeIds((current) => current.filter((value) => value !== glazeId));
   }
 
+  async function handleFavouriteToggle(glazeId: string) {
+    if (pendingFavouriteIds.includes(glazeId)) return;
+    const wasFavourited = favouritedGlazeIds.has(glazeId);
+    setPendingFavouriteIds((current) => [...current, glazeId]);
+    setFavouritedGlazeIds((current) => {
+      const next = new Set(current);
+      wasFavourited ? next.delete(glazeId) : next.add(glazeId);
+      return next;
+    });
+    const result = await toggleFavouriteInlineAction("glaze", glazeId);
+    if (result.error) {
+      setFavouritedGlazeIds((current) => {
+        const next = new Set(current);
+        wasFavourited ? next.add(glazeId) : next.delete(glazeId);
+        return next;
+      });
+    }
+    setPendingFavouriteIds((current) => current.filter((id) => id !== glazeId));
+  }
+
   return (
     <div className="space-y-6">
       {isAdmin ? (
@@ -657,6 +682,17 @@ export function GlazeCatalogExplorer({
                 className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
               />
             </div>
+
+            {!isGuest ? (
+              <div className="flex justify-end">
+                <Link
+                  href="/glazes/new"
+                  className={buttonVariants({ variant: "ghost", size: "sm" })}
+                >
+                  + Add custom glaze
+                </Link>
+              </div>
+            ) : null}
 
             <div className="overflow-hidden border border-border/80 bg-panel">
               <button
@@ -990,7 +1026,7 @@ export function GlazeCatalogExplorer({
             className="flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-background sm:mt-[4vh]"
             onClick={(event) => event.stopPropagation()}
           >
-            {/* Sticky header — title + ownership + close all in one bar */}
+            {/* Sticky header — title + favourite + close */}
             <div className="border-b border-border px-4 py-3 sm:px-5">
               <div className="flex items-center gap-3">
                 <div className="min-w-0 flex-1">
@@ -1001,6 +1037,19 @@ export function GlazeCatalogExplorer({
                 </div>
                 <button
                   type="button"
+                  disabled={pendingFavouriteIds.includes(activeGridItem.glaze.id)}
+                  onClick={() => void handleFavouriteToggle(activeGridItem.glaze.id)}
+                  className={`inline-flex items-center gap-1.5 border px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] transition disabled:opacity-50 ${
+                    favouritedGlazeIds.has(activeGridItem.glaze.id)
+                      ? "border-foreground bg-foreground text-background"
+                      : "border-border bg-white text-muted hover:text-foreground"
+                  }`}
+                >
+                  <Heart className={`h-3.5 w-3.5 ${favouritedGlazeIds.has(activeGridItem.glaze.id) ? "fill-current" : ""}`} />
+                  {favouritedGlazeIds.has(activeGridItem.glaze.id) ? "Favourited" : "Favourite"}
+                </button>
+                <button
+                  type="button"
                   onClick={() => setActiveGridGlazeId(null)}
                   className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
                   aria-label="Close glaze details"
@@ -1008,11 +1057,10 @@ export function GlazeCatalogExplorer({
                   <X className="h-4 w-4" />
                 </button>
               </div>
-              {/* Ownership buttons + links — same row zone as close */}
+              {/* Inventory state + links */}
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <InventoryStatePicker
                   status={optimisticInventoryStates[activeGridItem.glaze.id]?.status ?? "none"}
-                  compact
                   showEmpty={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
                   allowRemove={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
                   onChange={(nextStatus) => {
@@ -1020,11 +1068,12 @@ export function GlazeCatalogExplorer({
                   }}
                   pending={pendingGlazeIds.includes(activeGridItem.glaze.id)}
                   error={ownershipErrors[activeGridItem.glaze.id] ?? null}
+                  tiny
                 />
                 {activeGridItem.glaze.code ? (
                   <Link
                     href={`/combinations?q=${encodeURIComponent(activeGridItem.glaze.code)}`}
-                    className={buttonVariants({ variant: "ghost", size: "sm" })}
+                    className="inline-flex items-center border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-foreground"
                   >
                     Combinations
                   </Link>
@@ -1034,7 +1083,7 @@ export function GlazeCatalogExplorer({
                     href={getManufacturerUrl(activeGridItem.glaze.brand)!}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={buttonVariants({ variant: "ghost", size: "sm" })}
+                    className="inline-flex items-center border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-foreground"
                   >
                     {activeGridItem.glaze.brand} website
                   </a>
@@ -1152,6 +1201,7 @@ export function GlazeCatalogExplorer({
                     </details>
                   ) : null}
 
+                  <GlazeCommentsPanel glazeId={activeGridItem.glaze.id} />
                 </div>
               </div>
             </div>

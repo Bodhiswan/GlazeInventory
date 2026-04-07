@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Molten Stone</title>
+  <desc id="desc">Fallback Spectrum glaze tile for 908</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8eee3" />
+      <stop offset="50%" stop-color="#dcc5ae" />
+      <stop offset="100%" stop-color="#7c6659" />
+    </linearGradient>
+    <linearGradient id="band" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d4350" />
+      <stop offset="100%" stop-color="#18242d" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="1200" fill="url(#bg)" />
+  <circle cx="960" cy="240" r="220" fill="#ffffff" fill-opacity="0.16" />
+  <circle cx="210" cy="980" r="280" fill="#ffffff" fill-opacity="0.1" />
+  <rect x="96" y="96" width="1008" height="1008" rx="36" fill="#fffaf4" fill-opacity="0.72" stroke="#ffffff" stroke-opacity="0.58" />
+  <rect x="156" y="156" width="888" height="162" rx="24" fill="url(#band)" />
+  <text x="600" y="257" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="90" font-weight="700" fill="#f8f3ec">908</text>
+  <text x="600" y="548" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="92" font-weight="700" fill="#1e1d1b">Molten Stone</text>
+  <text x="600" y="648" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="42" letter-spacing="8" fill="#615247">LOCAL FALLBACK IMAGE</text>
+  <text x="600" y="730" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="46" fill="#3c332d">900 Series Low Stone Glazes</text>
+  <text x="600" y="1008" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="34" fill="#5f5148">Replace with a product photo when a stable vendor source is available.</text>
+</svg>

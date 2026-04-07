@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
-import { Star } from "lucide-react";
+import { Heart } from "lucide-react";
 
 import {
   addGlazeCommentAction,
-  setGlazeRatingAction,
+  toggleGlazeFavouriteAction,
 } from "@/app/actions";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { GlazeOwnershipPanel } from "@/components/glaze-ownership-panel";
@@ -45,7 +45,7 @@ export default async function GlazeDetailPage({
     notFound();
   }
 
-  const { glaze } = detail;
+  const { glaze, viewerHasFavourited } = detail;
   const coyoteGalleryImages =
     glaze.brand === "Coyote" && glaze.code
       ? (coyoteLocalGallery[glaze.code as keyof typeof coyoteLocalGallery] ?? []).map((image) => ({
@@ -61,8 +61,6 @@ export default async function GlazeDetailPage({
   const skim = getGlazeSkimDescription(glaze);
   const error = pageParams.error;
   const saved = pageParams.saved;
-  const averageRatingLabel =
-    detail.rating.averageRating === null ? "No ratings yet" : `${detail.rating.averageRating.toFixed(1)} / 5`;
   const heroImage =
     pickPreferredGlazeImage(
       glaze,
@@ -100,6 +98,17 @@ export default async function GlazeDetailPage({
                 Combinations
               </Link>
             ) : null}
+            <form action={toggleGlazeFavouriteAction}>
+              <input type="hidden" name="glazeId" value={glaze.id} />
+              <input type="hidden" name="returnTo" value={`/glazes/${glaze.id}`} />
+              <button
+                type="submit"
+                className={buttonVariants({ variant: viewerHasFavourited ? "primary" : "ghost", className: "gap-2" })}
+              >
+                <Heart className={`h-4 w-4 ${viewerHasFavourited ? "fill-current" : ""}`} />
+                {viewerHasFavourited ? "Favourited" : "Favourite"}
+              </button>
+            </form>
           </>
         }
       />
@@ -186,67 +195,7 @@ export default async function GlazeDetailPage({
           ) : null}
         </Panel>
 
-        <div className="space-y-4">
-          <Panel className="space-y-4">
-            <div>
-              <p className="text-sm uppercase tracking-[0.2em] text-muted">Community rating</p>
-              <h2 className="display-font mt-2 text-3xl tracking-tight">{averageRatingLabel}</h2>
-              <p className="mt-2 text-sm leading-6 text-muted">
-                {detail.rating.ratingCount
-                  ? `${detail.rating.ratingCount} ratings from members.`
-                  : "No one has rated this glaze yet."}
-              </p>
-            </div>
-
-            <div className="flex flex-wrap items-center gap-2">
-              {Array.from({ length: 5 }, (_, index) => {
-                const ratingValue = index + 1;
-                const filled = detail.rating.averageRating !== null && ratingValue <= Math.round(detail.rating.averageRating);
-
-                return (
-                  <Star
-                    key={`average-${ratingValue}`}
-                    className={`h-5 w-5 ${filled ? "fill-foreground text-foreground" : "text-border"}`}
-                  />
-                );
-              })}
-            </div>
-
-              <div className="space-y-3">
-                <p className="text-sm font-medium text-foreground">
-                  Your rating: {detail.rating.viewerRating ? `${detail.rating.viewerRating} / 5` : "Not rated yet"}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {Array.from({ length: 5 }, (_, index) => {
-                    const ratingValue = index + 1;
-                    const isActive = detail.rating.viewerRating !== null && ratingValue <= detail.rating.viewerRating;
-
-                    return (
-                      <form key={`rate-${ratingValue}`} action={setGlazeRatingAction}>
-                        <input type="hidden" name="glazeId" value={glaze.id} />
-                        <input type="hidden" name="rating" value={ratingValue} />
-                        <input type="hidden" name="returnTo" value={`/glazes/${glaze.id}`} />
-                        <button
-                          type="submit"
-                          className={buttonVariants({
-                            variant: isActive ? "primary" : "ghost",
-                            size: "sm",
-                            className: "gap-2",
-                          })}
-                        >
-                          <Star className={`h-4 w-4 ${isActive ? "fill-current" : ""}`} />
-                          {ratingValue}
-                        </button>
-                      </form>
-                    );
-                  })}
-                </div>
-              </div>
-          </Panel>
-
-        </div>
       </section>
-
 
       <section className="space-y-4">
         <div>

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { AppShellNav } from "@/components/app-shell-nav";
+import { ChangelogBanner } from "@/components/changelog-banner";
 import { UserMenu } from "@/components/user-menu";
 import type { Viewer } from "@/lib/types";
 
@@ -41,6 +42,7 @@ export function AppShell({
         </header>
 
         <main id="main-content" className="min-w-0 pb-6">
+          <ChangelogBanner />
           {children}
         </main>
       </div>

@@ -1,5 +1,5 @@
 import { InventoryWorkspace } from "@/components/inventory-workspace";
-import { getInventory, requireViewer } from "@/lib/data";
+import { getFavouriteIds, getInventory, getUserCombinationExamples, getPublishedCombinationPosts, requireViewer } from "@/lib/data";
 import { formatSearchQuery } from "@/lib/utils";
 
 export default async function InventoryPage({
@@ -8,9 +8,17 @@ export default async function InventoryPage({
   searchParams: Promise<{ error?: string }>;
 }) {
   const viewer = await requireViewer();
-  const inventory = await getInventory(viewer.profile.id);
+  const [inventory, userExamples, publishedPosts, favouriteGlazeIds] = await Promise.all([
+    getInventory(viewer.profile.id),
+    getUserCombinationExamples(viewer.profile.id),
+    getPublishedCombinationPosts(viewer.profile.id),
+    getFavouriteIds(viewer.profile.id, "glaze"),
+  ]);
   const params = await searchParams;
   const error = formatSearchQuery(params.error);
+
+  const myCombinationPosts = publishedPosts.filter((p) => p.authorUserId === viewer.profile.id);
+  const myUserExamples = userExamples.filter((ue) => ue.authorUserId === viewer.profile.id);
 
   return (
     <div className="space-y-6">
@@ -25,6 +33,9 @@ export default async function InventoryPage({
         firingImageMap={{}}
         preferredCone={viewer.profile.preferredCone ?? null}
         preferredAtmosphere={viewer.profile.preferredAtmosphere ?? null}
+        myUserExamples={myUserExamples}
+        myCombinationPosts={myCombinationPosts}
+        favouriteGlazeIds={favouriteGlazeIds}
       />
     </div>
   );

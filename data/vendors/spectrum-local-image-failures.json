@@ -1,0 +1,62 @@
+[
+  {
+    "code": "140",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/140.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "904",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/904.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "905",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/905.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "908",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/908.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "914",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/914.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "922",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/922.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "923",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/923.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "925",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/925.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "926",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/926.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "927",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/927.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "929",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/929.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "936",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/936.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "937",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/937.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "955",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/955.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  },
+  {
+    "code": "962",
+    "error": "HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Max retries exceeded with url: /wp-content/uploads/2020/02/962.jpg (Caused by ReadTimeoutError(\"HTTPSConnectionPool(host='www.spectrumglazes.com', port=443): Read timed out. (read timeout=10)\"))"
+  }
+]

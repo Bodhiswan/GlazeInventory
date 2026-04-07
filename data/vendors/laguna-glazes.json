@@ -1,0 +1,2922 @@
+[
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-18",
+    "name": "Robins Egg",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_8925a95f-ea47-40a1-a9eb-dcb6ee17dca2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-18-robins-egg-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-20",
+    "name": "Royal Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_9029238d-b506-4b34-ad44-cdab67cf9c72.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-20-royal-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-220",
+    "name": "Nebula Blue Base",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms220-v2_598b954d-dcf1-4d5c-8efc-be011be9339d.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-220-nebula-blue-base-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-222",
+    "name": "Sang De Boeuf",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms222-v2_91c9aed2-25b2-42e2-9254-a04145fd2dde.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-222-sang-de-boeuf-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-223",
+    "name": "Desert Sunset",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms223-v2_d81faf66-4d9d-4948-84cc-40d94f48b91a.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-223-desert-sunset-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-224",
+    "name": "Mint Spice",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms224-v2_902d90de-a4ff-4426-a078-12ec39d55fc2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-224-mint-spice-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-225",
+    "name": "Smokey Gray",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms225-v2_5124e1c9-ed40-43ae-a879-d0979d45dfd7.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-225-smokey-gray-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-227",
+    "name": "Lime Burst",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms227-v2_cc9973c6-f78c-454a-a19e-1222c9548437.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-227-lime-burst-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-228",
+    "name": "Sea Gold",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms228-v2_e3f521fe-e777-43d6-aa49-d17aa40fa7b3.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-228-sea-gold-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-229",
+    "name": "Sea Grass",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms229-v2_5d54b77d-3b40-4cd8-a8a8-2647efff75d0.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-229-sea-grass-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-230",
+    "name": "Desert Sand",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms230-v2_9c603932-b815-43d0-be50-ae2a3fe701aa.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-230-desert-sand-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-32",
+    "name": "Chun Red",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_3597c341-639d-4712-8dea-413d1639b22a.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-32-chun-red-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-37",
+    "name": "Turkish Amber",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ef5e3b3e-12ca-4715-849d-76bb8ee9e92e.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-37-turkish-amber-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-4",
+    "name": "Forest Green",
+    "cone": "Cone 5/6",
+    "description": "2nd Image: on B-Mix with Speckles fired to cone 5",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_f8e872a8-934b-478b-b56e-d2ae368b87e2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-4-forest-green-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-41",
+    "name": "Batik Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_1f925d0e-b9e4-457c-a71e-4ee798776df1.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-41-batik-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-44",
+    "name": "Mottled Spice",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ae05b1dc-01f1-4469-aadd-e9d0b29fa6f3.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-44-mottled-spice-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-47",
+    "name": "Castile Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_91e58dbc-268e-4367-b564-a1dc598b934e.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-47-castile-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-48",
+    "name": "Rafia",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_a01d6ee2-eaee-4188-be25-18580fce824f.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-48-rafia-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-49",
+    "name": "Oasis Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_fcfa8419-d722-4d33-a7bd-b1c02f2d6fde.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-49-oasis-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-5",
+    "name": "Speckled Blue/Gray",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_9ab1c9d1-2e23-4d7c-8312-af61543eca66.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-5-speckled-blue-gray-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-54",
+    "name": "Emeraude",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_e070c52f-1fef-4755-8fa1-e5e210b02738.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-54-emeraude-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-56",
+    "name": "Hyacinth",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ca9747fe-5026-4e9f-8531-8f1f956592b6.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-56-hyacinth-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-57",
+    "name": "Cappuccino",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_70fd161f-3761-4591-b4dc-0e26dadede51.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-57-cappuccino-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-63",
+    "name": "White Gloss",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_43abf27a-32a4-4802-b220-460f49f54739.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-63-white-gloss-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-74",
+    "name": "Spring Green",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_620bccdc-602d-48d0-8546-97c52c22d758.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-74-spring-green-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-94",
+    "name": "High Gloss Black",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/MS-94_High_Gloss_Black.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-94-black-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-95",
+    "name": "Peacock",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_43f1cee1-70eb-4366-85a1-6de8f190517d.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-95-peacock-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-22",
+    "name": "Green Tweed",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_252662b5-8d54-4e6a-8b5f-ec30f83a0ae8.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-22-green-tweed-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-62",
+    "name": "Oatmeal",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_6aa6f8ff-7e4f-4d03-9640-3f97c643275b.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-62-oatmeal-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-60",
+    "name": "Walnut Spice",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_104d04dd.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-60-walnut-spice-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-261",
+    "name": "Silk Black",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms261-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-261-silk-black-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-67",
+    "name": "Semi-Clear Matte",
+    "cone": "Cone 5/6",
+    "description": "A semi matte clear. Matte clears are particularly sensitive to thickness and firing temperature.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_bc3b3086-eeb9-4e39-8565-915491b47e70.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-67-semi-clear-matte-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-250",
+    "name": "White Pebble Base",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms250.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-250-white-pebble-base-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-260",
+    "name": "Charcoal",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms260-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-260-charcoal-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-26",
+    "name": "Snow Flake",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_2556c0f7-e403-49e2-a1d5-6d833207826b.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-26-snow-flake-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-35",
+    "name": "Sage Matte",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_11132472-b928-4a20-b639-9f628c554bbd.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-35-sage-matt-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-55",
+    "name": "Antique Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_db58dd00-97d2-4a7e-b6bb-40fe5d8bce20.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-55-antique-blue-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-33",
+    "name": "Bamboo Ash Matte",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_8f334020-8e6c-4c40-828b-44faef4ce3db.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-33-bamboo-ash-matt-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-23",
+    "name": "Dark Turquoise",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_524e205e-0b26-4c12-96b8-ff128edf5841.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-23-dark-turquoise-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-51",
+    "name": "Pippin Green",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_0e666e3a-bb5a-4789-87d0-dcdcd8270602.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-51-pippin-green-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-255",
+    "name": "Aqua Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms255-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-255-aqua-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-257",
+    "name": "Chocolate",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms257-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-257-chocolate-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-258",
+    "name": "Antique Turquoise",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms258-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-258-antique-turquoise-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-259",
+    "name": "Old Copper",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms259-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-259-old-copper-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-262",
+    "name": "Milky Way Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms262-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-262-milky-way-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-263",
+    "name": "Olive Leaf",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms263.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-263-olive-leaf-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-264",
+    "name": "Taupe",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms264-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-264-taupe-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-265",
+    "name": "Tangerine Ice",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms265-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-265-tangerine-ice-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-266",
+    "name": "Ruby Dust",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms266-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-266-ruby-dust-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-267",
+    "name": "Milky Garnet",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms267-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-267-milky-garnet-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-254",
+    "name": "Sea Foam",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms254-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-254-sea-foam-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-38",
+    "name": "Fern Mist",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_fd03af54-e01b-4f39-9496-9e722c69d503.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-38-fern-mist-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-36",
+    "name": "Blue Frost Matte",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_8f779988-d3f7-485d-982a-a8e8ef7a4172.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-36-blue-frost-matte-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-13",
+    "name": "Lemon Yellow",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ad6812e9-afe2-439f-b916-cfbd5f07abef.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-13-lemon-yellow-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-251",
+    "name": "Yellow Ore",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms251.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-251-yellow-ore-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-12",
+    "name": "Redwood Matte",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_45e9add1-c024-4809-8efc-5571a9f1b945.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-12-redwood-matte-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-15",
+    "name": "Ochre",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_73bfd6cd-f7c8-4480-87a8-cfd8853cedbf.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-15-ochre-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-42",
+    "name": "Speckled Moss",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_0e666e3a-bb5a-4789-87d0-dcdcd8270602.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-42-speckled-moss-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-43",
+    "name": "Amethyst Matte",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_8f334020-8e6c-4c40-828b-44faef4ce3db.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-43-amethyst-matte-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-46",
+    "name": "Agate",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_db58dd00-97d2-4a7e-b6bb-40fe5d8bce20.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-46-agate-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-52",
+    "name": "Cerulean",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_db56a831-8923-457d-9e9b-f1014e20702d.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-52-cerulean-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-58",
+    "name": "Pepperstone",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_db58dd00-97d2-4a7e-b6bb-40fe5d8bce20.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-58-pepperstone-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-9",
+    "name": "Sandy Matte",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_11132472-b928-4a20-b639-9f628c554bbd.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-9-sandy-matte-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Matte",
+    "code": "MS-19",
+    "name": "Cream",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_8f779988-d3f7-485d-982a-a8e8ef7a4172.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-19-cream-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-6",
+    "name": "Gloss Black",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ca2207ff-ad92-4eba-b4c3-a5d89315d095.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-6-gloss-black-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-65",
+    "name": "Rusty Orange",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ca2207ff-ad92-4eba-b4c3-a5d89315d095.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-65-rusty-orange-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-72",
+    "name": "French Gray",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ca2207ff-ad92-4eba-b4c3-a5d89315d095.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-72-french-gray-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-73",
+    "name": "Grape",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-73-grape-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-77",
+    "name": "Jade",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-77-jade-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-78",
+    "name": "Forest Green",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-78-forest-green-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-84",
+    "name": "Sunflower",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-84-sunflower-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-64",
+    "name": "Sunflower Yellow",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_67435dbd-7748-40c1-af10-fd8f867414f2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-64-sunflower-yellow-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-91",
+    "name": "Carnation Pink",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-91-carnation-pink-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-93",
+    "name": "Peach",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-93-peach-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-96",
+    "name": "Dynasty Red",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_b80a071a-6de0-4c69-bcb4-dbca7b545363.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-96-dynasty-red-5-6-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-97",
+    "name": "Mandarin Orange",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-97-mandarin-orange-5-6-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-98",
+    "name": "Red Satin",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-98-red-satin_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "code": "MS-99",
+    "name": "Orange Satin",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-99-orange-satin_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Sand Clear",
+    "code": "MS-29",
+    "name": "Clear Bright",
+    "cone": "Cone 5/6",
+    "description": "One of Laguna's most famous glazes. A dependable glossy clear that fits many claybodies.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_1a637b09-3655-42ae-bf03-92d3e5c7e48e.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-29-clear-bright-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Sand Clear",
+    "code": "MS-100",
+    "name": "Infinite Clear",
+    "cone": "Cone 5/6",
+    "description": "A glossy bright clear with excellent transparency. Zinc free and gives vibrant color when used with underglazes.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms100clear_616c8a73-a176-471e-997c-ac39a1b77083.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-100-infinite-clear-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-300",
+    "name": "Clear",
+    "cone": "Cone 5/6",
+    "description": "A glossy bright clear base with a somewhat stiff melt that won't run onto kiln shelves. Zinc-free.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms_300.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-300-versa-5-clear_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-301",
+    "name": "White",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_4a799663-9f16-4157-aa4b-ec4a522d0813.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-301-versa-5-white-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-302",
+    "name": "Turquoise",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_2a3bd869-d0ea-4e17-ac70-a8a88c2574e0.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-302-versa-5-turquoise-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-303",
+    "name": "Royal Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_5f3b7077-8f93-4704-930e-715bb36943ab.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-303-versa-5-royal-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-304",
+    "name": "Navy Blue",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_25e1bd17-1314-4ac0-9af7-5434916c1652.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-304-versa-5-navy-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-306",
+    "name": "Pink",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_65b3ff5c-4a2d-4743-b753-d81824b62b3a.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-306-versa-5-pink-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-308",
+    "name": "Dark Plum",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/ms_308_dark_plum.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-308-versa-5-dark-plum_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-309",
+    "name": "Lavender",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_c8efedc7-7ca4-49b5-b93c-9350e72df063.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-309-versa-5-lavender-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-311",
+    "name": "Black",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_d87a6fe7-b90f-4141-a832-67805ab00377.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-311-versa-5-black_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-313",
+    "name": "Green",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_9d5b3dab-fe7c-401d-ba08-691bc92e415d.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-313-versa-5-green_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-315",
+    "name": "Brown",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-315-versa-5-brown-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-317",
+    "name": "Orange",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-317-versa-5-orange_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-318",
+    "name": "Red",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-318-versa-5-red_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-319",
+    "name": "Gold Yellow",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-319-versa-5-gold-yellow-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-320",
+    "name": "Bright Yellow",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-320-versa-5-bright-yellow-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-321",
+    "name": "Chartreuse",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-321-versa-5-chartreuse-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "code": "MS-322",
+    "name": "Fern Green",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-322-versa-5-fern-green-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "code": "RG-1",
+    "name": "Mushroom",
+    "cone": "Cone 5",
+    "description": "Second image on B-Mix clay",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/rg_1_mushroom-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/rg-1-mushroom-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "code": "RG-2",
+    "name": "Monstera",
+    "cone": "Cone 5",
+    "description": "Second image on B-Mix clay",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/Monstera_RG_2-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/rg-2-monstera-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "code": "RG-3",
+    "name": "Mantis",
+    "cone": "Cone 5",
+    "description": "Second image: on B-Mix clay",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/Mantis_RG_3-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/rg-3-mantis-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "code": "RG-4",
+    "name": "Hidden Falls",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/Hidden_Falls_RG_4-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/rg-4-hidden-falls-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "code": "RG-5",
+    "name": "Bengal Tiger",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/RG5.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/rg-5-bengal-tiger-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "code": "RG-6",
+    "name": "Cocoa Nibs",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/Coco_Nibs_RG_6-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/rg-6-cocoa-nibs-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "code": "RG-7",
+    "name": "Tree Frog",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/Tree_Frog_RG_7-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/rg-7-tree-frog-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "code": "RG-8",
+    "name": "Crocodile Lake",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/Crocodile_Lake_RG_8-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/rg-8-crocodile-lake-5-glaze-pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-100",
+    "name": "Celadon Froth",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_100_celadon_froth.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-100-celadon-froth-5-glaze_pt-1"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-101",
+    "name": "Brilliant Sunburn",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_101_brilliant_sunburn.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-101-brilliant-sunburn-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-102",
+    "name": "Pink Ice",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_102_pink_ice.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-102-pink-ice-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-103",
+    "name": "Translucent Cream",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/WC_103_Translucent_Cream.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-103-translucent-cream-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-104",
+    "name": "Caramel Steam",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/WC_104_Caramel_Steam.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-104-caramel-steam-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-105",
+    "name": "Atlantis Aqua",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_105_atlantis_aqua.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-105-atlantis-aqua-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-106",
+    "name": "Layered Fern",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_106_layered_fern.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-106-layered-fern-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-107",
+    "name": "Antique Jade",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_107_antique_jade.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-107-antique-jade-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-108",
+    "name": "Power Turquoise",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_108_power_turquoise.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-108-power-turquoise-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-109",
+    "name": "Stormy Blue-Gray",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_109_stormy_blue_gray.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-109-stormy-blue-gray-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-110",
+    "name": "Turbulent Indigo",
+    "cone": "Cone 5",
+    "description": "Semi-opaque glaze in the Laguna Cone 5 Mystic Series",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_110_turbulent_indigo.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-110-turbulent-indigo-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-111",
+    "name": "Spotted Blue",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_111_spotted_blue.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-111-spotted-blue-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "code": "WC-113",
+    "name": "Mojave Dusk",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_113_mojave_dusk.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-113-mojave-dusk-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "code": "WC-130",
+    "name": "Fractal Cream",
+    "cone": "Cone 5",
+    "description": "Transparent base glaze in Laguna Cone 5 Crackle series that fracture light and show off color. Lead-free, non-toxic, not dinnerware-safe due to bacterial growth risk in fractured surfaces.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_130_fracture.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-130-fractal-cream-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "code": "WC-134",
+    "name": "Emerald Isle",
+    "cone": "Cone 5",
+    "description": "Crackle glaze, lead-free and non-toxic. Not dinnerware-safe.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "code": "WC-135",
+    "name": "Lacy Mauve",
+    "cone": "Cone 5",
+    "description": "Crackle glaze, lead-free and non-toxic. Not dinnerware-safe.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "code": "WC-136",
+    "name": "Catalina Crackle",
+    "cone": "Cone 5",
+    "description": "Crackle glaze in Cone 5 series, lead-free and non-toxic. Not dinnerware-safe.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-136-catalina-crackle-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "code": "WC-137",
+    "name": "Skye Crackle",
+    "cone": "Cone 5",
+    "description": "Crackle glaze, lead-free and non-toxic. Not dinnerware-safe.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "code": "WC-138",
+    "name": "Twilight Blue",
+    "cone": "Cone 5",
+    "description": "Crackle glaze, lead-free and non-toxic. Not dinnerware-safe.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "code": "WC-139",
+    "name": "Ocean Teal",
+    "cone": "Cone 5",
+    "description": "Crackle glaze, lead-free and non-toxic. Not dinnerware-safe.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "code": "WC-141",
+    "name": "Desert Skye",
+    "cone": "Cone 5",
+    "description": "Crackle glaze, lead-free and non-toxic. Not dinnerware-safe.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Crystal Blossom",
+    "code": "WC-160",
+    "name": "Lavender Filigree",
+    "cone": "Cone 5",
+    "description": "Crystalline glaze featuring three-dimensional crystal structures. Lead-free and nontoxic. Slightly raised crystal structure not recommended for high-friction dinnerware areas.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_160_lavender_filigree.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-160-lavender-filigree-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Crystal Blossom",
+    "code": "WC-161",
+    "name": "Light Crystal Tea",
+    "cone": "Cone 5",
+    "description": "Crystalline glaze producing light-toned dimensional crystals. Lead-free, nontoxic.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc161lightcrystaltea_v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-161-light-crystal-tea-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Crystal Blossom",
+    "code": "WC-162",
+    "name": "Blue Snowflakes",
+    "cone": "Cone 5",
+    "description": "Crystalline glaze producing three-dimensional snowflake-like crystals. Lead-free, nontoxic.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc162blueforest-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-162-blue-snowflakes-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Crystal Blossom",
+    "code": "WC-165",
+    "name": "Translucent Mint",
+    "cone": "Cone 5",
+    "description": "Crystalline glaze featuring translucent mint coloring with dimensional crystal growth. Lead-free and nontoxic.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc165translucentmint-v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-165-translucent-mint-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Crystal Blossom",
+    "code": "WC-166",
+    "name": "Crystal Forest",
+    "cone": "Cone 5",
+    "description": "Crystalline glaze with forest-inspired coloring and dimensional crystal structures. Lead-free, nontoxic.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_166_crystal_forest.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-166-crystal-forest-5-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Crystal Blossom",
+    "code": "WC-167",
+    "name": "Plum Blossom Green",
+    "cone": "Cone 5",
+    "description": "Crystalline glaze producing dimensional crystal formations in green tones. Lead-free and nontoxic.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/wc_167_plum_blossom_green.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-167-plum-blossom-green-5_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-100",
+    "name": "Fossil White",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds. Works well with most clay bodies and adheres securely. Suitable for sculptural work and decorative exterior applications.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-101",
+    "name": "Teton Teal",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-102",
+    "name": "Metamorphic Blue",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-104",
+    "name": "Glacier Ice Light Blue",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-105",
+    "name": "Black Ore",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-108",
+    "name": "Lava Lakes Red",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-109",
+    "name": "Hoo Doo Orange",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-110",
+    "name": "Sulfur Vent Yellow",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "code": "DL-111",
+    "name": "Open Meadow Green",
+    "cone": "Cone 5",
+    "description": "Texture-producing glaze inspired by Death Valley dry lake beds.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/collections/designer-effects"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Metallic",
+    "code": "LM-1",
+    "name": "Metallic Bronze",
+    "cone": "Cone 5",
+    "description": "Designer effects dry metallic glaze.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/LM1metallicbronze_v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/lm-1-metallic-bronze-5-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Metallic",
+    "code": "LM-2",
+    "name": "Gun Metal",
+    "cone": "Cone 5",
+    "description": "Designer effects dry metallic glaze.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/LM2gunmetal_v2_5182e416-6b8c-42e1-86b4-5d454a114bc7.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/lm-2-gun-metal-5-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Designer Effects - Metallic",
+    "code": "LM-3",
+    "name": "Black Pearl",
+    "cone": "Cone 5",
+    "description": "Designer effects dry metallic glaze.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/LM3blackpearlv2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/lm-3-black-pearl-5-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1004",
+    "name": "Golden Aspen",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_4b11ae84-c7d9-4400-bbdf-17196129f6c0.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1004-golden-aspen-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1009",
+    "name": "Spring Green",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_df430bc9-3017-4da5-8b97-d64df943d1cf.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1009-spring-green-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1010",
+    "name": "Elfin Green",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_071b1e3a-b7a2-4df1-bff3-3092a52f914f.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1010-elfin-green-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1011",
+    "name": "Frog's Pond Blue",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_c2f4fa60-5da3-47fc-821f-4acef438caa6.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1011-frogs-pond-blue_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1013",
+    "name": "Fairy Blue",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_6961ac88-d622-4e9d-b11a-f5ba6c70a8bf.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1013-fairy-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1014",
+    "name": "Dutch Blue",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_fee9e8b7-a4d7-4292-9702-802209e633d5.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1014-dutch-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1019",
+    "name": "Nude",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_6db48723-e287-4096-983e-d4d32f3ffb9c.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1019-nude-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1021",
+    "name": "Sunburst",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_5a25ed1e-4030-41dc-9d76-d9a75c867b75.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1021-sunburst-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1022",
+    "name": "Azure Green",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_4dc8291b-7182-4cb7-a6d2-e1085b2f3955.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1022-azure-green-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1023",
+    "name": "Danish Blue",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_b77d0052-6f8e-49d8-b091-51719202192f.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1023-danish-blue-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1024",
+    "name": "Maple Sugar",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_4d6bab6e-55ad-4c0b-b593-14a9351fcfec.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1024-maple-sugar-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1027",
+    "name": "Apple Green",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_a14ff224-e4f1-4f67-85e0-92ac161e5863.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1027-apple-green-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1033",
+    "name": "Kitchen Yellow",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_96962dfb-334d-464a-86f3-dcb9abd9737b.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1033-kitchen-yellow-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1050",
+    "name": "Super Clear",
+    "cone": "Cone 05/06",
+    "description": "A glossy bright low-fire clear glaze with excellent transparency that is zinc free.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/em1050clear.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1050-super-clear-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1053",
+    "name": "Matte Clear",
+    "cone": "Cone 05/06",
+    "description": "A satin matte low-fire clear glaze that is zinc free and gives vibrant color when used with underglazes.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_952a0cfa-b82e-487e-9e7c-41441fe604d4.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1053-matte-clear-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1102",
+    "name": "Taupe",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_159d0284-5b21-461c-bcf8-12035ff911de.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1102-taupe_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1105",
+    "name": "Pink Blush",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ca2bb869-f293-44fa-8ca3-a82dad94539b.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1105-pink-blush_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1106",
+    "name": "Cloud Pink",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_38c2a3f9-da10-49e4-a1ef-0fc67f0939eb.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1106-cloud-pink_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1108",
+    "name": "Maroon",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_02d7441c-cba2-49ab-94cb-a26e12d11d09.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1108-maroon_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1113",
+    "name": "Marigold",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_9ca62200-85dc-43b2-8393-e8a2a97fedec.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1113-marigold_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1115",
+    "name": "Jade Green",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_a9c45be2-c0a2-45a4-92da-b49462b7dc4d.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1115-jade-green_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1116",
+    "name": "Blue Teal",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_2d41b660-37ba-4b7b-bf28-630ccb110489.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1116-blue-teal_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1117",
+    "name": "Wedgewood",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_c192590a-478f-40d5-be4d-cdfdf8a654ba.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1117-wedgewood_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1119",
+    "name": "Turquoise",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_2a53d6c7-c46f-4aa3-9798-649d9974ba1a.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1119-turquoise_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1131",
+    "name": "Black Gloss",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_1777d557-1168-46de-8c27-c695ca0d53d0.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1131-black-gloss_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1135",
+    "name": "Charcoal",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_059920c3-d6bf-4ca9-be29-a3b313b75644.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1135-charcoal_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1140",
+    "name": "Black Satin",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_81e602d5-c2ad-4fb9-b916-36747ba20421.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1140-black-satin_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1142",
+    "name": "White Satin",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_30c50bdf-2f31-4708-a6a6-ab34f6ac843b.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1142-white-satin_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1146",
+    "name": "Cool White",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_95146408-381a-4c06-ab63-5a4562b84770.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1146-cool-white_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1152",
+    "name": "River Rock",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_082dae40-3838-447e-9eec-2a00e6e193fd.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1152-river-rock_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1154",
+    "name": "Morning Green",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ee475ef4-3496-465a-9857-598f80958b3c.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1154-morning-green_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1156",
+    "name": "French Lavender",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_dc64f06b-8472-4fb4-bbef-93890d785e73.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1156-french-lavender_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1159",
+    "name": "Rootbeer",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_a8bee11f-f6e1-453a-aebd-9c1fa75a8b0e.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1159-rootbeer_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1162",
+    "name": "Grape",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_c8e6a896-e7bf-4557-80f5-a51408176c0a.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1162-grape_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1165",
+    "name": "Matador Red",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_3add9c0b-c2e4-4de6-a955-a891c34e1f22.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1165-matador-red-glaze_pint"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-1166",
+    "name": "Naranja",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_302a93f6-70b1-4a62-9aad-45a885f1d664.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-1166-naranja-06-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-2020",
+    "name": "Silky Clear",
+    "cone": "Cone 05/06",
+    "description": "A glossy bright low-fire clear glaze with excellent transparency that is zinc free.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/em2020clear_80d7f46f-4432-4c21-b30e-e3f30f4cb349.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-2020-silky-clear-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-2021",
+    "name": "High Gloss Clear",
+    "cone": "Cone 05/06",
+    "description": "A high gloss, bright, low-fire clear glaze with excellent transparency.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/em2021clear.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-2021-high-gloss-clear-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-2107",
+    "name": "Pink",
+    "cone": "Cone 06",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/em2107_v2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-2107-pink-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "code": "EM-2135",
+    "name": "Clear Gloss",
+    "cone": "Cone 06",
+    "description": "A glossy bright low-fire clear glaze with excellent transparency that is zinc free.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/em2135clear_c631f2c6-a021-4731-99e6-b7583b744cd0.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/em-2135-clear-gloss-06-glaze_pt"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-1",
+    "name": "Timoku",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-1-timoku-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-2",
+    "name": "Stardust",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-2-stardust-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-3",
+    "name": "Mystic Crystal Matte",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-3-mystic-crystal-matte-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-4",
+    "name": "Desert Sand",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-4-desert-sand-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-5",
+    "name": "Carbon Crystal Matte",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-5-carbon-crystal-matte-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-7",
+    "name": "Deep Red Tide",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-7-deep-red-tide-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-8",
+    "name": "Deep Space Shimmer",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-8-deep-space-shimmer-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-9",
+    "name": "Carbon Trap Shino",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-9-carbon-trap-shino-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-10",
+    "name": "Mint Ice Celadon",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-10-mint-ice-celedon-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-11",
+    "name": "Stone Ground Mustard",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-11-stone-ground-mustard-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-12",
+    "name": "Amber Ale",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-12-amber-ale-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-13",
+    "name": "Oribe",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-13-oribe-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-14",
+    "name": "Grey Blue Celadon",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-14-grey-blue-celedon-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-15",
+    "name": "Tim's Butter Matte",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-15-tims-butter-matte-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-16",
+    "name": "Dinnerware White",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-16-dinnerware-white-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-17",
+    "name": "Ocean Ash",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-17-ocean-ash-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-18",
+    "name": "Cobalt Sky Ash",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-18-cobalt-sky-ash-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-19",
+    "name": "Honeycomb Ash",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-19-honeycomb-ash-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-20",
+    "name": "Fake Ash Base",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-20-fake-ash-base-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-21",
+    "name": "Crackle White",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-21-crackle-white-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-22",
+    "name": "Pacific Celadon",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-22-pacific-celadon-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-23",
+    "name": "Mason Blue",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-23-mason-blue-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-24",
+    "name": "Carbon Black",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-24-carbon-black-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-25",
+    "name": "Chestnut Luster",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-25-chestnut-luster-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-26",
+    "name": "Starry Night",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-26-starry-night-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-27",
+    "name": "Lucid Clear",
+    "cone": "Cone 10",
+    "description": "A glossy bright high-fire clear glaze with excellent transparency that is zinc free.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_97ae5ccc-cd60-4927-a7b4-bbfcb6458877.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-27-lucid-clear-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "code": "LG-28",
+    "name": "Modern Matte",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/lg-28-modern-matte-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-1",
+    "name": "Alfred Celadon",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_330fe708-049b-4829-9dcc-348a76a8307d.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-1-alfred-celadon-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-2",
+    "name": "Bright Brown/Black",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_b40dff5f-ee7c-4133-93a9-e556fe760e6d.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-2-bright-brown-black-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-3",
+    "name": "Chun Base",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ecbaa74c-4375-41d2-98bb-82d2e5f22d9e.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-3-chun-base-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-5",
+    "name": "G Matte 3 Base",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_b3b6805d-a2a3-4446-95c0-cbafd0bcfaa2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-5-g-matte-3-base-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-6",
+    "name": "HT-51",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_430e91a7-90f9-402c-8b1e-5b7477608768.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-6-ht-51-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-12",
+    "name": "Cee Clear",
+    "cone": "Cone 10",
+    "description": "A glossy bright high-fire clear glaze with excellent transparency that is zinc free.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_6a1e26c1-c783-4c7d-afea-e48df0682ca6.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-12-cee-clear-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-15",
+    "name": "Laguna Clear",
+    "cone": "Cone 10",
+    "description": "A glossy bright high-fire clear glaze with excellent transparency that is zinc free.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_37025b59-2918-438e-8535-b045fa5db331.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-15-laguna-clear-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-17",
+    "name": "KCNST",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_7af83485-de53-4a5a-9e9e-b9de5f113a14.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-17-kcnst-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-18",
+    "name": "#41 White",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_54d5a80d-b56c-4235-9a3b-3209a998606f.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-18-41-white-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-20",
+    "name": "Barnard Green",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_197502e5-1092-406b-a31b-0c91f4d918e3.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-20-barnard-green-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-21",
+    "name": "Flambe Blue",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/v-21-flambe-blue-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-30",
+    "name": "Sun Valley",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/V-30_379-v5.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-30-sun-valley-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-36",
+    "name": "Purple Surprise",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/v-36-purple-surprise-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "code": "V-37",
+    "name": "Copper Red",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_1a4c7ac2-dc95-445c-9abe-6a4baebcadd7.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/v-37-copper-red-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-520",
+    "name": "#16 Transparent",
+    "cone": "Cone 5-10",
+    "description": "A glossy bright clear with a wide firing range.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_440e71c5-09d3-44e3-98ee-5cae5bbff7d8.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-520-16-transparent-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-522",
+    "name": "MG-2 White Matte",
+    "cone": "Cone 10",
+    "description": "A semi-matte, opaque, white glaze which has a slight bluish tint in reduction.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-522-mg-2-white-10-matte-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-524",
+    "name": "Tan Matte",
+    "cone": "Cone 10",
+    "description": "An opaque, semi-matte glaze which fires off-white or beige depending on clay body.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-524-tan-matte-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-525",
+    "name": "Tenmoku #1",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-525-tenmoku-1-dry-10-glaze"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-526",
+    "name": "Tenmoku #2",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-526-tenmoku-2-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-527",
+    "name": "Chun",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-527-chun-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-531",
+    "name": "White Waxie",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-531-white-waxie-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-532",
+    "name": "P M Eggshell",
+    "cone": "Cone 10",
+    "description": "This is an opaque, white glaze with an eggshell texture.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-532-p-m-eggshell-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-550",
+    "name": "Celadon",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-550-celadon-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-553",
+    "name": "K-9 Gray/Blue",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-553-k-9-gray-blue-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-554",
+    "name": "Turquoise Matte",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-554-turquoise-matte-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-555",
+    "name": "Stony Matte",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-555-stony-matte-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-556",
+    "name": "Iron Red",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-556-iron-red-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-557",
+    "name": "Blue/Brown",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-557-blue-brown-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-558",
+    "name": "Jon's Clear",
+    "cone": "Cone 5-10",
+    "description": "A glossy bright clear with a wide firing range.",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-558-jons-10-clear-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-559",
+    "name": "Artificial Salt",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-559-10-artificial-salt-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "code": "WC-561",
+    "name": "Crystal Palace",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_18fd892b-a05b-4afc-bb74-d4369303b3ac.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/wc-561-crystal-palace-10-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "SG Studio Glazes",
+    "code": "SG-82",
+    "name": "Brilliant Black",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/sg-82-brilliant-black-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "SG Studio Glazes",
+    "code": "SG-91",
+    "name": "White",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/sg-91-10-white-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "SG Studio Glazes",
+    "code": "SG-93",
+    "name": "Clear",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/sg-93-clear-5-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "SG Studio Glazes",
+    "code": "SG-130",
+    "name": "Satin White",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_fecb4083-d657-41b5-b403-70a695cfac5b.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sg-130-5-satin-white-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "SG Studio Glazes",
+    "code": "SG-138",
+    "name": "White",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_d57df7ba-88af-4e48-9475-1489d1af70db.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sg-138-white-5-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "SG Studio Glazes",
+    "code": "SG-151",
+    "name": "Klaus Hard White",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_be952a84-d11c-454b-9d50-7157a7d8bd3a.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sg-151-klaus-hard-white-5-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "SG Studio Glazes",
+    "code": "SG-157",
+    "name": "Clear",
+    "cone": "Cone 5",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_bbfeee9d-6c4c-4b3c-bf6d-2fdd18530193.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sg-157-clear-5-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Flameware (Cone 10)",
+    "code": "FW-1",
+    "name": "Blue Flameware",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/FW1.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/fw-1-blue-flameware-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Flameware (Cone 10)",
+    "code": "FW-2",
+    "name": "Green Flameware",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/FW2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/fw-2-green-flameware-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Flameware (Cone 10)",
+    "code": "FW-3",
+    "name": "Mottled Brown Flameware",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/FW3.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/fw-3-mottled-brown-flameware-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Flameware (Cone 10)",
+    "code": "FW-4",
+    "name": "Cream Tan Flameware",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/fw-4creamtanflameware_2.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/fw-4-cream-tan-flameware-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Flameware (Cone 10)",
+    "code": "FW-5",
+    "name": "Metallic Flameware",
+    "cone": "Cone 10",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/FW5.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/fw-5-metallic-flameware-10-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Raku",
+    "code": "RAKU-1",
+    "name": "White Matte",
+    "cone": "Raku",
+    "description": "",
+    "imageUrl": null,
+    "sourceUrl": "https://www.lagunaclay.com/products/raku-1-white-matte-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Raku",
+    "code": "RAKU-2",
+    "name": "Tutti Frutti",
+    "cone": "Raku",
+    "description": "A gloss surface from copper with colors ranging from greenish yellow to iridescent purple and maroon.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/r2_Tutti_Frutti_DryGlaze.jpg",
+    "sourceUrl": "https://www.lagunaclay.com/products/raku-2-tutti-frutti-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Raku",
+    "code": "RAKU-13",
+    "name": "Copper",
+    "cone": "Raku",
+    "description": "A spectacular metallic, iridescent glaze that produces a myriad of colors including: maroon, gold, silver, blue, red, and copper.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/r13_Copper_DryGlaze.jpg",
+    "sourceUrl": "https://www.lagunaclay.com/products/raku-13-copper-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Raku",
+    "code": "RAKU-22",
+    "name": "Awabi Shell",
+    "cone": "Raku",
+    "description": "An all-purpose glaze for Raku work, yielding an iridescent abalone shell effect that reacts well with various oxides.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/r22_Awabie_Shell_DryGlaze.jpg",
+    "sourceUrl": "https://www.lagunaclay.com/products/raku-22-awabi-shell-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Raku",
+    "code": "RAKU-24",
+    "name": "Dynasty Blue",
+    "cone": "Raku",
+    "description": "A solid, medium blue-green glaze, which is slightly iridescent.",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/r24_Dynasty_Blue_DryGlaze.jpg",
+    "sourceUrl": "https://www.lagunaclay.com/products/raku-24-dynasty-blue-glaze-dry"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-1",
+    "name": "Sunshine",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_175d94c0-0a43-4411-bd29-a47d98ef44fa.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-1-sunshine_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-2",
+    "name": "Sunset",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_dc1b620f-8cd5-4bc0-8f80-4e5897be8047.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-2-sunset_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-3",
+    "name": "Cinnamon",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_6ba171bc-733d-43e6-a8e7-69116941f148.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-3-cinnamon_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-4",
+    "name": "Dark Chocolate",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_981263ef-c04f-4f7b-93da-97afeebeb0eb.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-4-dark-chocolate_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-7",
+    "name": "Dark Teal",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_3cf8b67e-a8c1-4bf1-bd62-9eab36c5243b.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-7-dark-teal_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-8",
+    "name": "Clover",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_9b51c93f-f33a-4ffa-91cb-26389e94eb71.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-8-clover_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-10",
+    "name": "Raven Black",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_fa955754-79c0-42e4-90c0-1d115c7855ea.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-10-raven-black_jar-1"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-11",
+    "name": "Blue Jay",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_4c96d6e8-db92-4230-bea0-246c2f2b3fe6.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-11-blue-jay_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-12",
+    "name": "Cactus",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_d0beddba-206e-433d-9c59-d0df5bfa73dd.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-12-cactus_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-16",
+    "name": "Blush",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ec5bcb91-b2e7-4f96-814d-350891ff19cb.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-16-blush_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-18",
+    "name": "Almond Flour",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_5e92c952-b106-4ea5-a0a0-159d2300b323.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-18-almond-flour_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-22",
+    "name": "Flamingo",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_86f0bfbe-fc89-42c2-935d-05c0b6920d0e.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-22-flamingo_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-24",
+    "name": "Baby Blues",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_3e92c619-6e19-411c-ba0e-3a3172efd762.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-24-baby-blues_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-34",
+    "name": "Dusty Rose",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_18e763bd-dd43-4166-b2f6-f909ef691dfa.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-34-dusty-rose_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-41",
+    "name": "Plush Pink",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_94d5a8e5-58ed-449e-b29b-d03071f2a338.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-41-plush-pink_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-45",
+    "name": "Sapphire",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_d6764327-aa27-42c4-8180-707b4c4045b9.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-45-sapphire_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-46",
+    "name": "Wine",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_69c8afdc-2117-4a85-bfa1-7cb9d46d9ff7.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-46-wine_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-47",
+    "name": "Seaglass",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_c91714be-9569-42c0-8e7b-984a6464b1ee.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-47-seaglass_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-49",
+    "name": "Minty",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_ec4b3c2e-69ad-42eb-891f-05a75079cbe1.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-49-minty_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-50",
+    "name": "Aqua",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_925bdb39-daf5-4ed0-a5b2-fada4a9d57b7.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-50-aqua_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-54",
+    "name": "White",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_6186147e-7b4b-4b10-864f-a83017d30dce.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-54-white_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-55",
+    "name": "Ash",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_53511cef-010f-42f4-83fd-0cd0363a43cb.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-55-ash_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-58",
+    "name": "Rosy",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_4c296a69-3928-45e6-9b71-31fa4671fdc0.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-58-rosy_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-60",
+    "name": "Lavender",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_bd79770b-177e-4a36-87f9-da6c7266d325.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-60-lavender_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-61",
+    "name": "Suede",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_9de78852-7cdd-4290-8b2b-00c4f71d6083.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-61-suede_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-67",
+    "name": "Denim",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_41d8b8ca-f821-44a5-bfdd-906c6c5ccd2e.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-67-denim_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-70",
+    "name": "Avocado",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_284e197e-d58f-4f6a-ae36-d93b1eb14ced.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-70-avocado_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-71",
+    "name": "Slate",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_0521343d-c4fe-47a0-9936-86a2d215b235.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-71-slate_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-78",
+    "name": "Milk Chocolate",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_855a259f-bfa0-4605-92ed-62247ade804a.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-78-milk-chocolate_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-82",
+    "name": "Sassy Red",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_c93adc73-6a68-42dd-b5db-e1818db77556.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-82-sassy-red_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-83",
+    "name": "Carrot",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_240a4c0b-3746-4053-871c-1e8ee2c2bd23.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-83-carrot_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "code": "SIL-84",
+    "name": "Royal Plum",
+    "cone": "Cone 06-6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_aa6fe080-517e-4156-91a0-72c6a2362bc1.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/sil-84-royal-plum_jar"
+  },
+  {
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "code": "MS-50",
+    "name": "Dutch Sprinkle",
+    "cone": "Cone 5/6",
+    "description": "",
+    "imageUrl": "https://cdn.shopify.com/s/files/1/0664/2050/6866/files/BC_Upload_03b509a7-8c4f-4a02-a658-e0c1c9f96aad.png",
+    "sourceUrl": "https://www.lagunaclay.com/products/ms-50-dutch-sprinkle-glaze_pt"
+  }
+]

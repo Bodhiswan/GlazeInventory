@@ -1,0 +1,506 @@
+[
+  {
+    "code": "303",
+    "rawCode": "SPEC-0303",
+    "title": "LIGHT YELLOW",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/LIGHT-YELLOW/303.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/light-yellow",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "306",
+    "rawCode": "SPEC-0306",
+    "title": "BRIGHT YELLOW",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BRIGHT-YELLOW/306.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/bright-yellow-7195",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "307",
+    "rawCode": "SPEC-0307",
+    "title": "ENGLISH ROSE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/ENGLISH-ROSE/307.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/english-rose-7196",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "308",
+    "rawCode": "SPEC-0308",
+    "title": "BABY PINK",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BABY-PINK/308.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/baby-pink-7197",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "309",
+    "rawCode": "SPEC-0309",
+    "title": "FLESH",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/FLESH/309.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/flesh-7198",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "310",
+    "rawCode": "SPEC-0310",
+    "title": "TAN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/TAN/310.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/tan-7199",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "311",
+    "rawCode": "SPEC-0311",
+    "title": "AZTEC BROWN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/AZTEC-BROWN/311.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/aztec-brown-7200",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "312",
+    "rawCode": "SPEC-0312",
+    "title": "WALNUT BROWN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/WALNUT-BROWN/312.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/walnut-brown-7201",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "313",
+    "rawCode": "SPEC-0313",
+    "title": "CHOCOLATE BROWN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/CHOCOLATE-BROWN/313.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/chocolate-brown",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "314",
+    "rawCode": "SPEC-0314",
+    "title": "FRENCH BROWN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/FRENCH-BROWN/314.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/french-brown-7203",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "315",
+    "rawCode": "SPEC-0315",
+    "title": "BLACK",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BLACK/315.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/black-7204",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "317",
+    "rawCode": "SPEC-0317",
+    "title": "LIGHT GRAY",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/LIGHT-GRAY/317.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/light-gray-7206",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "318",
+    "rawCode": "SPEC-0318",
+    "title": "TAUPE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/TAUPE/318.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/taupe-7207",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "319",
+    "rawCode": "SPEC-0319",
+    "title": "CHAMOIS",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/CHAMOIS/319.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/chamois",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "320",
+    "rawCode": "SPEC-0320",
+    "title": "LIGHT BEIGE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/LIGHT-BEIGE/320.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/light-beige",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "321",
+    "rawCode": "SPEC-0321",
+    "title": "SAND",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/SAND/321.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/sand-7210",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "322",
+    "rawCode": "SPEC-0322",
+    "title": "TEA",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/TEA/322.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/tea-7211",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "323",
+    "rawCode": "SPEC-0323",
+    "title": "HONEY",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/HONEY/323.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/honey-7212",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "324",
+    "rawCode": "SPEC-0324",
+    "title": "MUSTARD",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/MUSTARD/324.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/mustard-7213",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "325",
+    "rawCode": "SPEC-0325",
+    "title": "LIME GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/LIME-GREEN/325.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/lime-green-7214",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "326",
+    "rawCode": "SPEC-0326",
+    "title": "MID GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/MID-GREEN/326.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/mid-green-7215",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "327",
+    "rawCode": "SPEC-0327",
+    "title": "SHERWOOD GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/SHERWOOD-GREEN/327.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/sherwood-green",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "328",
+    "rawCode": "SPEC-0328",
+    "title": "CHARTREUSE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/CHARTREUSE/328.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/chartreuse-7217",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "329",
+    "rawCode": "SPEC-0329",
+    "title": "DARK OLIVE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/DARK-OLIVE/329.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/dark-olive-7218",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "330",
+    "rawCode": "SPEC-0330",
+    "title": "HUNTER GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/HUNTER-GREEN/330.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/hunter-green-7219",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "331",
+    "rawCode": "SPEC-0331",
+    "title": "PRUSSIAN BLUE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/PRUSSIAN-BLUE/331.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/prussian-blue-7220",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "332",
+    "rawCode": "SPEC-0332",
+    "title": "SKY BLUE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/SKY-BLUE/332.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/sky-blue-7221",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "333",
+    "rawCode": "SPEC-0333",
+    "title": "TURQUOISE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/TURQUOISE/333.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/turquoise-7222",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "334",
+    "rawCode": "SPEC-0334",
+    "title": "LAVENDER",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/LAVENDER/334.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/lavender-7223",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "335",
+    "rawCode": "SPEC-0335",
+    "title": "BLUE GRAY",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BLUE-GRAY/335.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/blue-gray-7224",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "336",
+    "rawCode": "SPEC-0336",
+    "title": "BRIGHT BLUE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BRIGHT-BLUE/336.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/bright-blue",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "338",
+    "rawCode": "SPEC-0338",
+    "title": "BLUE VELVET",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BLUE-VELVET/338.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/blue-velvet",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "339",
+    "rawCode": "SPEC-0339",
+    "title": "NAVY BLUE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/NAVY-BLUE/339.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/navy-blue-7228",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "340",
+    "rawCode": "SPEC-0340",
+    "title": "DENIM BLUE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/DENIM-BLUE/340.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/denim-blue",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "341",
+    "rawCode": "SPEC-0341",
+    "title": "PURPLE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/PURPLE/341.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/purple-7230",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "342",
+    "rawCode": "SPEC-0342",
+    "title": "FUSCHIA",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/FUSCHIA/342.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/fuschia-7231",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "343",
+    "rawCode": "SPEC-0343",
+    "title": "WISTERIA",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/WISTERIA/343.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/wisteria-7232",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "344",
+    "rawCode": "SPEC-0344",
+    "title": "BURGUNDY",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BURGUNDY/344.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/burgundy-7233",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "345",
+    "rawCode": "SPEC-0345",
+    "title": "RUBY",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/RUBY/345.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/ruby-7234",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "346",
+    "rawCode": "SPEC-0346",
+    "title": "BRIGHT PEACH",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BRIGHT-PEACH/346.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/bright-peach",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "347",
+    "rawCode": "SPEC-0347",
+    "title": "NECTARINE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/NECTARINE/347.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/nectarine-7236",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss"
+  },
+  {
+    "code": "348",
+    "rawCode": "SPEC-0348",
+    "title": "RUST RED",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/RUST-RED/348.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/rust-red-7237",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "349",
+    "rawCode": "SPEC-0349",
+    "title": "TERRA COTTA",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/TERRA-COTTA/349.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/terra-cotta-7238",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "351",
+    "rawCode": "SPEC-0351",
+    "title": "MED. PINK",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/MED-PINK/351.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/med-pink",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "352",
+    "rawCode": "SPEC-0352",
+    "title": "ROSE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/ROSE/352.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/rose",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "353",
+    "rawCode": "SPEC-0353",
+    "title": "LILAC",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/LILAC/353.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/lilac-7242",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "354",
+    "rawCode": "SPEC-0354",
+    "title": "ROYAL PURPLE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/ROYAL-PURPLE/354.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/royal-purple-7243",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "355",
+    "rawCode": "SPEC-0355",
+    "title": "WARM GRAY",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/WARM-GRAY/355.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/warm-gray-7244",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "356",
+    "rawCode": "SPEC-0356",
+    "title": "LIGHT GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/LIGHT-GREEN/356.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/light-green-7245",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "357",
+    "rawCode": "SPEC-0357",
+    "title": "LEAF GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/LEAF-GREEN/357.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/leaf-green",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "358",
+    "rawCode": "SPEC-0358",
+    "title": "JADE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/JADE/358.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/jade-7247",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "359",
+    "rawCode": "SPEC-0359",
+    "title": "BLUE GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BLUE-GREEN/359.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/blue-green-7248",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "360",
+    "rawCode": "SPEC-0360",
+    "title": "TEAL GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/TEAL-GREEN/360.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/teal-green-7249",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "361",
+    "rawCode": "SPEC-0361",
+    "title": "DARK RED",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/DARK-RED/361.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/dark-red-7250",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "362",
+    "rawCode": "SPEC-0362",
+    "title": "BRIGHT RED",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BRIGHT-RED/362.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/bright-red-7251",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "363",
+    "rawCode": "SPEC-0363",
+    "title": "BRIGHT ORANGE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BRIGHT-ORANGE/363.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/bright-orange-7252",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "364",
+    "rawCode": "SPEC-0364",
+    "title": "BRIGHT GREEN",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BRIGHT-GREEN/364.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/bright-green-7253",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "365",
+    "rawCode": "SPEC-0365",
+    "title": "BRIGHT PURPLE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/BRIGHT-PURPLE/365.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/bright-purple",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "366",
+    "rawCode": "SPEC-0366",
+    "title": "DARK PURPLE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/DARK-PURPLE/366.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/dark-purple",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "367",
+    "rawCode": "SPEC-0367",
+    "title": "FIRE ENGINE RED",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/FIRE-ENGINE-RED/367.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/fire-engine-red-7256",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "368",
+    "rawCode": "SPEC-0368",
+    "title": "CHRISTMAS RED",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/CHRISTMAS-RED/368.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/christmas-red-7257",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "369",
+    "rawCode": "SPEC-0369",
+    "title": "NEON ORANGE",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/NEON-ORANGE/369.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/neon-orange",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  },
+  {
+    "code": "370",
+    "rawCode": "SPEC-0370",
+    "title": "HOT PINK",
+    "imageUrl": "https://www.glazequeen.com/resize/Shared/Images/Product/HOT-PINK/370.jpg?bh=250",
+    "sourceUrl": "https://www.glazequeen.com/hot-pink-7259",
+    "categoryUrl": "https://www.glazequeen.com/spectrum-gloss?pi=2"
+  }
+]

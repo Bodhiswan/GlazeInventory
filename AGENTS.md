@@ -39,3 +39,7 @@ This version has breaking changes — APIs, conventions, and file structure may 
 
 ## Teardown
 Run `npm run dev:test:stop` to stop local Supabase and free Docker resources.
+
+# Completing Work
+
+When you finish a task or set of tasks, always end your final response with a short plain-English summary of what was done, followed by the word **Done.** on its own line. This lets the user know the work is complete without having to guess.

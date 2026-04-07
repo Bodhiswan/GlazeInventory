@@ -1,0 +1,34 @@
+{
+  "id": "coyote-shino-over-black/shino-over-black",
+  "sourceType": "coyote-overlap-page",
+  "sourceName": "Coyote Shino Overlap",
+  "title": "Shino over Black",
+  "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+  "cone": "Cone 5 / Cone 6",
+  "atmosphere": null,
+  "clayBody": "Speckled buff clay",
+  "description": "Coyote's Shino Overlap page shows their shino-family glazes layered over Gloss Black on speckled buff clay. The page notes the cups were bisque fired to Cone 06 and intended for cone 5-6 results.",
+  "matchedGlazes": [
+    {
+      "brand": "Coyote",
+      "code": "MBG042",
+      "name": "Shino",
+      "line": "Shino Glazes"
+    },
+    {
+      "brand": "Coyote",
+      "code": "MBG002",
+      "name": "Black",
+      "line": "Gloss Glazes"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/shinooverblackshadow.jpg",
+      "sha256": "c8008629cd130d008c3fa6448a940237c998dcc1ce7015561de24ca041ff67ad",
+      "width": 600,
+      "height": 450
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import { PublishCombinationForm } from "@/components/publish-combination-form";
 import { SetupCallout } from "@/components/setup-callout";
 import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
-import { getInventory, requireViewer } from "@/lib/data";
+import { getCatalogGlazes, requireViewer } from "@/lib/data";
 import { formatSearchQuery } from "@/lib/utils";
 
 export default async function PublishPage({
@@ -13,15 +13,7 @@ export default async function PublishPage({
   searchParams: Promise<{ error?: string }>;
 }) {
   const viewer = await requireViewer();
-  const inventory = await getInventory(viewer.profile.id);
-  const ownedGlazes = inventory
-    .filter((item) => item.status === "owned")
-    .map((item) => item.glaze)
-    .sort((left, right) =>
-      [left.brand, left.code, left.name].filter(Boolean).join(" ").localeCompare(
-        [right.brand, right.code, right.name].filter(Boolean).join(" "),
-      ),
-    );
+  const allGlazes = await getCatalogGlazes(viewer.profile.id);
   const params = await searchParams;
   const error = formatSearchQuery(params.error);
 
@@ -98,16 +90,10 @@ export default async function PublishPage({
             </p>
           </div>
 
-          {ownedGlazes.length < 2 ? (
-            <div className="border border-border bg-panel px-4 py-4 text-sm leading-6 text-muted">
-              You need at least two owned glazes before publishing. Add more glazes to your shelf first, then come back here to attach a member example.
-            </div>
-          ) : null}
-
           <form action={publishUserCombinationAction} className="grid gap-6">
             <PublishCombinationForm
-              disabled={viewer.mode === "demo" || ownedGlazes.length < 2}
-              glazes={ownedGlazes}
+              disabled={viewer.mode === "demo"}
+              glazes={allGlazes}
             />
           </form>
         </Panel>

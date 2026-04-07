@@ -1,0 +1,65 @@
+{
+  "downloadedAssetCount": 4018,
+  "failedAssetCount": 1176,
+  "downloadedReferenceCount": 4564,
+  "failedReferenceCount": 1393,
+  "totalBytes": 1565536112,
+  "brands": {
+    "AMACO": {
+      "assetCount": 1465,
+      "referenceCount": 1798,
+      "totalBytes": 311851357,
+      "maxWidth": 4715,
+      "maxHeight": 4715
+    },
+    "Coyote": {
+      "assetCount": 13,
+      "referenceCount": 13,
+      "totalBytes": 1437927,
+      "maxWidth": 1365,
+      "maxHeight": 2048
+    },
+    "Duncan": {
+      "assetCount": 122,
+      "referenceCount": 166,
+      "totalBytes": 34106342,
+      "maxWidth": 1200,
+      "maxHeight": 1200
+    },
+    "Laguna": {
+      "assetCount": 212,
+      "referenceCount": 212,
+      "totalBytes": 205658939,
+      "maxWidth": 1750,
+      "maxHeight": 1750
+    },
+    "Mayco": {
+      "assetCount": 2091,
+      "referenceCount": 2198,
+      "totalBytes": 968120907,
+      "maxWidth": 2560,
+      "maxHeight": 2560
+    },
+    "Northcote": {
+      "assetCount": 28,
+      "referenceCount": 28,
+      "totalBytes": 37707776,
+      "maxWidth": 3742,
+      "maxHeight": 3742
+    },
+    "Spectrum": {
+      "assetCount": 38,
+      "referenceCount": 52,
+      "totalBytes": 857041,
+      "maxWidth": 600,
+      "maxHeight": 600
+    },
+    "Speedball": {
+      "assetCount": 49,
+      "referenceCount": 97,
+      "totalBytes": 5795823,
+      "maxWidth": 1000,
+      "maxHeight": 1327
+    }
+  }
+}

@@ -1,5 +1,6 @@
 import { CombinationsBrowser } from "@/components/combinations-browser";
 import {
+  getFavouriteIds,
   getGlazeFiringImageMap,
   getInventoryOwnership,
   getPublishedCombinationPosts,
@@ -10,25 +11,29 @@ import {
 import type { InventoryStatus } from "@/lib/types";
 import { formatSearchQuery } from "@/lib/utils";
 
-type CombinationsView = "all" | "possible" | "mine";
+const validViews = new Set(["all", "possible", "plus1", "mine", "user", "manufacturer"]);
+type CombinationsView = "all" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
 
 export default async function CombinationsPage({
   searchParams,
 }: {
-  searchParams: Promise<{ view?: string; q?: string }>;
+  searchParams: Promise<{ view?: string; q?: string; published?: string }>;
 }) {
   const viewer = await requireViewer();
   const params = await searchParams;
   const initialQuery = formatSearchQuery(params.q) ?? "";
+  const justPublished = formatSearchQuery(params.published) === "1";
   const requestedView = formatSearchQuery(params.view);
   const selectedView: CombinationsView =
-    requestedView === "possible" || requestedView === "mine" ? requestedView : "all";
-  const [examples, publishedPosts, ownership, userExamples] = await Promise.all([
+    requestedView && validViews.has(requestedView) ? (requestedView as CombinationsView) : "all";
+  const [examples, publishedPosts, ownership, userExamplesRaw, favouriteCombinationIds] = await Promise.all([
     getVendorCombinationExamples(viewer.profile.id),
     getPublishedCombinationPosts(viewer.profile.id),
     getInventoryOwnership(viewer.profile.id),
-    getUserCombinationExamples(viewer.profile.id),
+    getUserCombinationExamples(viewer.profile.id).catch(() => []),
+    getFavouriteIds(viewer.profile.id, "combination"),
   ]);
+  const userExamples = (userExamplesRaw ?? []).filter((ue) => ue && ue.id);
   const myPosts = publishedPosts.filter((post) => post.authorUserId === viewer.profile.id);
   const inventoryStatusByGlazeId = ownership.reduce<Record<string, InventoryStatus>>((map, item) => {
     map[item.glazeId] = item.status;
@@ -56,6 +61,11 @@ export default async function CombinationsPage({
 
   return (
     <div className="space-y-6">
+      {justPublished ? (
+        <div className="border border-[#3a6642]/20 bg-[#3a6642]/10 px-4 py-3 text-sm text-[#2e5234]">
+          Your combination has been published and is now visible under your examples.
+        </div>
+      ) : null}
       <CombinationsBrowser
         examples={examples}
         publishedPosts={publishedPosts}
@@ -66,6 +76,7 @@ export default async function CombinationsPage({
         initialView={selectedView}
         initialQuery={initialQuery}
         viewerUserId={viewer.profile.id}
+        favouriteCombinationIds={favouriteCombinationIds}
       />
     </div>
   );

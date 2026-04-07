@@ -1,0 +1,233 @@
+{
+  "sourceCollections": [
+    {
+      "id": "amaco-blog",
+      "label": "AMACO Blog combo posts",
+      "entryCount": 6
+    },
+    {
+      "id": "coyote-shino-over-black",
+      "label": "Coyote Shino over Black overlap archive",
+      "entryCount": 18
+    }
+  ],
+  "entryCount": 24,
+  "entries": [
+    {
+      "id": "amaco-blog/try-something-new-magic-forest-glaze-combination",
+      "sourceType": "amaco-blog-post",
+      "title": "Try Something New: Magic Forest Glaze Combination",
+      "sourceUrl": "https://amaco.com/resources/blog/try-something-new-magic-forest-glaze-combination",
+      "metadataPath": "data/external-combination-archive/amaco-blog/try-something-new-magic-forest-glaze-combination/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 3
+    },
+    {
+      "id": "amaco-blog/amaco-fall-layering-favorites",
+      "sourceType": "amaco-blog-post",
+      "title": "Amaco Fall Layering Favorites",
+      "sourceUrl": "https://amaco.com/resources/blog/amaco-fall-layering-favorites",
+      "metadataPath": "data/external-combination-archive/amaco-blog/amaco-fall-layering-favorites/metadata.json",
+      "imageCount": 9,
+      "matchedGlazeCount": 10
+    },
+    {
+      "id": "amaco-blog/dipping-layering-glazes-tips-tricks-for-success",
+      "sourceType": "amaco-blog-post",
+      "title": "Dipping & Layering Glazes: Tips & Tricks for Success!",
+      "sourceUrl": "https://amaco.com/resources/blog/dipping-and-layering-glazes-tips-and-tricks-for-success",
+      "metadataPath": "data/external-combination-archive/amaco-blog/dipping-layering-glazes-tips-tricks-for-success/metadata.json",
+      "imageCount": 5,
+      "matchedGlazeCount": 0
+    },
+    {
+      "id": "amaco-blog/hidden-gems-dipping-layering-glazes",
+      "sourceType": "amaco-blog-post",
+      "title": "Hidden Gems: Dipping & Layering Glazes",
+      "sourceUrl": "https://amaco.com/resources/blog/hidden-gems-dipping-and-layering-glazes",
+      "metadataPath": "data/external-combination-archive/amaco-blog/hidden-gems-dipping-layering-glazes/metadata.json",
+      "imageCount": 8,
+      "matchedGlazeCount": 25
+    },
+    {
+      "id": "amaco-blog/favorite-winter-layering-combinations",
+      "sourceType": "amaco-blog-post",
+      "title": "Favorite Winter Layering Combinations",
+      "sourceUrl": "https://amaco.com/resources/blog/favorite-winter-layering-combinations",
+      "metadataPath": "data/external-combination-archive/amaco-blog/favorite-winter-layering-combinations/metadata.json",
+      "imageCount": 9,
+      "matchedGlazeCount": 11
+    },
+    {
+      "id": "amaco-blog/great-glaze-combos-to-try-out-in-2026",
+      "sourceType": "amaco-blog-post",
+      "title": "Great glaze combos to try out in 2026",
+      "sourceUrl": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+      "metadataPath": "data/external-combination-archive/amaco-blog/great-glaze-combos-to-try-out-in-2026/metadata.json",
+      "imageCount": 13,
+      "matchedGlazeCount": 14
+    },
+    {
+      "id": "coyote-shino-over-black/blue-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Blue Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/blue-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/butterscotch-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Butterscotch Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/butterscotch-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/cedar-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Cedar Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/cedar-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/desert-sage-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Desert Sage over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/desert-sage-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/espresso-bean-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Espresso Bean over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/espresso-bean-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/goldenrod-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Goldenrod Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/goldenrod-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/green-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Green Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/green-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/leopard-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Leopard Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/leopard-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/light-blue-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Light Blue Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/light-blue-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/light-green-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Light Green Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/light-green-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/light-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Light Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/light-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/mocha-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Mocha Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/mocha-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/pistachio-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Pistachio Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/pistachio-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/plum-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Plum Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/plum-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/sandstone-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Sandstone Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/sandstone-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/steel-gray-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Steel Gray Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/steel-gray-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    },
+    {
+      "id": "coyote-shino-over-black/sunrise-shino-over-black",
+      "sourceType": "coyote-overlap-page",
+      "title": "Sunrise Shino over Black",
+      "sourceUrl": "https://www.coyoteclay.com/ShinoOverlap.html",
+      "metadataPath": "data/external-combination-archive/coyote-shino-over-black/sunrise-shino-over-black/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 2
+    }
+  ]
+}

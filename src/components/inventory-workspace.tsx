@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Loader2, Search, X } from "lucide-react";
+import { ChevronDown, Heart, Loader2, Search, X } from "lucide-react";
 import { memo, useCallback, useDeferredValue, useEffect, useMemo, useState, type ReactNode } from "react";
 
 import { getCatalogGlazesForScannerAction } from "@/app/actions";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeScanner } from "@/components/glaze-scanner";
 
-import { setGlazeInventoryStateAction, updateInventoryItemNotesAction } from "@/app/actions";
+import { setGlazeInventoryStateAction, toggleFavouriteInlineAction, updateInventoryItemNotesAction } from "@/app/actions";
 import { GlazeShelfForm } from "@/components/glaze-shelf-form";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";
 import { Badge } from "@/components/ui/badge";
@@ -17,11 +17,15 @@ import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
+import { deleteUserCombinationAction } from "@/app/actions";
+import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
 import type {
+  CombinationPost,
   GlazeFiringImage,
   InventoryCollectionState,
   InventoryItem,
   InventoryStatus,
+  UserCombinationExample,
 } from "@/lib/types";
 import {
   buildGlazeSearchIndex,
@@ -245,11 +249,17 @@ export function InventoryWorkspace({
   firingImageMap,
   preferredCone,
   preferredAtmosphere,
+  myUserExamples = [],
+  myCombinationPosts = [],
+  favouriteGlazeIds = [],
 }: {
   items: InventoryItem[];
   firingImageMap: Record<string, GlazeFiringImage[]>;
   preferredCone: string | null;
   preferredAtmosphere: string | null;
+  myUserExamples?: UserCombinationExample[];
+  myCombinationPosts?: CombinationPost[];
+  favouriteGlazeIds?: string[];
 }) {
   const [inventoryItems, setInventoryItems] = useState(items);
   const [query, setQuery] = useState("");
@@ -260,14 +270,17 @@ export function InventoryWorkspace({
     void getCatalogGlazesForScannerAction().then(setCatalogGlazes);
   }, []);
 
-  const [openSections, setOpenSections] = useState<Record<InventoryStatus, boolean>>({
-    owned: true,
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    owned: false,
     wishlist: false,
     archived: false,
+    combinations: false,
   });
   const [activeItemId, setActiveItemId] = useState<string | null>(null);
   const [pendingGlazeIds, setPendingGlazeIds] = useState<string[]>([]);
   const [statusErrors, setStatusErrors] = useState<Record<string, string | null>>({});
+  const [favouritedGlazeIds, setFavouritedGlazeIds] = useState<Set<string>>(() => new Set(favouriteGlazeIds));
+  const [pendingFavouriteIds, setPendingFavouriteIds] = useState<string[]>([]);
   const deferredQuery = useDeferredValue(query);
 
   const normalizedQuery = deferredQuery.trim().toLowerCase();
@@ -389,6 +402,26 @@ export function InventoryWorkspace({
     setPendingGlazeIds((current) => current.filter((glazeId) => glazeId !== item.glazeId));
   }
 
+  async function handleFavouriteToggle(glazeId: string) {
+    if (pendingFavouriteIds.includes(glazeId)) return;
+    const wasFavourited = favouritedGlazeIds.has(glazeId);
+    setPendingFavouriteIds((current) => [...current, glazeId]);
+    setFavouritedGlazeIds((current) => {
+      const next = new Set(current);
+      wasFavourited ? next.delete(glazeId) : next.add(glazeId);
+      return next;
+    });
+    const result = await toggleFavouriteInlineAction("glaze", glazeId);
+    if (result.error) {
+      setFavouritedGlazeIds((current) => {
+        const next = new Set(current);
+        wasFavourited ? next.add(glazeId) : next.delete(glazeId);
+        return next;
+      });
+    }
+    setPendingFavouriteIds((current) => current.filter((id) => id !== glazeId));
+  }
+
   return (
     <div className="space-y-6">
       <Panel className="space-y-4">
@@ -480,6 +513,119 @@ export function InventoryWorkspace({
         })}
       </div>
 
+      {/* My Combinations section */}
+      <InventorySection
+        label="My Combinations"
+        helper="Glaze combinations you've published."
+        totalCount={myUserExamples.length + myCombinationPosts.length}
+        visibleCount={myUserExamples.length + myCombinationPosts.length}
+        open={openSections.combinations ?? false}
+        onToggle={() =>
+          setOpenSections((current) => ({
+            ...current,
+            combinations: !(current.combinations ?? false),
+          }))
+        }
+      >
+        {myUserExamples.length || myCombinationPosts.length ? (
+          <div className="grid grid-cols-2 gap-2 min-[420px]:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5">
+            {myUserExamples.map((ue) => (
+              <div
+                key={ue.id}
+                className="group relative z-0 overflow-visible border border-border bg-white text-left"
+              >
+                <div className="space-y-2 p-2">
+                  <div className="relative overflow-hidden border border-border bg-panel">
+                    {ue.postFiringImageUrl ? (
+                      <Image
+                        src={ue.postFiringImageUrl}
+                        alt={ue.title}
+                        width={256}
+                        height={256}
+                        sizes="(min-width: 640px) 200px, 50vw"
+                        className="aspect-square w-full object-cover bg-white"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
+                        No image
+                      </div>
+                    )}
+                  </div>
+                  <div className="space-y-1">
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-muted">{ue.cone}</p>
+                    <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-foreground">
+                      {ue.title}
+                    </h3>
+                    <p className="line-clamp-1 text-xs text-muted">
+                      {ue.layers.length} layer{ue.layers.length === 1 ? "" : "s"}
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-1">
+                    <Badge tone="neutral">Member example</Badge>
+                  </div>
+                  <form action={deleteUserCombinationAction}>
+                    <input type="hidden" name="exampleId" value={ue.id} />
+                    <button
+                      type="submit"
+                      className="text-xs font-medium text-[#7f4026] underline underline-offset-4 transition hover:text-[#bb6742]"
+                    >
+                      Archive
+                    </button>
+                  </form>
+                </div>
+              </div>
+            ))}
+            {myCombinationPosts.map((post) => {
+              const imageSrc = typeof post.imagePath === "string" && post.imagePath.trim() ? post.imagePath : null;
+              return (
+                <Link
+                  key={post.id}
+                  href={`/combinations/${post.pairKey}`}
+                  className="group relative z-0 overflow-visible border border-border bg-white text-left transition-transform duration-200 hover:z-20 hover:scale-[1.02]"
+                >
+                  <div className="space-y-2 p-2">
+                    <div className="relative overflow-hidden border border-border bg-panel">
+                      {imageSrc ? (
+                        <Image
+                          src={imageSrc}
+                          alt={post.caption ?? "Combination"}
+                          width={256}
+                          height={256}
+                          sizes="(min-width: 640px) 200px, 50vw"
+                          className="aspect-square w-full object-cover bg-white"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
+                          No image
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[10px] uppercase tracking-[0.18em] text-muted">Community post</p>
+                      <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-foreground">
+                        {post.caption ?? "Published combination"}
+                      </h3>
+                    </div>
+                    <div className="flex flex-wrap gap-1">
+                      <Badge tone="neutral">Post</Badge>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="border border-dashed border-border bg-background px-4 py-6 text-center text-sm text-muted">
+            <p>You haven't published any combinations yet.</p>
+            <Link href="/publish" className={cn(buttonVariants({ size: "sm" }), "mt-3")}>
+              Share a kiln-tested combination
+            </Link>
+          </div>
+        )}
+      </InventorySection>
+
       {!filteredItems.length ? (
         <Panel>
           <h2 className="display-font text-3xl tracking-tight">Nothing matches this search yet.</h2>
@@ -503,7 +649,7 @@ export function InventoryWorkspace({
             className="flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-background sm:mt-[6vh]"
             onClick={(event) => event.stopPropagation()}
           >
-            {/* Sticky header — title + status + close all in one zone */}
+            {/* Sticky header — title + favourite + close */}
             <div className="border-b border-border px-4 py-3 sm:px-5">
               <div className="flex items-center gap-3">
                 <div className="min-w-0 flex-1">
@@ -514,6 +660,19 @@ export function InventoryWorkspace({
                 </div>
                 <button
                   type="button"
+                  disabled={pendingFavouriteIds.includes(activeItem.glazeId)}
+                  onClick={() => void handleFavouriteToggle(activeItem.glazeId)}
+                  className={`inline-flex items-center gap-1.5 border px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] transition disabled:opacity-50 ${
+                    favouritedGlazeIds.has(activeItem.glazeId)
+                      ? "border-foreground bg-foreground text-background"
+                      : "border-border bg-white text-muted hover:text-foreground"
+                  }`}
+                >
+                  <Heart className={`h-3.5 w-3.5 ${favouritedGlazeIds.has(activeItem.glazeId) ? "fill-current" : ""}`} />
+                  {favouritedGlazeIds.has(activeItem.glazeId) ? "Favourited" : "Favourite"}
+                </button>
+                <button
+                  type="button"
                   onClick={() => setActiveItemId(null)}
                   className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
                   aria-label="Close inventory glaze details"
@@ -521,11 +680,11 @@ export function InventoryWorkspace({
                   <X className="h-4 w-4" />
                 </button>
               </div>
-              {/* Status picker + nav — right below title, stays visible */}
+              {/* Status picker + nav */}
               <div className="mt-2 flex flex-wrap items-center gap-2">
                 <InventoryStatePicker
                   status={activeItem.status}
-                  compact
+                  tiny
                   pending={pendingGlazeIds.includes(activeItem.glazeId)}
                   error={statusErrors[activeItem.id] ?? null}
                   onChange={(nextStatus) => {
@@ -535,7 +694,7 @@ export function InventoryWorkspace({
                 {activeItem.glaze.code ? (
                   <Link
                     href={`/combinations?q=${encodeURIComponent(activeItem.glaze.code)}`}
-                    className={buttonVariants({ variant: "ghost", size: "sm" })}
+                    className="inline-flex items-center border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-foreground"
                   >
                     Combinations
                   </Link>
@@ -670,6 +829,8 @@ export function InventoryWorkspace({
                       );
                     }}
                   />
+
+                  <GlazeCommentsPanel glazeId={activeItem.glazeId} />
                 </div>
               </div>
             </div>

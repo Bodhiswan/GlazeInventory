@@ -1,0 +1,1100 @@
+[
+  {
+    "brand": "Duncan",
+    "code": "EZ002",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez002-cinderella-pink.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ002",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez002_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ002",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez002_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ003",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez003-irish-green-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ003",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez003_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ003",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez003_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ010",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez010-french-brown-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ010",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez010_cone6_sw004.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ010",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez010_cone10_sw004.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ011",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez011-sienna-brown.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ011",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez011_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ011",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez011_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ012",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez012.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ012",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/09/ez012_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ012",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez012_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ013",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez013.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ013",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/09/ez013_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ013",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez013_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ018",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez018-chartreuse.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ018",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez018_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ018",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez018_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ022",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez022-beige.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ022",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez022_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ022",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez022_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ023",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez023.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ023",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez023_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ023",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez023_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ024",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez024-royal-blue-green-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ024",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez024_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ024",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez024_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ026",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez026.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ026",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/09/ez026_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ026",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez026_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ027",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez027.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ027",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/09/ez027_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ027",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez027_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ028",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez028.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ028",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/09/ez028_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ028",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez028_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ030",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez030.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ030",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/09/ez030_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ030",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez030_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ031",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez031-light-blue-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ031",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez031_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ031",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez031_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ032",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez032-peacock-green-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ032",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez032_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ032",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez032_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ033",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez033.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ033",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/09/ez033_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ033",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez033_cone10_sw004.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ034",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez034-orange-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ034",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez034_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ034",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez034_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ035",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez035-dutch-blue-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ035",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez035_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ035",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez035_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ037",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez037.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ037",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez037_cone6_sw004.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ037",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez037_cone10_sw004.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ038",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez038-medium-mahogany-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ038",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez038_cone6_sw004.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ038",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez038_cone10_sw004.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ042",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez042-teal.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ042",
+    "label": "Reference image",
+    "cone": null,
+    "atmosphere": null,
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez042_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ042",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez042_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ047",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez047-thundercloud-grey-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ047",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez047_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ047",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez047_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ050",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez050.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ050",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez050_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ050",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez050_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ055",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez055-brick.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ055",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez055_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ055",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez055_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ057",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez057-coral-red.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ057",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez057_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ057",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez057_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ058",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez058.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ058",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez058_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ058",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez058_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ063",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez063-wine-berry-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ063",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez063_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ063",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez063_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ071",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez071-dark-olive-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ071",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez071_cone6_sw004.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ071",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez071_cone10_sw004.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ075",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez075.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ075",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez075_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ075",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez075_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ101",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez101-neon-yellow-1oz.jpeg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ101",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/ez101_cone6_sw001.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ101",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez101_cone10_sw001.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ107",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez107.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ107",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez107_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ107",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez107_cone10.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ108",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez108.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ108",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez108_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ108",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez108_cone10.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ109",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez109.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ109",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez109_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ109",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez109_cone10.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ110",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez110.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ110",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez110_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ110",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez110_cone10.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ111",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez111.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ111",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez111_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ111",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez111_cone10.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ112",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez112.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ112",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez112_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "EZ112",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez112_cone10.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "FD254",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/fd254.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "FD254",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/07/fd254_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "FD254",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/04/fd254_cone10_over_sw501.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "FD258",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/fd258.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "FD258",
+    "label": "Cone 6 oxidation",
+    "cone": "Cone 6",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/07/fd258_cone6.jpg",
+    "sortOrder": 30
+  },
+  {
+    "brand": "Duncan",
+    "code": "FD258",
+    "label": "Cone 10 reduction",
+    "cone": "Cone 10",
+    "atmosphere": "Reduction",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2026/04/fd258_cone10_over_sw508.jpg",
+    "sortOrder": 40
+  },
+  {
+    "brand": "Duncan",
+    "code": "IN1001",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/in1001.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "PB001",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/pb001.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "PBDIP",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/pbdip.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "S-2000",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/s-2000.jpg",
+    "sortOrder": 10
+  },
+  {
+    "brand": "Duncan",
+    "code": "SN351",
+    "label": "Cone 06 reference tile",
+    "cone": "Cone 06",
+    "atmosphere": "Oxidation",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/sn351.jpg",
+    "sortOrder": 10
+  }
+]

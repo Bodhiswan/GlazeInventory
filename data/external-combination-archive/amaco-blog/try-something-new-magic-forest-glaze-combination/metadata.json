@@ -1,0 +1,40 @@
+{
+  "id": "amaco-blog/try-something-new-magic-forest-glaze-combination",
+  "sourceType": "amaco-blog-post",
+  "sourceName": "AMACO Blog",
+  "title": "Try Something New: Magic Forest Glaze Combination",
+  "sourceUrl": "https://amaco.com/resources/blog/try-something-new-magic-forest-glaze-combination",
+  "cone": "Cone 6",
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "I\u2019m bringing you a great glaze layering combination that\u2019s light and fresh with a slightly magical iridescence. It reminds me of misty mornings in the forest when the air seems to have an opalescent gleam. I start with TWO coats of PCF-74 River Birch, all over. River Birch has the creaminess of Honey Flux with dark brown runny specks. This combo can be done with any Potter\u2019s Choice Flux (PCF) glaze as the base, so give other ones a try if you like. I love the look with River Birch. Once those two coats of River Birch are dry I follow up with ONE coat of PC-21 Arctic Blue all over the River Birch. Let it dry completely. Last, I use dots or stripes of PC-42 Seaweed. Seaweed is a runner, so keep it near the top of the piece and let it flow a little. Fire to cone 6. This combo looks beautiful on either textured or smooth vertical forms, and will work on horizontal surfaces, though the Seaweed won\u2019t get as much movement. Watch the live video where I describe the process here: https://www.youtube.com/watch?... Happy Glazing! ~Cara",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "PCF-74",
+      "name": "River Birch",
+      "line": "Potter's Choice Flux"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-21",
+      "name": "Arctic Blue",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-42",
+      "name": "Seaweed",
+      "line": "Potter's Choice"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/682363d65a28a/MagicForestGlazeTechnique_970pxWidth_May2025.jpg?w=1170&fit=max",
+      "sha256": "46ba08351e9aa02aca0c685fde927fa0e3ddaf6247005789a4c94cfd79540019",
+      "width": 970,
+      "height": 500
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+[
+  {
+    "brand": "Duncan",
+    "line": "Clear Glazes",
+    "code": "IN1001",
+    "name": "Envision Clear\u00ae",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Cone 06: Use Duncan Clear Glaze to apply a sparkling, gloss protective finish to ware. Cone 6: Not recommended.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/in1001.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/in1001-envision-clear/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "Clear Glazes",
+    "code": "PB001",
+    "name": "Pure Brilliance Clear Brushing",
+    "cone": null,
+    "description": "Use Duncan Clear Glaze to apply a sparkling protective finish to ware.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/pb001.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/pb001-pure-brilliance-clear-brushing/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "Clear Glazes",
+    "code": "PBDIP",
+    "name": "Pure Brilliance Clear Dipping",
+    "cone": null,
+    "description": "Use Duncan Clear Glaze to apply a sparkling protective finish to ware.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/pbdip.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/pbdip-pure-brilliance-clear-dipping/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "Clear Glazes",
+    "code": "S-2000",
+    "name": "Crystal Clear Dipping",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Cone 06 oxidation (large photo): Clean, clear surface and gloss finish. Luster compatible. Cone 6 oxidation (small photo): No color change \u2013 blistering/pinholing can occur. TIP: S-2101 may not be compatible with all red clays as a blueish haze may appear after firing. Note: 3 Gallon Pail size is only available to purchase from your nearest Mayco distributor.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/s-2000.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/s-2000-crystal-clear-dipping/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "Clear Glazes",
+    "code": "SN351",
+    "name": "Satin Clear",
+    "cone": null,
+    "description": "Use Duncan Clear Glaze to apply a sparkling protective finish to ware.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/sn351.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/sn351-satin-clear/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ002",
+    "name": "Cinderella Pink",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Cinderella Pink is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Color mostly fades. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Color completely fades. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez002-cinderella-pink.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez002-cinderella-pink/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ003",
+    "name": "Irish Green",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Irish Green is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Dull, yellower lime green. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Dull, yellower lime green. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez003-irish-green-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez003-irish-green/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ010",
+    "name": "French Brown",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06: French Brown is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6: Color lightens. Recommended clear: SW-004 Stoneware Zinc Free Clear. Cone 10 reduction: Color lightens. Recommended clear: SW-004 Stoneware Zinc Free Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez010-french-brown-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez010-french-brown/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ011",
+    "name": "Sienna Brown",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Sienna Brown is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez011-sienna-brown.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez011-sienna-brown/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ012",
+    "name": "Cobalt Jet Black",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Cobalt Jet Black is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez012.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez012-cobalt-jet-black/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ013",
+    "name": "White",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: White is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez013.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez013-white/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ018",
+    "name": "Chartreuse",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06: Chartreuse is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6: Minimal change in color. Recommended clear: SW-001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW-001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez018-chartreuse.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/chartreuse/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ022",
+    "name": "Beige",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Beige is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Slightly textured sheen. Deeper color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Slightly textured sheen. Deeper color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez022-beige.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez022-beige/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ023",
+    "name": "Midnight Blue",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Midnight Blue is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: No change. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: No change. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez023.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez023-midnight-blue/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ024",
+    "name": "Royal Blue Green",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06: Royal Green Blue is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6: Color fades. Recommended clear: SW-001 Stoneware Clear. Cone 10 reduction: Color fades. Recommended clear: SW-001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez024-royal-blue-green-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/royal-blue-green/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ026",
+    "name": "Yellow Orange",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Yellow Orange is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Shifts to bright yellow. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Shifts to bright yellow. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez026.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez026-yellow-orange/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ027",
+    "name": "Blue Turquoise",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Blue Turquoise is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez027.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez027-blue-turquoise/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ028",
+    "name": "Leaf Green",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Leaf Green is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Shifts to an olive green. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Shifts to an olive green. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez028.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez028-leaf-green/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ030",
+    "name": "Rose",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Rose is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Color fades nearly completely. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez030.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez030-rose/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ031",
+    "name": "Light Blue",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Light Blue is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Color darkens. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Color darkens. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez031-light-blue-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez031-light-blue/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ032",
+    "name": "Peacock Green",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06: Peacock Green is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6: Color slightly darkens. Recommended clear: SW-001 Stoneware Clear. Cone 10 reduction: Color slightly darkens. Recommended clear: SW-001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez032-peacock-green-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/peacock-green/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ033",
+    "name": "Ivy Green",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Ivy Green is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Shifts to an olive green.Recommended clear: SW004 Stoneware Zinc Free Clear. Cone 10 reduction: Shifts to an olive green.Recommended clear: SW004 Stoneware Zinc Free Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez033.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez033-ivy-green/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ034",
+    "name": "Orange",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Orange is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez034-orange-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez034-orange/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ035",
+    "name": "Dutch Blue",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Dutch Blue is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Color darkens. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Color darkens. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez035-dutch-blue-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez035-dutch-blue/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ037",
+    "name": "Black",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Black is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW004 Stoneware Zinc Free Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW004 Stoneware Zinc Free Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez037.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez037-black/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ038",
+    "name": "Medium Mahogany",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Medium Mahogany is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Color shifts to light brown. Recommended clear: SW004 Stoneware Zinc Free Clear. Cone 10 reduction: Color shifts to light brown. Recommended clear: SW004 Stoneware Zinc Free Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez038-medium-mahogany-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez038-medium-mahogany/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ042",
+    "name": "Teal",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Teal is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Slight sheen. Milkier, weaker blue-teal. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Slight sheen. Milkier, weaker blue-teal. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez042-teal.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez042-teal/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ047",
+    "name": "Thundercloud Grey",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06: Thundercloud Grey is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6: Minimal change in color. Recommended clear: SW-001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW-001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/11/ez047-thundercloud-grey-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/thundercloud-grey/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ050",
+    "name": "Plum Purple",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Plum Purple is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Color shifts to a medium blue. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Color shifts to a medium blue. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez050.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez050-plum-purple/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ055",
+    "name": "Brick",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Brick is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Color lightens. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Color lightens. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez055-brick.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez055-brick/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ057",
+    "name": "Coral Red",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Coral Red is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez057-coral-red.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez057-coral-red/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ058",
+    "name": "Poppy Orange",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Poppy Orange is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez058.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez058-poppy-orange/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ063",
+    "name": "Wine Berry",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Wine Berry is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Color lightens. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Color lighter and bluer. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez063-wine-berry-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez063-wine-berry/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ071",
+    "name": "Dark Olive",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Dark Olive is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Color slightly fades. Recommended clear: SW004 Stoneware Zinc Free Clear. Cone 10 reduction: Color slightly fades. Recommended clear: SW004 Stoneware Zinc Free Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/09/ez071-dark-olive-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez071-dark-olive/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ075",
+    "name": "Passion Red",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Passion Red is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/05/ez075.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez075-passion-red/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ101",
+    "name": "Neon Yellow",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Neon Yellow is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Minimal change in color. Recommended clear: SW001 Stoneware Clear. Cone 10 reduction: Minimal change in color. Recommended clear: SW001 Stoneware Clear.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2022/09/ez101-neon-yellow-1oz.jpeg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez101-neon-yellow/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ107",
+    "name": "Butter",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Butter is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: No change. SW001 Stoneware Clear recommended Cone 10 reduction: Color fades slightly. SW001 Stoneware Clear recommended",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez107.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez107-butter/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ108",
+    "name": "Carrot",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Carrot is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: No change. SW001 Stoneware Clear recommended Cone 10 reduction: Color fades slightly. SW001 Stoneware Clear recommended",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez108.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez108-carrot/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ109",
+    "name": "Creamsicle",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Creamsicle is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: No change. SW001 Stoneware Clear recommended Cone 10 reduction: Color fades slightly. SW001 Stoneware Clear recommended",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez109.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez109-creamsicle/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ110",
+    "name": "Cool Blue",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Cool Blue is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: No change. SW001 Stoneware Clear recommended Cone 10 reduction: Color fades slightly. SW001 Stoneware Clear recommended",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez110.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez110-cool-blue/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ111",
+    "name": "Juniper Green",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Juniper Green is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: No change. SW001 Stoneware Clear recommended Cone 10 reduction: Color fades slightly. SW001 Stoneware Clear recommended",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez111.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/ez111-juniper-green/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "E-Z Stroke\u00ae Translucent Underglazes",
+    "code": "EZ112",
+    "name": "Lilac",
+    "cone": "Cone 06 / Cone 6 / Cone 10",
+    "description": "Cone 06 oxidation: Lilac is a translucent underglaze suitable for use with a number of decorating techniques including airbrushing, antiquing and brushstrokes. Cone 6 oxidation: Lightens slightly. SW001 Stoneware Clear recommended Cone 10 reduction: Color fades almost completely. SW001 Stoneware Clear recommended",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/ez112.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/lilac/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "French Dimensions\u2122",
+    "code": "FD254",
+    "name": "Black Licorice",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Cone 06: Black Licorice is a dimensional, raised glaze with a writer tip to make application super easy and smooth. Cone 6: Color flattens over glaze. Remains dimensional over plain bisque.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/fd254.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/fd254-black-licorice/"
+  },
+  {
+    "brand": "Duncan",
+    "line": "French Dimensions\u2122",
+    "code": "FD258",
+    "name": "Pure White",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Cone 06: Pure White is a dimensional, raised glaze with a writer tip to make application super easy and smooth. Cone 6: Color flattens over glaze. Remains dimensional over plain bisque.",
+    "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/04/fd258.jpg",
+    "sourceUrl": "https://www.maycocolors.com/product/fd258-pure-white/"
+  }
+]

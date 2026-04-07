@@ -23,7 +23,6 @@ import type {
   GlazeComment,
   GlazeDetail,
   GlazeFiringImage,
-  GlazeRatingSummary,
   CombinationPost,
   VendorCombinationExample,
   VendorCombinationExampleLayer,
@@ -579,7 +578,21 @@ export async function requireViewer() {
 }
 
 export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: string) {
-  const glazes = getAllCatalogGlazes().sort((left, right) =>
+  const staticGlazes = getAllCatalogGlazes();
+
+  // Merge in any custom glazes this user has added
+  let customGlazes: Glaze[] = [];
+  const supabase = await getSupabase();
+  if (supabase) {
+    const { data } = await supabase
+      .from("glazes")
+      .select("id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id")
+      .eq("source_type", "nonCommercial")
+      .eq("created_by_user_id", viewerId);
+    customGlazes = (data ?? []).map((row) => mapGlaze(row as Row));
+  }
+
+  const glazes = [...staticGlazes, ...customGlazes].sort((left, right) =>
     formatGlazeLabel(left).localeCompare(formatGlazeLabel(right)),
   );
   return attachTagSummariesToGlazes(viewerId, glazes);
@@ -1269,14 +1282,14 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
       comments: [],
       viewerOwnsGlaze: false,
       viewerInventoryItem: null,
-      rating: { averageRating: null, ratingCount: 0, viewerRating: null },
+      viewerHasFavourited: false,
     };
   }
 
   const [
     { data: inventoryRows },
     { data: commentRows },
-    { data: ratingRows },
+    { data: favouriteRows },
   ] = await Promise.all([
     supabase
       .from("inventory_items")
@@ -1290,9 +1303,12 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
       .eq("glaze_id", glazeId)
       .order("created_at", { ascending: false }),
     supabase
-      .from("glaze_ratings")
-      .select("user_id,rating")
-      .eq("glaze_id", glazeId),
+      .from("user_favourites")
+      .select("id")
+      .eq("user_id", viewerId)
+      .eq("target_type", "glaze")
+      .eq("target_id", glazeId)
+      .limit(1),
   ]);
 
   const comments: GlazeComment[] = (commentRows ?? []).map((row) => {
@@ -1309,22 +1325,28 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
     };
   });
 
-  const ratings = (ratingRows ?? []) as Array<{ user_id: string; rating: number }>;
-  const ratingCount = ratings.length;
-  const averageRating = ratingCount
-    ? ratings.reduce((total, row) => total + Number(row.rating ?? 0), 0) / ratingCount
-    : null;
-  const viewerRating =
-    ratings.find((row) => String(row.user_id) === viewerId)?.rating ?? null;
-
   return {
     glaze,
     firingImages,
     comments,
     viewerOwnsGlaze: inventoryRows?.length ? mapInventoryItem(inventoryRows[0] as Row).status === "owned" : false,
     viewerInventoryItem: inventoryRows?.length ? mapInventoryItem(inventoryRows[0] as Row) : null,
-    rating: { averageRating, ratingCount, viewerRating },
+    viewerHasFavourited: Boolean(favouriteRows?.length),
   };
+}
+
+export async function getFavouriteIds(
+  viewerId: string,
+  targetType: "glaze" | "combination",
+): Promise<string[]> {
+  const supabase = await getSupabase();
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from("user_favourites")
+    .select("target_id")
+    .eq("user_id", viewerId)
+    .eq("target_type", targetType);
+  return (data ?? []).map((row) => String((row as Row).target_id));
 }
 
 export async function getDashboardData(viewerId: string) {
