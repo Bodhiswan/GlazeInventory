@@ -19,6 +19,7 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { formatGlazeLabel } from "@/lib/utils";
 import { CUSTOM_GLAZE_ATMOSPHERE_VALUES, CUSTOM_GLAZE_CONE_VALUES } from "@/lib/glaze-constants";
+import { awardPoints } from "@/lib/points";
 
 const magicLinkSchema = z.object({
   email: z.email(),
@@ -202,6 +203,18 @@ async function requireLiveSupabase() {
 
 async function requireMemberSupabase(returnTo = "/auth/sign-in") {
   return requireLiveSupabase();
+}
+
+async function requireContributingMember(returnTo = "/contribute") {
+  const context = await requireMemberSupabase(returnTo);
+  if (context.viewer.profile.contributionsDisabled) {
+    redirect(
+      `${returnTo}?error=${encodeURIComponent(
+        "Your contribution access has been disabled after repeated policy violations",
+      )}`,
+    );
+  }
+  return context;
 }
 
 async function requireAdminSupabase(returnTo = "/dashboard") {
@@ -659,7 +672,7 @@ export async function addCatalogGlazeToInventoryAction(formData: FormData) {
 }
 
 export async function createCustomGlazeAction(formData: FormData) {
-  const { viewer, supabase } = await requireMemberSupabase("/glazes/new");
+  const { viewer, supabase } = await requireContributingMember("/glazes/new");
   const returnTo = normalizeOptional(formData.get("returnTo")) ?? "/inventory";
 
   const parsed = customGlazeSchema.safeParse({
@@ -740,6 +753,15 @@ export async function createCustomGlazeAction(formData: FormData) {
     glaze_id: null,
     metadata: { glaze_id: glaze.id, name: parsed.data.name, brand: parsed.data.brand ?? null },
   });
+
+  void awardPoints(
+    viewer.profile.id,
+    viewer.profile.isAdmin ?? false,
+    "glaze_added",
+    10,
+    glaze.id,
+    "glaze",
+  );
 
   const { error: inventoryError } = await supabase.from("inventory_items").insert({
     user_id: viewer.profile.id,
@@ -1038,7 +1060,7 @@ export async function updateGlazeInventoryAmountAction(input: {
 }
 
 export async function publishUserCombinationAction(formData: FormData) {
-  const { viewer, supabase } = await requireMemberSupabase("/publish");
+  const { viewer, supabase } = await requireContributingMember("/publish");
 
   // --- Parse layer glaze IDs (up to 4) ---
   const layerGlazeIds: string[] = [];
@@ -1212,6 +1234,15 @@ export async function publishUserCombinationAction(formData: FormData) {
     glaze_id: null,
     metadata: { example_id: exampleRow.id, title, layer_count: layerGlazeIds.length, cone: coneValue },
   });
+
+  void awardPoints(
+    viewer.profile.id,
+    viewer.profile.isAdmin ?? false,
+    "combination_shared",
+    5,
+    exampleRow.id,
+    "combination",
+  );
 
   revalidateWorkspace();
   redirect("/combinations?view=mine&published=1");
@@ -1545,7 +1576,7 @@ export async function publishExternalExampleIntakeAction(formData: FormData) {
 }
 
 export async function toggleGlazeTagVoteAction(formData: FormData) {
-  const { viewer, supabase } = await requireMemberSupabase("/glazes");
+  const { viewer, supabase } = await requireContributingMember("/glazes");
   const parsed = glazeTagVoteSchema.safeParse({
     glazeId: formData.get("glazeId"),
     tagSlug: formData.get("tagSlug")?.toString().trim(),
@@ -1594,6 +1625,15 @@ export async function toggleGlazeTagVoteAction(formData: FormData) {
       tag_id: tag.id,
       user_id: viewer.profile.id,
     });
+
+    void awardPoints(
+      viewer.profile.id,
+      viewer.profile.isAdmin ?? false,
+      "tag_voted",
+      0.1,
+      undefined,
+      "tag_vote",
+    );
   }
 
   revalidateWorkspace();
@@ -1627,6 +1667,9 @@ export async function addCombinationCommentInlineAction(
   body: string,
 ): Promise<{ error?: string; authorName?: string }> {
   const { viewer, supabase } = await requireMemberSupabase("/combinations");
+  if (viewer.profile.contributionsDisabled) {
+    return { error: "Your contribution access has been disabled" };
+  }
   const trimmed = body.trim();
   if (trimmed.length < 2) return { error: "Comment must be at least 2 characters." };
   if (trimmed.length > 1000) return { error: "Comment must be under 1000 characters." };
@@ -1639,12 +1682,21 @@ export async function addCombinationCommentInlineAction(
 
   if (error) return { error: error.message };
 
+  void awardPoints(
+    viewer.profile.id,
+    viewer.profile.isAdmin ?? false,
+    "comment_left",
+    0.1,
+    undefined,
+    "comment",
+  );
+
   revalidateWorkspace();
   return { authorName: viewer.profile.displayName };
 }
 
 export async function addGlazeCommentAction(formData: FormData) {
-  const { viewer, supabase } = await requireMemberSupabase("/glazes");
+  const { viewer, supabase } = await requireContributingMember("/glazes");
   const parsed = glazeCommentSchema.safeParse({
     glazeId: formData.get("glazeId"),
     body: formData.get("body")?.toString().trim(),
@@ -1666,6 +1718,15 @@ export async function addGlazeCommentAction(formData: FormData) {
   if (error) {
     redirect(`${returnTo}?error=${encodeURIComponent(error.message)}`);
   }
+
+  void awardPoints(
+    viewer.profile.id,
+    viewer.profile.isAdmin ?? false,
+    "comment_left",
+    0.1,
+    undefined,
+    "comment",
+  );
 
   revalidateWorkspace();
   revalidatePath(returnTo);
@@ -1989,7 +2050,7 @@ export async function adminDeleteCustomGlazeAction(formData: FormData): Promise<
 }
 
 export async function uploadCommunityFiringImageAction(formData: FormData): Promise<{ error: string } | { success: true }> {
-  const { viewer, supabase } = await requireMemberSupabase("/contribute/firing-image");
+  const { viewer, supabase } = await requireContributingMember("/contribute/firing-image");
 
   const imageFile = formData.get("image");
   if (!(imageFile instanceof File) || imageFile.size === 0) return { error: "No image provided" };
@@ -2016,7 +2077,7 @@ export async function uploadCommunityFiringImageAction(formData: FormData): Prom
 
   const { data: publicData } = supabase.storage.from("community-firing-images").getPublicUrl(storagePath);
 
-  const { error: insertErr } = await supabase.from("community_firing_images").insert({
+  const { data: insertedImage, error: insertErr } = await supabase.from("community_firing_images").insert({
     glaze_id: glazeId || null,
     combination_id: combinationId || null,
     combination_type: combinationId ? combinationType : null,
@@ -2026,9 +2087,18 @@ export async function uploadCommunityFiringImageAction(formData: FormData): Prom
     cone,
     atmosphere,
     uploader_user_id: viewer.profile.id,
-  });
+  }).select("id").single();
 
   if (insertErr) return { error: insertErr.message };
+
+  void awardPoints(
+    viewer.profile.id,
+    viewer.profile.isAdmin ?? false,
+    "firing_photo_uploaded",
+    2,
+    insertedImage?.id,
+    "community_image",
+  );
 
   return { success: true };
 }
