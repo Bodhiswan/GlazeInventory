@@ -15,6 +15,7 @@ import {
 } from "@/lib/external-example-intakes";
 import { createPairKey, parsePairKey } from "@/lib/combinations";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import type { Database } from "@/lib/supabase/database.types";
 import { normalizeOptional, revalidateWorkspace, requireMemberSupabase, requireAdminSupabase } from "./_shared";
 
 const externalExampleMatchSchema = z.object({
@@ -270,8 +271,8 @@ export async function publishExternalExampleIntakeAction(formData: FormData) {
     .from("combination_pairs")
     .upsert(
       {
-        glaze_a_id: orderedGlazeIds?.[0],
-        glaze_b_id: orderedGlazeIds?.[1],
+        glaze_a_id: orderedGlazeIds![0],
+        glaze_b_id: orderedGlazeIds![1],
         pair_key: pairKey,
       },
       { onConflict: "pair_key" },
@@ -351,7 +352,8 @@ export async function adminApproveSubmissionAction(formData: FormData): Promise<
   const admin = createSupabaseAdminClient();
   if (!admin) return;
 
-  await admin
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  await (admin as any)
     .from(targetTable(target))
     .update({ moderation_state: "approved" })
     .eq("id", id);
@@ -372,13 +374,15 @@ export async function adminRejectSubmissionAction(formData: FormData): Promise<v
   const admin = createSupabaseAdminClient();
   if (!admin) return;
 
-  await admin
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  await (admin as any)
     .from(targetTable(target))
     .update({ moderation_state: "rejected" })
     .eq("id", id);
 
   // Auto-flag as false contribution on reject (voids points, +1 strike)
-  const { data: row } = await admin
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data: row } = await (admin as any)
     .from(targetTable(target))
     .select(targetAuthorColumn(target))
     .eq("id", id)
@@ -409,7 +413,8 @@ export async function adminReopenSubmissionAction(formData: FormData): Promise<v
   const admin = createSupabaseAdminClient();
   if (!admin) return;
 
-  await admin
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  await (admin as any)
     .from(targetTable(target))
     .update({ moderation_state: "pending" })
     .eq("id", id);
@@ -433,14 +438,16 @@ export async function adminPermanentDeleteSubmissionAction(
   if (!admin) return;
 
   // Only allow permanent delete of rejected items
-  const { data: row } = await admin
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { data: row } = await (admin as any)
     .from(targetTable(target))
     .select("moderation_state")
     .eq("id", id)
     .single();
   if ((row as Record<string, unknown> | null)?.moderation_state !== "rejected") return;
 
-  await admin.from(targetTable(target)).delete().eq("id", id);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  await (admin as any).from(targetTable(target)).delete().eq("id", id);
 
   revalidatePath("/admin/analytics/moderation");
   revalidatePath("/admin/analytics");
