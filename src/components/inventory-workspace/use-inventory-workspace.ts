@@ -2,9 +2,8 @@
 
 import { useCallback, useDeferredValue, useEffect, useMemo, useState } from "react";
 
-import { getCatalogGlazesForScannerAction } from "@/app/actions/glazes";
-import { setGlazeInventoryStateAction, updateInventoryItemNotesAction } from "@/app/actions/inventory";
-import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
+import { getCatalogGlazesForScannerAction, toggleFavouriteInlineAction } from "@/app/actions/glazes";
+import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
 import type {
   CombinationPost,
   GlazeFiringImage,
