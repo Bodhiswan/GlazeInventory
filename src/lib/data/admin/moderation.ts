@@ -61,7 +61,6 @@ export async function getReportedPostsQueue(): Promise<ModerationItem[]> {
 export async function getModerationQueue(): Promise<ModerationQueue> {
   const admin = createSupabaseAdminClient();
   if (!admin) return { combinations: [], customGlazes: [], firingImages: [] };
-  type Row = Record<string, unknown>;
 
   const [combosRes, glazesRes, firingImagesRes] = await Promise.all([
     admin

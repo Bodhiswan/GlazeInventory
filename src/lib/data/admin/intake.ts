@@ -1,5 +1,4 @@
 import { requireViewer, getSupabase } from "@/lib/data/users";
-import { parseInventoryState } from "@/lib/inventory-state";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import type {
   ExternalExampleAsset,
@@ -9,9 +8,6 @@ import type {
   Glaze,
   IntakeStatus,
 } from "@/lib/types";
-import {
-  getCatalogGlazesByIds,
-} from "@/lib/catalog";
 
 type Row = Record<string, unknown>;
 
@@ -190,17 +186,6 @@ async function getSignedExternalExampleAssetUrls(storagePaths: string[]) {
     signedUrls.filter((entry): entry is readonly [string, string] => Boolean(entry)),
   );
 }
-
-// Admin context: tag enrichment is not needed for intake/moderation views
-async function getGlazesByIds(
-  _viewerId: string,
-  ids: string[],
-  _clientOverride?: ReturnType<typeof createSupabaseAdminClient> | null,
-) {
-  if (!ids.length) return [];
-  return getCatalogGlazesByIds(ids);
-}
-
 
 export async function getExternalExampleIntakeQueue(status?: IntakeStatus | "all") {
   const viewer = await requireViewer();

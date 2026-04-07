@@ -80,7 +80,6 @@ export interface AdminUserDetail {
 export async function getAdminUserDetail(userId: string): Promise<AdminUserDetail | null> {
   const admin = createSupabaseAdminClient();
   if (!admin) throw new Error("Admin client unavailable");
-  type Row = Record<string, unknown>;
 
   // Fetch profile and inventory in parallel
   const [{ data: profileRow }, { data: invRows }] = await Promise.all([
@@ -171,7 +170,6 @@ export async function getAdminUserDetail(userId: string): Promise<AdminUserDetai
 export async function getAnalyticsDashboard(): Promise<AnalyticsDashboard> {
   const admin = createSupabaseAdminClient();
   if (!admin) throw new Error("Admin client unavailable");
-  type Row = Record<string, unknown>;
 
   const now = Date.now();
 
@@ -365,7 +363,6 @@ function rangeStart(range: DashboardRange): string | null {
 export async function getAdminDashboard(range: DashboardRange = "30d"): Promise<AdminDashboard> {
   const admin = createSupabaseAdminClient();
   if (!admin) throw new Error("Admin client unavailable");
-  type Row = Record<string, unknown>;
 
   const since = rangeStart(range);
 
