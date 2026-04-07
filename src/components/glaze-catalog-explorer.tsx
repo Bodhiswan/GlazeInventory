@@ -1,9 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Heart, Search, X } from "lucide-react";
-import { memo } from "react";
+import { Heart, Search, X } from "lucide-react";
 
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
@@ -16,151 +14,10 @@ import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
 import { getManufacturerUrl } from "@/lib/glaze-metadata";
-import {
-  cn,
-  formatGlazeLabel,
-  getColorSwatch,
-  getGlazeSkimDescription,
-  pickPreferredGlazeImage,
-} from "@/lib/utils";
+import { cn, formatGlazeLabel, getGlazeSkimDescription } from "@/lib/utils";
 import { useGlazeExplorer } from "@/components/glaze-catalog/use-glaze-explorer";
-
-type FilterSectionKey = "brands" | "families" | "colors" | "finishes" | "cones";
-
-const FilterTile = memo(function FilterTile({
-  value,
-  checked,
-  onToggle,
-  swatch,
-  count,
-  countLabel,
-}: {
-  value: string;
-  checked: boolean;
-  onToggle: (value: string) => void;
-  swatch?: string;
-  count?: number;
-  countLabel?: string;
-}) {
-  return (
-    <button
-      type="button"
-      aria-pressed={checked}
-      onClick={() => onToggle(value)}
-      className={cn(
-        "grid min-h-[76px] content-between gap-3 border px-3 py-3 text-left transition-colors",
-        checked
-          ? "border-foreground bg-white text-foreground"
-          : "border-border bg-background hover:border-foreground/25 hover:bg-white",
-      )}
-    >
-      <span className="flex items-center gap-2">
-        <span
-          className={cn(
-            "flex h-5 w-5 items-center justify-center border text-[10px] uppercase tracking-[0.14em] transition-colors",
-            checked
-              ? "border-foreground bg-foreground text-white"
-              : "border-border bg-panel text-transparent",
-          )}
-          aria-hidden="true"
-        >
-          x
-        </span>
-        {swatch ? (
-          <span
-            className="h-3 w-3 rounded-full border border-black/10 sm:h-3.5 sm:w-3.5"
-            style={{ backgroundColor: swatch }}
-            aria-hidden="true"
-          />
-        ) : null}
-        <span className="text-sm font-medium leading-5">{value}</span>
-      </span>
-      <span className="flex items-center justify-between gap-3 text-[10px] uppercase tracking-[0.16em] text-muted">
-        <span>{countLabel ?? (count ? `${count} glazes` : "Toggle")}</span>
-        <span className={checked ? "text-foreground" : ""}>{checked ? "Selected" : "Add"}</span>
-      </span>
-    </button>
-  );
-});
-
-function FilterSection({
-  title,
-  optionCount,
-  selectedCount,
-  open,
-  onToggle,
-  children,
-}: {
-  title: string;
-  optionCount: number;
-  selectedCount: number;
-  open: boolean;
-  onToggle: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="border border-border bg-background">
-      <button
-        type="button"
-        onClick={onToggle}
-        className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-white"
-        aria-expanded={open}
-      >
-        <span className="space-y-1">
-          <span className="block text-sm font-medium text-foreground">{title}</span>
-          <span className="block text-[10px] uppercase tracking-[0.16em] text-muted">
-            {optionCount} option{optionCount === 1 ? "" : "s"}
-          </span>
-        </span>
-        <span className="flex items-center gap-2">
-          {selectedCount ? <Badge tone="neutral">{selectedCount} selected</Badge> : null}
-          <ChevronDown
-            className={cn("h-4 w-4 text-muted transition-transform", open ? "rotate-180" : "")}
-          />
-        </span>
-      </button>
-      {open ? <div className="border-t border-border p-3 sm:p-4">{children}</div> : null}
-    </div>
-  );
-}
-
-function toggleValue(values: string[], target: string) {
-  return values.includes(target) ? values.filter((value) => value !== target) : [...values, target];
-}
-
-function FilterSelectionSummary({
-  values,
-  onRemove,
-}: {
-  values: string[];
-  onRemove: (value: string) => void;
-}) {
-  return (
-    <div className="flex flex-wrap gap-2">
-      {values.map((value) => (
-        <button
-          key={value}
-          type="button"
-          onClick={() => onRemove(value)}
-          className="inline-flex items-center gap-2 border border-foreground/20 bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.16em] text-foreground transition-colors hover:border-foreground/35"
-        >
-          <span>{value}</span>
-          <X className="h-3.5 w-3.5" />
-        </button>
-      ))}
-    </div>
-  );
-}
-
-function toggleFilterSection(
-  current: Record<FilterSectionKey, boolean>,
-  section: FilterSectionKey,
-) {
-  return {
-    ...current,
-    [section]: !current[section],
-  };
-}
+import { GlazeFilters } from "@/components/glaze-catalog/glaze-filters";
+import { GlazeGrid } from "@/components/glaze-catalog/glaze-grid";
 
 export function GlazeCatalogExplorer({
   glazes,
@@ -282,304 +139,74 @@ export function GlazeCatalogExplorer({
               />
             </div>
 
-            <div className="overflow-hidden border border-border/80 bg-panel">
-              <button
-                type="button"
-                onClick={() => setFiltersOpen((current) => !current)}
-                className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-white/55"
-                aria-expanded={filtersOpen}
-              >
-                <span className="space-y-1">
-                  <span className="block text-sm font-medium text-foreground">Filters</span>
-                  <span className="block text-[10px] uppercase tracking-[0.16em] text-muted">
-                    Expand sections by brand, family, color, finish, and cone
-                  </span>
-                </span>
-                <span className="flex items-center gap-2">
-                  {selectedFilterCount ? <Badge tone="neutral">{selectedFilterCount} selected</Badge> : null}
-                  <ChevronDown
-                    className={cn("h-4 w-4 text-muted transition-transform", filtersOpen ? "rotate-180" : "")}
-                  />
-                </span>
-              </button>
-
-              {filtersOpen ? (
-                <div className="grid gap-3 border-t border-border px-3 py-3 sm:px-4 sm:py-4">
-                  <FilterSection
-                    title="Brands"
-                    optionCount={brandOptions.length}
-                    selectedCount={brandFilters.length}
-                    open={openFilterSections.brands}
-                    onToggle={() =>
-                      setOpenFilterSections((current) => toggleFilterSection(current, "brands"))
-                    }
-                  >
-                    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                      {brandOptions.map((option) => (
-                        (() => {
-                          const totalCount = brandOptionCounts.get(option) ?? 0;
-                          const matchingCount = currentBrandCounts.get(option) ?? 0;
-                          const countLabel =
-                            matchingCount !== totalCount
-                              ? `${matchingCount} matching · ${totalCount} total`
-                              : `${totalCount} glazes`;
-
-                          return (
-                        <FilterTile
-                          key={option}
-                          value={option}
-                          count={totalCount}
-                          countLabel={countLabel}
-                          checked={brandFilters.includes(option)}
-                          onToggle={(value) => {
-                            setBrandFilters((current) => toggleValue(current, value));
-                            setVisibleCount(INITIAL_GLAZE_BATCH);
-                          }}
-                        />
-                          );
-                        })()
-                      ))}
-                    </div>
-                  </FilterSection>
-
-                  <FilterSection
-                    title="Shared families"
-                    optionCount={familyOptions.length}
-                    selectedCount={familyFilters.length}
-                    open={openFilterSections.families}
-                    onToggle={() =>
-                      setOpenFilterSections((current) => toggleFilterSection(current, "families"))
-                    }
-                  >
-                    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                      {familyOptions.map((option) => (
-                        <FilterTile
-                          key={option}
-                          value={option}
-                          count={familyOptionCounts.get(option)}
-                          checked={familyFilters.includes(option)}
-                          onToggle={(value) => {
-                            setFamilyFilters((current) => toggleValue(current, value));
-                            setVisibleCount(INITIAL_GLAZE_BATCH);
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </FilterSection>
-
-                  <FilterSection
-                    title="Colors"
-                    optionCount={colorOptions.length}
-                    selectedCount={colorFilters.length}
-                    open={openFilterSections.colors}
-                    onToggle={() =>
-                      setOpenFilterSections((current) => toggleFilterSection(current, "colors"))
-                    }
-                  >
-                    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                      {colorOptions.map((option) => (
-                        <FilterTile
-                          key={option}
-                          value={option}
-                          count={colorOptionCounts.get(option)}
-                          checked={colorFilters.includes(option)}
-                          swatch={getColorSwatch(option)}
-                          onToggle={(value) => {
-                            setColorFilters((current) => toggleValue(current, value));
-                            setVisibleCount(INITIAL_GLAZE_BATCH);
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </FilterSection>
-
-                  <FilterSection
-                    title="Finishes"
-                    optionCount={finishOptions.length}
-                    selectedCount={finishFilters.length}
-                    open={openFilterSections.finishes}
-                    onToggle={() =>
-                      setOpenFilterSections((current) => toggleFilterSection(current, "finishes"))
-                    }
-                  >
-                    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                      {finishOptions.map((option) => (
-                        <FilterTile
-                          key={option}
-                          value={option}
-                          count={finishOptionCounts.get(option)}
-                          checked={finishFilters.includes(option)}
-                          onToggle={(value) => {
-                            setFinishFilters((current) => toggleValue(current, value));
-                            setVisibleCount(INITIAL_GLAZE_BATCH);
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </FilterSection>
-
-                  <FilterSection
-                    title="Cones"
-                    optionCount={coneOptions.length}
-                    selectedCount={coneFilters.length}
-                    open={openFilterSections.cones}
-                    onToggle={() =>
-                      setOpenFilterSections((current) => toggleFilterSection(current, "cones"))
-                    }
-                  >
-                    <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                      {coneOptions.map((option) => (
-                        <FilterTile
-                          key={option}
-                          value={option}
-                          count={coneOptionCounts.get(option)}
-                          checked={coneFilters.includes(option)}
-                          onToggle={(value) => {
-                            setConeFilters((current) => toggleValue(current, value));
-                            setVisibleCount(INITIAL_GLAZE_BATCH);
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </FilterSection>
-                </div>
-              ) : null}
-            </div>
-
-            {hasActiveQuery ? (
-              <div className="flex flex-wrap items-center gap-3">
-                <Badge tone="neutral">{sortedGlazes.length} results</Badge>
-                <Badge tone="neutral">
-                  Showing {visibleGlazeCount} of {displayGlazes.length}
-                </Badge>
-                {remainingGlazeCount ? (
-                  <>
-                    <button
-                      type="button"
-                      className={buttonVariants({ variant: "ghost", size: "sm" })}
-                      onClick={() =>
-                        setVisibleCount((current) =>
-                          Math.min(current + GLAZE_BATCH_STEP, displayGlazes.length),
-                        )
-                      }
-                    >
-                      Show {Math.min(GLAZE_BATCH_STEP, remainingGlazeCount)} more
-                    </button>
-                    <button
-                      type="button"
-                      className={buttonVariants({ variant: "secondary", size: "sm" })}
-                      onClick={() => setVisibleCount(displayGlazes.length)}
-                    >
-                      Show all {displayGlazes.length}
-                    </button>
-                  </>
-                ) : null}
-                {hasFilters ? (
-                  <button
-                    type="button"
-                    className={buttonVariants({ variant: "ghost", size: "sm" })}
-                    onClick={() => {
-                      setQuery("");
-                      setBrandFilters([]);
-                      setFamilyFilters([]);
-                      setColorFilters([]);
-                      setFinishFilters([]);
-                      setConeFilters([]);
-                      setVisibleCount(INITIAL_GLAZE_BATCH);
-                    }}
-                  >
-                    Clear filters
-                  </button>
-                ) : null}
-              </div>
-            ) : null}
-
-            {hasActiveQuery && selectedFilterLabels.length ? (
-              <FilterSelectionSummary
-                values={selectedFilterLabels}
-                onRemove={(value) => {
-                  setBrandFilters((current) => current.filter((option) => option !== value));
-                  setFamilyFilters((current) => current.filter((option) => option !== value));
-                  setColorFilters((current) => current.filter((option) => option !== value));
-                  setFinishFilters((current) => current.filter((option) => option !== value));
-                  setConeFilters((current) => current.filter((option) => option !== value));
-                  setVisibleCount(INITIAL_GLAZE_BATCH);
-                }}
-              />
-            ) : null}
+            <GlazeFilters
+              brandFilters={brandFilters}
+              setBrandFilters={setBrandFilters}
+              familyFilters={familyFilters}
+              setFamilyFilters={setFamilyFilters}
+              colorFilters={colorFilters}
+              setColorFilters={setColorFilters}
+              finishFilters={finishFilters}
+              setFinishFilters={setFinishFilters}
+              coneFilters={coneFilters}
+              setConeFilters={setConeFilters}
+              filtersOpen={filtersOpen}
+              setFiltersOpen={setFiltersOpen}
+              openFilterSections={openFilterSections}
+              setOpenFilterSections={setOpenFilterSections}
+              brandOptions={brandOptions}
+              familyOptions={familyOptions}
+              colorOptions={colorOptions}
+              finishOptions={finishOptions}
+              coneOptions={coneOptions}
+              brandOptionCounts={brandOptionCounts}
+              familyOptionCounts={familyOptionCounts}
+              colorOptionCounts={colorOptionCounts}
+              finishOptionCounts={finishOptionCounts}
+              coneOptionCounts={coneOptionCounts}
+              currentBrandCounts={currentBrandCounts}
+              selectedFilterCount={selectedFilterCount}
+              selectedFilterLabels={selectedFilterLabels}
+              hasActiveQuery={hasActiveQuery}
+              hasFilters={hasFilters}
+              sortedGlazesLength={sortedGlazes.length}
+              displayGlazesLength={displayGlazes.length}
+              visibleGlazeCount={visibleGlazeCount}
+              remainingGlazeCount={remainingGlazeCount}
+              onVisibleCountReset={() => setVisibleCount(INITIAL_GLAZE_BATCH)}
+              onShowMore={() =>
+                setVisibleCount((current) =>
+                  Math.min(current + GLAZE_BATCH_STEP, displayGlazes.length),
+                )
+              }
+              onShowAll={() => setVisibleCount(displayGlazes.length)}
+              onClearFilters={() => {
+                setQuery("");
+                setBrandFilters([]);
+                setFamilyFilters([]);
+                setColorFilters([]);
+                setFinishFilters([]);
+                setConeFilters([]);
+                setVisibleCount(INITIAL_GLAZE_BATCH);
+              }}
+              GLAZE_BATCH_STEP={GLAZE_BATCH_STEP}
+            />
           </div>
 
           {sortedGlazes.length ? (
-              <div className="space-y-4">
-                <div className="overflow-hidden border border-border bg-panel">
-                  <div className="flex items-center justify-between gap-3 border-b border-border/80 px-3 py-2">
-                    <p className="text-xs uppercase tracking-[0.18em] text-muted">Visible now</p>
-                    <Badge tone="neutral">
-                      {visibleGlazeCount} / {displayGlazes.length}
-                    </Badge>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-1.5 p-1.5 min-[420px]:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-                    {visibleGradientGlazes.map((item) => {
-                        const glaze = item.glaze;
-                        const inventoryState = optimisticInventoryStates[glaze.id];
-                        const currentStatus: "none" | InventoryStatus = inventoryState?.status ?? "none";
-                        const previewImage = pickPreferredGlazeImage(
-                          glaze,
-                          item.firingImages,
-                          previewCone,
-                          preferredAtmosphere,
-                        );
-
-                        return (
-                          <button
-                            key={glaze.id}
-                            type="button"
-                            onClick={() => setActiveGridGlazeId(glaze.id)}
-                            className="group relative z-0 overflow-visible border border-border bg-white text-left transition-transform duration-200 hover:z-20 hover:scale-[1.02] focus-visible:z-20 focus-visible:scale-[1.02] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-foreground/20"
-                            style={{ contentVisibility: "auto", containIntrinsicSize: "220px" }}
-                          >
-                            <div className="space-y-1.5 p-1.5 sm:p-2">
-                              <div className="relative overflow-hidden border border-border bg-panel">
-                                {previewImage ? (
-                                  <Image
-                                    src={previewImage}
-                                    alt={formatGlazeLabel(glaze)}
-                                    width={256}
-                                    height={256}
-                                    sizes="(min-width: 640px) 200px, 50vw"
-                                    className="aspect-square w-full object-contain bg-white transition duration-200"
-                                    loading="lazy"
-                                  />
-                                ) : (
-                                  <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
-                                    No image
-                                  </div>
-                                )}
-                              </div>
-
-                              <div className="space-y-0.5">
-                                <p className="text-[9px] uppercase tracking-[0.18em] text-muted sm:text-[10px]">
-                                  {glaze.brand} {glaze.code}
-                                </p>
-                                <h4 className="line-clamp-2 text-[13px] font-semibold leading-5 text-foreground sm:text-sm">
-                                  {glaze.name}
-                                </h4>
-                                {item.finishSummary ? <p className="hidden line-clamp-1 text-xs text-muted sm:block">{item.finishSummary}</p> : null}
-                              </div>
-
-                              <div className="flex flex-wrap gap-1">
-                                {currentStatus === "owned" ? <Badge tone="success">Owned</Badge> : null}
-                                {currentStatus === "wishlist" ? <Badge tone="accent">Wishlist</Badge> : null}
-                                {currentStatus === "archived" ? <Badge tone="neutral">Empty</Badge> : null}
-                              </div>
-                            </div>
-                          </button>
-                        );
-                      })}
-                  </div>
-                </div>
-              </div>
+            <GlazeGrid
+              visibleGradientGlazes={visibleGradientGlazes}
+              optimisticInventoryStates={optimisticInventoryStates}
+              previewCone={previewCone}
+              preferredAtmosphere={preferredAtmosphere}
+              onSelectGlaze={setActiveGridGlazeId}
+              visibleGlazeCount={visibleGlazeCount}
+              displayGlazesLength={displayGlazes.length}
+              hasActiveQuery={hasActiveQuery}
+              loadMoreRef={loadMoreRef}
+              visibleCount={visibleCount}
+              reviewMode={reviewMode}
+            />
           ) : (
             <Panel>
               <h2 className="display-font text-3xl tracking-tight">
@@ -592,17 +219,7 @@ export function GlazeCatalogExplorer({
               </p>
             </Panel>
           )}
-
-          {hasActiveQuery && visibleCount < displayGlazes.length ? (
-            <div
-              ref={loadMoreRef}
-              className="border border-dashed border-border bg-panel px-4 py-3 text-center text-sm text-muted"
-            >
-              Loading more glazes as you scroll...
-            </div>
-          ) : null}
         </Panel>
-
       </section>
 
       {activeGridItem ? (
@@ -680,7 +297,6 @@ export function GlazeCatalogExplorer({
             </div>
 
             <div className="overflow-y-auto overscroll-contain p-4 sm:p-5">
-
               <div className="grid gap-5 lg:grid-cols-[minmax(0,220px)_1fr]">
                 {/* Images column — gallery with lightbox */}
                 <div className="mx-auto w-full max-w-[280px] lg:mx-0">
