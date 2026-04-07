@@ -7,6 +7,7 @@ import { Heart } from "lucide-react";
 import { toggleGlazeFavouriteAction } from "@/app/actions/glazes";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { PageHeader } from "@/components/page-header";
+import { SectionErrorBoundary } from "@/components/section-error-boundary";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
@@ -204,13 +205,15 @@ export default async function GlazeDetailPage({
 
       </section>
 
-      <Suspense fallback={<GlazeUserStateSkeleton />}>
-        <GlazeUserStateServer
-          viewerId={viewer.profile.id}
-          glazeId={glaze.id}
-          glazeSourceType={glaze.sourceType}
-        />
-      </Suspense>
+      <SectionErrorBoundary>
+        <Suspense fallback={<GlazeUserStateSkeleton />}>
+          <GlazeUserStateServer
+            viewerId={viewer.profile.id}
+            glazeId={glaze.id}
+            glazeSourceType={glaze.sourceType}
+          />
+        </Suspense>
+      </SectionErrorBoundary>
     </div>
   );
 }
