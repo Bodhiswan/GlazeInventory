@@ -2,15 +2,11 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Heart, Loader2, Search, X } from "lucide-react";
-import { memo, useCallback, useDeferredValue, useEffect, useMemo, useState, type ReactNode } from "react";
+import { ChevronDown, Heart, Search, X } from "lucide-react";
+import { type ReactNode, useState } from "react";
 
-import { getCatalogGlazesForScannerAction } from "@/app/actions/glazes";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeScanner } from "@/components/glaze-scanner";
-
-import { setGlazeInventoryStateAction, updateInventoryItemNotesAction } from "@/app/actions/inventory";
-import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
 import { GlazeShelfForm } from "@/components/glaze-shelf-form";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";
 import { Badge } from "@/components/ui/badge";
@@ -19,24 +15,23 @@ import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
 import { deleteUserCombinationAction } from "@/app/actions/combinations";
+import { updateInventoryItemNotesAction } from "@/app/actions/inventory";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
 import { CommunityImagesPanel } from "@/components/community-images-panel";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
+import { InventoryGrid } from "@/components/inventory-workspace/inventory-grid";
+import { useInventoryWorkspace } from "@/components/inventory-workspace/use-inventory-workspace";
 import type {
   CombinationPost,
   GlazeFiringImage,
-  InventoryCollectionState,
   InventoryItem,
   InventoryStatus,
   UserCombinationExample,
 } from "@/lib/types";
 import {
-  buildGlazeSearchIndex,
   cn,
   formatGlazeLabel,
   formatGlazeMeta,
-  matchesGlazeSearch,
-  pickPreferredGlazeImage,
 } from "@/lib/utils";
 
 const inventorySections: Array<{
@@ -104,70 +99,6 @@ function InventorySection({
     </div>
   );
 }
-
-const InventoryTile = memo(function InventoryTile({
-  item,
-  imageUrl,
-  onClick,
-}: {
-  item: InventoryItem;
-  imageUrl: string | null;
-  onClick: () => void;
-}) {
-  const fillLevel = item.fillLevel ?? "full";
-  const quantity = item.quantity ?? 1;
-
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="group relative z-0 overflow-visible border border-border bg-white text-left transition-transform duration-200 hover:z-20 hover:scale-[1.02] focus-visible:z-20 focus-visible:scale-[1.02] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-foreground/20"
-      style={{ contentVisibility: "auto", containIntrinsicSize: "220px" }}
-    >
-      <div className="space-y-2 p-2">
-        <div className="relative overflow-hidden border border-border bg-panel">
-          {imageUrl ? (
-            <Image
-              src={imageUrl}
-              alt={formatGlazeLabel(item.glaze)}
-              width={256}
-              height={256}
-              sizes="(min-width: 640px) 200px, 50vw"
-              className="aspect-square w-full object-cover bg-white"
-              loading="lazy"
-            />
-          ) : (
-            <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
-              No image
-            </div>
-          )}
-        </div>
-
-        <div className="space-y-1">
-          <p className="text-[10px] uppercase tracking-[0.18em] text-muted">
-            {[item.glaze.brand, item.glaze.code].filter(Boolean).join(" ")}
-          </p>
-          <h3 className="line-clamp-2 text-sm font-semibold leading-5 text-foreground">
-            {item.glaze.name}
-          </h3>
-          <p className="line-clamp-1 text-xs text-muted">{formatGlazeMeta(item.glaze)}</p>
-        </div>
-
-        <div className="flex flex-wrap gap-1">
-          <Badge tone={item.status === "owned" ? "success" : item.status === "wishlist" ? "accent" : "neutral"}>
-            {item.status === "owned" ? "Owned" : item.status === "wishlist" ? "Wishlist" : "Empty"}
-          </Badge>
-          {item.status === "owned" ? <Badge tone="neutral">{fillLevel}</Badge> : null}
-          {item.status === "owned" && quantity > 1 ? <Badge tone="neutral">Qty {quantity}</Badge> : null}
-        </div>
-
-        {item.personalNotes ? (
-          <p className="line-clamp-2 text-xs leading-5 text-muted">{item.personalNotes}</p>
-        ) : null}
-      </div>
-    </button>
-  );
-});
 
 function InventoryNotesForm({
   inventoryId,
@@ -238,15 +169,6 @@ function InventoryNotesForm({
   );
 }
 
-type CatalogGlazeSummary = {
-  id: string;
-  brand: string | null;
-  code: string | null;
-  name: string;
-  line: string | null;
-  imageUrl: string | null;
-};
-
 export function InventoryWorkspace({
   items,
   firingImageMap,
@@ -264,166 +186,36 @@ export function InventoryWorkspace({
   myCombinationPosts?: CombinationPost[];
   favouriteGlazeIds?: string[];
 }) {
-  const [inventoryItems, setInventoryItems] = useState(items);
-  const [query, setQuery] = useState("");
-  const [catalogGlazes, setCatalogGlazes] = useState<CatalogGlazeSummary[] | null>(null);
-
-  // Load catalog data on mount for the scanner
-  useEffect(() => {
-    void getCatalogGlazesForScannerAction().then(setCatalogGlazes);
-  }, []);
-
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    owned: false,
-    wishlist: false,
-    archived: false,
-    combinations: false,
+  const {
+    query,
+    setQuery,
+    catalogGlazes,
+    openSections,
+    toggleSection,
+    filteredItems,
+    sectionItems,
+    totalCounts,
+    preferredImages,
+    activeItem,
+    activeItemId,
+    setActiveItemId,
+    pendingGlazeIds,
+    statusErrors,
+    favouritedGlazeIds,
+    pendingFavouriteIds,
+    handleStatusChange,
+    handleFavouriteToggle,
+    handleNoteSaved,
+    handleShelfSaved,
+  } = useInventoryWorkspace({
+    items,
+    firingImageMap,
+    preferredCone,
+    preferredAtmosphere,
+    myUserExamples,
+    myCombinationPosts,
+    favouriteGlazeIds,
   });
-  const [activeItemId, setActiveItemId] = useState<string | null>(null);
-  const [pendingGlazeIds, setPendingGlazeIds] = useState<string[]>([]);
-  const [statusErrors, setStatusErrors] = useState<Record<string, string | null>>({});
-  const [favouritedGlazeIds, setFavouritedGlazeIds] = useState<Set<string>>(() => new Set(favouriteGlazeIds));
-  const [pendingFavouriteIds, setPendingFavouriteIds] = useState<string[]>([]);
-  const deferredQuery = useDeferredValue(query);
-
-  const normalizedQuery = deferredQuery.trim().toLowerCase();
-  const filteredItems = useMemo(
-    () =>
-      [...inventoryItems]
-        .filter((item) => {
-          if (!normalizedQuery) {
-            return true;
-          }
-
-          return matchesGlazeSearch(
-            buildGlazeSearchIndex([
-            item.glaze.code,
-            item.glaze.name,
-            item.glaze.brand,
-            item.glaze.line,
-            item.personalNotes,
-            ]),
-            deferredQuery,
-          );
-        })
-        .sort((left, right) => formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze))),
-    [inventoryItems, normalizedQuery, deferredQuery],
-  );
-
-  const totalCounts = useMemo(
-    () => ({
-      owned: inventoryItems.filter((item) => item.status === "owned").length,
-      wishlist: inventoryItems.filter((item) => item.status === "wishlist").length,
-      archived: inventoryItems.filter((item) => item.status === "archived").length,
-    }),
-    [inventoryItems],
-  );
-
-  const sectionItems = useMemo(
-    () => ({
-      owned: filteredItems.filter((item) => item.status === "owned"),
-      wishlist: filteredItems.filter((item) => item.status === "wishlist"),
-      archived: filteredItems.filter((item) => item.status === "archived"),
-    }),
-    [filteredItems],
-  );
-  const preferredImages = useMemo(
-    () =>
-      inventoryItems.reduce<Record<string, string | null>>((map, item) => {
-        map[item.glazeId] = pickPreferredGlazeImage(
-          item.glaze,
-          firingImageMap[item.glazeId] ?? [],
-          preferredCone,
-          preferredAtmosphere,
-        );
-        return map;
-      }, {}),
-    [inventoryItems, firingImageMap, preferredCone, preferredAtmosphere],
-  );
-
-  const activeItem = useMemo(
-    () => inventoryItems.find((item) => item.id === activeItemId) ?? null,
-    [inventoryItems, activeItemId],
-  );
-
-  async function handleStatusChange(item: InventoryItem, nextStatus: InventoryCollectionState) {
-    const previousItems = inventoryItems;
-
-    setStatusErrors((current) => ({ ...current, [item.id]: null }));
-    setPendingGlazeIds((current) => (current.includes(item.glazeId) ? current : [...current, item.glazeId]));
-
-    if (nextStatus === "none") {
-      setInventoryItems((current) => current.filter((candidate) => candidate.id !== item.id));
-      if (activeItemId === item.id) {
-        setActiveItemId(null);
-      }
-    } else {
-      setInventoryItems((current) =>
-        current.map((candidate) =>
-          candidate.id === item.id
-            ? {
-                ...candidate,
-                status: nextStatus,
-              }
-            : candidate,
-        ),
-      );
-    }
-
-    const result = await setGlazeInventoryStateAction({
-      glazeId: item.glazeId,
-      status: nextStatus,
-    });
-
-    if (!result.success) {
-      setInventoryItems(previousItems);
-      setStatusErrors((current) => ({
-        ...current,
-        [item.id]: result.message,
-      }));
-      setPendingGlazeIds((current) => current.filter((glazeId) => glazeId !== item.glazeId));
-      return;
-    }
-
-    if (nextStatus !== "none" && result.inventoryId) {
-      setInventoryItems((current) =>
-        current.map((candidate) =>
-          candidate.id === item.id
-            ? {
-                ...candidate,
-                id: result.inventoryId ?? candidate.id,
-                status: nextStatus,
-              }
-            : candidate,
-        ),
-      );
-      if (activeItemId === item.id) {
-        setActiveItemId(result.inventoryId);
-      }
-    }
-
-    setPendingGlazeIds((current) => current.filter((glazeId) => glazeId !== item.glazeId));
-  }
-
-  async function handleFavouriteToggle(glazeId: string) {
-    if (pendingFavouriteIds.includes(glazeId)) return;
-    const wasFavourited = favouritedGlazeIds.has(glazeId);
-    setPendingFavouriteIds((current) => [...current, glazeId]);
-    setFavouritedGlazeIds((current) => {
-      const next = new Set(current);
-      wasFavourited ? next.delete(glazeId) : next.add(glazeId);
-      return next;
-    });
-    const result = await toggleFavouriteInlineAction("glaze", glazeId);
-    if (result.error) {
-      setFavouritedGlazeIds((current) => {
-        const next = new Set(current);
-        wasFavourited ? next.add(glazeId) : next.delete(glazeId);
-        return next;
-      });
-    }
-    setPendingFavouriteIds((current) => current.filter((id) => id !== glazeId));
-  }
 
   return (
     <div className="space-y-6">
@@ -486,31 +278,15 @@ export function InventoryWorkspace({
               totalCount={totalCounts[section.status]}
               visibleCount={itemsForSection.length}
               open={openSections[section.status]}
-              onToggle={() =>
-                setOpenSections((current) => ({
-                  ...current,
-                  [section.status]: !current[section.status],
-                }))
-              }
+              onToggle={() => toggleSection(section.status)}
             >
-              {itemsForSection.length ? (
-                <div className="grid grid-cols-2 gap-2 min-[420px]:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5">
-                  {itemsForSection.map((item) => (
-                    <InventoryTile
-                      key={item.id}
-                      item={item}
-                      imageUrl={preferredImages[item.glazeId] ?? item.glaze.imageUrl ?? null}
-                      onClick={() => setActiveItemId(item.id)}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <div className="border border-dashed border-border bg-background px-4 py-6 text-sm text-muted">
-                  {query
-                    ? `No glazes in ${section.label.toLowerCase()} match this search yet.`
-                    : `No glazes in ${section.label.toLowerCase()} yet.`}
-                </div>
-              )}
+              <InventoryGrid
+                items={itemsForSection}
+                preferredImages={preferredImages}
+                query={query}
+                sectionLabel={section.label}
+                onItemClick={setActiveItemId}
+              />
             </InventorySection>
           );
         })}
@@ -523,12 +299,7 @@ export function InventoryWorkspace({
         totalCount={myUserExamples.length + myCombinationPosts.length}
         visibleCount={myUserExamples.length + myCombinationPosts.length}
         open={openSections.combinations ?? false}
-        onToggle={() =>
-          setOpenSections((current) => ({
-            ...current,
-            combinations: !(current.combinations ?? false),
-          }))
-        }
+        onToggle={() => toggleSection("combinations")}
       >
         {myUserExamples.length || myCombinationPosts.length ? (
           <div className="grid grid-cols-2 gap-2 min-[420px]:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5">
@@ -751,17 +522,7 @@ export function InventoryWorkspace({
                       initialQuantity={activeItem.quantity ?? 1}
                       compact
                       onSaved={({ fillLevel, quantity }) => {
-                        setInventoryItems((current) =>
-                          current.map((candidate) =>
-                            candidate.id === activeItem.id
-                              ? {
-                                  ...candidate,
-                                  fillLevel,
-                                  quantity,
-                                }
-                              : candidate,
-                          ),
-                        );
+                        handleShelfSaved(activeItem.id, { fillLevel, quantity });
                       }}
                     />
                   ) : null}
@@ -778,16 +539,7 @@ export function InventoryWorkspace({
                     inventoryId={activeItem.id}
                     initialNote={activeItem.personalNotes ?? null}
                     onSaved={(note) => {
-                      setInventoryItems((current) =>
-                        current.map((candidate) =>
-                          candidate.id === activeItem.id
-                            ? {
-                                ...candidate,
-                                personalNotes: note,
-                              }
-                            : candidate,
-                        ),
-                      );
+                      handleNoteSaved(activeItem.id, note);
                     }}
                   />
 
