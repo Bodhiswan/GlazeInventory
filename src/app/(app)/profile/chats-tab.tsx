@@ -6,7 +6,7 @@ import { Panel } from "@/components/ui/panel";
 import {
   getDirectMessageConversations,
   getDirectMessagesWithUser,
-} from "@/lib/data";
+} from "@/lib/data/community";
 import { getAdminUsers } from "@/lib/data/users";
 import { AutoMarkRead } from "./auto-mark-read";
 

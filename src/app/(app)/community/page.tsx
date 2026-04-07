@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/page-header";
 import { PostCard } from "@/components/post-card";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
-import { getCommunityPosts } from "@/lib/data";
+import { getCommunityPosts } from "@/lib/data/community";
 import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 

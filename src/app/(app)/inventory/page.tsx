@@ -1,5 +1,5 @@
 import { InventoryWorkspace } from "@/components/inventory-workspace";
-import { getFavouriteIds } from "@/lib/data";
+import { getFavouriteIds } from "@/lib/data/community";
 import { getUserCombinationExamples, getPublishedCombinationPosts } from "@/lib/data/combinations";
 import { getInventory } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";

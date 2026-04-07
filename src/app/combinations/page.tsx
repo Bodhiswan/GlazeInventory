@@ -1,5 +1,5 @@
 import { CombinationsBrowser } from "@/components/combinations-browser";
-import { getFavouriteIds } from "@/lib/data";
+import { getFavouriteIds } from "@/lib/data/community";
 import { getGlazeFiringImageMap } from "@/lib/data/glazes";
 import { getInventoryOwnership } from "@/lib/data/inventory";
 import {

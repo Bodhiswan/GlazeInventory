@@ -1,5 +1,5 @@
 import { GlazeCatalogExplorer } from "@/components/glaze-catalog-explorer";
-import { getFavouriteIds } from "@/lib/data";
+import { getFavouriteIds } from "@/lib/data/community";
 import { getGlazeFiringImageMap } from "@/lib/data/glazes";
 import { getCatalogGlazes, getInventory } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
