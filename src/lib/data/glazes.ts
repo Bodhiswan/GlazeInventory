@@ -1,10 +1,11 @@
 import { getCatalogGlazeById, getCatalogFiringImages, getCatalogFiringImageMap } from "@/lib/catalog";
 import type { Glaze, GlazeComment, GlazeDetail } from "@/lib/types";
+import type { Database } from "@/lib/supabase/database.types";
 import { getSupabase } from "@/lib/data/users";
 import { attachTagSummariesToGlazes } from "@/lib/data/tags";
-import { mapInventoryItem } from "@/lib/data/inventory";
+import { mapInventoryItem, type InventoryItemWithJoins } from "@/lib/data/inventory";
 
-type Row = Record<string, unknown>;
+type GlazeCommentRow = Database["public"]["Tables"]["glaze_comments"]["Row"];
 
 // ─── Exported functions ───────────────────────────────────────────────────────
 
@@ -58,17 +59,21 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
       .limit(1),
   ]);
 
+  type CommentWithAuthor = GlazeCommentRow & {
+    author: { display_name: string } | { display_name: string }[] | null;
+  };
+
   const comments: GlazeComment[] = (commentRows ?? []).map((row) => {
-    const rowObject = row as Row & { author?: Row | Row[] | null };
-    const authorSource = rowObject.author;
+    const typedRow = row as unknown as CommentWithAuthor;
+    const authorSource = typedRow.author;
     const author = Array.isArray(authorSource) ? authorSource[0] : authorSource;
     return {
-      id: String(rowObject.id),
-      glazeId: String(rowObject.glaze_id),
-      authorUserId: String(rowObject.author_user_id),
-      authorName: String(((author as Row | undefined)?.display_name as string | null) ?? "Glaze member"),
-      body: String(rowObject.body),
-      createdAt: String(rowObject.created_at),
+      id: typedRow.id,
+      glazeId: typedRow.glaze_id,
+      authorUserId: typedRow.author_user_id,
+      authorName: author?.display_name ?? "Glaze member",
+      body: typedRow.body,
+      createdAt: typedRow.created_at,
     };
   });
 
@@ -76,8 +81,12 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
     glaze,
     firingImages,
     comments,
-    viewerOwnsGlaze: inventoryRows?.length ? mapInventoryItem(inventoryRows[0] as Row).status === "owned" : false,
-    viewerInventoryItem: inventoryRows?.length ? mapInventoryItem(inventoryRows[0] as Row) : null,
+    viewerOwnsGlaze: inventoryRows?.length
+      ? mapInventoryItem(inventoryRows[0] as unknown as InventoryItemWithJoins).status === "owned"
+      : false,
+    viewerInventoryItem: inventoryRows?.length
+      ? mapInventoryItem(inventoryRows[0] as unknown as InventoryItemWithJoins)
+      : null,
     viewerHasFavourited: Boolean(favouriteRows?.length),
   };
 }
