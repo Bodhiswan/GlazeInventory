@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import Link from "next/link";
 
-import { sendDirectMessageAction } from "@/app/actions";
+import { sendDirectMessageAction } from "@/app/actions/community";
 import { Panel } from "@/components/ui/panel";
 import {
   getDirectMessageConversations,

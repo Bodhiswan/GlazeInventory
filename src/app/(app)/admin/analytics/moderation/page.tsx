@@ -5,12 +5,12 @@ import { redirect } from "next/navigation";
 import {
   adminApproveSubmissionAction,
   adminEditCombinationAction,
-  adminEditCommunityFiringImageAction,
   adminEditCustomGlazeAction,
   adminPermanentDeleteSubmissionAction,
   adminRejectSubmissionAction,
   adminReopenSubmissionAction,
 } from "@/app/actions";
+import { adminEditCommunityFiringImageAction } from "@/app/actions/community";
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";
 import { getModerationQueue } from "@/lib/data/admin";

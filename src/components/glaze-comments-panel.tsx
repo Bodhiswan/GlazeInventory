@@ -6,7 +6,7 @@ import { useEffect, useRef, useState, useTransition } from "react";
 import {
   addCombinationCommentInlineAction,
   addGlazeCommentInlineAction,
-} from "@/app/actions";
+} from "@/app/actions/community";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 interface Comment {

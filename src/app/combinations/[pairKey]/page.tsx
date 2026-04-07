@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { reportPostAction } from "@/app/actions";
+import { reportPostAction } from "@/app/actions/community";
 import { PageHeader } from "@/components/page-header";
 import { PostCard } from "@/components/post-card";
 import { Badge } from "@/components/ui/badge";

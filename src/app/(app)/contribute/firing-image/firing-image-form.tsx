@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState, useTransition } from "react";
 import { Check, Search, X } from "lucide-react";
 
-import { uploadCommunityFiringImageAction } from "@/app/actions";
+import { uploadCommunityFiringImageAction } from "@/app/actions/community";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
