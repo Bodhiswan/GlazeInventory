@@ -3,10 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Heart, Search, X } from "lucide-react";
-import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
+import { memo } from "react";
 
-import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
-import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
 import { CommunityImagesPanel } from "@/components/community-images-panel";
@@ -17,57 +15,17 @@ import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
-import { getGlazeFamilyTraits, getManufacturerUrl } from "@/lib/glaze-metadata";
+import { getManufacturerUrl } from "@/lib/glaze-metadata";
 import {
-  extractGlazeColorTraits,
-  extractGlazeConeTraits,
-  extractGlazeFinishTraits,
-  extractQueryColorIntent,
   cn,
-  buildGlazeSearchIndex,
-  matchesGlazeSearch,
   formatGlazeLabel,
   getColorSwatch,
-  getDominantGlazeColorLabel,
-  getGlazeColorFlowPosition,
-  getGlazeColorMatchScore,
-  getGlazeColorPalette,
-  hasCuratedGlazeDescription,
-  matchesFamilySelection,
-  matchesFiringImagePreference,
-  matchesSmartColorSelection,
-  matchesSmartFinishSelection,
   getGlazeSkimDescription,
   pickPreferredGlazeImage,
-  summarizeGlazeColor,
-  summarizeGlazeFinish,
 } from "@/lib/utils";
+import { useGlazeExplorer } from "@/components/glaze-catalog/use-glaze-explorer";
 
-const INITIAL_GLAZE_BATCH = 48;
-const GLAZE_BATCH_STEP = 36;
 type FilterSectionKey = "brands" | "families" | "colors" | "finishes" | "cones";
-type IndexedGlaze = {
-  glaze: Glaze;
-  familyTraits: string[];
-  colorTraits: string[];
-  finishTraits: string[];
-  coneTraits: string[];
-  colorSummary: string | null;
-  finishSummary: string | null;
-  colorPalette: Array<{ label: string; weight: number; swatch: string }>;
-  dominantColor: string | null;
-  firingImages: GlazeFiringImage[];
-  hasPreferredExamples: boolean;
-  hasCuratedDescription: boolean;
-  searchText: string;
-};
-
-function countValues(values: string[]) {
-  return values.reduce<Map<string, number>>((map, value) => {
-    map.set(value, (map.get(value) ?? 0) + 1);
-    return map;
-  }, new Map());
-}
 
 const FilterTile = memo(function FilterTile({
   value,
@@ -229,433 +187,72 @@ export function GlazeCatalogExplorer({
   reviewMode: boolean;
   favouriteGlazeIds?: string[];
 }) {
-  const [query, setQuery] = useState("");
-  const [brandFilters, setBrandFilters] = useState<string[]>([]);
-  const [familyFilters, setFamilyFilters] = useState<string[]>([]);
-  const [colorFilters, setColorFilters] = useState<string[]>([]);
-  const [finishFilters, setFinishFilters] = useState<string[]>([]);
-  const [coneFilters, setConeFilters] = useState<string[]>([]);
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const [openFilterSections, setOpenFilterSections] = useState<Record<FilterSectionKey, boolean>>({
-    brands: false,
-    families: false,
-    colors: false,
-    finishes: false,
-    cones: false,
+  const {
+    query,
+    setQuery,
+    brandFilters,
+    setBrandFilters,
+    familyFilters,
+    setFamilyFilters,
+    colorFilters,
+    setColorFilters,
+    finishFilters,
+    setFinishFilters,
+    coneFilters,
+    setConeFilters,
+    filtersOpen,
+    setFiltersOpen,
+    openFilterSections,
+    setOpenFilterSections,
+    visibleCount,
+    setVisibleCount,
+    activeGridGlazeId,
+    setActiveGridGlazeId,
+    optimisticInventoryStates,
+    pendingGlazeIds,
+    ownershipErrors,
+    handleInventoryStateChange,
+    favouritedGlazeIds,
+    pendingFavouriteIds,
+    handleFavouriteToggle,
+    colorOptions,
+    finishOptions,
+    coneOptions,
+    brandOptions,
+    familyOptions,
+    brandOptionCounts,
+    familyOptionCounts,
+    colorOptionCounts,
+    finishOptionCounts,
+    coneOptionCounts,
+    sortedGlazes,
+    displayGlazes,
+    visibleGradientGlazes,
+    activeGridItem,
+    hasFilters,
+    hasActiveQuery,
+    selectedFilterCount,
+    selectedFilterLabels,
+    visibleGlazeCount,
+    remainingGlazeCount,
+    previewCone,
+    currentBrandCounts,
+    loadMoreRef,
+    INITIAL_GLAZE_BATCH,
+    GLAZE_BATCH_STEP,
+    activeGridPreviewImage,
+  } = useGlazeExplorer({
+    glazes,
+    brandCounts,
+    inventoryStates,
+    firingImageMap,
+    preferredCone,
+    preferredAtmosphere,
+    restrictToPreferredExamples,
+    favouriteGlazeIds,
+    isAdmin,
+    reviewMode,
   });
-  const [visibleCount, setVisibleCount] = useState(INITIAL_GLAZE_BATCH);
-  const [activeGridGlazeId, setActiveGridGlazeId] = useState<string | null>(null);
-  const [optimisticInventoryStates, setOptimisticInventoryStates] = useState(inventoryStates);
-  const [pendingGlazeIds, setPendingGlazeIds] = useState<string[]>([]);
-  const [ownershipErrors, setOwnershipErrors] = useState<Record<string, string | null>>({});
-  const [favouritedGlazeIds, setFavouritedGlazeIds] = useState<Set<string>>(() => new Set(favouriteGlazeIds));
-  const [pendingFavouriteIds, setPendingFavouriteIds] = useState<string[]>([]);
-  const loadMoreRef = useRef<HTMLDivElement | null>(null);
-
-  const deferredQuery = useDeferredValue(query);
-  const normalizedQuery = deferredQuery.trim().toLowerCase();
-  const queryColorIntent = extractQueryColorIntent(normalizedQuery);
-  const previewCone = coneFilters[0] ?? preferredCone;
-
-  const indexedGlazes = useMemo<IndexedGlaze[]>(
-    () =>
-      glazes.map((glaze) => {
-        const firingImages = firingImageMap[glaze.id] ?? [];
-        const familyTraits = getGlazeFamilyTraits(glaze);
-        const colorTraits = extractGlazeColorTraits(glaze);
-        const finishTraits = extractGlazeFinishTraits(glaze);
-        const coneTraits = extractGlazeConeTraits(glaze);
-
-        return {
-          glaze,
-          familyTraits,
-          colorTraits,
-          finishTraits,
-          coneTraits,
-          colorSummary: summarizeGlazeColor(glaze),
-          finishSummary: summarizeGlazeFinish(glaze),
-          colorPalette: getGlazeColorPalette(glaze),
-          dominantColor: getDominantGlazeColorLabel(glaze),
-          firingImages,
-          hasPreferredExamples: firingImages.some((image) =>
-            matchesFiringImagePreference(image, preferredCone, preferredAtmosphere),
-          ),
-          hasCuratedDescription: hasCuratedGlazeDescription(glaze),
-          searchText: buildGlazeSearchIndex([
-            glaze.code,
-            glaze.name,
-            glaze.brand,
-            glaze.line,
-            familyTraits.join(" "),
-            glaze.cone,
-            glaze.description,
-            colorTraits.join(" "),
-            finishTraits.join(" "),
-          ]),
-        };
-      }),
-    [glazes, firingImageMap, preferredCone, preferredAtmosphere],
-  );
-
-  const colorOptions = useMemo(
-    () => Array.from(new Set(indexedGlazes.flatMap((item) => item.colorTraits))).sort((a, b) => a.localeCompare(b)),
-    [indexedGlazes],
-  );
-  const finishOptions = useMemo(
-    () => Array.from(new Set(indexedGlazes.flatMap((item) => item.finishTraits))).sort((a, b) => a.localeCompare(b)),
-    [indexedGlazes],
-  );
-  const coneOptions = useMemo(
-    () => Array.from(new Set(indexedGlazes.flatMap((item) => item.coneTraits))).sort((a, b) => a.localeCompare(b)),
-    [indexedGlazes],
-  );
-  const brandOptions = useMemo(
-    () =>
-      Array.from(
-        new Set(indexedGlazes.map((item) => item.glaze.brand).filter((value): value is string => Boolean(value))),
-      ).sort((a, b) => a.localeCompare(b)),
-    [indexedGlazes],
-  );
-  const familyOptions = useMemo(
-    () => Array.from(new Set(indexedGlazes.flatMap((item) => item.familyTraits))).sort((a, b) => a.localeCompare(b)),
-    [indexedGlazes],
-  );
-  const brandOptionCounts = useMemo(() => new Map(brandCounts), [brandCounts]);
-  const familyOptionCounts = useMemo(
-    () => countValues(indexedGlazes.flatMap((item) => item.familyTraits)),
-    [indexedGlazes],
-  );
-  const colorOptionCounts = useMemo(
-    () => countValues(indexedGlazes.flatMap((item) => item.colorTraits)),
-    [indexedGlazes],
-  );
-  const finishOptionCounts = useMemo(
-    () => countValues(indexedGlazes.flatMap((item) => item.finishTraits)),
-    [indexedGlazes],
-  );
-  const coneOptionCounts = useMemo(
-    () => countValues(indexedGlazes.flatMap((item) => item.coneTraits)),
-    [indexedGlazes],
-  );
-
-  const filteredGlazes = useMemo(
-    () =>
-      indexedGlazes.filter((item) => {
-        if (restrictToPreferredExamples && !item.hasPreferredExamples) {
-          return false;
-        }
-
-        if (reviewMode && item.hasCuratedDescription) {
-          return false;
-        }
-
-        if (brandFilters.length && !brandFilters.includes(item.glaze.brand ?? "")) {
-          return false;
-        }
-
-        if (!matchesFamilySelection(item.familyTraits, familyFilters)) {
-          return false;
-        }
-
-        if (!matchesSmartColorSelection(item.colorTraits, colorFilters)) {
-          return false;
-        }
-
-        if (!matchesSmartFinishSelection(item.finishTraits, finishFilters)) {
-          return false;
-        }
-
-        if (coneFilters.length && !coneFilters.some((cone) => item.coneTraits.includes(cone))) {
-          return false;
-        }
-
-        if (!normalizedQuery) {
-          return true;
-        }
-
-        return matchesGlazeSearch(item.searchText, deferredQuery);
-      }),
-    [
-      indexedGlazes,
-      restrictToPreferredExamples,
-      reviewMode,
-      brandFilters,
-      familyFilters,
-      colorFilters,
-      finishFilters,
-      coneFilters,
-      normalizedQuery,
-      deferredQuery,
-    ],
-  );
-  const brandCountBaseGlazes = useMemo(
-    () =>
-      indexedGlazes.filter((item) => {
-        if (restrictToPreferredExamples && !item.hasPreferredExamples) {
-          return false;
-        }
-
-        if (reviewMode && item.hasCuratedDescription) {
-          return false;
-        }
-
-        if (!matchesFamilySelection(item.familyTraits, familyFilters)) {
-          return false;
-        }
-
-        if (!matchesSmartColorSelection(item.colorTraits, colorFilters)) {
-          return false;
-        }
-
-        if (!matchesSmartFinishSelection(item.finishTraits, finishFilters)) {
-          return false;
-        }
-
-        if (coneFilters.length && !coneFilters.some((cone) => item.coneTraits.includes(cone))) {
-          return false;
-        }
-
-        if (!normalizedQuery) {
-          return true;
-        }
-
-        return matchesGlazeSearch(item.searchText, deferredQuery);
-      }),
-    [
-      indexedGlazes,
-      restrictToPreferredExamples,
-      reviewMode,
-      familyFilters,
-      colorFilters,
-      finishFilters,
-      coneFilters,
-      normalizedQuery,
-      deferredQuery,
-    ],
-  );
-  const currentBrandCounts = useMemo(
-    () =>
-      countValues(
-        brandCountBaseGlazes
-          .map((item) => item.glaze.brand)
-          .filter((value): value is string => Boolean(value)),
-      ),
-    [brandCountBaseGlazes],
-  );
-
-  const activeColorRankingIntent = colorFilters.length ? colorFilters : queryColorIntent;
-  const sortedGlazes = useMemo(
-    () =>
-      [...filteredGlazes].sort((left, right) => {
-        if (isAdmin && !reviewMode) {
-          const reviewDelta = Number(left.hasCuratedDescription) - Number(right.hasCuratedDescription);
-
-          if (reviewDelta !== 0) {
-            return reviewDelta;
-          }
-        }
-
-        const colorDelta =
-          getGlazeColorMatchScore(right.glaze, activeColorRankingIntent) -
-          getGlazeColorMatchScore(left.glaze, activeColorRankingIntent);
-
-        if (Math.abs(colorDelta) > 0.0001) {
-          return colorDelta;
-        }
-
-        if (normalizedQuery) {
-          const leftExact = matchesGlazeSearch(
-            buildGlazeSearchIndex([left.glaze.code, left.glaze.name]),
-            deferredQuery,
-          );
-          const rightExact = matchesGlazeSearch(
-            buildGlazeSearchIndex([right.glaze.code, right.glaze.name]),
-            deferredQuery,
-          );
-
-          if (leftExact !== rightExact) {
-            return rightExact ? 1 : -1;
-          }
-        }
-
-        return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
-      }),
-    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, normalizedQuery, deferredQuery],
-  );
-
-  const hasFilters = Boolean(
-    query.trim() ||
-      brandFilters.length ||
-      familyFilters.length ||
-      colorFilters.length ||
-      finishFilters.length ||
-      coneFilters.length,
-  );
-  /* Random hue offset so the rainbow starts at a different color each visit */
-  const [hueOffset] = useState(() => Math.random());
-  const gradientSortedGlazes = useMemo(
-    () =>
-      [...sortedGlazes].sort((left, right) => {
-        const leftFlow = getGlazeColorFlowPosition(left.glaze);
-        const rightFlow = getGlazeColorFlowPosition(right.glaze);
-
-        if (leftFlow.bucket !== rightFlow.bucket) {
-          return leftFlow.bucket - rightFlow.bucket;
-        }
-
-        /* Shift positions by the random offset so the rainbow starts elsewhere */
-        const leftPos = leftFlow.bucket === 0 ? (leftFlow.position + hueOffset) % 1 : leftFlow.position;
-        const rightPos = rightFlow.bucket === 0 ? (rightFlow.position + hueOffset) % 1 : rightFlow.position;
-
-        if (Math.abs(leftPos - rightPos) > 0.0001) {
-          return leftPos - rightPos;
-        }
-
-        if (Math.abs(leftFlow.lightness - rightFlow.lightness) > 0.0001) {
-          return rightFlow.lightness - leftFlow.lightness;
-        }
-
-        return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
-      }),
-    [sortedGlazes, hueOffset],
-  );
-  const displayGlazes = useMemo(
-    () => (normalizedQuery || activeColorRankingIntent.length ? sortedGlazes : gradientSortedGlazes),
-    [normalizedQuery, activeColorRankingIntent.length, sortedGlazes, gradientSortedGlazes],
-  );
-  const visibleGradientGlazes = useMemo(
-    () => displayGlazes.slice(0, visibleCount),
-    [displayGlazes, visibleCount],
-  );
-  const activeGridItem = useMemo(
-    () => indexedGlazes.find((item) => item.glaze.id === activeGridGlazeId) ?? null,
-    [indexedGlazes, activeGridGlazeId],
-  );
-  const activeGridPreviewImage = useMemo(
-    () =>
-      activeGridItem
-        ? pickPreferredGlazeImage(
-            activeGridItem.glaze,
-            activeGridItem.firingImages,
-            previewCone,
-            preferredAtmosphere,
-          )
-        : null,
-    [activeGridItem, previewCone, preferredAtmosphere],
-  );
-  const selectedFilterCount =
-    brandFilters.length + familyFilters.length + colorFilters.length + finishFilters.length + coneFilters.length;
-  const selectedFilterLabels = [...brandFilters, ...familyFilters, ...colorFilters, ...finishFilters, ...coneFilters];
-  const hasActiveQuery = hasFilters;
-  const visibleGlazeCount = visibleGradientGlazes.length;
-  const remainingGlazeCount = Math.max(displayGlazes.length - visibleGlazeCount, 0);
-
-  useEffect(() => {
-    const node = loadMoreRef.current;
-
-    if (!hasActiveQuery || !node || visibleCount >= displayGlazes.length) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const first = entries[0];
-
-        if (!first?.isIntersecting) {
-          return;
-        }
-
-        setVisibleCount((current) => Math.min(current + GLAZE_BATCH_STEP, displayGlazes.length));
-      },
-      { rootMargin: "900px 0px" },
-    );
-
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, [hasActiveQuery, visibleCount, displayGlazes.length]);
-
-  async function handleInventoryStateChange(
-    glazeId: string,
-    nextStatus: "none" | "owned" | "wishlist" | "archived",
-  ) {
-    const previousState = optimisticInventoryStates[glazeId];
-
-    setOwnershipErrors((current) => ({ ...current, [glazeId]: null }));
-    setPendingGlazeIds((current) => (current.includes(glazeId) ? current : [...current, glazeId]));
-    setOptimisticInventoryStates((current) => {
-      const next = { ...current };
-
-      if (nextStatus === "none") {
-        delete next[glazeId];
-        return next;
-      }
-
-      next[glazeId] = {
-        inventoryId: current[glazeId]?.inventoryId ?? "",
-        status: nextStatus,
-      };
-      return next;
-    });
-
-    const result = await setGlazeInventoryStateAction({ glazeId, status: nextStatus });
-
-    if (!result.success) {
-      setOptimisticInventoryStates((current) => {
-        const next = { ...current };
-
-        if (!previousState) {
-          delete next[glazeId];
-          return next;
-        }
-
-        next[glazeId] = previousState;
-        return next;
-      });
-      setOwnershipErrors((current) => ({
-        ...current,
-        [glazeId]: result.message,
-      }));
-      setPendingGlazeIds((current) => current.filter((value) => value !== glazeId));
-      return;
-    }
-
-    setOptimisticInventoryStates((current) => {
-      const next = { ...current };
-
-      if (nextStatus === "none") {
-        delete next[glazeId];
-        return next;
-      }
-
-      next[glazeId] = {
-        inventoryId: result.inventoryId ?? current[glazeId]?.inventoryId ?? "",
-        status: nextStatus,
-      };
-      return next;
-    });
-
-    setPendingGlazeIds((current) => current.filter((value) => value !== glazeId));
-  }
-
-  async function handleFavouriteToggle(glazeId: string) {
-    if (pendingFavouriteIds.includes(glazeId)) return;
-    const wasFavourited = favouritedGlazeIds.has(glazeId);
-    setPendingFavouriteIds((current) => [...current, glazeId]);
-    setFavouritedGlazeIds((current) => {
-      const next = new Set(current);
-      wasFavourited ? next.delete(glazeId) : next.add(glazeId);
-      return next;
-    });
-    const result = await toggleFavouriteInlineAction("glaze", glazeId);
-    if (result.error) {
-      setFavouritedGlazeIds((current) => {
-        const next = new Set(current);
-        wasFavourited ? next.add(glazeId) : next.delete(glazeId);
-        return next;
-      });
-    }
-    setPendingFavouriteIds((current) => current.filter((id) => id !== glazeId));
-  }
 
   return (
     <div className="space-y-6">
