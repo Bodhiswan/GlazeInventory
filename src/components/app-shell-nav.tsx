@@ -18,7 +18,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
   const items = isAdmin
     ? [
         ...baseItems,
-        { href: "/admin/analytics", label: "Analytics", icon: BarChart3, alsoActive: [] as string[] },
+        { href: "/admin/analytics", label: "Analytics", icon: BarChart3, alsoActive: [] as string[], badge: undefined as string | undefined },
       ]
     : baseItems;
 
