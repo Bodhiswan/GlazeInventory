@@ -15,6 +15,7 @@ import Link from "next/link";
 import {
   adminArchiveCombinationAction,
   adminDeleteCustomGlazeAction,
+  adminFlagFalseContributionAction,
 } from "@/app/actions";
 import { CombinationPreviewModal } from "./combination-preview-modal";
 import { PageHeader } from "@/components/page-header";
@@ -285,21 +286,39 @@ export default async function AnalyticsPage({
                     <span className="text-[10px] text-muted">
                       {formatDistanceToNow(new Date(combo.createdAt), { addSuffix: true })}
                     </span>
-                    <form action={adminArchiveCombinationAction}>
-                      <input type="hidden" name="exampleId" value={combo.id} />
-                      <input type="hidden" name="action" value={combo.status === "published" ? "archive" : "restore"} />
-                      <button
-                        type="submit"
-                        className={cn(
-                          "text-[10px] uppercase tracking-[0.12em] transition-colors",
-                          combo.status === "published"
-                            ? "text-muted hover:text-foreground"
-                            : "text-amber-700 hover:text-foreground",
-                        )}
+                    <div className="flex items-center gap-2">
+                      <form
+                        action={async () => {
+                          "use server";
+                          await adminFlagFalseContributionAction({
+                            referenceId: combo.id,
+                            authorUserId: combo.authorId,
+                          });
+                        }}
                       >
-                        {combo.status === "published" ? "Archive" : "Restore"}
-                      </button>
-                    </form>
+                        <button
+                          type="submit"
+                          className="inline-flex items-center border border-amber-300 bg-amber-50 px-2 py-1 text-[10px] uppercase tracking-[0.14em] text-amber-700 transition hover:bg-amber-100"
+                        >
+                          Flag
+                        </button>
+                      </form>
+                      <form action={adminArchiveCombinationAction}>
+                        <input type="hidden" name="exampleId" value={combo.id} />
+                        <input type="hidden" name="action" value={combo.status === "published" ? "archive" : "restore"} />
+                        <button
+                          type="submit"
+                          className={cn(
+                            "text-[10px] uppercase tracking-[0.12em] transition-colors",
+                            combo.status === "published"
+                              ? "text-muted hover:text-foreground"
+                              : "text-amber-700 hover:text-foreground",
+                          )}
+                        >
+                          {combo.status === "published" ? "Archive" : "Restore"}
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               ))
@@ -336,15 +355,33 @@ export default async function AnalyticsPage({
                     <span className="text-[10px] text-muted">
                       {formatDistanceToNow(new Date(glaze.createdAt), { addSuffix: true })}
                     </span>
-                    <form action={adminDeleteCustomGlazeAction}>
-                      <input type="hidden" name="glazeId" value={glaze.id} />
-                      <button
-                        type="submit"
-                        className="text-[10px] uppercase tracking-[0.12em] text-muted transition-colors hover:text-red-700"
+                    <div className="flex items-center gap-2">
+                      <form
+                        action={async () => {
+                          "use server";
+                          await adminFlagFalseContributionAction({
+                            referenceId: glaze.id,
+                            authorUserId: glaze.creatorId ?? "",
+                          });
+                        }}
                       >
-                        Delete
-                      </button>
-                    </form>
+                        <button
+                          type="submit"
+                          className="inline-flex items-center border border-amber-300 bg-amber-50 px-2 py-1 text-[10px] uppercase tracking-[0.14em] text-amber-700 transition hover:bg-amber-100"
+                        >
+                          Flag
+                        </button>
+                      </form>
+                      <form action={adminDeleteCustomGlazeAction}>
+                        <input type="hidden" name="glazeId" value={glaze.id} />
+                        <button
+                          type="submit"
+                          className="text-[10px] uppercase tracking-[0.12em] text-muted transition-colors hover:text-red-700"
+                        >
+                          Delete
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               ))
