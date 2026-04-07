@@ -13,7 +13,8 @@ import { buttonVariants, Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
-import { getCatalogGlazes, getExternalExampleIntake, requireViewer } from "@/lib/data";
+import { getCatalogGlazes, getExternalExampleIntake } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import { formatGlazeLabel, formatSearchQuery } from "@/lib/utils";
 
 export default async function ExternalExampleIntakeDetailPage({

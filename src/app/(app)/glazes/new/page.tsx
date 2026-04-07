@@ -4,7 +4,8 @@ import { SetupCallout } from "@/components/setup-callout";
 import type { CatalogEntry } from "@/components/custom-glaze-form";
 import { CustomGlazeForm } from "@/components/custom-glaze-form";
 import { Panel } from "@/components/ui/panel";
-import { getCatalogGlazes, requireViewer } from "@/lib/data";
+import { getCatalogGlazes } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 
 export default async function NewGlazePage({

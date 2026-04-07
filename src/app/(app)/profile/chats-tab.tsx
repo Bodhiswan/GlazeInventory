@@ -4,10 +4,10 @@ import Link from "next/link";
 import { sendDirectMessageAction } from "@/app/actions";
 import { Panel } from "@/components/ui/panel";
 import {
-  getAdminUsers,
   getDirectMessageConversations,
   getDirectMessagesWithUser,
 } from "@/lib/data";
+import { getAdminUsers } from "@/lib/data/users";
 import { AutoMarkRead } from "./auto-mark-read";
 
 function subjectFrom(body: string): string {

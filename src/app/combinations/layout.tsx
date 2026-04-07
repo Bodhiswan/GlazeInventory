@@ -1,6 +1,6 @@
 import { AppShell } from "@/components/app-shell";
 import { PublicWorkspaceShell } from "@/components/public-workspace-shell";
-import { getViewer } from "@/lib/data";
+import { getViewer } from "@/lib/data/users";
 
 export default async function PublicCombinationsLayout({
   children,

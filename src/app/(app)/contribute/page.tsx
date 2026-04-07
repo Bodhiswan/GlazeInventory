@@ -2,7 +2,8 @@ import Link from "next/link";
 import { Camera, Layers3, Sparkles } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
-import { getLeaderboard, requireViewer } from "@/lib/data";
+import { getLeaderboard } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 
 export default async function ContributePage() {
   await requireViewer();

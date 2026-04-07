@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-import { requireViewer } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 
 export default async function NewInventoryPage({
 }: {

@@ -8,7 +8,8 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Select } from "@/components/ui/select";
-import { getUserPointsRank, requireViewer } from "@/lib/data";
+import { getUserPointsRank } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 
 const coneOptions = ["Cone 06", "Cone 6", "Cone 10"];

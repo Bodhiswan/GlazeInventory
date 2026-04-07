@@ -7,7 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { SetupCallout } from "@/components/setup-callout";
-import { getViewer } from "@/lib/data";
+import { getViewer } from "@/lib/data/users";
 import { getSupabaseEnv } from "@/lib/env";
 import { formatSearchQuery } from "@/lib/utils";
 

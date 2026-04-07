@@ -8,7 +8,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
-import { getViewer } from "@/lib/data";
+import { getViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 
 export const metadata: Metadata = {

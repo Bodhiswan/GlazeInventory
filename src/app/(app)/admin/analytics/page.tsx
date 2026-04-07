@@ -21,7 +21,7 @@ import { CombinationPreviewModal } from "./combination-preview-modal";
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";
 import { type AdminDashboard, type DashboardRange, getAdminDashboard } from "@/lib/data";
-import { requireViewer } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { cn } from "@/lib/utils";
 

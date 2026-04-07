@@ -4,7 +4,8 @@ import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getExternalExampleIntakeQueue, requireViewer } from "@/lib/data";
+import { getExternalExampleIntakeQueue } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import type { IntakeStatus } from "@/lib/types";
 import { cn, formatSearchQuery } from "@/lib/utils";
 

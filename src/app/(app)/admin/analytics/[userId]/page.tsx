@@ -7,7 +7,8 @@ import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getAdminUserDetail, requireViewer } from "@/lib/data";
+import { getAdminUserDetail } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 
 export default async function AdminUserDetailPage({
   params,

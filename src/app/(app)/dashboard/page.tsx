@@ -5,7 +5,8 @@ import { SetupCallout } from "@/components/setup-callout";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getInventory, getInventoryFolders, getWeeklyLeaderboard, requireViewer } from "@/lib/data";
+import { getInventory, getInventoryFolders, getWeeklyLeaderboard } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 
 export default async function DashboardPage() {
   const viewer = await requireViewer();

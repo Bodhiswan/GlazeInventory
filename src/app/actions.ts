@@ -5,7 +5,8 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 
 import { getAllCatalogGlazes, getCatalogGlazeById } from "@/lib/catalog";
-import { getCatalogGlazes, getInventory, getInventoryItem, requireViewer } from "@/lib/data";
+import { getCatalogGlazes, getInventory, getInventoryItem } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import {
   buildAnonymizedCombinationAuthorName,
   canPublishExternalExampleIntake,

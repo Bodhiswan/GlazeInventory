@@ -1,5 +1,6 @@
 import { InventoryWorkspace } from "@/components/inventory-workspace";
-import { getFavouriteIds, getInventory, getUserCombinationExamples, getPublishedCombinationPosts, requireViewer } from "@/lib/data";
+import { getFavouriteIds, getInventory, getUserCombinationExamples, getPublishedCombinationPosts } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 
 export default async function InventoryPage({

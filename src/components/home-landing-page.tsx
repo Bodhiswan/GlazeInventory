@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
-import { getViewer } from "@/lib/data";
+import { getViewer } from "@/lib/data/users";
 
 const features = [
   {

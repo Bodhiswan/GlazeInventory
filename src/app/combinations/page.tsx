@@ -6,8 +6,8 @@ import {
   getPublishedCombinationPosts,
   getUserCombinationExamples,
   getVendorCombinationExamples,
-  requireViewer,
 } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import type { InventoryStatus } from "@/lib/types";
 import { formatSearchQuery } from "@/lib/utils";
 

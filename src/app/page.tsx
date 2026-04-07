@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { HomeLandingPage } from "@/components/home-landing-page";
-import { getViewer } from "@/lib/data";
+import { getViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 
 export const metadata: Metadata = {

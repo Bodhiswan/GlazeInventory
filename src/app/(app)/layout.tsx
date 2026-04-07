@@ -1,5 +1,5 @@
 import { AppShell } from "@/components/app-shell";
-import { requireViewer } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 
 export default async function WorkspaceLayout({
   children,

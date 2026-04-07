@@ -13,7 +13,8 @@ import {
 } from "@/app/actions";
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";
-import { getModerationQueue, requireViewer } from "@/lib/data";
+import { getModerationQueue } from "@/lib/data";
+import { requireViewer } from "@/lib/data/users";
 import type {
   ModerationCombination,
   ModerationCustomGlaze,
