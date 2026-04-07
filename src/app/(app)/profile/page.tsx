@@ -1,7 +1,9 @@
 import Link from "next/link";
 
+import { signOutAction } from "@/app/actions/auth";
 import { updateProfilePreferencesAction } from "@/app/actions/profile";
 import { ChatsTab } from "./chats-tab";
+import { SectionErrorBoundary } from "@/components/section-error-boundary";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
@@ -64,7 +66,9 @@ export default async function ProfilePage({
       </nav>
 
       {activeTab === "chats" ? (
-        <ChatsTab viewerUserId={viewer.profile.id} activeOtherId={activeWith || undefined} viewerIsAdmin={viewer.profile.isAdmin === true} />
+        <SectionErrorBoundary>
+          <ChatsTab viewerUserId={viewer.profile.id} activeOtherId={activeWith || undefined} viewerIsAdmin={viewer.profile.isAdmin === true} />
+        </SectionErrorBoundary>
       ) : (
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <Panel>
@@ -141,22 +145,24 @@ export default async function ProfilePage({
               </div>
             </div>
 
-            {(viewer.profile.points ?? 0) > 0 ? (
-              <div className="border border-border bg-panel p-4">
-                <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Contribution points</p>
-                <div className="mt-3 flex items-baseline gap-3">
-                  <span className="text-2xl font-semibold tabular-nums text-foreground">
-                    {(viewer.profile.points ?? 0).toLocaleString()}
-                  </span>
-                  <span className="text-sm text-muted">pts</span>
+            <SectionErrorBoundary>
+              {(viewer.profile.points ?? 0) > 0 ? (
+                <div className="border border-border bg-panel p-4">
+                  <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Contribution points</p>
+                  <div className="mt-3 flex items-baseline gap-3">
+                    <span className="text-2xl font-semibold tabular-nums text-foreground">
+                      {(viewer.profile.points ?? 0).toLocaleString()}
+                    </span>
+                    <span className="text-sm text-muted">pts</span>
+                  </div>
+                  {rank > 0 ? (
+                    <p className="mt-1 text-sm text-muted">#{rank} globally</p>
+                  ) : null}
                 </div>
-                {rank > 0 ? (
-                  <p className="mt-1 text-sm text-muted">#{rank} globally</p>
-                ) : null}
-              </div>
-            ) : null}
+              ) : null}
+            </SectionErrorBoundary>
 
-            {viewer.profile.contributionsDisabled ? (
+            {viewer.profile.contributionsDisabled && !viewer.profile.isAdmin ? (
               <div className="border border-amber-200 bg-amber-50 p-4">
                 <p className="text-sm text-amber-800">
                   Your contribution access has been disabled after repeated policy violations. Contact support if you believe this is an error.
@@ -166,6 +172,15 @@ export default async function ProfilePage({
           </Panel>
         </div>
       )}
+
+      <form action={signOutAction}>
+        <button
+          type="submit"
+          className="text-[11px] uppercase tracking-[0.16em] text-muted transition hover:text-foreground"
+        >
+          Sign out
+        </button>
+      </form>
     </div>
   );
 }
