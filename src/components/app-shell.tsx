@@ -13,11 +13,12 @@ export async function AppShell({
   viewer: Viewer;
   children: React.ReactNode;
 }>) {
-  const breakdown =
+  const [breakdown, unreadMessages] = await Promise.all([
     !viewer.profile.isAdmin && (viewer.profile.points ?? 0) > 0
-      ? await getUserPointsBreakdown(viewer.profile.id)
-      : [];
-  const unreadMessages = await getUnreadDirectMessageCount(viewer.profile.id);
+      ? getUserPointsBreakdown(viewer.profile.id)
+      : Promise.resolve([]),
+    getUnreadDirectMessageCount(viewer.profile.id),
+  ]);
 
   return (
     <div className="min-h-screen">
