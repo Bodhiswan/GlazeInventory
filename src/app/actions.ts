@@ -2061,6 +2061,56 @@ export async function adminDeleteCustomGlazeAction(formData: FormData): Promise<
   revalidatePath("/admin/analytics");
 }
 
+export async function adminFlagFalseContributionAction(input: {
+  referenceId: string;
+  authorUserId: string;
+}): Promise<{ error?: string; success?: true }> {
+  await requireAdminSupabase();
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return { error: "Admin client unavailable" };
+
+  // 1. Find un-voided ledger rows for this reference
+  const { data: rows } = await admin
+    .from("points_ledger")
+    .select("id, points")
+    .eq("reference_id", input.referenceId)
+    .eq("voided", false);
+
+  // 2. Void those rows
+  if (rows && rows.length > 0) {
+    await admin
+      .from("points_ledger")
+      .update({ voided: true })
+      .eq("reference_id", input.referenceId)
+      .eq("voided", false);
+  }
+
+  // 3. Load current profile state
+  const { data: profile } = await admin
+    .from("profiles")
+    .select("points, contribution_strikes")
+    .eq("id", input.authorUserId)
+    .single();
+
+  const pointsToDeduct = (rows ?? []).reduce((sum, r) => sum + Number(r.points), 0);
+  const newPoints = Math.max(0, (profile?.points ?? 0) - pointsToDeduct);
+  const newStrikes = (profile?.contribution_strikes ?? 0) + 1;
+  const shouldDisable = newStrikes >= 3;
+
+  // 4. Apply strike + points deduction
+  await admin
+    .from("profiles")
+    .update({
+      points: newPoints,
+      contribution_strikes: newStrikes,
+      ...(shouldDisable ? { contributions_disabled: true } : {}),
+    })
+    .eq("id", input.authorUserId);
+
+  return { success: true };
+}
+
 export async function uploadCommunityFiringImageAction(formData: FormData): Promise<{ error: string } | { success: true }> {
   const { viewer, supabase } = await requireContributingMember("/contribute/firing-image");
 
