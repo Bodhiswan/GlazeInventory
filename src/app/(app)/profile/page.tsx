@@ -8,7 +8,7 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Select } from "@/components/ui/select";
-import { requireViewer } from "@/lib/data";
+import { getUserPointsRank, requireViewer } from "@/lib/data";
 import { formatSearchQuery } from "@/lib/utils";
 
 const coneOptions = ["Cone 06", "Cone 6", "Cone 10"];
@@ -19,6 +19,9 @@ export default async function ProfilePage({
   searchParams: Promise<{ saved?: string; error?: string }>;
 }) {
   const viewer = await requireViewer();
+  const rank = (viewer.profile.points ?? 0) > 0
+    ? await getUserPointsRank(viewer.profile.id)
+    : 0;
   const query = await searchParams;
   const saved = formatSearchQuery(query.saved);
   const error = formatSearchQuery(query.error);
@@ -125,6 +128,29 @@ export default async function ProfilePage({
                 </p>
               </div>
             </div>
+
+            {(viewer.profile.points ?? 0) > 0 ? (
+              <div className="border border-border bg-panel p-4">
+                <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Contribution points</p>
+                <div className="mt-3 flex items-baseline gap-3">
+                  <span className="text-2xl font-semibold tabular-nums text-foreground">
+                    {(viewer.profile.points ?? 0).toLocaleString()}
+                  </span>
+                  <span className="text-sm text-muted">pts</span>
+                </div>
+                {rank > 0 ? (
+                  <p className="mt-1 text-sm text-muted">#{rank} globally</p>
+                ) : null}
+              </div>
+            ) : null}
+
+            {viewer.profile.contributionsDisabled ? (
+              <div className="border border-amber-200 bg-amber-50 p-4">
+                <p className="text-sm text-amber-800">
+                  Your contribution access has been disabled after repeated policy violations. Contact support if you believe this is an error.
+                </p>
+              </div>
+            ) : null}
           </Panel>
         </div>
     </div>
