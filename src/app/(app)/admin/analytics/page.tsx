@@ -13,7 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { adminArchiveCombinationAction } from "@/app/actions/combinations";
-import { adminDeleteCustomGlazeAction, adminFlagFalseContributionAction } from "@/app/actions";
+import { adminDeleteCustomGlazeAction, adminFlagFalseContributionAction } from "@/app/actions/admin";
 import { CombinationPreviewModal } from "./combination-preview-modal";
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";

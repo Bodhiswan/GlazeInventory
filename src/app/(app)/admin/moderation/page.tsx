@@ -1,4 +1,4 @@
-import { moderatePostAction } from "@/app/actions";
+import { moderatePostAction } from "@/app/actions/admin";
 import { PageHeader } from "@/components/page-header";
 import { PostCard } from "@/components/post-card";
 import { Button } from "@/components/ui/button";

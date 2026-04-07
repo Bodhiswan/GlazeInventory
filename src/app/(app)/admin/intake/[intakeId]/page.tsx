@@ -6,7 +6,7 @@ import {
   setExternalExampleIntakeStatusAction,
   updateExternalExampleGlazeMatchAction,
   updateExternalExampleReviewNotesAction,
-} from "@/app/actions";
+} from "@/app/actions/admin";
 import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants, Button } from "@/components/ui/button";
