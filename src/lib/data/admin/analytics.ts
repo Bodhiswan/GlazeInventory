@@ -1,361 +1,11 @@
-import { requireViewer, getSupabase } from "@/lib/data/users";
-import {
-  demoPosts,
-  demoReports,
-} from "@/lib/demo-data";
-import { parseInventoryState } from "@/lib/inventory-state";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { parseInventoryState } from "@/lib/inventory-state";
 import type {
-  ExternalExampleAsset,
-  ExternalExampleGlazeMention,
-  ExternalExampleIntake,
-  ExternalExampleParserOutput,
-  Glaze,
-  IntakeStatus,
   LeaderboardEntry,
-  ModerationQueue,
   PointsBreakdownEntry,
-  ModerationItem,
-  Report,
 } from "@/lib/types";
-import {
-  getCatalogGlazesByIds,
-} from "@/lib/catalog";
-import { getInventory } from "@/lib/data/inventory";
-import { getCombinationSummaries, hydratePosts } from "@/lib/data/combinations";
-import { getCommunityPosts } from "@/lib/data/community";
 
 type Row = Record<string, unknown>;
-
-function getBundledVendorImageUrl(brand: unknown, code: unknown) {
-  if (brand === "Coyote" && typeof code === "string" && code.trim()) {
-    return `/vendor-images/coyote/${code.toLowerCase()}.jpg`;
-  }
-
-  return null;
-}
-
-
-function normalizeVendorImageUrl(value: unknown) {
-  if (typeof value !== "string" || !value.trim()) {
-    return null;
-  }
-
-  const normalized = value.trim()
-    .replace(/ā|â€™|â/g, "'")
-    .replace(/ā|ā|â€œ|â€|â|â/g, "")
-    .replace(/\s+/g, " ");
-
-  try {
-    const parsed = new URL(normalized);
-    const encodedPath = parsed.pathname
-      .split("/")
-      .map((segment) => {
-        if (!segment) {
-          return segment;
-        }
-
-        try {
-          return encodeURIComponent(decodeURIComponent(segment));
-        } catch {
-          return encodeURIComponent(segment);
-        }
-      })
-      .join("/");
-
-    parsed.pathname = encodedPath;
-    return parsed.toString();
-  } catch {
-    return normalized;
-  }
-}
-
-function mapGlaze(row: Row): Glaze {
-  const bundledImageUrl = getBundledVendorImageUrl(row.brand, row.code);
-
-  return {
-    id: String(row.id),
-    sourceType: row.source_type === "nonCommercial" ? "nonCommercial" : "commercial",
-    name: String(row.name),
-    brand: (row.brand as string | null) ?? null,
-    line: (row.line as string | null) ?? null,
-    code: (row.code as string | null) ?? null,
-    cone: (row.cone as string | null) ?? null,
-    description: (row.description as string | null) ?? null,
-    imageUrl: bundledImageUrl ?? normalizeVendorImageUrl((row.image_url as string | null) ?? null),
-    editorialSummary: (row.editorial_summary as string | null) ?? null,
-    editorialSurface: (row.editorial_surface as string | null) ?? null,
-    editorialApplication: (row.editorial_application as string | null) ?? null,
-    editorialFiring: (row.editorial_firing as string | null) ?? null,
-    editorialReviewedAt: (row.editorial_reviewed_at as string | null) ?? null,
-    editorialReviewedByUserId: (row.editorial_reviewed_by_user_id as string | null) ?? null,
-    atmosphere: (row.atmosphere as string | null) ?? null,
-    finishNotes: (row.finish_notes as string | null) ?? null,
-    colorNotes: (row.color_notes as string | null) ?? null,
-    recipeNotes: (row.recipe_notes as string | null) ?? null,
-    createdByUserId: (row.created_by_user_id as string | null) ?? null,
-  };
-}
-
-function mapExternalExampleParserOutput(value: unknown): ExternalExampleParserOutput {
-  if (!value || typeof value !== "object") {
-    return {};
-  }
-
-  const row = value as Row;
-  return {
-    extractedCone: (row.extractedCone as string | null) ?? null,
-    extractedAtmosphere: (row.extractedAtmosphere as string | null) ?? null,
-    extractedClayBody: (row.extractedClayBody as string | null) ?? null,
-    matchedTerms: Array.isArray(row.matchedTerms)
-      ? row.matchedTerms.map((item) => String(item))
-      : [],
-    duplicateSha256s: Array.isArray(row.duplicateSha256s)
-      ? row.duplicateSha256s.map((item) => String(item))
-      : [],
-    duplicateSourceUrl: Boolean(row.duplicateSourceUrl),
-  };
-}
-
-function mapExternalExampleAsset(row: Row): ExternalExampleAsset {
-  return {
-    id: String(row.id),
-    intakeId: String(row.intake_id),
-    storagePath: String(row.storage_path),
-    sourceImageUrl: (row.source_image_url as string | null) ?? null,
-    captureMethod: String((row.capture_method as string | null) ?? "download"),
-    width: typeof row.width === "number" ? row.width : Number(row.width ?? 0) || null,
-    height: typeof row.height === "number" ? row.height : Number(row.height ?? 0) || null,
-    sha256: String(row.sha256),
-    sortOrder: Number(row.sort_order ?? 0),
-    signedImageUrl: null,
-  };
-}
-
-function mapExternalExampleGlazeMention(row: Row): ExternalExampleGlazeMention {
-  const glazeSource = Array.isArray((row as Row & { matched_glaze?: unknown }).matched_glaze)
-    ? ((row as Row & { matched_glaze?: Row[] }).matched_glaze?.[0] ?? null)
-    : ((row as Row & { matched_glaze?: Row | null }).matched_glaze ?? null);
-
-  return {
-    id: String(row.id),
-    intakeId: String(row.intake_id),
-    freeformText: String(row.freeform_text),
-    matchedGlazeId: (row.matched_glaze_id as string | null) ?? null,
-    matchedGlaze: glazeSource ? mapGlaze(glazeSource as Row) : null,
-    confidence: Number(row.confidence ?? 0),
-    mentionOrder: Number(row.mention_order ?? 0),
-    isApproved: Boolean(row.is_approved),
-    approvedByUserId: (row.approved_by_user_id as string | null) ?? null,
-    approvedAt: (row.approved_at as string | null) ?? null,
-  };
-}
-
-function mapExternalExampleIntake(row: Row): ExternalExampleIntake {
-  const assetRows = Array.isArray((row as Row & { external_example_assets?: unknown }).external_example_assets)
-    ? ((row as Row & { external_example_assets?: Row[] }).external_example_assets ?? [])
-    : [];
-  const mentionRows = Array.isArray((row as Row & { external_example_glaze_mentions?: unknown }).external_example_glaze_mentions)
-    ? ((row as Row & { external_example_glaze_mentions?: Row[] }).external_example_glaze_mentions ?? [])
-    : [];
-
-  return {
-    id: String(row.id),
-    sourcePlatform: "facebook",
-    groupLabel: String(row.group_label),
-    sourceUrl: String(row.source_url),
-    rawCaption: (row.raw_caption as string | null) ?? null,
-    rawAuthorDisplayName: (row.raw_author_display_name as string | null) ?? null,
-    rawSourceTimestamp: (row.raw_source_timestamp as string | null) ?? null,
-    capturedByUserId: String(row.captured_by_user_id),
-    privacyMode: ((row.privacy_mode as string | null) ?? "anonymous") as ExternalExampleIntake["privacyMode"],
-    reviewStatus: ((row.review_status as string | null) ?? "queued") as IntakeStatus,
-    parserOutput: mapExternalExampleParserOutput(row.parser_output),
-    reviewNotes: (row.review_notes as string | null) ?? null,
-    duplicateOfIntakeId: (row.duplicate_of_intake_id as string | null) ?? null,
-    publishedPostId: (row.published_post_id as string | null) ?? null,
-    publishedAt: (row.published_at as string | null) ?? null,
-    createdAt: String(row.created_at),
-    updatedAt: String(row.updated_at),
-    assets: assetRows.map((assetRow) => mapExternalExampleAsset(assetRow)).sort((left, right) => left.sortOrder - right.sortOrder),
-    glazeMentions: mentionRows
-      .map((mentionRow) => mapExternalExampleGlazeMention(mentionRow))
-      .sort((left, right) => left.mentionOrder - right.mentionOrder),
-  };
-}
-
-async function getSignedExternalExampleAssetUrls(storagePaths: string[]) {
-  const admin = createSupabaseAdminClient();
-
-  if (!admin || !storagePaths.length) {
-    return new Map<string, string>();
-  }
-
-  const signedUrls = await Promise.all(
-    storagePaths.map(async (storagePath) => {
-      const { data } = await admin.storage.from("external-example-imports").createSignedUrl(storagePath, 60 * 60);
-      return data?.signedUrl ? ([storagePath, data.signedUrl] as const) : null;
-    }),
-  );
-
-  return new Map(
-    signedUrls.filter((entry): entry is readonly [string, string] => Boolean(entry)),
-  );
-}
-
-// Admin context: tag enrichment is not needed for intake/moderation views
-async function getGlazesByIds(
-  _viewerId: string,
-  ids: string[],
-  _clientOverride?: ReturnType<typeof createSupabaseAdminClient> | null,
-) {
-  if (!ids.length) return [];
-  return getCatalogGlazesByIds(ids);
-}
-
-export async function getDashboardData(viewerId: string) {
-  const [inventory, combinations, communityPosts] = await Promise.all([
-    getInventory(viewerId),
-    getCombinationSummaries(viewerId),
-    getCommunityPosts(),
-  ]);
-
-  const ownedItems = inventory.filter((item) => item.status === "owned");
-  const customCount = ownedItems.filter((item) => item.glaze.sourceType === "nonCommercial").length;
-
-  return {
-    inventory,
-    combinations,
-    recentPosts: communityPosts.slice(0, 3),
-    metrics: {
-      ownedGlazes: ownedItems.length,
-      customGlazes: customCount,
-      pairs: combinations.length,
-      communityExamples: communityPosts.length,
-    },
-  };
-}
-
-export async function getExternalExampleIntakeQueue(status?: IntakeStatus | "all") {
-  const viewer = await requireViewer();
-
-  if (!viewer.profile.isAdmin) {
-    return [] as ExternalExampleIntake[];
-  }
-
-  const supabase = await getSupabase();
-
-  if (!supabase) {
-    return [] as ExternalExampleIntake[];
-  }
-
-  let query = supabase
-    .from("external_example_intakes")
-    .select(
-      "*, external_example_assets(*), external_example_glaze_mentions(*, matched_glaze:glazes(*))",
-    )
-    .order("created_at", { ascending: false });
-
-  if (status && status !== "all") {
-    query = query.eq("review_status", status);
-  }
-
-  const { data } = await query;
-  const intakes = ((data ?? []) as Row[]).map((row) => mapExternalExampleIntake(row));
-  const signedUrls = await getSignedExternalExampleAssetUrls(
-    intakes.flatMap((intake) => intake.assets.map((asset) => asset.storagePath)),
-  );
-
-  return intakes.map((intake) => ({
-    ...intake,
-    assets: intake.assets.map((asset) => ({
-      ...asset,
-      signedImageUrl: signedUrls.get(asset.storagePath) ?? null,
-    })),
-  }));
-}
-
-export async function getExternalExampleIntake(intakeId: string) {
-  const viewer = await requireViewer();
-
-  if (!viewer.profile.isAdmin) {
-    return null;
-  }
-
-  const supabase = await getSupabase();
-
-  if (!supabase) {
-    return null;
-  }
-
-  const { data } = await supabase
-    .from("external_example_intakes")
-    .select("*, external_example_assets(*), external_example_glaze_mentions(*, matched_glaze:glazes(*))")
-    .eq("id", intakeId)
-    .maybeSingle();
-
-  if (!data) {
-    return null;
-  }
-
-  const intake = mapExternalExampleIntake(data as Row);
-  const signedUrls = await getSignedExternalExampleAssetUrls(intake.assets.map((asset) => asset.storagePath));
-
-  return {
-    ...intake,
-    assets: intake.assets.map((asset) => ({
-      ...asset,
-      signedImageUrl: signedUrls.get(asset.storagePath) ?? null,
-    })),
-  } satisfies ExternalExampleIntake;
-}
-
-export async function getReportedPostsQueue(): Promise<ModerationItem[]> {
-  const viewer = await requireViewer();
-  const supabase = await getSupabase();
-
-  if (!supabase) {
-    return demoPosts
-      .filter((post) => post.status === "reported" || post.status === "hidden")
-      .map((post) => ({
-        post,
-        reports: demoReports.filter((report) => report.postId === post.id),
-      }));
-  }
-
-  const { data: posts } = await supabase
-    .from("combination_posts")
-    .select("*")
-    .in("status", ["reported", "hidden"])
-    .order("created_at", { ascending: false });
-
-  const hydrated = await hydratePosts(viewer.profile.id, (posts ?? []) as Row[]);
-
-  const { data: reports } = await supabase
-    .from("reports")
-    .select("*")
-    .eq("status", "open")
-    .order("created_at", { ascending: false });
-
-  const mappedReports = (reports ?? []).map(
-    (row) =>
-      ({
-        id: String((row as Row).id),
-        postId: String((row as Row).post_id),
-        reportedByUserId: String((row as Row).reported_by_user_id),
-        reason: String((row as Row).reason),
-        status: "open",
-        createdAt: String((row as Row).created_at),
-      }) satisfies Report,
-  );
-
-  return hydrated.map((post) => ({
-    post,
-    reports: mappedReports.filter((report) => report.postId === post.id),
-  }));
-}
-
-// ─── Admin Analytics ──────────────────────────────────────────────────────────
 
 export interface AnalyticsDashboard {
   stats: {
@@ -1019,111 +669,6 @@ export async function getWeeklyLeaderboard(): Promise<LeaderboardEntry[]> {
     .filter((entry): entry is LeaderboardEntry => entry !== null);
 }
 
-export async function getModerationQueue(): Promise<ModerationQueue> {
-  const admin = createSupabaseAdminClient();
-  if (!admin) return { combinations: [], customGlazes: [], firingImages: [] };
-  type Row = Record<string, unknown>;
-
-  const [combosRes, glazesRes, firingImagesRes] = await Promise.all([
-    admin
-      .from("user_combination_examples")
-      .select("id, title, author_user_id, status, cone, atmosphere, notes, post_firing_image_path, created_at, moderation_state")
-      .order("created_at", { ascending: true })
-      .limit(200),
-    admin
-      .from("glazes")
-      .select("id, name, brand, code, color_notes, finish_notes, image_url, created_by_user_id, created_at, moderation_state")
-      .eq("source_type", "nonCommercial")
-      .order("created_at", { ascending: true })
-      .limit(200),
-    admin
-      .from("community_firing_images")
-      .select("id, image_url, label, cone, atmosphere, uploader_user_id, glaze_id, combination_id, combination_type, created_at, moderation_state")
-      .order("created_at", { ascending: true })
-      .limit(200),
-  ]);
-
-  // Resolve author/creator/uploader display names in one round
-  const userIds = new Set<string>();
-  for (const row of combosRes.data ?? []) {
-    const uid = (row as Row).author_user_id;
-    if (uid) userIds.add(String(uid));
-  }
-  for (const row of glazesRes.data ?? []) {
-    const uid = (row as Row).created_by_user_id;
-    if (uid) userIds.add(String(uid));
-  }
-  for (const row of firingImagesRes.data ?? []) {
-    const uid = (row as Row).uploader_user_id;
-    if (uid) userIds.add(String(uid));
-  }
-
-  const userMap = new Map<string, string>();
-  if (userIds.size > 0) {
-    const { data: profiles } = await admin
-      .from("profiles")
-      .select("id, display_name")
-      .in("id", [...userIds]);
-    for (const p of profiles ?? []) {
-      userMap.set(String((p as Row).id), String((p as Row).display_name ?? "Unknown"));
-    }
-  }
-
-  const combinations = (combosRes.data ?? []).map((row) => {
-    const r = row as Row;
-    return {
-      id: String(r.id),
-      title: String(r.title ?? ""),
-      authorName: userMap.get(String(r.author_user_id)) ?? "Unknown",
-      authorId: String(r.author_user_id ?? ""),
-      status: String(r.status ?? ""),
-      cone: String(r.cone ?? ""),
-      atmosphere: String(r.atmosphere ?? ""),
-      notes: r.notes ? String(r.notes) : null,
-      imageUrl: r.post_firing_image_path ? String(r.post_firing_image_path) : null,
-      createdAt: String(r.created_at),
-      moderationState: String(r.moderation_state ?? "pending"),
-    };
-  });
-
-  const customGlazes = (glazesRes.data ?? []).map((row) => {
-    const r = row as Row;
-    return {
-      id: String(r.id),
-      name: String(r.name ?? ""),
-      brand: r.brand ? String(r.brand) : null,
-      code: r.code ? String(r.code) : null,
-      colorNotes: r.color_notes ? String(r.color_notes) : null,
-      finishNotes: r.finish_notes ? String(r.finish_notes) : null,
-      imageUrl: r.image_url ? String(r.image_url) : null,
-      creatorName: userMap.get(String(r.created_by_user_id)) ?? "Unknown",
-      creatorId: String(r.created_by_user_id ?? ""),
-      createdAt: String(r.created_at),
-      moderationState: String(r.moderation_state ?? "pending"),
-    };
-  });
-
-  const firingImages = (firingImagesRes.data ?? []).map((row) => {
-    const r = row as Row;
-    return {
-      id: String(r.id),
-      imageUrl: String(r.image_url ?? ""),
-      label: r.label ? String(r.label) : null,
-      cone: r.cone ? String(r.cone) : null,
-      atmosphere: r.atmosphere ? String(r.atmosphere) : null,
-      uploaderName: userMap.get(String(r.uploader_user_id)) ?? "Unknown",
-      uploaderId: String(r.uploader_user_id ?? ""),
-      glazeId: r.glaze_id ? String(r.glaze_id) : null,
-      combinationId: r.combination_id ? String(r.combination_id) : null,
-      combinationType: r.combination_type ? String(r.combination_type) : null,
-      createdAt: String(r.created_at),
-      moderationState: String(r.moderation_state ?? "pending"),
-    };
-  });
-
-  return { combinations, customGlazes, firingImages };
-}
-
 const POINTS_ACTION_LABELS: Record<string, string> = {
   glaze_added: "Glazes added",
   combination_shared: "Combinations shared",
@@ -1162,4 +707,89 @@ export async function getUserPointsBreakdown(
       label: POINTS_ACTION_LABELS[action] ?? action,
       points: pts,
     }));
+}
+
+export interface AdminUserRow {
+  id: string;
+  displayName: string;
+  email: string;
+  isAdmin: boolean;
+  isAnonymous: boolean;
+  contributionsDisabled: boolean;
+  createdAt: string;
+  points: number;
+  inventoryCount: number;
+  combinationCount: number;
+  glazeCount: number;
+}
+
+export async function getAllUsersForAdmin({
+  search = "",
+  limit = 50,
+  offset = 0,
+}: {
+  search?: string;
+  limit?: number;
+  offset?: number;
+}): Promise<{ rows: AdminUserRow[]; total: number }> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return { rows: [], total: 0 };
+
+  // Fetch auth users for email data
+  const { data: authData } = await admin.auth.admin.listUsers({ page: 1, perPage: 10000 });
+  const emailMap = new Map<string, string>();
+  for (const u of authData?.users ?? []) {
+    emailMap.set(u.id, u.email ?? "");
+  }
+
+  let query = admin
+    .from("profiles")
+    .select(
+      "id, display_name, is_admin, is_anonymous, contributions_disabled, created_at, points",
+      { count: "exact" },
+    )
+    .order("created_at", { ascending: false })
+    .range(offset, offset + limit - 1);
+
+  if (search) {
+    query = query.ilike("display_name", `%${search}%`);
+  }
+
+  const { data, count, error } = await query;
+  if (error || !data) return { rows: [], total: 0 };
+
+  // Get counts per user in one query each
+  const userIds = data.map((r) => String(r.id));
+
+  const [invRes, comboRes, glazeRes] = await Promise.all([
+    admin.from("inventory_items").select("user_id").in("user_id", userIds),
+    admin.from("user_combination_examples").select("user_id").in("user_id", userIds),
+    admin.from("glazes").select("created_by").in("created_by", userIds).eq("source_type", "custom"),
+  ]);
+
+  const invCounts = new Map<string, number>();
+  const comboCounts = new Map<string, number>();
+  const glazeCounts = new Map<string, number>();
+  for (const r of invRes.data ?? []) { const k = String((r as Row).user_id); invCounts.set(k, (invCounts.get(k) ?? 0) + 1); }
+  for (const r of comboRes.data ?? []) { const k = String((r as Row).user_id); comboCounts.set(k, (comboCounts.get(k) ?? 0) + 1); }
+  for (const r of glazeRes.data ?? []) { const k = String((r as Row).created_by); glazeCounts.set(k, (glazeCounts.get(k) ?? 0) + 1); }
+
+  const rows: AdminUserRow[] = data.map((r) => {
+    const id = String(r.id);
+    return {
+      id,
+      displayName: String(r.display_name ?? "(no name)"),
+      email: emailMap.get(id) ?? "",
+      isAdmin: Boolean(r.is_admin),
+      isAnonymous: Boolean(r.is_anonymous),
+      contributionsDisabled: Boolean(r.contributions_disabled),
+      createdAt: String(r.created_at),
+      points: Number(r.points ?? 0),
+      inventoryCount: invCounts.get(id) ?? 0,
+      combinationCount: comboCounts.get(id) ?? 0,
+      glazeCount: glazeCounts.get(id) ?? 0,
+    };
+  });
+
+  return { rows, total: count ?? 0 };
 }
