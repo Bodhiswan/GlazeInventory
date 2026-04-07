@@ -12,18 +12,13 @@ export function BuyLinksDropdown({
   const stores = getStoresForGlaze(glaze);
   if (!stores.length) return null;
 
-  function handleClick(storeUrl: string, storeId: string, storeName: string) {
-    // Open the store in a new tab immediately — don't wait for tracking
-    window.open(storeUrl, "_blank", "noopener,noreferrer");
-
-    // Fire-and-forget analytics tracking in the background
+  function trackClick(storeUrl: string, storeId: string, storeName: string) {
+    // Fire-and-forget — never block navigation on tracking
     fetch("/api/track-buy-click", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ glazeId: glaze.id, storeId, storeName, url: storeUrl }),
-    }).catch(() => {
-      // Non-critical — never block navigation on tracking failures
-    });
+    }).catch(() => undefined);
   }
 
   return (
@@ -37,16 +32,18 @@ export function BuyLinksDropdown({
         {stores.map((store) => {
           const storeUrl = buildStoreSearchUrl(store, glaze.code, glaze.name, glaze.brand);
           return (
-            <button
+            <a
               key={store.id}
-              type="button"
-              onClick={() => handleClick(storeUrl, store.id, store.name)}
-              className="flex w-full items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-white"
+              href={storeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackClick(storeUrl, store.id, store.name)}
+              className="flex items-center gap-3 px-3 py-2.5 text-sm transition-colors hover:bg-white"
             >
               <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-muted">{store.region}</span>
               <span className="min-w-0 flex-1 text-left text-foreground">{store.name}</span>
               <ExternalLink className="h-3.5 w-3.5 shrink-0 text-muted" />
-            </button>
+            </a>
           );
         })}
       </div>
