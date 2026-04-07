@@ -17,12 +17,11 @@ import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
 import { getGlazeDetail, getInventoryFolders, requireViewer } from "@/lib/data";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
+import { getGlazeFamilyTraits, getManufacturerUrl } from "@/lib/glaze-metadata";
 import {
   formatGlazeLabel,
   formatGlazeMeta,
-  getGlazeFamilyTraits,
   getGlazeSkimDescription,
-  getManufacturerUrl,
   pickPreferredGlazeImage,
 } from "@/lib/utils";
 import coyoteLocalGallery from "../../../../../data/vendors/coyote-local-gallery.json";

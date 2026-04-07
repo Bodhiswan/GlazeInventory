@@ -1,0 +1,173 @@
+import type { Glaze } from "@/lib/types";
+
+export const ACTIVE_GLAZE_BRANDS = ["Mayco", "AMACO", "Coyote", "Duncan", "Spectrum", "Speedball"] as const;
+export const GLAZE_FAMILY_LABELS = [
+  "Underglaze",
+  "Translucent underglaze",
+  "Low-fire gloss color",
+  "Low-fire matte color",
+  "Engobe",
+  "Celadon",
+  "Satin / matte functional",
+  "Durable functional",
+  "Reactive effects",
+  "Crawl / crackle",
+  "Shino",
+  "Specialty additive",
+] as const;
+
+type GlazeFamilyLabel = (typeof GLAZE_FAMILY_LABELS)[number];
+
+const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
+  Mayco: {
+    "Fundamentals Underglaze": ["Underglaze"],
+    "E-Z Stroke Translucent Underglazes": ["Translucent underglaze"],
+    "Stroke & Coat": ["Low-fire gloss color"],
+    "Speckled Stroke & Coat": ["Low-fire gloss color"],
+    Foundations: ["Low-fire gloss color"],
+    "Low Fire Clear": ["Durable functional"],
+    "Stoneware Engobes": ["Engobe"],
+    "Stoneware Clear": ["Durable functional"],
+    Stoneware: ["Reactive effects"],
+    "Stoneware Specialty": ["Reactive effects"],
+    "Elements and Elements Chunkies": ["Reactive effects"],
+    Elements: ["Reactive effects"],
+    "Elements Chunkies": ["Reactive effects"],
+    "Jungle Gems": ["Reactive effects"],
+    "Pottery Cascade": ["Reactive effects"],
+    Flux: ["Reactive effects"],
+    "Classic Crackles": ["Crawl / crackle"],
+    Cobblestone: ["Crawl / crackle"],
+    Raku: ["Reactive effects"],
+    Washes: ["Specialty additive"],
+    "Designer Liner": ["Underglaze"],
+    "French Dimensions": ["Specialty additive"],
+    "Melt Gloop": ["Specialty additive"],
+    Bead: ["Specialty additive"],
+    "Snow Gems": ["Specialty additive"],
+    Snowfall: ["Specialty additive"],
+  },
+  AMACO: {
+    "Velvet Underglaze": ["Underglaze"],
+    "Liquid Underglaze": ["Underglaze"],
+    "Semi-Moist Underglaze": ["Underglaze"],
+    "Velvet Sprayz": ["Underglaze"],
+    "Teacher's Palette Light": ["Low-fire gloss color"],
+    "Teacher's Palette": ["Low-fire gloss color"],
+    "Low Fire Gloss": ["Low-fire gloss color"],
+    "Low Fire Matte": ["Low-fire matte color"],
+    Celadon: ["Celadon", "Durable functional"],
+    "Satin Matte": ["Satin / matte functional"],
+    "High Fire": ["Durable functional"],
+    "Dipping & Layering": ["Durable functional", "Reactive effects"],
+    "Dipping Glazes": ["Durable functional"],
+    Opalescent: ["Reactive effects"],
+    "Potter's Choice": ["Reactive effects"],
+    "Potter's Choice Flux": ["Reactive effects"],
+    Cosmos: ["Reactive effects"],
+    "Kiln Ice": ["Reactive effects", "Crawl / crackle"],
+    "Phase Glaze": ["Reactive effects"],
+    Crawls: ["Crawl / crackle"],
+    Shino: ["Shino", "Reactive effects"],
+    Texturizer: ["Specialty additive"],
+  },
+  Coyote: {
+    "Enduro-Color Glazes": ["Durable functional"],
+    "Vibro-Color Glazes": ["Durable functional"],
+    "Gloss Glazes": ["Durable functional"],
+    "Satin Glazes": ["Satin / matte functional"],
+    "Matt Glazes & Crawl Glazes": ["Satin / matte functional", "Crawl / crackle"],
+    "Frank's Colored Celadon Glazes": ["Celadon"],
+    "Shino Glazes": ["Shino", "Reactive effects"],
+    "Archie's Glazes": ["Reactive effects"],
+    "Fantasy Glazes": ["Reactive effects"],
+    "Copper & Iron Glazes": ["Reactive effects"],
+    "Mottled Glazes": ["Reactive effects"],
+    "Texas Two-Step Oilspot Glazes": ["Reactive effects"],
+  },
+  Duncan: {
+    "E-Z Stroke® Translucent Underglazes": ["Translucent underglaze"],
+    "French Dimensions™": ["Specialty additive"],
+    "Clear Glazes": ["Durable functional"],
+  },
+  Spectrum: {
+    "100 Series Crackle Glazes": ["Crawl / crackle"],
+    "150 Series Metallic Glazes": ["Reactive effects"],
+    "200 Series Rhinestone Glazes": ["Reactive effects"],
+    "250 Series Satin Glazes": ["Satin / matte functional"],
+    "300 Series Majolica Glazes": ["Low-fire gloss color"],
+    "700 Series Opaque Gloss Glazes": ["Low-fire gloss color"],
+    "800 Series Semi-Transparent Glazes": ["Low-fire gloss color"],
+    "850 Series Raku Glazes": ["Reactive effects"],
+    "900 Series Low Stone Glazes": ["Satin / matte functional"],
+    "1100 Series Clear Gloss Glazes": ["Durable functional"],
+    "1100 Series Clear Satin Glazes": ["Satin / matte functional"],
+    "1100 Series Clear Crackle Glazes": ["Crawl / crackle"],
+    "1100 Series Opaque Gloss Glazes": ["Durable functional"],
+    "1100 Series Opaque Satin Glazes": ["Satin / matte functional"],
+    "1100 Series Metallic Glazes": ["Reactive effects"],
+    "1100 Series Reactive Glazes": ["Reactive effects"],
+    "1100 Series Textured Glazes": ["Reactive effects"],
+    "1200 Series Cone 9/10 Glazes": ["Durable functional"],
+    "1400 Series Shino Glazes": ["Shino", "Reactive effects"],
+    "1420 Series Ash Glazes": ["Reactive effects"],
+    "1430 Series Floating Glazes": ["Reactive effects"],
+    "1460 Series Celadon Glazes": ["Celadon"],
+    "1500 Series NOVA Glazes": ["Reactive effects"],
+  },
+  Speedball: {
+    Underglazes: ["Underglaze"],
+    "Mid-Fire Glazes": ["Reactive effects"],
+    "Mid-Fire Flux Glazes": ["Reactive effects"],
+    "Earthenware Glazes": ["Low-fire gloss color"],
+  },
+  Laguna: {
+    "EZ Stroke Low-Fire": ["Underglaze"],
+    "Silky Underglaze": ["Underglaze"],
+    "Moroccan Fusion": ["Reactive effects"],
+    "Moroccan Color": ["Low-fire gloss color"],
+    "Moroccan Sand Clear": ["Durable functional"],
+    "Laguna Glazes High-Fire (Cone 10)": ["Durable functional"],
+    "Vintage High-Fire (Cone 10)": ["Durable functional"],
+    "WC High-Fire (Cone 10)": ["Durable functional"],
+    "Versa-5": ["Durable functional"],
+    "SG Studio Glazes": ["Durable functional"],
+    "Flameware (Cone 10)": ["Durable functional"],
+    "Crystal Blossom": ["Reactive effects"],
+    "Watercolor Crackle": ["Crawl / crackle"],
+    "Watercolor Mystic": ["Reactive effects"],
+    "Reactive Glazes": ["Reactive effects"],
+    "Designer Effects - Dry Lake": ["Crawl / crackle"],
+    "Designer Effects - Metallic": ["Reactive effects"],
+    Raku: ["Reactive effects"],
+  },
+  Northcote: {
+    "Midfire Glaze": ["Durable functional"],
+    "Midfire Glaze - Gloss": ["Durable functional"],
+    "Midfire Glaze - Pearl": ["Satin / matte functional"],
+    "Midfire Glaze - Chun": ["Reactive effects"],
+  },
+};
+
+const BRAND_URLS: Record<string, string> = {
+  Mayco: "https://www.maycocolors.com",
+  AMACO: "https://www.amaco.com",
+  Amaco: "https://www.amaco.com",
+  Coyote: "https://www.coyoteclay.com",
+  Duncan: "https://www.maycocolors.com/duncan/",
+  Spectrum: "https://www.spectrumglazes.com",
+  Speedball: "https://www.speedballart.com",
+};
+
+export function getManufacturerUrl(brand: string | null | undefined): string | null {
+  return brand ? (BRAND_URLS[brand] ?? null) : null;
+}
+
+export function getGlazeFamilyTraits(glaze: Glaze) {
+  if (!glaze.brand || !glaze.line) {
+    return [] as string[];
+  }
+
+  const mapped = brandLineFamilyMap[glaze.brand]?.[glaze.line] ?? [];
+  return Array.from(new Set(mapped.filter(Boolean)));
+}

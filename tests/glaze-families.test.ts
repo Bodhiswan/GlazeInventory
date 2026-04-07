@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { getGlazeFamilyTraits } from "../src/lib/utils";
+import { getGlazeFamilyTraits } from "../src/lib/glaze-metadata";
 import type { Glaze } from "../src/lib/types";
 
 function makeGlaze(overrides: Partial<Glaze>): Glaze {

@@ -16,6 +16,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
+import { getGlazeFamilyTraits, getManufacturerUrl } from "@/lib/glaze-metadata";
 import {
   extractGlazeColorTraits,
   extractGlazeConeTraits,
@@ -30,14 +31,12 @@ import {
   getGlazeColorFlowPosition,
   getGlazeColorMatchScore,
   getGlazeColorPalette,
-  getGlazeFamilyTraits,
   hasCuratedGlazeDescription,
   matchesFamilySelection,
   matchesFiringImagePreference,
   matchesSmartColorSelection,
   matchesSmartFinishSelection,
   getGlazeSkimDescription,
-  getManufacturerUrl,
   pickPreferredGlazeImage,
   summarizeGlazeColor,
   summarizeGlazeFinish,
