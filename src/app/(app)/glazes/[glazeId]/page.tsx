@@ -9,6 +9,7 @@ import { toggleGlazeFavouriteAction } from "@/app/actions/glazes";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { GlazeOwnershipPanel } from "@/components/glaze-ownership-panel";
 import { PageHeader } from "@/components/page-header";
+import { SectionErrorBoundary } from "@/components/section-error-boundary";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
@@ -202,6 +203,7 @@ export default async function GlazeDetailPage({
           </div>
 
           {glaze.sourceType === "commercial" ? (
+            <SectionErrorBoundary>
               <GlazeOwnershipPanel
                 glazeId={glaze.id}
                 initialStatus={detail.viewerInventoryItem?.status ?? null}
@@ -211,56 +213,59 @@ export default async function GlazeDetailPage({
                 initialFolderIds={detail.viewerInventoryItem?.folderIds ?? []}
                 folders={folders}
               />
+            </SectionErrorBoundary>
           ) : null}
         </Panel>
 
       </section>
 
-      <section className="space-y-4">
-        <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-muted">Comments</p>
-          <h2 className="display-font mt-2 text-3xl tracking-tight">Studio notes under this glaze</h2>
-        </div>
-
-        <Panel className="space-y-4">
-            <form action={addGlazeCommentAction} className="space-y-4">
-              <input type="hidden" name="glazeId" value={glaze.id} />
-              <input type="hidden" name="returnTo" value={`/glazes/${glaze.id}`} />
-              <Textarea
-                name="body"
-                placeholder="Add a useful note about application, clay body, fit, layering, or firing results."
-                required
-              />
-              <div className="flex justify-end">
-                <button type="submit" className={buttonVariants({ size: "sm" })}>
-                  Post comment
-                </button>
-              </div>
-            </form>
-        </Panel>
-
-        {detail.comments.length ? (
-          <div className="space-y-3">
-            {detail.comments.map((comment) => (
-              <Panel key={comment.id} className="space-y-3">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <p className="font-semibold text-foreground">{comment.authorName}</p>
-                  <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
-                    {format(new Date(comment.createdAt), "d MMM yyyy")}
-                  </p>
-                </div>
-                <p className="text-sm leading-6 text-muted">{comment.body}</p>
-              </Panel>
-            ))}
+      <SectionErrorBoundary>
+        <section className="space-y-4">
+          <div>
+            <p className="text-sm uppercase tracking-[0.2em] text-muted">Comments</p>
+            <h2 className="display-font mt-2 text-3xl tracking-tight">Studio notes under this glaze</h2>
           </div>
-        ) : (
-          <Panel>
-            <p className="text-sm leading-6 text-muted">
-              No comments yet. Start the page with the first note about how this glaze behaves.
-            </p>
+
+          <Panel className="space-y-4">
+              <form action={addGlazeCommentAction} className="space-y-4">
+                <input type="hidden" name="glazeId" value={glaze.id} />
+                <input type="hidden" name="returnTo" value={`/glazes/${glaze.id}`} />
+                <Textarea
+                  name="body"
+                  placeholder="Add a useful note about application, clay body, fit, layering, or firing results."
+                  required
+                />
+                <div className="flex justify-end">
+                  <button type="submit" className={buttonVariants({ size: "sm" })}>
+                    Post comment
+                  </button>
+                </div>
+              </form>
           </Panel>
-        )}
-      </section>
+
+          {detail.comments.length ? (
+            <div className="space-y-3">
+              {detail.comments.map((comment) => (
+                <Panel key={comment.id} className="space-y-3">
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <p className="font-semibold text-foreground">{comment.authorName}</p>
+                    <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
+                      {format(new Date(comment.createdAt), "d MMM yyyy")}
+                    </p>
+                  </div>
+                  <p className="text-sm leading-6 text-muted">{comment.body}</p>
+                </Panel>
+              ))}
+            </div>
+          ) : (
+            <Panel>
+              <p className="text-sm leading-6 text-muted">
+                No comments yet. Start the page with the first note about how this glaze behaves.
+              </p>
+            </Panel>
+          )}
+        </section>
+      </SectionErrorBoundary>
     </div>
   );
 }
