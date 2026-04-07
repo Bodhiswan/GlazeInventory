@@ -2,10 +2,11 @@ import Link from "next/link";
 import { Camera, Layers3, Sparkles } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
-import { requireViewer } from "@/lib/data";
+import { getLeaderboard, requireViewer } from "@/lib/data";
 
 export default async function ContributePage() {
   await requireViewer();
+  const leaderboard = await getLeaderboard();
 
   return (
     <div className="space-y-8">
@@ -53,6 +54,7 @@ export default async function ContributePage() {
             Go to add glaze →
           </span>
         </Link>
+
         {/* ── Upload a firing photo ── */}
         <Link
           href="/contribute/firing-image"
@@ -72,6 +74,34 @@ export default async function ContributePage() {
           </span>
         </Link>
       </div>
+
+      {/* ── People to thank ── */}
+      {leaderboard.length > 0 ? (
+        <div className="space-y-4">
+          <div>
+            <p className="text-[10px] uppercase tracking-[0.18em] text-muted">People to thank</p>
+            <p className="mt-1 text-sm text-muted">Top contributors who have helped build this library</p>
+          </div>
+          <div className="divide-y divide-border border border-border">
+            {leaderboard.map((contributor, index) => (
+              <div key={contributor.id} className="flex items-center gap-4 px-4 py-3">
+                <span className="w-6 shrink-0 text-right text-sm tabular-nums text-muted">
+                  {index + 1}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-sm font-medium text-foreground">{contributor.displayName}</p>
+                  {contributor.studioName ? (
+                    <p className="truncate text-xs text-muted">{contributor.studioName}</p>
+                  ) : null}
+                </div>
+                <span className="shrink-0 text-sm tabular-nums text-muted">
+                  {contributor.points.toLocaleString()} pts
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
     </div>
   );
 }
