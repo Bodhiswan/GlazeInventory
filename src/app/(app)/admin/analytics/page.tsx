@@ -12,11 +12,8 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-import {
-  adminArchiveCombinationAction,
-  adminDeleteCustomGlazeAction,
-  adminFlagFalseContributionAction,
-} from "@/app/actions";
+import { adminArchiveCombinationAction } from "@/app/actions/combinations";
+import { adminDeleteCustomGlazeAction, adminFlagFalseContributionAction } from "@/app/actions";
 import { CombinationPreviewModal } from "./combination-preview-modal";
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";

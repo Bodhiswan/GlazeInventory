@@ -1,4 +1,4 @@
-import { publishUserCombinationAction } from "@/app/actions";
+import { publishUserCombinationAction } from "@/app/actions/combinations";
 import { PageHeader } from "@/components/page-header";
 import { PublishCombinationForm } from "@/components/publish-combination-form";
 import { SetupCallout } from "@/components/setup-callout";

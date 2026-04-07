@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ChevronDown, Heart, Search, X } from "lucide-react";
 import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
-import { deleteUserCombinationAction } from "@/app/actions";
+import { deleteUserCombinationAction } from "@/app/actions/combinations";
 import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
 import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";

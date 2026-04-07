@@ -18,7 +18,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
-import { deleteUserCombinationAction } from "@/app/actions";
+import { deleteUserCombinationAction } from "@/app/actions/combinations";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
 import { CommunityImagesPanel } from "@/components/community-images-panel";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
