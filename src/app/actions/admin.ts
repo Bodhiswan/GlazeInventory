@@ -252,6 +252,11 @@ export async function publishExternalExampleIntakeAction(formData: FormData) {
 
   const pairKey = createPairKey(approvedMentionGlazeIds[0]!, approvedMentionGlazeIds[1]!);
   const orderedGlazeIds = parsePairKey(pairKey);
+  if (!orderedGlazeIds) {
+    // pairKey was derived from createPairKey so this should never happen,
+    // but guard defensively
+    throw new Error(`Invalid pair key: ${pairKey}`);
+  }
   const uploadedPath = `${viewer.profile.id}/external-intakes/${crypto.randomUUID()}-${String(primaryAsset.storage_path).split("/").pop()}`;
 
   const uploadBuffer = new Uint8Array(await assetBlob.arrayBuffer());
@@ -271,8 +276,8 @@ export async function publishExternalExampleIntakeAction(formData: FormData) {
     .from("combination_pairs")
     .upsert(
       {
-        glaze_a_id: orderedGlazeIds![0],
-        glaze_b_id: orderedGlazeIds![1],
+        glaze_a_id: orderedGlazeIds[0],
+        glaze_b_id: orderedGlazeIds[1],
         pair_key: pairKey,
       },
       { onConflict: "pair_key" },
