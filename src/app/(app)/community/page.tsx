@@ -1,12 +1,13 @@
+import { Suspense } from "react";
 import { Search } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
-import { PostCard } from "@/components/post-card";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
-import { getCommunityPosts } from "@/lib/data/community";
 import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
+import { CommunityPostsServer } from "./_components/community-posts-server";
+import { CommunityPostsSkeleton } from "./_components/community-posts-skeleton";
 
 export default async function CommunityPage({
   searchParams,
@@ -16,7 +17,6 @@ export default async function CommunityPage({
   await requireViewer();
   const params = await searchParams;
   const query = formatSearchQuery(params.q);
-  const posts = await getCommunityPosts(query);
 
   return (
     <div className="space-y-8">
@@ -38,20 +38,9 @@ export default async function CommunityPage({
         </form>
       </Panel>
 
-      {posts.length ? (
-        <div className="grid gap-6 lg:grid-cols-2">
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </div>
-      ) : (
-        <Panel>
-          <h2 className="display-font text-3xl tracking-tight">No matches found.</h2>
-          <p className="mt-3 text-sm leading-6 text-muted">
-            Try a glaze name, cone range, trait word like matte or runny, or one of the descriptive words from a caption.
-          </p>
-        </Panel>
-      )}
+      <Suspense fallback={<CommunityPostsSkeleton />}>
+        <CommunityPostsServer query={query} />
+      </Suspense>
     </div>
   );
 }
