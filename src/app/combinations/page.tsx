@@ -1,12 +1,12 @@
 import { CombinationsBrowser } from "@/components/combinations-browser";
+import { getFavouriteIds } from "@/lib/data";
+import { getGlazeFiringImageMap } from "@/lib/data/glazes";
+import { getInventoryOwnership } from "@/lib/data/inventory";
 import {
-  getFavouriteIds,
-  getGlazeFiringImageMap,
-  getInventoryOwnership,
   getPublishedCombinationPosts,
   getUserCombinationExamples,
   getVendorCombinationExamples,
-} from "@/lib/data";
+} from "@/lib/data/combinations";
 import { requireViewer } from "@/lib/data/users";
 import type { InventoryStatus } from "@/lib/types";
 import { formatSearchQuery } from "@/lib/utils";

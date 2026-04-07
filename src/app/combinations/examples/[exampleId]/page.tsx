@@ -6,7 +6,7 @@ import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getVendorCombinationExample } from "@/lib/data";
+import { getVendorCombinationExample } from "@/lib/data/combinations";
 import { requireViewer } from "@/lib/data/users";
 import type { VendorCombinationExample } from "@/lib/types";
 import { formatGlazeLabel, formatGlazeMeta } from "@/lib/utils";

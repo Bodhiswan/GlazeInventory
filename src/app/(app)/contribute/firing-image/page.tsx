@@ -1,5 +1,5 @@
 import { PageHeader } from "@/components/page-header";
-import { getUserCombinationExamples } from "@/lib/data";
+import { getUserCombinationExamples } from "@/lib/data/combinations";
 import { getCatalogGlazes } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
 import { getAllVendorExamples } from "@/lib/catalog";

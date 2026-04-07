@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants, Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
-import { getCombinationDetail } from "@/lib/data";
+import { getCombinationDetail } from "@/lib/data/combinations";
 import { requireViewer } from "@/lib/data/users";
 import { formatGlazeLabel, formatGlazeMeta, formatSearchQuery } from "@/lib/utils";
 
