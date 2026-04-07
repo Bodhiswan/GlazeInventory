@@ -35,6 +35,7 @@ import type {
   InventoryFolder,
   InventoryItem,
   IntakeStatus,
+  LeaderboardEntry,
   ModerationItem,
   Report,
   UserCombinationExample,
@@ -2105,4 +2106,45 @@ export async function getAdminDashboard(range: DashboardRange = "30d"): Promise<
     buyClicksByStore,
     recentBuyClicks,
   };
+}
+
+export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
+  const supabase = await getSupabase();
+  if (!supabase) return [];
+
+  const { data } = await supabase
+    .from("profiles")
+    .select("id, display_name, studio_name, points")
+    .eq("contributions_disabled", false)
+    .gt("points", 0)
+    .order("points", { ascending: false })
+    .limit(20);
+
+  return (data ?? []).map((row) => ({
+    id: String(row.id),
+    displayName: (row.display_name as string | null) ?? "Glaze member",
+    studioName: (row.studio_name as string | null) ?? null,
+    points: typeof row.points === "number" ? row.points : 0,
+  }));
+}
+
+export async function getUserPointsRank(userId: string): Promise<number> {
+  const supabase = await getSupabase();
+  if (!supabase) return 0;
+
+  const { data: self } = await supabase
+    .from("profiles")
+    .select("points")
+    .eq("id", userId)
+    .single();
+
+  const userPoints = self?.points ?? 0;
+  if (userPoints === 0) return 0;
+
+  const { count } = await supabase
+    .from("profiles")
+    .select("id", { count: "exact", head: true })
+    .gt("points", userPoints);
+
+  return (count ?? 0) + 1;
 }

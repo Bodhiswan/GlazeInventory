@@ -223,6 +223,13 @@ export interface UserFavourite {
   createdAt: string;
 }
 
+export interface LeaderboardEntry {
+  id: string;
+  displayName: string;
+  studioName: string | null;
+  points: number;
+}
+
 export interface GlazeDetail {
   glaze: Glaze;
   firingImages: GlazeFiringImage[];
