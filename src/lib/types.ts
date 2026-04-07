@@ -21,6 +21,9 @@ export interface UserProfile {
   preferredCone?: string | null;
   preferredAtmosphere?: string | null;
   restrictToPreferredExamples?: boolean;
+  points?: number;
+  contributionStrikes?: number;
+  contributionsDisabled?: boolean;
 }
 
 export interface Viewer {

@@ -395,6 +395,9 @@ function mapProfile(row: Row, fallback?: Partial<UserProfile>): UserProfile {
     restrictToPreferredExamples: Boolean(
       row.restrict_to_preferred_examples ?? fallback?.restrictToPreferredExamples,
     ),
+    points: typeof row.points === "number" ? row.points : 0,
+    contributionStrikes: typeof row.contribution_strikes === "number" ? row.contribution_strikes : 0,
+    contributionsDisabled: Boolean(row.contributions_disabled ?? false),
   };
 }
 
@@ -1049,6 +1052,54 @@ export async function getPublishedPostsByAuthor(viewerId: string, search = "") {
       .toLowerCase()
       .includes(query);
     });
+}
+
+export async function getCommunityFiringImagesForGlaze(glazeId: string): Promise<Array<{
+  id: string; imageUrl: string; label: string | null; cone: string | null; atmosphere: string | null; uploaderName: string | null;
+}>> {
+  const supabase = await getSupabase();
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from("community_firing_images")
+    .select("id, image_url, label, cone, atmosphere, profiles!uploader_user_id(display_name)")
+    .eq("glaze_id", glazeId)
+    .order("created_at", { ascending: false });
+  return (data ?? []).map((r) => {
+    const row = r as Row;
+    const profile = row.profiles as Row | null;
+    return {
+      id: String(row.id),
+      imageUrl: String(row.image_url),
+      label: row.label ? String(row.label) : null,
+      cone: row.cone ? String(row.cone) : null,
+      atmosphere: row.atmosphere ? String(row.atmosphere) : null,
+      uploaderName: profile ? String(profile.display_name ?? "Member") : "Member",
+    };
+  });
+}
+
+export async function getCommunityFiringImagesForCombination(combinationId: string): Promise<Array<{
+  id: string; imageUrl: string; label: string | null; cone: string | null; atmosphere: string | null; uploaderName: string | null;
+}>> {
+  const supabase = await getSupabase();
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from("community_firing_images")
+    .select("id, image_url, label, cone, atmosphere, profiles!uploader_user_id(display_name)")
+    .eq("combination_id", combinationId)
+    .order("created_at", { ascending: false });
+  return (data ?? []).map((r) => {
+    const row = r as Row;
+    const profile = row.profiles as Row | null;
+    return {
+      id: String(row.id),
+      imageUrl: String(row.image_url),
+      label: row.label ? String(row.label) : null,
+      cone: row.cone ? String(row.cone) : null,
+      atmosphere: row.atmosphere ? String(row.atmosphere) : null,
+      uploaderName: profile ? String(profile.display_name ?? "Member") : "Member",
+    };
+  });
 }
 
 export async function getUserCombinationExamples(viewerId: string) {
