@@ -76,7 +76,7 @@ Every contribution server action that awards points does the following **atomica
 
 **Comment and tag vote caps:** Before awarding 0.1 pts, the action queries the user's un-voided ledger total for that action type (`comment_left` or `tag_voted`). If they have already reached 50 pts from that action type, no ledger row is inserted and no points are awarded.
 
-**Upvote/rating points:** When a user submits a rating for a glaze or combination, the *author* of that content earns 1 pt. A ledger row is inserted for the author (`action = 'upvote_received'`, `reference_id` = the rated content). The rater earns nothing.
+**Upvote/rating points:** When a user submits a rating for a glaze or combination, the *author* of that content earns 1 pt. A ledger row is inserted for the author (`action = 'upvote_received'`, `reference_id` = the rated content). The rater earns nothing. Ratings are one-time: if a user updates an existing rating, no additional ledger row is written (the author has already received their 1 pt for that rater). This keeps the logic simple and prevents double-earning.
 
 **Contribution gate:** Every contribution server action checks `profiles.contributions_disabled` at the start. If `true`, the action returns an error immediately and the UI shows a locked/disabled state on all contribution forms.
 
