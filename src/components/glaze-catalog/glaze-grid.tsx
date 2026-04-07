@@ -1,7 +1,7 @@
 "use client";
 
+import type { RefObject } from "react";
 import { Badge } from "@/components/ui/badge";
-import { Panel } from "@/components/ui/panel";
 import type { InventoryStatus } from "@/lib/types";
 import { GlazeCard } from "@/components/glaze-catalog/glaze-card";
 import type { IndexedGlaze } from "@/components/glaze-catalog/use-glaze-explorer";
@@ -27,25 +27,10 @@ export function GlazeGrid({
   visibleGlazeCount: number;
   displayGlazesLength: number;
   hasActiveQuery: boolean;
-  loadMoreRef: React.RefObject<HTMLDivElement | null>;
+  loadMoreRef: RefObject<HTMLDivElement | null>;
   visibleCount: number;
   reviewMode: boolean;
 }) {
-  if (!visibleGradientGlazes.length) {
-    return (
-      <Panel>
-        <h2 className="display-font text-3xl tracking-tight">
-          {reviewMode ? "No descriptions are waiting for review." : "No glaze matches yet."}
-        </h2>
-        <p className="mt-3 text-sm leading-6 text-muted">
-          {reviewMode
-            ? "Every glaze in this filtered view already has an edited skim summary."
-            : "Try a different brand, code, glaze name, color family, finish, or cone value."}
-        </p>
-      </Panel>
-    );
-  }
-
   return (
     <div className="space-y-4">
       <div className="overflow-hidden border border-border bg-panel">
