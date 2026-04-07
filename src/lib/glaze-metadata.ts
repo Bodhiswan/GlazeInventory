@@ -163,11 +163,15 @@ export function getManufacturerUrl(brand: string | null | undefined): string | n
   return brand ? (BRAND_URLS[brand] ?? null) : null;
 }
 
+function uniqueValues(values: string[]) {
+  return Array.from(new Set(values.filter(Boolean)));
+}
+
 export function getGlazeFamilyTraits(glaze: Glaze) {
   if (!glaze.brand || !glaze.line) {
     return [] as string[];
   }
 
   const mapped = brandLineFamilyMap[glaze.brand]?.[glaze.line] ?? [];
-  return Array.from(new Set(mapped.filter(Boolean)));
+  return uniqueValues(mapped);
 }
