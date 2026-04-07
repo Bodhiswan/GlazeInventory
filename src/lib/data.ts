@@ -36,6 +36,8 @@ import type {
   InventoryItem,
   IntakeStatus,
   LeaderboardEntry,
+  ModerationQueue,
+  PointsBreakdownEntry,
   ModerationItem,
   Report,
   UserCombinationExample,
@@ -1498,7 +1500,7 @@ export async function getExternalExampleIntake(intakeId: string) {
   } satisfies ExternalExampleIntake;
 }
 
-export async function getModerationQueue(): Promise<ModerationItem[]> {
+export async function getReportedPostsQueue(): Promise<ModerationItem[]> {
   const viewer = await requireViewer();
   const supabase = await getSupabase();
 
@@ -2150,4 +2152,345 @@ export async function getUserPointsRank(userId: string): Promise<number> {
     .eq("is_admin", false);
 
   return (count ?? 0) + 1;
+}
+
+export async function getWeeklyLeaderboard(): Promise<LeaderboardEntry[]> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return [];
+
+  const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+
+  // Pull all non-voided ledger rows from the past 7 days
+  const { data: rows } = await admin
+    .from("points_ledger")
+    .select("user_id, points")
+    .eq("voided", false)
+    .gte("created_at", since);
+
+  if (!rows || rows.length === 0) return [];
+
+  // Aggregate per user in JS (no GROUP BY support in the JS client)
+  const totals: Record<string, number> = {};
+  for (const row of rows) {
+    const uid = String(row.user_id);
+    totals[uid] = (totals[uid] ?? 0) + Number(row.points);
+  }
+
+  // Sort descending, keep top 10 user IDs
+  const top10Ids = Object.entries(totals)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 10)
+    .map(([userId]) => userId);
+
+  if (top10Ids.length === 0) return [];
+
+  // Fetch profile names — exclude disabled/admin users
+  const { data: profileRows } = await admin
+    .from("profiles")
+    .select("id, display_name, studio_name")
+    .in("id", top10Ids)
+    .eq("contributions_disabled", false)
+    .eq("is_admin", false);
+
+  if (!profileRows) return [];
+
+  // Reassemble in rank order, dropping any filtered-out profiles
+  return top10Ids
+    .map((userId) => {
+      const profile = profileRows.find((p) => String(p.id) === userId);
+      if (!profile) return null;
+      return {
+        id: userId,
+        displayName: (profile.display_name as string | null) ?? "Glaze member",
+        studioName: (profile.studio_name as string | null) ?? null,
+        points: Math.floor(totals[userId]),
+      };
+    })
+    .filter((entry): entry is LeaderboardEntry => entry !== null);
+}
+
+export async function getModerationQueue(): Promise<ModerationQueue> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return { combinations: [], customGlazes: [], firingImages: [] };
+  type Row = Record<string, unknown>;
+
+  const [combosRes, glazesRes, firingImagesRes] = await Promise.all([
+    admin
+      .from("user_combination_examples")
+      .select("id, title, author_user_id, status, cone, atmosphere, notes, post_firing_image_path, created_at, moderation_state")
+      .order("created_at", { ascending: true })
+      .limit(200),
+    admin
+      .from("glazes")
+      .select("id, name, brand, code, color_notes, finish_notes, image_url, created_by_user_id, created_at, moderation_state")
+      .eq("source_type", "nonCommercial")
+      .order("created_at", { ascending: true })
+      .limit(200),
+    admin
+      .from("community_firing_images")
+      .select("id, image_url, label, cone, atmosphere, uploader_user_id, glaze_id, combination_id, combination_type, created_at, moderation_state")
+      .order("created_at", { ascending: true })
+      .limit(200),
+  ]);
+
+  // Resolve author/creator/uploader display names in one round
+  const userIds = new Set<string>();
+  for (const row of combosRes.data ?? []) {
+    const uid = (row as Row).author_user_id;
+    if (uid) userIds.add(String(uid));
+  }
+  for (const row of glazesRes.data ?? []) {
+    const uid = (row as Row).created_by_user_id;
+    if (uid) userIds.add(String(uid));
+  }
+  for (const row of firingImagesRes.data ?? []) {
+    const uid = (row as Row).uploader_user_id;
+    if (uid) userIds.add(String(uid));
+  }
+
+  const userMap = new Map<string, string>();
+  if (userIds.size > 0) {
+    const { data: profiles } = await admin
+      .from("profiles")
+      .select("id, display_name")
+      .in("id", [...userIds]);
+    for (const p of profiles ?? []) {
+      userMap.set(String((p as Row).id), String((p as Row).display_name ?? "Unknown"));
+    }
+  }
+
+  const combinations = (combosRes.data ?? []).map((row) => {
+    const r = row as Row;
+    return {
+      id: String(r.id),
+      title: String(r.title ?? ""),
+      authorName: userMap.get(String(r.author_user_id)) ?? "Unknown",
+      authorId: String(r.author_user_id ?? ""),
+      status: String(r.status ?? ""),
+      cone: String(r.cone ?? ""),
+      atmosphere: String(r.atmosphere ?? ""),
+      notes: r.notes ? String(r.notes) : null,
+      imageUrl: r.post_firing_image_path ? String(r.post_firing_image_path) : null,
+      createdAt: String(r.created_at),
+      moderationState: String(r.moderation_state ?? "pending"),
+    };
+  });
+
+  const customGlazes = (glazesRes.data ?? []).map((row) => {
+    const r = row as Row;
+    return {
+      id: String(r.id),
+      name: String(r.name ?? ""),
+      brand: r.brand ? String(r.brand) : null,
+      code: r.code ? String(r.code) : null,
+      colorNotes: r.color_notes ? String(r.color_notes) : null,
+      finishNotes: r.finish_notes ? String(r.finish_notes) : null,
+      imageUrl: r.image_url ? String(r.image_url) : null,
+      creatorName: userMap.get(String(r.created_by_user_id)) ?? "Unknown",
+      creatorId: String(r.created_by_user_id ?? ""),
+      createdAt: String(r.created_at),
+      moderationState: String(r.moderation_state ?? "pending"),
+    };
+  });
+
+  const firingImages = (firingImagesRes.data ?? []).map((row) => {
+    const r = row as Row;
+    return {
+      id: String(r.id),
+      imageUrl: String(r.image_url ?? ""),
+      label: r.label ? String(r.label) : null,
+      cone: r.cone ? String(r.cone) : null,
+      atmosphere: r.atmosphere ? String(r.atmosphere) : null,
+      uploaderName: userMap.get(String(r.uploader_user_id)) ?? "Unknown",
+      uploaderId: String(r.uploader_user_id ?? ""),
+      glazeId: r.glaze_id ? String(r.glaze_id) : null,
+      combinationId: r.combination_id ? String(r.combination_id) : null,
+      combinationType: r.combination_type ? String(r.combination_type) : null,
+      createdAt: String(r.created_at),
+      moderationState: String(r.moderation_state ?? "pending"),
+    };
+  });
+
+  return { combinations, customGlazes, firingImages };
+}
+
+const POINTS_ACTION_LABELS: Record<string, string> = {
+  glaze_added: "Glazes added",
+  combination_shared: "Combinations shared",
+  firing_photo_uploaded: "Firing photos",
+  comment_left: "Comments",
+  tag_voted: "Tag votes",
+  upvote_received: "Upvotes received",
+};
+
+export async function getUserPointsBreakdown(
+  userId: string,
+): Promise<PointsBreakdownEntry[]> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return [];
+
+  const { data: rows } = await admin
+    .from("points_ledger")
+    .select("action, points")
+    .eq("user_id", userId)
+    .eq("voided", false);
+
+  if (!rows || rows.length === 0) return [];
+
+  // Aggregate by action
+  const totals: Record<string, number> = {};
+  for (const row of rows) {
+    const action = String(row.action);
+    totals[action] = (totals[action] ?? 0) + Number(row.points);
+  }
+
+  return Object.entries(totals)
+    .filter(([, pts]) => pts > 0)
+    .sort(([, a], [, b]) => b - a)
+    .map(([action, pts]) => ({
+      action,
+      label: POINTS_ACTION_LABELS[action] ?? action,
+      points: pts,
+    }));
+}
+
+// ── Direct messages ────────────────────────────────────────────────────────
+
+export interface DirectMessageSummary {
+  otherUserId: string;
+  otherDisplayName: string;
+  lastBody: string;
+  lastCreatedAt: string;
+  unreadCount: number;
+}
+
+export interface DirectMessage {
+  id: string;
+  senderUserId: string;
+  recipientUserId: string;
+  body: string;
+  createdAt: string;
+  readAt: string | null;
+}
+
+export async function getUnreadDirectMessageCount(userId: string): Promise<number> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return 0;
+  const { count } = await admin
+    .from("direct_messages")
+    .select("id", { count: "exact", head: true })
+    .eq("recipient_user_id", userId)
+    .is("read_at", null);
+  return count ?? 0;
+}
+
+export async function getDirectMessageConversations(
+  userId: string,
+): Promise<DirectMessageSummary[]> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return [];
+
+  const { data: rows } = await admin
+    .from("direct_messages")
+    .select("id, sender_user_id, recipient_user_id, body, created_at, read_at")
+    .or(`sender_user_id.eq.${userId},recipient_user_id.eq.${userId}`)
+    .order("created_at", { ascending: false })
+    .limit(500);
+
+  if (!rows) return [];
+
+  type Row = Record<string, unknown>;
+  const byOther = new Map<string, DirectMessageSummary>();
+  for (const r of rows as Row[]) {
+    const sender = String(r.sender_user_id);
+    const recipient = String(r.recipient_user_id);
+    const other = sender === userId ? recipient : sender;
+    const existing = byOther.get(other);
+    const isUnreadForViewer = recipient === userId && r.read_at === null;
+    if (!existing) {
+      byOther.set(other, {
+        otherUserId: other,
+        otherDisplayName: "Unknown",
+        lastBody: String(r.body ?? ""),
+        lastCreatedAt: String(r.created_at),
+        unreadCount: isUnreadForViewer ? 1 : 0,
+      });
+    } else if (isUnreadForViewer) {
+      existing.unreadCount += 1;
+    }
+  }
+
+  if (byOther.size === 0) return [];
+
+  const { data: profiles } = await admin
+    .from("profiles")
+    .select("id, display_name")
+    .in("id", [...byOther.keys()]);
+  for (const p of profiles ?? []) {
+    const s = byOther.get(String((p as Record<string, unknown>).id));
+    if (s) s.otherDisplayName = String((p as Record<string, unknown>).display_name ?? "Unknown");
+  }
+
+  return [...byOther.values()].sort((a, b) =>
+    b.lastCreatedAt.localeCompare(a.lastCreatedAt),
+  );
+}
+
+export async function getDirectMessagesWithUser(
+  viewerUserId: string,
+  otherUserId: string,
+): Promise<DirectMessage[]> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return [];
+  const { data } = await admin
+    .from("direct_messages")
+    .select("id, sender_user_id, recipient_user_id, body, created_at, read_at")
+    .or(
+      `and(sender_user_id.eq.${viewerUserId},recipient_user_id.eq.${otherUserId}),and(sender_user_id.eq.${otherUserId},recipient_user_id.eq.${viewerUserId})`,
+    )
+    .order("created_at", { ascending: true })
+    .limit(500);
+  type Row = Record<string, unknown>;
+  return (data ?? []).map((r) => {
+    const row = r as Row;
+    return {
+      id: String(row.id),
+      senderUserId: String(row.sender_user_id),
+      recipientUserId: String(row.recipient_user_id),
+      body: String(row.body ?? ""),
+      createdAt: String(row.created_at),
+      readAt: row.read_at ? String(row.read_at) : null,
+    };
+  });
+}
+
+export async function getAdminUsers(): Promise<
+  { id: string; displayName: string }[]
+> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return [];
+  const { data } = await admin
+    .from("profiles")
+    .select("id, display_name")
+    .eq("is_admin", true)
+    .order("display_name", { ascending: true });
+  type Row = Record<string, unknown>;
+  return (data ?? []).map((r) => ({
+    id: String((r as Row).id),
+    displayName: String((r as Row).display_name ?? "Admin"),
+  }));
+}
+
+export async function lookupUserIdByDisplayName(
+  name: string,
+): Promise<string | null> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return null;
+  const { data } = await admin
+    .from("profiles")
+    .select("id")
+    .ilike("display_name", name.trim())
+    .limit(1)
+    .maybeSingle();
+  return data ? String((data as Record<string, unknown>).id) : null;
 }

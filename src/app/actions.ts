@@ -2037,6 +2037,132 @@ export async function adminArchiveCombinationAction(formData: FormData): Promise
   revalidatePath("/combinations");
 }
 
+// ── Moderation queue: approve / reject / delete ─────────────────────────────
+
+type ModTarget = "combination" | "glaze" | "firingImage";
+
+function targetTable(target: ModTarget): string {
+  switch (target) {
+    case "combination": return "user_combination_examples";
+    case "glaze": return "glazes";
+    case "firingImage": return "community_firing_images";
+  }
+}
+
+function targetAuthorColumn(target: ModTarget): string {
+  switch (target) {
+    case "combination": return "author_user_id";
+    case "glaze": return "created_by_user_id";
+    case "firingImage": return "uploader_user_id";
+  }
+}
+
+export async function adminApproveSubmissionAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const target = formData.get("target") as ModTarget | null;
+  const id = formData.get("id") as string | null;
+  if (!target || !id) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  await admin
+    .from(targetTable(target))
+    .update({ moderation_state: "approved" })
+    .eq("id", id);
+
+  revalidatePath("/admin/analytics/moderation");
+  revalidatePath("/admin/analytics");
+  revalidatePath("/combinations");
+}
+
+export async function adminRejectSubmissionAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const target = formData.get("target") as ModTarget | null;
+  const id = formData.get("id") as string | null;
+  if (!target || !id) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  await admin
+    .from(targetTable(target))
+    .update({ moderation_state: "rejected" })
+    .eq("id", id);
+
+  // Auto-flag as false contribution on reject (voids points, +1 strike)
+  const { data: row } = await admin
+    .from(targetTable(target))
+    .select(targetAuthorColumn(target))
+    .eq("id", id)
+    .single();
+  const authorUserId = (row as Record<string, unknown> | null)?.[
+    targetAuthorColumn(target)
+  ];
+  if (authorUserId) {
+    await adminFlagFalseContributionAction({
+      referenceId: id,
+      authorUserId: String(authorUserId),
+    });
+  }
+
+  revalidatePath("/admin/analytics/moderation");
+  revalidatePath("/admin/analytics");
+  revalidatePath("/combinations");
+}
+
+export async function adminReopenSubmissionAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const target = formData.get("target") as ModTarget | null;
+  const id = formData.get("id") as string | null;
+  if (!target || !id) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  await admin
+    .from(targetTable(target))
+    .update({ moderation_state: "pending" })
+    .eq("id", id);
+
+  revalidatePath("/admin/analytics/moderation");
+  revalidatePath("/admin/analytics");
+  revalidatePath("/combinations");
+}
+
+export async function adminPermanentDeleteSubmissionAction(
+  formData: FormData,
+): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const target = formData.get("target") as ModTarget | null;
+  const id = formData.get("id") as string | null;
+  if (!target || !id) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  // Only allow permanent delete of rejected items
+  const { data: row } = await admin
+    .from(targetTable(target))
+    .select("moderation_state")
+    .eq("id", id)
+    .single();
+  if ((row as Record<string, unknown> | null)?.moderation_state !== "rejected") return;
+
+  await admin.from(targetTable(target)).delete().eq("id", id);
+
+  revalidatePath("/admin/analytics/moderation");
+  revalidatePath("/admin/analytics");
+}
+
 export async function adminDeleteCustomGlazeAction(formData: FormData): Promise<void> {
   const viewer = await requireViewer();
   if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
@@ -2059,6 +2185,118 @@ export async function adminDeleteCustomGlazeAction(formData: FormData): Promise<
   await admin.from("glazes").delete().eq("id", glazeId);
 
   revalidatePath("/admin/analytics");
+}
+
+export async function adminEditCombinationAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const exampleId = formData.get("exampleId") as string | null;
+  if (!exampleId) return;
+
+  const title = (formData.get("title") as string | null)?.trim() || null;
+  const cone = (formData.get("cone") as string | null)?.trim() || null;
+  const atmosphere = (formData.get("atmosphere") as string | null)?.trim() || null;
+  const notes = (formData.get("notes") as string | null)?.trim() || null;
+  const status = (formData.get("status") as string | null)?.trim() || null;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  const update: Record<string, unknown> = {};
+  if (title !== null) update.title = title;
+  if (cone !== null) update.cone = cone;
+  if (atmosphere !== null) update.atmosphere = atmosphere;
+  if (notes !== null) update.notes = notes;
+  if (status !== null) update.status = status;
+
+  if (Object.keys(update).length > 0) {
+    await admin.from("user_combination_examples").update(update).eq("id", exampleId);
+  }
+
+  revalidatePath("/admin/analytics/moderation");
+  revalidatePath("/admin/analytics");
+  revalidatePath("/combinations");
+}
+
+export async function adminEditCustomGlazeAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const glazeId = formData.get("glazeId") as string | null;
+  if (!glazeId) return;
+
+  const name = (formData.get("name") as string | null)?.trim() || null;
+  const brand = (formData.get("brand") as string | null)?.trim() || null;
+  const code = (formData.get("code") as string | null)?.trim() || null;
+  const colorNotes = (formData.get("colorNotes") as string | null)?.trim() || null;
+  const finishNotes = (formData.get("finishNotes") as string | null)?.trim() || null;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  // Safety: only edit non-commercial glazes
+  const { data: glaze } = await admin
+    .from("glazes")
+    .select("source_type")
+    .eq("id", glazeId)
+    .single();
+  if (!glaze || (glaze as Record<string, unknown>).source_type !== "nonCommercial") return;
+
+  const update: Record<string, unknown> = {};
+  if (name !== null) update.name = name;
+  if (brand !== null) update.brand = brand;
+  if (code !== null) update.code = code;
+  if (colorNotes !== null) update.color_notes = colorNotes;
+  if (finishNotes !== null) update.finish_notes = finishNotes;
+
+  if (Object.keys(update).length > 0) {
+    await admin.from("glazes").update(update).eq("id", glazeId);
+  }
+
+  revalidatePath("/admin/analytics/moderation");
+  revalidatePath("/admin/analytics");
+}
+
+export async function adminEditCommunityFiringImageAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const imageId = formData.get("imageId") as string | null;
+  if (!imageId) return;
+
+  const label = (formData.get("label") as string | null)?.trim() || null;
+  const cone = (formData.get("cone") as string | null)?.trim() || null;
+  const atmosphere = (formData.get("atmosphere") as string | null)?.trim() || null;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  const update: Record<string, unknown> = {};
+  if (label !== null) update.label = label;
+  if (cone !== null) update.cone = cone;
+  if (atmosphere !== null) update.atmosphere = atmosphere;
+
+  if (Object.keys(update).length > 0) {
+    await admin.from("community_firing_images").update(update).eq("id", imageId);
+  }
+
+  revalidatePath("/admin/analytics/moderation");
+}
+
+export async function adminDeleteCommunityFiringImageAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const imageId = formData.get("imageId") as string | null;
+  if (!imageId) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  await admin.from("community_firing_images").delete().eq("id", imageId);
+
+  revalidatePath("/admin/analytics/moderation");
 }
 
 export async function adminFlagFalseContributionAction(input: {
@@ -2231,4 +2469,85 @@ export async function adminGetCombinationPreviewAction(id: string): Promise<{
       };
     }),
   };
+}
+
+// ── Direct messages ────────────────────────────────────────────────────────
+
+export async function sendDirectMessageAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  const recipientUserId = (formData.get("recipientUserId") as string | null)?.trim();
+  const recipientName = (formData.get("recipientName") as string | null)?.trim();
+  const body = (formData.get("body") as string | null)?.trim();
+  if (!body || body.length > 4000) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  let targetUserId = recipientUserId || null;
+  if (!targetUserId && recipientName) {
+    const { data } = await admin
+      .from("profiles")
+      .select("id")
+      .ilike("display_name", recipientName)
+      .limit(1)
+      .maybeSingle();
+    targetUserId = data ? String((data as Record<string, unknown>).id) : null;
+  }
+  if (!targetUserId || targetUserId === viewer.profile.id) return;
+
+  // Non-admins may only message admins.
+  if (!viewer.profile.isAdmin) {
+    const { data: recipientProfile } = await admin
+      .from("profiles")
+      .select("is_admin")
+      .eq("id", targetUserId)
+      .maybeSingle();
+    if (!recipientProfile || !(recipientProfile as Record<string, unknown>).is_admin) {
+      return;
+    }
+  }
+
+  await admin.from("direct_messages").insert({
+    sender_user_id: viewer.profile.id,
+    recipient_user_id: targetUserId,
+    body,
+  });
+
+  revalidatePath("/profile");
+}
+
+export async function markAllDirectMessagesReadAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  const fromUserId = (formData.get("fromUserId") as string | null)?.trim() || null;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  let query = admin
+    .from("direct_messages")
+    .update({ read_at: new Date().toISOString() })
+    .eq("recipient_user_id", viewer.profile.id)
+    .is("read_at", null);
+  if (fromUserId) query = query.eq("sender_user_id", fromUserId);
+  await query;
+
+  revalidatePath("/profile");
+}
+
+export async function markDirectMessageReadAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  const messageId = (formData.get("messageId") as string | null)?.trim();
+  if (!messageId) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  await admin
+    .from("direct_messages")
+    .update({ read_at: new Date().toISOString() })
+    .eq("id", messageId)
+    .eq("recipient_user_id", viewer.profile.id)
+    .is("read_at", null);
+
+  revalidatePath("/profile");
 }

@@ -91,11 +91,12 @@ BEGIN
   -- The on_auth_user_created trigger auto-creates a profile row from
   -- raw_user_meta_data, but without studio_name/location. Use DO UPDATE
   -- so those fields are populated regardless of trigger ordering.
-  INSERT INTO public.profiles (id, email, display_name, studio_name, location)
-  VALUES (test_user_id, 'test@glazelibrary.app', 'Test Potter', 'Test Studio', 'Local Dev')
+  INSERT INTO public.profiles (id, email, display_name, studio_name, location, is_admin)
+  VALUES (test_user_id, 'test@glazelibrary.app', 'Test Potter', 'Test Studio', 'Local Dev', true)
   ON CONFLICT (id) DO UPDATE SET
     studio_name = EXCLUDED.studio_name,
-    location    = EXCLUDED.location;
+    location    = EXCLUDED.location,
+    is_admin    = true;
 
   -- =========================================================
   -- 2. Look up 5 glazes from the catalog (loaded by migrations)

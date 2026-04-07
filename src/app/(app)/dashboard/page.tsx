@@ -5,13 +5,14 @@ import { SetupCallout } from "@/components/setup-callout";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getInventory, getInventoryFolders, requireViewer } from "@/lib/data";
+import { getInventory, getInventoryFolders, getWeeklyLeaderboard, requireViewer } from "@/lib/data";
 
 export default async function DashboardPage() {
   const viewer = await requireViewer();
-  const [inventory, folders] = await Promise.all([
+  const [inventory, folders, weeklyLeaderboard] = await Promise.all([
     getInventory(viewer.profile.id),
     getInventoryFolders(viewer.profile.id),
+    getWeeklyLeaderboard(),
   ]);
   const ownedItems = inventory.filter((item) => item.status === "owned");
   const wishlistItems = inventory.filter((item) => item.status === "wishlist");
@@ -37,27 +38,82 @@ export default async function DashboardPage() {
         }
       />
 
-      <section className="grid grid-cols-2 gap-3 sm:gap-4 xl:grid-cols-4">
-        <Panel>
-          <p className="text-sm uppercase tracking-[0.2em] text-muted">On shelf</p>
-          <p className="display-font mt-4 text-5xl tracking-tight">
-            {ownedItems.length}
+      {/* ── Points system ── */}
+      <section className="grid gap-5 xl:grid-cols-2">
+        {/* Explainer */}
+        <div className="space-y-4">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Contribution points</p>
+            <h2 className="display-font mt-2 text-3xl tracking-tight">Earn points by helping build the library</h2>
+          </div>
+          <Panel className="space-y-0 divide-y divide-border">
+            {[
+              { action: "Add a custom glaze to the catalog", pts: "10 pts" },
+              { action: "Share a combination", pts: "5 pts" },
+              { action: "Upload a community firing photo", pts: "2 pts" },
+              { action: "Leave a comment", pts: "0.1 pts", cap: "max 50" },
+              { action: "Vote on glaze tags", pts: "0.1 pts", cap: "max 50" },
+              { action: "Receive an upvote on your content", pts: "1 pt" },
+            ].map(({ action, pts, cap }) => (
+              <div key={action} className="flex items-center justify-between gap-4 py-3 first:pt-0 last:pb-0">
+                <p className="text-sm text-foreground">{action}</p>
+                <div className="flex shrink-0 items-center gap-2">
+                  {cap ? (
+                    <span className="text-[10px] uppercase tracking-[0.14em] text-muted">{cap}</span>
+                  ) : null}
+                  <span className="w-14 text-right text-sm font-medium tabular-nums text-foreground">{pts}</span>
+                </div>
+              </div>
+            ))}
+          </Panel>
+          <p className="text-sm text-muted">
+            Points appear on your profile and on the{" "}
+            <Link href="/contribute" className="underline underline-offset-2 hover:text-foreground">
+              People to thank
+            </Link>{" "}
+            leaderboard on the Contribute page.
           </p>
-        </Panel>
-        <Panel>
-          <p className="text-sm uppercase tracking-[0.2em] text-muted">Wishlist</p>
-          <p className="display-font mt-4 text-5xl tracking-tight">
-            {wishlistItems.length}
-          </p>
-        </Panel>
-        <Panel>
-          <p className="text-sm uppercase tracking-[0.2em] text-muted">Empty</p>
-          <p className="display-font mt-4 text-5xl tracking-tight">{emptyItems.length}</p>
-        </Panel>
-        <Panel>
-          <p className="text-sm uppercase tracking-[0.2em] text-muted">Folders</p>
-          <p className="display-font mt-4 text-5xl tracking-tight">{folders.length}</p>
-        </Panel>
+        </div>
+
+        {/* Weekly leaderboard */}
+        <div className="space-y-4">
+          <div>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-muted">This week</p>
+            <h2 className="display-font mt-2 text-3xl tracking-tight">Top contributors this week</h2>
+          </div>
+          {weeklyLeaderboard.length > 0 ? (
+            <div className="divide-y divide-border border border-border">
+              {weeklyLeaderboard.map((contributor, index) => (
+                <div key={contributor.id} className="flex items-center gap-4 px-4 py-3">
+                  <span className="w-6 shrink-0 text-right text-sm tabular-nums text-muted">
+                    {index + 1}
+                  </span>
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium text-foreground">{contributor.displayName}</p>
+                    {contributor.studioName ? (
+                      <p className="truncate text-xs text-muted">{contributor.studioName}</p>
+                    ) : null}
+                  </div>
+                  <span className="shrink-0 text-sm tabular-nums text-muted">
+                    {contributor.points.toLocaleString()} pts
+                  </span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <Panel>
+              <p className="text-sm leading-6 text-muted">
+                No contributions yet this week — be the first to earn points by adding a glaze, sharing a combination, or uploading a firing photo.
+              </p>
+              <Link
+                href="/contribute"
+                className={buttonVariants({ variant: "ghost", size: "sm", className: "mt-4" })}
+              >
+                Go to contribute →
+              </Link>
+            </Panel>
+          )}
+        </div>
       </section>
 
       <section className="grid gap-5 xl:grid-cols-[1.05fr_0.95fr]">

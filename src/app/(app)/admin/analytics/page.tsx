@@ -177,6 +177,12 @@ export default async function AnalyticsPage({
           title="Dashboard"
           description={`Showing activity for the ${RANGE_LABELS[range]}.`}
         />
+        <Link
+          href="/admin/analytics/moderation"
+          className="border border-border bg-panel px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] hover:bg-foreground hover:text-background"
+        >
+          Moderation queue →
+        </Link>
         <div className="flex items-center gap-1 border border-border bg-panel p-1">
           {RANGES.map((r) => (
             <Link

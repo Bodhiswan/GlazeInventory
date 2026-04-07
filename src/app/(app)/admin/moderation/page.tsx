@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/page-header";
 import { PostCard } from "@/components/post-card";
 import { Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
-import { getModerationQueue, requireViewer } from "@/lib/data";
+import { getReportedPostsQueue, requireViewer } from "@/lib/data";
 import { formatSearchQuery } from "@/lib/utils";
 
 export default async function ModerationPage({
@@ -24,7 +24,7 @@ export default async function ModerationPage({
     );
   }
 
-  const queue = await getModerationQueue();
+  const queue = await getReportedPostsQueue();
   const query = await searchParams;
 
   return (

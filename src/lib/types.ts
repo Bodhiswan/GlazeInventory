@@ -230,6 +230,61 @@ export interface LeaderboardEntry {
   points: number;
 }
 
+export interface PointsBreakdownEntry {
+  action: string;
+  label: string;
+  points: number;
+}
+
+export interface ModerationCombination {
+  id: string;
+  title: string;
+  authorName: string;
+  authorId: string;
+  status: string;
+  cone: string;
+  atmosphere: string;
+  notes: string | null;
+  imageUrl: string | null;
+  createdAt: string;
+  moderationState: string;
+}
+
+export interface ModerationCustomGlaze {
+  id: string;
+  name: string;
+  brand: string | null;
+  code: string | null;
+  colorNotes: string | null;
+  finishNotes: string | null;
+  imageUrl: string | null;
+  creatorName: string;
+  creatorId: string;
+  createdAt: string;
+  moderationState: string;
+}
+
+export interface ModerationFiringImage {
+  id: string;
+  imageUrl: string;
+  label: string | null;
+  cone: string | null;
+  atmosphere: string | null;
+  uploaderName: string;
+  uploaderId: string;
+  glazeId: string | null;
+  combinationId: string | null;
+  combinationType: string | null;
+  createdAt: string;
+  moderationState: string;
+}
+
+export interface ModerationQueue {
+  combinations: ModerationCombination[];
+  customGlazes: ModerationCustomGlaze[];
+  firingImages: ModerationFiringImage[];
+}
+
 export interface GlazeDetail {
   glaze: Glaze;
   firingImages: GlazeFiringImage[];

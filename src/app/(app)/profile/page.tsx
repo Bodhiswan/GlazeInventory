@@ -1,7 +1,7 @@
 import Link from "next/link";
 
-import { signOutAction, updateProfilePreferencesAction } from "@/app/actions";
-import { PageHeader } from "@/components/page-header";
+import { updateProfilePreferencesAction } from "@/app/actions";
+import { ChatsTab } from "./chats-tab";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
@@ -16,7 +16,7 @@ const coneOptions = ["Cone 06", "Cone 6", "Cone 10"];
 export default async function ProfilePage({
   searchParams,
 }: {
-  searchParams: Promise<{ saved?: string; error?: string }>;
+  searchParams: Promise<{ saved?: string; error?: string; tab?: string; with?: string }>;
 }) {
   const viewer = await requireViewer();
   const rank = (viewer.profile.points ?? 0) > 0
@@ -25,27 +25,11 @@ export default async function ProfilePage({
   const query = await searchParams;
   const saved = formatSearchQuery(query.saved);
   const error = formatSearchQuery(query.error);
+  const activeTab = query.tab === "chats" ? "chats" : "profile";
+  const activeWith = formatSearchQuery(query.with);
 
   return (
     <div className="space-y-8">
-      <PageHeader
-        eyebrow="Profile"
-        title="Profile and viewing defaults"
-        description="Manage your basic profile details and choose which glaze example images the library should prefer by default."
-        actions={
-          <>
-            <Link href="/glazes" className={buttonVariants({ variant: "ghost" })}>
-              Back to library
-            </Link>
-            <form action={signOutAction}>
-              <button type="submit" className={buttonVariants({ variant: "ghost" })}>
-                Sign out
-              </button>
-            </form>
-          </>
-        }
-      />
-
       {saved ? (
         <FormBanner variant="success">Profile preferences saved.</FormBanner>
       ) : null}
@@ -54,6 +38,33 @@ export default async function ProfilePage({
         <FormBanner variant="error">{decodeURIComponent(error)}</FormBanner>
       ) : null}
 
+      {/* ── Tabs ── */}
+      <nav className="flex items-center gap-1 border-b border-border">
+        <Link
+          href="/profile"
+          className={`border-b-2 px-4 py-2 text-[11px] uppercase tracking-[0.16em] ${
+            activeTab === "profile"
+              ? "border-foreground text-foreground"
+              : "border-transparent text-muted hover:text-foreground"
+          }`}
+        >
+          Profile
+        </Link>
+        <Link
+          href="/profile?tab=chats"
+          className={`border-b-2 px-4 py-2 text-[11px] uppercase tracking-[0.16em] ${
+            activeTab === "chats"
+              ? "border-foreground text-foreground"
+              : "border-transparent text-muted hover:text-foreground"
+          }`}
+        >
+          Chats
+        </Link>
+      </nav>
+
+      {activeTab === "chats" ? (
+        <ChatsTab viewerUserId={viewer.profile.id} activeOtherId={activeWith || undefined} viewerIsAdmin={viewer.profile.isAdmin === true} />
+      ) : (
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
           <Panel>
             <form action={updateProfilePreferencesAction} className="grid gap-5">
@@ -153,6 +164,7 @@ export default async function ProfilePage({
             ) : null}
           </Panel>
         </div>
+      )}
     </div>
   );
 }
