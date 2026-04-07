@@ -232,7 +232,7 @@ export default async function AnalyticsPage({
             ) : (
               dashboard.recentCombinations.map((combo) => (
                 <div key={combo.id} className="border border-border bg-panel">
-                  <div className="flex items-start gap-3 p-3">
+                  <Link href={`/combinations/examples/${combo.id}`} className="flex items-start gap-3 p-3 transition-colors hover:bg-white">
                     <div className="h-12 w-12 shrink-0 overflow-hidden border border-border bg-white">
                       {combo.imageUrl ? (
                         <Image
@@ -263,7 +263,7 @@ export default async function AnalyticsPage({
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                   <div className="flex items-center justify-between border-t border-border px-3 py-2">
                     <span className="text-[10px] text-muted">
                       {formatDistanceToNow(new Date(combo.createdAt), { addSuffix: true })}
@@ -299,7 +299,7 @@ export default async function AnalyticsPage({
             ) : (
               dashboard.recentCustomGlazes.map((glaze) => (
                 <div key={glaze.id} className="border border-border bg-panel">
-                  <div className="p-3">
+                  <Link href={`/glazes/${glaze.id}`} className="block p-3 transition-colors hover:bg-white">
                     <p className="text-xs font-semibold text-foreground">
                       {[glaze.brand, glaze.name].filter(Boolean).join(" ")}
                     </p>
@@ -315,7 +315,7 @@ export default async function AnalyticsPage({
                     {glaze.finishNotes ? (
                       <p className="mt-0.5 truncate text-[10px] text-muted">Finish: {glaze.finishNotes}</p>
                     ) : null}
-                  </div>
+                  </Link>
                   <div className="flex items-center justify-between border-t border-border px-3 py-2">
                     <span className="text-[10px] text-muted">
                       {formatDistanceToNow(new Date(glaze.createdAt), { addSuffix: true })}
