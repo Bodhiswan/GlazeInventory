@@ -4,7 +4,7 @@ import { PublishCombinationForm } from "@/components/publish-combination-form";
 import { SetupCallout } from "@/components/setup-callout";
 import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
-import { getCatalogGlazes } from "@/lib/data";
+import { getCatalogGlazes } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 

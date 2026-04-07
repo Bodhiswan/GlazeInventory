@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/page-header";
-import { getCatalogGlazes, getUserCombinationExamples } from "@/lib/data";
+import { getUserCombinationExamples } from "@/lib/data";
+import { getCatalogGlazes } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
 import { getAllVendorExamples } from "@/lib/catalog";
 import { FiringImageForm } from "./firing-image-form";

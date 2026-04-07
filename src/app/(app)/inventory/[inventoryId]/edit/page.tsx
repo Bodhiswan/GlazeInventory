@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { getInventoryItem } from "@/lib/data";
+import { getInventoryItem } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
 import { formatGlazeLabel, formatSearchQuery } from "@/lib/utils";
 
