@@ -25,7 +25,7 @@ const publicGuestViewer: Viewer = {
   },
 };
 
-async function getSupabase() {
+export async function getSupabase() {
   if (!getSupabaseEnv()) {
     return null;
   }
@@ -33,7 +33,7 @@ async function getSupabase() {
   return createSupabaseServerClient();
 }
 
-function mapProfile(row: Row, fallback?: Partial<UserProfile>): UserProfile {
+export function mapProfile(row: Row, fallback?: Partial<UserProfile>): UserProfile {
   return {
     id: String(row.id ?? fallback?.id ?? ""),
     email: (row.email as string | null) ?? fallback?.email ?? null,

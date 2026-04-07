@@ -1,7 +1,7 @@
 import { cache } from "react";
 
 import { buildCombinationSummaries, parsePairKey } from "@/lib/combinations";
-import { requireViewer } from "@/lib/data/users";
+import { requireViewer, mapProfile, getSupabase } from "@/lib/data/users";
 import {
   demoGlazes,
   demoInventory,
@@ -12,10 +12,8 @@ import {
   demoReports,
   getDemoTagSummariesForGlaze,
 } from "@/lib/demo-data";
-import { getSupabaseEnv } from "@/lib/env";
 import { parseInventoryState } from "@/lib/inventory-state";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
-import { createSupabaseServerClient } from "@/lib/supabase/server";
 import type {
   CombinationDetail,
   CombinationPair,
@@ -363,32 +361,6 @@ function mapExternalExampleParserOutput(value: unknown): ExternalExampleParserOu
   };
 }
 
-function mapProfile(row: Row, fallback?: Partial<UserProfile>): UserProfile {
-  return {
-    id: String(row.id ?? fallback?.id ?? ""),
-    email: (row.email as string | null) ?? fallback?.email ?? null,
-    displayName:
-      (row.display_name as string | null) ??
-      fallback?.displayName ??
-      fallback?.email?.split("@")[0] ??
-      "Glaze member",
-    avatarUrl: (row.avatar_url as string | null) ?? fallback?.avatarUrl ?? null,
-    studioName: (row.studio_name as string | null) ?? fallback?.studioName ?? null,
-    location: (row.location as string | null) ?? fallback?.location ?? null,
-    isAdmin: Boolean(row.is_admin ?? fallback?.isAdmin),
-    isAnonymous: Boolean(row.is_anonymous ?? fallback?.isAnonymous),
-    preferredCone: (row.preferred_cone as string | null) ?? fallback?.preferredCone ?? null,
-    preferredAtmosphere:
-      (row.preferred_atmosphere as string | null) ?? fallback?.preferredAtmosphere ?? null,
-    restrictToPreferredExamples: Boolean(
-      row.restrict_to_preferred_examples ?? fallback?.restrictToPreferredExamples,
-    ),
-    points: typeof row.points === "number" ? row.points : 0,
-    contributionStrikes: typeof row.contribution_strikes === "number" ? row.contribution_strikes : 0,
-    contributionsDisabled: Boolean(row.contributions_disabled ?? false),
-  };
-}
-
 function mapExternalExampleAsset(row: Row): ExternalExampleAsset {
   return {
     id: String(row.id),
@@ -484,14 +456,6 @@ function attachGlazesToPosts(posts: CombinationPost[], pairs: CombinationPair[],
       glazes: [glazeA, glazeB] as [Glaze, Glaze],
     };
   });
-}
-
-async function getSupabase() {
-  if (!getSupabaseEnv()) {
-    return null;
-  }
-
-  return createSupabaseServerClient();
 }
 
 async function getSignedExternalExampleAssetUrls(storagePaths: string[]) {
