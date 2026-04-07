@@ -1,4 +1,5 @@
 import { CombinationsBrowser } from "@/components/combinations-browser";
+import { FormBanner } from "@/components/ui/form-banner";
 import { getFavouriteIds } from "@/lib/data/community";
 import { getGlazeFiringImageMap } from "@/lib/data/glazes";
 import { getInventoryOwnership } from "@/lib/data/inventory";
@@ -56,9 +57,9 @@ export async function CombinationsDataServer({
   return (
     <div className="space-y-6">
       {justPublished ? (
-        <div className="border border-[#3a6642]/20 bg-[#3a6642]/10 px-4 py-3 text-sm text-[#2e5234]">
+        <FormBanner variant="success">
           Your combination has been published and is now visible under your examples.
-        </div>
+        </FormBanner>
       ) : null}
       <CombinationsBrowser
         examples={examples}

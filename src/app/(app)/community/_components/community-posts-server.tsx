@@ -1,5 +1,5 @@
 import { PostCard } from "@/components/post-card";
-import { Panel } from "@/components/ui/panel";
+import { EmptyState } from "@/components/ui/empty-state";
 import { getCommunityPosts } from "@/lib/data/community";
 
 export async function CommunityPostsServer({ query }: { query: string | undefined }) {
@@ -7,12 +7,10 @@ export async function CommunityPostsServer({ query }: { query: string | undefine
 
   if (!posts.length) {
     return (
-      <Panel>
-        <h2 className="display-font text-3xl tracking-tight">No matches found.</h2>
-        <p className="mt-3 text-sm leading-6 text-muted">
-          Try a glaze name, cone range, trait word like matte or runny, or one of the descriptive words from a caption.
-        </p>
-      </Panel>
+      <EmptyState
+        title="No matches found."
+        description="Try a glaze name, cone range, trait word like matte or runny, or one of the descriptive words from a caption."
+      />
     );
   }
 
