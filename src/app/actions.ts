@@ -2077,6 +2077,8 @@ export async function adminFlagFalseContributionAction(input: {
     .eq("reference_id", input.referenceId)
     .eq("voided", false);
 
+  const pointsToDeduct = (rows ?? []).reduce((sum, r) => sum + Number(r.points), 0);
+
   // 2. Void those rows
   if (rows && rows.length > 0) {
     await admin
@@ -2093,7 +2095,6 @@ export async function adminFlagFalseContributionAction(input: {
     .eq("id", input.authorUserId)
     .single();
 
-  const pointsToDeduct = (rows ?? []).reduce((sum, r) => sum + Number(r.points), 0);
   const newPoints = Math.max(0, (profile?.points ?? 0) - pointsToDeduct);
   const newStrikes = (profile?.contribution_strikes ?? 0) + 1;
   const shouldDisable = newStrikes >= 3;
@@ -2108,6 +2109,7 @@ export async function adminFlagFalseContributionAction(input: {
     })
     .eq("id", input.authorUserId);
 
+  revalidatePath("/admin/analytics");
   return { success: true };
 }
 

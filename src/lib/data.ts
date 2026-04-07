@@ -2109,13 +2109,14 @@ export async function getAdminDashboard(range: DashboardRange = "30d"): Promise<
 }
 
 export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
-  const supabase = await getSupabase();
-  if (!supabase) return [];
+  const admin = createSupabaseAdminClient();
+  if (!admin) return [];
 
-  const { data } = await supabase
+  const { data } = await admin
     .from("profiles")
     .select("id, display_name, studio_name, points")
     .eq("contributions_disabled", false)
+    .eq("is_admin", false)
     .gt("points", 0)
     .order("points", { ascending: false })
     .limit(20);
@@ -2129,10 +2130,10 @@ export async function getLeaderboard(): Promise<LeaderboardEntry[]> {
 }
 
 export async function getUserPointsRank(userId: string): Promise<number> {
-  const supabase = await getSupabase();
-  if (!supabase) return 0;
+  const admin = createSupabaseAdminClient();
+  if (!admin) return 0;
 
-  const { data: self } = await supabase
+  const { data: self } = await admin
     .from("profiles")
     .select("points")
     .eq("id", userId)
@@ -2141,10 +2142,12 @@ export async function getUserPointsRank(userId: string): Promise<number> {
   const userPoints = self?.points ?? 0;
   if (userPoints === 0) return 0;
 
-  const { count } = await supabase
+  const { count } = await admin
     .from("profiles")
     .select("id", { count: "exact", head: true })
-    .gt("points", userPoints);
+    .gt("points", userPoints)
+    .eq("contributions_disabled", false)
+    .eq("is_admin", false);
 
   return (count ?? 0) + 1;
 }
