@@ -1,11 +1,12 @@
 import { cache } from "react";
 
 import { demoGlazes, demoInventory, demoInventoryFolders } from "@/lib/demo-data";
-import { getAllCatalogGlazes, getTagDefinitions } from "@/lib/catalog";
+import { getAllCatalogGlazes } from "@/lib/catalog";
 import { parseInventoryState } from "@/lib/inventory-state";
 import { formatGlazeLabel } from "@/lib/utils";
-import type { Glaze, GlazeTagSummary, InventoryFolder, InventoryItem, Viewer } from "@/lib/types";
+import type { Glaze, InventoryFolder, InventoryItem } from "@/lib/types";
 import { getSupabase } from "@/lib/data/users";
+import { attachTagSummariesToGlazes } from "@/lib/data/tags";
 
 type Row = Record<string, unknown>;
 
@@ -80,7 +81,7 @@ function mapGlaze(row: Row): Glaze {
   };
 }
 
-function mapInventoryStatus(value: unknown) {
+export function mapInventoryStatus(value: unknown) {
   if (value === "archived") {
     return "archived" as const;
   }
@@ -92,7 +93,7 @@ function mapInventoryStatus(value: unknown) {
   return "owned" as const;
 }
 
-function mapInventoryFolder(row: Row): InventoryFolder {
+export function mapInventoryFolder(row: Row): InventoryFolder {
   return {
     id: String(row.id),
     userId: String(row.user_id),
@@ -100,7 +101,7 @@ function mapInventoryFolder(row: Row): InventoryFolder {
   };
 }
 
-function mapInventoryFoldersFromJoinRows(value: unknown) {
+export function mapInventoryFoldersFromJoinRows(value: unknown) {
   if (!Array.isArray(value)) {
     return [] as InventoryFolder[];
   }
@@ -121,104 +122,7 @@ function mapInventoryFoldersFromJoinRows(value: unknown) {
   return Array.from(new Map(folders.map((folder) => [folder.id, folder])).values());
 }
 
-const glazeTagCategoryOrder = ["Surface", "Opacity", "Movement", "Application", "Visual"];
-
-function sortTagSummaries(tags: GlazeTagSummary[]) {
-  return [...tags].sort((left, right) => {
-    const categoryDelta =
-      glazeTagCategoryOrder.indexOf(left.category) - glazeTagCategoryOrder.indexOf(right.category);
-
-    if (categoryDelta !== 0) {
-      return categoryDelta;
-    }
-
-    if (right.voteCount !== left.voteCount) {
-      return right.voteCount - left.voteCount;
-    }
-
-    return left.label.localeCompare(right.label);
-  });
-}
-
-const getAllTagData = cache(async function getAllTagData(viewerId: string) {
-  const supabase = await getSupabase();
-
-  // Tag definitions come from static JSON; only votes need Supabase.
-  const tagRows = getTagDefinitions() as unknown as Row[];
-
-  if (!supabase) {
-    return { tagRows, counts: new Map<string, number>(), viewerVotes: new Set<string>() };
-  }
-
-  const { data: votes } = await supabase
-    .from("glaze_tag_votes")
-    .select("glaze_id,tag_id,user_id");
-
-  const voteRows = (votes ?? []) as Row[];
-  const counts = new Map<string, number>();
-  const viewerVotes = new Set<string>();
-
-  for (const row of voteRows) {
-    const glazeId = String(row.glaze_id);
-    const tagId = String(row.tag_id);
-    const key = `${glazeId}:${tagId}`;
-    counts.set(key, (counts.get(key) ?? 0) + 1);
-
-    if (String(row.user_id) === viewerId) {
-      viewerVotes.add(key);
-    }
-  }
-
-  return { tagRows, counts, viewerVotes };
-});
-
-async function getGlazeTagSummaryMap(viewerId: string, glazes: Glaze[]) {
-  const commercialGlazes = glazes.filter((glaze) => glaze.sourceType === "commercial");
-
-  if (!commercialGlazes.length) {
-    return new Map<string, GlazeTagSummary[]>();
-  }
-
-  const { tagRows, counts, viewerVotes } = await getAllTagData(viewerId);
-
-  return new Map(
-    commercialGlazes.map((glaze) => {
-      const summaries = sortTagSummaries(
-        tagRows.map((row) => {
-          const tagId = String(row.id);
-          const key = `${glaze.id}:${tagId}`;
-
-          return {
-            id: tagId,
-            slug: String(row.slug),
-            label: String(row.label),
-            category: String(row.category),
-            description: (row.description as string | null) ?? null,
-            voteCount: counts.get(key) ?? 0,
-            viewerHasVoted: viewerVotes.has(key),
-          } satisfies GlazeTagSummary;
-        }),
-      );
-
-      return [glaze.id, summaries];
-    }),
-  );
-}
-
-async function attachTagSummariesToGlazes(viewerId: string, glazes: Glaze[]) {
-  const tagSummaryMap = await getGlazeTagSummaryMap(viewerId, glazes);
-
-  return glazes.map((glaze) =>
-    glaze.sourceType === "commercial"
-      ? {
-          ...glaze,
-          communityTags: tagSummaryMap.get(glaze.id) ?? [],
-        }
-      : glaze,
-  );
-}
-
-function mapInventoryItem(row: Row): InventoryItem {
+export function mapInventoryItem(row: Row): InventoryItem {
   const glazeRow = Array.isArray(row.glaze) ? row.glaze[0] : row.glaze;
   const inventoryState = parseInventoryState((row.personal_notes as string | null) ?? null);
   const folders = mapInventoryFoldersFromJoinRows((row as Row & { inventory_item_folders?: unknown }).inventory_item_folders);
