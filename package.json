@@ -21,6 +21,7 @@
     "catalog:spectrum:images:glaze-queen": "python scripts/scrape_spectrum_glaze_queen_images.py",
     "catalog:spectrum:images:cache-local": "python scripts/cache_spectrum_local_images.py",
     "import:facebook": "tsx scripts/import_facebook_group.ts",
+    "deploy": "node scripts/deploy.mjs",
     "dev": "next dev",
     "dev:demo": "node scripts/dev-demo.mjs",
     "dev:test": "node scripts/dev-test.mjs",
