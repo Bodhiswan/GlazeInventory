@@ -174,7 +174,7 @@ export default async function GlazeDetailPage({
                 {familyTraits.join(" · ")}
               </p>
             ) : null}
-            <div className="mt-4 border border-border bg-panel p-4">
+            <Panel className="mt-4">
               <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Skim read</p>
               <div className="mt-3 grid gap-3 text-sm leading-6 text-muted">
                 <p><span className="font-semibold text-foreground">Overview:</span> {skim.summary}</p>
@@ -184,8 +184,7 @@ export default async function GlazeDetailPage({
                 ) : null}
                 <p><span className="font-semibold text-foreground">Firing:</span> {skim.firing}</p>
               </div>
-
-            </div>
+            </Panel>
             {glaze.description ? (
               <details className="mt-4 border border-border bg-panel px-4 py-3">
                 <summary className="cursor-pointer list-none text-sm font-semibold text-foreground">
