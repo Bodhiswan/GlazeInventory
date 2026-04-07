@@ -105,7 +105,18 @@ export function CustomGlazeForm({
     );
   }, [name, brand, catalogEntries]);
 
-  const canSubmit = name.trim().length >= 2 && !!cone && !duplicate && !disabled;
+  const canSubmit =
+    name.trim().length >= 2 &&
+    brand.trim().length > 0 &&
+    code.trim().length > 0 &&
+    !!cone &&
+    !!atmosphere &&
+    colors.length > 0 &&
+    finishes.length > 0 &&
+    notes.trim().length > 0 &&
+    !!imagePreview &&
+    !duplicate &&
+    !disabled;
 
   return (
     <div className="grid gap-6">
@@ -125,6 +136,7 @@ export function CustomGlazeForm({
             What is this glaze called?
           </span>
           <Input
+            required
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -143,13 +155,16 @@ export function CustomGlazeForm({
       {/* ── Brand / maker ── */}
       <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="neutral">Optional</Badge>
+          <Badge tone={brand.trim() && code.trim() ? "success" : "neutral"}>
+            {brand.trim() && code.trim() ? "Set" : "Required"}
+          </Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Brand or maker</p>
         </div>
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="grid gap-2">
             <span className="text-sm font-medium text-foreground">Brand or studio name</span>
             <Input
+              required
               name="brand"
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
@@ -163,6 +178,7 @@ export function CustomGlazeForm({
           <label className="grid gap-2">
             <span className="text-sm font-medium text-foreground">Product code</span>
             <Input
+              required
               name="code"
               value={code}
               onChange={(e) => setCode(e.target.value)}
@@ -215,7 +231,7 @@ export function CustomGlazeForm({
       {/* ── Atmosphere ── */}
       <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="neutral">Optional</Badge>
+          <Badge tone={atmosphere ? "success" : "neutral"}>{atmosphere || "Required"}</Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Atmosphere</p>
         </div>
         <div className="grid gap-2">
@@ -242,16 +258,15 @@ export function CustomGlazeForm({
             })}
           </div>
           <input type="hidden" name="atmosphere" value={atmosphere} />
-          <p className="text-xs leading-5 text-muted">
-            Leave blank if you are not sure or if it works across both.
-          </p>
         </div>
       </Panel>
 
       {/* ── Colors ── */}
       <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="neutral">Optional</Badge>
+          <Badge tone={colors.length > 0 ? "success" : "neutral"}>
+            {colors.length > 0 ? `${colors.length} selected` : "Required"}
+          </Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Colors</p>
         </div>
         <div className="grid gap-2">
@@ -289,7 +304,9 @@ export function CustomGlazeForm({
       {/* ── Finishes ── */}
       <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="neutral">Optional</Badge>
+          <Badge tone={finishes.length > 0 ? "success" : "neutral"}>
+            {finishes.length > 0 ? `${finishes.length} selected` : "Required"}
+          </Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Finish</p>
         </div>
         <div className="grid gap-2">
@@ -327,12 +344,15 @@ export function CustomGlazeForm({
       {/* ── Notes ── */}
       <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="neutral">Optional</Badge>
+          <Badge tone={notes.trim() ? "success" : "neutral"}>
+            {notes.trim() ? "Set" : "Required"}
+          </Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Notes</p>
         </div>
         <label className="grid gap-2">
           <span className="text-sm font-medium text-foreground">Anything useful about this glaze?</span>
           <Textarea
+            required
             name="notes"
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
@@ -349,7 +369,9 @@ export function CustomGlazeForm({
       {/* ── Image ── */}
       <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone="neutral">Optional</Badge>
+          <Badge tone={imagePreview ? "success" : "neutral"}>
+            {imagePreview ? "Set" : "Required"}
+          </Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Photo</p>
         </div>
         <div className="grid gap-3">
@@ -378,6 +400,7 @@ export function CustomGlazeForm({
           )}>
             <span>{imagePreview ? "Change photo" : "Choose a photo"}</span>
             <input
+              required
               ref={fileInputRef}
               type="file"
               name="image"

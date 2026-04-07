@@ -9,6 +9,7 @@ import {
 } from "@/lib/data/community";
 import { getAdminUsers } from "@/lib/data/users";
 import { AutoMarkRead } from "./auto-mark-read";
+import { RecipientCombobox } from "./recipient-combobox";
 
 function subjectFrom(body: string): string {
   const firstLine = body.split(/\r?\n/, 1)[0] ?? "";
@@ -27,6 +28,7 @@ export async function ChatsTab({
   const admins = viewerIsAdmin
     ? []
     : (await getAdminUsers()).filter((a) => a.id !== viewerUserId);
+  const allDisplayNames = viewerIsAdmin ? await getAllDisplayNames() : [];
   const conversations = await getDirectMessageConversations(viewerUserId);
   const messages = activeOtherId
     ? await getDirectMessagesWithUser(viewerUserId, activeOtherId)
@@ -158,12 +160,7 @@ export async function ChatsTab({
             {viewerIsAdmin ? (
               <label className="grid gap-1 text-sm">
                 Send to (display name)
-                <input
-                  name="recipientName"
-                  required
-                  placeholder="Recipient display name"
-                  className="border border-border bg-background px-2 py-1"
-                />
+                <RecipientCombobox names={allDisplayNames} />
               </label>
             ) : admins.length > 0 ? (
               <label className="grid gap-1 text-sm">

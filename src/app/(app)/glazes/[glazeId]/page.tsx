@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { after } from "next/server";
 import { format } from "date-fns";
 import { Heart } from "lucide-react";
 
@@ -47,8 +48,10 @@ export default async function GlazeDetailPage({
 
   const { glaze, viewerHasFavourited } = detail;
 
-  // Track glaze view (server-side, fire and forget)
-  void (async () => {
+  // Track glaze view after the response is sent. `after()` keeps the
+  // serverless instance alive until the work completes, unlike the
+  // previous fire-and-forget IIFE which was getting torn down.
+  after(async () => {
     const supabase = await createSupabaseServerClient();
     if (!supabase) return;
     await supabase.from("analytics_events").insert({
@@ -61,7 +64,7 @@ export default async function GlazeDetailPage({
         glaze_brand: glaze.brand ?? null,
       },
     });
-  })();
+  });
   const coyoteGalleryImages =
     glaze.brand === "Coyote" && glaze.code
       ? (coyoteLocalGallery[glaze.code as keyof typeof coyoteLocalGallery] ?? []).map((image) => ({

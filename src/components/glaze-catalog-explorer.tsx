@@ -685,17 +685,6 @@ export function GlazeCatalogExplorer({
               />
             </div>
 
-            {!isGuest ? (
-              <div className="flex justify-end">
-                <Link
-                  href="/glazes/new"
-                  className={buttonVariants({ variant: "ghost", size: "sm" })}
-                >
-                  + Add custom glaze
-                </Link>
-              </div>
-            ) : null}
-
             <div className="overflow-hidden border border-border/80 bg-panel">
               <button
                 type="button"
