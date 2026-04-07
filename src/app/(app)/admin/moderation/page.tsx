@@ -2,6 +2,7 @@ import { moderatePostAction } from "@/app/actions/admin";
 import { PageHeader } from "@/components/page-header";
 import { PostCard } from "@/components/post-card";
 import { Button } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Panel } from "@/components/ui/panel";
 import { getReportedPostsQueue } from "@/lib/data/admin";
 import { requireViewer } from "@/lib/data/users";
@@ -15,14 +16,7 @@ export default async function ModerationPage({
   const viewer = await requireViewer();
 
   if (!viewer.profile.isAdmin) {
-    return (
-      <Panel>
-        <h1 className="display-font text-3xl tracking-tight">Moderation access required</h1>
-        <p className="mt-3 text-sm leading-6 text-muted">
-          This screen is only available for studio administrators.
-        </p>
-      </Panel>
-    );
+    return <EmptyState title="Moderation access required" description="This screen is only available for studio administrators." />;
   }
 
   const queue = await getReportedPostsQueue();

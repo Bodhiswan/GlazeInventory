@@ -15,7 +15,9 @@ import Link from "next/link";
 import { adminArchiveCombinationAction, adminDeleteCustomGlazeAction, adminFlagFalseContributionAction } from "@/app/actions/admin";
 import { CombinationPreviewModal } from "./combination-preview-modal";
 import { PageHeader } from "@/components/page-header";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Panel } from "@/components/ui/panel";
+import { StatTile } from "@/components/ui/stat-tile";
 import { type AdminDashboard, type DashboardRange, getAdminDashboard } from "@/lib/data/admin";
 import { requireViewer } from "@/lib/data/users";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -62,32 +64,6 @@ function eventLabel(eventType: string, metadata: Record<string, unknown>): strin
   }
 }
 
-function StatCard({
-  label,
-  value,
-  sub,
-  icon: Icon,
-  accent,
-}: {
-  label: string;
-  value: number | string;
-  sub?: string;
-  icon: React.ElementType;
-  accent?: boolean;
-}) {
-  return (
-    <div className={cn("flex items-start gap-3 border p-4", accent ? "border-foreground/20 bg-foreground/5" : "border-border bg-panel")}>
-      <div className="flex h-8 w-8 shrink-0 items-center justify-center border border-border bg-background">
-        <Icon className="h-3.5 w-3.5 text-muted" />
-      </div>
-      <div className="min-w-0">
-        <p className="text-2xl font-semibold tabular-nums leading-none text-foreground">{value}</p>
-        <p className="mt-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">{label}</p>
-        {sub ? <p className="mt-0.5 text-xs text-muted">{sub}</p> : null}
-      </div>
-    </div>
-  );
-}
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">{children}</p>;
@@ -123,24 +99,12 @@ export default async function AnalyticsPage({
   const viewer = await requireViewer();
 
   if (!viewer.profile.isAdmin) {
-    return (
-      <Panel>
-        <h1 className="display-font text-3xl tracking-tight">Access required</h1>
-        <p className="mt-3 text-sm leading-6 text-muted">This screen is only available for administrators.</p>
-      </Panel>
-    );
+    return <EmptyState title="Access required" description="This screen is only available for administrators." />;
   }
 
   const adminCheck = createSupabaseAdminClient();
   if (!adminCheck) {
-    return (
-      <Panel>
-        <h1 className="display-font text-3xl tracking-tight">Configuration error</h1>
-        <p className="mt-3 text-sm leading-6 text-muted">
-          SUPABASE_SERVICE_ROLE_KEY is not set. Add it to Vercel environment variables.
-        </p>
-      </Panel>
-    );
+    return <EmptyState title="Configuration error" description="SUPABASE_SERVICE_ROLE_KEY is not set. Add it to Vercel environment variables." />;
   }
 
   const params = await searchParams;
@@ -154,12 +118,7 @@ export default async function AnalyticsPage({
   try {
     dashboard = await getAdminDashboard(range);
   } catch (e) {
-    return (
-      <Panel>
-        <h1 className="display-font text-3xl tracking-tight">Dashboard error</h1>
-        <p className="mt-3 font-mono text-xs text-muted">{e instanceof Error ? e.message : String(e)}</p>
-      </Panel>
-    );
+    return <EmptyState title="Dashboard error" description={e instanceof Error ? e.message : String(e)} />;
   }
 
   const { stats } = dashboard;
@@ -200,13 +159,13 @@ export default async function AnalyticsPage({
       {/* ── Stats grid ── */}
       <CollapsibleSection label={`Overview · ${RANGE_LABELS[range]}`}>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
-          <StatCard label="Total users" value={stats.totalUsers} icon={Users} />
-          <StatCard label="New users" value={stats.newUsers} icon={Users} accent />
-          <StatCard label="Glaze views" value={stats.glazeViews} icon={Eye} accent />
-          <StatCard label="Combinations" value={stats.combinationsPublished} icon={Layers3} accent />
-          <StatCard label="Custom glazes" value={stats.customGlazesCreated} icon={PenLine} accent />
-          <StatCard label="Buy clicks" value={stats.buyClicks} icon={ShoppingCart} accent />
-          <StatCard label="Inventory items" value={stats.totalInventoryItems} icon={Package} />
+          <StatTile label="Total users" value={stats.totalUsers} icon={Users} />
+          <StatTile label="New users" value={stats.newUsers} icon={Users} accent />
+          <StatTile label="Glaze views" value={stats.glazeViews} icon={Eye} accent />
+          <StatTile label="Combinations" value={stats.combinationsPublished} icon={Layers3} accent />
+          <StatTile label="Custom glazes" value={stats.customGlazesCreated} icon={PenLine} accent />
+          <StatTile label="Buy clicks" value={stats.buyClicks} icon={ShoppingCart} accent />
+          <StatTile label="Inventory items" value={stats.totalInventoryItems} icon={Package} />
         </div>
       </CollapsibleSection>
 
@@ -249,7 +208,7 @@ export default async function AnalyticsPage({
         <CollapsibleSection label="Recent combinations">
           <div className="space-y-2">
             {dashboard.recentCombinations.length === 0 ? (
-              <Panel><p className="text-sm text-muted">No combinations yet.</p></Panel>
+              <EmptyState title="No combinations yet." />
             ) : (
               dashboard.recentCombinations.map((combo) => (
                 <div key={combo.id} className="border border-border bg-panel">
@@ -332,7 +291,7 @@ export default async function AnalyticsPage({
         <CollapsibleSection label="Recent custom glazes">
           <div className="space-y-2">
             {dashboard.recentCustomGlazes.length === 0 ? (
-              <Panel><p className="text-sm text-muted">No custom glazes yet.</p></Panel>
+              <EmptyState title="No custom glazes yet." />
             ) : (
               dashboard.recentCustomGlazes.map((glaze) => (
                 <div key={glaze.id} className="border border-border bg-panel">

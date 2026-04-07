@@ -3,6 +3,7 @@ import Link from "next/link";
 import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
+import { EmptyState } from "@/components/ui/empty-state";
 import { Panel } from "@/components/ui/panel";
 import { getExternalExampleIntakeQueue } from "@/lib/data/admin";
 import { requireViewer } from "@/lib/data/users";
@@ -26,14 +27,7 @@ export default async function ExternalExampleIntakeQueuePage({
   const viewer = await requireViewer();
 
   if (!viewer.profile.isAdmin) {
-    return (
-      <Panel>
-        <h1 className="display-font text-3xl tracking-tight">Intake access required</h1>
-        <p className="mt-3 text-sm leading-6 text-muted">
-          This queue is only available for studio administrators.
-        </p>
-      </Panel>
-    );
+    return <EmptyState title="Intake access required" description="This queue is only available for studio administrators." />;
   }
 
   const params = await searchParams;
@@ -170,12 +164,10 @@ export default async function ExternalExampleIntakeQueuePage({
           })}
         </div>
       ) : (
-        <Panel>
-          <h2 className="display-font text-3xl tracking-tight">No intake records in this view.</h2>
-          <p className="mt-3 text-sm leading-6 text-muted">
-            Run `npm run import:facebook` to capture posts, then come back here to review them.
-          </p>
-        </Panel>
+        <EmptyState
+          title="No intake records in this view."
+          description="Run `npm run import:facebook` to capture posts, then come back here to review them."
+        />
       )}
     </div>
   );
