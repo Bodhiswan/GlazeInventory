@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { reportPostAction } from "@/app/actions/community";
 import { PageHeader } from "@/components/page-header";
 import { PostCard } from "@/components/post-card";
+import { SectionErrorBoundary } from "@/components/section-error-boundary";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants, Button } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
@@ -80,41 +81,43 @@ export default async function CombinationDetailPage({
           </div>
         </Panel>
 
-        <div className="space-y-4">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-muted">Member examples</p>
-            <h2 className="display-font mt-2 text-3xl tracking-tight">
-              {detail.posts.length ? "Published results" : "No published results yet"}
-            </h2>
+        <SectionErrorBoundary>
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm uppercase tracking-[0.2em] text-muted">Member examples</p>
+              <h2 className="display-font mt-2 text-3xl tracking-tight">
+                {detail.posts.length ? "Published results" : "No published results yet"}
+              </h2>
+            </div>
+            {detail.posts.length ? (
+              detail.posts.map((post) => (
+                <div key={post.id} className="space-y-4">
+                  <PostCard post={post} showStatus={post.status !== "published"} />
+                  <Panel>
+                    <form action={reportPostAction} className="grid gap-3">
+                      <input type="hidden" name="postId" value={post.id} />
+                      <input type="hidden" name="pairKey" value={detail.pairKey} />
+                      <p className="text-sm font-semibold">Report this post</p>
+                      <Textarea
+                        name="reason"
+                        placeholder="Why should an admin review this image or caption?"
+                      />
+                      <Button type="submit" variant="ghost">
+                        Submit report
+                      </Button>
+                    </form>
+                  </Panel>
+                </div>
+              ))
+            ) : (
+              <Panel>
+                <p className="text-sm leading-6 text-muted">
+                  Be the first member to publish a glaze test for this pairing.
+                </p>
+              </Panel>
+            )}
           </div>
-          {detail.posts.length ? (
-            detail.posts.map((post) => (
-              <div key={post.id} className="space-y-4">
-                <PostCard post={post} showStatus={post.status !== "published"} />
-                <Panel>
-                  <form action={reportPostAction} className="grid gap-3">
-                    <input type="hidden" name="postId" value={post.id} />
-                    <input type="hidden" name="pairKey" value={detail.pairKey} />
-                    <p className="text-sm font-semibold">Report this post</p>
-                    <Textarea
-                      name="reason"
-                      placeholder="Why should an admin review this image or caption?"
-                    />
-                    <Button type="submit" variant="ghost">
-                      Submit report
-                    </Button>
-                  </form>
-                </Panel>
-              </div>
-            ))
-          ) : (
-            <Panel>
-              <p className="text-sm leading-6 text-muted">
-                Be the first member to publish a glaze test for this pairing.
-              </p>
-            </Panel>
-          )}
-        </div>
+        </SectionErrorBoundary>
       </section>
     </div>
   );
