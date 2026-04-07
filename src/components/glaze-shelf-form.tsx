@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { updateGlazeInventoryAmountAction } from "@/app/actions";
+import { updateGlazeInventoryAmountAction } from "@/app/actions/inventory";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import type { InventoryFillLevel } from "@/lib/types";

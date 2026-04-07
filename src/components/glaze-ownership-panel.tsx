@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { setGlazeInventoryStateAction } from "@/app/actions";
+import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
 import { GlazeShelfForm } from "@/components/glaze-shelf-form";
 import { InventoryFolderManager } from "@/components/inventory-folder-manager";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";

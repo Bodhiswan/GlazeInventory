@@ -3,7 +3,7 @@
 import { Check, Loader2, Search } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
-import { setGlazeInventoryStateAction } from "@/app/actions";
+import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
 import { Badge } from "@/components/ui/badge";
 import type { Glaze } from "@/lib/types";
 import { buildGlazeSearchIndex, formatGlazeLabel, matchesGlazeSearch } from "@/lib/utils";

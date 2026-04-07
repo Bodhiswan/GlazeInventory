@@ -1,4 +1,4 @@
-import { createCustomGlazeAction } from "@/app/actions";
+import { createCustomGlazeAction } from "@/app/actions/inventory";
 import { PageHeader } from "@/components/page-header";
 import { SetupCallout } from "@/components/setup-callout";
 import type { CatalogEntry } from "@/components/custom-glaze-form";

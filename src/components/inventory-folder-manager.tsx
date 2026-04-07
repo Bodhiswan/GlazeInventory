@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 
-import { createInventoryFolderAction, updateInventoryItemFoldersAction } from "@/app/actions";
+import { createInventoryFolderAction, updateInventoryItemFoldersAction } from "@/app/actions/inventory";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

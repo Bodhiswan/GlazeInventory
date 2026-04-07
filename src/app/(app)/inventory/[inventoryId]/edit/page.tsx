@@ -1,6 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 
-import { updateInventoryItemAction } from "@/app/actions";
+import { updateInventoryItemAction } from "@/app/actions/inventory";
 import { PageHeader } from "@/components/page-header";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";

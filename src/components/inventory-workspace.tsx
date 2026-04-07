@@ -9,7 +9,8 @@ import { getCatalogGlazesForScannerAction } from "@/app/actions";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeScanner } from "@/components/glaze-scanner";
 
-import { setGlazeInventoryStateAction, toggleFavouriteInlineAction, updateInventoryItemNotesAction } from "@/app/actions";
+import { setGlazeInventoryStateAction, updateInventoryItemNotesAction } from "@/app/actions/inventory";
+import { toggleFavouriteInlineAction } from "@/app/actions";
 import { GlazeShelfForm } from "@/components/glaze-shelf-form";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";
 import { Badge } from "@/components/ui/badge";
