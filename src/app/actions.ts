@@ -757,6 +757,29 @@ export async function createCustomGlazeAction(formData: FormData) {
     redirect(`/glazes/new?error=${encodeURIComponent(inventoryError.message)}`);
   }
 
+  // --- Upload image if provided ---
+  const imageFile = formData.get("image");
+  if (imageFile instanceof File && imageFile.size > 0) {
+    if (imageFile.size > 5 * 1024 * 1024) {
+      redirect(`/glazes/new?error=${encodeURIComponent("Image must be under 5MB")}`);
+    }
+    const sanitize = (name: string) => name.replace(/[^a-zA-Z0-9.-]/g, "-");
+    const imagePath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(imageFile.name)}`;
+    const imageBuffer = new Uint8Array(await imageFile.arrayBuffer());
+    const { error: uploadErr } = await supabase.storage
+      .from("custom-glaze-images")
+      .upload(imagePath, imageBuffer, { contentType: imageFile.type, upsert: false });
+    if (!uploadErr) {
+      const { data: publicData } = supabase.storage.from("custom-glaze-images").getPublicUrl(imagePath);
+      await supabase.from("glaze_firing_images").insert({
+        glaze_id: glaze.id,
+        label: "Photo",
+        image_url: publicData.publicUrl,
+        sort_order: 0,
+      });
+    }
+  }
+
   revalidateWorkspace();
   redirect(`${returnTo}?customGlazeAdded=1`);
 }
@@ -1963,4 +1986,111 @@ export async function adminDeleteCustomGlazeAction(formData: FormData): Promise<
   await admin.from("glazes").delete().eq("id", glazeId);
 
   revalidatePath("/admin/analytics");
+}
+
+export async function uploadCommunityFiringImageAction(formData: FormData): Promise<{ error: string } | { success: true }> {
+  const { viewer, supabase } = await requireMemberSupabase("/contribute/firing-image");
+
+  const imageFile = formData.get("image");
+  if (!(imageFile instanceof File) || imageFile.size === 0) return { error: "No image provided" };
+  if (imageFile.size > 8 * 1024 * 1024) return { error: "Image must be under 8 MB" };
+
+  const glazeId = (formData.get("glazeId") as string | null) || null;
+  const combinationId = (formData.get("combinationId") as string | null) || null;
+  const combinationType = (formData.get("combinationType") as string | null) || null;
+  const label = (formData.get("label") as string | null)?.trim() || null;
+  const cone = (formData.get("cone") as string | null)?.trim() || null;
+  const atmosphere = (formData.get("atmosphere") as string | null)?.trim() || null;
+
+  if (!glazeId && !combinationId) return { error: "Select a glaze or combination first" };
+
+  const sanitize = (n: string) => n.replace(/[^a-zA-Z0-9.-]/g, "-");
+  const storagePath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(imageFile.name)}`;
+  const buffer = new Uint8Array(await imageFile.arrayBuffer());
+
+  const { error: uploadErr } = await supabase.storage
+    .from("community-firing-images")
+    .upload(storagePath, buffer, { contentType: imageFile.type, upsert: false });
+
+  if (uploadErr) return { error: uploadErr.message };
+
+  const { data: publicData } = supabase.storage.from("community-firing-images").getPublicUrl(storagePath);
+
+  const { error: insertErr } = await supabase.from("community_firing_images").insert({
+    glaze_id: glazeId || null,
+    combination_id: combinationId || null,
+    combination_type: combinationId ? combinationType : null,
+    image_url: publicData.publicUrl,
+    storage_path: storagePath,
+    label,
+    cone,
+    atmosphere,
+    uploader_user_id: viewer.profile.id,
+  });
+
+  if (insertErr) return { error: insertErr.message };
+
+  return { success: true };
+}
+
+export async function adminGetCombinationPreviewAction(id: string): Promise<{
+  id: string;
+  title: string;
+  authorName: string;
+  authorUserId: string;
+  postFiringImageUrl: string;
+  preFiringImageUrl: string | null;
+  cone: string;
+  atmosphere: string | null;
+  glazingProcess: string | null;
+  notes: string | null;
+  kilnNotes: string | null;
+  status: string;
+  createdAt: string;
+  layers: Array<{ id: string; glazeId: string; glazeName: string | null; glazeBrand: string | null; layerOrder: number }>;
+} | null> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) return null;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return null;
+
+  type Row = Record<string, unknown>;
+  const { data: row } = await admin
+    .from("user_combination_examples")
+    .select("*, user_combination_example_layers(*), profiles!author_user_id(display_name)")
+    .eq("id", id)
+    .single();
+
+  if (!row) return null;
+  const r = row as Row;
+  const rawLayers = ((r.user_combination_example_layers ?? []) as Row[])
+    .sort((a, b) => Number(a.layer_order) - Number(b.layer_order));
+
+  return {
+    id: String(r.id),
+    title: String(r.title ?? ""),
+    authorName: r.profiles ? String((r.profiles as Row).display_name ?? "Unknown") : "Unknown",
+    authorUserId: String(r.author_user_id),
+    postFiringImageUrl: String(r.post_firing_image_path ?? ""),
+    preFiringImageUrl: r.pre_firing_image_path ? String(r.pre_firing_image_path) : null,
+    cone: String(r.cone ?? ""),
+    atmosphere: r.atmosphere ? String(r.atmosphere) : null,
+    glazingProcess: r.glazing_process ? String(r.glazing_process) : null,
+    notes: r.notes ? String(r.notes) : null,
+    kilnNotes: r.kiln_notes ? String(r.kiln_notes) : null,
+    status: String(r.status ?? ""),
+    createdAt: String(r.created_at),
+    layers: rawLayers.map((layer) => {
+      const glazeId = String(layer.glaze_id);
+      const glaze = getCatalogGlazeById(glazeId);
+      return {
+        id: String(layer.id),
+        glazeId,
+        glazeName: glaze?.name ?? null,
+        glazeBrand: glaze?.brand ?? null,
+        layerOrder: Number(layer.layer_order),
+      };
+    }),
+  };
 }

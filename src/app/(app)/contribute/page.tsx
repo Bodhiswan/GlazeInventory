@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Layers3, Sparkles } from "lucide-react";
+import { Camera, Layers3, Sparkles } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { requireViewer } from "@/lib/data";
@@ -15,7 +15,7 @@ export default async function ContributePage() {
         description="Help build the library by sharing combination results or adding glazes that aren't in the catalog yet."
       />
 
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {/* ── Share a combination ── */}
         <Link
           href="/publish"
@@ -51,6 +51,24 @@ export default async function ContributePage() {
           </span>
           <span className="mt-auto text-[10px] uppercase tracking-[0.16em] text-muted transition-colors group-hover:text-foreground">
             Go to add glaze →
+          </span>
+        </Link>
+        {/* ── Upload a firing photo ── */}
+        <Link
+          href="/contribute/firing-image"
+          className="group flex flex-col gap-4 border border-border bg-panel p-6 transition-colors hover:border-foreground/30 hover:bg-white"
+        >
+          <span className="flex h-10 w-10 items-center justify-center border border-border bg-background text-foreground transition-colors group-hover:border-foreground/30">
+            <Camera className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <span className="space-y-1.5">
+            <span className="block text-base font-medium text-foreground">Upload a firing photo</span>
+            <span className="block text-sm leading-6 text-muted">
+              Attach a fired result photo to any glaze or combination in the library. Helps others see real-world results across different kilns and bodies.
+            </span>
+          </span>
+          <span className="mt-auto text-[10px] uppercase tracking-[0.16em] text-muted transition-colors group-hover:text-foreground">
+            Go to upload →
           </span>
         </Link>
       </div>

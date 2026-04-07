@@ -8,6 +8,8 @@ import { memo, useDeferredValue, useEffect, useMemo, useRef, useState } from "re
 import { setGlazeInventoryStateAction, toggleFavouriteInlineAction } from "@/app/actions";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
+import { CommunityImagesPanel } from "@/components/community-images-panel";
+import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { InventoryStatePicker } from "@/components/inventory-state-picker";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -1094,55 +1096,14 @@ export function GlazeCatalogExplorer({
             <div className="overflow-y-auto overscroll-contain p-4 sm:p-5">
 
               <div className="grid gap-5 lg:grid-cols-[minmax(0,220px)_1fr]">
-                {/* Images column — stacked vertically with labels */}
-                <div className="mx-auto w-full max-w-[280px] space-y-2 lg:mx-0">
-                  {/* Main / preferred image */}
-                  <div className="overflow-hidden border border-border bg-panel">
-                    {activeGridPreviewImage ? (
-                      <Image
-                        src={activeGridPreviewImage}
-                        alt={formatGlazeLabel(activeGridItem.glaze)}
-                        width={384}
-                        height={384}
-                        sizes="(min-width: 1024px) 220px, 280px"
-                        className="aspect-square w-full object-contain bg-white"
-                        priority
-                      />
-                    ) : (
-                      <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
-                        No image
-                      </div>
-                    )}
-                    {(() => {
-                      const matchedImage = activeGridItem.firingImages.find((img) => img.imageUrl === activeGridPreviewImage);
-                      const label = [matchedImage?.cone, matchedImage?.atmosphere].filter(Boolean).join(" · ");
-                      return label ? (
-                        <p className="bg-panel px-2 py-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">{label}</p>
-                      ) : null;
-                    })()}
-                  </div>
-                  {/* Additional firing images */}
-                  {activeGridItem.firingImages
-                    .filter((img) => img.imageUrl !== activeGridPreviewImage)
-                    .map((img) => (
-                      <div key={img.id} className="overflow-hidden border border-border bg-panel">
-                        <Image
-                          src={img.imageUrl}
-                          alt={`${formatGlazeLabel(activeGridItem.glaze)} – ${[img.cone, img.atmosphere].filter(Boolean).join(" · ")}`}
-                          width={384}
-                          height={384}
-                          sizes="(min-width: 1024px) 220px, 280px"
-                          className="aspect-square w-full object-contain bg-white"
-                          loading="lazy"
-                        />
-                        {(() => {
-                          const label = [img.cone, img.atmosphere].filter(Boolean).join(" · ");
-                          return label ? (
-                            <p className="bg-panel px-2 py-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">{label}</p>
-                          ) : null;
-                        })()}
-                      </div>
-                    ))}
+                {/* Images column — gallery with lightbox */}
+                <div className="mx-auto w-full max-w-[280px] lg:mx-0">
+                  <GlazeImageGallery
+                    baseImageUrl={activeGridItem.glaze.imageUrl}
+                    baseImageAlt={formatGlazeLabel(activeGridItem.glaze)}
+                    firingImages={activeGridItem.firingImages}
+                    initialImageUrl={activeGridPreviewImage}
+                  />
                 </div>
 
                 {/* Info column */}
@@ -1200,6 +1161,8 @@ export function GlazeCatalogExplorer({
                       <p className="mt-2 text-sm leading-6 text-muted">{activeGridItem.glaze.description}</p>
                     </details>
                   ) : null}
+
+                  <CommunityImagesPanel target={{ glazeId: activeGridItem.glaze.id }} altPrefix={formatGlazeLabel(activeGridItem.glaze)} />
 
                   <GlazeCommentsPanel glazeId={activeGridItem.glaze.id} />
                 </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { useFormStatus } from "react-dom";
 
 import {
@@ -80,6 +80,15 @@ export function CustomGlazeForm({
   const [colors, setColors] = useState<string[]>([]);
   const [finishes, setFinishes] = useState<string[]>([]);
   const [notes, setNotes] = useState("");
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleImageChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) { setImagePreview(null); return; }
+    const url = URL.createObjectURL(file);
+    setImagePreview(url);
+  }, []);
 
   // Live duplicate detection — exact name+brand match against catalog
   const duplicate = useMemo<CatalogEntry | null>(() => {
@@ -335,6 +344,51 @@ export function CustomGlazeForm({
             Up to 500 characters. This is shared with other members who encounter your combinations.
           </span>
         </label>
+      </Panel>
+
+      {/* ── Image ── */}
+      <Panel className="space-y-3">
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge tone="neutral">Optional</Badge>
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Photo</p>
+        </div>
+        <div className="grid gap-3">
+          <p className="text-sm font-medium text-foreground">Got a photo of this glaze?</p>
+          {imagePreview ? (
+            <div className="relative w-full max-w-xs">
+              <img
+                src={imagePreview}
+                alt="Glaze preview"
+                className="aspect-[4/3] w-full border border-border object-cover"
+              />
+              <button
+                type="button"
+                onClick={() => { setImagePreview(null); if (fileInputRef.current) fileInputRef.current.value = ""; }}
+                className="absolute right-2 top-2 border border-border bg-white px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-muted hover:text-foreground"
+              >
+                Remove
+              </button>
+            </div>
+          ) : null}
+          <label className={cn(
+            "flex cursor-pointer items-center gap-3 border px-4 py-3 text-sm transition",
+            imagePreview
+              ? "border-foreground/20 bg-white text-muted hover:text-foreground"
+              : "border-foreground/20 bg-white text-foreground shadow-sm hover:bg-foreground/[0.04]",
+          )}>
+            <span>{imagePreview ? "Change photo" : "Choose a photo"}</span>
+            <input
+              ref={fileInputRef}
+              type="file"
+              name="image"
+              accept="image/jpeg,image/png,image/webp,image/heic"
+              onChange={handleImageChange}
+              disabled={disabled}
+              className="sr-only"
+            />
+          </label>
+          <p className="text-xs leading-5 text-muted">JPEG, PNG, WebP or HEIC · Max 5 MB</p>
+        </div>
       </Panel>
 
       {/* ── Duplicate warning ── */}

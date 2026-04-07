@@ -3,6 +3,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 
+import { ImageLightbox, type LightboxImage } from "@/components/image-lightbox";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import type { GlazeFiringImage } from "@/lib/types";
@@ -125,6 +126,7 @@ export function GlazeImageGallery({
     items.findIndex((item) => item.imageUrl === initialImageUrl),
   );
   const [selectedIndex, setSelectedIndex] = useState(initialIndex === -1 ? 0 : initialIndex);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   if (!items.length) {
     return null;
@@ -133,15 +135,36 @@ export function GlazeImageGallery({
   const selectedItem = items[selectedIndex] ?? items[0];
   const selectedTags = getDisplayTags(selectedItem);
 
+  const lightboxImages: LightboxImage[] = items.map((item) => ({
+    id: item.id,
+    imageUrl: item.imageUrl,
+    alt: item.alt,
+    label: item.label,
+    cone: item.cone,
+    atmosphere: item.atmosphere,
+  }));
+
   return (
     <div className="space-y-4">
-      <div className="overflow-hidden border border-border bg-panel">
+      {lightboxOpen ? (
+        <ImageLightbox
+          images={lightboxImages}
+          initialIndex={selectedIndex}
+          onClose={() => setLightboxOpen(false)}
+        />
+      ) : null}
+      <button
+        type="button"
+        onClick={() => setLightboxOpen(true)}
+        className="w-full overflow-hidden border border-border bg-panel transition hover:opacity-90"
+        aria-label="View full size"
+      >
         <img
           src={selectedItem.imageUrl}
           alt={selectedItem.alt}
           className="aspect-square w-full bg-white object-contain"
         />
-      </div>
+      </button>
 
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap gap-2">

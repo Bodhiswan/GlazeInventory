@@ -19,6 +19,8 @@ import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
 import { deleteUserCombinationAction } from "@/app/actions";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
+import { CommunityImagesPanel } from "@/components/community-images-panel";
+import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import type {
   CombinationPost,
   GlazeFiringImage,
@@ -704,56 +706,14 @@ export function InventoryWorkspace({
 
             <div className="overflow-y-auto overscroll-contain">
               <div className="grid gap-4 p-4 sm:gap-5 sm:p-5 lg:grid-cols-[minmax(0,220px)_1fr]">
-                {/* Images column — stacked vertically with labels */}
-                <div className="mx-auto w-full max-w-[280px] space-y-2 lg:mx-0">
-                  {/* Main / preferred image */}
-                  <div className="overflow-hidden border border-border bg-panel">
-                    {(preferredImages[activeItem.glazeId] ?? activeItem.glaze.imageUrl) ? (
-                      <Image
-                        src={preferredImages[activeItem.glazeId] ?? activeItem.glaze.imageUrl ?? ""}
-                        alt={formatGlazeLabel(activeItem.glaze)}
-                        width={384}
-                        height={384}
-                        sizes="(min-width: 1024px) 220px, 280px"
-                        className="aspect-square w-full object-contain bg-white"
-                        priority
-                      />
-                    ) : (
-                      <div className="flex aspect-square items-center justify-center text-xs uppercase tracking-[0.18em] text-muted">
-                        No image
-                      </div>
-                    )}
-                    {(() => {
-                      const images = firingImageMap[activeItem.glazeId] ?? [];
-                      const matchedImage = images.find((img) => img.imageUrl === preferredImages[activeItem.glazeId]);
-                      const label = [matchedImage?.cone, matchedImage?.atmosphere].filter(Boolean).join(" · ");
-                      return label ? (
-                        <p className="bg-panel px-2 py-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">{label}</p>
-                      ) : null;
-                    })()}
-                  </div>
-                  {/* Additional firing images */}
-                  {(firingImageMap[activeItem.glazeId] ?? [])
-                    .filter((img) => img.imageUrl !== preferredImages[activeItem.glazeId])
-                    .map((img) => (
-                      <div key={img.id} className="overflow-hidden border border-border bg-panel">
-                        <Image
-                          src={img.imageUrl}
-                          alt={`${formatGlazeLabel(activeItem.glaze)} – ${[img.cone, img.atmosphere].filter(Boolean).join(" · ")}`}
-                          width={384}
-                          height={384}
-                          sizes="(min-width: 1024px) 220px, 280px"
-                          className="aspect-square w-full object-contain bg-white"
-                          loading="lazy"
-                        />
-                        {(() => {
-                          const label = [img.cone, img.atmosphere].filter(Boolean).join(" · ");
-                          return label ? (
-                            <p className="bg-panel px-2 py-1 text-center text-[10px] uppercase tracking-[0.14em] text-muted">{label}</p>
-                          ) : null;
-                        })()}
-                      </div>
-                    ))}
+                {/* Images column — gallery with lightbox */}
+                <div className="mx-auto w-full max-w-[280px] lg:mx-0">
+                  <GlazeImageGallery
+                    baseImageUrl={activeItem.glaze.imageUrl}
+                    baseImageAlt={formatGlazeLabel(activeItem.glaze)}
+                    firingImages={firingImageMap[activeItem.glazeId] ?? []}
+                    initialImageUrl={preferredImages[activeItem.glazeId] ?? activeItem.glaze.imageUrl}
+                  />
                 </div>
 
                 <div className="space-y-4">
@@ -829,6 +789,8 @@ export function InventoryWorkspace({
                       );
                     }}
                   />
+
+                  <CommunityImagesPanel target={{ glazeId: activeItem.glazeId }} altPrefix={formatGlazeLabel(activeItem.glaze)} />
 
                   <GlazeCommentsPanel glazeId={activeItem.glazeId} />
                 </div>

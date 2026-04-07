@@ -29,7 +29,10 @@ export async function awardPoints(
   if (isAdmin) return;
 
   const admin = createSupabaseAdminClient();
-  if (!admin) return;
+  if (!admin) {
+    console.error("[awardPoints] Admin client unavailable — SUPABASE_SERVICE_ROLE_KEY may be missing");
+    return;
+  }
 
   const cap = ACTION_CAPS[action];
 
@@ -45,13 +48,18 @@ export async function awardPoints(
     if (earned >= cap) return;
   }
 
-  await admin.from("points_ledger").insert({
+  const { error: insertError } = await admin.from("points_ledger").insert({
     user_id: userId,
     action,
     points,
     reference_id: referenceId ?? null,
     reference_type: referenceType ?? null,
   });
+
+  if (insertError) {
+    console.error("[awardPoints] Failed to insert ledger row:", insertError.message);
+    return;
+  }
 
   // Recompute total from ALL non-voided ledger rows (avoids integer truncation
   // when fractional values like 0.1 are accumulated).

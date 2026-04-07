@@ -10,6 +10,8 @@ import {
   toggleFavouriteInlineAction,
 } from "@/app/actions";
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
+import { CommunityImagesPanel } from "@/components/community-images-panel";
+import { ImageLightbox, type LightboxImage } from "@/components/image-lightbox";
 import { CombinationCommentsPanel } from "@/components/glaze-comments-panel";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
@@ -608,11 +610,17 @@ function ExampleDetail({
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
 }) {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const heroImage: LightboxImage = { id: example.id, imageUrl: example.imageUrl, alt: example.title };
+
   return (
     <div className="space-y-4">
+      {lightboxOpen ? (
+        <ImageLightbox images={[heroImage]} initialIndex={0} onClose={() => setLightboxOpen(false)} />
+      ) : null}
       {/* Hero: combination result photo + metadata side by side */}
       <div className="grid gap-4 sm:grid-cols-[minmax(0,280px)_1fr]">
-        <div className="overflow-hidden border border-border bg-panel">
+        <button type="button" onClick={() => setLightboxOpen(true)} className="overflow-hidden border border-border bg-panel transition hover:opacity-90">
           <Image
             src={example.imageUrl}
             alt={example.title}
@@ -621,7 +629,7 @@ function ExampleDetail({
             sizes="(min-width: 640px) 280px, 100vw"
             className="aspect-[4/3] w-full object-cover"
           />
-        </div>
+        </button>
         <div className="space-y-3">
           <div className="flex flex-wrap gap-1.5">
             <Badge tone="neutral">{example.sourceVendor}</Badge>
@@ -661,6 +669,8 @@ function ExampleDetail({
           ))}
         </div>
       </div>
+
+      <CommunityImagesPanel target={{ combinationId: example.id }} altPrefix={example.title} />
     </div>
   );
 }
@@ -684,12 +694,26 @@ function PostDetail({
   const preferredCone = extractConeLabel(post.firingNotes);
   const orderedGlazes = getOrderedPostGlazes(post);
 
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const heroLightboxImages: LightboxImage[] = imageSrc
+    ? [{ id: `${post.id}-hero`, imageUrl: imageSrc, alt: post.caption ?? "Published glaze combination", label: preferredCone ?? null }]
+    : [];
+
   return (
     <div className="space-y-4">
+      {lightboxOpen && heroLightboxImages.length > 0 ? (
+        <ImageLightbox images={heroLightboxImages} initialIndex={0} onClose={() => setLightboxOpen(false)} />
+      ) : null}
+
       {/* Hero: combination result photo + metadata side by side */}
       <div className="grid gap-4 sm:grid-cols-[minmax(0,280px)_1fr]">
         {imageSrc ? (
-          <div className="overflow-hidden border border-border bg-panel">
+          <button
+            type="button"
+            onClick={() => setLightboxOpen(true)}
+            className="overflow-hidden border border-border bg-panel transition hover:opacity-90"
+            aria-label="View full size"
+          >
             <Image
               src={imageSrc}
               alt={post.caption ?? "Published glaze combination"}
@@ -698,7 +722,7 @@ function PostDetail({
               sizes="(min-width: 640px) 280px, 100vw"
               className="aspect-[4/3] w-full object-cover"
             />
-          </div>
+          </button>
         ) : null}
         <div className="space-y-3">
           <div className="flex flex-wrap gap-1.5">
@@ -737,6 +761,8 @@ function PostDetail({
           </div>
         </div>
       ) : null}
+
+      <CommunityImagesPanel target={{ combinationId: post.id }} altPrefix={post.caption ?? "Glaze combination"} />
     </div>
   );
 }
@@ -759,6 +785,17 @@ function UserExampleDetail({
   viewerUserId: string | null;
 }) {
   const isOwner = viewerUserId === userExample.authorUserId;
+  const [lightboxImages, setLightboxImages] = useState<LightboxImage[] | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const openLightbox = (images: LightboxImage[], idx: number) => { setLightboxImages(images); setLightboxIndex(idx); };
+  const closeLightbox = () => setLightboxImages(null);
+
+  const postImage: LightboxImage = { id: `${userExample.id}-post`, imageUrl: userExample.postFiringImageUrl, alt: userExample.title, label: "Post-firing" };
+  const preImage: LightboxImage | null = userExample.preFiringImageUrl
+    ? { id: `${userExample.id}-pre`, imageUrl: userExample.preFiringImageUrl, alt: `${userExample.title} (pre-firing)`, label: "Pre-firing" }
+    : null;
+  const heroImages = [postImage, ...(preImage ? [preImage] : [])];
 
   function getUserExampleLayerRole(index: number, total: number) {
     if (index === 0) return "Top layer";
@@ -768,10 +805,11 @@ function UserExampleDetail({
 
   return (
     <div className="space-y-4">
+      {lightboxImages ? <ImageLightbox images={lightboxImages} initialIndex={lightboxIndex} onClose={closeLightbox} /> : null}
       {/* Hero: post-firing + optional pre-firing photos */}
       <div className="grid gap-4 sm:grid-cols-[minmax(0,280px)_1fr]">
         <div className="space-y-2">
-          <div className="overflow-hidden border border-border bg-panel">
+          <button type="button" onClick={() => openLightbox(heroImages, 0)} className="w-full overflow-hidden border border-border bg-panel transition hover:opacity-90">
             <Image
               src={userExample.postFiringImageUrl}
               alt={userExample.title}
@@ -780,12 +818,12 @@ function UserExampleDetail({
               sizes="(min-width: 640px) 280px, 100vw"
               className="aspect-[4/3] w-full object-cover"
             />
-          </div>
+          </button>
           <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Post-firing</p>
 
           {userExample.preFiringImageUrl ? (
             <>
-              <div className="overflow-hidden border border-border bg-panel">
+              <button type="button" onClick={() => openLightbox(heroImages, 1)} className="w-full overflow-hidden border border-border bg-panel transition hover:opacity-90">
                 <Image
                   src={userExample.preFiringImageUrl}
                   alt={`${userExample.title} (pre-firing)`}
@@ -794,7 +832,7 @@ function UserExampleDetail({
                   sizes="(min-width: 640px) 280px, 100vw"
                   className="aspect-[4/3] w-full object-cover"
                 />
-              </div>
+              </button>
               <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Pre-firing</p>
             </>
           ) : null}
@@ -849,6 +887,8 @@ function UserExampleDetail({
           </div>
         </div>
       ) : null}
+
+      <CommunityImagesPanel target={{ combinationId: userExample.id }} altPrefix={userExample.title} />
 
       <CombinationCommentsPanel exampleId={userExample.id} />
 

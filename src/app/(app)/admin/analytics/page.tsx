@@ -16,6 +16,7 @@ import {
   adminArchiveCombinationAction,
   adminDeleteCustomGlazeAction,
 } from "@/app/actions";
+import { CombinationPreviewModal } from "./combination-preview-modal";
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";
 import { type AdminDashboard, type DashboardRange, getAdminDashboard } from "@/lib/data";
@@ -93,6 +94,26 @@ function StatCard({
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">{children}</p>;
+}
+
+function CollapsibleSection({
+  label,
+  children,
+  defaultOpen = true,
+}: {
+  label: React.ReactNode;
+  children: React.ReactNode;
+  defaultOpen?: boolean;
+}) {
+  return (
+    <details open={defaultOpen} className="group space-y-3">
+      <summary className="flex cursor-pointer list-none items-center gap-2 select-none">
+        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted">{label}</span>
+        <span className="text-[10px] text-muted transition-transform group-open:rotate-180">▾</span>
+      </summary>
+      <div className="space-y-3">{children}</div>
+    </details>
+  );
 }
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
@@ -174,8 +195,7 @@ export default async function AnalyticsPage({
       </div>
 
       {/* ── Stats grid ── */}
-      <section className="space-y-3">
-        <SectionLabel>Overview · {RANGE_LABELS[range]}</SectionLabel>
+      <CollapsibleSection label={`Overview · ${RANGE_LABELS[range]}`}>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7">
           <StatCard label="Total users" value={stats.totalUsers} icon={Users} />
           <StatCard label="New users" value={stats.newUsers} icon={Users} accent />
@@ -185,14 +205,13 @@ export default async function AnalyticsPage({
           <StatCard label="Buy clicks" value={stats.buyClicks} icon={ShoppingCart} accent />
           <StatCard label="Inventory items" value={stats.totalInventoryItems} icon={Package} />
         </div>
-      </section>
+      </CollapsibleSection>
 
       {/* ── Main content: 3 columns ── */}
       <div className="grid gap-8 xl:grid-cols-3">
 
         {/* ── Activity feed ── */}
-        <section className="space-y-3">
-          <SectionLabel>Recent activity</SectionLabel>
+        <CollapsibleSection label="Recent activity">
           <Panel className="divide-y divide-border p-0">
             {dashboard.recentActivity.length === 0 ? (
               <p className="px-4 py-3 text-sm text-muted">No events yet.</p>
@@ -221,18 +240,18 @@ export default async function AnalyticsPage({
               })
             )}
           </Panel>
-        </section>
+        </CollapsibleSection>
 
         {/* ── Recent combinations ── */}
-        <section className="space-y-3">
-          <SectionLabel>Recent combinations</SectionLabel>
+        <CollapsibleSection label="Recent combinations">
           <div className="space-y-2">
             {dashboard.recentCombinations.length === 0 ? (
               <Panel><p className="text-sm text-muted">No combinations yet.</p></Panel>
             ) : (
               dashboard.recentCombinations.map((combo) => (
                 <div key={combo.id} className="border border-border bg-panel">
-                  <Link href={`/combinations/examples/${combo.id}`} className="flex items-start gap-3 p-3 transition-colors hover:bg-white">
+                  <CombinationPreviewModal comboId={combo.id}>
+                  <div className="flex items-start gap-3 p-3 transition-colors hover:bg-foreground/[0.03]">
                     <div className="h-12 w-12 shrink-0 overflow-hidden border border-border bg-white">
                       {combo.imageUrl ? (
                         <Image
@@ -249,10 +268,7 @@ export default async function AnalyticsPage({
                     <div className="min-w-0 flex-1">
                       <p className="truncate text-xs font-semibold text-foreground">{combo.title}</p>
                       <p className="mt-0.5 text-[10px] text-muted">
-                        by{" "}
-                        <Link href={`/admin/analytics/${combo.authorId}`} className="hover:text-foreground">
-                          {combo.authorName}
-                        </Link>
+                        by {combo.authorName}
                       </p>
                       <div className="mt-1 flex items-center gap-2">
                         <span className="text-[9px] uppercase tracking-[0.12em] text-muted">{combo.cone}</span>
@@ -263,7 +279,8 @@ export default async function AnalyticsPage({
                         </span>
                       </div>
                     </div>
-                  </Link>
+                  </div>
+                  </CombinationPreviewModal>
                   <div className="flex items-center justify-between border-t border-border px-3 py-2">
                     <span className="text-[10px] text-muted">
                       {formatDistanceToNow(new Date(combo.createdAt), { addSuffix: true })}
@@ -288,21 +305,20 @@ export default async function AnalyticsPage({
               ))
             )}
           </div>
-        </section>
+        </CollapsibleSection>
 
         {/* ── Recent custom glazes ── */}
-        <section className="space-y-3">
-          <SectionLabel>Recent custom glazes</SectionLabel>
+        <CollapsibleSection label="Recent custom glazes">
           <div className="space-y-2">
             {dashboard.recentCustomGlazes.length === 0 ? (
               <Panel><p className="text-sm text-muted">No custom glazes yet.</p></Panel>
             ) : (
               dashboard.recentCustomGlazes.map((glaze) => (
                 <div key={glaze.id} className="border border-border bg-panel">
-                  <Link href={`/glazes/${glaze.id}`} className="block p-3 transition-colors hover:bg-white">
-                    <p className="text-xs font-semibold text-foreground">
+                  <div className="p-3">
+                    <Link href={`/glazes/${glaze.id}`} className="text-xs font-semibold text-foreground hover:underline">
                       {[glaze.brand, glaze.name].filter(Boolean).join(" ")}
-                    </p>
+                    </Link>
                     <p className="mt-0.5 text-[10px] text-muted">
                       by{" "}
                       <Link href={`/admin/analytics/${glaze.creatorId}`} className="hover:text-foreground">
@@ -315,7 +331,7 @@ export default async function AnalyticsPage({
                     {glaze.finishNotes ? (
                       <p className="mt-0.5 truncate text-[10px] text-muted">Finish: {glaze.finishNotes}</p>
                     ) : null}
-                  </Link>
+                  </div>
                   <div className="flex items-center justify-between border-t border-border px-3 py-2">
                     <span className="text-[10px] text-muted">
                       {formatDistanceToNow(new Date(glaze.createdAt), { addSuffix: true })}
@@ -334,15 +350,14 @@ export default async function AnalyticsPage({
               ))
             )}
           </div>
-        </section>
+        </CollapsibleSection>
       </div>
 
       {/* ── Bottom section: Users + Popular + Buy clicks ── */}
       <div className="grid gap-8 xl:grid-cols-3">
 
         {/* ── Users table ── */}
-        <section className="space-y-3 xl:col-span-1">
-          <SectionLabel>Recent users ({stats.totalUsers} total)</SectionLabel>
+        <CollapsibleSection label={`Recent users (${stats.totalUsers} total)`} defaultOpen={true}>
           <Panel className="p-0">
             <div className="divide-y divide-border">
               {dashboard.recentUsers.map((user) => (
@@ -364,11 +379,10 @@ export default async function AnalyticsPage({
               ))}
             </div>
           </Panel>
-        </section>
+        </CollapsibleSection>
 
         {/* ── Popular glazes ── */}
-        <section className="space-y-3">
-          <SectionLabel>Most added to inventory (all time)</SectionLabel>
+        <CollapsibleSection label="Most added to inventory (all time)">
           <Panel className="divide-y divide-border p-0">
             {dashboard.topGlazesByInventory.length === 0 ? (
               <p className="px-4 py-3 text-sm text-muted">No data yet.</p>
@@ -405,11 +419,10 @@ export default async function AnalyticsPage({
               </Panel>
             </>
           )}
-        </section>
+        </CollapsibleSection>
 
         {/* ── Buy clicks ── */}
-        <section className="space-y-3">
-          <SectionLabel>Buy clicks by store · {RANGE_LABELS[range]}</SectionLabel>
+        <CollapsibleSection label={`Buy clicks by store · ${RANGE_LABELS[range]}`}>
           <Panel className="divide-y divide-border p-0">
             {dashboard.buyClicksByStore.length === 0 ? (
               <p className="px-4 py-3 text-sm text-muted">No clicks yet.</p>
@@ -444,7 +457,7 @@ export default async function AnalyticsPage({
               ))
             )}
           </Panel>
-        </section>
+        </CollapsibleSection>
       </div>
 
       <p className="text-[10px] text-muted">
