@@ -1,15 +1,11 @@
-import { requireViewer, mapProfile, getSupabase } from "@/lib/data/users";
+import { requireViewer, getSupabase } from "@/lib/data/users";
 import {
-  demoPairs,
   demoPosts,
-  demoProfiles,
   demoReports,
 } from "@/lib/demo-data";
 import { parseInventoryState } from "@/lib/inventory-state";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import type {
-  CombinationPair,
-  CombinationPost,
   ExternalExampleAsset,
   ExternalExampleGlazeMention,
   ExternalExampleIntake,
@@ -26,7 +22,7 @@ import {
   getCatalogGlazesByIds,
 } from "@/lib/catalog";
 import { getInventory } from "@/lib/data/inventory";
-import { getCombinationSummaries } from "@/lib/data/combinations";
+import { getCombinationSummaries, hydratePosts } from "@/lib/data/combinations";
 import { getCommunityPosts } from "@/lib/data/community";
 
 type Row = Record<string, unknown>;
@@ -100,16 +96,6 @@ function mapGlaze(row: Row): Glaze {
     createdByUserId: (row.created_by_user_id as string | null) ?? null,
   };
 }
-
-function mapPair(row: Row): CombinationPair {
-  return {
-    id: String(row.id),
-    glazeAId: String(row.glaze_a_id),
-    glazeBId: String(row.glaze_b_id),
-    pairKey: String(row.pair_key),
-  };
-}
-
 
 function mapExternalExampleParserOutput(value: unknown): ExternalExampleParserOutput {
   if (!value || typeof value !== "object") {
@@ -198,36 +184,6 @@ function mapExternalExampleIntake(row: Row): ExternalExampleIntake {
   };
 }
 
-function attachGlazesToPosts(posts: CombinationPost[], pairs: CombinationPair[], glazes: Glaze[]) {
-  const pairById = new Map(pairs.map((pair) => [pair.id, pair]));
-  const glazeById = new Map(glazes.map((glaze) => [glaze.id, glaze]));
-
-  return posts.map((post) => {
-    const pair = pairById.get(post.combinationPairId);
-
-    if (!pair) {
-      return post;
-    }
-
-    const postWithPairKey = {
-      ...post,
-      pairKey: pair.pairKey,
-    };
-
-    const glazeA = glazeById.get(pair.glazeAId);
-    const glazeB = glazeById.get(pair.glazeBId);
-
-    if (!glazeA || !glazeB) {
-      return postWithPairKey;
-    }
-
-    return {
-      ...postWithPairKey,
-      glazes: [glazeA, glazeB] as [Glaze, Glaze],
-    };
-  });
-}
-
 async function getSignedExternalExampleAssetUrls(storagePaths: string[]) {
   const admin = createSupabaseAdminClient();
 
@@ -247,8 +203,7 @@ async function getSignedExternalExampleAssetUrls(storagePaths: string[]) {
   );
 }
 
-
-
+// Admin context: tag enrichment is not needed for intake/moderation views
 async function getGlazesByIds(
   _viewerId: string,
   ids: string[],
@@ -256,104 +211,6 @@ async function getGlazesByIds(
 ) {
   if (!ids.length) return [];
   return getCatalogGlazesByIds(ids);
-}
-
-async function getPairsByIds(
-  pairIds: string[],
-  clientOverride?: ReturnType<typeof createSupabaseAdminClient> | null,
-) {
-  const supabase = clientOverride ?? (await getSupabase());
-
-  if (!supabase) {
-    return demoPairs.filter((pair) => pairIds.includes(pair.id));
-  }
-
-  if (!pairIds.length) {
-    return [];
-  }
-
-  const { data } = await supabase.from("combination_pairs").select("*").in("id", pairIds);
-  return (data ?? []).map((row) => mapPair(row as Row));
-}
-
-async function getProfilesByIds(
-  profileIds: string[],
-  clientOverride?: ReturnType<typeof createSupabaseAdminClient> | null,
-) {
-  const supabase = clientOverride ?? (await getSupabase());
-
-  if (!supabase) {
-    return demoProfiles.filter((profile) => profileIds.includes(profile.id));
-  }
-
-  if (!profileIds.length) {
-    return [];
-  }
-
-  const { data } = await supabase.from("profiles").select("id,display_name,is_admin,is_anonymous").in("id", profileIds);
-  return (data ?? []).map((row) => mapProfile(row as Row));
-}
-
-async function hydratePosts(
-  viewerId: string,
-  rows: Row[],
-  options?: {
-    useAdminRead?: boolean;
-    includeProfiles?: boolean;
-    preloadedPairs?: CombinationPair[];
-  },
-) {
-  if (!rows.length) {
-    return [] as CombinationPost[];
-  }
-
-  const useAdminRead = Boolean(options?.useAdminRead);
-  const includeProfiles = options?.includeProfiles ?? !useAdminRead;
-  const adminClient = useAdminRead ? createSupabaseAdminClient() : null;
-
-  const basePosts: CombinationPost[] = rows.map((row) => ({
-    id: String(row.id),
-    authorUserId: String(row.author_user_id),
-    authorName: "Glaze member",
-    displayAuthorName: (row.display_author_name as string | null) ?? null,
-    combinationPairId: String(row.combination_pair_id),
-    pairKey: "",
-    imagePath: String(row.image_path),
-    caption: (row.caption as string | null) ?? null,
-    applicationNotes: (row.application_notes as string | null) ?? null,
-    firingNotes: (row.firing_notes as string | null) ?? null,
-    visibility: "members",
-    status: row.status === "hidden" ? "hidden" : row.status === "reported" ? "reported" : "published",
-    createdAt: String(row.created_at),
-  }));
-
-  if (options?.preloadedPairs) {
-    const pairs = options.preloadedPairs;
-    const glazeIds = Array.from(new Set(pairs.flatMap((pair) => [pair.glazeAId, pair.glazeBId])));
-    const [glazes, profiles] = await Promise.all([
-      getGlazesByIds(viewerId, glazeIds, adminClient),
-      includeProfiles ? getProfilesByIds(basePosts.map((post) => post.authorUserId), adminClient) : Promise.resolve([]),
-    ]);
-    const profilesById = new Map(profiles.map((profile) => [profile.id, profile]));
-
-    return attachGlazesToPosts(basePosts, pairs, glazes).map((post) => ({
-      ...post,
-      authorName: post.displayAuthorName ?? profilesById.get(post.authorUserId)?.displayName ?? post.authorName,
-    }));
-  }
-
-  const [pairs, profiles] = await Promise.all([
-    getPairsByIds(basePosts.map((post) => post.combinationPairId), adminClient),
-    includeProfiles ? getProfilesByIds(basePosts.map((post) => post.authorUserId), adminClient) : Promise.resolve([]),
-  ]);
-  const glazeIds = Array.from(new Set(pairs.flatMap((pair) => [pair.glazeAId, pair.glazeBId])));
-  const glazes = await getGlazesByIds(viewerId, glazeIds, adminClient);
-  const profilesById = new Map(profiles.map((profile) => [profile.id, profile]));
-
-  return attachGlazesToPosts(basePosts, pairs, glazes).map((post) => ({
-    ...post,
-    authorName: post.displayAuthorName ?? profilesById.get(post.authorUserId)?.displayName ?? post.authorName,
-  }));
 }
 
 export async function getDashboardData(viewerId: string) {
