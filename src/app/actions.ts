@@ -2070,6 +2070,10 @@ export async function adminFlagFalseContributionAction(input: {
   const admin = createSupabaseAdminClient();
   if (!admin) return { error: "Admin client unavailable" };
 
+  if (!input.authorUserId) {
+    return { error: "No author user ID provided" };
+  }
+
   // 1. Find un-voided ledger rows for this reference
   const { data: rows } = await admin
     .from("points_ledger")
