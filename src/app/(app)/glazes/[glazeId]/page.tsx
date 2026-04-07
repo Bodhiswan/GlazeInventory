@@ -16,6 +16,7 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
 import { getGlazeDetail, getInventoryFolders, requireViewer } from "@/lib/data";
+import { createSupabaseServerClient } from "@/lib/supabase/server";
 import {
   formatGlazeLabel,
   formatGlazeMeta,
@@ -46,6 +47,22 @@ export default async function GlazeDetailPage({
   }
 
   const { glaze, viewerHasFavourited } = detail;
+
+  // Track glaze view (server-side, fire and forget)
+  void (async () => {
+    const supabase = await createSupabaseServerClient();
+    if (!supabase) return;
+    await supabase.from("analytics_events").insert({
+      event_type: "glaze_view",
+      user_id: viewer.profile.id,
+      glaze_id: null,
+      metadata: {
+        catalog_glaze_id: glaze.id,
+        glaze_name: glaze.name,
+        glaze_brand: glaze.brand ?? null,
+      },
+    });
+  })();
   const coyoteGalleryImages =
     glaze.brand === "Coyote" && glaze.code
       ? (coyoteLocalGallery[glaze.code as keyof typeof coyoteLocalGallery] ?? []).map((image) => ({

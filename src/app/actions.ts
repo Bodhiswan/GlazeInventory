@@ -733,6 +733,14 @@ export async function createCustomGlazeAction(formData: FormData) {
     redirect(`/glazes/new?error=${encodeURIComponent(glazeError?.message ?? "Could not create glaze")}`);
   }
 
+  // Track glaze creation event (fire and forget)
+  void supabase.from("analytics_events").insert({
+    event_type: "glaze_create",
+    user_id: viewer.profile.id,
+    glaze_id: null,
+    metadata: { glaze_id: glaze.id, name: parsed.data.name, brand: parsed.data.brand ?? null },
+  });
+
   const { error: inventoryError } = await supabase.from("inventory_items").insert({
     user_id: viewer.profile.id,
     glaze_id: glaze.id,
@@ -1173,6 +1181,14 @@ export async function publishUserCombinationAction(formData: FormData) {
     await supabase.from("user_combination_examples").delete().eq("id", exampleRow.id);
     redirect(`/publish?error=${encodeURIComponent(layerErr.message)}`);
   }
+
+  // Track combination publish event (fire and forget)
+  void supabase.from("analytics_events").insert({
+    event_type: "combination_publish",
+    user_id: viewer.profile.id,
+    glaze_id: null,
+    metadata: { example_id: exampleRow.id, title, layer_count: layerGlazeIds.length, cone: coneValue },
+  });
 
   revalidateWorkspace();
   redirect("/combinations?view=mine&published=1");
@@ -1901,4 +1917,50 @@ export async function trackBuyClickAction(formData: FormData): Promise<void> {
   });
 
   redirect(url);
+}
+
+// ─── Admin moderation ─────────────────────────────────────────────────────────
+
+export async function adminArchiveCombinationAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const exampleId = formData.get("exampleId") as string | null;
+  const action = formData.get("action") as string | null; // "archive" | "restore"
+  if (!exampleId || !action) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  await admin
+    .from("user_combination_examples")
+    .update({ status: action === "archive" ? "hidden" : "published" })
+    .eq("id", exampleId);
+
+  revalidatePath("/admin/analytics");
+  revalidatePath("/combinations");
+}
+
+export async function adminDeleteCustomGlazeAction(formData: FormData): Promise<void> {
+  const viewer = await requireViewer();
+  if (!viewer.profile.isAdmin) { redirect("/dashboard"); }
+
+  const glazeId = formData.get("glazeId") as string | null;
+  if (!glazeId) return;
+
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  // Safety check — only delete custom glazes
+  const { data: glaze } = await admin
+    .from("glazes")
+    .select("source_type")
+    .eq("id", glazeId)
+    .single();
+
+  if (!glaze || (glaze as Record<string, unknown>).source_type !== "nonCommercial") return;
+
+  await admin.from("glazes").delete().eq("id", glazeId);
+
+  revalidatePath("/admin/analytics");
 }
