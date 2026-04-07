@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { signUpWithPasswordAction } from "@/app/actions";
+import { signUpWithPasswordAction } from "@/app/actions/auth";
 import { SubmitButton } from "@/components/submit-button";
 import { FormBanner } from "@/components/ui/form-banner";
 import { buttonVariants } from "@/components/ui/button";

@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import {
   signInWithPasswordAction,
-} from "@/app/actions";
+} from "@/app/actions/auth";
 import { SubmitButton } from "@/components/submit-button";
 import { SetupCallout } from "@/components/setup-callout";
 import { FormBanner } from "@/components/ui/form-banner";

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { sendPasswordResetAction } from "@/app/actions";
+import { sendPasswordResetAction } from "@/app/actions/auth";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
