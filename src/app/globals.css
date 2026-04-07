@@ -14,6 +14,11 @@
   --shadow: none;
   --tile-hover: #ece8e4;
   --radius: 0px;
+
+  /* Canonical spacing — use these contexts, not ad-hoc Tailwind values */
+  --space-inner: 1rem;     /* padding inside cards/panels    → p-4 sm:p-5 lg:p-6 */
+  --space-gap: 1.25rem;    /* gap between sibling components → gap-4 sm:gap-5 */
+  --space-section: 2rem;   /* gap between page sections      → gap-6 sm:gap-8 */
 }
 
 @theme inline {
