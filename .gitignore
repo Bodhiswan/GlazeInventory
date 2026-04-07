@@ -52,4 +52,7 @@ vendor-image-download.log
 # supabase
 supabase/.temp
 
+# worktrees
+.worktrees/
+
 .vercel
