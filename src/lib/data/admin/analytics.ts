@@ -4,6 +4,9 @@ import type {
   LeaderboardEntry,
   PointsBreakdownEntry,
 } from "@/lib/types";
+import { getInventory } from "@/lib/data/inventory";
+import { getCombinationSummaries } from "@/lib/data/combinations";
+import { getCommunityPosts } from "@/lib/data/community";
 
 type Row = Record<string, unknown>;
 
@@ -792,4 +795,29 @@ export async function getAllUsersForAdmin({
   });
 
   return { rows, total: count ?? 0 };
+}
+
+// ─── User-facing Dashboard Metrics ───────────────────────────────────────────
+
+export async function getDashboardData(viewerId: string) {
+  const [inventory, combinations, communityPosts] = await Promise.all([
+    getInventory(viewerId),
+    getCombinationSummaries(viewerId),
+    getCommunityPosts(),
+  ]);
+
+  const ownedItems = inventory.filter((item) => item.status === "owned");
+  const customCount = ownedItems.filter((item) => item.glaze.sourceType === "nonCommercial").length;
+
+  return {
+    inventory,
+    combinations,
+    recentPosts: communityPosts.slice(0, 3),
+    metrics: {
+      ownedGlazes: ownedItems.length,
+      customGlazes: customCount,
+      pairs: combinations.length,
+      communityExamples: communityPosts.length,
+    },
+  };
 }

@@ -12,9 +12,6 @@ import type {
 import {
   getCatalogGlazesByIds,
 } from "@/lib/catalog";
-import { getInventory } from "@/lib/data/inventory";
-import { getCombinationSummaries } from "@/lib/data/combinations";
-import { getCommunityPosts } from "@/lib/data/community";
 
 type Row = Record<string, unknown>;
 
@@ -204,28 +201,6 @@ async function getGlazesByIds(
   return getCatalogGlazesByIds(ids);
 }
 
-export async function getDashboardData(viewerId: string) {
-  const [inventory, combinations, communityPosts] = await Promise.all([
-    getInventory(viewerId),
-    getCombinationSummaries(viewerId),
-    getCommunityPosts(),
-  ]);
-
-  const ownedItems = inventory.filter((item) => item.status === "owned");
-  const customCount = ownedItems.filter((item) => item.glaze.sourceType === "nonCommercial").length;
-
-  return {
-    inventory,
-    combinations,
-    recentPosts: communityPosts.slice(0, 3),
-    metrics: {
-      ownedGlazes: ownedItems.length,
-      customGlazes: customCount,
-      pairs: combinations.length,
-      communityExamples: communityPosts.length,
-    },
-  };
-}
 
 export async function getExternalExampleIntakeQueue(status?: IntakeStatus | "all") {
   const viewer = await requireViewer();
