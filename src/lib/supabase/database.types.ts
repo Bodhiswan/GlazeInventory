@@ -1057,6 +1057,7 @@ export type Database = {
         Row: {
           atmosphere: string
           author_user_id: string
+          clay_body: string | null
           cone: string
           created_at: string
           glazing_process: string | null
@@ -1073,6 +1074,7 @@ export type Database = {
         Insert: {
           atmosphere?: string
           author_user_id: string
+          clay_body?: string | null
           cone: string
           created_at?: string
           glazing_process?: string | null
@@ -1089,6 +1091,7 @@ export type Database = {
         Update: {
           atmosphere?: string
           author_user_id?: string
+          clay_body?: string | null
           cone?: string
           created_at?: string
           glazing_process?: string | null

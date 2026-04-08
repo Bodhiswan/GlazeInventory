@@ -289,6 +289,7 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
         glazing_process: normalizeOptional(formData.get("glazingProcess")),
         notes: normalizeOptional(formData.get("notes")),
         kiln_notes: normalizeOptional(formData.get("kilnNotes")),
+        clay_body: normalizeOptional(formData.get("clayBody")),
         visibility: "members",
         status: "published",
       })
