@@ -404,13 +404,15 @@ export async function createCustomGlazeAction(
     "glaze",
   );
 
-  // --- Upload image if provided ---
-  const imageFile = formData.get("image");
-  if (imageFile instanceof File && imageFile.size > 0) {
-    if (imageFile.size > 5 * 1024 * 1024) {
-      return { error: "Image must be under 5 MB." };
-    }
-    const sanitize = (name: string) => name.replace(/[^a-zA-Z0-9.-]/g, "-");
+  // --- Upload up to 5 images ---
+  const imageFiles = formData.getAll("images").filter(
+    (f): f is File => f instanceof File && f.size > 0
+  ).slice(0, 5);
+
+  const sanitize = (n: string) => n.replace(/[^a-zA-Z0-9.-]/g, "-");
+  for (let i = 0; i < imageFiles.length; i++) {
+    const imageFile = imageFiles[i];
+    if (imageFile.size > 5 * 1024 * 1024) continue; // skip oversized, don't block submit
     const imagePath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(imageFile.name)}`;
     const imageBuffer = new Uint8Array(await imageFile.arrayBuffer());
     const { error: uploadErr } = await supabase.storage
@@ -422,7 +424,7 @@ export async function createCustomGlazeAction(
         glaze_id: glaze.id,
         label: "Photo",
         image_url: publicData.publicUrl,
-        sort_order: 0,
+        sort_order: i,
       });
     }
   }

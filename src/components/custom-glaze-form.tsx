@@ -4,6 +4,7 @@ import { useCallback, useMemo, useRef, useState, useTransition } from "react";
 
 import { createCustomGlazeAction } from "@/app/actions/inventory";
 import {
+  COMMERCIAL_GLAZE_BRANDS,
   CUSTOM_GLAZE_ATMOSPHERE_VALUES,
   CUSTOM_GLAZE_COLOR_OPTIONS,
   CUSTOM_GLAZE_CONE_VALUES,
@@ -80,7 +81,7 @@ export function CustomGlazeForm({
   const [colors, setColors] = useState<string[]>([]);
   const [finishes, setFinishes] = useState<string[]>([]);
   const [notes, setNotes] = useState("");
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -94,14 +95,25 @@ export function CustomGlazeForm({
       if (result && "error" in result) {
         setError(result.error);
       }
+      // On success Next.js redirect() throws, so this only runs on error
+      setImagePreviews([]);
+      if (fileInputRef.current) fileInputRef.current.value = "";
     });
   }, []);
 
   const handleImageChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) { setImagePreview(null); return; }
-    const url = URL.createObjectURL(file);
-    setImagePreview(url);
+    const files = Array.from(e.target.files ?? []).slice(0, 5);
+    if (!files.length) return;
+    setImagePreviews(files.map((f) => URL.createObjectURL(f)));
+  }, []);
+
+  const removeImage = useCallback((index: number) => {
+    setImagePreviews((prev) => {
+      const next = prev.filter((_, i) => i !== index);
+      // If all removed, reset file input so user can re-select
+      if (next.length === 0 && fileInputRef.current) fileInputRef.current.value = "";
+      return next;
+    });
   }, []);
 
   // Live duplicate detection — exact name+brand match against catalog
@@ -128,7 +140,7 @@ export function CustomGlazeForm({
     colors.length > 0 &&
     finishes.length > 0 &&
     notes.trim().length > 0 &&
-    !!imagePreview &&
+    imagePreviews.length > 0 &&
     !duplicate &&
     !disabled;
 
@@ -176,20 +188,27 @@ export function CustomGlazeForm({
           </Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Brand or maker</p>
         </div>
+        <datalist id="glaze-brands-list">
+          {COMMERCIAL_GLAZE_BRANDS.map((b) => <option key={b} value={b} />)}
+        </datalist>
         <div className="grid gap-4 sm:grid-cols-2">
           <label className="grid gap-2">
-            <span className="text-sm font-medium text-foreground">Brand or studio name</span>
+            <span className="text-sm font-medium text-foreground">Brand</span>
             <Input
               required
+              list="glaze-brands-list"
               name="brand"
               value={brand}
               onChange={(e) => setBrand(e.target.value)}
-              onBlur={() => setBrand(toTitleCase(brand.trim()))}
-              placeholder="e.g. Local Studio, Self-made"
+              onBlur={() => setBrand(brand.trim())}
+              placeholder="e.g. AMACO, Mayco, Coyote…"
               className="border-foreground/20 bg-white shadow-sm"
               autoComplete="off"
               disabled={disabled}
             />
+            <span className="text-xs leading-5 text-muted">
+              Choose from the list or type a brand not shown.
+            </span>
           </label>
           <label className="grid gap-2">
             <span className="text-sm font-medium text-foreground">Product code</span>
@@ -382,51 +401,69 @@ export function CustomGlazeForm({
         </label>
       </Panel>
 
-      {/* ── Image ── */}
+      {/* ── Images ── */}
       <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone={imagePreview ? "success" : "neutral"}>
-            {imagePreview ? "Set" : "Required"}
+          <Badge tone={imagePreviews.length > 0 ? "success" : "neutral"}>
+            {imagePreviews.length > 0 ? `${imagePreviews.length} photo${imagePreviews.length > 1 ? "s" : ""} selected` : "Required"}
           </Badge>
-          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Photo</p>
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Photos (up to 5)</p>
         </div>
         <div className="grid gap-3">
-          <p className="text-sm font-medium text-foreground">Got a photo of this glaze?</p>
-          {imagePreview ? (
-            <div className="relative w-full max-w-xs">
-              <img
-                src={imagePreview}
-                alt="Glaze preview"
-                className="aspect-[4/3] w-full border border-border object-cover"
-              />
-              <button
-                type="button"
-                onClick={() => { setImagePreview(null); if (fileInputRef.current) fileInputRef.current.value = ""; }}
-                className="absolute right-2 top-2 border border-border bg-white px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-muted hover:text-foreground"
-              >
-                Remove
-              </button>
+          <p className="text-sm font-medium text-foreground">Got photos of this glaze?</p>
+          {imagePreviews.length > 0 ? (
+            <div className="flex flex-wrap gap-2">
+              {imagePreviews.map((url, i) => (
+                <div key={i} className="relative">
+                  <img
+                    src={url}
+                    alt={`Glaze preview ${i + 1}`}
+                    className="h-24 w-24 border border-border object-cover sm:h-28 sm:w-28"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => removeImage(i)}
+                    className="absolute right-1 top-1 border border-border bg-white px-1.5 py-0.5 text-[9px] uppercase tracking-[0.1em] text-muted hover:text-foreground"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))}
+              {imagePreviews.length < 5 ? (
+                <label className="flex h-24 w-24 cursor-pointer items-center justify-center border border-dashed border-foreground/20 bg-white text-xs text-muted hover:bg-foreground/[0.04] sm:h-28 sm:w-28">
+                  + Add
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    name="images"
+                    accept="image/jpeg,image/png,image/webp,image/heic"
+                    multiple
+                    onChange={handleImageChange}
+                    disabled={disabled}
+                    className="sr-only"
+                  />
+                </label>
+              ) : null}
             </div>
-          ) : null}
-          <label className={cn(
-            "flex cursor-pointer items-center gap-3 border px-4 py-3 text-sm transition",
-            imagePreview
-              ? "border-foreground/20 bg-white text-muted hover:text-foreground"
-              : "border-foreground/20 bg-white text-foreground shadow-sm hover:bg-foreground/[0.04]",
-          )}>
-            <span>{imagePreview ? "Change photo" : "Choose a photo"}</span>
-            <input
-              required
-              ref={fileInputRef}
-              type="file"
-              name="image"
-              accept="image/jpeg,image/png,image/webp,image/heic"
-              onChange={handleImageChange}
-              disabled={disabled}
-              className="sr-only"
-            />
-          </label>
-          <p className="text-xs leading-5 text-muted">JPEG, PNG, WebP or HEIC · Max 5 MB</p>
+          ) : (
+            <label className={cn(
+              "flex cursor-pointer items-center gap-3 border px-4 py-3 text-sm transition",
+              "border-foreground/20 bg-white text-foreground shadow-sm hover:bg-foreground/[0.04]",
+            )}>
+              <span>Choose photos</span>
+              <input
+                ref={fileInputRef}
+                type="file"
+                name="images"
+                accept="image/jpeg,image/png,image/webp,image/heic"
+                multiple
+                onChange={handleImageChange}
+                disabled={disabled}
+                className="sr-only"
+              />
+            </label>
+          )}
+          <p className="text-xs leading-5 text-muted">JPEG, PNG, WebP or HEIC · Max 5 MB each · Up to 5 photos</p>
         </div>
       </Panel>
 
