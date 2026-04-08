@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Camera, Layers3 } from "lucide-react";
+import { Camera, Layers3, SwatchBook } from "lucide-react";
 
 import { PageHeader } from "@/components/page-header";
 import { getLeaderboard } from "@/lib/data/admin";
@@ -34,6 +34,25 @@ export default async function ContributePage() {
           </span>
           <span className="mt-auto text-[10px] uppercase tracking-[0.16em] text-muted transition-colors group-hover:text-foreground">
             Go to publish →
+          </span>
+        </Link>
+
+        {/* ── Add an unlisted glaze ── */}
+        <Link
+          href="/glazes/new"
+          className="group flex flex-col gap-4 border border-border bg-panel p-6 transition-colors hover:border-foreground/30 hover:bg-white"
+        >
+          <span className="flex h-10 w-10 items-center justify-center border border-border bg-background text-foreground transition-colors group-hover:border-foreground/30">
+            <SwatchBook className="h-5 w-5" aria-hidden="true" />
+          </span>
+          <span className="space-y-1.5">
+            <span className="block text-base font-medium text-foreground">Add an unlisted glaze</span>
+            <span className="block text-sm leading-6 text-muted">
+              If a glaze isn't in the catalog, add it here. It will appear in your inventory and in the combination search so you can document results that use it.
+            </span>
+          </span>
+          <span className="mt-auto text-[10px] uppercase tracking-[0.16em] text-muted transition-colors group-hover:text-foreground">
+            Go to form →
           </span>
         </Link>
 
