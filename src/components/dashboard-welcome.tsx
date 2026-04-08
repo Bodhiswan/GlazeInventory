@@ -249,7 +249,7 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <div className="relative flex w-full max-w-4xl flex-col overflow-hidden border border-border bg-panel shadow-2xl sm:max-h-[90vh] sm:flex-row">
+      <div className="relative flex w-full max-w-4xl flex-col overflow-hidden border border-border bg-panel shadow-2xl sm:h-[640px] sm:max-h-[90vh] sm:flex-row">
         <button
           type="button"
           onClick={onClose}
@@ -269,8 +269,8 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
         </div>
 
         {/* Text side */}
-        <div className="flex flex-1 flex-col justify-between gap-5 p-6 sm:w-1/2 sm:p-8">
-          <div className="space-y-4">
+        <div className="flex min-h-0 flex-1 flex-col sm:w-1/2">
+          <div className="flex-1 space-y-4 overflow-y-auto p-6 sm:p-8">
             <div className="flex items-center gap-2">
               <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-foreground text-white">
                 <Icon className="h-4 w-4" />
@@ -320,7 +320,7 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-between gap-3 border-t border-foreground/10 pt-4">
+          <div className="flex flex-shrink-0 items-center justify-between gap-3 border-t border-foreground/10 px-6 py-4 sm:px-8">
             <div className="flex items-center gap-3">
               <div className="flex gap-1.5">
                 {TUTORIAL_STEPS.map((_, index) => (
