@@ -69,7 +69,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
               <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
               <span>{item.label}</span>
               {item.badge ? (
-                <span className="rounded-none border border-current px-1 py-0.5 text-[8px] uppercase tracking-[0.1em] opacity-60">
+                <span className="rounded-none border border-current px-1 py-0.5 text-[8px] uppercase tracking-[0.1em] opacity-85">
                   {item.badge}
                 </span>
               ) : null}
@@ -128,7 +128,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
                   <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   <span>{item.label}</span>
                   {item.badge ? (
-                    <span className="ml-auto rounded-none border border-current px-1 py-0.5 text-[8px] uppercase tracking-[0.1em] opacity-60">
+                    <span className="ml-auto rounded-none border border-current px-1 py-0.5 text-[8px] uppercase tracking-[0.1em] opacity-85">
                       {item.badge}
                     </span>
                   ) : null}
