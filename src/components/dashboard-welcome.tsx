@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -27,49 +27,19 @@ const TILE_POOL = [
   "cg-994", "cg-1000", "cg-1001", "cg-1005",
 ].map((code) => ({ code, src: `/vendor-images/mayco-crystalites/${code}.jpg` }));
 
-const WELCOME_KEY = "glaze-library-welcome-dismissed-v1";
-
 export function DashboardWelcome({ displayName }: { displayName: string }) {
-  const [dismissed, setDismissed] = useState(false);
   const [tourOpen, setTourOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
     setHydrated(true);
-    try {
-      if (localStorage.getItem(WELCOME_KEY)) setDismissed(true);
-    } catch {
-      // ignore
-    }
   }, []);
-
-  const dismiss = useCallback(() => {
-    try {
-      localStorage.setItem(WELCOME_KEY, "1");
-    } catch {
-      // ignore
-    }
-    setDismissed(true);
-  }, []);
-
-  if (hydrated && dismissed) {
-    return <TutorialModal open={tourOpen} onClose={() => setTourOpen(false)} />;
-  }
 
   const firstName = displayName.split(" ")[0];
 
   return (
     <>
       <Panel className="relative overflow-hidden p-0">
-        <button
-          type="button"
-          onClick={dismiss}
-          aria-label="Dismiss welcome"
-          className="absolute right-3 top-3 z-10 rounded-full bg-white/70 p-1.5 text-muted backdrop-blur transition-colors hover:bg-white hover:text-foreground"
-        >
-          <X className="h-4 w-4" />
-        </button>
-
         {/* Hero strip of real glaze tiles with edge fade */}
         <div className="relative h-28 overflow-hidden sm:h-36">
           <div className="absolute inset-0 flex gap-1.5 px-1.5 py-1.5">
@@ -106,7 +76,7 @@ export function DashboardWelcome({ displayName }: { displayName: string }) {
         </div>
 
         <div className="space-y-5 px-6 pb-6 pt-4 sm:px-8 sm:pb-8">
-          <div className="space-y-2 pr-10">
+          <div className="space-y-2">
             <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
               Welcome{hydrated ? ", " : ""}
               {hydrated ? firstName : ""}

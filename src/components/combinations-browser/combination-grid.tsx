@@ -405,21 +405,47 @@ function UserExampleDetail({
   return (
     <div className="space-y-4">
       {lightboxImages ? <ImageLightbox images={lightboxImages} initialIndex={lightboxIndex} onClose={closeLightbox} /> : null}
-      {/* Hero: all uploaded photos */}
+      {/* Hero: large primary photo + small thumbnails for the rest */}
       <div className="grid gap-4 sm:grid-cols-[minmax(0,280px)_1fr]">
         <div className="space-y-2">
-          {heroImages.map((img, i) => (
-            <button key={img.id} type="button" onClick={() => openLightbox(heroImages, i)} className="w-full overflow-hidden border border-border bg-panel transition hover:opacity-90">
+          {heroImages.length > 0 ? (
+            <button
+              type="button"
+              onClick={() => openLightbox(heroImages, 0)}
+              className="w-full overflow-hidden border border-border bg-panel transition hover:opacity-90"
+            >
               <Image
-                src={img.imageUrl}
-                alt={img.alt}
+                src={heroImages[0].imageUrl}
+                alt={heroImages[0].alt}
                 width={400}
                 height={300}
                 sizes="(min-width: 640px) 280px, 100vw"
                 className="aspect-[4/3] w-full object-cover"
               />
             </button>
-          ))}
+          ) : null}
+          {heroImages.length > 1 ? (
+            <div className="grid grid-cols-4 gap-1.5">
+              {heroImages.slice(1).map((img, i) => (
+                <button
+                  key={img.id}
+                  type="button"
+                  onClick={() => openLightbox(heroImages, i + 1)}
+                  aria-label={`Open ${img.label}`}
+                  className="relative overflow-hidden border border-border bg-panel transition hover:opacity-90"
+                >
+                  <Image
+                    src={img.imageUrl}
+                    alt={img.alt}
+                    width={120}
+                    height={120}
+                    sizes="80px"
+                    className="aspect-square w-full object-cover"
+                  />
+                </button>
+              ))}
+            </div>
+          ) : null}
         </div>
 
         <div className="space-y-3">

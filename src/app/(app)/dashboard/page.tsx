@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CHANGES } from "@/lib/changelog";
 import { DashboardPointsHelp } from "@/components/dashboard-points-help";
 import { DashboardWelcome } from "@/components/dashboard-welcome";
 import { SetupCallout } from "@/components/setup-callout";
@@ -44,6 +45,34 @@ export default async function DashboardPage() {
 
       {/* How to gain points (dismissable) */}
       <DashboardPointsHelp />
+
+      {/* Changelog */}
+      <section className="space-y-4">
+        <div>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted">What&apos;s new</p>
+          <h2 className="display-font mt-2 text-3xl tracking-tight">Recent updates</h2>
+        </div>
+        <Panel className="space-y-5">
+          {CHANGES.map((section) => (
+            <div key={section.category} className="space-y-2">
+              <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted">
+                {section.category}
+              </p>
+              <ul className="space-y-1.5">
+                {section.items.map((item) => (
+                  <li key={item} className="flex gap-2 text-sm leading-5 text-foreground/80">
+                    <span
+                      className="mt-[6px] h-1.5 w-1.5 shrink-0 rounded-full bg-foreground/30"
+                      aria-hidden="true"
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </Panel>
+      </section>
 
       {/* Weekly leaderboard */}
       <section className="space-y-4">

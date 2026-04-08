@@ -115,6 +115,8 @@ function FilterSection({
 export interface CombinationFiltersProps {
   query: string;
   setQuery: (value: string) => void;
+  query2: string;
+  setQuery2: (value: string) => void;
   view: CombinationsView;
   setView: (value: CombinationsView) => void;
   viewFilters: { key: CombinationsView; label: string; count: number }[];
@@ -147,6 +149,8 @@ export interface CombinationFiltersProps {
 export function CombinationFilters({
   query,
   setQuery,
+  query2,
+  setQuery2,
   view,
   setView,
   viewFilters,
@@ -173,145 +177,141 @@ export function CombinationFilters({
 }: CombinationFiltersProps) {
   return (
     <Panel className="space-y-4">
-      <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-3 sm:px-4 sm:py-4">
-        <Search className="h-4 w-4 text-muted" />
-        <Input
-          value={query}
-          onChange={(event) => setQuery(event.target.value)}
-          placeholder="Search by glaze code, glaze name, clay body, cone, or keyword"
-          className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
-        />
-        {query.trim() ? (
-          <button type="button" onClick={() => setQuery("")} className="text-muted hover:text-foreground">
-            <X className="h-4 w-4" />
-          </button>
-        ) : null}
+      <div className="grid gap-3 sm:grid-cols-2">
+        <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-3 sm:px-4 sm:py-4">
+          <Search className="h-4 w-4 text-muted" />
+          <Input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search a glaze, code, or keyword"
+            className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
+          />
+          {query.trim() ? (
+            <button type="button" onClick={() => setQuery("")} className="text-muted hover:text-foreground">
+              <X className="h-4 w-4" />
+            </button>
+          ) : null}
+        </div>
+        <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-3 sm:px-4 sm:py-4">
+          <Search className="h-4 w-4 text-muted" />
+          <Input
+            value={query2}
+            onChange={(event) => setQuery2(event.target.value)}
+            placeholder="And another glaze to narrow down"
+            className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
+          />
+          {query2.trim() ? (
+            <button type="button" onClick={() => setQuery2("")} className="text-muted hover:text-foreground">
+              <X className="h-4 w-4" />
+            </button>
+          ) : null}
+        </div>
       </div>
 
-      <div className="flex flex-wrap items-center gap-3">
-        <Badge tone="neutral">
-          {activeTilesLength} result{activeTilesLength === 1 ? "" : "s"}
-        </Badge>
-        <button
-          type="button"
-          onClick={() => { setView("mine"); setBrandFilters(() => []); setVisibleCount(INITIAL_TILE_BATCH); }}
-          className={buttonVariants({
-            variant: view === "mine" ? "primary" : "ghost",
-            size: "lg",
-          })}
-        >
-          My Combinations
-        </button>
+      {/* Library-style single full-width filter button */}
+      <div className="overflow-hidden border border-border/80 bg-panel">
         <button
           type="button"
           onClick={() => setFiltersOpen((c) => !c)}
-          className={buttonVariants({
-            variant: hasFilters ? "primary" : "ghost",
-            size: "sm",
-          })}
+          className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-white/55"
+          aria-expanded={filtersOpen}
         >
-          {filtersOpen ? "Hide filters" : "Filters"}
+          <span className="space-y-1">
+            <span className="block text-sm font-medium text-foreground">Filters</span>
+            <span className="block text-[10px] uppercase tracking-[0.16em] text-muted">
+              Expand sections by view, brand, and cone
+            </span>
+          </span>
+          <span className="flex items-center gap-2">
+            {hasFilters ? <Badge tone="neutral">Active</Badge> : null}
+            <ChevronDown
+              className={cn("h-4 w-4 text-muted transition-transform", filtersOpen ? "rotate-180" : "")}
+            />
+          </span>
         </button>
-        <a
-          href="/publish"
-          className={buttonVariants({ variant: "ghost", size: "sm" })}
-        >
-          + Share your result
-        </a>
-        {hasFilters ? (
-          <button
-            type="button"
-            onClick={resetFilters}
-            className={buttonVariants({ variant: "ghost", size: "sm" })}
-          >
-            Clear filters
-          </button>
+
+        {filtersOpen ? (
+          <div className="grid gap-3 border-t border-border px-3 py-3 sm:px-4 sm:py-4">
+            <FilterSection
+              title="View"
+              optionCount={viewFilters.length}
+              selectedCount={view !== "all" ? 1 : 0}
+              open={openFilterSections.view ?? true}
+              onToggle={() => setOpenFilterSections((c) => ({ ...c, view: !(c.view ?? true) }))}
+            >
+              <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                {viewFilters.map((filter) => (
+                  <FilterTile
+                    key={filter.key}
+                    value={filter.label}
+                    count={filter.count}
+                    checked={view === filter.key}
+                    onToggle={() => {
+                      setView(view === filter.key ? "all" : filter.key);
+                      setVisibleCount(INITIAL_TILE_BATCH);
+                    }}
+                  />
+                ))}
+              </div>
+            </FilterSection>
+
+            <FilterSection
+              title="Brands"
+              optionCount={brandOptions.length}
+              selectedCount={brandFilters.length}
+              open={openFilterSections.brands ?? false}
+              onToggle={() => setOpenFilterSections((c) => ({ ...c, brands: !(c.brands ?? false) }))}
+            >
+              <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                {brandOptions.map((option) => (
+                  <FilterTile
+                    key={option}
+                    value={option}
+                    count={brandOptionCounts.get(option)}
+                    checked={brandFilters.includes(option)}
+                    onToggle={(value) => {
+                      setBrandFilters((current) => toggleValue(current, value));
+                      setVisibleCount(INITIAL_TILE_BATCH);
+                    }}
+                  />
+                ))}
+              </div>
+            </FilterSection>
+
+            <FilterSection
+              title="Cone"
+              optionCount={3}
+              selectedCount={[showCone5, showCone6, showCone10].filter((v) => !v).length === 0 ? 0 : [showCone5, showCone6, showCone10].filter(Boolean).length}
+              open={openFilterSections.cone ?? false}
+              onToggle={() => setOpenFilterSections((c) => ({ ...c, cone: !(c.cone ?? false) }))}
+            >
+              <div className="flex flex-wrap items-center gap-4">
+                <label className="flex items-center gap-2 text-sm text-foreground">
+                  <input type="checkbox" checked={showCone5} onChange={(e) => setShowCone5(e.target.checked)} className="accent-foreground" />
+                  Cone 5
+                </label>
+                <label className="flex items-center gap-2 text-sm text-foreground">
+                  <input type="checkbox" checked={showCone6} onChange={(e) => setShowCone6(e.target.checked)} className="accent-foreground" />
+                  Cone 6
+                </label>
+                <label className="flex items-center gap-2 text-sm text-foreground">
+                  <input type="checkbox" checked={showCone10} onChange={(e) => setShowCone10(e.target.checked)} className="accent-foreground" />
+                  Cone 10
+                </label>
+              </div>
+            </FilterSection>
+
+            {hasFilters ? (
+              <button
+                type="button"
+                onClick={resetFilters}
+                className={buttonVariants({ variant: "ghost", size: "sm" })}
+              >
+                Clear filters
+              </button>
+            ) : null}
+          </div>
         ) : null}
-      </div>
-
-      {/* Expandable filter sections */}
-      {filtersOpen ? (
-        <div className="space-y-2">
-          {/* View filter */}
-          <FilterSection
-            title="View"
-            optionCount={viewFilters.length}
-            selectedCount={view !== "all" ? 1 : 0}
-            open={openFilterSections.view ?? true}
-            onToggle={() => setOpenFilterSections((c) => ({ ...c, view: !(c.view ?? true) }))}
-          >
-            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-              {viewFilters.map((filter) => (
-                <FilterTile
-                  key={filter.key}
-                  value={filter.label}
-                  count={filter.count}
-                  checked={view === filter.key}
-                  onToggle={() => {
-                    setView(view === filter.key ? "all" : filter.key);
-                    setVisibleCount(INITIAL_TILE_BATCH);
-                  }}
-                />
-              ))}
-            </div>
-          </FilterSection>
-
-          {/* Brand filter */}
-          <FilterSection
-            title="Brands"
-            optionCount={brandOptions.length}
-            selectedCount={brandFilters.length}
-            open={openFilterSections.brands ?? false}
-            onToggle={() => setOpenFilterSections((c) => ({ ...c, brands: !(c.brands ?? false) }))}
-          >
-            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-              {brandOptions.map((option) => (
-                <FilterTile
-                  key={option}
-                  value={option}
-                  count={brandOptionCounts.get(option)}
-                  checked={brandFilters.includes(option)}
-                  onToggle={(value) => {
-                    setBrandFilters((current) => toggleValue(current, value));
-                    setVisibleCount(INITIAL_TILE_BATCH);
-                  }}
-                />
-              ))}
-            </div>
-          </FilterSection>
-        </div>
-      ) : null}
-
-      {/* Cone filter */}
-      <div className="flex flex-wrap items-center gap-4">
-        <span className="text-xs uppercase tracking-[0.18em] text-muted">Cone filter</span>
-        <label className="flex items-center gap-2 text-sm text-foreground">
-          <input
-            type="checkbox"
-            checked={showCone5}
-            onChange={(e) => setShowCone5(e.target.checked)}
-            className="accent-foreground"
-          />
-          Cone 5
-        </label>
-        <label className="flex items-center gap-2 text-sm text-foreground">
-          <input
-            type="checkbox"
-            checked={showCone6}
-            onChange={(e) => setShowCone6(e.target.checked)}
-            className="accent-foreground"
-          />
-          Cone 6
-        </label>
-        <label className="flex items-center gap-2 text-sm text-foreground">
-          <input
-            type="checkbox"
-            checked={showCone10}
-            onChange={(e) => setShowCone10(e.target.checked)}
-            className="accent-foreground"
-          />
-          Cone 10
-        </label>
       </div>
 
       {/* Active filter summary chips */}

@@ -172,17 +172,19 @@ function exampleToTile(example: VendorCombinationExample): CombinationTile {
 }
 
 function userExampleToTile(ue: UserCombinationExample): CombinationTile {
-  const tileLayers: TileLayer[] = ue.layers.map((l) => ({
+  // ue.layers is bottom-up — reverse so the stacked tile renders top → bottom.
+  const tileLayers: TileLayer[] = [...ue.layers].reverse().map((l) => ({
     code: l.glaze?.code ?? null,
     name: l.glaze?.name ?? "Glaze",
   }));
 
-  const layerLabels = ue.layers.map((l) =>
-    l.glaze ? (l.glaze.code ?? l.glaze.name ?? "Glaze") : "Glaze",
-  );
-  const title = layerLabels.length >= 2
-    ? `${layerLabels[0]} over ${layerLabels.slice(1).join(" over ")}`
-    : layerLabels[0] ?? "User combination";
+  // ue.layers comes bottom-up (layer_order ASC). Reverse for display so the
+  // top layer is shown first — matching the form's "top over bottom" mental
+  // model — and join with "/".
+  const layerLabels = [...ue.layers]
+    .reverse()
+    .map((l) => (l.glaze ? (l.glaze.code ?? l.glaze.name ?? "Glaze") : "Glaze"));
+  const title = layerLabels.length >= 1 ? layerLabels.join("/") : "User combination";
 
   const ownership: TileOwnership = ue.viewerOwnsAllGlazes
     ? "all"
@@ -285,6 +287,7 @@ export function useCombinationsBrowser({
   favouriteCombinationIds = [],
 }: UseCombinationsBrowserProps) {
   const [query, setQuery] = useState(initialQuery);
+  const [query2, setQuery2] = useState("");
   const [view, setView] = useState<CombinationsView>(initialView);
   const [brandFilters, setBrandFilters] = useState<string[]>([]);
   const [showCone5, setShowCone5] = useState(true);
@@ -299,7 +302,9 @@ export function useCombinationsBrowser({
   const [visibleCount, setVisibleCount] = useState(INITIAL_TILE_BATCH);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
   const deferredQuery = useDeferredValue(query);
+  const deferredQuery2 = useDeferredValue(query2);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
+  const normalizedQuery2 = deferredQuery2.trim().toLowerCase();
 
   useEffect(() => {
     setView(initialView);
@@ -346,6 +351,7 @@ export function useCombinationsBrowser({
   function resetFilters() {
     setView("all");
     setQuery("");
+    setQuery2("");
     setBrandFilters([]);
     setShowCone5(true);
     setShowCone6(true);
@@ -502,29 +508,36 @@ export function useCombinationsBrowser({
       return !cone;
     });
 
-    // Text search
-    if (normalizedQuery) {
-      const strippedQuery = stripPunctuation(normalizedQuery);
-      tiles = tiles.filter((tile) =>
-        tile.searchText.includes(normalizedQuery) ||
-        (strippedQuery !== normalizedQuery && tile.searchText.includes(strippedQuery)),
+    // Text search — both queries must match (AND) so users can narrow combos
+    // by typing one glaze in each box.
+    const matchesQuery = (tile: CombinationTile, q: string) => {
+      const stripped = stripPunctuation(q);
+      return (
+        tile.searchText.includes(q) ||
+        (stripped !== q && tile.searchText.includes(stripped))
       );
+    };
+    if (normalizedQuery) {
+      tiles = tiles.filter((tile) => matchesQuery(tile, normalizedQuery));
+    }
+    if (normalizedQuery2) {
+      tiles = tiles.filter((tile) => matchesQuery(tile, normalizedQuery2));
     }
 
     return tiles;
-  }, [view, normalizedQuery, brandFilters, showCone5, showCone6, showCone10, allTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles]);
+  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone5, showCone6, showCone10, allTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles]);
 
   const activeTile = useMemo(
     () => activeTiles.find((t) => t.id === activeTileId) ?? null,
     [activeTiles, activeTileId],
   );
 
-  const hasFilters = view !== "all" || brandFilters.length > 0 || query.trim().length > 0 || !showCone5 || !showCone6 || !showCone10;
+  const hasFilters = view !== "all" || brandFilters.length > 0 || query.trim().length > 0 || query2.trim().length > 0 || !showCone5 || !showCone6 || !showCone10;
 
   /* Reset visible count when filters change */
   useEffect(() => {
     setVisibleCount(INITIAL_TILE_BATCH);
-  }, [view, normalizedQuery, brandFilters, showCone5, showCone6, showCone10]);
+  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone5, showCone6, showCone10]);
 
   /* Progressive rendering — load more tiles as the user scrolls */
   const visibleTiles = useMemo(
@@ -571,6 +584,8 @@ export function useCombinationsBrowser({
     // Search
     query,
     setQuery,
+    query2,
+    setQuery2,
     // View
     view,
     setView,

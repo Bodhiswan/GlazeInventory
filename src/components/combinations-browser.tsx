@@ -53,6 +53,8 @@ export function CombinationsBrowser({
       <CombinationFilters
         query={browser.query}
         setQuery={browser.setQuery}
+        query2={browser.query2}
+        setQuery2={browser.setQuery2}
         view={browser.view}
         setView={browser.setView}
         viewFilters={browser.viewFilters}

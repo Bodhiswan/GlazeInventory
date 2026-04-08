@@ -4,33 +4,7 @@ import { Bell } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const CHANGELOG_KEY = "glaze-library-changelog-v2";
-
-const CHANGES = [
-  {
-    category: "New",
-    items: [
-      "Seattle Pottery Supply — 167 SP-series glazes added to the catalog with photos, cones, and finishes.",
-      "Points & leaderboard — earn points for contributions; see 'People to thank' on the Contribute page and your rank on your profile.",
-      "Direct messaging & community firing images — message admins directly and browse firing photos shared by the community.",
-      "Up to 5 photos per submission — attach multiple firing photos when adding glazes or publishing combinations.",
-      "Brand picker on glaze submissions — pick from an expanded brand list (Chrysanthos, Cesco, Welte, and more) instead of typing freeform.",
-      "Smarter firing-image glaze search — brand filter, smart search, and an image-first picker matching the catalog.",
-      "Mobile hamburger menu — cleaner mobile nav; username and points now visible in the header on every screen size.",
-      "Faster page loads — Suspense streaming on the catalog, combinations, community, and detail pages.",
-    ],
-  },
-  {
-    category: "Fixed",
-    items: [
-      "User-submitted glazes no longer show as 'Unlinked glaze' inside combinations.",
-      "Custom glaze photos now appear in the Library immediately after upload.",
-      "Submission forms preserve your input when validation errors happen instead of wiping the page.",
-      "Muted text contrast improved for WCAG AA readability.",
-      "Store buy-links open reliably in a new tab.",
-    ],
-  },
-];
+import { CHANGELOG_KEY, CHANGES } from "@/lib/changelog";
 
 export function ChangelogBanner({ unreadMessages = 0 }: { unreadMessages?: number }) {
   const [open, setOpen] = useState(false);
