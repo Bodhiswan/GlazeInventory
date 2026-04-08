@@ -1,4 +1,3 @@
-import { createCustomGlazeAction } from "@/app/actions/inventory";
 import { PageHeader } from "@/components/page-header";
 import { SetupCallout } from "@/components/setup-callout";
 import type { CatalogEntry } from "@/components/custom-glaze-form";
@@ -11,11 +10,10 @@ import { formatSearchQuery } from "@/lib/utils";
 export default async function NewGlazePage({
   searchParams,
 }: {
-  searchParams: Promise<{ error?: string; returnTo?: string }>;
+  searchParams: Promise<{ returnTo?: string }>;
 }) {
   const viewer = await requireViewer();
   const params = await searchParams;
-  const error = formatSearchQuery(params.error);
   const returnTo = formatSearchQuery(params.returnTo) ?? "/inventory";
 
   // Fetch both static catalog and user's existing custom glazes for dupe detection
@@ -36,11 +34,6 @@ export default async function NewGlazePage({
       />
 
       {viewer.mode === "demo" ? <SetupCallout compact /> : null}
-      {error ? (
-        <div className="border border-[#bb6742]/18 bg-[#bb6742]/10 px-4 py-3 text-sm text-[#7f4026]">
-          {decodeURIComponent(error)}
-        </div>
-      ) : null}
 
       <section className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
         {/* ── Guidance ── */}
@@ -87,13 +80,11 @@ export default async function NewGlazePage({
             </p>
           </div>
 
-          <form action={createCustomGlazeAction} className="grid gap-6">
-            <CustomGlazeForm
-              catalogEntries={catalogEntries}
-              returnTo={returnTo}
-              disabled={viewer.mode === "demo"}
-            />
-          </form>
+          <CustomGlazeForm
+            catalogEntries={catalogEntries}
+            returnTo={returnTo}
+            disabled={viewer.mode === "demo"}
+          />
         </Panel>
       </section>
     </div>

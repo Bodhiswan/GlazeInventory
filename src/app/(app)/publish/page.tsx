@@ -1,4 +1,3 @@
-import { publishUserCombinationAction } from "@/app/actions/combinations";
 import { PageHeader } from "@/components/page-header";
 import { PublishCombinationForm } from "@/components/publish-combination-form";
 import { SetupCallout } from "@/components/setup-callout";
@@ -6,17 +5,9 @@ import { Badge } from "@/components/ui/badge";
 import { Panel } from "@/components/ui/panel";
 import { getCatalogGlazes } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
-import { formatSearchQuery } from "@/lib/utils";
-
-export default async function PublishPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ error?: string }>;
-}) {
+export default async function PublishPage() {
   const viewer = await requireViewer();
   const allGlazes = await getCatalogGlazes(viewer.profile.id);
-  const params = await searchParams;
-  const error = formatSearchQuery(params.error);
 
   return (
     <div className="space-y-8">
@@ -27,11 +18,6 @@ export default async function PublishPage({
       />
 
       {viewer.mode === "demo" ? <SetupCallout compact /> : null}
-      {error ? (
-        <div className="border border-[#bb6742]/18 bg-[#bb6742]/10 px-4 py-3 text-sm text-[#7f4026]">
-          {decodeURIComponent(error)}
-        </div>
-      ) : null}
 
       <section className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
         <div className="space-y-4">
@@ -91,12 +77,10 @@ export default async function PublishPage({
             </p>
           </div>
 
-          <form action={publishUserCombinationAction} className="grid gap-6">
-            <PublishCombinationForm
-              disabled={viewer.mode === "demo"}
-              glazes={allGlazes}
-            />
-          </form>
+          <PublishCombinationForm
+            disabled={viewer.mode === "demo"}
+            glazes={allGlazes}
+          />
         </Panel>
       </section>
     </div>

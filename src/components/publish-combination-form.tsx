@@ -1,11 +1,12 @@
 "use client";
 
 import { Trash2 } from "lucide-react";
-import { useDeferredValue, useMemo, useState } from "react";
-import { useFormStatus } from "react-dom";
+import { useCallback, useDeferredValue, useMemo, useState, useTransition } from "react";
 
+import { publishUserCombinationAction } from "@/app/actions/combinations";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
@@ -187,14 +188,13 @@ function getLayerRole(index: number, total: number) {
 }
 
 /* ---------------------------------------------------------------------------
- * Submit button — uses useFormStatus to show pending state
+ * Submit button
  * ------------------------------------------------------------------------ */
 
-function PublishSubmitButton({ canPublish }: { canPublish: boolean }) {
-  const { pending } = useFormStatus();
+function PublishSubmitButton({ canPublish, isPending }: { canPublish: boolean; isPending: boolean }) {
   return (
-    <Button type="submit" disabled={!canPublish || pending}>
-      {pending ? "Publishing…" : "Publish combination"}
+    <Button type="submit" disabled={!canPublish || isPending}>
+      {isPending ? "Publishing…" : "Publish combination"}
     </Button>
   );
 }
@@ -216,6 +216,20 @@ export function PublishCombinationForm({
   ]);
   const [coneChoice, setConeChoice] = useState<ConeChoice | "">("");
   const [imageCount, setImageCount] = useState(0);
+  const [error, setError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
+
+  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    const data = new FormData(e.currentTarget);
+    startTransition(async () => {
+      const result = await publishUserCombinationAction(data);
+      if (result && "error" in result) {
+        setError(result.error);
+      }
+    });
+  }, []);
 
   const selectedIds = useMemo(
     () => new Set(layers.map((l) => l.glazeId).filter(Boolean)),
@@ -250,7 +264,9 @@ export function PublishCombinationForm({
   }
 
   return (
-    <div className="grid gap-6">
+    <form onSubmit={handleSubmit} className="grid gap-6">
+      {error ? <FormBanner variant="error">{error}</FormBanner> : null}
+
       {/* Hidden inputs for all layer glaze IDs */}
       {layers.map((layer, index) => (
         <input
@@ -448,8 +464,8 @@ export function PublishCombinationForm({
         <p className="text-sm text-muted">
           Published examples appear in combinations and help other members compare layering results.
         </p>
-        <PublishSubmitButton canPublish={canPublish} />
+        <PublishSubmitButton canPublish={canPublish} isPending={isPending} />
       </div>
-    </div>
+    </form>
   );
 }

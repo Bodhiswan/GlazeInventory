@@ -298,7 +298,9 @@ export async function addCatalogGlazeToInventoryAction(formData: FormData) {
   redirect(returnTo);
 }
 
-export async function createCustomGlazeAction(formData: FormData) {
+export async function createCustomGlazeAction(
+  formData: FormData,
+): Promise<{ error: string } | null> {
   const { viewer, supabase } = await requireContributingMember("/glazes/new");
   const returnTo = normalizeOptional(formData.get("returnTo")) ?? "/inventory";
 
@@ -317,7 +319,7 @@ export async function createCustomGlazeAction(formData: FormData) {
 
   if (!parsed.success) {
     const firstIssue = parsed.error.issues[0]?.message ?? "Check the form for errors";
-    redirect(`/glazes/new?error=${encodeURIComponent(firstIssue)}`);
+    return { error: firstIssue };
   }
 
   const nameNorm = parsed.data.name.toLowerCase();
@@ -330,9 +332,7 @@ export async function createCustomGlazeAction(formData: FormData) {
       (g.brand?.toLowerCase() ?? null) === brandNorm,
   );
   if (catalogDupe) {
-    redirect(
-      `/glazes/new?error=${encodeURIComponent(`This glaze already exists in the catalog — search for "${parsed.data.name}" in the library`)}`,
-    );
+    return { error: `This glaze already exists in the catalog — search for "${parsed.data.name}" in the library.` };
   }
 
   // Check the user's own custom glazes for exact duplicates
@@ -347,9 +347,7 @@ export async function createCustomGlazeAction(formData: FormData) {
     (row) => ((row.brand as string | null)?.toLowerCase() ?? null) === brandNorm,
   );
   if (customDupe) {
-    redirect(
-      `/glazes/new?error=${encodeURIComponent("You have already added a custom glaze with this name")}`,
-    );
+    return { error: "You have already added a custom glaze with this name." };
   }
 
   const { data: glaze, error: glazeError } = await supabase
@@ -370,7 +368,7 @@ export async function createCustomGlazeAction(formData: FormData) {
     .single();
 
   if (glazeError || !glaze) {
-    redirect(`/glazes/new?error=${encodeURIComponent(glazeError?.message ?? "Could not create glaze")}`);
+    return { error: glazeError?.message ?? "Could not create glaze." };
   }
 
   // Track glaze creation event (fire and forget)
@@ -394,7 +392,7 @@ export async function createCustomGlazeAction(formData: FormData) {
   });
 
   if (inventoryError) {
-    redirect(`/glazes/new?error=${encodeURIComponent(inventoryError.message)}`);
+    return { error: inventoryError.message };
   }
 
   void awardPoints(
@@ -410,7 +408,7 @@ export async function createCustomGlazeAction(formData: FormData) {
   const imageFile = formData.get("image");
   if (imageFile instanceof File && imageFile.size > 0) {
     if (imageFile.size > 5 * 1024 * 1024) {
-      redirect(`/glazes/new?error=${encodeURIComponent("Image must be under 5MB")}`);
+      return { error: "Image must be under 5 MB." };
     }
     const sanitize = (name: string) => name.replace(/[^a-zA-Z0-9.-]/g, "-");
     const imagePath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(imageFile.name)}`;

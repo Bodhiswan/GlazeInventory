@@ -7,7 +7,9 @@ import { formatGlazeLabel } from "@/lib/utils";
 import { awardPoints } from "@/lib/points";
 import { normalizeOptional, revalidateWorkspace, requireMemberSupabase, requireContributingMember } from "./_shared";
 
-export async function publishUserCombinationAction(formData: FormData) {
+export async function publishUserCombinationAction(
+  formData: FormData,
+): Promise<{ error: string } | null> {
   const { viewer, supabase } = await requireContributingMember("/publish");
 
   // --- Parse layer glaze IDs (up to 4) ---
@@ -18,7 +20,7 @@ export async function publishUserCombinationAction(formData: FormData) {
   }
 
   if (layerGlazeIds.length < 2) {
-    redirect("/publish?error=Add%20at%20least%20two%20glaze%20layers%20before%20publishing");
+    return { error: "Add at least two glaze layers before publishing." };
   }
 
   // Validate glaze IDs: catalog glazes use static JSON IDs, custom glazes use DB IDs.
@@ -39,7 +41,7 @@ export async function publishUserCombinationAction(formData: FormData) {
     for (const glazeId of customGlazeIds) {
       const dbGlaze = dbCustomMap.get(glazeId);
       if (!dbGlaze || dbGlaze.source_type !== "nonCommercial" || dbGlaze.created_by_user_id !== viewer.profile.id) {
-        redirect("/publish?error=One%20or%20more%20selected%20glazes%20could%20not%20be%20found");
+        return { error: "One or more selected glazes could not be found." };
       }
       customGlazeLabelMap.set(
         glazeId,
@@ -52,7 +54,7 @@ export async function publishUserCombinationAction(formData: FormData) {
   const coneValue = formData.get("coneValue")?.toString() ?? "";
   const validConeValues = new Set(["Cone 06", "Cone 6", "Cone 10"]);
   if (!validConeValues.has(coneValue)) {
-    redirect("/publish?error=Choose%20Cone%2006,%20Cone%206,%20or%20Cone%2010%20before%20publishing");
+    return { error: "Choose Cone 06, Cone 6, or Cone 10 before publishing." };
   }
 
   // --- Images (1 required, up to 5) ---
@@ -61,17 +63,17 @@ export async function publishUserCombinationAction(formData: FormData) {
   );
 
   if (imageFiles.length === 0) {
-    redirect("/publish?error=Upload%20at%20least%20one%20photo");
+    return { error: "Upload at least one photo." };
   }
   if (imageFiles.length > 5) {
-    redirect("/publish?error=You%20can%20upload%20up%20to%205%20photos");
+    return { error: "You can upload up to 5 photos." };
   }
   for (const file of imageFiles) {
     if (!file.type.startsWith("image/")) {
-      redirect("/publish?error=Only%20image%20uploads%20are%20supported");
+      return { error: "Only image uploads are supported." };
     }
     if (file.size > 5 * 1024 * 1024) {
-      redirect("/publish?error=Each%20image%20must%20be%20under%205MB");
+      return { error: "Each image must be under 5 MB." };
     }
   }
 
@@ -88,7 +90,7 @@ export async function publishUserCombinationAction(formData: FormData) {
       .upload(path, buffer, { contentType: file.type, upsert: false });
 
     if (upErr) {
-      redirect(`/publish?error=${encodeURIComponent(upErr.message)}`);
+      return { error: upErr.message };
     }
 
     const { data: pub } = supabase.storage
@@ -127,7 +129,7 @@ export async function publishUserCombinationAction(formData: FormData) {
     .single();
 
   if (insertErr || !exampleRow) {
-    redirect(`/publish?error=${encodeURIComponent(insertErr?.message ?? "Could not save example")}`);
+    return { error: insertErr?.message ?? "Could not save example." };
   }
 
   // --- Insert layers ---
@@ -144,7 +146,7 @@ export async function publishUserCombinationAction(formData: FormData) {
   if (layerErr) {
     // Clean up the parent row if layers fail
     await supabase.from("user_combination_examples").delete().eq("id", exampleRow.id);
-    redirect(`/publish?error=${encodeURIComponent(layerErr.message)}`);
+    return { error: layerErr.message };
   }
 
   // Track combination publish event (fire and forget)

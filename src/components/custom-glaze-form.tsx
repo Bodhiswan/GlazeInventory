@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
-import { useFormStatus } from "react-dom";
+import { useCallback, useMemo, useRef, useState, useTransition } from "react";
 
+import { createCustomGlazeAction } from "@/app/actions/inventory";
 import {
   CUSTOM_GLAZE_ATMOSPHERE_VALUES,
   CUSTOM_GLAZE_COLOR_OPTIONS,
@@ -12,6 +12,7 @@ import {
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
@@ -36,14 +37,13 @@ function toUpperCode(str: string): string {
 }
 
 /* ---------------------------------------------------------------------------
- * Submit button — reads form pending state
+ * Submit button
  * ------------------------------------------------------------------------ */
 
-function SubmitButton({ canSubmit }: { canSubmit: boolean }) {
-  const { pending } = useFormStatus();
+function SubmitButton({ canSubmit, isPending }: { canSubmit: boolean; isPending: boolean }) {
   return (
-    <Button type="submit" disabled={!canSubmit || pending}>
-      {pending ? "Adding glaze…" : "Add to catalog"}
+    <Button type="submit" disabled={!canSubmit || isPending}>
+      {isPending ? "Adding glaze…" : "Add to catalog"}
     </Button>
   );
 }
@@ -81,7 +81,21 @@ export function CustomGlazeForm({
   const [finishes, setFinishes] = useState<string[]>([]);
   const [notes, setNotes] = useState("");
   const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+    const data = new FormData(e.currentTarget);
+    startTransition(async () => {
+      const result = await createCustomGlazeAction(data);
+      if (result && "error" in result) {
+        setError(result.error);
+      }
+    });
+  }, []);
 
   const handleImageChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -119,7 +133,9 @@ export function CustomGlazeForm({
     !disabled;
 
   return (
-    <div className="grid gap-6">
+    <form onSubmit={handleSubmit} className="grid gap-6">
+      {error ? <FormBanner variant="error">{error}</FormBanner> : null}
+
       {/* Hidden pass-through fields */}
       {returnTo ? <input type="hidden" name="returnTo" value={returnTo} /> : null}
 
@@ -431,8 +447,8 @@ export function CustomGlazeForm({
         <p className="text-sm text-muted">
           Custom glazes are added to your inventory and appear in the combination search.
         </p>
-        <SubmitButton canSubmit={canSubmit} />
+        <SubmitButton canSubmit={canSubmit} isPending={isPending} />
       </div>
-    </div>
+    </form>
   );
 }
