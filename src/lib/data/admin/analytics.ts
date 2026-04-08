@@ -763,16 +763,16 @@ export async function getAllUsersForAdmin({
 
   const [invRes, comboRes, glazeRes] = await Promise.all([
     admin.from("inventory_items").select("user_id").in("user_id", userIds),
-    admin.from("user_combination_examples").select("user_id").in("user_id", userIds),
-    admin.from("glazes").select("created_by").in("created_by", userIds).eq("source_type", "nonCommercial"),
+    admin.from("user_combination_examples").select("author_user_id").in("author_user_id", userIds),
+    admin.from("glazes").select("created_by_user_id").in("created_by_user_id", userIds).eq("source_type", "nonCommercial"),
   ]);
 
   const invCounts = new Map<string, number>();
   const comboCounts = new Map<string, number>();
   const glazeCounts = new Map<string, number>();
   for (const r of invRes.data ?? []) { const k = String((r as Row).user_id); invCounts.set(k, (invCounts.get(k) ?? 0) + 1); }
-  for (const r of comboRes.data ?? []) { const k = String((r as Row).user_id); comboCounts.set(k, (comboCounts.get(k) ?? 0) + 1); }
-  for (const r of glazeRes.data ?? []) { const k = String((r as Row).created_by); glazeCounts.set(k, (glazeCounts.get(k) ?? 0) + 1); }
+  for (const r of comboRes.data ?? []) { const k = String((r as Row).author_user_id); comboCounts.set(k, (comboCounts.get(k) ?? 0) + 1); }
+  for (const r of glazeRes.data ?? []) { const k = String((r as Row).created_by_user_id); glazeCounts.set(k, (glazeCounts.get(k) ?? 0) + 1); }
 
   const rows: AdminUserRow[] = data.map((r) => {
     const id = String(r.id);
