@@ -296,6 +296,32 @@ export async function getUserCombinationExamples(viewerId: string) {
     ownership.filter((item) => item.status === "owned").map((item) => item.glazeId),
   );
 
+  // Collect all glaze IDs that aren't in the static catalog so we can fetch them from the DB
+  const allLayerRows = exampleRows.flatMap((row: Row) =>
+    ((row.user_combination_example_layers ?? []) as Row[]).map((l) => String(l.glaze_id))
+  );
+  const missingIds = [...new Set(allLayerRows.filter((id) => !getCatalogGlazeById(id)))];
+  const dbGlazeMap = new Map<string, Glaze>();
+  if (missingIds.length > 0) {
+    const { data: dbGlazes } = await supabase
+      .from("glazes")
+      .select("id,source_type,name,brand,line,code,cone,image_url,description")
+      .in("id", missingIds);
+    for (const g of dbGlazes ?? []) {
+      dbGlazeMap.set(String(g.id), {
+        id: String(g.id),
+        sourceType: (g.source_type as Glaze["sourceType"]) ?? "nonCommercial",
+        name: String(g.name),
+        brand: g.brand ? String(g.brand) : null,
+        line: g.line ? String(g.line) : null,
+        code: g.code ? String(g.code) : null,
+        cone: g.cone ? String(g.cone) : null,
+        description: g.description ? String(g.description) : null,
+        imageUrl: g.image_url ? String(g.image_url) : null,
+      });
+    }
+  }
+
   return exampleRows.map((row: Row & { user_combination_example_layers?: Row[]; profiles?: Row | null }) => {
     const rawLayers = (row.user_combination_example_layers ?? []) as Row[];
     const sortedLayers = rawLayers
@@ -303,7 +329,7 @@ export async function getUserCombinationExamples(viewerId: string) {
 
     const layers: UserCombinationExampleLayer[] = sortedLayers.map((layer) => {
       const glazeId = String(layer.glaze_id);
-      const glaze = getCatalogGlazeById(glazeId);
+      const glaze = getCatalogGlazeById(glazeId) ?? dbGlazeMap.get(glazeId) ?? null;
       return {
         id: String(layer.id),
         exampleId: String(row.id),

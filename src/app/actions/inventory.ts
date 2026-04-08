@@ -410,6 +410,7 @@ export async function createCustomGlazeAction(
   ).slice(0, 5);
 
   const sanitize = (n: string) => n.replace(/[^a-zA-Z0-9.-]/g, "-");
+  let firstImageUrl: string | null = null;
   for (let i = 0; i < imageFiles.length; i++) {
     const imageFile = imageFiles[i];
     if (imageFile.size > 5 * 1024 * 1024) continue; // skip oversized, don't block submit
@@ -420,13 +421,20 @@ export async function createCustomGlazeAction(
       .upload(imagePath, imageBuffer, { contentType: imageFile.type, upsert: false });
     if (!uploadErr) {
       const { data: publicData } = supabase.storage.from("custom-glaze-images").getPublicUrl(imagePath);
+      const publicUrl = publicData.publicUrl;
       await supabase.from("glaze_firing_images").insert({
         glaze_id: glaze.id,
         label: "Photo",
-        image_url: publicData.publicUrl,
+        image_url: publicUrl,
         sort_order: i,
       });
+      if (i === 0) firstImageUrl = publicUrl;
     }
+  }
+  // Set the first uploaded image as the glaze's primary image_url so it
+  // appears in the library/inventory grid (which reads glazes.image_url directly)
+  if (firstImageUrl) {
+    await supabase.from("glazes").update({ image_url: firstImageUrl }).eq("id", glaze.id);
   }
 
   revalidateWorkspace();
