@@ -105,7 +105,7 @@ export function ChangelogBanner({ unreadMessages = 0 }: { unreadMessages?: numbe
         <div
           role="dialog"
           aria-label="Notifications"
-          className="absolute right-0 top-full z-40 mt-2 w-[min(92vw,420px)] border border-border bg-panel p-4 shadow-lg"
+          className="fixed left-3 right-3 top-[64px] z-40 w-auto border border-border bg-panel p-4 shadow-lg sm:absolute sm:left-auto sm:right-0 sm:top-full sm:mt-2 sm:w-[420px]"
         >
           {unreadMessages > 0 ? (
             <div className="mb-4 border-b border-border pb-4">
