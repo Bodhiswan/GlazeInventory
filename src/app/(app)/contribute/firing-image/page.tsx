@@ -1,43 +1,9 @@
-import { PageHeader } from "@/components/page-header";
-import { getUserCombinationExamples } from "@/lib/data/combinations";
-import { getCatalogGlazes } from "@/lib/data/inventory";
-import { requireViewer } from "@/lib/data/users";
-import { getAllVendorExamples } from "@/lib/catalog";
-import { FiringImageForm } from "./firing-image-form";
+// TODO(cleanup): legacy route — kept as a redirect while external links may
+// still point here. Safe to delete (along with firing-image-form.tsx in this folder
+// and uploadCommunityFiringImageAction in src/app/actions/community.ts) once we're
+// confident nothing links to /contribute/firing-image anymore. See AGENTS.md "Pending cleanup".
+import { redirect } from "next/navigation";
 
-export default async function FiringImagePage() {
-  const viewer = await requireViewer();
-
-  const [catalogGlazes, userCombinations] = await Promise.all([
-    getCatalogGlazes(viewer.profile.id),
-    getUserCombinationExamples(viewer.profile.id).catch(() => []),
-  ]);
-
-  const vendorCombinations = getAllVendorExamples();
-
-  const combinationOptions = [
-    ...vendorCombinations.map((c) => ({
-      id: c.id,
-      type: "vendor" as const,
-      label: c.title,
-      sub: [c.cone, c.sourceVendor].filter(Boolean).join(" · "),
-    })),
-    ...userCombinations.map((c) => ({
-      id: c.id,
-      type: "user" as const,
-      label: c.title,
-      sub: [c.cone, c.authorName].filter(Boolean).join(" · "),
-    })),
-  ];
-
-  return (
-    <div className="space-y-8">
-      <PageHeader
-        eyebrow="Contribute · Firing photo"
-        title="Upload a firing photo"
-        description="Attach a real-world fired result to any glaze or combination in the library. It will appear in the detail popup for everyone."
-      />
-      <FiringImageForm glazes={catalogGlazes} combinationOptions={combinationOptions} />
-    </div>
-  );
+export default function FiringImageRedirectPage() {
+  redirect("/contribute");
 }

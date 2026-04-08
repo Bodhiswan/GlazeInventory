@@ -1,84 +1,65 @@
 import Link from "next/link";
-import { Camera, Layers3, SwatchBook } from "lucide-react";
+import { redirect } from "next/navigation";
 
+import { ContributeForm } from "@/components/contribute-form";
 import { PageHeader } from "@/components/page-header";
 import { getLeaderboard } from "@/lib/data/admin";
+import { getCatalogGlazes } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
 
 export default async function ContributePage() {
-  await requireViewer();
-  const leaderboard = await getLeaderboard();
+  const viewer = await requireViewer();
+
+  // ── Tutorial gate ──────────────────────────────────────────────────
+  if (!viewer.profile.contributionTutorialCompletedAt) {
+    redirect("/contribute/welcome");
+  }
+
+  // ── Locked-out members (3-strike system) ───────────────────────────
+  if (viewer.profile.contributionsDisabled && !viewer.profile.isAdmin) {
+    return (
+      <div className="space-y-8">
+        <PageHeader
+          eyebrow="Contribute"
+          title="Your contributions are paused"
+          description="Your account has accrued three strikes from inaccurate submissions, so contributing is paused while we have a look. This isn't a punishment — we just want to keep the library trustworthy."
+        />
+        <div className="border border-border bg-panel p-6">
+          <p className="text-sm leading-6 text-foreground/90">
+            Reach out to a moderator to get your contributions re-enabled. You can still browse,
+            comment, and use the library normally in the meantime.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  const [catalogGlazes, leaderboard] = await Promise.all([
+    getCatalogGlazes(viewer.profile.id),
+    getLeaderboard(),
+  ]);
 
   return (
     <div className="space-y-8">
       <PageHeader
-        eyebrow="Contribute · Beta"
-        title="Share your knowledge"
-        description="Help build the library by sharing combination results or adding glazes that aren't in the catalog yet."
+        eyebrow="Contribute"
+        title="Share what came out of the kiln"
+        description="One form for everything — a firing photo, a layered combination, or a glaze that isn't here yet. The form expands as you go."
+        actions={
+          <Link
+            href="/contribute/welcome?revisit=1"
+            className="text-[10px] uppercase tracking-[0.16em] text-muted underline-offset-4 hover:underline"
+          >
+            How contributing works →
+          </Link>
+        }
       />
 
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-        {/* ── Share a combination ── */}
-        <Link
-          href="/publish"
-          className="group flex flex-col gap-4 border border-border bg-panel p-6 transition-colors hover:border-foreground/30 hover:bg-white"
-        >
-          <span className="flex h-10 w-10 items-center justify-center border border-border bg-background text-foreground transition-colors group-hover:border-foreground/30">
-            <Layers3 className="h-5 w-5" aria-hidden="true" />
-          </span>
-          <span className="space-y-1.5">
-            <span className="block text-base font-medium text-foreground">Share a combination</span>
-            <span className="block text-sm leading-6 text-muted">
-              Document a kiln-tested layered result — fired surface photo, layer order, cone, and atmosphere. Helps others repeat or avoid it.
-            </span>
-          </span>
-          <span className="mt-auto text-[10px] uppercase tracking-[0.16em] text-muted transition-colors group-hover:text-foreground">
-            Go to publish →
-          </span>
-        </Link>
-
-        {/* ── Add an unlisted glaze ── */}
-        <Link
-          href="/glazes/new"
-          className="group flex flex-col gap-4 border border-border bg-panel p-6 transition-colors hover:border-foreground/30 hover:bg-white"
-        >
-          <span className="flex h-10 w-10 items-center justify-center border border-border bg-background text-foreground transition-colors group-hover:border-foreground/30">
-            <SwatchBook className="h-5 w-5" aria-hidden="true" />
-          </span>
-          <span className="space-y-1.5">
-            <span className="block text-base font-medium text-foreground">Add an unlisted glaze</span>
-            <span className="block text-sm leading-6 text-muted">
-              If a glaze isn't in the catalog, add it here. It will appear in your inventory and in the combination search so you can document results that use it.
-            </span>
-          </span>
-          <span className="mt-auto text-[10px] uppercase tracking-[0.16em] text-muted transition-colors group-hover:text-foreground">
-            Go to form →
-          </span>
-        </Link>
-
-        {/* ── Upload a firing photo ── */}
-        <Link
-          href="/contribute/firing-image"
-          className="group flex flex-col gap-4 border border-border bg-panel p-6 transition-colors hover:border-foreground/30 hover:bg-white"
-        >
-          <span className="flex h-10 w-10 items-center justify-center border border-border bg-background text-foreground transition-colors group-hover:border-foreground/30">
-            <Camera className="h-5 w-5" aria-hidden="true" />
-          </span>
-          <span className="space-y-1.5">
-            <span className="block text-base font-medium text-foreground">Upload a firing photo</span>
-            <span className="block text-sm leading-6 text-muted">
-              Attach a fired result photo to any glaze or combination in the library. Helps others see real-world results across different kilns and bodies.
-            </span>
-          </span>
-          <span className="mt-auto text-[10px] uppercase tracking-[0.16em] text-muted transition-colors group-hover:text-foreground">
-            Go to upload →
-          </span>
-        </Link>
-      </div>
+      <ContributeForm glazes={catalogGlazes} />
 
       {/* ── People to thank ── */}
       {leaderboard.length > 0 ? (
-        <div className="space-y-4">
+        <div className="space-y-4 pt-2">
           <div>
             <p className="text-[10px] uppercase tracking-[0.18em] text-muted">People to thank</p>
             <p className="mt-1 text-sm text-muted">Top contributors who have helped build this library</p>
@@ -90,7 +71,9 @@ export default async function ContributePage() {
                   {index + 1}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-medium text-foreground">{contributor.displayName}</p>
+                  <p className="truncate text-sm font-medium text-foreground">
+                    {contributor.displayName}
+                  </p>
                   {contributor.studioName ? (
                     <p className="truncate text-xs text-muted">{contributor.studioName}</p>
                   ) : null}

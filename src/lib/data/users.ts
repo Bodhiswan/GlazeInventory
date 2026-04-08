@@ -56,6 +56,10 @@ export function mapProfile(row: Row, fallback?: Partial<UserProfile>): UserProfi
     points: typeof row.points === "number" ? row.points : 0,
     contributionStrikes: typeof row.contribution_strikes === "number" ? row.contribution_strikes : 0,
     contributionsDisabled: Boolean(row.contributions_disabled ?? false),
+    contributionTutorialCompletedAt:
+      (row.contribution_tutorial_completed_at as string | null) ??
+      fallback?.contributionTutorialCompletedAt ??
+      null,
   };
 }
 

@@ -24,6 +24,7 @@ export interface UserProfile {
   points?: number;
   contributionStrikes?: number;
   contributionsDisabled?: boolean;
+  contributionTutorialCompletedAt?: string | null;
 }
 
 export interface Viewer {

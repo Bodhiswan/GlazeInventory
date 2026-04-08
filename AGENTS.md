@@ -40,6 +40,26 @@ This version has breaking changes — APIs, conventions, and file structure may 
 ## Teardown
 Run `npm run dev:test:stop` to stop local Supabase and free Docker resources.
 
+# Pending cleanup
+
+The following files are kept around as redirect stubs after the unified
+contribution form launched at `/contribute`. They can be deleted once we're
+confident no external links / inbound traffic still hits the old routes:
+
+- Routes (currently redirect to `/contribute`):
+  - `src/app/(app)/publish/page.tsx`
+  - `src/app/(app)/glazes/new/page.tsx`
+  - `src/app/(app)/contribute/firing-image/`
+- Form components (no longer rendered anywhere):
+  - `src/components/publish-combination-form.tsx`
+  - `src/components/custom-glaze-form.tsx`
+  - `src/app/(app)/contribute/firing-image/firing-image-form.tsx`
+- Server actions (replaced by `submitContributionAction` in
+  `src/app/actions/contribute.ts`):
+  - `publishUserCombinationAction` in `src/app/actions/combinations.ts`
+  - `createCustomGlazeAction` in `src/app/actions/inventory.ts`
+  - `uploadCommunityFiringImageAction` in `src/app/actions/community.ts`
+
 # Completing Work
 
 When you finish a task or set of tasks, always end your final response with a short plain-English summary of what was done, followed by the word **Done.** on its own line. This lets the user know the work is complete without having to guess.
