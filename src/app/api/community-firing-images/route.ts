@@ -11,8 +11,15 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     return NextResponse.json([], { status: 400 });
   }
 
+  // Community firing images are public, per-glaze/per-combination data that
+  // changes rarely. Cache aggressively at the edge so repeat visits never
+  // touch the origin.
+  const cacheHeaders = {
+    "Cache-Control": "public, s-maxage=300, stale-while-revalidate=3600",
+  } as const;
+
   const supabase = await createSupabaseServerClient();
-  if (!supabase) return NextResponse.json([]);
+  if (!supabase) return NextResponse.json([], { headers: cacheHeaders });
 
   const query = supabase
     .from("community_firing_images")
@@ -37,5 +44,5 @@ export async function GET(req: NextRequest): Promise<NextResponse> {
     };
   });
 
-  return NextResponse.json(result);
+  return NextResponse.json(result, { headers: cacheHeaders });
 }

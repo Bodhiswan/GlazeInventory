@@ -13,11 +13,14 @@ import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
 import {
   COMMERCIAL_GLAZE_BRANDS,
-  CUSTOM_GLAZE_ATMOSPHERE_VALUES,
   CUSTOM_GLAZE_COLOR_OPTIONS,
   CUSTOM_GLAZE_CONE_VALUES,
   CUSTOM_GLAZE_FINISH_OPTIONS,
 } from "@/lib/glaze-constants";
+
+// Contributors only ever fire in oxidation OR reduction — "Both" doesn't
+// make sense for a single firing/combo submission.
+const CONTRIBUTION_ATMOSPHERE_VALUES = ["Oxidation", "Reduction"] as const;
 import type { Glaze } from "@/lib/types";
 import { buildGlazeSearchIndex, cn, matchesGlazeSearch } from "@/lib/utils";
 
@@ -114,6 +117,7 @@ export function ContributeForm({
   const [glazingProcess, setGlazingProcess] = useState("");
   const [notes, setNotes] = useState("");
   const [kilnNotes, setKilnNotes] = useState("");
+  const [clayBody, setClayBody] = useState("");
 
   /* ── Firing-photo label (revealed when single glaze) ───────────────── */
   const [label, setLabel] = useState("");
@@ -150,6 +154,7 @@ export function ContributeForm({
 
   /* ── Submit ────────────────────────────────────────────────────────── */
   const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
@@ -166,6 +171,7 @@ export function ContributeForm({
       glazingProcess !== "" ||
       notes !== "" ||
       kilnNotes !== "" ||
+      clayBody !== "" ||
       newGlazeName !== "" ||
       newGlazeBrand !== "" ||
       newGlazeCode !== "" ||
@@ -231,16 +237,50 @@ export function ContributeForm({
         if (glazingProcess) data.append("glazingProcess", glazingProcess);
         if (notes) data.append("notes", notes);
         if (kilnNotes) data.append("kilnNotes", kilnNotes);
+        if (clayBody) data.append("clayBody", clayBody);
       }
 
       startTransition(async () => {
         const res = await submitContributionAction(data);
         if ("error" in res) {
+          setSuccessMessage(null);
           setError(res.error);
           return;
         }
+
+        // Reset all form state
+        setImageFiles([]);
+        setQuery("");
+        setSelectedGlazes([]);
+        setCone("");
+        setAtmosphere("");
+        setLabel("");
+        setGlazingProcess("");
+        setNotes("");
+        setKilnNotes("");
+        setClayBody("");
+        setAddNewGlaze(false);
+        setNewGlazeName("");
+        setNewGlazeBrand("");
+        setNewGlazeCode("");
+        setNewGlazeColors([]);
+        setNewGlazeFinishes([]);
+        setNewGlazeNotes("");
+
         setHasSubmitted(true);
-        router.push(res.redirectTo);
+
+        // Redirect away from /contribute for combinations and new glazes
+        if (!res.redirectTo.startsWith("/contribute")) {
+          router.push(res.redirectTo);
+          return;
+        }
+
+        // Stay on the page and show a success banner
+        setSuccessMessage(
+          `Submitted! +${res.pointsAwarded} point${res.pointsAwarded === 1 ? "" : "s"} — thanks for contributing.`,
+        );
+        setHasSubmitted(false);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     },
     [
@@ -260,18 +300,22 @@ export function ContributeForm({
       glazingProcess,
       notes,
       kilnNotes,
+      clayBody,
       router,
     ],
   );
 
   /* ── Render ────────────────────────────────────────────────────────── */
-  // Display layers reversed: top of list = topmost layer (highest index).
-  // Internal storage stays bottom-up so layer_order maps directly to index+1.
-  const reversedLayers = [...selectedGlazes].reverse();
+  // Storage is top-down: selectedGlazes[0] = top layer, [length-1] = bottom.
+  // Server reverses this so DB layer_order 1 = bottom.
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-6">
-      {error ? <FormBanner variant="error">{error}</FormBanner> : null}
+      {successMessage ? (
+        <FormBanner variant="success">{successMessage}</FormBanner>
+      ) : error ? (
+        <FormBanner variant="error">{error}</FormBanner>
+      ) : null}
 
       {/* ── Photos ── */}
       <Panel className="space-y-3">
@@ -348,73 +392,79 @@ export function ContributeForm({
           <p className="text-sm font-semibold text-foreground">What did you fire?</p>
         </div>
         {selectedGlazes.length < 2 && !addNewGlaze ? (
-          <p className="text-xs text-muted">
-            Pick the bottom layer first — your first pick becomes <strong className="font-semibold text-foreground">Layer 1</strong>, and each glaze you add stacks on top.
-          </p>
+          <>
+            <p className="text-xs text-muted">
+              Pick the <strong className="font-semibold text-foreground">top layer first</strong> — each glaze you add stacks below it.
+            </p>
+            <p className="text-xs text-muted">
+              <strong className="font-semibold text-foreground">Pick one glaze</strong> to contribute a firing example to the glaze library.{" "}
+              <strong className="font-semibold text-foreground">Pick two or more</strong> to contribute a glaze combination.
+            </p>
+          </>
         ) : null}
 
-        {/* Selected glaze chips — reversed display, "OVER" between layers */}
+        {/* Selected glaze chips — top-down display, "OVER" between layers */}
         {selectedGlazes.length > 0 ? (
           <div className="space-y-2">
             {selectedGlazes.length >= 2 ? (
               <p className="text-sm font-semibold text-foreground">Layers (top → bottom)</p>
             ) : null}
             <ul className="grid gap-1">
-              {reversedLayers.map((g, displayIdx) => {
-                const realIdx = selectedGlazes.length - 1 - displayIdx;
-                const layerNumber = realIdx + 1;
-                return (
-                  <li key={g.id}>
-                    <div className="flex items-center gap-2 border border-foreground/15 bg-white px-3 py-2 text-sm">
-                      {selectedGlazes.length >= 2 ? (
-                        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">
-                          Layer {layerNumber}
-                        </span>
-                      ) : (
-                        <span className="text-[10px] uppercase tracking-[0.14em] text-muted">Glaze</span>
-                      )}
-                      <span className="min-w-0 flex-1 truncate">
-                        {[g.brand, g.code, g.name].filter(Boolean).join(" · ")}
+              {selectedGlazes.map((g, idx) => (
+                <li key={g.id}>
+                  <div className="flex items-center gap-2 border border-foreground/15 bg-white px-3 py-2 text-sm">
+                    {selectedGlazes.length >= 2 ? (
+                      <span className="text-[10px] uppercase tracking-[0.14em] text-muted">
+                        {idx === 0
+                          ? "Top"
+                          : idx === selectedGlazes.length - 1
+                            ? "Bottom"
+                            : `Layer ${idx + 1}`}
                       </span>
-                      {selectedGlazes.length >= 2 ? (
-                        <>
-                          <button
-                            type="button"
-                            onClick={() => moveGlaze(realIdx, 1)}
-                            disabled={realIdx === selectedGlazes.length - 1}
-                            aria-label="Move up"
-                            className="text-xs text-muted hover:text-foreground disabled:opacity-30"
-                          >
-                            ↑
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => moveGlaze(realIdx, -1)}
-                            disabled={realIdx === 0}
-                            aria-label="Move down"
-                            className="text-xs text-muted hover:text-foreground disabled:opacity-30"
-                          >
-                            ↓
-                          </button>
-                        </>
-                      ) : null}
-                      <button
-                        type="button"
-                        onClick={() => removeGlaze(g.id)}
-                        className="text-muted hover:text-foreground"
-                        aria-label="Remove glaze"
-                      >
-                        <Trash2 className="h-3.5 w-3.5" />
-                      </button>
-                    </div>
-                    {displayIdx < reversedLayers.length - 1 ? (
-                      <p className="py-1 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
-                        OVER
-                      </p>
+                    ) : (
+                      <span className="text-[10px] uppercase tracking-[0.14em] text-muted">Glaze</span>
+                    )}
+                    <span className="min-w-0 flex-1 truncate">
+                      {[g.brand, g.code, g.name].filter(Boolean).join(" · ")}
+                    </span>
+                    {selectedGlazes.length >= 2 ? (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() => moveGlaze(idx, -1)}
+                          disabled={idx === 0}
+                          aria-label="Move up"
+                          className="text-xs text-muted hover:text-foreground disabled:opacity-30"
+                        >
+                          ↑
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => moveGlaze(idx, 1)}
+                          disabled={idx === selectedGlazes.length - 1}
+                          aria-label="Move down"
+                          className="text-xs text-muted hover:text-foreground disabled:opacity-30"
+                        >
+                          ↓
+                        </button>
+                      </>
                     ) : null}
-                  </li>
-                );
-              })}
+                    <button
+                      type="button"
+                      onClick={() => removeGlaze(g.id)}
+                      className="text-muted hover:text-foreground"
+                      aria-label="Remove glaze"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                  {idx < selectedGlazes.length - 1 ? (
+                    <p className="py-1 text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-muted">
+                      OVER
+                    </p>
+                  ) : null}
+                </li>
+              ))}
             </ul>
           </div>
         ) : null}
@@ -471,14 +521,22 @@ export function ContributeForm({
               ← Back to search
             </button>
           ) : (
-            <button
-              type="button"
-              onClick={() => setAddNewGlaze(true)}
-              disabled={disabled}
-              className="w-full border border-dashed border-foreground/30 bg-white px-4 py-3 text-sm font-semibold uppercase tracking-[0.14em] hover:bg-foreground/[0.04]"
-            >
-              + Add a new glaze
-            </button>
+            <div className="space-y-2 border-t border-foreground/10 pt-4">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+                Can't find your glaze in the search?
+              </p>
+              <p className="text-xs text-muted">
+                Submit a brand-new glaze entry to the Glaze Library so others can use it too. This creates a new glaze record on the site — it does not add to a list above.
+              </p>
+              <button
+                type="button"
+                onClick={() => setAddNewGlaze(true)}
+                disabled={disabled}
+                className="w-full border border-dashed border-foreground/30 bg-white px-4 py-3 text-sm font-semibold uppercase tracking-[0.14em] hover:bg-foreground/[0.04]"
+              >
+                + Submit a new glaze to the library
+              </button>
+            </div>
           )
         ) : null}
       </Panel>
@@ -644,7 +702,7 @@ export function ContributeForm({
           <p className="text-sm font-semibold text-foreground">Atmosphere</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          {CUSTOM_GLAZE_ATMOSPHERE_VALUES.map((a) => {
+          {CONTRIBUTION_ATMOSPHERE_VALUES.map((a) => {
             const selected = atmosphere === a;
             return (
               <button
@@ -670,11 +728,13 @@ export function ContributeForm({
       {isCombination ? (
         <Panel className="space-y-4">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge tone="neutral">Combination details</Badge>
-            <p className="text-sm font-semibold text-foreground">Tell the story</p>
+            <Badge tone="neutral">Optional</Badge>
+            <p className="text-sm font-semibold text-foreground">Combination details</p>
           </div>
           <label className="grid gap-1.5">
-            <span className="text-sm font-medium">How did you apply the layers?</span>
+            <span className="text-sm font-medium">
+              How did you apply the layers? <span className="text-muted">(optional)</span>
+            </span>
             <Textarea
               value={glazingProcess}
               onChange={(e) => setGlazingProcess(e.target.value)}
@@ -683,11 +743,25 @@ export function ContributeForm({
             />
           </label>
           <label className="grid gap-1.5">
-            <span className="text-sm font-medium">What happened in the kiln?</span>
+            <span className="text-sm font-medium">
+              Clay body <span className="text-muted">(optional)</span>
+            </span>
+            <Input
+              value={clayBody}
+              onChange={(e) => setClayBody(e.target.value)}
+              placeholder="e.g. White stoneware, B-mix, Speckled brown"
+              maxLength={120}
+              className="border-foreground/20 bg-white"
+            />
+          </label>
+          <label className="grid gap-1.5">
+            <span className="text-sm font-medium">
+              Comments <span className="text-muted">(optional)</span>
+            </span>
             <Textarea
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="Visual result, clay body, surprises, takeaways."
+              placeholder="Visual result, surprises, takeaways."
               className="border-foreground/20 bg-white"
             />
           </label>

@@ -32,7 +32,7 @@ export function buttonVariants({
   className?: string;
 }) {
   return cn(
-    "inline-flex items-center justify-center font-medium uppercase [touch-action:manipulation] transition-[background-color,color,border-color] duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-40",
+    "inline-flex cursor-pointer items-center justify-center font-medium uppercase [touch-action:manipulation] transition-[background-color,color,border-color] duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-40",
     variantClasses[variant],
     sizeClasses[size],
     className,

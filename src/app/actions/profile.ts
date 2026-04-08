@@ -31,6 +31,24 @@ export async function updateProfilePreferencesAction(formData: FormData) {
     redirect(`/profile?error=${encodeURIComponent(issue)}`);
   }
 
+  // Enforce case-insensitive display name uniqueness across profiles.
+  const { data: existingWithName, error: lookupError } = await supabase
+    .from("profiles")
+    .select("id")
+    .ilike("display_name", parsed.data.displayName)
+    .neq("id", viewer.profile.id)
+    .limit(1);
+
+  if (lookupError) {
+    redirect(`/profile?error=${encodeURIComponent(lookupError.message)}`);
+  }
+
+  if (existingWithName && existingWithName.length > 0) {
+    redirect(
+      `/profile?error=${encodeURIComponent("That display name is already taken — please choose another.")}`,
+    );
+  }
+
   const { error } = await supabase
     .from("profiles")
     .update({

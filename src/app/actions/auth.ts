@@ -33,11 +33,14 @@ const passwordResetRequestSchema = z.object({
 
 const passwordResetSchema = z
   .object({
-    password: z.string().min(8).max(72),
-    confirmPassword: z.string().min(8).max(72),
+    password: z
+      .string()
+      .min(8, "Password must be at least 8 characters long.")
+      .max(72, "Password must be 72 characters or fewer."),
+    confirmPassword: z.string().min(1, "Please confirm your new password."),
   })
   .refine((values) => values.password === values.confirmPassword, {
-    message: "Passwords do not match",
+    message: "Passwords do not match.",
     path: ["confirmPassword"],
   });
 
@@ -51,6 +54,18 @@ function friendlyAuthError(message: string): string {
   }
   if (lower.includes("invalid login credentials")) {
     return "Incorrect email or password.";
+  }
+  if (lower.includes("same") && lower.includes("password")) {
+    return "Your new password must be different from your current password.";
+  }
+  if (lower.includes("password should be at least")) {
+    return "Password is too short — use at least 8 characters.";
+  }
+  if (lower.includes("weak") && lower.includes("password")) {
+    return "That password is too weak — try a longer one with a mix of letters, numbers, and symbols.";
+  }
+  if (lower.includes("password")) {
+    return `Password rejected: ${message}`;
   }
   return message;
 }
@@ -139,6 +154,19 @@ export async function signUpWithPasswordAction(formData: FormData) {
 
   if (!supabase) {
     redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
+  }
+
+  // Reject duplicate display names (case-insensitive) before creating the auth user.
+  const { data: existingWithName } = await supabase
+    .from("profiles")
+    .select("id")
+    .ilike("display_name", parsed.data.displayName)
+    .limit(1);
+
+  if (existingWithName && existingWithName.length > 0) {
+    redirect(
+      `/auth/sign-in?error=${encodeURIComponent("That display name is already taken — please choose another.")}`,
+    );
   }
 
   const { error } = await supabase.auth.signUp({

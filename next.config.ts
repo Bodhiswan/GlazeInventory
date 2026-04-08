@@ -66,7 +66,14 @@ const nextConfig: NextConfig = {
   },
   images: {
     remotePatterns,
-    unoptimized: true,
+    // Custom loader routes Supabase Storage images through Supabase's own
+    // image transformation endpoint (free, served from their CDN) and passes
+    // vendor CDN URLs through unchanged. This avoids Vercel's Image
+    // Optimization quota entirely while still giving us properly sized
+    // responsive images for anything we host ourselves.
+    loader: "custom",
+    loaderFile: "./src/lib/supabase-image-loader.ts",
+    minimumCacheTTL: 31536000,
   },
   turbopack: {
     root: path.resolve(__dirname),
