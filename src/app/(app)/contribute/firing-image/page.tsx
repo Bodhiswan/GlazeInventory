@@ -15,12 +15,6 @@ export default async function FiringImagePage() {
 
   const vendorCombinations = getAllVendorExamples();
 
-  const glazeOptions = catalogGlazes.map((g) => ({
-    id: g.id,
-    label: [g.brand, g.name].filter(Boolean).join(" "),
-    sub: g.cone ?? undefined,
-  }));
-
   const combinationOptions = [
     ...vendorCombinations.map((c) => ({
       id: c.id,
@@ -43,7 +37,7 @@ export default async function FiringImagePage() {
         title="Upload a firing photo"
         description="Attach a real-world fired result to any glaze or combination in the library. It will appear in the detail popup for everyone."
       />
-      <FiringImageForm glazeOptions={glazeOptions} combinationOptions={combinationOptions} />
+      <FiringImageForm glazes={catalogGlazes} combinationOptions={combinationOptions} />
     </div>
   );
 }

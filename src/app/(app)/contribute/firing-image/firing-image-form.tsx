@@ -1,31 +1,51 @@
 "use client";
 
-import { useCallback, useRef, useState, useTransition } from "react";
-import { Check, Search, X } from "lucide-react";
+import { useCallback, useDeferredValue, useRef, useState, useTransition } from "react";
+import { Check, X } from "lucide-react";
 
 import { uploadCommunityFiringImageAction } from "@/app/actions/community";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
+import { Select } from "@/components/ui/select";
 import { CUSTOM_GLAZE_ATMOSPHERE_VALUES, CUSTOM_GLAZE_CONE_VALUES } from "@/lib/glaze-constants";
-import { cn } from "@/lib/utils";
+import type { Glaze } from "@/lib/types";
+import { buildGlazeSearchIndex, cn, matchesGlazeSearch } from "@/lib/utils";
 
-type GlazeOption = { id: string; label: string; sub?: string };
 type CombinationOption = { id: string; type: "vendor" | "user"; label: string; sub?: string };
-
 type Tab = "glaze" | "combination";
 
 export function FiringImageForm({
-  glazeOptions,
+  glazes,
   combinationOptions,
 }: {
-  glazeOptions: GlazeOption[];
+  glazes: Glaze[];
   combinationOptions: CombinationOption[];
 }) {
   const [tab, setTab] = useState<Tab>("glaze");
+  const [brand, setBrand] = useState("all");
   const [query, setQuery] = useState("");
-  const [selectedGlaze, setSelectedGlaze] = useState<GlazeOption | null>(null);
+  const deferredQuery = useDeferredValue(query);
+  const [selectedGlaze, setSelectedGlaze] = useState<Glaze | null>(null);
   const [selectedCombination, setSelectedCombination] = useState<CombinationOption | null>(null);
+
+  const brands = Array.from(
+    new Set(glazes.map((g) => g.brand).filter(Boolean) as string[])
+  ).sort((a, b) => a.localeCompare(b));
+
+  const filteredGlazes = glazes.filter((g) => {
+    if (brand !== "all" && g.brand !== brand) return false;
+    if (!deferredQuery.trim()) return true;
+    const index = buildGlazeSearchIndex([g.brand, g.line, g.code, g.name, g.cone]);
+    return matchesGlazeSearch(index, deferredQuery);
+  });
+  const visibleGlazes = filteredGlazes.slice(0, 60);
+
+  const filteredCombinations = deferredQuery.trim()
+    ? combinationOptions.filter((c) =>
+        c.label.toLowerCase().includes(deferredQuery.toLowerCase())
+      ).slice(0, 20)
+    : combinationOptions.slice(0, 20);
   const [cone, setCone] = useState("");
   const [atmosphere, setAtmosphere] = useState("");
   const [label, setLabel] = useState("");
@@ -34,13 +54,6 @@ export function FiringImageForm({
   const [result, setResult] = useState<{ error: string } | { success: true } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-
-  const filteredGlazes = query.trim().length > 0
-    ? glazeOptions.filter((g) => g.label.toLowerCase().includes(query.toLowerCase())).slice(0, 12)
-    : [];
-  const filteredCombinations = query.trim().length > 0
-    ? combinationOptions.filter((c) => c.label.toLowerCase().includes(query.toLowerCase())).slice(0, 12)
-    : [];
 
   const handleImageChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -68,8 +81,7 @@ export function FiringImageForm({
     });
   }, []);
 
-  const selected = tab === "glaze" ? selectedGlaze : selectedCombination;
-  const canSubmit = !!selected && !!imagePreview && !isPending;
+  const canSubmit = !!(tab === "glaze" ? selectedGlaze : selectedCombination) && !!imagePreview && !isPending;
 
   return (
     <div className="grid gap-6 xl:grid-cols-[0.9fr_1.1fr]">
@@ -129,74 +141,141 @@ export function FiringImageForm({
             ))}
           </div>
 
-          {/* Search */}
-          <div className="space-y-2">
-            <p className="text-sm font-medium text-foreground">
-              {tab === "glaze" ? "Which glaze?" : "Which combination?"}
-            </p>
-            {selected ? (
-              <div className="flex items-center justify-between border border-foreground/20 bg-white px-3 py-2.5">
-                <div className="min-w-0">
-                  <p className="truncate text-sm font-semibold text-foreground">{selected.label}</p>
-                  {selected.sub ? <p className="text-xs text-muted">{selected.sub}</p> : null}
-                </div>
-                <button
-                  type="button"
-                  onClick={() => { tab === "glaze" ? setSelectedGlaze(null) : setSelectedCombination(null); setQuery(""); }}
-                  className="ml-3 shrink-0 text-muted hover:text-foreground"
-                >
-                  <X className="h-4 w-4" />
-                </button>
-              </div>
-            ) : (
-              <div className="space-y-1">
-                <div className="flex items-center gap-2 border border-foreground/20 bg-white px-3 py-2">
-                  <Search className="h-4 w-4 shrink-0 text-muted" />
-                  <input
-                    className="flex-1 bg-transparent text-sm outline-none placeholder:text-muted"
-                    placeholder={tab === "glaze" ? "Search by name or brand…" : "Search by combination name…"}
+          {/* Glaze search */}
+          {tab === "glaze" ? (
+            <div className="space-y-3">
+              <div className="grid gap-3 sm:grid-cols-[0.8fr_1.2fr]">
+                <label className="grid gap-1.5 text-sm font-medium">
+                  Brand
+                  <Select value={brand} onChange={(e) => { setBrand(e.target.value); setQuery(""); }}>
+                    <option value="all">All brands</option>
+                    {brands.map((b) => <option key={b} value={b}>{b}</option>)}
+                  </Select>
+                </label>
+                <label className="grid gap-1.5 text-sm font-medium">
+                  Search
+                  <Input
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
+                    placeholder="Name, code, colour, finish…"
                     autoComplete="off"
                   />
-                </div>
-                {(tab === "glaze" ? filteredGlazes : filteredCombinations).length > 0 ? (
-                  <div className="max-h-48 overflow-y-auto border border-border bg-white shadow-sm">
-                    {(tab === "glaze" ? filteredGlazes : filteredCombinations).map((option) => (
-                      <button
-                        key={option.id}
-                        type="button"
-                        onClick={() => {
-                          if (tab === "glaze") setSelectedGlaze(option as GlazeOption);
-                          else setSelectedCombination(option as CombinationOption);
-                          setQuery("");
-                        }}
-                        className="flex w-full items-start gap-2 px-3 py-2 text-left hover:bg-foreground/[0.04]"
-                      >
-                        <div className="min-w-0 flex-1">
-                          <p className="truncate text-sm text-foreground">{option.label}</p>
-                          {option.sub ? <p className="text-xs text-muted">{option.sub}</p> : null}
-                        </div>
-                      </button>
-                    ))}
-                  </div>
-                ) : query.trim().length > 0 ? (
-                  <p className="px-1 text-xs text-muted">No matches found.</p>
+                </label>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-2 text-sm text-muted">
+                <span>Pick the glaze</span>
+                <Badge tone="neutral">{filteredGlazes.length} match{filteredGlazes.length === 1 ? "" : "es"}</Badge>
+                {filteredGlazes.length > visibleGlazes.length ? (
+                  <span>Showing {visibleGlazes.length} — narrow the search to see fewer.</span>
                 ) : null}
               </div>
-            )}
 
-            {/* Hidden target fields */}
-            {tab === "glaze" && selectedGlaze ? (
-              <input type="hidden" name="glazeId" value={selectedGlaze.id} />
-            ) : null}
-            {tab === "combination" && selectedCombination ? (
-              <>
+              <div className="max-h-[320px] overflow-y-auto border border-border bg-panel p-2">
+                {visibleGlazes.length ? (
+                  <div className="grid gap-2">
+                    {visibleGlazes.map((g) => {
+                      const isSelected = selectedGlaze?.id === g.id;
+                      return (
+                        <button
+                          key={g.id}
+                          type="button"
+                          onClick={() => setSelectedGlaze(isSelected ? null : g)}
+                          className={cn(
+                            "grid grid-cols-[72px_1fr] items-start gap-3 border px-3 py-2.5 text-left transition",
+                            isSelected
+                              ? "border-foreground bg-[#2d1c16] text-white"
+                              : "border-border bg-panel text-foreground hover:border-foreground/20 hover:bg-white",
+                          )}
+                        >
+                          <div className="overflow-hidden border border-border/70 bg-panel">
+                            {g.imageUrl ? (
+                              <img src={g.imageUrl} alt={g.name} className="h-[72px] w-full object-cover" loading="lazy" />
+                            ) : (
+                              <div className={cn("flex h-[72px] items-center justify-center px-2 text-center text-[10px] uppercase tracking-[0.16em]", isSelected ? "text-white/70" : "text-muted")}>
+                                No image
+                              </div>
+                            )}
+                          </div>
+                          <div>
+                            <p className="font-semibold">{[g.brand, g.line].filter(Boolean).join(" · ")}</p>
+                            <p className={cn("mt-0.5 text-sm", isSelected ? "text-white/85" : "text-muted")}>
+                              {[g.code, g.name, g.cone].filter(Boolean).join(" · ")}
+                            </p>
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="px-4 py-6 text-sm text-muted">No glazes match — try a different brand or shorter search.</p>
+                )}
+              </div>
+
+              {selectedGlaze ? (
+                <div className="flex items-center justify-between border border-foreground/20 bg-white px-3 py-2.5">
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold text-foreground">
+                      Selected: {[selectedGlaze.brand, selectedGlaze.line, selectedGlaze.code, selectedGlaze.name].filter(Boolean).join(" · ")}
+                    </p>
+                  </div>
+                  <button type="button" onClick={() => setSelectedGlaze(null)} className="ml-3 shrink-0 text-muted hover:text-foreground">
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              ) : null}
+
+              {selectedGlaze ? <input type="hidden" name="glazeId" value={selectedGlaze.id} /> : null}
+            </div>
+          ) : (
+            /* Combination search */
+            <div className="space-y-2">
+              <label className="grid gap-1.5 text-sm font-medium">
+                Search combinations
+                <Input
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search by combination name…"
+                  autoComplete="off"
+                />
+              </label>
+              <div className="max-h-[280px] overflow-y-auto border border-border bg-panel p-2">
+                {filteredCombinations.length ? (
+                  <div className="grid gap-1">
+                    {filteredCombinations.map((c) => {
+                      const isSelected = selectedCombination?.id === c.id && selectedCombination?.type === c.type;
+                      return (
+                        <button
+                          key={`${c.type}-${c.id}`}
+                          type="button"
+                          onClick={() => setSelectedCombination(isSelected ? null : c)}
+                          className={cn(
+                            "flex w-full items-start gap-2 border px-3 py-2.5 text-left transition",
+                            isSelected
+                              ? "border-foreground bg-[#2d1c16] text-white"
+                              : "border-border bg-panel text-foreground hover:border-foreground/20 hover:bg-white",
+                          )}
+                        >
+                          <div className="min-w-0 flex-1">
+                            <p className="truncate text-sm font-semibold">{c.label}</p>
+                            {c.sub ? <p className={cn("text-xs", isSelected ? "text-white/75" : "text-muted")}>{c.sub}</p> : null}
+                          </div>
+                        </button>
+                      );
+                    })}
+                  </div>
+                ) : (
+                  <p className="px-4 py-6 text-sm text-muted">No combinations found.</p>
+                )}
+              </div>
+              {selectedCombination ? (
                 <input type="hidden" name="combinationId" value={selectedCombination.id} />
-                <input type="hidden" name="combinationType" value={(selectedCombination as CombinationOption).type} />
-              </>
-            ) : null}
-          </div>
+              ) : null}
+              {selectedCombination ? (
+                <input type="hidden" name="combinationType" value={selectedCombination.type} />
+              ) : null}
+            </div>
+          )}
         </Panel>
 
         {/* ── Image ── */}
