@@ -472,99 +472,117 @@ function Tile({
   );
 }
 
-function VisualLibrary() {
-  // 4 x 3 grid of tiles
-  const tiles = TILE_POOL.slice(0, 12);
+/**
+ * Framed screenshot — renders a real UI screenshot as if it were on a small
+ * device screen, with a subtle border, rounded corners and a drop shadow.
+ * The background gradient behind it makes it read as "a product shot"
+ * rather than a full-bleed image.
+ */
+function Screenshot({
+  src,
+  alt,
+  width,
+  height,
+}: {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}) {
   return (
-    <div className="grid w-full max-w-xs grid-cols-4 gap-1.5 sm:max-w-sm">
-      {tiles.map((t, i) => (
-        <Tile key={t.code} src={t.src} delay={i * 40} className="aspect-square" />
-      ))}
+    <div
+      className="relative w-full max-w-[260px] overflow-hidden rounded-[14px] border border-foreground/15 bg-white shadow-[0_20px_50px_-20px_rgba(0,0,0,0.35),0_8px_20px_-12px_rgba(0,0,0,0.25)]"
+      style={{ animation: `tour-tile-rise 560ms ease-out both` }}
+    >
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes="260px"
+        className="h-auto w-full"
+        priority
+      />
     </div>
   );
 }
 
-function VisualInventory() {
-  const items = [
-    { tile: TILE_POOL[3], label: "Owned", tone: "bg-emerald-600 text-white" },
-    { tile: TILE_POOL[7], label: "Wishlist", tone: "bg-amber-500 text-white" },
-    { tile: TILE_POOL[11], label: "Empty", tone: "bg-foreground/60 text-white" },
-  ];
+function VisualLibrary() {
   return (
-    <div className="grid w-full max-w-xs grid-cols-3 gap-2">
-      {items.map((item, i) => (
-        <div
-          key={item.label}
-          className="space-y-2"
-          style={{ animation: `tour-tile-rise 520ms ease-out both`, animationDelay: `${i * 80}ms` }}
-        >
-          <div className="relative aspect-square overflow-hidden border border-foreground/10 bg-foreground/5 shadow-sm">
-            <Image src={item.tile.src} alt="" fill sizes="120px" className="object-cover" />
-          </div>
-          <span
-            className={`inline-block w-full text-center text-[9px] font-semibold uppercase tracking-[0.14em] ${item.tone} px-1.5 py-1`}
-          >
-            {item.label}
-          </span>
-        </div>
-      ))}
+    <Screenshot
+      src="/tour/library.png"
+      alt="Filtered glaze library showing Mayco and AMACO coral glazes"
+      width={643}
+      height={657}
+    />
+  );
+}
+
+function VisualInventory() {
+  return (
+    <div className="relative">
+      <Screenshot
+        src="/tour/inventory.png"
+        alt="Searching for a glaze to add to your inventory"
+        width={644}
+        height={764}
+      />
+      {/* Accent badges so the screenshot doesn't feel static */}
+      <div
+        className="absolute -right-3 top-10 rounded-full bg-emerald-600 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-md"
+        style={{ animation: `tour-tile-rise 560ms ease-out both`, animationDelay: "260ms" }}
+      >
+        Owned
+      </div>
+      <div
+        className="absolute -left-3 top-24 rounded-full bg-amber-500 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-md"
+        style={{ animation: `tour-tile-rise 560ms ease-out both`, animationDelay: "380ms" }}
+      >
+        Wishlist
+      </div>
     </div>
   );
 }
 
 function VisualCombinations() {
   return (
-    <div className="flex w-full max-w-[200px] flex-col items-stretch gap-1">
-      <Tile
-        src={TILE_POOL[4].src}
-        delay={0}
-        className="aspect-[4/3] w-full"
-      />
-      <p
-        className="text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-muted"
-        style={{ animation: `tour-fade-in 520ms ease-out both`, animationDelay: "160ms" }}
-      >
-        over
-      </p>
-      <Tile
-        src={TILE_POOL[14].src}
-        delay={240}
-        className="aspect-[4/3] w-full"
-      />
-    </div>
+    <Screenshot
+      src="/tour/combinations.png"
+      alt="Searching for 'honey flux' in the combinations browser with dual search boxes"
+      width={647}
+      height={765}
+    />
   );
 }
 
 function VisualContribute() {
   return (
-    <div className="relative w-full max-w-xs">
-      <Tile src={TILE_POOL[9].src} delay={0} className="aspect-[4/3] w-full" />
-      {/* Floating point badges */}
+    <div className="relative">
+      <Screenshot
+        src="/tour/contribute.png"
+        alt="The contribute form with a 4-layer combination of AMACO glazes"
+        width={657}
+        height={936}
+      />
+      {/* Floating point badges on top of the screenshot */}
       <div
         className="absolute -right-3 -top-3 flex items-center gap-1 rounded-full bg-foreground px-3 py-1.5 text-xs font-semibold text-white shadow-lg"
-        style={{ animation: `tour-tile-rise 520ms ease-out both`, animationDelay: "240ms" }}
+        style={{ animation: `tour-tile-rise 560ms ease-out both`, animationDelay: "260ms" }}
       >
         <Sparkles className="h-3 w-3" />
         +5 pts
       </div>
       <div
-        className="absolute -left-3 top-8 rounded-full bg-amber-500 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-md"
-        style={{ animation: `tour-tile-rise 520ms ease-out both`, animationDelay: "360ms" }}
+        className="absolute -left-3 top-16 rounded-full bg-amber-500 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-md"
+        style={{ animation: `tour-tile-rise 560ms ease-out both`, animationDelay: "380ms" }}
       >
         +2 pts
       </div>
       <div
-        className="absolute -bottom-2 right-6 rounded-full bg-emerald-600 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-md"
-        style={{ animation: `tour-tile-rise 520ms ease-out both`, animationDelay: "480ms" }}
+        className="absolute -bottom-2 -right-2 rounded-full bg-emerald-600 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-md"
+        style={{ animation: `tour-tile-rise 560ms ease-out both`, animationDelay: "500ms" }}
       >
         +10 pts
-      </div>
-      <div
-        className="absolute inset-x-0 -bottom-10 flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.14em] text-muted"
-        style={{ animation: `tour-fade-in 520ms ease-out both`, animationDelay: "540ms" }}
-      >
-        <Upload className="h-3 w-3" />
-        Drop your firing photo
       </div>
     </div>
   );
