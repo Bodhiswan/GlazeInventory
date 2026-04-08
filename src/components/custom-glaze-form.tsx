@@ -81,7 +81,7 @@ export function CustomGlazeForm({
   const [colors, setColors] = useState<string[]>([]);
   const [finishes, setFinishes] = useState<string[]>([]);
   const [notes, setNotes] = useState("");
-  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
+  const [imageFiles, setImageFiles] = useState<{ file: File; preview: string }[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -89,31 +89,36 @@ export function CustomGlazeForm({
   const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError(null);
+    // Build FormData from the form but append File objects from state
+    // (file inputs get replaced in the DOM when previews render, so we
+    // cannot rely on the input itself being present in FormData)
     const data = new FormData(e.currentTarget);
+    imageFiles.forEach(({ file }) => data.append("images", file));
     startTransition(async () => {
       const result = await createCustomGlazeAction(data);
       if (result && "error" in result) {
         setError(result.error);
+        return;
       }
       // On success Next.js redirect() throws, so this only runs on error
-      setImagePreviews([]);
+      setImageFiles([]);
       if (fileInputRef.current) fileInputRef.current.value = "";
     });
-  }, []);
+  }, [imageFiles]);
 
   const handleImageChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    const files = Array.from(e.target.files ?? []).slice(0, 5);
-    if (!files.length) return;
-    setImagePreviews(files.map((f) => URL.createObjectURL(f)));
+    const incoming = Array.from(e.target.files ?? []);
+    if (!incoming.length) return;
+    setImageFiles((prev) => {
+      const combined = [...prev, ...incoming.map((file) => ({ file, preview: URL.createObjectURL(file) }))];
+      return combined.slice(0, 5);
+    });
+    // Reset input so the same file can be re-selected if removed
+    e.target.value = "";
   }, []);
 
   const removeImage = useCallback((index: number) => {
-    setImagePreviews((prev) => {
-      const next = prev.filter((_, i) => i !== index);
-      // If all removed, reset file input so user can re-select
-      if (next.length === 0 && fileInputRef.current) fileInputRef.current.value = "";
-      return next;
-    });
+    setImageFiles((prev) => prev.filter((_, i) => i !== index));
   }, []);
 
   // Live duplicate detection — exact name+brand match against catalog
@@ -140,7 +145,7 @@ export function CustomGlazeForm({
     colors.length > 0 &&
     finishes.length > 0 &&
     notes.trim().length > 0 &&
-    imagePreviews.length > 0 &&
+    imageFiles.length > 0 &&
     !duplicate &&
     !disabled;
 
@@ -404,19 +409,19 @@ export function CustomGlazeForm({
       {/* ── Images ── */}
       <Panel className="space-y-3">
         <div className="flex flex-wrap items-center gap-2">
-          <Badge tone={imagePreviews.length > 0 ? "success" : "neutral"}>
-            {imagePreviews.length > 0 ? `${imagePreviews.length} photo${imagePreviews.length > 1 ? "s" : ""} selected` : "Required"}
+          <Badge tone={imageFiles.length > 0 ? "success" : "neutral"}>
+            {imageFiles.length > 0 ? `${imageFiles.length} photo${imageFiles.length > 1 ? "s" : ""} selected` : "Required"}
           </Badge>
           <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Photos (up to 5)</p>
         </div>
         <div className="grid gap-3">
           <p className="text-sm font-medium text-foreground">Got photos of this glaze?</p>
-          {imagePreviews.length > 0 ? (
+          {imageFiles.length > 0 ? (
             <div className="flex flex-wrap gap-2">
-              {imagePreviews.map((url, i) => (
+              {imageFiles.map(({ preview }, i) => (
                 <div key={i} className="relative">
                   <img
-                    src={url}
+                    src={preview}
                     alt={`Glaze preview ${i + 1}`}
                     className="h-24 w-24 border border-border object-cover sm:h-28 sm:w-28"
                   />
@@ -429,13 +434,12 @@ export function CustomGlazeForm({
                   </button>
                 </div>
               ))}
-              {imagePreviews.length < 5 ? (
+              {imageFiles.length < 5 ? (
                 <label className="flex h-24 w-24 cursor-pointer items-center justify-center border border-dashed border-foreground/20 bg-white text-xs text-muted hover:bg-foreground/[0.04] sm:h-28 sm:w-28">
                   + Add
                   <input
                     ref={fileInputRef}
                     type="file"
-                    name="images"
                     accept="image/jpeg,image/png,image/webp,image/heic"
                     multiple
                     onChange={handleImageChange}
