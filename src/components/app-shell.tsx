@@ -51,14 +51,14 @@ export async function AppShell({
 
               {viewer.mode === "live" ? (
                 <>
-                  <span className="hidden shrink-0 border border-border px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted tabular-nums sm:inline-block">
+                  <span className="shrink-0 border border-border px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted tabular-nums">
                     {viewer.profile.points ?? 0} pts
                   </span>
                   <Link
                     href="/profile"
-                    className="hidden shrink-0 items-center border border-border bg-panel/40 px-3 py-2 text-[10px] uppercase tracking-[0.14em] hover:bg-panel/60 sm:inline-flex"
+                    className="inline-flex shrink-0 items-center border border-border bg-panel/40 px-3 py-2 text-[10px] uppercase tracking-[0.14em] hover:bg-panel/60"
                   >
-                    <span className="max-w-[120px] truncate">{viewer.profile.displayName}</span>
+                    <span className="max-w-[80px] truncate sm:max-w-[120px]">{viewer.profile.displayName}</span>
                   </Link>
                 </>
               ) : null}
