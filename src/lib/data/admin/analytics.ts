@@ -745,7 +745,7 @@ export async function getAllUsersForAdmin({
   let query = admin
     .from("profiles")
     .select(
-      "id, display_name, is_admin, is_anonymous, contributions_disabled, created_at, points",
+      "id, display_name, is_admin, contributions_disabled, created_at, points",
       { count: "exact" },
     )
     .order("created_at", { ascending: false })
@@ -781,7 +781,7 @@ export async function getAllUsersForAdmin({
       displayName: String(r.display_name ?? "(no name)"),
       email: emailMap.get(id) ?? "",
       isAdmin: Boolean(r.is_admin),
-      isAnonymous: Boolean(r.is_anonymous),
+      isAnonymous: false,
       contributionsDisabled: Boolean(r.contributions_disabled),
       createdAt: String(r.created_at),
       points: Number(r.points ?? 0),

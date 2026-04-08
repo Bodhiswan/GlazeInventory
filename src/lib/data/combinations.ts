@@ -112,7 +112,7 @@ export async function getProfilesByIds(
     return [];
   }
 
-  const { data } = await supabase.from("profiles").select("id,display_name,is_admin,is_anonymous").in("id", profileIds);
+  const { data } = await supabase.from("profiles").select("id,display_name,is_admin").in("id", profileIds);
   return (data ?? []).map((row) => mapProfile(row as Row));
 }
 
