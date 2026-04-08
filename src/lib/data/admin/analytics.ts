@@ -764,7 +764,7 @@ export async function getAllUsersForAdmin({
   const [invRes, comboRes, glazeRes] = await Promise.all([
     admin.from("inventory_items").select("user_id").in("user_id", userIds),
     admin.from("user_combination_examples").select("user_id").in("user_id", userIds),
-    admin.from("glazes").select("created_by").in("created_by", userIds).eq("source_type", "custom"),
+    admin.from("glazes").select("created_by").in("created_by", userIds).eq("source_type", "nonCommercial"),
   ]);
 
   const invCounts = new Map<string, number>();
