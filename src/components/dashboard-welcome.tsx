@@ -19,13 +19,13 @@ import {
 import { Panel } from "@/components/ui/panel";
 import { buttonVariants } from "@/components/ui/button";
 
-/** A real, diverse set of Coyote glaze tile photos already sitting in /public. */
+/** Mayco Crystalites glaze tiles — visually striking crystal line that
+ *  makes for a much more eye-catching welcome strip than uniform matte tiles. */
 const TILE_POOL = [
-  "mbg005", "mbg019", "mbg025", "mbg037", "mbg040",
-  "mbg050", "mbg076", "mbg088", "mbg097", "mbg104",
-  "mbg111", "mbg116", "mbg143", "mbg151", "mbg153",
-  "mbg178", "mbg191", "mbg205", "mbg214", "mbg218",
-].map((code) => ({ code, src: `/vendor-images/coyote/${code}.jpg` }));
+  "cg-707", "cg-750", "cg-779", "cg-962", "cg-970",
+  "cg-980", "cg-985", "cg-986", "cg-991", "cg-993",
+  "cg-994", "cg-1000", "cg-1001", "cg-1005",
+].map((code) => ({ code, src: `/vendor-images/mayco-crystalites/${code}.jpg` }));
 
 const WELCOME_KEY = "glaze-library-welcome-dismissed-v1";
 
@@ -589,7 +589,7 @@ function VisualContribute() {
 }
 
 function VisualCommunity() {
-  const tiles = [TILE_POOL[1], TILE_POOL[6], TILE_POOL[12], TILE_POOL[17]];
+  const tiles = [TILE_POOL[1], TILE_POOL[5], TILE_POOL[9], TILE_POOL[12]];
   const initials = ["M", "J", "A", "S"];
   return (
     <div className="flex w-full max-w-xs flex-col items-center gap-4">
