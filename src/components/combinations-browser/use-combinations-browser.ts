@@ -193,7 +193,7 @@ function userExampleToTile(ue: UserCombinationExample): CombinationTile {
   return {
     id: `ue-${ue.id}`,
     kind: "userExample",
-    imageUrl: ue.postFiringImageUrl,
+    imageUrl: ue.imageUrls[0] ?? "",
     title,
     tileLayers,
     subtitle: `By ${ue.authorName}`,

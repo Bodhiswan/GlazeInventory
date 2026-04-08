@@ -65,7 +65,7 @@ export async function getModerationQueue(): Promise<ModerationQueue> {
   const [combosRes, glazesRes, firingImagesRes] = await Promise.all([
     admin
       .from("user_combination_examples")
-      .select("id, title, author_user_id, status, cone, atmosphere, notes, post_firing_image_path, created_at, moderation_state")
+      .select("id, title, author_user_id, status, cone, atmosphere, notes, image_paths, created_at, moderation_state")
       .order("created_at", { ascending: true })
       .limit(200),
     admin
@@ -118,7 +118,7 @@ export async function getModerationQueue(): Promise<ModerationQueue> {
       cone: String(r.cone ?? ""),
       atmosphere: String(r.atmosphere ?? ""),
       notes: r.notes ? String(r.notes) : null,
-      imageUrl: r.post_firing_image_path ? String(r.post_firing_image_path) : null,
+      imageUrl: Array.isArray(r.image_paths) ? ((r.image_paths as string[])[0] ?? null) : null,
       createdAt: String(r.created_at),
       moderationState: String(r.moderation_state ?? "pending"),
     };

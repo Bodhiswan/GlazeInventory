@@ -79,36 +79,24 @@ export function CombinationPreviewModal({
               ) : (
                 <div className="space-y-4">
                   {/* Images */}
-                  <div className="grid gap-3 sm:grid-cols-2">
-                    {data.postFiringImageUrl ? (
-                      <div className="space-y-1">
-                        <div className="overflow-hidden border border-border bg-panel">
-                          <Image
-                            src={data.postFiringImageUrl}
-                            alt={data.title}
-                            width={400}
-                            height={300}
-                            className="aspect-[4/3] w-full object-cover"
-                          />
+                  {data.imageUrls.length > 0 ? (
+                    <div className="grid gap-3 sm:grid-cols-2">
+                      {data.imageUrls.map((url, i) => (
+                        <div key={i} className="space-y-1">
+                          <div className="overflow-hidden border border-border bg-panel">
+                            <Image
+                              src={url}
+                              alt={i === 0 ? data.title : `${data.title} (photo ${i + 1})`}
+                              width={400}
+                              height={300}
+                              className="aspect-[4/3] w-full object-cover"
+                            />
+                          </div>
+                          <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Photo {i + 1}</p>
                         </div>
-                        <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Post-firing</p>
-                      </div>
-                    ) : null}
-                    {data.preFiringImageUrl ? (
-                      <div className="space-y-1">
-                        <div className="overflow-hidden border border-border bg-panel">
-                          <Image
-                            src={data.preFiringImageUrl}
-                            alt={`${data.title} (pre-firing)`}
-                            width={400}
-                            height={300}
-                            className="aspect-[4/3] w-full object-cover"
-                          />
-                        </div>
-                        <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Pre-firing</p>
-                      </div>
-                    ) : null}
-                  </div>
+                      ))}
+                    </div>
+                  ) : null}
 
                   {/* Meta */}
                   <div className="flex flex-wrap gap-1.5">

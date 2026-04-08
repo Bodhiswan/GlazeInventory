@@ -310,9 +310,9 @@ export function InventoryWorkspace({
               >
                 <div className="space-y-2 p-2">
                   <div className="relative overflow-hidden border border-border bg-panel">
-                    {ue.postFiringImageUrl ? (
+                    {ue.imageUrls[0] ? (
                       <Image
-                        src={ue.postFiringImageUrl}
+                        src={ue.imageUrls[0]}
                         alt={ue.title}
                         width={256}
                         height={256}

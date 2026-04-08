@@ -215,6 +215,7 @@ export function PublishCombinationForm({
     { query: "", glazeId: "" },
   ]);
   const [coneChoice, setConeChoice] = useState<ConeChoice | "">("");
+  const [imageCount, setImageCount] = useState(0);
 
   const selectedIds = useMemo(
     () => new Set(layers.map((l) => l.glazeId).filter(Boolean)),
@@ -327,25 +328,37 @@ export function PublishCombinationForm({
 
       {/* --- Images --- */}
       <Panel className="space-y-4">
-        <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Photos</p>
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge tone={imageCount >= 1 ? "success" : "neutral"}>
+            {imageCount >= 1 ? `${imageCount} photo${imageCount === 1 ? "" : "s"} selected` : "No photos yet"}
+          </Badge>
+          <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Photos</p>
+        </div>
 
         <label className="grid gap-2">
           <span className="text-sm font-medium text-foreground">
-            Post-firing photo <span className="text-muted">(required)</span>
+            Select photos <span className="text-muted">(1 required, up to 5)</span>
           </span>
-          <Input name="postFiringImage" type="file" accept="image/*" required disabled={disabled} className="border-foreground/20 bg-white shadow-sm" />
+          <Input
+            name="images"
+            type="file"
+            accept="image/*"
+            multiple
+            required
+            disabled={disabled}
+            className="border-foreground/20 bg-white shadow-sm"
+            onChange={(e) => {
+              const count = e.target.files?.length ?? 0;
+              if (count > 5) {
+                e.target.value = "";
+                setImageCount(0);
+              } else {
+                setImageCount(count);
+              }
+            }}
+          />
           <span className="text-xs leading-5 text-muted">
-            Show the fired surface clearly. Cropped close-ups work well.
-          </span>
-        </label>
-
-        <label className="grid gap-2">
-          <span className="text-sm font-medium text-foreground">
-            Pre-firing photo <span className="text-muted">(optional)</span>
-          </span>
-          <Input name="preFiringImage" type="file" accept="image/*" disabled={disabled} className="border-foreground/20 bg-white shadow-sm" />
-          <span className="text-xs leading-5 text-muted">
-            Helpful for showing application thickness, overlap areas, or raw glaze placement before the kiln.
+            Add 1–5 photos. Show the fired surface clearly — close-ups, angles, and pre-firing shots all work.
           </span>
         </label>
       </Panel>

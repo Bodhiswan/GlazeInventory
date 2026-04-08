@@ -55,73 +55,46 @@ export async function publishUserCombinationAction(formData: FormData) {
     redirect("/publish?error=Choose%20Cone%2006,%20Cone%206,%20or%20Cone%2010%20before%20publishing");
   }
 
-  // --- Post-firing image (required) ---
-  const postFiringFile = formData.get("postFiringImage");
-  if (!(postFiringFile instanceof File) || !postFiringFile.size) {
-    redirect("/publish?error=Upload%20a%20post-firing%20image");
-  }
-  if (!postFiringFile.type.startsWith("image/")) {
-    redirect("/publish?error=Only%20image%20uploads%20are%20supported");
-  }
-  if (postFiringFile.size > 5 * 1024 * 1024) {
-    redirect("/publish?error=Images%20must%20be%20under%205MB");
-  }
+  // --- Images (1 required, up to 5) ---
+  const imageFiles = (formData.getAll("images") as File[]).filter(
+    (f) => f instanceof File && f.size > 0,
+  );
 
-  // --- Pre-firing image (optional) ---
-  const preFiringFile = formData.get("preFiringImage");
-  const hasPreFiringImage =
-    preFiringFile instanceof File && preFiringFile.size > 0;
-  if (hasPreFiringImage) {
-    if (!preFiringFile.type.startsWith("image/")) {
+  if (imageFiles.length === 0) {
+    redirect("/publish?error=Upload%20at%20least%20one%20photo");
+  }
+  if (imageFiles.length > 5) {
+    redirect("/publish?error=You%20can%20upload%20up%20to%205%20photos");
+  }
+  for (const file of imageFiles) {
+    if (!file.type.startsWith("image/")) {
       redirect("/publish?error=Only%20image%20uploads%20are%20supported");
     }
-    if (preFiringFile.size > 5 * 1024 * 1024) {
-      redirect("/publish?error=Images%20must%20be%20under%205MB");
+    if (file.size > 5 * 1024 * 1024) {
+      redirect("/publish?error=Each%20image%20must%20be%20under%205MB");
     }
   }
 
-  // --- Upload post-firing image ---
+  // --- Upload all images and collect public URLs ---
   const sanitize = (name: string) => name.replace(/[^a-zA-Z0-9.-]/g, "-");
-  const postFiringPath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(postFiringFile.name)}`;
-  const postFiringBuffer = new Uint8Array(await postFiringFile.arrayBuffer());
+  const imageUrls: string[] = [];
 
-  const { error: postUpErr } = await supabase.storage
-    .from("user-combination-images")
-    .upload(postFiringPath, postFiringBuffer, {
-      contentType: postFiringFile.type,
-      upsert: false,
-    });
+  for (const file of imageFiles) {
+    const path = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(file.name)}`;
+    const buffer = new Uint8Array(await file.arrayBuffer());
 
-  if (postUpErr) {
-    redirect(`/publish?error=${encodeURIComponent(postUpErr.message)}`);
-  }
-
-  const { data: postFiringPublic } = supabase.storage
-    .from("user-combination-images")
-    .getPublicUrl(postFiringPath);
-
-  // --- Upload pre-firing image (if provided) ---
-  let preFiringPublicUrl: string | null = null;
-
-  if (hasPreFiringImage) {
-    const preFiringPath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(preFiringFile.name)}`;
-    const preFiringBuffer = new Uint8Array(await preFiringFile.arrayBuffer());
-
-    const { error: preUpErr } = await supabase.storage
+    const { error: upErr } = await supabase.storage
       .from("user-combination-images")
-      .upload(preFiringPath, preFiringBuffer, {
-        contentType: preFiringFile.type,
-        upsert: false,
-      });
+      .upload(path, buffer, { contentType: file.type, upsert: false });
 
-    if (preUpErr) {
-      redirect(`/publish?error=${encodeURIComponent(preUpErr.message)}`);
+    if (upErr) {
+      redirect(`/publish?error=${encodeURIComponent(upErr.message)}`);
     }
 
-    const { data: preFiringPublic } = supabase.storage
+    const { data: pub } = supabase.storage
       .from("user-combination-images")
-      .getPublicUrl(preFiringPath);
-    preFiringPublicUrl = preFiringPublic.publicUrl;
+      .getPublicUrl(path);
+    imageUrls.push(pub.publicUrl);
   }
 
   // --- Build title from glaze labels ---
@@ -141,8 +114,7 @@ export async function publishUserCombinationAction(formData: FormData) {
     .insert({
       author_user_id: viewer.profile.id,
       title,
-      post_firing_image_path: postFiringPublic.publicUrl,
-      pre_firing_image_path: preFiringPublicUrl,
+      image_paths: imageUrls,
       cone: coneValue,
       atmosphere: normalizeOptional(formData.get("atmosphere")) ?? "oxidation",
       glazing_process: normalizeOptional(formData.get("glazingProcess")),
@@ -207,7 +179,7 @@ export async function deleteUserCombinationAction(formData: FormData) {
   // Verify ownership (RLS enforces this too, but be explicit)
   const { data: example } = await supabase
     .from("user_combination_examples")
-    .select("id, author_user_id, post_firing_image_path, pre_firing_image_path")
+    .select("id, author_user_id, image_paths")
     .eq("id", exampleId)
     .single();
 

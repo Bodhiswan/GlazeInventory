@@ -417,8 +417,8 @@ export async function getAdminDashboard(range: DashboardRange = "30d"): Promise<
 
   // ── Recent combinations ──
   const combosQuery = since
-    ? admin.from("user_combination_examples").select("id, title, author_user_id, status, cone, atmosphere, post_firing_image_path, created_at").gte("created_at", since).order("created_at", { ascending: false }).limit(20)
-    : admin.from("user_combination_examples").select("id, title, author_user_id, status, cone, atmosphere, post_firing_image_path, created_at").order("created_at", { ascending: false }).limit(20);
+    ? admin.from("user_combination_examples").select("id, title, author_user_id, status, cone, atmosphere, image_paths, created_at").gte("created_at", since).order("created_at", { ascending: false }).limit(20)
+    : admin.from("user_combination_examples").select("id, title, author_user_id, status, cone, atmosphere, image_paths, created_at").order("created_at", { ascending: false }).limit(20);
   const { data: combosData } = await combosQuery;
 
   const comboAuthorIds = [...new Set((combosData ?? []).map((c) => (c as Row).author_user_id as string).filter(Boolean))];
@@ -437,7 +437,7 @@ export async function getAdminDashboard(range: DashboardRange = "30d"): Promise<
       status: String(r.status),
       cone: String(r.cone),
       atmosphere: String(r.atmosphere),
-      imageUrl: String(r.post_firing_image_path),
+      imageUrl: Array.isArray(r.image_paths) ? String((r.image_paths as string[])[0] ?? "") : "",
       createdAt: String(r.created_at),
     };
   });

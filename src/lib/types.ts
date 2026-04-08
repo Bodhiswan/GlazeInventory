@@ -187,8 +187,7 @@ export interface UserCombinationExample {
   authorUserId: string;
   authorName: string;
   title: string;
-  postFiringImageUrl: string;
-  preFiringImageUrl?: string | null;
+  imageUrls: string[];
   cone: string;
   atmosphere?: string | null;
   glazingProcess?: string | null;

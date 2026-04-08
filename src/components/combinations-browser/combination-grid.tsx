@@ -389,11 +389,12 @@ function UserExampleDetail({
   const openLightbox = (images: LightboxImage[], idx: number) => { setLightboxImages(images); setLightboxIndex(idx); };
   const closeLightbox = () => setLightboxImages(null);
 
-  const postImage: LightboxImage = { id: `${userExample.id}-post`, imageUrl: userExample.postFiringImageUrl, alt: userExample.title, label: "Post-firing" };
-  const preImage: LightboxImage | null = userExample.preFiringImageUrl
-    ? { id: `${userExample.id}-pre`, imageUrl: userExample.preFiringImageUrl, alt: `${userExample.title} (pre-firing)`, label: "Pre-firing" }
-    : null;
-  const heroImages = [postImage, ...(preImage ? [preImage] : [])];
+  const heroImages: LightboxImage[] = userExample.imageUrls.map((url, i) => ({
+    id: `${userExample.id}-img-${i}`,
+    imageUrl: url,
+    alt: i === 0 ? userExample.title : `${userExample.title} (photo ${i + 1})`,
+    label: `Photo ${i + 1}`,
+  }));
 
   function getUserExampleLayerRole(index: number, total: number) {
     if (index === 0) return "Top layer";
@@ -404,36 +405,21 @@ function UserExampleDetail({
   return (
     <div className="space-y-4">
       {lightboxImages ? <ImageLightbox images={lightboxImages} initialIndex={lightboxIndex} onClose={closeLightbox} /> : null}
-      {/* Hero: post-firing + optional pre-firing photos */}
+      {/* Hero: all uploaded photos */}
       <div className="grid gap-4 sm:grid-cols-[minmax(0,280px)_1fr]">
         <div className="space-y-2">
-          <button type="button" onClick={() => openLightbox(heroImages, 0)} className="w-full overflow-hidden border border-border bg-panel transition hover:opacity-90">
-            <Image
-              src={userExample.postFiringImageUrl}
-              alt={userExample.title}
-              width={400}
-              height={300}
-              sizes="(min-width: 640px) 280px, 100vw"
-              className="aspect-[4/3] w-full object-cover"
-            />
-          </button>
-          <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Post-firing</p>
-
-          {userExample.preFiringImageUrl ? (
-            <>
-              <button type="button" onClick={() => openLightbox(heroImages, 1)} className="w-full overflow-hidden border border-border bg-panel transition hover:opacity-90">
-                <Image
-                  src={userExample.preFiringImageUrl}
-                  alt={`${userExample.title} (pre-firing)`}
-                  width={400}
-                  height={300}
-                  sizes="(min-width: 640px) 280px, 100vw"
-                  className="aspect-[4/3] w-full object-cover"
-                />
-              </button>
-              <p className="text-[10px] uppercase tracking-[0.14em] text-muted">Pre-firing</p>
-            </>
-          ) : null}
+          {heroImages.map((img, i) => (
+            <button key={img.id} type="button" onClick={() => openLightbox(heroImages, i)} className="w-full overflow-hidden border border-border bg-panel transition hover:opacity-90">
+              <Image
+                src={img.imageUrl}
+                alt={img.alt}
+                width={400}
+                height={300}
+                sizes="(min-width: 640px) 280px, 100vw"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </button>
+          ))}
         </div>
 
         <div className="space-y-3">

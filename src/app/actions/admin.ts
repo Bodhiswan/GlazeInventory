@@ -634,8 +634,7 @@ export async function adminGetCombinationPreviewAction(id: string): Promise<{
   title: string;
   authorName: string;
   authorUserId: string;
-  postFiringImageUrl: string;
-  preFiringImageUrl: string | null;
+  imageUrls: string[];
   cone: string;
   atmosphere: string | null;
   glazingProcess: string | null;
@@ -668,8 +667,7 @@ export async function adminGetCombinationPreviewAction(id: string): Promise<{
     title: String(r.title ?? ""),
     authorName: r.profiles ? String((r.profiles as Row).display_name ?? "Unknown") : "Unknown",
     authorUserId: String(r.author_user_id),
-    postFiringImageUrl: String(r.post_firing_image_path ?? ""),
-    preFiringImageUrl: r.pre_firing_image_path ? String(r.pre_firing_image_path) : null,
+    imageUrls: Array.isArray(r.image_paths) ? (r.image_paths as string[]) : [],
     cone: String(r.cone ?? ""),
     atmosphere: r.atmosphere ? String(r.atmosphere) : null,
     glazingProcess: r.glazing_process ? String(r.glazing_process) : null,

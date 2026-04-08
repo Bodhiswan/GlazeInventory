@@ -1059,10 +1059,9 @@ export type Database = {
           glazing_process: string | null
           id: string
           kiln_notes: string | null
+          image_paths: string[]
           moderation_state: string
           notes: string | null
-          post_firing_image_path: string
-          pre_firing_image_path: string | null
           status: Database["public"]["Enums"]["post_status"]
           title: string
           updated_at: string
@@ -1075,11 +1074,10 @@ export type Database = {
           created_at?: string
           glazing_process?: string | null
           id?: string
+          image_paths: string[]
           kiln_notes?: string | null
           moderation_state?: string
           notes?: string | null
-          post_firing_image_path: string
-          pre_firing_image_path?: string | null
           status?: Database["public"]["Enums"]["post_status"]
           title: string
           updated_at?: string
@@ -1092,11 +1090,10 @@ export type Database = {
           created_at?: string
           glazing_process?: string | null
           id?: string
+          image_paths?: string[]
           kiln_notes?: string | null
           moderation_state?: string
           notes?: string | null
-          post_firing_image_path?: string
-          pre_firing_image_path?: string | null
           status?: Database["public"]["Enums"]["post_status"]
           title?: string
           updated_at?: string
