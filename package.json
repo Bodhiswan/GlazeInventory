@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@google/genai": "^1.48.0",
+    "@microsoft/clarity": "^1.0.2",
     "@supabase/ssr": "^0.10.0",
     "@supabase/supabase-js": "^2.101.1",
     "@vercel/analytics": "^2.0.1",
