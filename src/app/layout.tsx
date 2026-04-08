@@ -1,7 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Crimson_Text, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import { ClarityAnalytics } from "@/components/clarity-analytics";
 import "./globals.css";
+
+const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
 
 const sans = Inter({
   variable: "--font-inter",
@@ -49,6 +52,7 @@ export default function RootLayout({
         </a>
         {children}
         <Analytics />
+        {clarityProjectId ? <ClarityAnalytics projectId={clarityProjectId} /> : null}
       </body>
     </html>
   );
