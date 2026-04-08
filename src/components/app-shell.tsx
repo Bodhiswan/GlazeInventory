@@ -49,6 +49,17 @@ export async function AppShell({
                 </Link>
               ) : null}
 
+              {viewer.mode === "live" ? (
+                <Link
+                  href="/profile"
+                  className="hidden shrink-0 items-center gap-2 border border-border bg-panel/40 px-3 py-2 text-[10px] uppercase tracking-[0.14em] hover:bg-panel/60 sm:inline-flex"
+                >
+                  <span className="max-w-[120px] truncate">{viewer.profile.displayName}</span>
+                  {viewer.profile.points != null && viewer.profile.points > 0 ? (
+                    <span className="tabular-nums text-muted">{viewer.profile.points}pt</span>
+                  ) : null}
+                </Link>
+              ) : null}
             </div>
           </div>
         </header>
