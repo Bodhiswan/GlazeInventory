@@ -48,7 +48,7 @@ export async function requireMemberSupabase(_returnTo = "/auth/sign-in") {
 
 export async function requireContributingMember(returnTo = "/contribute") {
   const context = await requireMemberSupabase();
-  if (context.viewer.profile.contributionsDisabled) {
+  if (context.viewer.profile.contributionsDisabled && !context.viewer.profile.isAdmin) {
     redirect(
       `${returnTo}?error=${encodeURIComponent(
         "Your contribution access has been disabled after repeated policy violations",

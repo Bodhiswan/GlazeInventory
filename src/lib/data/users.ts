@@ -131,6 +131,17 @@ export async function getAdminUsers(): Promise<
   }));
 }
 
+export async function getAllDisplayNames(): Promise<string[]> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return [];
+  const { data } = await admin
+    .from("profiles")
+    .select("display_name")
+    .not("display_name", "is", null)
+    .order("display_name", { ascending: true });
+  return (data ?? []).map((r) => String((r as Row).display_name)).filter(Boolean);
+}
+
 export async function lookupUserIdByDisplayName(
   name: string,
 ): Promise<string | null> {

@@ -2,8 +2,6 @@ import Link from "next/link";
 
 import { AppShellNav } from "@/components/app-shell-nav";
 import { ChangelogBanner } from "@/components/changelog-banner";
-import { UserMenu } from "@/components/user-menu";
-import { getUserPointsBreakdown } from "@/lib/data/admin";
 import { getUnreadDirectMessageCount } from "@/lib/data/community";
 import type { Viewer } from "@/lib/types";
 
@@ -14,12 +12,7 @@ export async function AppShell({
   viewer: Viewer;
   children: React.ReactNode;
 }>) {
-  const [breakdown, unreadMessages] = await Promise.all([
-    !viewer.profile.isAdmin && (viewer.profile.points ?? 0) > 0
-      ? getUserPointsBreakdown(viewer.profile.id)
-      : Promise.resolve([]),
-    getUnreadDirectMessageCount(viewer.profile.id),
-  ]);
+  const unreadMessages = await getUnreadDirectMessageCount(viewer.profile.id);
 
   return (
     <div className="min-h-screen">
@@ -56,11 +49,6 @@ export async function AppShell({
                 </Link>
               ) : null}
 
-              <UserMenu
-                displayName={viewer.profile.displayName}
-                points={viewer.profile.points ?? 0}
-                pointsBreakdown={breakdown}
-              />
             </div>
           </div>
         </header>

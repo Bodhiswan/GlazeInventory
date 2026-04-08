@@ -44,7 +44,7 @@ export async function addGlazeCommentInlineAction(
   body: string,
 ): Promise<{ error?: string; authorName?: string }> {
   const { viewer, supabase } = await requireMemberSupabase("/glazes");
-  if (viewer.profile.contributionsDisabled) {
+  if (viewer.profile.contributionsDisabled && !viewer.profile.isAdmin) {
     return { error: "Your contribution access has been disabled" };
   }
   const trimmed = body.trim();
@@ -77,7 +77,7 @@ export async function addCombinationCommentInlineAction(
   body: string,
 ): Promise<{ error?: string; authorName?: string }> {
   const { viewer, supabase } = await requireMemberSupabase("/combinations");
-  if (viewer.profile.contributionsDisabled) {
+  if (viewer.profile.contributionsDisabled && !viewer.profile.isAdmin) {
     return { error: "Your contribution access has been disabled" };
   }
   const trimmed = body.trim();
