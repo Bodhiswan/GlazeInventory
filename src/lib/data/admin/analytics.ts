@@ -314,6 +314,16 @@ export interface AdminDashboard {
     metadata: Record<string, unknown>;
     createdAt: string;
   }>;
+  recentGuideReports: Array<{
+    id: string;
+    guideTitle: string;
+    sectionLabel: string;
+    note: string;
+    pagePath: string | null;
+    userDisplayName: string | null;
+    userId: string | null;
+    createdAt: string;
+  }>;
   recentCombinations: Array<{
     id: string;
     title: string;
@@ -411,6 +421,60 @@ export async function getAdminDashboard(range: DashboardRange = "30d"): Promise<
       userDisplayName: r.user_id ? (activityUserMap.get(r.user_id as string) ?? null) : null,
       userId: r.user_id ? String(r.user_id) : null,
       metadata: (r.metadata ?? {}) as Record<string, unknown>,
+      createdAt: String(r.created_at),
+    };
+  });
+
+  // ── Guide error reports ──
+  const guideReportsQuery = since
+    ? admin
+        .from("analytics_events")
+        .select("id, user_id, metadata, created_at")
+        .eq("event_type", "guide_error_report")
+        .gte("created_at", since)
+        .order("created_at", { ascending: false })
+        .limit(20)
+    : admin
+        .from("analytics_events")
+        .select("id, user_id, metadata, created_at")
+        .eq("event_type", "guide_error_report")
+        .order("created_at", { ascending: false })
+        .limit(20);
+  const { data: guideReportRows } = await guideReportsQuery;
+
+  const guideReportUserIds = [
+    ...new Set(
+      (guideReportRows ?? [])
+        .map((row) => (row as Row).user_id as string)
+        .filter(Boolean),
+    ),
+  ];
+  const { data: guideReportUsers } = guideReportUserIds.length
+    ? await admin
+        .from("profiles")
+        .select("id, display_name")
+        .in("id", guideReportUserIds)
+    : { data: [] };
+  const guideReportUserMap = new Map(
+    (guideReportUsers ?? []).map((user) => [
+      String((user as Row).id),
+      (user as Row).display_name as string | null,
+    ]),
+  );
+
+  const recentGuideReports = (guideReportRows ?? []).map((row) => {
+    const r = row as Row;
+    const metadata = (r.metadata ?? {}) as Record<string, unknown>;
+    return {
+      id: String(r.id),
+      guideTitle: String(metadata.guide_title ?? "Guide"),
+      sectionLabel: String(metadata.section_label ?? "Unknown section"),
+      note: String(metadata.note ?? ""),
+      pagePath: metadata.page_path ? String(metadata.page_path) : null,
+      userDisplayName: r.user_id
+        ? (guideReportUserMap.get(String(r.user_id)) ?? null)
+        : null,
+      userId: r.user_id ? String(r.user_id) : null,
       createdAt: String(r.created_at),
     };
   });
@@ -560,6 +624,7 @@ export async function getAdminDashboard(range: DashboardRange = "30d"): Promise<
       totalInventoryItems: inventoryRes.count ?? 0,
     },
     recentActivity,
+    recentGuideReports,
     recentCombinations,
     recentCustomGlazes,
     recentUsers,
