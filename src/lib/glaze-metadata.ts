@@ -1,6 +1,6 @@
 import type { Glaze } from "@/lib/types";
 
-export const ACTIVE_GLAZE_BRANDS = ["Mayco", "AMACO", "Coyote", "Duncan", "Spectrum", "Speedball", "Seattle Pottery Supply"] as const;
+export const ACTIVE_GLAZE_BRANDS = ["Mayco", "AMACO", "Coyote", "Duncan", "Spectrum", "Speedball", "Seattle Pottery Supply", "Opulence"] as const;
 export const GLAZE_FAMILY_LABELS = [
   "Underglaze",
   "Translucent underglaze",

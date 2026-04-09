@@ -162,19 +162,23 @@ const INVENTORY_GLAZE_COLUMNS = "id,source_type,name,brand,line,code,cone,descri
 export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: string) {
   const staticGlazes = getAllCatalogGlazes();
 
-  // Merge in all custom (nonCommercial) glazes — visible to every viewer,
-  // not just their creator, so the library surfaces community additions.
-  let customGlazes: Glaze[] = [];
+  // Merge in any glazes that live only in Supabase:
+  //  • all custom (nonCommercial) glazes — visible to every viewer
+  //  • commercial glazes that aren't in the bundled catalog JSON yet
+  //    (newly imported brands like Opulence)
+  let dbGlazes: Glaze[] = [];
   const supabase = await getSupabase();
   if (supabase) {
     const { data } = await supabase
       .from("glazes")
-      .select("id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id")
-      .eq("source_type", "nonCommercial");
-    customGlazes = (data ?? []).map((row) => mapGlaze(row));
+      .select("id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id");
+    const staticIds = new Set(staticGlazes.map((g) => g.id));
+    dbGlazes = (data ?? [])
+      .filter((row) => !staticIds.has(row.id as string))
+      .map((row) => mapGlaze(row));
   }
 
-  const glazes = [...staticGlazes, ...customGlazes].sort((left, right) =>
+  const glazes = [...staticGlazes, ...dbGlazes].sort((left, right) =>
     formatGlazeLabel(left).localeCompare(formatGlazeLabel(right)),
   );
   return attachTagSummariesToGlazes(viewerId, glazes);
