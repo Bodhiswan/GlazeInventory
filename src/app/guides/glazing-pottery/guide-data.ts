@@ -21,7 +21,7 @@ export const GUIDE_PARTS: GuidePart[] = [
     title: "Application Methods",
     description:
       "Dipping, pouring, spraying, brushing, trailing, sponging — equipment, technique, and when to use each method.",
-    status: "coming-soon",
+    status: "live",
   },
   {
     slug: "layering",
@@ -29,7 +29,7 @@ export const GUIDE_PARTS: GuidePart[] = [
     title: "Layering Theory & Practice",
     description:
       "Why glazes interact when layered, eutectic melting, viscosity and flow, layering strategies, and systematic testing.",
-    status: "coming-soon",
+    status: "live",
   },
   {
     slug: "decorative",
