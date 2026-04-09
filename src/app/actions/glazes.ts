@@ -7,6 +7,8 @@ import { getAllCatalogGlazes } from "@/lib/catalog";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { awardPoints } from "@/lib/points";
 import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
+import { getCatalogGlazes } from "@/lib/data/inventory";
+import { requireViewer } from "@/lib/data/users";
 import { normalizeOptional, revalidateWorkspace, requireMemberSupabase, requireContributingMember } from "./_shared";
 
 const glazeTagVoteSchema = z.object({
@@ -231,9 +233,13 @@ export async function updateGlazeDescriptionAction(formData: FormData) {
   redirect(`${returnTo}?saved=description`);
 }
 
-/** Return lightweight catalog glaze data for the label scanner. */
+/** Return lightweight catalog glaze data for the label scanner.
+ * Uses the merged catalog (static JSON + DB-only brands like Opulence)
+ * so newly imported brands show up in the inventory add-glaze search. */
 export async function getCatalogGlazesForScannerAction() {
-  return getAllCatalogGlazes().map((g) => ({
+  const viewer = await requireViewer();
+  const glazes = await getCatalogGlazes(viewer.profile.id);
+  return glazes.map((g) => ({
     id: g.id,
     brand: g.brand ?? null,
     code: g.code ?? null,
