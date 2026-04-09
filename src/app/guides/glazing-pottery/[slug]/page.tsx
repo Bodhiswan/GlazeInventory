@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageHeader } from "@/components/page-header";
+import { GuideErrorReport } from "@/components/guide/guide-error-report";
 import { GuideToc } from "@/components/guide/guide-toc";
 import { GuideTocMobile } from "@/components/guide/guide-toc";
 
@@ -126,6 +127,7 @@ export default async function GuideSubpage({
         eyebrow={`Part ${part.number}`}
         title={part.title}
         description={part.description}
+        actions={<GuideErrorReport guideSlug={slug} guideTitle={part.title} toc={toc} />}
       />
 
       {/* Mobile TOC */}

@@ -1,6 +1,7 @@
 import { format, formatDistanceToNow } from "date-fns";
 import {
   BarChart3,
+  BookOpenText,
   Eye,
   Layers3,
   Package,
@@ -45,6 +46,7 @@ function eventIcon(eventType: string) {
     case "glaze_create": return PenLine;
     case "combination_publish": return Layers3;
     case "buy_click": return ShoppingCart;
+    case "guide_error_report": return BookOpenText;
     default: return BarChart3;
   }
 }
@@ -59,8 +61,22 @@ function eventLabel(eventType: string, metadata: Record<string, unknown>): strin
       return `Published "${String(metadata.title ?? "a combination")}"`;
     case "buy_click":
       return `Clicked buy at ${String(metadata.store_name ?? "a store")}`;
+    case "guide_error_report":
+      return `Reported a guide issue in ${String(metadata.section_label ?? metadata.guide_title ?? "a guide section")}`;
     default:
       return eventType.replace(/_/g, " ");
+  }
+}
+
+function eventDetail(eventType: string, metadata: Record<string, unknown>): string | null {
+  switch (eventType) {
+    case "guide_error_report": {
+      const guideTitle = metadata.guide_title ? String(metadata.guide_title) : null;
+      const note = metadata.note ? String(metadata.note) : null;
+      return [guideTitle, note].filter(Boolean).join(" — ") || null;
+    }
+    default:
+      return null;
   }
 }
 
@@ -242,6 +258,11 @@ export default async function AnalyticsPage({
                       <p className="truncate text-xs font-medium text-foreground">
                         {eventLabel(event.eventType, event.metadata)}
                       </p>
+                      {eventDetail(event.eventType, event.metadata) ? (
+                        <p className="mt-1 line-clamp-2 text-[11px] leading-5 text-muted">
+                          {eventDetail(event.eventType, event.metadata)}
+                        </p>
+                      ) : null}
                       <p className="mt-0.5 text-[10px] text-muted">
                         {event.userId ? (
                           <Link href={`/admin/analytics/${event.userId}`} className="hover:text-foreground">
@@ -403,6 +424,60 @@ export default async function AnalyticsPage({
           </div>
         </CollapsibleSection>
       </div>
+
+      <CollapsibleSection label={`Guide reports · ${RANGE_LABELS[range]}`}>
+        <Panel className="divide-y divide-border p-0">
+          {dashboard.recentGuideReports.length === 0 ? (
+            <p className="px-4 py-3 text-sm text-muted">No guide reports yet.</p>
+          ) : (
+            dashboard.recentGuideReports.map((report) => (
+              <div key={report.id} className="space-y-2 px-4 py-3">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="min-w-0">
+                    <p className="truncate text-xs font-semibold text-foreground">
+                      {report.guideTitle}
+                    </p>
+                    <p className="mt-0.5 text-[10px] uppercase tracking-[0.12em] text-muted">
+                      {report.sectionLabel}
+                    </p>
+                  </div>
+                  <span
+                    className="shrink-0 text-[10px] text-muted"
+                    title={format(new Date(report.createdAt), "d MMM yyyy HH:mm")}
+                  >
+                    {formatDistanceToNow(new Date(report.createdAt), { addSuffix: true })}
+                  </span>
+                </div>
+
+                <p className="text-sm leading-6 text-foreground/80">{report.note}</p>
+
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] text-muted">
+                  <span>
+                    {report.userId ? (
+                      <Link
+                        href={`/admin/analytics/${report.userId}`}
+                        className="hover:text-foreground"
+                      >
+                        {report.userDisplayName ?? "Unknown user"}
+                      </Link>
+                    ) : (
+                      "Anonymous"
+                    )}
+                  </span>
+                  {report.pagePath ? (
+                    <Link
+                      href={report.pagePath}
+                      className="underline underline-offset-2 hover:text-foreground"
+                    >
+                      Open guide page
+                    </Link>
+                  ) : null}
+                </div>
+              </div>
+            ))
+          )}
+        </Panel>
+      </CollapsibleSection>
 
       {/* ── Bottom section: Users + Popular + Buy clicks ── */}
       <div className="grid gap-8 xl:grid-cols-3">
