@@ -24,6 +24,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.9,
     },
+    {
+      url: `${baseUrl}/guides/glazing-pottery`,
+      changeFrequency: "weekly",
+      priority: 0.85,
+    },
+    {
+      url: `${baseUrl}/guides/glazing-pottery/foundations`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/guides/glazing-pottery/troubleshooting`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
   ];
 
   const glazePages: MetadataRoute.Sitemap = glazes.map((glaze) => ({
