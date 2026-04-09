@@ -164,16 +164,32 @@ export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: 
 
   // Merge in any glazes that live only in Supabase:
   //  • all custom (nonCommercial) glazes — visible to every viewer
-  //  • commercial glazes that aren't in the bundled catalog JSON yet
+  //  • commercial glazes for brands not yet in the bundled catalog JSON
   //    (newly imported brands like Opulence)
+  // Two scoped queries instead of one unfiltered fetch so we don't hit
+  // PostgREST's default 1000-row cap and silently lose late-alphabet rows.
   let dbGlazes: Glaze[] = [];
   const supabase = await getSupabase();
   if (supabase) {
-    const { data } = await supabase
-      .from("glazes")
-      .select("id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id");
     const staticIds = new Set(staticGlazes.map((g) => g.id));
-    dbGlazes = (data ?? [])
+    const staticBrands = new Set(
+      staticGlazes.map((g) => g.brand).filter((b): b is string => Boolean(b)),
+    );
+    const cols =
+      "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id";
+
+    const [customRes, dbOnlyCommercialRes] = await Promise.all([
+      supabase.from("glazes").select(cols).eq("source_type", "nonCommercial"),
+      staticBrands.size
+        ? supabase
+            .from("glazes")
+            .select(cols)
+            .eq("source_type", "commercial")
+            .not("brand", "in", `(${[...staticBrands].map((b) => `"${b.replace(/"/g, '""')}"`).join(",")})`)
+        : supabase.from("glazes").select(cols).eq("source_type", "commercial"),
+    ]);
+
+    dbGlazes = [...(customRes.data ?? []), ...(dbOnlyCommercialRes.data ?? [])]
       .filter((row) => !staticIds.has(row.id as string))
       .map((row) => mapGlaze(row));
   }
