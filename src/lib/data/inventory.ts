@@ -58,7 +58,7 @@ function normalizeVendorImageUrl(value: string | null) {
   }
 }
 
-function mapGlaze(row: Partial<GlazeRow>): Glaze {
+export function mapGlaze(row: Partial<GlazeRow>): Glaze {
   const bundledImageUrl = getBundledVendorImageUrl(row.brand ?? null, row.code ?? null);
 
   return {
@@ -162,15 +162,15 @@ const INVENTORY_GLAZE_COLUMNS = "id,source_type,name,brand,line,code,cone,descri
 export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: string) {
   const staticGlazes = getAllCatalogGlazes();
 
-  // Merge in any custom glazes this user has added
+  // Merge in all custom (nonCommercial) glazes — visible to every viewer,
+  // not just their creator, so the library surfaces community additions.
   let customGlazes: Glaze[] = [];
   const supabase = await getSupabase();
   if (supabase) {
     const { data } = await supabase
       .from("glazes")
       .select("id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id")
-      .eq("source_type", "nonCommercial")
-      .eq("created_by_user_id", viewerId);
+      .eq("source_type", "nonCommercial");
     customGlazes = (data ?? []).map((row) => mapGlaze(row));
   }
 

@@ -12,7 +12,8 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
 import { Panel } from "@/components/ui/panel";
-import { getGlazeStaticDetail } from "@/lib/data/glazes";
+import { getGlazeStaticDetail, resolveGlazeById } from "@/lib/data/glazes";
+import { getCatalogFiringImages } from "@/lib/catalog";
 import { requireViewer } from "@/lib/data/users";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getGlazeFamilyTraits, getManufacturerUrl } from "@/lib/glaze-metadata";
@@ -37,9 +38,15 @@ export default async function GlazeDetailPage({
   const { glazeId } = await params;
   const pageParams = await searchParams;
 
-  const detail = getGlazeStaticDetail(glazeId);
+  // Try the bundled static catalog first, then fall back to Supabase so
+  // community-contributed custom glazes resolve to a full detail page too.
+  let detail = getGlazeStaticDetail(glazeId);
   if (!detail) {
-    notFound();
+    const fallback = await resolveGlazeById(glazeId);
+    if (!fallback) {
+      notFound();
+    }
+    detail = { glaze: fallback, firingImages: getCatalogFiringImages(glazeId) };
   }
 
   const { glaze } = detail;

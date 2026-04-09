@@ -3,7 +3,26 @@ import type { Glaze, GlazeComment, GlazeDetail, InventoryItem } from "@/lib/type
 import type { Database } from "@/lib/supabase/database.types";
 import { getSupabase } from "@/lib/data/users";
 import { attachTagSummariesToGlazes } from "@/lib/data/tags";
-import { mapInventoryItem, type InventoryItemWithJoins } from "@/lib/data/inventory";
+import { mapGlaze, mapInventoryItem, type InventoryItemWithJoins } from "@/lib/data/inventory";
+
+// Fetch a custom (nonCommercial) glaze directly from Supabase — used as a
+// fallback whenever a glaze id isn't present in the bundled catalog JSON.
+async function fetchCustomGlazeFromDb(glazeId: string): Promise<Glaze | null> {
+  const supabase = await getSupabase();
+  if (!supabase) return null;
+  const { data } = await supabase
+    .from("glazes")
+    .select("id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id")
+    .eq("id", glazeId)
+    .eq("source_type", "nonCommercial")
+    .maybeSingle();
+  return data ? mapGlaze(data) : null;
+}
+
+// Resolves a glaze from static catalog OR the DB (for community-added ones).
+export async function resolveGlazeById(glazeId: string): Promise<Glaze | null> {
+  return getCatalogGlazeById(glazeId) ?? (await fetchCustomGlazeFromDb(glazeId));
+}
 
 type GlazeCommentRow = Database["public"]["Tables"]["glaze_comments"]["Row"];
 
