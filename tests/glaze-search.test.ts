@@ -1,7 +1,13 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { buildGlazeSearchIndex, extractColorAwareQuery, getGlazeColorMatchScore, matchesGlazeSearch } from "../src/lib/utils";
+import {
+  buildGlazeSearchIndex,
+  extractColorAwareQuery,
+  getGlazeColorMatchScore,
+  getGlazeLabelQueryMatch,
+  matchesGlazeSearch,
+} from "../src/lib/utils";
 import type { Glaze } from "../src/lib/types";
 
 test("matches glaze codes regardless of punctuation", () => {
@@ -100,23 +106,43 @@ test("keeps true white glazes ahead of colored glazes for white searches", () =>
 });
 
 test("prefers lighter blues for light blue searches", () => {
+  const skyBlueGlaze: Glaze = {
+    id: "sky-blue",
+    sourceType: "commercial",
+    brand: "Spectrum",
+    code: "332",
+    name: "Sky Blue",
+  };
+  const lavenderGlaze: Glaze = {
+    id: "lavender",
+    sourceType: "commercial",
+    brand: "Spectrum",
+    code: "334",
+    name: "Lavender",
+  };
+
+  assert.ok(
+    getGlazeColorMatchScore(skyBlueGlaze, ["Blue"], "light") >
+      getGlazeColorMatchScore(lavenderGlaze, ["Blue"], "light"),
+  );
+});
+
+test("recognizes literal shade-and-color glaze names", () => {
   const lightBlueGlaze: Glaze = {
     id: "light-blue",
     sourceType: "commercial",
     brand: "Mayco",
-    code: "SW-446",
-    name: "Light Flux",
+    code: "EZ031",
+    name: "Light Blue",
   };
-  const darkBlueGlaze: Glaze = {
-    id: "dark-blue",
+  const purpleBlueGlaze: Glaze = {
+    id: "purple-blue",
     sourceType: "commercial",
-    brand: "BOTZ",
-    code: "9542",
-    name: "Blue Effect",
+    brand: "Mayco",
+    code: "SC-71",
+    name: "Purple-Licious",
   };
 
-  assert.ok(
-    getGlazeColorMatchScore(lightBlueGlaze, ["Blue"], "light") >
-      getGlazeColorMatchScore(darkBlueGlaze, ["Blue"], "light"),
-  );
+  assert.equal(getGlazeLabelQueryMatch(lightBlueGlaze, "light blue"), true);
+  assert.equal(getGlazeLabelQueryMatch(purpleBlueGlaze, "light blue"), false);
 });

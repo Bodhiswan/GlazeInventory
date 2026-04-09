@@ -336,7 +336,27 @@ function parseHexColor(hex: string) {
   };
 }
 
+function toHexChannel(value: number) {
+  return Math.max(0, Math.min(255, Math.round(value))).toString(16).padStart(2, "0");
+}
+
+function mixHexColors(leftHex: string, rightHex: string, ratio: number) {
+  const left = parseHexColor(leftHex);
+  const right = parseHexColor(rightHex);
+
+  if (!left || !right) {
+    return leftHex;
+  }
+
+  const normalizedRatio = Math.max(0, Math.min(1, ratio));
+
+  return `#${toHexChannel(left.r + ((right.r - left.r) * normalizedRatio))}${toHexChannel(
+    left.g + ((right.g - left.g) * normalizedRatio),
+  )}${toHexChannel(left.b + ((right.b - left.b) * normalizedRatio))}`;
+}
+
 const hexLabColorCache = new Map<string, { l: number; a: number; b: number } | null>();
+const hexHsvColorCache = new Map<string, { hue: number; sat: number; val: number } | null>();
 
 function srgbToLinear(channel: number) {
   const normalized = channel / 255;
@@ -397,6 +417,31 @@ function getHexLabColor(hex: string) {
   return lab;
 }
 
+function getHexHsvColor(hex: string) {
+  const normalizedHex = normalizeHexColor(hex);
+
+  if (!normalizedHex) {
+    return null;
+  }
+
+  const cached = hexHsvColorCache.get(normalizedHex);
+
+  if (cached !== undefined) {
+    return cached;
+  }
+
+  const rgb = parseHexColor(normalizedHex);
+
+  if (!rgb) {
+    hexHsvColorCache.set(normalizedHex, null);
+    return null;
+  }
+
+  const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
+  hexHsvColorCache.set(normalizedHex, hsv);
+  return hsv;
+}
+
 function getLabDistance(leftHex: string, rightHex: string) {
   const left = getHexLabColor(leftHex);
   const right = getHexLabColor(rightHex);
@@ -436,6 +481,23 @@ function rgbToHsv(r: number, g: number, b: number) {
   const sat = max === 0 ? 0 : delta / max;
 
   return { hue: hue / 360, sat, val: max };
+}
+
+function getHueSimilarity(leftHex: string, rightHex: string) {
+  const left = getHexHsvColor(leftHex);
+  const right = getHexHsvColor(rightHex);
+
+  if (!left || !right) {
+    return 0;
+  }
+
+  if (left.sat < 0.08 || right.sat < 0.08) {
+    return 1;
+  }
+
+  const hueDistance = Math.abs(left.hue - right.hue);
+  const circularDistance = Math.min(hueDistance, 1 - hueDistance);
+  return Math.max(0, 1 - circularDistance / 0.16);
 }
 
 function getColorFlowMeta(label: string) {
@@ -703,6 +765,26 @@ export function extractQueryColorIntent(query: string) {
   return extractColorAwareQuery(query).colorIntent;
 }
 
+function getShadeAdjustedTargetHex(targetHex: string, shadeIntent: ColorShadeIntent | null) {
+  if (!shadeIntent) {
+    return targetHex;
+  }
+
+  if (shadeIntent === "light") {
+    return mixHexColors(targetHex, "#eef6ff", 0.42);
+  }
+
+  if (shadeIntent === "dark") {
+    return mixHexColors(targetHex, "#0f172a", 0.36);
+  }
+
+  if (shadeIntent === "bright") {
+    return mixHexColors(targetHex, "#ffffff", 0.12);
+  }
+
+  return mixHexColors(targetHex, "#9ca3af", 0.28);
+}
+
 function getPaletteColorSimilarityScore(targetHex: string, palette: VendorImagePaletteEntry[]) {
   if (!palette.length) {
     return 0;
@@ -712,14 +794,16 @@ function getPaletteColorSimilarityScore(targetHex: string, palette: VendorImageP
     ...palette.map((entry) => {
       const distance = getLabDistance(targetHex, entry.hex);
       const similarity = Math.max(0, 1 - distance / 88);
-      return entry.weight * similarity;
+      const hueSimilarity = getHueSimilarity(targetHex, entry.hex);
+      return entry.weight * ((similarity * 0.74) + (hueSimilarity * 0.26));
     }),
   );
 
   const weightedBlendScore = palette.reduce((total, entry) => {
     const distance = getLabDistance(targetHex, entry.hex);
     const similarity = Math.max(0, 1 - distance / 110);
-    return total + (entry.weight * similarity);
+    const hueSimilarity = getHueSimilarity(targetHex, entry.hex);
+    return total + (entry.weight * ((similarity * 0.8) + (hueSimilarity * 0.2)));
   }, 0);
 
   return bestEntryScore * 1.35 + weightedBlendScore * 0.85;
@@ -730,13 +814,14 @@ function getShadeAdjustedPaletteScore(
   palette: VendorImagePaletteEntry[],
   shadeIntent: ColorShadeIntent | null,
 ) {
-  const baseScore = getPaletteColorSimilarityScore(targetHex, palette);
+  const adjustedTargetHex = getShadeAdjustedTargetHex(targetHex, shadeIntent);
+  const baseScore = getPaletteColorSimilarityScore(adjustedTargetHex, palette);
 
   if (!shadeIntent || !palette.length) {
     return baseScore;
   }
 
-  const targetLab = getHexLabColor(targetHex);
+  const targetLab = getHexLabColor(adjustedTargetHex);
 
   if (!targetLab) {
     return baseScore;
@@ -749,7 +834,7 @@ function getShadeAdjustedPaletteScore(
       return best;
     }
 
-    const distance = getLabDistance(targetHex, entry.hex);
+    const distance = getLabDistance(adjustedTargetHex, entry.hex);
     const closeness = Math.max(0, 1 - distance / 90);
 
     if (closeness <= 0) {
@@ -775,6 +860,17 @@ function getShadeAdjustedPaletteScore(
   }, 0);
 
   return baseScore + shadeBoost * 0.55;
+}
+
+export function getGlazeLabelQueryMatch(glaze: Glaze, query: string) {
+  if (!query.trim()) {
+    return false;
+  }
+
+  return matchesGlazeSearch(
+    buildGlazeSearchIndex([glaze.code, glaze.name, glaze.brand, glaze.line]),
+    query,
+  );
 }
 
 function getLegacyGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {

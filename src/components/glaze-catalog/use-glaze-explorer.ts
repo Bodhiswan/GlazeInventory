@@ -45,6 +45,7 @@ export type IndexedGlaze = {
   hasPreferredExamples: boolean;
   hasCuratedDescription: boolean;
   searchText: string;
+  labelSearchText: string;
 };
 
 export function countValues(values: string[]) {
@@ -138,6 +139,7 @@ export function useGlazeExplorer({
             matchesFiringImagePreference(image, preferredCone, preferredAtmosphere),
           ),
           hasCuratedDescription: hasCuratedGlazeDescription(glaze),
+          labelSearchText: buildGlazeSearchIndex([glaze.code, glaze.name, glaze.brand, glaze.line]),
           searchText: buildGlazeSearchIndex([
             glaze.code,
             glaze.name,
@@ -325,6 +327,10 @@ export function useGlazeExplorer({
         .map((item) => ({
           item,
           colorScore: getGlazeColorMatchScore(item.glaze, activeColorRankingIntent, activeShadeIntent),
+          literalQueryMatch:
+            activeColorRankingIntent.length > 0 && normalizedQuery
+              ? matchesGlazeSearch(item.labelSearchText, normalizedQuery)
+              : false,
           exactTextMatch: textQuery
             ? matchesGlazeSearch(
                 buildGlazeSearchIndex([item.glaze.code, item.glaze.name]),
@@ -345,6 +351,10 @@ export function useGlazeExplorer({
           }
         }
 
+        if (left.literalQueryMatch !== right.literalQueryMatch) {
+          return right.literalQueryMatch ? 1 : -1;
+        }
+
         const colorDelta = right.colorScore - left.colorScore;
 
         if (Math.abs(colorDelta) > 0.0001) {
@@ -358,7 +368,15 @@ export function useGlazeExplorer({
           return formatGlazeLabel(leftItem.glaze).localeCompare(formatGlazeLabel(rightItem.glaze));
         })
         .map(({ item }) => item),
-    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, activeShadeIntent, textQuery],
+    [
+      filteredGlazes,
+      isAdmin,
+      reviewMode,
+      activeColorRankingIntent,
+      activeShadeIntent,
+      normalizedQuery,
+      textQuery,
+    ],
   );
 
   const hasFilters = Boolean(
