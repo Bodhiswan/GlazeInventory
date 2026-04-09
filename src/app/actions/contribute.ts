@@ -28,8 +28,12 @@ export async function completeContributionTutorialAction(): Promise<void> {
     .eq("id", viewer.profile.id);
 
   revalidateWorkspace();
-  revalidatePath("/contribute");
-  revalidatePath("/contribute/welcome");
+  revalidatePath("/contribute", "page");
+  revalidatePath("/contribute/welcome", "page");
+  // Bust the client router cache too — users who visited /contribute while
+  // it briefly redirected to /glazes/request would otherwise hit the stale
+  // cached redirect after the tutorial action and never reach the form.
+  revalidatePath("/", "layout");
   redirect("/contribute");
 }
 
