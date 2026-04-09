@@ -3,16 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { PageHeader } from "@/components/page-header";
-import { GuideErrorReport } from "@/components/guide/guide-error-report";
 import { GuideToc } from "@/components/guide/guide-toc";
 import { GuideTocMobile } from "@/components/guide/guide-toc";
 
 import { GUIDE_PARTS, getGuidePart } from "../guide-data";
-import { ApplicationContent, applicationToc } from "./application-content";
-import { DecorativeContent, decorativeToc } from "./decorative-content";
-import { FiringContent, firingToc } from "./firing-content";
 import { FoundationsContent, foundationsToc } from "./foundations-content";
-import { LayeringContent, layeringToc } from "./layering-content";
 import {
   TroubleshootingContent,
   troubleshootingToc,
@@ -27,11 +22,7 @@ const CONTENT: Record<
     Component: React.ComponentType;
   }
 > = {
-  application: { toc: applicationToc, Component: ApplicationContent },
-  decorative: { toc: decorativeToc, Component: DecorativeContent },
-  firing: { toc: firingToc, Component: FiringContent },
   foundations: { toc: foundationsToc, Component: FoundationsContent },
-  layering: { toc: layeringToc, Component: LayeringContent },
   troubleshooting: {
     toc: troubleshootingToc,
     Component: TroubleshootingContent,
@@ -129,7 +120,6 @@ export default async function GuideSubpage({
         eyebrow={`Part ${part.number}`}
         title={part.title}
         description={part.description}
-        actions={<GuideErrorReport guideSlug={slug} guideTitle={part.title} toc={toc} />}
       />
 
       {/* Mobile TOC */}

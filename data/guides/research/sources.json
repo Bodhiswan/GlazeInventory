@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "description": "Master reference database for the Glaze Library glazing guide. All three AI models contribute entries here.",
+    "lastUpdated": "2026-04-09",
+    "phases": {
+      "A": "Foundations + Troubleshooting",
+      "B": "Layering Theory + Application Methods",
+      "C": "Decorative Techniques + Firing",
+      "D": "International Traditions",
+      "E": "Hub page, navigation, SEO"
+    }
+  },
+  "books": [
+    {
+      "id": "rhodes-clay-glazes",
+      "title": "Clay and Glazes for the Potter",
+      "author": "Daniel Rhodes",
+      "edition": "3rd",
+      "year": 2000,
+      "publisher": "Krause Publications",
+      "isbn": "978-0801987106",
+      "covers": ["glaze chemistry", "application methods", "glaze defects", "firing"],
+      "usedInPhases": ["A", "B", "C"]
+    },
+    {
+      "id": "hamer-potters-dictionary",
+      "title": "The Potter's Dictionary of Materials and Techniques",
+      "author": "Frank Hamer & Janet Hamer",
+      "edition": "6th",
+      "year": 2015,
+      "publisher": "A&C Black / Bloomsbury",
+      "isbn": "978-1408183717",
+      "covers": ["encyclopedic reference", "materials", "techniques"],
+      "usedInPhases": ["A", "B", "C", "D"]
+    },
+    {
+      "id": "hopper-ceramic-spectrum",
+      "title": "The Ceramic Spectrum",
+      "author": "Robin Hopper",
+      "edition": "2nd",
+      "year": 2001,
+      "publisher": "Krause Publications",
+      "isbn": "978-0873419963",
+      "covers": ["color development", "layering", "surface decoration"],
+      "usedInPhases": ["A", "B", "C"]
+    },
+    {
+      "id": "hesselberth-cone6",
+      "title": "Mastering Cone 6 Glazes",
+      "author": "John Hesselberth & Ron Roy",
+      "edition": "1st",
+      "year": 2002,
+      "publisher": "Glaze Master Press",
+      "isbn": "978-0974345505",
+      "covers": ["mid-fire glazes", "specific gravity", "testing methodology"],
+      "usedInPhases": ["A", "B"]
+    },
+    {
+      "id": "britt-high-fire",
+      "title": "The Complete Guide to High-Fire Glazes",
+      "author": "John Britt",
+      "edition": "1st",
+      "year": 2004,
+      "publisher": "Lark Books",
+      "isbn": "978-1579905330",
+      "covers": ["celadon", "tenmoku", "shino", "ash glazes", "copper reds"],
+      "usedInPhases": ["A", "B", "D"]
+    },
+    {
+      "id": "wood-chinese-glazes",
+      "title": "Chinese Glazes",
+      "author": "Nigel Wood",
+      "edition": "1st",
+      "year": 1999,
+      "publisher": "A&C Black / University of Pennsylvania Press",
+      "isbn": "978-0812234763",
+      "covers": ["celadon", "jun", "jian tenmoku", "sang de boeuf", "Chinese ceramic history"],
+      "usedInPhases": ["D"]
+    },
+    {
+      "id": "caiger-smith-lustre",
+      "title": "Lustre Pottery",
+      "author": "Alan Caiger-Smith",
+      "edition": "1st",
+      "year": 1985,
+      "publisher": "Faber and Faber / New Amsterdam Books",
+      "isbn": "978-0571135325",
+      "covers": ["lusterware technique", "Islamic ceramics", "Spanish lusterware"],
+      "usedInPhases": ["D"]
+    },
+    {
+      "id": "caiger-smith-tin-glaze",
+      "title": "Tin-Glaze Pottery in Europe and the Islamic World",
+      "author": "Alan Caiger-Smith",
+      "edition": "1st",
+      "year": 1973,
+      "publisher": "Faber and Faber",
+      "isbn": "978-0571049349",
+      "covers": ["maiolica", "faience", "delftware", "Islamic tin-glaze"],
+      "usedInPhases": ["D"]
+    },
+    {
+      "id": "atasoy-iznik",
+      "title": "Iznik: The Pottery of Ottoman Turkey",
+      "author": "Nurhan Atasoy & Julian Raby",
+      "edition": "1st",
+      "year": 1989,
+      "publisher": "Alexandria Press",
+      "isbn": "978-0500973745",
+      "covers": ["Iznik pottery", "Ottoman ceramics", "cobalt blue", "Armenian bole"],
+      "usedInPhases": ["D"]
+    },
+    {
+      "id": "sentance-world-ceramics",
+      "title": "Ceramics: A World Guide to Traditional Techniques",
+      "author": "Bryan Sentance",
+      "edition": "1st",
+      "year": 2004,
+      "publisher": "Thames & Hudson",
+      "isbn": "978-0500510841",
+      "covers": ["international techniques survey", "traditional pottery worldwide"],
+      "usedInPhases": ["D"]
+    },
+    {
+      "id": "peterson-art-craft-clay",
+      "title": "The Art and Craft of Clay",
+      "author": "Susan Peterson & Jan Peterson",
+      "edition": "5th",
+      "year": 2012,
+      "publisher": "Laurence King Publishing",
+      "isbn": "978-1780670997",
+      "covers": ["broad survey", "international coverage", "technique overview"],
+      "usedInPhases": ["A", "B", "C", "D"]
+    },
+    {
+      "id": "illian-potters-workbook",
+      "title": "A Potter's Workbook",
+      "author": "Clary Illian",
+      "edition": "1st",
+      "year": 1999,
+      "publisher": "University of Iowa Press",
+      "isbn": "978-0877456711",
+      "covers": ["Leach tradition", "functional pottery", "studio practice"],
+      "usedInPhases": ["B", "D"]
+    }
+  ],
+  "manufacturers": [
+    {
+      "id": "mayco",
+      "name": "Mayco Colors",
+      "region": "USA",
+      "resourceTypes": ["application guides", "combination charts", "technical data sheets"],
+      "usedInPhases": ["A", "B"]
+    },
+    {
+      "id": "amaco",
+      "name": "AMACO / Brent",
+      "region": "USA",
+      "resourceTypes": ["teacher resources", "layering charts", "safety data sheets"],
+      "usedInPhases": ["A", "B"]
+    },
+    {
+      "id": "coyote",
+      "name": "Coyote Glazes",
+      "region": "USA",
+      "resourceTypes": ["layering documentation", "application guides"],
+      "usedInPhases": ["A", "B"]
+    },
+    {
+      "id": "spectrum",
+      "name": "Spectrum Glazes",
+      "region": "Canada",
+      "resourceTypes": ["technical data sheets", "specific gravity specifications"],
+      "usedInPhases": ["A", "B"]
+    },
+    {
+      "id": "ferro",
+      "name": "Ferro Corporation",
+      "region": "USA",
+      "resourceTypes": ["frit data sheets", "glaze chemistry bulletins"],
+      "usedInPhases": ["A"]
+    },
+    {
+      "id": "botz",
+      "name": "Botz Glasuren",
+      "region": "Germany",
+      "resourceTypes": ["application guides"],
+      "usedInPhases": ["A", "B"]
+    },
+    {
+      "id": "potclays",
+      "name": "Potclays / Scarva",
+      "region": "UK",
+      "resourceTypes": ["application instructions"],
+      "usedInPhases": ["A", "B"]
+    },
+    {
+      "id": "northcote",
+      "name": "Northcote Pottery Supplies",
+      "region": "Australia",
+      "resourceTypes": ["application guides"],
+      "usedInPhases": ["A", "B"]
+    }
+  ],
+  "institutions": [
+    {
+      "id": "alfred-nyscc",
+      "name": "Alfred University — New York State College of Ceramics",
+      "type": "university",
+      "usedInPhases": ["A", "D"]
+    },
+    {
+      "id": "ceramics-monthly",
+      "name": "Ceramics Monthly / Pottery Making Illustrated",
+      "type": "journal",
+      "publisher": "American Ceramic Society",
+      "usedInPhases": ["A", "B", "C", "D"]
+    },
+    {
+      "id": "v-and-a",
+      "name": "Victoria & Albert Museum",
+      "type": "museum",
+      "location": "London, UK",
+      "usedInPhases": ["D"]
+    },
+    {
+      "id": "met-museum",
+      "name": "The Metropolitan Museum of Art",
+      "type": "museum",
+      "location": "New York, USA",
+      "usedInPhases": ["D"]
+    },
+    {
+      "id": "freer-gallery",
+      "name": "Freer Gallery of Art / Smithsonian",
+      "type": "museum",
+      "location": "Washington DC, USA",
+      "usedInPhases": ["D"]
+    },
+    {
+      "id": "jingdezhen",
+      "name": "Jingdezhen Ceramic Institute",
+      "type": "university",
+      "location": "Jingdezhen, China",
+      "usedInPhases": ["D"]
+    }
+  ],
+  "webResources": [],
+  "claimsLog": []
+}

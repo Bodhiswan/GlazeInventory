@@ -29,6 +29,9 @@ export function PublicWorkspaceShell({
               <Link href="/combinations" className={buttonVariants({ variant: "ghost", size: "sm" })}>
                 Combinations
               </Link>
+              <Link href="/guides/glazing-pottery" className={buttonVariants({ variant: "ghost", size: "sm" })}>
+                Guides
+              </Link>
               <Link href="/auth/sign-in" className={buttonVariants({ size: "sm" })}>
                 Sign in
               </Link>

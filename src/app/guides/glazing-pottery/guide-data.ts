@@ -21,7 +21,7 @@ export const GUIDE_PARTS: GuidePart[] = [
     title: "Application Methods",
     description:
       "Dipping, pouring, spraying, brushing, trailing, sponging — equipment, technique, and when to use each method.",
-    status: "live",
+    status: "coming-soon",
   },
   {
     slug: "layering",
@@ -29,7 +29,7 @@ export const GUIDE_PARTS: GuidePart[] = [
     title: "Layering Theory & Practice",
     description:
       "Why glazes interact when layered, eutectic melting, viscosity and flow, layering strategies, and systematic testing.",
-    status: "live",
+    status: "coming-soon",
   },
   {
     slug: "decorative",
@@ -37,7 +37,7 @@ export const GUIDE_PARTS: GuidePart[] = [
     title: "Resist & Decorative Techniques",
     description:
       "Wax resist, sgraffito, mishima, underglaze techniques, overglaze enamels, and combining methods.",
-    status: "live",
+    status: "coming-soon",
   },
   {
     slug: "firing",
@@ -45,7 +45,7 @@ export const GUIDE_PARTS: GuidePart[] = [
     title: "Firing Considerations",
     description:
       "How oxidation, reduction, ramp rate, cooling, and kiln type affect your glaze results.",
-    status: "live",
+    status: "coming-soon",
   },
   {
     slug: "troubleshooting",

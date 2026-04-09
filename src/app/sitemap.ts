@@ -35,26 +35,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/guides/glazing-pottery/application`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/layering`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/decorative`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/firing`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
       url: `${baseUrl}/guides/glazing-pottery/troubleshooting`,
       changeFrequency: "monthly",
       priority: 0.8,
