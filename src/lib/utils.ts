@@ -336,27 +336,7 @@ function parseHexColor(hex: string) {
   };
 }
 
-function toHexChannel(value: number) {
-  return Math.max(0, Math.min(255, Math.round(value))).toString(16).padStart(2, "0");
-}
-
-function mixHexColors(leftHex: string, rightHex: string, ratio: number) {
-  const left = parseHexColor(leftHex);
-  const right = parseHexColor(rightHex);
-
-  if (!left || !right) {
-    return leftHex;
-  }
-
-  const normalizedRatio = Math.max(0, Math.min(1, ratio));
-
-  return `#${toHexChannel(left.r + ((right.r - left.r) * normalizedRatio))}${toHexChannel(
-    left.g + ((right.g - left.g) * normalizedRatio),
-  )}${toHexChannel(left.b + ((right.b - left.b) * normalizedRatio))}`;
-}
-
 const hexLabColorCache = new Map<string, { l: number; a: number; b: number } | null>();
-const hexHsvColorCache = new Map<string, { hue: number; sat: number; val: number } | null>();
 
 function srgbToLinear(channel: number) {
   const normalized = channel / 255;
@@ -417,31 +397,6 @@ function getHexLabColor(hex: string) {
   return lab;
 }
 
-function getHexHsvColor(hex: string) {
-  const normalizedHex = normalizeHexColor(hex);
-
-  if (!normalizedHex) {
-    return null;
-  }
-
-  const cached = hexHsvColorCache.get(normalizedHex);
-
-  if (cached !== undefined) {
-    return cached;
-  }
-
-  const rgb = parseHexColor(normalizedHex);
-
-  if (!rgb) {
-    hexHsvColorCache.set(normalizedHex, null);
-    return null;
-  }
-
-  const hsv = rgbToHsv(rgb.r, rgb.g, rgb.b);
-  hexHsvColorCache.set(normalizedHex, hsv);
-  return hsv;
-}
-
 function getLabDistance(leftHex: string, rightHex: string) {
   const left = getHexLabColor(leftHex);
   const right = getHexLabColor(rightHex);
@@ -481,23 +436,6 @@ function rgbToHsv(r: number, g: number, b: number) {
   const sat = max === 0 ? 0 : delta / max;
 
   return { hue: hue / 360, sat, val: max };
-}
-
-function getHueSimilarity(leftHex: string, rightHex: string) {
-  const left = getHexHsvColor(leftHex);
-  const right = getHexHsvColor(rightHex);
-
-  if (!left || !right) {
-    return 0;
-  }
-
-  if (left.sat < 0.08 || right.sat < 0.08) {
-    return 1;
-  }
-
-  const hueDistance = Math.abs(left.hue - right.hue);
-  const circularDistance = Math.min(hueDistance, 1 - hueDistance);
-  return Math.max(0, 1 - circularDistance / 0.16);
 }
 
 function getColorFlowMeta(label: string) {
@@ -676,12 +614,9 @@ export function getGlazeSkimDescription(glaze: Glaze) {
   };
 }
 
-export type ColorShadeIntent = "light" | "dark" | "bright" | "muted";
-
 type ColorAwareQuery = {
   colorIntent: string[];
   textQuery: string;
-  shadeIntent: ColorShadeIntent | null;
 };
 
 function getColorKeywordLookup() {
@@ -699,52 +634,20 @@ function getColorKeywordLookup() {
 }
 
 const colorKeywordLookup = getColorKeywordLookup();
-const colorShadeKeywords = new Set(["light", "dark", "bright", "pale", "deep", "muted", "soft"]);
-
-function normalizeShadeIntent(token: string): ColorShadeIntent | null {
-  if (token === "light" || token === "pale" || token === "soft") {
-    return "light";
-  }
-
-  if (token === "dark" || token === "deep") {
-    return "dark";
-  }
-
-  if (token === "bright") {
-    return "bright";
-  }
-
-  if (token === "muted") {
-    return "muted";
-  }
-
-  return null;
-}
 
 export function extractColorAwareQuery(query: string): ColorAwareQuery {
   const normalized = normalizeGlazeSearchText(query);
 
   if (!normalized) {
-    return { colorIntent: [], textQuery: "", shadeIntent: null };
+    return { colorIntent: [], textQuery: "" };
   }
 
   const tokens = normalized.split(" ").filter(Boolean);
   const colorIntent: string[] = [];
   const residualTokens: string[] = [];
-  let shadeIntent: ColorShadeIntent | null = null;
 
-  for (let index = 0; index < tokens.length; index += 1) {
-    const token = tokens[index]!;
+  for (const token of tokens) {
     const matchedColor = colorKeywordLookup.get(token);
-    const nextToken = tokens[index + 1];
-    const nextMatchedColor = nextToken ? colorKeywordLookup.get(nextToken) : null;
-
-    if (!matchedColor && nextMatchedColor && colorShadeKeywords.has(token)) {
-      colorIntent.push(nextMatchedColor);
-      shadeIntent ??= normalizeShadeIntent(token);
-      index += 1;
-      continue;
-    }
 
     if (matchedColor) {
       colorIntent.push(matchedColor);
@@ -757,32 +660,11 @@ export function extractColorAwareQuery(query: string): ColorAwareQuery {
   return {
     colorIntent: uniqueValues(colorIntent),
     textQuery: residualTokens.join(" "),
-    shadeIntent,
   };
 }
 
 export function extractQueryColorIntent(query: string) {
   return extractColorAwareQuery(query).colorIntent;
-}
-
-function getShadeAdjustedTargetHex(targetHex: string, shadeIntent: ColorShadeIntent | null) {
-  if (!shadeIntent) {
-    return targetHex;
-  }
-
-  if (shadeIntent === "light") {
-    return mixHexColors(targetHex, "#eef6ff", 0.42);
-  }
-
-  if (shadeIntent === "dark") {
-    return mixHexColors(targetHex, "#0f172a", 0.36);
-  }
-
-  if (shadeIntent === "bright") {
-    return mixHexColors(targetHex, "#ffffff", 0.12);
-  }
-
-  return mixHexColors(targetHex, "#9ca3af", 0.28);
 }
 
 function getPaletteColorSimilarityScore(targetHex: string, palette: VendorImagePaletteEntry[]) {
@@ -794,83 +676,17 @@ function getPaletteColorSimilarityScore(targetHex: string, palette: VendorImageP
     ...palette.map((entry) => {
       const distance = getLabDistance(targetHex, entry.hex);
       const similarity = Math.max(0, 1 - distance / 88);
-      const hueSimilarity = getHueSimilarity(targetHex, entry.hex);
-      return entry.weight * ((similarity * 0.74) + (hueSimilarity * 0.26));
+      return entry.weight * similarity;
     }),
   );
 
   const weightedBlendScore = palette.reduce((total, entry) => {
     const distance = getLabDistance(targetHex, entry.hex);
     const similarity = Math.max(0, 1 - distance / 110);
-    const hueSimilarity = getHueSimilarity(targetHex, entry.hex);
-    return total + (entry.weight * ((similarity * 0.8) + (hueSimilarity * 0.2)));
+    return total + (entry.weight * similarity);
   }, 0);
 
   return bestEntryScore * 1.35 + weightedBlendScore * 0.85;
-}
-
-function getShadeAdjustedPaletteScore(
-  targetHex: string,
-  palette: VendorImagePaletteEntry[],
-  shadeIntent: ColorShadeIntent | null,
-) {
-  const adjustedTargetHex = getShadeAdjustedTargetHex(targetHex, shadeIntent);
-  const baseScore = getPaletteColorSimilarityScore(adjustedTargetHex, palette);
-
-  if (!shadeIntent || !palette.length) {
-    return baseScore;
-  }
-
-  const targetLab = getHexLabColor(adjustedTargetHex);
-
-  if (!targetLab) {
-    return baseScore;
-  }
-
-  const shadeBoost = palette.reduce((best, entry) => {
-    const entryLab = getHexLabColor(entry.hex);
-
-    if (!entryLab) {
-      return best;
-    }
-
-    const distance = getLabDistance(adjustedTargetHex, entry.hex);
-    const closeness = Math.max(0, 1 - distance / 90);
-
-    if (closeness <= 0) {
-      return best;
-    }
-
-    const lightnessDelta = entryLab.l - targetLab.l;
-    let shadeMatch = 0;
-
-    if (shadeIntent === "light") {
-      shadeMatch = Math.max(0, lightnessDelta) / 35;
-    } else if (shadeIntent === "dark") {
-      shadeMatch = Math.max(0, -lightnessDelta) / 35;
-    } else if (shadeIntent === "bright") {
-      const chroma = Math.sqrt((entryLab.a ** 2) + (entryLab.b ** 2));
-      shadeMatch = Math.max(0, chroma - 24) / 55;
-    } else if (shadeIntent === "muted") {
-      const chroma = Math.sqrt((entryLab.a ** 2) + (entryLab.b ** 2));
-      shadeMatch = Math.max(0, 52 - chroma) / 52;
-    }
-
-    return Math.max(best, entry.weight * closeness * Math.min(shadeMatch, 1));
-  }, 0);
-
-  return baseScore + shadeBoost * 0.55;
-}
-
-export function getGlazeLabelQueryMatch(glaze: Glaze, query: string) {
-  if (!query.trim()) {
-    return false;
-  }
-
-  return matchesGlazeSearch(
-    buildGlazeSearchIndex([glaze.code, glaze.name, glaze.brand, glaze.line]),
-    query,
-  );
 }
 
 function getLegacyGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
@@ -932,11 +748,7 @@ function getLegacyGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
   }, 0);
 }
 
-export function getGlazeColorMatchScore(
-  glaze: Glaze,
-  selectedColors: string[],
-  shadeIntent: ColorShadeIntent | null = null,
-) {
+export function getGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
   if (!selectedColors.length) {
     return 0;
   }
@@ -947,7 +759,7 @@ export function getGlazeColorMatchScore(
   return selectedColors.reduce((total, selected) => {
     const targetHex = getColorSwatch(selected);
     const paletteScore = palette.length
-      ? getShadeAdjustedPaletteScore(targetHex, palette, shadeIntent)
+      ? getPaletteColorSimilarityScore(targetHex, palette)
       : 0;
     const legacyScore = palette.length ? 0 : getLegacyGlazeColorMatchScore(glaze, [selected]);
     const textScore = textTraits.includes(selected)

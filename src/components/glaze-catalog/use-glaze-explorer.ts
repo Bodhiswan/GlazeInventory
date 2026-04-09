@@ -46,7 +46,6 @@ export type IndexedGlaze = {
   hasPreferredExamples: boolean;
   hasCuratedDescription: boolean;
   searchText: string;
-  labelSearchText: string;
 };
 
 export function countValues(values: string[]) {
@@ -113,7 +112,6 @@ export function useGlazeExplorer({
   const colorAwareQuery = extractColorAwareQuery(deferredQuery);
   const textQuery = colorAwareQuery.textQuery;
   const queryColorIntent = colorAwareQuery.colorIntent;
-  const queryShadeIntent = colorAwareQuery.shadeIntent;
   const previewCone = coneFilters[0] ?? preferredCone;
 
   const indexedGlazes = useMemo<IndexedGlaze[]>(
@@ -140,7 +138,6 @@ export function useGlazeExplorer({
             matchesFiringImagePreference(image, preferredCone, preferredAtmosphere),
           ),
           hasCuratedDescription: hasCuratedGlazeDescription(glaze),
-          labelSearchText: buildGlazeSearchIndex([glaze.code, glaze.name, glaze.brand, glaze.line]),
           searchText: buildGlazeSearchIndex([
             glaze.code,
             glaze.name,
@@ -320,18 +317,13 @@ export function useGlazeExplorer({
   );
 
   const activeColorRankingIntent = colorFilters.length ? colorFilters : queryColorIntent;
-  const activeShadeIntent = colorFilters.length ? null : queryShadeIntent;
 
   const sortedGlazes = useMemo(
     () =>
       filteredGlazes
         .map((item) => ({
           item,
-          colorScore: getGlazeColorMatchScore(item.glaze, activeColorRankingIntent, activeShadeIntent),
-          literalQueryMatch:
-            activeColorRankingIntent.length > 0 && normalizedQuery
-              ? matchesGlazeSearch(item.labelSearchText, normalizedQuery)
-              : false,
+          colorScore: getGlazeColorMatchScore(item.glaze, activeColorRankingIntent),
           exactTextMatch: textQuery
             ? matchesGlazeSearch(
                 buildGlazeSearchIndex([item.glaze.code, item.glaze.name]),
@@ -352,10 +344,6 @@ export function useGlazeExplorer({
           }
         }
 
-        if (left.literalQueryMatch !== right.literalQueryMatch) {
-          return right.literalQueryMatch ? 1 : -1;
-        }
-
         const colorDelta = right.colorScore - left.colorScore;
 
         if (Math.abs(colorDelta) > 0.0001) {
@@ -374,8 +362,6 @@ export function useGlazeExplorer({
       isAdmin,
       reviewMode,
       activeColorRankingIntent,
-      activeShadeIntent,
-      normalizedQuery,
       textQuery,
     ],
   );
