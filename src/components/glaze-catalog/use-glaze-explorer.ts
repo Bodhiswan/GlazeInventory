@@ -319,41 +319,43 @@ export function useGlazeExplorer({
 
   const sortedGlazes = useMemo(
     () =>
-      [...filteredGlazes].sort((left, right) => {
+      filteredGlazes
+        .map((item) => ({
+          item,
+          colorScore: getGlazeColorMatchScore(item.glaze, activeColorRankingIntent),
+          exactTextMatch: textQuery
+            ? matchesGlazeSearch(
+                buildGlazeSearchIndex([item.glaze.code, item.glaze.name]),
+                textQuery,
+              )
+            : false,
+        }))
+        .sort((left, right) => {
+          const leftItem = left.item;
+          const rightItem = right.item;
+
         if (isAdmin && !reviewMode) {
           const reviewDelta =
-            Number(left.hasCuratedDescription) - Number(right.hasCuratedDescription);
+            Number(leftItem.hasCuratedDescription) - Number(rightItem.hasCuratedDescription);
 
           if (reviewDelta !== 0) {
             return reviewDelta;
           }
         }
 
-        const colorDelta =
-          getGlazeColorMatchScore(right.glaze, activeColorRankingIntent) -
-          getGlazeColorMatchScore(left.glaze, activeColorRankingIntent);
+        const colorDelta = right.colorScore - left.colorScore;
 
         if (Math.abs(colorDelta) > 0.0001) {
           return colorDelta;
         }
 
-        if (textQuery) {
-          const leftExact = matchesGlazeSearch(
-            buildGlazeSearchIndex([left.glaze.code, left.glaze.name]),
-            textQuery,
-          );
-          const rightExact = matchesGlazeSearch(
-            buildGlazeSearchIndex([right.glaze.code, right.glaze.name]),
-            textQuery,
-          );
-
-          if (leftExact !== rightExact) {
-            return rightExact ? 1 : -1;
+        if (textQuery && left.exactTextMatch !== right.exactTextMatch) {
+          return right.exactTextMatch ? 1 : -1;
           }
-        }
 
-        return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
-      }),
+          return formatGlazeLabel(leftItem.glaze).localeCompare(formatGlazeLabel(rightItem.glaze));
+        })
+        .map(({ item }) => item),
     [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, textQuery],
   );
 

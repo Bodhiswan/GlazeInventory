@@ -336,6 +336,8 @@ function parseHexColor(hex: string) {
   };
 }
 
+const hexLabColorCache = new Map<string, { l: number; a: number; b: number } | null>();
+
 function srgbToLinear(channel: number) {
   const normalized = channel / 255;
   return normalized <= 0.04045
@@ -371,13 +373,28 @@ function rgbToLab(r: number, g: number, b: number) {
 }
 
 function getHexLabColor(hex: string) {
-  const rgb = parseHexColor(hex);
+  const normalizedHex = normalizeHexColor(hex);
 
-  if (!rgb) {
+  if (!normalizedHex) {
     return null;
   }
 
-  return rgbToLab(rgb.r, rgb.g, rgb.b);
+  const cached = hexLabColorCache.get(normalizedHex);
+
+  if (cached !== undefined) {
+    return cached;
+  }
+
+  const rgb = parseHexColor(hex);
+
+  if (!rgb) {
+    hexLabColorCache.set(normalizedHex, null);
+    return null;
+  }
+
+  const lab = rgbToLab(rgb.r, rgb.g, rgb.b);
+  hexLabColorCache.set(normalizedHex, lab);
+  return lab;
 }
 
 function getLabDistance(leftHex: string, rightHex: string) {
