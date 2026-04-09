@@ -7,10 +7,10 @@ import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
 import { getGlazeFamilyTraits } from "@/lib/glaze-metadata";
 import {
+  extractColorAwareQuery,
   extractGlazeColorTraits,
   extractGlazeConeTraits,
   extractGlazeFinishTraits,
-  extractQueryColorIntent,
   buildGlazeSearchIndex,
   matchesGlazeSearch,
   formatGlazeLabel,
@@ -108,7 +108,9 @@ export function useGlazeExplorer({
 
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
-  const queryColorIntent = extractQueryColorIntent(normalizedQuery);
+  const colorAwareQuery = extractColorAwareQuery(deferredQuery);
+  const textQuery = colorAwareQuery.textQuery;
+  const queryColorIntent = colorAwareQuery.colorIntent;
   const previewCone = coneFilters[0] ?? preferredCone;
 
   const indexedGlazes = useMemo<IndexedGlaze[]>(
@@ -239,11 +241,11 @@ export function useGlazeExplorer({
           return false;
         }
 
-        if (!normalizedQuery) {
+        if (!textQuery) {
           return true;
         }
 
-        return matchesGlazeSearch(item.searchText, deferredQuery);
+        return matchesGlazeSearch(item.searchText, textQuery);
       }),
     [
       indexedGlazes,
@@ -254,8 +256,7 @@ export function useGlazeExplorer({
       colorFilters,
       finishFilters,
       coneFilters,
-      normalizedQuery,
-      deferredQuery,
+      textQuery,
     ],
   );
 
@@ -286,11 +287,11 @@ export function useGlazeExplorer({
           return false;
         }
 
-        if (!normalizedQuery) {
+        if (!textQuery) {
           return true;
         }
 
-        return matchesGlazeSearch(item.searchText, deferredQuery);
+        return matchesGlazeSearch(item.searchText, textQuery);
       }),
     [
       indexedGlazes,
@@ -300,8 +301,7 @@ export function useGlazeExplorer({
       colorFilters,
       finishFilters,
       coneFilters,
-      normalizedQuery,
-      deferredQuery,
+      textQuery,
     ],
   );
 
@@ -337,14 +337,14 @@ export function useGlazeExplorer({
           return colorDelta;
         }
 
-        if (normalizedQuery) {
+        if (textQuery) {
           const leftExact = matchesGlazeSearch(
             buildGlazeSearchIndex([left.glaze.code, left.glaze.name]),
-            deferredQuery,
+            textQuery,
           );
           const rightExact = matchesGlazeSearch(
             buildGlazeSearchIndex([right.glaze.code, right.glaze.name]),
-            deferredQuery,
+            textQuery,
           );
 
           if (leftExact !== rightExact) {
@@ -354,7 +354,7 @@ export function useGlazeExplorer({
 
         return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
       }),
-    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, normalizedQuery, deferredQuery],
+    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, textQuery],
   );
 
   const hasFilters = Boolean(
@@ -398,8 +398,8 @@ export function useGlazeExplorer({
 
   const displayGlazes = useMemo(
     () =>
-      normalizedQuery || activeColorRankingIntent.length ? sortedGlazes : gradientSortedGlazes,
-    [normalizedQuery, activeColorRankingIntent.length, sortedGlazes, gradientSortedGlazes],
+      textQuery || activeColorRankingIntent.length ? sortedGlazes : gradientSortedGlazes,
+    [textQuery, activeColorRankingIntent.length, sortedGlazes, gradientSortedGlazes],
   );
 
   const visibleGradientGlazes = useMemo(
@@ -555,6 +555,7 @@ export function useGlazeExplorer({
     setQuery,
     deferredQuery,
     normalizedQuery,
+    textQuery,
     // Filter state
     brandFilters,
     setBrandFilters,
