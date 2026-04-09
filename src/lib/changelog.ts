@@ -4,6 +4,7 @@ export const CHANGES = [
   {
     category: "New",
     items: [
+      "Glazing guide expanded — Part V: Firing Considerations is now live, covering oxidation vs. reduction, cones and heatwork, witness cones, ramp and cooling choices, kiln loading, refiring, and commercial glaze firing caveats.",
       "Opulence glaze brand added — 74 Mid-South Opulence glazes are now in the library, searchable, and pickable from the inventory add-glaze flow.",
       "Request a brand — \"Submit a new glaze\" inside the contribute form is replaced with a link to a simple Request-a-brand page; new requests show as an alert in admin analytics. Firing photos and combinations still work as before.",
       "Richer dashboard welcome — a real product tour with screenshots of the library, inventory, combinations, and contribute pages, plus a Mayco Crystalites hero strip.",
