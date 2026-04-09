@@ -37,7 +37,7 @@ export const GUIDE_PARTS: GuidePart[] = [
     title: "Resist & Decorative Techniques",
     description:
       "Wax resist, sgraffito, mishima, underglaze techniques, overglaze enamels, and combining methods.",
-    status: "coming-soon",
+    status: "live",
   },
   {
     slug: "firing",
