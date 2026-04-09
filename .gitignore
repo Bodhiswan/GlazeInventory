@@ -55,4 +55,11 @@ supabase/.temp
 # worktrees
 .worktrees/
 
+# tooling artifacts
+.playwright-cli/
+/logs/
+
+# guide research drafts (published content lives in src/)
+data/guides/research/
+
 .vercel
