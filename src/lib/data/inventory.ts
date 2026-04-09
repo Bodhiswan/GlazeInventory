@@ -194,9 +194,15 @@ export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: 
       .map((row) => mapGlaze(row));
   }
 
-  const glazes = [...staticGlazes, ...dbGlazes].sort((left, right) =>
-    formatGlazeLabel(left).localeCompare(formatGlazeLabel(right)),
-  );
+  // Deduplicate by ID — the static catalog historically had a few dupes.
+  const seen = new Set<string>();
+  const glazes = [...staticGlazes, ...dbGlazes]
+    .filter((g) => {
+      if (seen.has(g.id)) return false;
+      seen.add(g.id);
+      return true;
+    })
+    .sort((left, right) => formatGlazeLabel(left).localeCompare(formatGlazeLabel(right)));
   return attachTagSummariesToGlazes(viewerId, glazes);
 });
 
