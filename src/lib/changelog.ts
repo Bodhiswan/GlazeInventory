@@ -1,40 +1,35 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v5";
+export const CHANGELOG_KEY = "glaze-library-changelog-v6";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
-      "Clay Art Center glazes added — 234 Clay Art Center catalog glazes are now in the library, including Rainbow, P Series, Craftsman, Frost, Raku, Terra Sigillata, and High Fire lines.",
-      "Glazing guide expanded — Part V: Firing Considerations is now live, covering oxidation vs. reduction, cones and heatwork, witness cones, ramp and cooling choices, kiln loading, refiring, and commercial glaze firing caveats.",
-      "Opulence glaze brand added — 74 Mid-South Opulence glazes are now in the library, searchable, and pickable from the inventory add-glaze flow.",
-      "Request a brand — \"Submit a new glaze\" inside the contribute form is replaced with a link to a simple Request-a-brand page; new requests show as an alert in admin analytics. Firing photos and combinations still work as before.",
-      "Richer dashboard welcome — a real product tour with screenshots of the library, inventory, combinations, and contribute pages, plus a Mayco Crystalites hero strip.",
-      "Take-the-tour modal — split-layout card with step icons, animated visuals, clickable dots, keyboard arrow navigation, and direct links into each feature.",
-      "Dual combinations search — two side-by-side search boxes let you narrow combos by typing one glaze in each.",
-      "Combinations filter bar redesigned to match the Library: a single full-width Filters button below the search bars.",
-      "Combination popup hero image — one large photo with the rest as small thumbnails that open the carousel on click.",
-      "Unified contribution form — submit a firing photo, a combination, or a brand new glaze from one place at /contribute.",
-      "Optional clay body field on combination submissions, plus all combination detail fields are now optional.",
-      "Clickable cursor on every button so it's obvious what's interactive.",
+      "Clay Art Center glazes added — 234 catalog glazes including Rainbow, P Series, Craftsman, Frost, Raku, Terra Sigillata, and High Fire lines.",
+      "BOTZ glazes added — 116 BOTZ glazes now in the library, covering Unidekor underglazes, Earthenware, Stoneware, Engobes, PRO, and Ceramic Ink lines.",
+      "Glazing guide expanded — three new sections: Application & Layering, Decorative Techniques, and Firing Considerations are now live.",
+      "Refreshed public homepage — updated hero and layout for first-time visitors.",
+      "Color-aware glaze search — search results now rank glazes by how closely they match a color query.",
+      "Studio pages — public studio profiles with shareable URLs, plus a single-step studio creation flow.",
+      "Guides link in the app header for quicker access to the glazing guide.",
     ],
   },
   {
     category: "Fixed",
     items: [
-      "Clay body entries on custom combinations are now actually saved instead of being silently dropped.",
-      "Custom combination layer order is back to top → bottom the way you entered it in the form.",
-      "Combination tile titles match the order you entered them in the form (top layer first, separated by /).",
-      "Password reset now tells you exactly why a new password was rejected instead of a generic error.",
-      "Duplicate display names are no longer allowed — case-insensitive check on sign-up and profile updates.",
-      '"+ Add a new glaze" in the contribute form now sits in its own section explaining it creates a brand new glaze for the site.',
-      "Contribute form makes it clear that one glaze = a firing example, two or more = a combination.",
-      "Faster image loading — Supabase-hosted glaze photos are now served as properly sized WebPs from Supabase's CDN.",
-      "Community firing images API now cached at the edge so repeat views don't hit the database.",
+      "Duplicate glazes no longer appear when filtering by brand.",
+      "Browser hydration issues on catalog pages resolved.",
+      "Signed-in shell now renders correctly on guide pages.",
     ],
   },
   {
     category: "Previously",
     items: [
+      "Opulence glaze brand added — 74 Mid-South Opulence glazes now in the library.",
+      "Request a brand — \"Submit a new glaze\" replaced with a Request-a-brand page.",
+      "Richer dashboard welcome — product tour with screenshots and a Mayco Crystalites hero strip.",
+      "Take-the-tour modal — split-layout card with step icons, animated visuals, and keyboard navigation.",
+      "Dual combinations search — two side-by-side search boxes to narrow combos by typing one glaze in each.",
+      "Unified contribution form — submit a firing photo, a combination, or a brand new glaze from one place at /contribute.",
       "Seattle Pottery Supply — 167 SP-series glazes added to the catalog with photos, cones, and finishes.",
       "Points & leaderboard — earn points for contributions; see 'People to thank' on the Contribute page and your rank on your profile.",
       "Direct messaging & community firing images — message admins directly and browse firing photos shared by the community.",
