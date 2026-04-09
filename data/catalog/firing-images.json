@@ -349,6 +349,42 @@
       "sortOrder": 50
     }
   ],
+  "02ae864d-7609-4d20-964b-42539fe25eac": [
+    {
+      "id": "1a4d9944-e351-4afe-9569-dd9d94f28161",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9589_00.jpg?v=1765950162",
+      "sortOrder": 50
+    },
+    {
+      "id": "63d993f9-12a5-49b9-beec-2659ff9c91d9",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9589_02.jpg?v=1765950162",
+      "sortOrder": 210
+    }
+  ],
+  "02be7a5e-f6ce-476b-9992-4f09f1b110fe": [
+    {
+      "id": "0df70e18-cc9a-44ef-bfa1-6ad49eb6aabc",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9808_00.jpg?v=1742706589",
+      "sortOrder": 50
+    },
+    {
+      "id": "d796510c-056b-4e33-8b7a-1d25c378e3dd",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9801_9808_03.jpg?v=1742706604",
+      "sortOrder": 210
+    }
+  ],
   "032299b6-457c-477c-8a47-6235a4ea3748": [
     {
       "id": "0eb37c6f-1658-4296-a528-cc93f79c8b32",
@@ -697,6 +733,32 @@
       "sortOrder": 30
     }
   ],
+  "05f11aaa-58ab-4afc-9e60-160c1f07645c": [
+    {
+      "id": "e83649bf-cce2-4f7e-ad65-86e9e58920dd",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9881_00.jpg?v=1723002870",
+      "sortOrder": 50
+    },
+    {
+      "id": "047c7fb7-ef7e-409e-9426-03efa19b9c2d",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9881_95.jpg?v=1723002885",
+      "sortOrder": 210
+    },
+    {
+      "id": "b0d0e019-c2a2-497b-a8b8-4854d90b6f5f",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9881_05.jpg?v=1723002902",
+      "sortOrder": 220
+    }
+  ],
   "05f1fd5e-d2de-4d7a-bb76-22028c96c87c": [
     {
       "id": "6bda5a28-3ed1-4f63-a291-aeecd5efe239",
@@ -879,6 +941,24 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/585/2444/gloss-glazes-color-chart-2048px__92864.1659451912.jpg?c=1",
       "sortOrder": 190
+    }
+  ],
+  "06ab6d3d-0a83-455c-acc6-e40a5ddac7ce": [
+    {
+      "id": "ab1f5147-be12-4e60-9b17-a2ae4767e937",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9541_00.jpg?v=1765944723",
+      "sortOrder": 50
+    },
+    {
+      "id": "cb8d1300-34e2-4018-98e0-311407a92dcc",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9541_02.jpg?v=1765944723",
+      "sortOrder": 210
     }
   ],
   "06eb3207-7e88-406c-8a9f-a2652e9a9b61": [
@@ -2825,6 +2905,16 @@
       "sortOrder": 50
     }
   ],
+  "164d2ace-0f40-451a-aa9d-1494a5259ec5": [
+    {
+      "id": "e1ccc4a1-3d7e-4c4a-bcfd-901d5921bb1f",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9865.png?v=1722995733",
+      "sortOrder": 50
+    }
+  ],
   "166f1007-94a2-41e6-98e1-dacc8deef723": [
     {
       "id": "124420d5-e403-4c15-aac2-1b1b46743650",
@@ -2921,6 +3011,42 @@
       "sortOrder": 30
     }
   ],
+  "174f66db-ff47-4d30-a052-c9b5df52ff39": [
+    {
+      "id": "d556a894-8393-409d-8da3-bf712b6f53bf",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9305_00-1050.jpg?v=1765953199",
+      "sortOrder": 1050
+    },
+    {
+      "id": "167f4d5d-c1cd-4500-a96b-e6b6d395c4d7",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9305_00-1150.jpg?v=1765953199",
+      "sortOrder": 1150
+    },
+    {
+      "id": "92a1455d-8d01-4347-be5d-99337a193031",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9305_00-1250.jpg?v=1712461743",
+      "sortOrder": 1250
+    }
+  ],
+  "17733487-39e6-4d71-a73e-1394933b706b": [
+    {
+      "id": "c479dafd-72b4-4a73-9786-4e70034a4d3c",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4021_BlueGreen_BOTZ.jpg?v=1761289670",
+      "sortOrder": 50
+    }
+  ],
   "17cd294e-4741-4479-832c-11b9db4290f1": [
     {
       "id": "0e47e56a-e0f9-4ae5-8fae-a1fd48ef55b4",
@@ -2985,6 +3111,16 @@
       "sortOrder": 50
     }
   ],
+  "1846aebb-8014-4567-948c-2e881e88b663": [
+    {
+      "id": "cdbfa381-1a82-412d-a912-c0ffc6c9e9f5",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4010_Chestnut_BOTZ.jpg?v=1761288747",
+      "sortOrder": 50
+    }
+  ],
   "1856f825-93a2-4a1f-9fe8-5a35d46ae5e3": [
     {
       "id": "cdaeed35-f891-4ef0-8fdc-6d493b6d7618",
@@ -3033,6 +3169,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.coyoteclay.com/Images/Pots/rust%20brown/Patrick%20Scheg%20Root%20Beer%20with%20Rust%20Brown%20inside.jpg",
       "sortOrder": 60
+    }
+  ],
+  "186122aa-ea68-4b56-9255-4dabd29761dd": [
+    {
+      "id": "64cc31ea-7643-4be1-9591-2e3209c9da15",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9301_00-1050.jpg?v=1765953266",
+      "sortOrder": 1050
+    },
+    {
+      "id": "ae99b26d-1e11-49db-9dc1-41682d427ffb",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9301_00-1150.jpg?v=1765953266",
+      "sortOrder": 1150
+    },
+    {
+      "id": "5765a889-c81b-475a-adcd-689ca236f4c1",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9301_00-1250.jpg?v=1765952830",
+      "sortOrder": 1250
     }
   ],
   "189a4d6e-aaf1-45eb-8779-ce4bd63f05b3": [
@@ -3243,6 +3405,24 @@
       "sortOrder": 80
     }
   ],
+  "19a092e7-a991-4df4-99ce-57db040391f9": [
+    {
+      "id": "a160cceb-28e4-4f62-addb-f9521750cf12",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9343_00.jpg?v=1765934508",
+      "sortOrder": 50
+    },
+    {
+      "id": "77e1050a-7e54-46f1-8f8e-542d0b04bd43",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9343_02.jpg?v=1765934507",
+      "sortOrder": 210
+    }
+  ],
   "19aab33a-d5b6-481f-9b66-df1952168fda": [
     {
       "id": "4a727130-6390-4752-8bf0-919077baefb3",
@@ -3319,6 +3499,24 @@
       "atmosphere": null,
       "imageUrl": "https://www.coyoteclay.com/Images/Pots/sandstone%20shino/Sharon%20Meenachan%20sandstone%20shino.jpg",
       "sortOrder": 50
+    }
+  ],
+  "19e45f8b-43a1-4d70-a7e8-f559ad8e1f6d": [
+    {
+      "id": "60c2bbeb-0c20-4b23-a1e6-b3fd80c35c49",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9890_00.jpg?v=1723008578",
+      "sortOrder": 50
+    },
+    {
+      "id": "a0d38ccf-bf86-4803-a4e4-3af45c2ce87c",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9890_02.jpg?v=1723008626",
+      "sortOrder": 210
     }
   ],
   "1a29c963-b259-4d17-bd16-0aca77bc0c14": [
@@ -3496,6 +3694,32 @@
       "cone": null,
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2307/4374/PG-42_V-392_PCF-54_32M_Vase_Website__47197.1758213259.jpg?c=1",
+      "sortOrder": 220
+    }
+  ],
+  "1a8a1a7f-e112-4ce0-b9a3-fbc4072f3fe1": [
+    {
+      "id": "1ec15deb-f990-4892-9e41-316a1cdd2303",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9802_00.jpg?v=1742705233",
+      "sortOrder": 50
+    },
+    {
+      "id": "66476d09-5d74-4c63-839d-e1631c6212a8",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9802_9825_01.jpg?v=1742705233",
+      "sortOrder": 210
+    },
+    {
+      "id": "4ed7dc99-f37c-4af8-9dc1-5f4436084af0",
+      "label": "Example 3",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9802_9825_9823_01.jpg.1.jpg?v=1742705233",
       "sortOrder": 220
     }
   ],
@@ -4777,6 +5001,40 @@
       "sortOrder": 30
     }
   ],
+  "2455919f-2346-4af9-80b1-c32e0e603153": [
+    {
+      "id": "3d8160fb-e487-46a1-bf3f-b29229ae862a",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_Tusche_9090.jpg.1.jpg?v=1744869636",
+      "sortOrder": 50
+    },
+    {
+      "id": "91b6186f-3c54-4686-854d-17fe339d4665",
+      "label": "Example 2",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9020_02_922e7d72-59f9-4b20-806f-832e56df104f.jpg?v=1744869838",
+      "sortOrder": 210
+    },
+    {
+      "id": "1f174b52-6968-47e1-89b4-116af573472f",
+      "label": "Example 3",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9090_Tusche_02.jpg?v=1744869636",
+      "sortOrder": 220
+    },
+    {
+      "id": "8c7f0f10-0d44-428a-9934-102749be7236",
+      "label": "Example 4",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9090_Tusche_01.jpg?v=1744869636",
+      "sortOrder": 230
+    }
+  ],
   "2478f213-e6ae-4cb9-b820-439e419e9a1e": [
     {
       "id": "0a7d2da9-c73a-4e8d-9d27-663406f6a512",
@@ -4847,19 +5105,19 @@
       "sortOrder": 220
     },
     {
-      "id": "1b064be6-34c1-44b6-858a-3ab20c890ea3",
-      "label": "Layering example: LG10",
-      "cone": null,
-      "atmosphere": null,
-      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/459/2683/lg10-511_(1)__10275.1659533029.jpg?c=1",
-      "sortOrder": 230
-    },
-    {
       "id": "1a2b5647-e104-4924-b6fd-781ac9c87fd3",
       "label": "Example 6",
       "cone": null,
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/459/4002/PC-23_over_PC-12_HF-165_over_C-1_CO-7_Hernandez_Website__41829.1744310415.jpg?c=1",
+      "sortOrder": 230
+    },
+    {
+      "id": "1b064be6-34c1-44b6-858a-3ab20c890ea3",
+      "label": "Layering example: LG10",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/459/2683/lg10-511_(1)__10275.1659533029.jpg?c=1",
       "sortOrder": 230
     }
   ],
@@ -4951,6 +5209,24 @@
       "sortOrder": 30
     }
   ],
+  "255e3c6b-3d43-46a0-9daf-52514e5360fe": [
+    {
+      "id": "319546e5-ee60-4628-b7e4-66e628a8cd48",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9886_00.jpg?v=1723003091",
+      "sortOrder": 50
+    },
+    {
+      "id": "10e9e4c2-af43-44ce-a00a-1cf39f82431f",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9886_02.jpg?v=1723003100",
+      "sortOrder": 210
+    }
+  ],
   "258dbd74-ee0a-4ee4-84db-c8f65ed45cc7": [
     {
       "id": "4227222a-a963-40f1-82a5-2ed4948be538",
@@ -5027,6 +5303,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/02/el145_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "25e47b7d-8583-4cfd-aa77-84de7acbf253": [
+    {
+      "id": "b7ab600a-3ae7-496e-bc67-f212747dd87b",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/Ceramix_BOTZ_9822Flamingo_1.jpg?v=1742706989",
+      "sortOrder": 50
+    },
+    {
+      "id": "5a77bdb7-14c9-4aae-8771-b12e716931f0",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9822_02.jpg?v=1742706989",
+      "sortOrder": 210
+    },
+    {
+      "id": "53f3924c-d609-41b9-aa16-c64745d6eea8",
+      "label": "Example 3",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9822_9804_9803_01_1.jpg?v=1742706990",
+      "sortOrder": 220
     }
   ],
   "25f09da3-785b-42a9-a0dc-8cfbed5454ee": [
@@ -5235,6 +5537,24 @@
       "sortOrder": 80
     }
   ],
+  "26f380e7-4289-4e95-8798-c8314a57b136": [
+    {
+      "id": "e9968df5-de5d-45ce-a1d8-9badc2e9d1bb",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9825_00.jpg?v=1742707289",
+      "sortOrder": 50
+    },
+    {
+      "id": "4db940e4-0adc-40bc-ad36-90ee13e279a3",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9825_9802_9823_01.jpg?v=1742707289",
+      "sortOrder": 210
+    }
+  ],
   "26fc4862-2f72-4c81-96b5-2e19cfde80e8": [
     {
       "id": "5194278b-08aa-441c-8b47-261ea96bc15d",
@@ -5311,6 +5631,24 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/02/el208_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "2770d27a-d3ab-4652-baa9-22dc39994aea": [
+    {
+      "id": "600203d2-5456-43a2-a563-9729b0d72a4e",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9897_00.jpg?v=1742711950",
+      "sortOrder": 50
+    },
+    {
+      "id": "2d916f97-870a-4734-b900-1b883a774d40",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9897_02.jpg?v=1742711950",
+      "sortOrder": 210
     }
   ],
   "27972acb-be47-4f56-a209-2229ad708051": [
@@ -5441,6 +5779,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.coyoteclay.com/Images/Tile%20Comparisons/Rose%20Crystal.jpg",
       "sortOrder": 20
+    }
+  ],
+  "28e9e2ca-de2f-4f3c-a94f-d4761b0f04a7": [
+    {
+      "id": "5ab6dc3d-ab36-4632-9b11-4a4727da6106",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4020_Mocha_BOTZ_d310518a-f41f-49ed-8538-1094b0bdaea5.jpg?v=1761290135",
+      "sortOrder": 50
     }
   ],
   "28ea5580-f86f-42b2-90b4-e9113fb25f68": [
@@ -5763,6 +6111,24 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/12/fn003_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "2b149c2d-d1c6-4285-97a9-0d504710be14": [
+    {
+      "id": "75798611-96f5-465e-838b-69fe4530bbf2",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9101_00.jpg?v=1765951527",
+      "sortOrder": 50
+    },
+    {
+      "id": "68359a7d-ff6a-4acb-927d-aa9015fd004a",
+      "label": "1050°C sample",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9101-9353-9474-9517_1050_Reaction-Line_1-1.jpg?v=1765951527",
+      "sortOrder": 1050
     }
   ],
   "2b23dd4f-8200-4857-94a9-dd560c8e8fe5": [
@@ -6215,6 +6581,66 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-105_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "2ef39531-4b8b-4588-bcdc-a3ada2691584": [
+    {
+      "id": "2c19bc31-1cc6-4e6b-9ff3-43455f062959",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9885_00.jpg?v=1742710849",
+      "sortOrder": 50
+    },
+    {
+      "id": "e656ed26-d711-4d7e-ac3d-d2e1b2c13387",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9885_01.jpg?v=1742710849",
+      "sortOrder": 210
+    },
+    {
+      "id": "b5da3170-079c-4629-9128-6253b978088a",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9885_03.jpg?v=1742710850",
+      "sortOrder": 220
+    }
+  ],
+  "2f02270a-e7a6-4047-8f04-6a28032832af": [
+    {
+      "id": "bd4ba5dc-8d8a-4d31-af73-279983f5dafd",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9314_00_1050.jpg?v=1712464103",
+      "sortOrder": 1050
+    },
+    {
+      "id": "b2796a2c-0fb9-46cf-be68-631663c9370d",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9314_00_1150.jpg?v=1712464108",
+      "sortOrder": 1150
+    },
+    {
+      "id": "963b45b7-73eb-4e9d-b0a9-b1c328aceedf",
+      "label": "1150°C sample (variation 2)",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9314_00_1150_rot.jpg?v=1712464108",
+      "sortOrder": 1151
+    },
+    {
+      "id": "aa8ffa1d-7386-4540-acd4-802d491a91c5",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9314_00_1250.jpg?v=1712464103",
+      "sortOrder": 1250
     }
   ],
   "2f460324-004c-4bf2-ab3c-08cfebef6499": [
@@ -7035,6 +7461,32 @@
       "sortOrder": 30
     }
   ],
+  "3576c1f8-b427-47ee-8252-c35558c17a0b": [
+    {
+      "id": "57f85147-893a-4a47-bf87-98125b83b0ff",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9804_00.jpg?v=1742706013",
+      "sortOrder": 50
+    },
+    {
+      "id": "bfcd538d-e2dc-4354-bd0e-e2a6051642a0",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9822_9804_9803_03.jpg?v=1742706013",
+      "sortOrder": 210
+    },
+    {
+      "id": "a19e5759-a16c-4e20-9f05-280e48facea4",
+      "label": "Example 3",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9801_9808_9804_02.jpg?v=1742706034",
+      "sortOrder": 220
+    }
+  ],
   "35a22be9-46d0-4009-bdde-301301969bc7": [
     {
       "id": "35f7cda8-636d-4fef-91bf-c373c7cd504f",
@@ -7251,6 +7703,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/11/cg999_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "376790a4-4a47-4e48-81f2-8228b2f8ee74": [
+    {
+      "id": "1d1c8863-af05-42e4-b1d8-b4151147d9ff",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4044_StrongRed_BOTZ.jpg?v=1761289951",
+      "sortOrder": 50
     }
   ],
   "377d0354-0aa1-492f-98d0-3581ad451b34": [
@@ -7659,6 +8121,32 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2374/4594/CO-03_Cone6_Application__24894.1772227033.jpg?c=1",
       "sortOrder": 200
+    }
+  ],
+  "3a65373b-3134-47d9-bc8a-426f92af07f2": [
+    {
+      "id": "7bd00371-3748-40fa-a429-bb2f29171bbd",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9311-1050_00.jpg?v=1712462858",
+      "sortOrder": 1050
+    },
+    {
+      "id": "8d258e70-71c8-4355-a906-cb284ef551d6",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9311-1150_00.jpg?v=1712462859",
+      "sortOrder": 1150
+    },
+    {
+      "id": "1f88483c-46a6-4193-ba50-4162c39b76fb",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9311-1250_00.jpg?v=1712462858",
+      "sortOrder": 1250
     }
   ],
   "3a6e2957-8914-4dc0-b7d2-52d919bb7bd2": [
@@ -8369,6 +8857,32 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/758/1677/TH-1_over_PC-55_sized__56649.1772738433.jpg?c=1",
       "sortOrder": 750
+    }
+  ],
+  "3c1e99d9-91ec-4a80-bd3c-e261dcd348ab": [
+    {
+      "id": "ac0b0951-6449-4669-9a81-a43d5f7a6b65",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9309-1050_00.jpg?v=1712462681",
+      "sortOrder": 1050
+    },
+    {
+      "id": "f101b30f-48ca-4d87-ada0-406881ac0b2c",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9309-1150_00.jpg?v=1712462682",
+      "sortOrder": 1150
+    },
+    {
+      "id": "aa63eb2d-bdcd-4e82-8576-046fd7c95f08",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9309-1250_00.jpg?v=1712462682",
+      "sortOrder": 1250
     }
   ],
   "3c3c8806-6981-4173-bda3-4a1490b5d1db": [
@@ -9115,6 +9629,58 @@
       "sortOrder": 30
     }
   ],
+  "4027330f-ce2d-45f4-934c-b9745f210388": [
+    {
+      "id": "2a29e1df-6437-4f23-ac6b-dac91d30bde2",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9303_00-1050.jpg?v=1765953232",
+      "sortOrder": 1050
+    },
+    {
+      "id": "46e5f581-b572-4258-b586-7977b77bc4bd",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9303_00-1150.jpg?v=1765953232",
+      "sortOrder": 1150
+    },
+    {
+      "id": "130fe952-ce36-4398-a4c7-9014eaaf7040",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9303_00-1250.jpg?v=1712461370",
+      "sortOrder": 1250
+    }
+  ],
+  "40752cdc-cf79-42b0-837d-4250ee66870b": [
+    {
+      "id": "c2237de6-bdb7-4b68-b15f-91dc6ac33b9e",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9611_00.jpg?v=1765950873",
+      "sortOrder": 50
+    },
+    {
+      "id": "217dae1b-02f7-4b04-9b0b-a9954d01e3ed",
+      "label": "Example 3",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9611_01.jpg?v=1765950873",
+      "sortOrder": 220
+    },
+    {
+      "id": "8fe23507-b087-40cb-afe0-0b615bd1ed90",
+      "label": "1050°C sample",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9611_1050_Weisser-Ton.jpg?v=1765950873",
+      "sortOrder": 1050
+    }
+  ],
   "40a8ea8b-c60b-4a01-9923-eb1afb46aa63": [
     {
       "id": "1129bbca-d85c-4f2f-8af5-13d8156f6f85",
@@ -9375,6 +9941,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/11/sg403_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "42f0ace7-fef0-4e87-bf38-010978400951": [
+    {
+      "id": "0b84164b-f164-47eb-bbc9-9226691a286e",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4043_SunsetRed_BOTZ.jpg?v=1761289818",
+      "sortOrder": 50
     }
   ],
   "434ac32d-5465-407c-ab4b-a432bbcde45d": [
@@ -10833,6 +11409,40 @@
       "sortOrder": 80
     }
   ],
+  "4c78ab6a-7e0e-4e81-bf5e-00d004b1ccf9": [
+    {
+      "id": "6c1f726b-a737-4d29-87ba-4c465b9b06f4",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9316_00_1050.jpg?v=1712482715",
+      "sortOrder": 1050
+    },
+    {
+      "id": "bc7322cc-7803-49a8-87e9-1b86f5e05ad5",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9316_00_1150.jpg?v=1712482724",
+      "sortOrder": 1150
+    },
+    {
+      "id": "8f568adf-2574-4638-aff3-5c5dfd34ec39",
+      "label": "1150°C sample (variation 2)",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9316_00_1150_rot.jpg?v=1712482724",
+      "sortOrder": 1151
+    },
+    {
+      "id": "774cd2ae-395d-42c6-8efd-23532645cb3a",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9316_00_1250.jpg?v=1712482724",
+      "sortOrder": 1250
+    }
+  ],
   "4c894183-c156-4a5c-b9c3-c777b4e95b0c": [
     {
       "id": "183b9a60-d500-45df-843a-c425a5cbf907",
@@ -10867,6 +11477,32 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2355/4561/CR-41_over_PC-16_1280pxX1280px_ProductPage__44452.1769106374.jpg?c=1",
       "sortOrder": 200
+    }
+  ],
+  "4cb9afe0-710b-45fa-9d4a-bc1421100c4b": [
+    {
+      "id": "416991ee-1a11-4d73-a41c-e36f0e421237",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9300-1050_00.jpg?v=1765953271",
+      "sortOrder": 1050
+    },
+    {
+      "id": "d568b646-e5e7-4096-93fb-378b0fa03ce9",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9300-1150_00.jpg?v=1765953271",
+      "sortOrder": 1150
+    },
+    {
+      "id": "bb6e3c23-dc17-4e2e-b7ae-d1a3599092c7",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9300-1250_00.jpg?v=1712460657",
+      "sortOrder": 1250
     }
   ],
   "4cfa2a21-83af-4c34-8199-aea0e7fa6b7e": [
@@ -10997,6 +11633,16 @@
       "sortOrder": 220
     }
   ],
+  "4da39eb1-6f09-464d-8e23-38fd35854605": [
+    {
+      "id": "308394f0-c018-4f1d-98ec-cdc393426b4a",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4015_FernGreen_BOTZ.jpg?v=1761289220",
+      "sortOrder": 50
+    }
+  ],
   "4dba8f89-70f3-4aa2-b67e-b04107b9e3e2": [
     {
       "id": "d6ccae17-a30c-49f4-beed-bc01eaa0d884",
@@ -11057,6 +11703,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/03/sw-197_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "4e1dc504-942d-4605-a045-c2be11df0df4": [
+    {
+      "id": "0cd07ba7-ee69-47f6-8d2f-057f52c752ae",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9352_00_ad361734-8071-4436-a933-08e232bfb0ac.jpg?v=1765941307",
+      "sortOrder": 50
     }
   ],
   "4e4a556b-fc9f-447f-a47a-090b69ca4a85": [
@@ -11783,6 +12439,32 @@
       "sortOrder": 30
     }
   ],
+  "51f2a61a-af94-46dd-8a89-afe708c0b5d5": [
+    {
+      "id": "283cca19-de39-4328-88ae-0802052e250a",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9882_00.jpg?v=1742710247",
+      "sortOrder": 50
+    },
+    {
+      "id": "b4071ffe-a77a-4ba4-93d3-970c5acf0826",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9882_06.jpg?v=1742710247",
+      "sortOrder": 210
+    },
+    {
+      "id": "25d86e21-72c9-43f1-8f6d-abaaddc3df06",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9882_05.jpg?v=1742710247",
+      "sortOrder": 220
+    }
+  ],
   "5282b73c-3411-4e82-992a-d24bc70720a1": [
     {
       "id": "05e201cd-0d9b-49b8-b1af-546ab6f780a3",
@@ -12349,6 +13031,24 @@
       "sortOrder": 30
     }
   ],
+  "579aea2c-0acb-405f-b0c8-b1d4e3aa3354": [
+    {
+      "id": "8a8833dc-d019-40bb-8d08-a09d3dc6eff9",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9807_00.jpg?v=1742706471",
+      "sortOrder": 50
+    },
+    {
+      "id": "947287cc-7b40-4c6e-826b-3b44a7741249",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9807_01_2.jpg?v=1742706491",
+      "sortOrder": 210
+    }
+  ],
   "57cb54da-0351-4430-acdb-7e9a09709d95": [
     {
       "id": "3f8e3ae2-b699-4cd0-9060-93665a4a39d5",
@@ -12547,6 +13247,24 @@
       "sortOrder": 190
     }
   ],
+  "590c0cc2-7c71-4521-8f62-c14d2986c309": [
+    {
+      "id": "ec0c99ae-c828-4195-8428-a5409f83722e",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9870_00.jpg?v=1723001850",
+      "sortOrder": 50
+    },
+    {
+      "id": "40b129a0-c9a2-486b-a7b4-522e650f8d8a",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9870_01.jpg?v=1723001906",
+      "sortOrder": 210
+    }
+  ],
   "591d45b8-baa9-4802-b19c-460c99975a1a": [
     {
       "id": "1b9023e7-64ba-452c-bbf5-8b37956ff8ec",
@@ -12589,6 +13307,24 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez057_cone10_sw001.jpg",
       "sortOrder": 30
+    }
+  ],
+  "59b23364-5421-46ee-824d-b29290ef0e45": [
+    {
+      "id": "cf051ba7-3497-47c9-a911-b7ffd2785908",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9896_00.jpg?v=1742711775",
+      "sortOrder": 50
+    },
+    {
+      "id": "ca55be0a-a0af-476a-89f9-2e9c580d7582",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9896_03.jpg?v=1742711775",
+      "sortOrder": 210
     }
   ],
   "59b3747b-4745-4e05-9020-52dda241bfc7": [
@@ -13001,6 +13737,24 @@
       "sortOrder": 430
     }
   ],
+  "5ae52379-0f56-45fa-8325-2abbd9496a0a": [
+    {
+      "id": "c36083a3-0923-4ed8-a4e3-cf70b4405e8f",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9894_00.jpg?v=1723009113",
+      "sortOrder": 50
+    },
+    {
+      "id": "4f05bac6-56d7-4930-a042-13bb02285eda",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9894_03.jpg?v=1723009133",
+      "sortOrder": 210
+    }
+  ],
   "5b0575ae-902f-4685-8518-1c7a0964a9f5": [
     {
       "id": "d2372f89-fbc1-456a-86ab-24196fd2dd1f",
@@ -13361,6 +14115,16 @@
       "sortOrder": 190
     }
   ],
+  "5d05a80c-644a-4b7b-9064-bf483ed0a47c": [
+    {
+      "id": "95406f9d-e526-44e2-a958-a7a1af0d5cfe",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9864.png?v=1722997374",
+      "sortOrder": 50
+    }
+  ],
   "5d183353-0972-4098-b5eb-730be782cc73": [
     {
       "id": "94d1d9c5-1c9f-4128-80a5-0d6cffdab333",
@@ -13637,6 +14401,34 @@
       "sortOrder": 30
     }
   ],
+  "601838f8-0539-4478-9028-d7c7198488c1": [
+    {
+      "id": "95241d2c-c4b3-48db-a31c-cfdf3834ccbc",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9899_00.jpg?v=1742712129",
+      "sortOrder": 50
+    }
+  ],
+  "606b5050-8fb7-4d6b-9214-97c6b2bd9d83": [
+    {
+      "id": "30fbb8bb-cccf-4164-8e70-2750c4e98753",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9450_00.jpg?v=1765943447",
+      "sortOrder": 50
+    },
+    {
+      "id": "93c38e10-ce13-406a-bcd1-77eeeb14947c",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9450_01.jpg?v=1765943447",
+      "sortOrder": 210
+    }
+  ],
   "608e980c-5725-49a5-b7bc-7385e58158ab": [
     {
       "id": "c8ac6fd9-bc5c-4da9-a899-b7a81ea5de79",
@@ -13697,6 +14489,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/11/cg1006_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "60bbc8ef-785f-4863-bef4-9cce037ad7ee": [
+    {
+      "id": "eea2882f-1c05-4a4f-928d-9986f1060f2a",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4001_EggYellow_BOTZ.jpg?v=1761285330",
+      "sortOrder": 50
     }
   ],
   "617c9f2f-aeef-44b8-8f91-dc8e9e0ec057": [
@@ -14119,6 +14921,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/12/fn021_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "64ec7a81-3d9a-4940-9b94-ad96867e593b": [
+    {
+      "id": "aa7a398e-3025-496f-a825-fe0fe615dcd1",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9312-1050_00.jpg?v=1712463146",
+      "sortOrder": 1050
+    },
+    {
+      "id": "7e21be00-9aa9-4984-8704-5255dd95bad7",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9312-1150_00.jpg?v=1712463146",
+      "sortOrder": 1150
+    },
+    {
+      "id": "18cdc039-4989-4d45-9a1f-4f57f8018f5a",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9312-1250_00.jpg?v=1712463147",
+      "sortOrder": 1250
     }
   ],
   "6561c968-a389-472a-957d-37284977109b": [
@@ -14707,6 +15535,24 @@
       "sortOrder": 30
     }
   ],
+  "684a8686-5c56-47b1-bc94-13ece96dd4e2": [
+    {
+      "id": "72a31398-9089-4aad-9d9e-340396cdb9d6",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9102_00.jpg?v=1765951649",
+      "sortOrder": 50
+    },
+    {
+      "id": "36492bfe-daef-413d-ad44-c6cbde4b525b",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9102_00d.jpg?v=1765951649",
+      "sortOrder": 210
+    }
+  ],
   "684a9d71-df13-4ab9-85e1-08ec1c95f27c": [
     {
       "id": "0ef8638c-acf6-4614-afce-a196dd4091ed",
@@ -14895,6 +15741,32 @@
       "sortOrder": 220
     }
   ],
+  "6a420fea-5c11-4bd9-8ba1-3e7fceb6711a": [
+    {
+      "id": "4dd2c020-4650-42d6-8865-a9dcdc9960d4",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9892_00.jpg?v=1723008934",
+      "sortOrder": 50
+    },
+    {
+      "id": "f2b4cfc3-b5c4-4307-85f1-dcff382616fe",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9892_00v.jpg?v=1723008934",
+      "sortOrder": 210
+    },
+    {
+      "id": "c6c0cc10-8b79-4563-a957-7ce4c795f5f2",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9892_04.jpg?v=1723008940",
+      "sortOrder": 220
+    }
+  ],
   "6a68349a-6f71-49d8-aaed-7428fa40e9de": [
     {
       "id": "93499203-7593-4d11-946a-d88dfd7e4802",
@@ -15065,6 +15937,16 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/761/1659/41141N__86570.1659287421.jpg?c=1",
       "sortOrder": 190
+    }
+  ],
+  "6b19c128-3e28-4f06-a5d0-be9a4b7b2884": [
+    {
+      "id": "ae31d284-3639-4b25-a1ad-46a0d493bde9",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4042_Orange_BOTZ.jpg?v=1761289744",
+      "sortOrder": 50
     }
   ],
   "6b829043-b1a6-4286-b784-c54249abd242": [
@@ -15641,6 +16523,32 @@
       "sortOrder": 30
     }
   ],
+  "713e6af4-abff-47ef-a012-4b913e913a2b": [
+    {
+      "id": "f2e9c41d-01c4-4a1d-955c-3a0925c1c2a6",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9884_00.jpg?v=1742710641",
+      "sortOrder": 50
+    },
+    {
+      "id": "5ea5c55d-6b48-4eb0-8343-f56dac00ddeb",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9884_02.jpg?v=1742710641",
+      "sortOrder": 210
+    },
+    {
+      "id": "74db6593-4045-4745-b08c-4c3ebfd94653",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9884_03.jpg?v=1742710641",
+      "sortOrder": 220
+    }
+  ],
   "714032e6-d942-4167-878d-f28a07de0821": [
     {
       "id": "b7623555-ee5f-4d0c-b960-b7e5f44f7935",
@@ -16051,6 +16959,16 @@
       "sortOrder": 30
     }
   ],
+  "75783edd-ded1-4340-8c89-2d3a45546702": [
+    {
+      "id": "b01c9a29-f4e1-45dc-8e49-b2c49708419a",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9874_00.jpg?v=1723002082",
+      "sortOrder": 50
+    }
+  ],
   "75ed24d3-7d7b-4b3f-a6f8-d40f2b110ea5": [
     {
       "id": "9c347e05-20d5-4330-9d3a-c16c56ed94fe",
@@ -16145,6 +17063,16 @@
       "atmosphere": "Reduction",
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez075_cone10_sw001.jpg",
       "sortOrder": 40
+    }
+  ],
+  "76a7497b-2767-480c-bfb2-4f6379bd8c11": [
+    {
+      "id": "42f4ea41-23e1-4d83-ac52-9ad3ad3023d6",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4009_White_BOTZ.jpg?v=1761288663",
+      "sortOrder": 50
     }
   ],
   "76c84730-3ce0-4f62-9bc1-70b2d39afba2": [
@@ -16681,6 +17609,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.coyoteclay.com/Images/Pots/plum%20shino/nancy%20smith,%20plum%20and%20cedar.jpg",
       "sortOrder": 70
+    }
+  ],
+  "798af543-76af-4535-acaa-47b377f9d46e": [
+    {
+      "id": "e3932397-8f3f-41bb-946e-738a4d4b6d31",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4018_Salmon_BOTZ.jpg?v=1761289447",
+      "sortOrder": 50
     }
   ],
   "79a8d12e-7b23-4c28-810b-57f0ff41e771": [
@@ -17281,6 +18219,16 @@
       "sortOrder": 20
     }
   ],
+  "7f68094b-4caf-453e-a642-e8702e4da96e": [
+    {
+      "id": "32c4729f-6eb8-465c-8d8e-eb46b4abe4c1",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4012_CapriBlue_BOTZ.jpg?v=1761288913",
+      "sortOrder": 50
+    }
+  ],
   "7ff93a89-6130-4b5d-b95e-d361ac5a35bd": [
     {
       "id": "9ffad528-6d4c-4549-90bf-34ecef8a31b2",
@@ -17817,6 +18765,16 @@
       "sortOrder": 30
     }
   ],
+  "84ddd8d8-07fc-414b-87e9-bf00cf9a6311": [
+    {
+      "id": "eff264c0-58ea-4571-a590-fceed51009a9",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9319-1150.png?v=1712483255",
+      "sortOrder": 1150
+    }
+  ],
   "84e1497c-a054-411e-a7c4-62b021b931b4": [
     {
       "id": "d41e27f9-3c87-40ce-ba21-af5abd6a56d5",
@@ -18187,6 +19145,16 @@
       "sortOrder": 30
     }
   ],
+  "870b43e1-0e13-4d0f-a368-60c24a4728b9": [
+    {
+      "id": "bb52dde2-edbf-49f1-890b-5fda179f4e99",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9806_00.jpg?v=1742706300",
+      "sortOrder": 50
+    }
+  ],
   "871cfd68-be06-4c08-8a4f-3d22ff206d3a": [
     {
       "id": "ccfee50d-70c6-44a3-bb59-ce75204e5fbf",
@@ -18415,6 +19383,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1107.jpg",
       "sortOrder": 50
+    }
+  ],
+  "882a28ad-3688-45bc-bd11-98f7e26e39e7": [
+    {
+      "id": "8421a588-225c-41b7-99df-aa763b8f2df7",
+      "label": "1250°C sample",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9866_00_1250.jpg?v=1722998125",
+      "sortOrder": 1250
     }
   ],
   "884407d7-d552-40a5-8398-3aac84609ada": [
@@ -18829,6 +19807,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.coyoteclay.com/Images/Pots/cherry%20satin/Sarah%20Lenore%20Reely%20Licorice%20and%20Cherry%20Satin.jpg",
       "sortOrder": 40
+    }
+  ],
+  "8a1c3dc3-c9f2-4182-a456-e5963d10e16e": [
+    {
+      "id": "0c91ffb0-15a2-422c-be71-e60614e7a830",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9315_00_1050.jpg?v=1712464570",
+      "sortOrder": 1050
+    },
+    {
+      "id": "fcdd6e09-2f11-4498-9638-1b7ca78bb2d3",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9315_00_1150.jpg?v=1712464571",
+      "sortOrder": 1150
+    },
+    {
+      "id": "baa49af9-181b-4e9e-af69-4ec722f6ab84",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9315_00_1250.jpg?v=1712464570",
+      "sortOrder": 1250
     }
   ],
   "8a46b618-4b2e-4a6a-87a4-8b9f00e370e6": [
@@ -19757,6 +20761,32 @@
       "sortOrder": 40
     }
   ],
+  "900de523-0c6e-4125-b7f7-e0afad84fab0": [
+    {
+      "id": "46489c0d-ffc2-48fc-ae33-5f9c0ee0b66b",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9801_00.jpg.1.jpg?v=1742704549",
+      "sortOrder": 50
+    },
+    {
+      "id": "a9b0a77c-e175-4feb-9151-8f4282df010d",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9801_9808_02.jpg?v=1742704549",
+      "sortOrder": 210
+    },
+    {
+      "id": "22a05875-642d-4f26-a97e-7804bb1b49c2",
+      "label": "Example 3",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9801_9808_9804_01.jpg?v=1742704549",
+      "sortOrder": 220
+    }
+  ],
   "904934e9-c630-4c35-a376-c676387225eb": [
     {
       "id": "86618dc1-be61-44f8-82e8-d7eee164170f",
@@ -19857,6 +20887,24 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2377/4603/CO-24_Cone6_Application__57178.1772229297.jpg?c=1",
       "sortOrder": 200
+    }
+  ],
+  "90b1c3ac-cebc-4543-9347-d4c12fab51ac": [
+    {
+      "id": "15c6c0a1-36aa-4575-bb54-563d41b0ffc6",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9348_00.jpg.1.jpg?v=1765939178",
+      "sortOrder": 50
+    },
+    {
+      "id": "2659e6d4-68b3-4da2-a434-46f01a9e9042",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9348_01.jpg?v=1765939178",
+      "sortOrder": 210
     }
   ],
   "9109e3b7-419d-430d-ab64-7be2674e9a01": [
@@ -20175,6 +21223,32 @@
       "sortOrder": 80
     }
   ],
+  "92da2f57-455d-418a-ba98-519977008e6c": [
+    {
+      "id": "b4e64583-845f-4f33-b67a-74cf8ee09a59",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9889_00.jpg?v=1742711313",
+      "sortOrder": 50
+    },
+    {
+      "id": "4a0b8649-9481-48f9-bd45-9fb8307c608f",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9889_02.jpg?v=1742711313",
+      "sortOrder": 210
+    },
+    {
+      "id": "acc378f9-21f1-4505-9bf9-ce562d0bec29",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9889_03.jpg?v=1742711313",
+      "sortOrder": 220
+    }
+  ],
   "92e238aa-80aa-4e31-8d39-2cd61a305e20": [
     {
       "id": "5c576d20-78d6-4915-b35c-29533e323477",
@@ -20313,6 +21387,24 @@
       "sortOrder": 30
     }
   ],
+  "936e9e44-4a69-483e-b4af-5bd40a074394": [
+    {
+      "id": "dcced2ce-7de8-48f8-805f-3d0c072a89e2",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9542_00.jpg?v=1765945166",
+      "sortOrder": 50
+    },
+    {
+      "id": "622ae59a-fd0e-4581-990f-375e0500d127",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9542_02.jpg?v=1765945166",
+      "sortOrder": 210
+    }
+  ],
   "93af3e4b-5736-434c-8792-0b42e012a75c": [
     {
       "id": "9482eaac-f9bb-47dc-a566-4e4a18ed16ba",
@@ -20365,6 +21457,24 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/08/SW423_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "94233f62-27f5-428d-8d3e-4e769ee39531": [
+    {
+      "id": "763224dc-90a6-48d5-9442-8aed1f28aaa9",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9873_00.jpg?v=1742709616",
+      "sortOrder": 50
+    },
+    {
+      "id": "56b4bc5d-25e5-4741-9b63-7d860fd0953e",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9873_02.jpg.1.jpg?v=1742709616",
+      "sortOrder": 210
     }
   ],
   "94293852-893f-439d-909c-eb460b4b1bb0": [
@@ -20807,6 +21917,40 @@
       "sortOrder": 30
     }
   ],
+  "96f3dc14-66d5-44a0-8ba8-358a9487760f": [
+    {
+      "id": "bb671ebf-b4e3-4a60-83e5-603b63967a8f",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9313_00_1050.jpg?v=1712463383",
+      "sortOrder": 1050
+    },
+    {
+      "id": "ccd53937-44b5-4bab-a108-a5b041ebb610",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9313_00_1150.jpg?v=1712463383",
+      "sortOrder": 1150
+    },
+    {
+      "id": "c5ac880e-df6c-4704-8330-f6ae6e1a0451",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9313_00_1250_schwarz.jpg?v=1712463384",
+      "sortOrder": 1250
+    },
+    {
+      "id": "ecd70562-55c2-462b-88da-3cfe12b333a0",
+      "label": "1250°C sample (variation 2)",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9313_00_1250.jpg?v=1712463384",
+      "sortOrder": 1251
+    }
+  ],
   "9726b76f-e66a-4e58-b97a-09e26997fb4a": [
     {
       "id": "3d9a9857-53ec-4e17-b61b-59b5cc7d3e7b",
@@ -21041,6 +22185,50 @@
       "sortOrder": 190
     }
   ],
+  "9914e101-30e7-4e56-8c43-e25a7fbb9579": [
+    {
+      "id": "c98a8aa9-a808-4581-9bc8-ef0f6e59135e",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9891_00.jpg?v=1723008718",
+      "sortOrder": 50
+    },
+    {
+      "id": "6fd4fb2b-e88e-4da3-b286-c0439a6d29a6",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9891_02.jpg?v=1723008784",
+      "sortOrder": 210
+    }
+  ],
+  "992344ed-3aac-43c5-8eba-f2d1a846264a": [
+    {
+      "id": "e3b46c85-bdd1-4399-a480-ef4a1eacb945",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9821_00.jpg?v=1742706868",
+      "sortOrder": 50
+    },
+    {
+      "id": "872fb81f-6be3-4954-bb8e-f85e18cc7bdf",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9821_01.jpg?v=1742706868",
+      "sortOrder": 210
+    },
+    {
+      "id": "17d63543-9a87-418a-a52b-afe5fc953096",
+      "label": "Example 3",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9821_9820_9826_02.jpg?v=1742706868",
+      "sortOrder": 220
+    }
+  ],
   "99a399f0-a884-4ff7-9516-fccacb77316d": [
     {
       "id": "0a3b9f4b-f5a9-4c13-9ee4-49f9b4a70438",
@@ -21065,6 +22253,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/12/fn235_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "99c49c53-75b2-4428-9543-faaf775ffb77": [
+    {
+      "id": "4f9ccd2c-90e2-4776-a490-bc38867e20ac",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9826_00.jpg?v=1742707376",
+      "sortOrder": 50
+    },
+    {
+      "id": "9aa25fb7-301b-4805-8699-433dca1f5f52",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9826_01.jpg?v=1742707380",
+      "sortOrder": 210
+    },
+    {
+      "id": "7ab97d1e-c751-4c59-aebd-5cfed1cace4f",
+      "label": "Example 3",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9821_9820_9826_04_1.jpg?v=1742707380",
+      "sortOrder": 220
     }
   ],
   "99d8ce8c-6b2c-4a0d-911f-d662b22db0b0": [
@@ -21433,6 +22647,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/10/cg1010_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "9b55d42b-8214-4d46-a570-10cc8e6f1d24": [
+    {
+      "id": "79d6d011-904d-4775-83ea-acea3b3b5e74",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9620_00-1050.jpg?v=1712483052",
+      "sortOrder": 1050
+    },
+    {
+      "id": "e33c1b5f-38f1-496b-a9f1-912b592a6fa8",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9620_00-1150.jpg?v=1712483053",
+      "sortOrder": 1150
+    },
+    {
+      "id": "29634629-13f7-41d1-bb04-0885307fa8f9",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9620_00-1250.jpg?v=1712483052",
+      "sortOrder": 1250
     }
   ],
   "9b653655-2bb5-46db-ba94-44e9314553a3": [
@@ -21923,6 +23163,16 @@
       "sortOrder": 30
     }
   ],
+  "9d60acd7-fa60-47fb-937e-0e5c464ebf74": [
+    {
+      "id": "30c0dcaf-2d97-4252-bcd5-589668059e27",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9876_00.jpg?v=1723002408",
+      "sortOrder": 50
+    }
+  ],
   "9d6cb170-87aa-4e20-bb24-3e0de7b9d5e1": [
     {
       "id": "3f46c5c8-eba2-437f-afd3-9c0952cc4c72",
@@ -22301,6 +23551,32 @@
       "sortOrder": 30
     }
   ],
+  "9fcf782e-bc47-4460-9e2b-fc1640105a8a": [
+    {
+      "id": "bde33128-771a-4e00-8448-5abd3395999f",
+      "label": "Reference tile",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9020_06.jpg?v=1712484053",
+      "sortOrder": 50
+    },
+    {
+      "id": "02b06e95-2dbd-4bf2-9693-24b06df5e900",
+      "label": "Example 2",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9020_02.jpg?v=1712484053",
+      "sortOrder": 210
+    },
+    {
+      "id": "6ae968c3-8026-4f05-9f1b-da49539b18b0",
+      "label": "Example 3",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9020_04.jpg?v=1712484053",
+      "sortOrder": 220
+    }
+  ],
   "9ff106c2-5929-486f-95e1-4ebbcf551b1f": [
     {
       "id": "0e0ba213-9055-46a8-8525-8642f5f53a5f",
@@ -22365,6 +23641,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.coyoteclay.com/Images/Pots/pansy%20purple/Nancy%20Mayo%20Pansy%20Purple%20mug.jpg",
       "sortOrder": 80
+    }
+  ],
+  "a0d6bfe4-d20c-4fed-90d6-1528f649c6d4": [
+    {
+      "id": "7821d595-2c6e-4b1c-a790-23c71de4e95b",
+      "label": "1250°C sample",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9867_00_1250.jpg?v=1723000470",
+      "sortOrder": 1250
     }
   ],
   "a0eb0677-1fe6-4f92-887b-3d15b16392c4": [
@@ -22693,6 +23979,32 @@
       "sortOrder": 50
     }
   ],
+  "a28ed44c-7c44-419f-acbc-1a205dccad3d": [
+    {
+      "id": "e51b2faf-afd3-45f0-907f-e8a7136ef149",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9307_00-1050.jpg?v=1761278598",
+      "sortOrder": 1050
+    },
+    {
+      "id": "c7227d8b-4b62-4f9d-91cc-0cf26b3af1f7",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9307_00-1150.jpg?v=1761278598",
+      "sortOrder": 1150
+    },
+    {
+      "id": "559defdc-118c-4293-83c7-67784dacd3ec",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9307_00-1250.jpg?v=1761278598",
+      "sortOrder": 1250
+    }
+  ],
   "a2a1305e-5768-430b-a01d-e503b66dfd86": [
     {
       "id": "94a3d50b-e54c-43e6-b84c-22af51c52dc6",
@@ -22755,6 +24067,32 @@
       "sortOrder": 30
     }
   ],
+  "a31ca227-3945-4820-86eb-bfbe30fd412e": [
+    {
+      "id": "4205268b-438d-401f-bc1f-23609bb359c8",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9224_00.jpg?v=1765952364",
+      "sortOrder": 50
+    },
+    {
+      "id": "cc8cf69c-1043-4fe8-b3ca-f50d2e77cd48",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9224_01.jpg?v=1765952364",
+      "sortOrder": 210
+    },
+    {
+      "id": "cc955e56-2361-4d2f-9dcb-ca9ea8a2934f",
+      "label": "Example 3",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9224_04.jpg?v=1765952364",
+      "sortOrder": 220
+    }
+  ],
   "a3602b53-b940-4b08-ad07-c89c7619a044": [
     {
       "id": "1aa49f37-ef83-4024-aa69-62a4c21cdc65",
@@ -22805,6 +24143,26 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez003_cone10_sw001.jpg",
       "sortOrder": 30
+    }
+  ],
+  "a393472f-1f92-4320-8280-57118f3bfb47": [
+    {
+      "id": "a3647dd2-b866-4f03-bc90-75986de75b05",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4017_SunYellow_BOTZ.jpg?v=1761289369",
+      "sortOrder": 50
+    }
+  ],
+  "a3c12d98-c9d6-4fb1-bd78-16f0e851d511": [
+    {
+      "id": "a4d8b8f2-a0fe-4278-81b1-100f8d4bfa54",
+      "label": "1250°C sample",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9868_00_1250.jpg?v=1742708933",
+      "sortOrder": 1250
     }
   ],
   "a46ce3e4-0a97-4c27-a9d3-65221e4dc419": [
@@ -23869,6 +25227,16 @@
       "sortOrder": 240
     }
   ],
+  "ae9fcd8c-5b18-44e6-9043-1464c42deb14": [
+    {
+      "id": "30f3679c-03a2-4275-89f5-edbe04fa0299",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4019_Whiskey_BOTZ.jpg?v=1761289523",
+      "sortOrder": 50
+    }
+  ],
   "aea25fe9-2a79-4ca6-a4c5-3628891f7861": [
     {
       "id": "2f86a1aa-01d9-4ede-a833-07993fc9979a",
@@ -23965,6 +25333,16 @@
       "sortOrder": 50
     }
   ],
+  "af20872e-65fe-434b-8e67-4dd246c45937": [
+    {
+      "id": "0456975d-7131-4fd4-9be1-182fbfcb5dca",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4004_Black_BOTZ.jpg?v=1761287605",
+      "sortOrder": 50
+    }
+  ],
   "af58a00d-e16a-4b96-a1fd-b5ae0b535bc2": [
     {
       "id": "57c62ec7-bc7e-4b03-9577-f2ee19f5b942",
@@ -24043,6 +25421,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-002_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "b05380dd-6ac3-4200-94c5-06c7a91fb875": [
+    {
+      "id": "f98bf421-7934-414d-8adf-7f1c416bc6a9",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4002_CobaltBlue_BOTZ.jpg?v=1761286157",
+      "sortOrder": 50
     }
   ],
   "b089d88c-d3f4-4426-a747-7e7794c0b2eb": [
@@ -24149,6 +25537,32 @@
       "sortOrder": 30
     }
   ],
+  "b163f585-3572-4e7b-8c84-68022e1567da": [
+    {
+      "id": "abbada11-00ae-4e56-a3fc-c6f5549eb0cd",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9805_00.jpg?v=1742706205",
+      "sortOrder": 50
+    },
+    {
+      "id": "919d89f5-3bdb-4b1f-b158-ae6085eff060",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9805_02.jpg?v=1742706205",
+      "sortOrder": 210
+    },
+    {
+      "id": "c946c611-e08b-452c-9e34-479fa08e84ac",
+      "label": "Example 3",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9805_9822_01.jpg?v=1742706205",
+      "sortOrder": 220
+    }
+  ],
   "b17a0c08-7437-42e6-9a24-ade82fd0e9ad": [
     {
       "id": "980be349-9567-4a2a-8221-97d83f56f92f",
@@ -24249,6 +25663,42 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-133_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "b2181938-dbf9-430b-9e79-cd0e2f24ddcd": [
+    {
+      "id": "2f9ed236-cdbd-4c67-88e5-1c40ceec2732",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9898_00.jpg?v=1723009351",
+      "sortOrder": 50
+    },
+    {
+      "id": "0b018d9b-e413-46e5-8273-31e7eca0893b",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9898_71a.jpg?v=1723009351",
+      "sortOrder": 210
+    },
+    {
+      "id": "0b4774fc-396e-48e3-9015-608654b3b7aa",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9898_04.jpg?v=1723009351",
+      "sortOrder": 220
+    }
+  ],
+  "b2246e45-0e3a-48b9-8332-cd2dd745fb43": [
+    {
+      "id": "9277fe58-1863-4398-a5d7-f1d972bc2ecb",
+      "label": "1250°C sample",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9869_00_1250.jpg?v=1723001493",
+      "sortOrder": 1250
     }
   ],
   "b278da7b-af8c-4513-8a1a-138a4301e299": [
@@ -24365,6 +25815,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-158_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "b3f00117-be87-4702-b44c-3f9a8a71fdf8": [
+    {
+      "id": "3779999f-726c-4c01-a536-02402516bf70",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9306_00-1050.jpg?v=1712462106",
+      "sortOrder": 1050
+    },
+    {
+      "id": "559e31c9-e540-4116-99d2-60c37226eef4",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9306_00-1150.jpg?v=1712462105",
+      "sortOrder": 1150
+    },
+    {
+      "id": "ec008f94-1826-4e9b-98d5-1b2833b823bf",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9306_00-1250.jpg?v=1712462105",
+      "sortOrder": 1250
     }
   ],
   "b4278cc5-cf95-46f1-bdee-3dcee75b3c17": [
@@ -24783,6 +26259,16 @@
       "sortOrder": 40
     }
   ],
+  "b5a56132-7f01-4974-b16d-067caaf7e997": [
+    {
+      "id": "5b5de9b4-5805-42b2-a2cc-b5555e7fa37b",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9877_00.jpg?v=1723002563",
+      "sortOrder": 50
+    }
+  ],
   "b5bb6f81-201b-4787-8614-6c3800725d65": [
     {
       "id": "84fdc3dc-a919-422b-989d-fe8af052d6d1",
@@ -24885,6 +26371,32 @@
       "sortOrder": 190
     }
   ],
+  "b684de7a-eda2-4186-935a-5fdd3232e357": [
+    {
+      "id": "6a017f6a-fccc-44ff-a47a-be2b4b5b735e",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9893_00.jpg?v=1742711447",
+      "sortOrder": 50
+    },
+    {
+      "id": "cbfcad95-3772-455e-b5c0-e8ca2dbcf86f",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9893_92.jpg?v=1742711447",
+      "sortOrder": 210
+    },
+    {
+      "id": "922c8391-c000-4d96-a55c-6d7f99e895ca",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9893_91.jpg?v=1742711447",
+      "sortOrder": 220
+    }
+  ],
   "b693b93f-d180-4061-a0fc-6cd9a62b7d6e": [
     {
       "id": "ec5f9575-5bb3-4b07-8710-1ac8f565ea1f",
@@ -24901,6 +26413,16 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2127/3330/V-363MorningFog_Cone05-5-10_WebImages__13073.1663257618.jpg?c=1",
       "sortOrder": 190
+    }
+  ],
+  "b696d688-5209-4bae-baaf-a454c816e610": [
+    {
+      "id": "6c32ae2f-5a55-4615-8b20-e64717a31078",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9863.png?v=1723001281",
+      "sortOrder": 50
     }
   ],
   "b6c08845-5e25-4e46-aa60-7280c5bf3d84": [
@@ -25243,6 +26765,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/03/sw219_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "b83d832a-6bb4-4cdd-a1e0-d5c49a773707": [
+    {
+      "id": "35a86bbe-acd2-46f6-b734-70819c5b4c1d",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9862.png?v=1742707659",
+      "sortOrder": 50
     }
   ],
   "b83dabf0-666a-49ae-9f48-b02e71735609": [
@@ -25601,6 +27133,24 @@
       "sortOrder": 50
     }
   ],
+  "baee26b5-958e-40fb-b9b3-b7453f886cc7": [
+    {
+      "id": "9e88925d-0786-4214-9e7a-0f999b91172b",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9878_00.jpg?v=1723002680",
+      "sortOrder": 50
+    },
+    {
+      "id": "29fb0c4f-9ea3-43f4-9167-410804273718",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9878_01.jpg?v=1723002693",
+      "sortOrder": 210
+    }
+  ],
   "bb2ff761-0656-44cf-ac2c-f81e6190a2c8": [
     {
       "id": "be621500-bf10-4d2a-a721-bb70fdd4df3b",
@@ -25781,6 +27331,16 @@
       "sortOrder": 30
     }
   ],
+  "bbe945a0-d78c-412d-bcd3-2ebf28928345": [
+    {
+      "id": "94dc70cd-a978-4a76-816d-8d593b8ccce8",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4006_Turquoise_BOTZ.jpg?v=1761287986",
+      "sortOrder": 50
+    }
+  ],
   "bc4d26c0-2b70-4ec1-933f-2529b1050911": [
     {
       "id": "d0110625-7841-4a5a-8cca-6be6a331cbd4",
@@ -25911,6 +27471,16 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2363/4567/CR-61_over_PC-16_1280pxX1280px_ProductPage__53100.1769106638.jpg?c=1",
       "sortOrder": 200
+    }
+  ],
+  "bcfeb102-85fb-4560-b41e-301cc4314a6c": [
+    {
+      "id": "5d81ca2c-ce85-46c7-9372-14e959dd89b5",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4011_Grey_BOTZ.jpg?v=1761288831",
+      "sortOrder": 50
     }
   ],
   "bd6a979a-ecd4-40b6-9896-7a630fc79108": [
@@ -26533,14 +28103,6 @@
       "sortOrder": 220
     },
     {
-      "id": "c722079c-957a-417f-a39a-a6af2fc25851",
-      "label": "Layering example: TP1",
-      "cone": null,
-      "atmosphere": null,
-      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/685/2186/TP1-red_white-clay_copy__41690.1659376172.jpg?c=1",
-      "sortOrder": 230
-    },
-    {
       "id": "83a55e51-689b-46be-9387-999bf727cd45",
       "label": "Example 6",
       "cone": null,
@@ -26549,12 +28111,12 @@
       "sortOrder": 230
     },
     {
-      "id": "36ab1a6b-133f-4390-951c-601db08a8c83",
-      "label": "Example 7",
+      "id": "c722079c-957a-417f-a39a-a6af2fc25851",
+      "label": "Layering example: TP1",
       "cone": null,
       "atmosphere": null,
-      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/685/2192/TP_on_Red_clay_1__91559.1659376172.jpg?c=1",
-      "sortOrder": 240
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/685/2186/TP1-red_white-clay_copy__41690.1659376172.jpg?c=1",
+      "sortOrder": 230
     },
     {
       "id": "b4ebaabd-ab33-452d-b1a1-6c17163f15a0",
@@ -26562,6 +28124,14 @@
       "cone": null,
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/685/2184/tp-1-coal-black-puzzle-cutout__34214.1659376172.jpg?c=1",
+      "sortOrder": 240
+    },
+    {
+      "id": "36ab1a6b-133f-4390-951c-601db08a8c83",
+      "label": "Example 7",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/685/2192/TP_on_Red_clay_1__91559.1659376172.jpg?c=1",
       "sortOrder": 240
     },
     {
@@ -26763,6 +28333,16 @@
       "sortOrder": 30
     }
   ],
+  "c1a98c4d-1324-449c-ab80-ea3c67047571": [
+    {
+      "id": "42a8de47-4151-48ba-a723-0d0c7925cfa7",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4005_ChromeGreen_BOTZ.jpg?v=1761287901",
+      "sortOrder": 50
+    }
+  ],
   "c1d00c70-ac0b-4c2b-ba15-06bf95f7ad33": [
     {
       "id": "952fc424-bbe9-4263-b022-372f93121f88",
@@ -26869,6 +28449,24 @@
       "sortOrder": 30
     }
   ],
+  "c2aa6dd4-e9b8-4437-b22c-34c03c49773a": [
+    {
+      "id": "5d60b0d9-b9fc-4434-84da-dcd548f1efff",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9875_00.jpg?v=1723002235",
+      "sortOrder": 50
+    },
+    {
+      "id": "4368fb6c-1b23-46e0-b380-d73345636bef",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9875_01.jpg?v=1723002239",
+      "sortOrder": 210
+    }
+  ],
   "c2c2e09e-a5f6-4c23-a5bb-deb258917dfa": [
     {
       "id": "700fd3a4-e36d-4f54-9384-3adb0ca3fdd2",
@@ -26933,6 +28531,16 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/703/4249/TP-56_TP-62_Tumbler_ProductShot8_WEB__91240.1755530888.jpg?c=1",
       "sortOrder": 250
+    }
+  ],
+  "c2eb5e80-eef8-4d87-b44f-ce74e7886ba3": [
+    {
+      "id": "1f7b708d-6602-414b-9f3f-8c562a5eeda4",
+      "label": "Photo",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://wrvtwhzmwokpfcsszuiu.supabase.co/storage/v1/object/public/custom-glaze-images/f4cffe50-2b91-441b-80d5-a1a8f4d42bdd/39c78467-9684-48d2-93f8-a946af45a684-Opulence-607-Sea-Spray.png",
+      "sortOrder": 0
     }
   ],
   "c2fff36f-0c22-4e3a-b4f3-54d10f64555a": [
@@ -27123,6 +28731,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/12/fn031_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "c4e6012c-998e-4226-a526-e0202a9f7391": [
+    {
+      "id": "e0542aed-c2bf-406a-adc5-9219ec88e9dc",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9622-1050_00.jpg?v=1712483425",
+      "sortOrder": 1050
+    },
+    {
+      "id": "9624ebea-4484-4034-a1a2-6855f986aea8",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9622-1150_00.jpg.1.jpg?v=1712483425",
+      "sortOrder": 1150
+    },
+    {
+      "id": "95406036-613d-41f3-a9d4-1831f6bbf098",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9622-1250_00.jpg?v=1712483425",
+      "sortOrder": 1250
     }
   ],
   "c558daf2-f4d5-40ea-91a2-7c2545afe663": [
@@ -27655,6 +29289,32 @@
       "sortOrder": 200
     }
   ],
+  "c90e859e-899d-4ab7-8e13-92d797b5a35a": [
+    {
+      "id": "26be732e-a52e-4030-b8a1-a9ed867074f3",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9310-1050_00.jpg?v=1712462785",
+      "sortOrder": 1050
+    },
+    {
+      "id": "29f15f60-5cfd-46e7-8d13-a02085c0f08a",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9310-1150_00.jpg?v=1712462785",
+      "sortOrder": 1150
+    },
+    {
+      "id": "f3c21ba9-eff8-4a1d-9c64-1dfc5e42ccf1",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9310-1250_00.jpg?v=1712462784",
+      "sortOrder": 1250
+    }
+  ],
   "c9a4751f-3f8c-42ce-822c-3cf8c081148d": [
     {
       "id": "c2375203-5e34-44ae-94c5-45f654230ae5",
@@ -27663,6 +29323,24 @@
       "atmosphere": null,
       "imageUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1164.jpg",
       "sortOrder": 50
+    }
+  ],
+  "c9babcd6-a3a6-4cc1-bc2c-408148b3543f": [
+    {
+      "id": "e21408c2-f2e2-4bb8-93ea-9c73bdd78f0d",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9823_00.jpg?v=1742707105",
+      "sortOrder": 50
+    },
+    {
+      "id": "669e8457-42a7-4f6f-a949-ffe3826d52fd",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9823_9802_9825_01.jpg?v=1742707106",
+      "sortOrder": 210
     }
   ],
   "c9f3eb69-05c5-4774-bf62-ce42a5f16066": [
@@ -27733,6 +29411,24 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2025/02/el142_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "cb0f6a03-d382-4149-ac4e-ca2b306b891d": [
+    {
+      "id": "1b485be4-1407-4eab-bd39-19481ab31dd6",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9803_00.jpg?v=1742705378",
+      "sortOrder": 50
+    },
+    {
+      "id": "694b9a5b-d79c-4df7-a806-50698ddfcc38",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9822_9804_9803_01.jpg?v=1742705378",
+      "sortOrder": 210
     }
   ],
   "cb0f6d0d-733d-42db-a314-0dfb0a193cd3": [
@@ -27879,6 +29575,16 @@
       "atmosphere": "Reduction",
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez038_cone10_sw004.jpg",
       "sortOrder": 40
+    }
+  ],
+  "cc38154e-516c-43e4-8115-90aa90b68a26": [
+    {
+      "id": "467048cd-976b-48e2-8a9b-6704fa520957",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9317-1150-02.png?v=1712482865",
+      "sortOrder": 1150
     }
   ],
   "cc47207c-23d2-4442-b18c-d2ce5a7ecb06": [
@@ -28099,6 +29805,24 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2277/3644/C-52_RedRock__92004.1707155405.jpg?c=1",
       "sortOrder": 200
+    }
+  ],
+  "cd0c93ae-4ffd-4f7d-afbb-33dfacaba1f9": [
+    {
+      "id": "9f083e6d-db9b-4080-9393-a0df4e952173",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9545_00.jpg?v=1765946736",
+      "sortOrder": 50
+    },
+    {
+      "id": "daaef9ae-8e8c-4a00-825f-f2bfb19a4f77",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9545_07.jpg?v=1765946736",
+      "sortOrder": 210
     }
   ],
   "cd13b44a-34f2-430b-a4db-9c71477d3e73": [
@@ -28473,6 +30197,16 @@
       "sortOrder": 20
     }
   ],
+  "d0184961-dbfb-4f65-ba8d-d851a4bbd4bb": [
+    {
+      "id": "7896e647-bb61-4333-86bc-914572b2b4cc",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4008_SoftGrey_BOTZ.jpg?v=1761288451",
+      "sortOrder": 50
+    }
+  ],
   "d047e9bd-9854-438a-b2ef-0a2314e049ea": [
     {
       "id": "97d7ab87-70e1-4d54-8d7f-aa38e2214b2e",
@@ -28573,6 +30307,16 @@
       "atmosphere": "Reduction",
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez018_cone10_sw001.jpg",
       "sortOrder": 40
+    }
+  ],
+  "d0836c0f-5d95-416e-90b1-1117c18ae51d": [
+    {
+      "id": "81cacae6-314f-4475-b763-aada3f1a7512",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4014_Plum_BOTZ.jpg?v=1761289153",
+      "sortOrder": 50
     }
   ],
   "d0a7df03-cf66-41ad-be3b-8c6cbeab1b94": [
@@ -29007,6 +30751,32 @@
       "sortOrder": 30
     }
   ],
+  "d3a37ed1-09a3-4640-b0c6-f6cafefc4931": [
+    {
+      "id": "1828ad67-45b6-44ee-af25-ea808da06230",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9302_00-1050.jpg?v=1765953248",
+      "sortOrder": 1050
+    },
+    {
+      "id": "41e6ee56-fc99-4992-85fc-bbb86086385d",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9302_00-1150.jpg?v=1765953248",
+      "sortOrder": 1150
+    },
+    {
+      "id": "ccd61d33-77c8-4716-8dc2-1bc3f57538be",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9302_00-1250.jpg?v=1712461225",
+      "sortOrder": 1250
+    }
+  ],
   "d3d0e786-be33-4ab9-9ee8-6111fc0f0954": [
     {
       "id": "1a6d8103-89e2-4921-bb1c-329e97e1cb89",
@@ -29231,6 +31001,32 @@
       "sortOrder": 190
     }
   ],
+  "d60ab097-d947-4dab-8bae-e82d8970640b": [
+    {
+      "id": "a80418d3-d32b-4414-bb80-2a9e350ae989",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9883_00.jpg?v=1742710434",
+      "sortOrder": 50
+    },
+    {
+      "id": "e69a8904-9491-4c03-9cab-010354728263",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9883_05.jpg?v=1742710434",
+      "sortOrder": 210
+    },
+    {
+      "id": "af42bf4e-836a-4bc4-8634-87a878f0010f",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9883_02.jpg.1.jpg?v=1742710434",
+      "sortOrder": 220
+    }
+  ],
   "d60fcb83-fd79-4c7d-9376-87df8d75dedc": [
     {
       "id": "0d4adb9f-d412-492c-9086-a291ca05fb72",
@@ -29433,6 +31229,24 @@
       "sortOrder": 50
     }
   ],
+  "d876669a-8c6a-4abb-a215-e873d28b8297": [
+    {
+      "id": "da24adf3-1cf2-4e79-9e73-7721fb5d15b0",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9606_00.jpg?v=1765950579",
+      "sortOrder": 50
+    },
+    {
+      "id": "afa503ad-3e25-491d-990d-cf79337b554f",
+      "label": "Example 2",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9606_01.jpg?v=1765950579",
+      "sortOrder": 210
+    }
+  ],
   "d8921c88-3467-4ff3-9d9f-9a88fe0bc1fd": [
     {
       "id": "e726a834-f578-47e7-92af-38bf05cfdf63",
@@ -29555,6 +31369,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2021/12/UG-93_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "d99b14b8-0779-438d-92ac-18161122bac0": [
+    {
+      "id": "a40b5ed7-4d23-43a0-a255-690b3f5a74e3",
+      "label": "Reference tile",
+      "cone": "Cone 06",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9353_00.jpg?v=1765941580",
+      "sortOrder": 50
     }
   ],
   "d99b57bf-3218-409b-99db-5e955cfc6818": [
@@ -29811,6 +31635,24 @@
       "sortOrder": 30
     }
   ],
+  "db31d4d5-efa7-480e-94fc-9ff3fed4396d": [
+    {
+      "id": "4418144e-d52e-48dc-bc78-9a191e6d1379",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9887_00.jpg?v=1723008295",
+      "sortOrder": 50
+    },
+    {
+      "id": "7646b34e-96ed-4d56-bcee-1c0c7e69367a",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9887_91.jpg?v=1723008358",
+      "sortOrder": 210
+    }
+  ],
   "dbadd0cb-f0cc-4576-9d03-ef8cd07ad385": [
     {
       "id": "f785db1d-9b26-425f-b499-f5e6c8add070",
@@ -30065,6 +31907,24 @@
       "sortOrder": 190
     }
   ],
+  "ddb9a109-7f3d-4ff4-bd4c-7f35629dc556": [
+    {
+      "id": "672c5885-f59b-41a5-99ea-1161b5641e0e",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9879_00.jpg?v=1742709817",
+      "sortOrder": 50
+    },
+    {
+      "id": "eb004f74-63dc-4905-ad73-d75d068a3dc8",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9879_01.jpg?v=1742709817",
+      "sortOrder": 210
+    }
+  ],
   "ddd93a9a-6085-4567-bfa8-a161d352e982": [
     {
       "id": "6d42c3b5-21e2-44d5-9bfc-c0387f026232",
@@ -30263,6 +32123,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-110_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "dee32463-4d2d-4827-8e98-2a9c68e12db8": [
+    {
+      "id": "538e633e-d98c-4425-b78f-8e2e1741f533",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9621-1050_00.jpg?v=1712483339",
+      "sortOrder": 1050
+    },
+    {
+      "id": "5232012d-aa63-4c5f-8b6b-df03e57b78c7",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9621-1150_00.jpg?v=1712483339",
+      "sortOrder": 1150
+    },
+    {
+      "id": "a61e7146-fc83-4aef-9179-356a4b4aa68d",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9621-1250_00.jpg?v=1712483338",
+      "sortOrder": 1250
     }
   ],
   "deea2ae6-c1c8-4b9a-b500-671ed879d7ea": [
@@ -30663,6 +32549,32 @@
       "sortOrder": 30
     }
   ],
+  "e02423cf-a3d3-433f-b47b-573a7e36f814": [
+    {
+      "id": "b45a1a71-41e6-4115-8541-fae41e214c2d",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9880_00.jpg?v=1742710015",
+      "sortOrder": 50
+    },
+    {
+      "id": "0a0e1763-837f-4829-8232-cd3357bcfbe1",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9880_95.jpg?v=1742710015",
+      "sortOrder": 210
+    },
+    {
+      "id": "bc2891de-2789-476f-af6f-f892e43e63f4",
+      "label": "Example 3",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9880_01.jpg?v=1742710015",
+      "sortOrder": 220
+    }
+  ],
   "e046db57-b2ce-4ac2-8f55-a96cb2295d16": [
     {
       "id": "55f9fafa-6baa-4fc0-8e4f-ffe59b99942a",
@@ -30687,6 +32599,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/09/sc101_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "e0471789-0bf3-43cf-a789-5c990b2069d1": [
+    {
+      "id": "28ab44f6-f6f5-416a-b893-5990b9549de0",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4003_Wine_BOTZ.jpg?v=1761286940",
+      "sortOrder": 50
     }
   ],
   "e048ce7d-ca05-446a-9742-c14127a1c93a": [
@@ -31169,6 +33091,16 @@
       "sortOrder": 190
     }
   ],
+  "e34b368e-bdaa-491f-8ed2-f652c0eec603": [
+    {
+      "id": "6b21b5d5-25df-4d22-8528-8b1b01fe05cc",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4016_LimeGreen_BOTZ.jpg?v=1761289298",
+      "sortOrder": 50
+    }
+  ],
   "e3bd925d-f9a0-4d63-b83e-0e61479be2bf": [
     {
       "id": "4df7df9f-90e1-4c49-b628-7f1dd7e840f5",
@@ -31193,6 +33125,24 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2024/09/sc083_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "e434df15-7e99-4157-a34e-0fba040e7e2d": [
+    {
+      "id": "73e9692b-6e6f-456f-b3e4-ba9592a07d24",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9888_00.jpg?v=1742711127",
+      "sortOrder": 50
+    },
+    {
+      "id": "e5e8b2b5-add1-4866-bd88-db7c5e0581d4",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9888_01.jpg.1.jpg?v=1742711127",
+      "sortOrder": 210
     }
   ],
   "e45eee6d-21c3-48d9-8cec-56bca9fb7c13": [
@@ -31247,6 +33197,16 @@
       "atmosphere": null,
       "imageUrl": "https://www.coyoteclay.com/Images/250%20Tiles/Unicorn%20Horn%20MBG215.jpg",
       "sortOrder": 10
+    }
+  ],
+  "e500a5c2-e5fd-4ecd-90d2-c94ee6dae695": [
+    {
+      "id": "49fabd94-b0cb-423f-9caa-77941741b8e6",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9861.png?v=1742707512",
+      "sortOrder": 50
     }
   ],
   "e522d439-ed06-4def-aa31-8219aa0209cd": [
@@ -31431,6 +33391,32 @@
       "atmosphere": null,
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2020/09/sw-120_cone10.jpg",
       "sortOrder": 30
+    }
+  ],
+  "e6989e81-5f85-4b39-a14a-341bb0d4c7fc": [
+    {
+      "id": "350272fd-82e1-4f34-87fe-7a75784ac38a",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9820_00.jpg?v=1742706755",
+      "sortOrder": 50
+    },
+    {
+      "id": "c1460fd3-1949-4b08-975e-f44725a85319",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9820_01.jpg?v=1742706755",
+      "sortOrder": 210
+    },
+    {
+      "id": "723a62e0-3f91-4c34-a7fe-d1ee9cfcfffb",
+      "label": "Example 3",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9821_9820_9826_04.jpg?v=1742706755",
+      "sortOrder": 220
     }
   ],
   "e6bf763a-68c8-4948-b3a1-f9e2723e7ccd": [
@@ -32469,6 +34455,16 @@
       "sortOrder": 80
     }
   ],
+  "f07bec76-3043-419d-9125-c55305628b64": [
+    {
+      "id": "d4177b48-983b-4116-8bfd-1240136b9e2c",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9318-1150.png?v=1712482954",
+      "sortOrder": 1150
+    }
+  ],
   "f09dad24-bdbc-4d90-928a-2263cd5cb017": [
     {
       "id": "6ea4e6a3-ce45-4c80-a4f2-91ab31c666d3",
@@ -33077,6 +35073,24 @@
       "sortOrder": 20
     }
   ],
+  "f54184d0-9d72-4e2c-b00f-ce205ac7509e": [
+    {
+      "id": "ca71afbf-ba63-4e2b-a595-06dac9d4f8a4",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9895_00.jpg?v=1742711601",
+      "sortOrder": 50
+    },
+    {
+      "id": "7b2de839-230f-4381-9639-2462e1de5f18",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9895_02.jpg?v=1742711601",
+      "sortOrder": 210
+    }
+  ],
   "f55de52d-0330-41b3-8f1b-b7343c1d387b": [
     {
       "id": "c415fe47-fe2c-4843-8494-4d0641894571",
@@ -33633,6 +35647,32 @@
       "sortOrder": 240
     }
   ],
+  "f9b9fd41-1b5c-40b9-86fe-ce979cc6d595": [
+    {
+      "id": "acff7d68-d0fd-42be-9aa3-b867787746d5",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9308-1050_00.jpg?v=1712462420",
+      "sortOrder": 1050
+    },
+    {
+      "id": "ea5e4c5a-c301-4e78-bf91-cb67e2640558",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9308-1150_00.jpg?v=1712462419",
+      "sortOrder": 1150
+    },
+    {
+      "id": "a78a893b-ade5-47df-a929-17cbfa899f33",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9308-1250_00.jpg?v=1712462419",
+      "sortOrder": 1250
+    }
+  ],
   "f9de8636-370b-443d-b668-a5d13a4f591d": [
     {
       "id": "20ddac26-d67a-409d-a0f4-855b9fd11afd",
@@ -33839,6 +35879,24 @@
       "sortOrder": 200
     }
   ],
+  "fb37af81-b592-4ec1-abca-d91c2d3b4385": [
+    {
+      "id": "d8586c67-1b5c-42ef-a504-87abc4f3648b",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9872_00.jpg?v=1742709364",
+      "sortOrder": 50
+    },
+    {
+      "id": "0bcd808f-37c4-4dfb-a0cc-ef986d917f77",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9872_01.jpg?v=1742709364",
+      "sortOrder": 210
+    }
+  ],
   "fbb54d92-36bf-4911-8b5a-407b3ec3a6cd": [
     {
       "id": "f857c727-dcd9-4e5d-847f-72ffae24e6ec",
@@ -33995,19 +36053,19 @@
       "sortOrder": 360
     },
     {
-      "id": "b2a34ce2-3bde-4051-addf-1782b0019b6d",
-      "label": "Layering example: TP58",
-      "cone": null,
-      "atmosphere": null,
-      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/699/1965/tp51-50percent-tp58-50percent-2048px__02662.1659372549.jpg?c=1",
-      "sortOrder": 370
-    },
-    {
       "id": "7aefbcf6-9be8-4702-84b4-6a1a90468cd7",
       "label": "Example 20",
       "cone": null,
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/699/1973/TP_on_Red_clay_1__81492.1659372549.jpg?c=1",
+      "sortOrder": 370
+    },
+    {
+      "id": "b2a34ce2-3bde-4051-addf-1782b0019b6d",
+      "label": "Layering example: TP58",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/699/1965/tp51-50percent-tp58-50percent-2048px__02662.1659372549.jpg?c=1",
       "sortOrder": 370
     },
     {
@@ -34041,6 +36099,24 @@
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/699/1980/tp51-50percent-tp64-50percent-2048px__02903.1659372549.jpg?c=1",
       "sortOrder": 390
+    }
+  ],
+  "fbec3182-b386-4a9a-aa6b-5fd73a665ab1": [
+    {
+      "id": "7c16f0c6-ad02-444c-a38d-a9e5d64aba54",
+      "label": "Reference tile",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9824_00.jpg?v=1742707200",
+      "sortOrder": 50
+    },
+    {
+      "id": "8ba12ccc-eac5-41fe-8779-98c2ebebeac5",
+      "label": "Example 2",
+      "cone": "Cone 4 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9824_01.jpg?v=1742707200",
+      "sortOrder": 210
     }
   ],
   "fc09fcc2-1b60-4be1-acf4-3b8831a2b8dc": [
@@ -34104,6 +36180,42 @@
       "cone": "Cone 05 / Cone 10",
       "atmosphere": null,
       "imageUrl": "https://cdn11.bigcommerce.com/s-glqkoqulcz/images/stencil/1000w/attribute_rule_images/667_source_1774431939.jpg",
+      "sortOrder": 50
+    }
+  ],
+  "fcd9f488-7c1e-4a86-8f4c-e6d84a00ab40": [
+    {
+      "id": "7179b8c8-71b3-466c-9553-066b3c9d921a",
+      "label": "1050°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9304_00-1050.jpg?v=1765953218",
+      "sortOrder": 1050
+    },
+    {
+      "id": "41334fbd-ca66-4309-9897-af5fc6b43bba",
+      "label": "1150°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9304_00-1150.jpg?v=1765953218",
+      "sortOrder": 1150
+    },
+    {
+      "id": "e9cd8e97-e198-470d-b2c5-5d8b1d9e4e6b",
+      "label": "1250°C sample",
+      "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9304_00-1250.jpg?v=1712461582",
+      "sortOrder": 1250
+    }
+  ],
+  "fd07cea8-48ef-4466-9e33-fc63b8a2c39b": [
+    {
+      "id": "bc36c263-a1dd-4aa4-aaad-a9760c6b3c10",
+      "label": "Reference tile",
+      "cone": "Cone 06 / Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4007_Rosewood_BOTZ.jpg?v=1761288254",
       "sortOrder": 50
     }
   ],
@@ -34265,6 +36377,24 @@
       "atmosphere": "Reduction",
       "imageUrl": "https://www.maycocolors.com/wp-content/uploads/2023/12/ez013_cone10_sw001.jpg",
       "sortOrder": 40
+    }
+  ],
+  "fe3aab67-5cc0-40ee-9f87-0399173c202f": [
+    {
+      "id": "2c1e598f-ab47-4e4b-ae2e-7e490acdfb6e",
+      "label": "Reference tile",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9871_00.jpg?v=1742709127",
+      "sortOrder": 50
+    },
+    {
+      "id": "bbf8c378-34f1-493a-bfff-f862427035bf",
+      "label": "Example 2",
+      "cone": "Cone 6 / Cone 9",
+      "atmosphere": null,
+      "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9871_04.jpg?v=1742709127",
+      "sortOrder": 210
     }
   ],
   "fece0bd0-0d28-4b52-8e6d-618c2de8ade0": [

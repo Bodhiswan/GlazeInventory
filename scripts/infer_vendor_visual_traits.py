@@ -21,6 +21,7 @@ SPEEDBALL_INPUT_PATH = Path("data/vendors/speedball-glazes.json")
 CHRYSANTHOS_INPUT_PATH = Path("data/vendors/chrysanthos-glazes.json")
 LAGUNA_INPUT_PATH = Path("data/vendors/laguna-glazes.json")
 NORTHCOTE_INPUT_PATH = Path("data/vendors/northcote-glazes.json")
+BOTZ_INPUT_PATH = Path("data/vendors/botz-glazes.json")
 OUTPUT_PATH = Path("data/vendors/vendor-visual-traits.json")
 
 
@@ -274,6 +275,7 @@ def main() -> None:
     output.update(build_profiles("Chrysanthos", CHRYSANTHOS_INPUT_PATH))
     output.update(build_profiles("Laguna", LAGUNA_INPUT_PATH))
     output.update(build_profiles("Northcote", NORTHCOTE_INPUT_PATH))
+    output.update(build_profiles("BOTZ", BOTZ_INPUT_PATH))
 
     OUTPUT_PATH.write_text(f"{json.dumps(output, indent=2)}\n", encoding="utf-8")
     print(f"Saved {len(output)} vendor visual trait profiles to {OUTPUT_PATH}", flush=True)

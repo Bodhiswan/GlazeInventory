@@ -1,6 +1,6 @@
 import type { Glaze } from "@/lib/types";
 
-export const ACTIVE_GLAZE_BRANDS = ["Mayco", "AMACO", "Coyote", "Duncan", "Spectrum", "Speedball", "Seattle Pottery Supply", "Opulence"] as const;
+export const ACTIVE_GLAZE_BRANDS = ["Mayco", "AMACO", "Coyote", "Duncan", "Spectrum", "Speedball", "Seattle Pottery Supply", "Opulence", "BOTZ"] as const;
 export const GLAZE_FAMILY_LABELS = [
   "Underglaze",
   "Translucent underglaze",
@@ -147,6 +147,14 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     "Midfire Glaze - Pearl": ["Satin / matte functional"],
     "Midfire Glaze - Chun": ["Reactive effects"],
   },
+  BOTZ: {
+    Unidekor: ["Underglaze"],
+    Earthenware: ["Low-fire gloss color"],
+    Stoneware: ["Reactive effects"],
+    Engobes: ["Engobe"],
+    PRO: ["Durable functional", "Reactive effects"],
+    "Ceramic Ink": ["Specialty additive"],
+  },
 };
 
 const BRAND_URLS: Record<string, string> = {
@@ -157,6 +165,7 @@ const BRAND_URLS: Record<string, string> = {
   Duncan: "https://www.maycocolors.com/duncan/",
   Spectrum: "https://www.spectrumglazes.com",
   Speedball: "https://www.speedballart.com",
+  BOTZ: "https://www.ceramixaustralia.com.au/collections/botz",
 };
 
 export function getManufacturerUrl(brand: string | null | undefined): string | null {
