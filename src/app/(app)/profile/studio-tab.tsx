@@ -2,7 +2,6 @@ import {
   createOrUpdateStudioAction,
   deleteStudioAction,
 } from "@/app/actions/studios";
-import { slugifyStudioName } from "@/lib/studio-slug";
 import { getStudioForOwner, getOwnerInventoryShareList } from "@/lib/data/studios";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
@@ -14,11 +13,9 @@ import { StudioShareList } from "./studio-share-list";
 
 export async function StudioTab({ ownerUserId }: { ownerUserId: string }) {
   const viewer = await requireViewer();
-  const studioName = (viewer.profile.studioName ?? "").trim();
   const studio = await getStudioForOwner(ownerUserId);
   const inventory = await getOwnerInventoryShareList(ownerUserId);
-  const previewSlug = studio?.slug ?? (studioName ? slugifyStudioName(studioName) : "");
-  const url = previewSlug ? `/studio/${previewSlug}` : null;
+  const url = studio ? `/studio/${studio.slug}` : null;
 
   return (
     <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
@@ -30,12 +27,7 @@ export async function StudioTab({ ownerUserId }: { ownerUserId: string }) {
           </h2>
         </div>
 
-        {!studioName ? (
-          <div className="border border-border bg-panel px-4 py-3 text-sm text-muted">
-            Add a <strong>Studio name</strong> on your Profile tab first — your
-            URL is generated from it.
-          </div>
-        ) : studio ? (
+        {studio ? (
           <div className="space-y-3 text-sm">
             <div>
               <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
@@ -147,7 +139,23 @@ export async function StudioTab({ ownerUserId }: { ownerUserId: string }) {
           </div>
         ) : (
           <form action={createOrUpdateStudioAction} className="grid gap-4">
-            <p className="font-mono text-sm break-all">glazeinventory.com{url}</p>
+            <p className="text-sm leading-6 text-muted">
+              Enable studio mode to create a passcode-protected page where your
+              studio members can browse your shared glazes and combinations.
+            </p>
+            <label className="grid gap-2 text-sm font-medium">
+              Studio name
+              <Input
+                name="studioName"
+                defaultValue={viewer.profile.studioName ?? ""}
+                required
+                placeholder="e.g. Muddy Hands Ceramics"
+                maxLength={80}
+              />
+              <span className="text-[11px] leading-5 text-muted">
+                Your public URL will be generated from this name.
+              </span>
+            </label>
             <label className="grid gap-2 text-sm font-medium">
               4-digit visitor passcode
               <Input
@@ -175,7 +183,7 @@ export async function StudioTab({ ownerUserId }: { ownerUserId: string }) {
                 cone 06 and cone 6 ware never get mixed up.
               </span>
             </label>
-            <SubmitButton pendingText="Saving…">Create studio page</SubmitButton>
+            <SubmitButton pendingText="Creating…">Create studio page</SubmitButton>
           </form>
         )}
       </Panel>

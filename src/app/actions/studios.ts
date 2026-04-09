@@ -42,6 +42,7 @@ import { slugifyStudioName } from "@/lib/studio-slug";
 // ─── Owner: create / rename / set passcode ─────────────────────────────────
 const firingRangeSchema = z.enum(["lowfire", "midfire", "both"]);
 const upsertSchema = z.object({
+  studioName: z.string().trim().min(1, "Studio name is required").max(80).optional(),
   passcode: passcodeSchema.optional(),
   firingRange: firingRangeSchema.optional(),
 });
@@ -56,7 +57,10 @@ export async function createOrUpdateStudioAction(formData: FormData) {
   try {
     const { viewer, supabase } = await requireMemberSupabase("/profile");
 
+    const existing = await getStudioForOwner(viewer.profile.id);
+
     const parsed = upsertSchema.safeParse({
+      studioName: formData.get("studioName")?.toString() || undefined,
       passcode: formData.get("passcode")?.toString() || undefined,
       firingRange: formData.get("firingRange")?.toString() || undefined,
     });
@@ -64,12 +68,12 @@ export async function createOrUpdateStudioAction(formData: FormData) {
     redirect(`/profile?tab=studio&error=${encodeURIComponent(parsed.error.issues[0]!.message)}`);
   }
 
-  // Derive the URL slug from the user's studio name on their profile.
-  const studioName = (viewer.profile.studioName ?? "").trim();
+  // Use studio name from form (creation) or fall back to existing display name.
+  const studioName = parsed.data.studioName ?? existing?.displayName ?? "";
   if (!studioName) {
     redirect(
       `/profile?tab=studio&error=${encodeURIComponent(
-        "Set a studio name on your profile first — your URL is built from it",
+        "Enter a studio name",
       )}`,
     );
   }
@@ -92,7 +96,6 @@ export async function createOrUpdateStudioAction(formData: FormData) {
 
   // Check slug availability
   const conflict = await getStudioBySlug(slug);
-  const existing = await getStudioForOwner(viewer.profile.id);
 
   if (conflict && (!existing || conflict.id !== existing.id)) {
     redirect(
@@ -116,6 +119,12 @@ export async function createOrUpdateStudioAction(formData: FormData) {
         )}`,
       );
     }
+    // Save studio name to profile so it persists there too.
+    await sb
+      .from("profiles")
+      .update({ studio_name: studioName })
+      .eq("id", viewer.profile.id);
+
     const { error } = await sb
       .from("studios")
       .insert({

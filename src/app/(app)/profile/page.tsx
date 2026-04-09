@@ -96,10 +96,6 @@ export default async function ProfilePage({
                   <Input name="displayName" defaultValue={viewer.profile.displayName} required />
                 </label>
                 <label className="grid gap-2 text-sm font-medium">
-                  Studio name
-                  <Input name="studioName" defaultValue={viewer.profile.studioName ?? ""} />
-                </label>
-                <label className="grid gap-2 text-sm font-medium">
                   Location
                   <Input name="location" defaultValue={viewer.profile.location ?? ""} />
                 </label>

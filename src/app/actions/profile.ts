@@ -8,7 +8,6 @@ import { normalizeOptional, revalidateWorkspace, requireMemberSupabase } from ".
 
 const profilePreferencesSchema = z.object({
   displayName: z.string().min(2).max(40),
-  studioName: z.string().max(80).optional(),
   location: z.string().max(80).optional(),
   preferredCone: z.string().max(40).optional(),
   preferredAtmosphere: z.string().max(40).optional(),
@@ -19,7 +18,6 @@ export async function updateProfilePreferencesAction(formData: FormData) {
   const { viewer, supabase } = await requireMemberSupabase("/profile");
   const parsed = profilePreferencesSchema.safeParse({
     displayName: formData.get("displayName")?.toString().trim(),
-    studioName: normalizeOptional(formData.get("studioName")) ?? undefined,
     location: normalizeOptional(formData.get("location")) ?? undefined,
     preferredCone: normalizeOptional(formData.get("preferredCone")) ?? undefined,
     preferredAtmosphere: normalizeOptional(formData.get("preferredAtmosphere")) ?? undefined,
@@ -53,7 +51,6 @@ export async function updateProfilePreferencesAction(formData: FormData) {
     .from("profiles")
     .update({
       display_name: parsed.data.displayName,
-      studio_name: parsed.data.studioName ?? null,
       location: parsed.data.location ?? null,
       preferred_cone: parsed.data.preferredCone ?? null,
       preferred_atmosphere: parsed.data.preferredAtmosphere ?? null,
