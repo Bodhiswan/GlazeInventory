@@ -53,9 +53,5 @@ export default async function HomePage({
     redirect(`/auth/forgot-password?error=${encodeURIComponent(message)}`);
   }
 
-  if (viewer) {
-    redirect("/dashboard");
-  }
-
-  return <HomeLandingPage />;
+  return <HomeLandingPage viewer={viewer} />;
 }
