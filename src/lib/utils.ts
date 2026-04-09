@@ -614,9 +614,12 @@ export function getGlazeSkimDescription(glaze: Glaze) {
   };
 }
 
+export type ColorShadeIntent = "light" | "dark" | "bright" | "muted";
+
 type ColorAwareQuery = {
   colorIntent: string[];
   textQuery: string;
+  shadeIntent: ColorShadeIntent | null;
 };
 
 function getColorKeywordLookup() {
@@ -634,20 +637,52 @@ function getColorKeywordLookup() {
 }
 
 const colorKeywordLookup = getColorKeywordLookup();
+const colorShadeKeywords = new Set(["light", "dark", "bright", "pale", "deep", "muted", "soft"]);
+
+function normalizeShadeIntent(token: string): ColorShadeIntent | null {
+  if (token === "light" || token === "pale" || token === "soft") {
+    return "light";
+  }
+
+  if (token === "dark" || token === "deep") {
+    return "dark";
+  }
+
+  if (token === "bright") {
+    return "bright";
+  }
+
+  if (token === "muted") {
+    return "muted";
+  }
+
+  return null;
+}
 
 export function extractColorAwareQuery(query: string): ColorAwareQuery {
   const normalized = normalizeGlazeSearchText(query);
 
   if (!normalized) {
-    return { colorIntent: [], textQuery: "" };
+    return { colorIntent: [], textQuery: "", shadeIntent: null };
   }
 
   const tokens = normalized.split(" ").filter(Boolean);
   const colorIntent: string[] = [];
   const residualTokens: string[] = [];
+  let shadeIntent: ColorShadeIntent | null = null;
 
-  for (const token of tokens) {
+  for (let index = 0; index < tokens.length; index += 1) {
+    const token = tokens[index]!;
     const matchedColor = colorKeywordLookup.get(token);
+    const nextToken = tokens[index + 1];
+    const nextMatchedColor = nextToken ? colorKeywordLookup.get(nextToken) : null;
+
+    if (!matchedColor && nextMatchedColor && colorShadeKeywords.has(token)) {
+      colorIntent.push(nextMatchedColor);
+      shadeIntent ??= normalizeShadeIntent(token);
+      index += 1;
+      continue;
+    }
 
     if (matchedColor) {
       colorIntent.push(matchedColor);
@@ -660,6 +695,7 @@ export function extractColorAwareQuery(query: string): ColorAwareQuery {
   return {
     colorIntent: uniqueValues(colorIntent),
     textQuery: residualTokens.join(" "),
+    shadeIntent,
   };
 }
 
@@ -687,6 +723,58 @@ function getPaletteColorSimilarityScore(targetHex: string, palette: VendorImageP
   }, 0);
 
   return bestEntryScore * 1.35 + weightedBlendScore * 0.85;
+}
+
+function getShadeAdjustedPaletteScore(
+  targetHex: string,
+  palette: VendorImagePaletteEntry[],
+  shadeIntent: ColorShadeIntent | null,
+) {
+  const baseScore = getPaletteColorSimilarityScore(targetHex, palette);
+
+  if (!shadeIntent || !palette.length) {
+    return baseScore;
+  }
+
+  const targetLab = getHexLabColor(targetHex);
+
+  if (!targetLab) {
+    return baseScore;
+  }
+
+  const shadeBoost = palette.reduce((best, entry) => {
+    const entryLab = getHexLabColor(entry.hex);
+
+    if (!entryLab) {
+      return best;
+    }
+
+    const distance = getLabDistance(targetHex, entry.hex);
+    const closeness = Math.max(0, 1 - distance / 90);
+
+    if (closeness <= 0) {
+      return best;
+    }
+
+    const lightnessDelta = entryLab.l - targetLab.l;
+    let shadeMatch = 0;
+
+    if (shadeIntent === "light") {
+      shadeMatch = Math.max(0, lightnessDelta) / 35;
+    } else if (shadeIntent === "dark") {
+      shadeMatch = Math.max(0, -lightnessDelta) / 35;
+    } else if (shadeIntent === "bright") {
+      const chroma = Math.sqrt((entryLab.a ** 2) + (entryLab.b ** 2));
+      shadeMatch = Math.max(0, chroma - 24) / 55;
+    } else if (shadeIntent === "muted") {
+      const chroma = Math.sqrt((entryLab.a ** 2) + (entryLab.b ** 2));
+      shadeMatch = Math.max(0, 52 - chroma) / 52;
+    }
+
+    return Math.max(best, entry.weight * closeness * Math.min(shadeMatch, 1));
+  }, 0);
+
+  return baseScore + shadeBoost * 0.55;
 }
 
 function getLegacyGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
@@ -748,7 +836,11 @@ function getLegacyGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
   }, 0);
 }
 
-export function getGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
+export function getGlazeColorMatchScore(
+  glaze: Glaze,
+  selectedColors: string[],
+  shadeIntent: ColorShadeIntent | null = null,
+) {
   if (!selectedColors.length) {
     return 0;
   }
@@ -759,7 +851,7 @@ export function getGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) 
   return selectedColors.reduce((total, selected) => {
     const targetHex = getColorSwatch(selected);
     const paletteScore = palette.length
-      ? getPaletteColorSimilarityScore(targetHex, palette)
+      ? getShadeAdjustedPaletteScore(targetHex, palette, shadeIntent)
       : 0;
     const legacyScore = palette.length ? 0 : getLegacyGlazeColorMatchScore(glaze, [selected]);
     const textScore = textTraits.includes(selected)

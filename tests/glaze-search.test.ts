@@ -29,16 +29,31 @@ test("separates color intent from the remaining text query", () => {
   assert.deepEqual(extractColorAwareQuery("red"), {
     colorIntent: ["Red"],
     textQuery: "",
+    shadeIntent: null,
   });
 
   assert.deepEqual(extractColorAwareQuery("mayco red"), {
     colorIntent: ["Red"],
     textQuery: "mayco",
+    shadeIntent: null,
   });
 
   assert.deepEqual(extractColorAwareQuery("blue cone 6"), {
     colorIntent: ["Blue"],
     textQuery: "cone 6",
+    shadeIntent: null,
+  });
+
+  assert.deepEqual(extractColorAwareQuery("light blue"), {
+    colorIntent: ["Blue"],
+    textQuery: "",
+    shadeIntent: "light",
+  });
+
+  assert.deepEqual(extractColorAwareQuery("dark red mayco"), {
+    colorIntent: ["Red"],
+    textQuery: "mayco",
+    shadeIntent: "dark",
   });
 });
 
@@ -81,5 +96,27 @@ test("keeps true white glazes ahead of colored glazes for white searches", () =>
 
   assert.ok(
     getGlazeColorMatchScore(whiteGlaze, ["White"]) > getGlazeColorMatchScore(redGlaze, ["White"]),
+  );
+});
+
+test("prefers lighter blues for light blue searches", () => {
+  const lightBlueGlaze: Glaze = {
+    id: "light-blue",
+    sourceType: "commercial",
+    brand: "Mayco",
+    code: "SW-446",
+    name: "Light Flux",
+  };
+  const darkBlueGlaze: Glaze = {
+    id: "dark-blue",
+    sourceType: "commercial",
+    brand: "BOTZ",
+    code: "9542",
+    name: "Blue Effect",
+  };
+
+  assert.ok(
+    getGlazeColorMatchScore(lightBlueGlaze, ["Blue"], "light") >
+      getGlazeColorMatchScore(darkBlueGlaze, ["Blue"], "light"),
   );
 });

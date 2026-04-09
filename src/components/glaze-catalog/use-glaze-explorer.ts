@@ -111,6 +111,7 @@ export function useGlazeExplorer({
   const colorAwareQuery = extractColorAwareQuery(deferredQuery);
   const textQuery = colorAwareQuery.textQuery;
   const queryColorIntent = colorAwareQuery.colorIntent;
+  const queryShadeIntent = colorAwareQuery.shadeIntent;
   const previewCone = coneFilters[0] ?? preferredCone;
 
   const indexedGlazes = useMemo<IndexedGlaze[]>(
@@ -316,13 +317,14 @@ export function useGlazeExplorer({
   );
 
   const activeColorRankingIntent = colorFilters.length ? colorFilters : queryColorIntent;
+  const activeShadeIntent = colorFilters.length ? null : queryShadeIntent;
 
   const sortedGlazes = useMemo(
     () =>
       filteredGlazes
         .map((item) => ({
           item,
-          colorScore: getGlazeColorMatchScore(item.glaze, activeColorRankingIntent),
+          colorScore: getGlazeColorMatchScore(item.glaze, activeColorRankingIntent, activeShadeIntent),
           exactTextMatch: textQuery
             ? matchesGlazeSearch(
                 buildGlazeSearchIndex([item.glaze.code, item.glaze.name]),
@@ -356,7 +358,7 @@ export function useGlazeExplorer({
           return formatGlazeLabel(leftItem.glaze).localeCompare(formatGlazeLabel(rightItem.glaze));
         })
         .map(({ item }) => item),
-    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, textQuery],
+    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, activeShadeIntent, textQuery],
   );
 
   const hasFilters = Boolean(
