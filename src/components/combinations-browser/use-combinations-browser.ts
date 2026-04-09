@@ -19,6 +19,14 @@ const INITIAL_TILE_BATCH = 48;
 const TILE_BATCH_STEP = 36;
 
 export type CombinationsView = "all" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
+const DEFAULT_AVAILABLE_VIEWS: CombinationsView[] = [
+  "all",
+  "possible",
+  "plus1",
+  "mine",
+  "user",
+  "manufacturer",
+];
 
 /* ---------------------------------------------------------------------------
  * Unified tile type — wraps both Mayco examples and published posts so
@@ -272,6 +280,8 @@ export interface UseCombinationsBrowserProps {
   initialQuery?: string;
   viewerUserId?: string | null;
   favouriteCombinationIds?: string[];
+  lockedConeScope?: "lowfire" | "midfire" | null;
+  availableViews?: CombinationsView[];
 }
 
 export function useCombinationsBrowser({
@@ -285,6 +295,8 @@ export function useCombinationsBrowser({
   initialQuery = "",
   viewerUserId = null,
   favouriteCombinationIds = [],
+  lockedConeScope = null,
+  availableViews = DEFAULT_AVAILABLE_VIEWS,
 }: UseCombinationsBrowserProps) {
   const [query, setQuery] = useState(initialQuery);
   const [query2, setQuery2] = useState("");
@@ -305,10 +317,17 @@ export function useCombinationsBrowser({
   const deferredQuery2 = useDeferredValue(query2);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
   const normalizedQuery2 = deferredQuery2.trim().toLowerCase();
+  const allowedViewSet = useMemo(() => new Set(availableViews), [availableViews]);
 
   useEffect(() => {
-    setView(initialView);
-  }, [initialView]);
+    setView(allowedViewSet.has(initialView) ? initialView : "all");
+  }, [allowedViewSet, initialView]);
+
+  useEffect(() => {
+    if (!allowedViewSet.has(view)) {
+      setView("all");
+    }
+  }, [allowedViewSet, view]);
 
   useEffect(() => {
     setInventoryStatusByGlazeId(initialInventoryStatusByGlazeId);
@@ -496,17 +515,31 @@ export function useCombinationsBrowser({
     }
 
     // Cone filter
-    tiles = tiles.filter((tile) => {
-      const cone = tile.cone ?? "";
-      const isCone5 = /\bcone\s+5\b/i.test(cone);
-      const isCone6 = /\bcone\s+6\b/i.test(cone);
-      const isCone10 = /\bcone\s+10\b/i.test(cone);
-      if (isCone5 && showCone5) return true;
-      if (isCone6 && showCone6) return true;
-      if (isCone10 && showCone10) return true;
-      if (isCone5 || isCone6 || isCone10) return false;
-      return !cone;
-    });
+    if (lockedConeScope) {
+      tiles = tiles.filter((tile) => {
+        const cone = tile.cone ?? "";
+        // Tokenize cone numbers, preserving leading zeros (06 vs 6).
+        const tokens = cone.match(/0?\d+/g) ?? [];
+        if (lockedConeScope === "lowfire") {
+          // Earthenware = any leading-zero cone token (06, 05, 04 …).
+          return tokens.some((t) => /^0\d+$/.test(t));
+        }
+        // Midfire = cone 5 or 6 without a leading zero.
+        return tokens.some((t) => t === "5" || t === "6");
+      });
+    } else {
+      tiles = tiles.filter((tile) => {
+        const cone = tile.cone ?? "";
+        const isCone5 = /\bcone\s+5\b/i.test(cone);
+        const isCone6 = /\bcone\s+6\b/i.test(cone);
+        const isCone10 = /\bcone\s+10\b/i.test(cone);
+        if (isCone5 && showCone5) return true;
+        if (isCone6 && showCone6) return true;
+        if (isCone10 && showCone10) return true;
+        if (isCone5 || isCone6 || isCone10) return false;
+        return !cone;
+      });
+    }
 
     // Text search — both queries must match (AND) so users can narrow combos
     // by typing one glaze in each box.
@@ -525,7 +558,7 @@ export function useCombinationsBrowser({
     }
 
     return tiles;
-  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone5, showCone6, showCone10, allTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles]);
+  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone5, showCone6, showCone10, lockedConeScope, allTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles]);
 
   const activeTile = useMemo(
     () => activeTiles.find((t) => t.id === activeTileId) ?? null,
@@ -568,13 +601,14 @@ export function useCombinationsBrowser({
 
   /* --- view filter definitions ------------------------------------------ */
 
-  const viewFilters: { key: CombinationsView; label: string; count: number }[] = [
+  const baseViewFilters: { key: CombinationsView; label: string; count: number }[] = [
     { key: "possible", label: "Possible combinations", count: possibleTiles.length },
     { key: "plus1", label: "+1 combinations", count: plus1Tiles.length },
     { key: "mine", label: "My combinations", count: mineTiles.length },
     { key: "user", label: "User combinations", count: userExampleTiles.length + communityPostTiles.length },
     { key: "manufacturer", label: "Manufacturer combinations", count: manufacturerTiles.length },
   ];
+  const viewFilters = baseViewFilters.filter((filter) => allowedViewSet.has(filter.key));
 
   const viewLabel =
     view === "all" ? "All combinations"

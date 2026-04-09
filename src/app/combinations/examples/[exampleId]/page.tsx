@@ -1,15 +1,50 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 import { PageHeader } from "@/components/page-header";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 import { getVendorCombinationExample } from "@/lib/data/combinations";
-import { requireViewer } from "@/lib/data/users";
+import { getViewer } from "@/lib/data/users";
+import { getVendorExampleById } from "@/lib/catalog";
 import type { VendorCombinationExample } from "@/lib/types";
 import { formatGlazeLabel, formatGlazeMeta } from "@/lib/utils";
+
+// ─── SEO: dynamic metadata ──────────────────────────────────────────────────
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ exampleId: string }>;
+}): Promise<Metadata> {
+  const { exampleId } = await params;
+  const example = getVendorExampleById(exampleId);
+
+  if (!example) {
+    return { title: "Example not found" };
+  }
+
+  const layerNames = example.layers.map((l: { glazeName: string }) => l.glazeName).join(" + ");
+  const description = `${example.title} — ${example.sourceVendor} combination example with ${example.layers.length} layers: ${layerNames}.`;
+
+  return {
+    title: example.title,
+    description,
+    alternates: {
+      canonical: `/combinations/examples/${exampleId}`,
+    },
+    openGraph: {
+      title: example.title,
+      description,
+      ...(example.imageUrl ? { images: [{ url: example.imageUrl }] } : {}),
+    },
+  };
+}
+
+// ─── Helpers ────────────────────────────────────────────────────────────────
 
 function getLayerRoleLabel(example: VendorCombinationExample, layerOrder: number) {
   if (layerOrder === 0) {
@@ -23,14 +58,21 @@ function getLayerRoleLabel(example: VendorCombinationExample, layerOrder: number
   return "Middle layer";
 }
 
+// ─── Page ───────────────────────────────────────────────────────────────────
+
 export default async function VendorCombinationExamplePage({
   params,
 }: {
   params: Promise<{ exampleId: string }>;
 }) {
-  const viewer = await requireViewer();
+  const viewer = await getViewer();
+  const isGuest = !viewer;
   const { exampleId } = await params;
-  const example = await getVendorCombinationExample(viewer.profile.id, exampleId);
+  const example = await getVendorCombinationExample(
+    viewer?.profile.id ?? "public",
+    exampleId,
+    { skipInventory: isGuest },
+  );
 
   if (!example) {
     notFound();
@@ -66,11 +108,13 @@ export default async function VendorCombinationExamplePage({
               <Badge tone="neutral">{example.sourceVendor}</Badge>
               {example.cone ? <Badge tone="neutral">{example.cone}</Badge> : null}
               {example.clayBody ? <Badge tone="neutral">{example.clayBody}</Badge> : null}
-              <Badge tone={example.viewerOwnsAllGlazes ? "success" : "accent"}>
-                {example.viewerOwnsAllGlazes
-                  ? "You own every layer"
-                  : `${example.viewerOwnedLayerCount}/${example.layers.length} layers owned`}
-              </Badge>
+              {isGuest ? null : (
+                <Badge tone={example.viewerOwnsAllGlazes ? "success" : "accent"}>
+                  {example.viewerOwnsAllGlazes
+                    ? "You own every layer"
+                    : `${example.viewerOwnedLayerCount}/${example.layers.length} layers owned`}
+                </Badge>
+              )}
             </div>
 
             <div className="relative aspect-[4/3] overflow-hidden border border-border bg-panel">
@@ -148,6 +192,29 @@ export default async function VendorCombinationExamplePage({
               </Panel>
             );
           })}
+
+          {isGuest ? (
+            <Panel className="space-y-3 border-accent-1/20 bg-accent-1/5">
+              <p className="text-sm leading-6 text-muted">
+                Sign up to track which layers you own, save private notes, and
+                publish your own combination test results.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/auth/sign-up"
+                  className={buttonVariants({ size: "sm" })}
+                >
+                  Create free account
+                </Link>
+                <Link
+                  href="/auth/sign-in"
+                  className={buttonVariants({ variant: "ghost", size: "sm" })}
+                >
+                  Sign in
+                </Link>
+              </div>
+            </Panel>
+          ) : null}
         </div>
       </section>
     </div>

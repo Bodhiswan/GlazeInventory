@@ -6,7 +6,12 @@ import { getViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "Welcome",
+  title: "Ceramic Glaze Catalog, Combinations & Inventory",
+  description:
+    "Browse thousands of ceramic glazes from Mayco, AMACO, Coyote, Duncan, and Spectrum. See firing images, glaze combinations, and community test results.",
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default async function HomePage({

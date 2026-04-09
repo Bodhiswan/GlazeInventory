@@ -153,6 +153,7 @@ export async function hydratePosts(
     useAdminRead?: boolean;
     includeProfiles?: boolean;
     preloadedPairs?: CombinationPair[];
+    skipTags?: boolean;
   },
 ) {
   if (!rows.length) {
@@ -183,7 +184,9 @@ export async function hydratePosts(
     const pairs = options.preloadedPairs;
     const glazeIds = Array.from(new Set(pairs.flatMap((pair) => [pair.glazeAId, pair.glazeBId])));
     const [glazes, profiles] = await Promise.all([
-      getGlazesByIds(viewerId, glazeIds, adminClient),
+      getGlazesByIds(viewerId, glazeIds, adminClient, {
+        skipTags: options?.skipTags,
+      }),
       includeProfiles ? getProfilesByIds(basePosts.map((post) => post.authorUserId), adminClient) : Promise.resolve([]),
     ]);
     const profilesById = new Map(profiles.map((profile) => [profile.id, profile]));
@@ -199,7 +202,9 @@ export async function hydratePosts(
     includeProfiles ? getProfilesByIds(basePosts.map((post) => post.authorUserId), adminClient) : Promise.resolve([]),
   ]);
   const glazeIds = Array.from(new Set(pairs.flatMap((pair) => [pair.glazeAId, pair.glazeBId])));
-  const glazes = await getGlazesByIds(viewerId, glazeIds, adminClient);
+  const glazes = await getGlazesByIds(viewerId, glazeIds, adminClient, {
+    skipTags: options?.skipTags,
+  });
   const profilesById = new Map(profiles.map((profile) => [profile.id, profile]));
 
   return attachGlazesToPosts(basePosts, pairs, glazes).map((post) => ({
@@ -261,9 +266,18 @@ export async function getVendorCombinationExamples(viewerId: string, options?: {
   return hydrateStaticExamplesWithInventory(staticExamples, ownedGlazeIds);
 }
 
-export async function getVendorCombinationExample(viewerId: string, exampleId: string) {
+export async function getVendorCombinationExample(
+  viewerId: string,
+  exampleId: string,
+  options?: { skipInventory?: boolean },
+) {
   const staticExample = getVendorExampleById(exampleId);
   if (!staticExample) return null;
+
+  if (options?.skipInventory) {
+    const [result] = hydrateStaticExamplesWithInventory([staticExample], new Set());
+    return result ?? null;
+  }
 
   const ownership = await getInventoryOwnership(viewerId);
   const ownedGlazeIds = new Set(
@@ -375,7 +389,9 @@ export async function getPublishedCombinationPosts(
   let posts: CombinationPost[] = [];
 
   if (!supabase) {
-    const taggedGlazes = await attachTagSummariesToGlazes(viewerId, demoGlazes);
+    const taggedGlazes = options?.publicRead
+      ? demoGlazes
+      : await attachTagSummariesToGlazes(viewerId, demoGlazes);
     posts = attachGlazesToPosts(
       demoPosts.filter(
         (post) =>
@@ -414,6 +430,7 @@ export async function getPublishedCombinationPosts(
       useAdminRead: Boolean(adminClient),
       includeProfiles: false,
       preloadedPairs: Array.from(pairsById.values()),
+      skipTags: Boolean(options?.publicRead),
     });
   }
 
@@ -434,7 +451,9 @@ export async function getCombinationDetail(
   }
 
   const adminClient = options?.publicRead ? createSupabaseAdminClient() : null;
-  const glazes = await getGlazesByIds(viewerId, [...ids], adminClient);
+  const glazes = await getGlazesByIds(viewerId, [...ids], adminClient, {
+    skipTags: Boolean(options?.publicRead),
+  });
 
   if (glazes.length !== 2) {
     return null;
@@ -499,6 +518,7 @@ export async function getCombinationDetail(
         posts = await hydratePosts(viewerId, (postRows ?? []) as Row[], {
           useAdminRead: Boolean(adminClient),
           includeProfiles: false,
+          skipTags: Boolean(options?.publicRead),
         });
       }
     }
