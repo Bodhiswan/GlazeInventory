@@ -1,9 +1,11 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v4";
+export const CHANGELOG_KEY = "glaze-library-changelog-v5";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
+      "Opulence glaze brand added — 74 Mid-South Opulence glazes are now in the library, searchable, and pickable from the inventory add-glaze flow.",
+      "Request a brand — the old \"add a glaze\" form has been replaced with a simple \"Request brand\" page; new requests show as an alert in admin analytics.",
       "Richer dashboard welcome — a real product tour with screenshots of the library, inventory, combinations, and contribute pages, plus a Mayco Crystalites hero strip.",
       "Take-the-tour modal — split-layout card with step icons, animated visuals, clickable dots, keyboard arrow navigation, and direct links into each feature.",
       "Dual combinations search — two side-by-side search boxes let you narrow combos by typing one glaze in each.",
