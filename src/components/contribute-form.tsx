@@ -510,34 +510,22 @@ export function ContributeForm({
           </div>
         ) : null}
 
-        {/* Add-new-glaze button — only when no glazes selected */}
+        {/* Brand request link — only when no glazes selected */}
         {selectedGlazes.length === 0 ? (
-          addNewGlaze ? (
-            <button
-              type="button"
-              onClick={() => setAddNewGlaze(false)}
-              className="text-xs uppercase tracking-[0.14em] text-muted hover:text-foreground"
+          <div className="space-y-2 border-t border-foreground/10 pt-4">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
+              Can't find your glaze in the search?
+            </p>
+            <p className="text-xs text-muted">
+              If a whole brand is missing from the library, request it and we'll import the catalog.
+            </p>
+            <a
+              href="/glazes/request"
+              className="block w-full border border-dashed border-foreground/30 bg-white px-4 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] hover:bg-foreground/[0.04]"
             >
-              ← Back to search
-            </button>
-          ) : (
-            <div className="space-y-2 border-t border-foreground/10 pt-4">
-              <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
-                Can't find your glaze in the search?
-              </p>
-              <p className="text-xs text-muted">
-                Submit a brand-new glaze entry to the Glaze Library so others can use it too. This creates a new glaze record on the site — it does not add to a list above.
-              </p>
-              <button
-                type="button"
-                onClick={() => setAddNewGlaze(true)}
-                disabled={disabled}
-                className="w-full border border-dashed border-foreground/30 bg-white px-4 py-3 text-sm font-semibold uppercase tracking-[0.14em] hover:bg-foreground/[0.04]"
-              >
-                + Submit a new glaze to the library
-              </button>
-            </div>
-          )
+              Request a glaze brand →
+            </a>
+          </div>
         ) : null}
       </Panel>
 
