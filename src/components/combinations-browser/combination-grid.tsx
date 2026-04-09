@@ -139,6 +139,7 @@ function CombinationGlazeRow({
   glazeFiringImages,
   inventoryStatus,
   onInventoryStatusChange,
+  isGuest = false,
 }: {
   roleLabel: string;
   glaze?: Glaze | null;
@@ -150,6 +151,7 @@ function CombinationGlazeRow({
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatus: InventoryStatus | null;
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
+  isGuest?: boolean;
 }) {
   const firingImages = glaze ? glazeFiringImages[glaze.id] ?? [] : [];
   const preferredThumbnailUrl = glaze
@@ -182,8 +184,8 @@ function CombinationGlazeRow({
         </div>
       </div>
 
-      {/* Ownership actions */}
-      {glaze ? (
+      {/* Ownership actions — hidden for guest / studio visitors */}
+      {glaze && !isGuest ? (
         <div className="mt-2 space-y-2">
           <GlazeOwnershipControl glazeId={glaze.id} status={inventoryStatus} onStatusChange={onInventoryStatusChange} />
           {glaze.sourceType === "commercial" ? <BuyLinksDropdown glaze={glaze} /> : null}
@@ -202,11 +204,13 @@ function ExampleDetail({
   glazeFiringImages,
   inventoryStatusByGlazeId,
   onInventoryStatusChange,
+  isGuest = false,
 }: {
   example: VendorCombinationExample;
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
+  isGuest?: boolean;
 }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const heroImage: LightboxImage = { id: example.id, imageUrl: example.imageUrl, alt: example.title };
@@ -263,6 +267,7 @@ function ExampleDetail({
               glazeFiringImages={glazeFiringImages}
               inventoryStatus={layer.glaze ? inventoryStatusByGlazeId[layer.glaze.id] ?? null : null}
               onInventoryStatusChange={onInventoryStatusChange}
+              isGuest={isGuest}
             />
           ))}
         </div>
@@ -282,11 +287,13 @@ function PostDetail({
   glazeFiringImages,
   inventoryStatusByGlazeId,
   onInventoryStatusChange,
+  isGuest = false,
 }: {
   post: CombinationPost;
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
+  isGuest?: boolean;
 }) {
   const imageSrc = typeof post.imagePath === "string" && post.imagePath.trim() ? post.imagePath : null;
   const preferredCone = extractConeLabel(post.firingNotes);
@@ -354,6 +361,7 @@ function PostDetail({
                 glazeFiringImages={glazeFiringImages}
                 inventoryStatus={inventoryStatusByGlazeId[glaze.id] ?? null}
                 onInventoryStatusChange={onInventoryStatusChange}
+                isGuest={isGuest}
               />
             ))}
           </div>
@@ -375,12 +383,14 @@ function UserExampleDetail({
   inventoryStatusByGlazeId,
   onInventoryStatusChange,
   viewerUserId,
+  isGuest = false,
 }: {
   userExample: UserCombinationExample;
   glazeFiringImages: Record<string, GlazeFiringImage[]>;
   inventoryStatusByGlazeId: Record<string, InventoryStatus>;
   onInventoryStatusChange: (glazeId: string, nextStatus: InventoryCollectionState) => void;
   viewerUserId: string | null;
+  isGuest?: boolean;
 }) {
   const isOwner = viewerUserId === userExample.authorUserId;
   const [lightboxImages, setLightboxImages] = useState<LightboxImage[] | null>(null);
@@ -492,6 +502,7 @@ function UserExampleDetail({
                 glazeFiringImages={glazeFiringImages}
                 inventoryStatus={layer.glaze ? inventoryStatusByGlazeId[layer.glaze.id] ?? null : null}
                 onInventoryStatusChange={onInventoryStatusChange}
+                isGuest={isGuest}
               />
             ))}
           </div>
@@ -500,7 +511,7 @@ function UserExampleDetail({
 
       <CommunityImagesPanel target={{ combinationId: userExample.id }} altPrefix={userExample.title} />
 
-      <CombinationCommentsPanel exampleId={userExample.id} />
+      {isGuest ? null : <CombinationCommentsPanel exampleId={userExample.id} />}
 
       {/* Archive button for the author */}
       {isOwner ? (
@@ -749,6 +760,7 @@ export function CombinationGrid({
                   glazeFiringImages={glazeFiringImages}
                   inventoryStatusByGlazeId={inventoryStatusByGlazeId}
                   onInventoryStatusChange={handleInventoryStatusChange}
+                  isGuest={!viewerUserId}
                 />
               ) : activeTile.userExample ? (
                 <UserExampleDetail
@@ -757,6 +769,7 @@ export function CombinationGrid({
                   inventoryStatusByGlazeId={inventoryStatusByGlazeId}
                   onInventoryStatusChange={handleInventoryStatusChange}
                   viewerUserId={viewerUserId}
+                  isGuest={!viewerUserId}
                 />
               ) : activeTile.post ? (
                 <PostDetail
@@ -764,6 +777,7 @@ export function CombinationGrid({
                   glazeFiringImages={glazeFiringImages}
                   inventoryStatusByGlazeId={inventoryStatusByGlazeId}
                   onInventoryStatusChange={handleInventoryStatusChange}
+                  isGuest={!viewerUserId}
                 />
               ) : null}
             </div>

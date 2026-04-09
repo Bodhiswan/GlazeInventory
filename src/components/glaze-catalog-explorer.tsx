@@ -31,6 +31,8 @@ export function GlazeCatalogExplorer({
   isAdmin,
   reviewMode,
   favouriteGlazeIds = [],
+  hideConeFilter = false,
+  groupByLine = false,
 }: {
   glazes: Glaze[];
   brandCounts: Array<[string, number]>;
@@ -43,6 +45,8 @@ export function GlazeCatalogExplorer({
   isAdmin: boolean;
   reviewMode: boolean;
   favouriteGlazeIds?: string[];
+  hideConeFilter?: boolean;
+  groupByLine?: boolean;
 }) {
   const {
     query,
@@ -190,6 +194,7 @@ export function GlazeCatalogExplorer({
                 setVisibleCount(INITIAL_GLAZE_BATCH);
               }}
               GLAZE_BATCH_STEP={GLAZE_BATCH_STEP}
+              hideConeFilter={hideConeFilter}
             />
           </div>
 
@@ -206,6 +211,7 @@ export function GlazeCatalogExplorer({
               loadMoreRef={loadMoreRef}
               visibleCount={visibleCount}
               reviewMode={reviewMode}
+              groupByLine={groupByLine}
             />
           ) : (
             <Panel>
@@ -240,19 +246,21 @@ export function GlazeCatalogExplorer({
                   </p>
                   <h3 className="truncate text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeGridItem.glaze.name}</h3>
                 </div>
-                <button
-                  type="button"
-                  disabled={pendingFavouriteIds.includes(activeGridItem.glaze.id)}
-                  onClick={() => void handleFavouriteToggle(activeGridItem.glaze.id)}
-                  className={`inline-flex items-center gap-1.5 border px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] transition disabled:opacity-50 ${
-                    favouritedGlazeIds.has(activeGridItem.glaze.id)
-                      ? "border-foreground bg-foreground text-background"
-                      : "border-border bg-white text-muted hover:text-foreground"
-                  }`}
-                >
-                  <Heart className={`h-3.5 w-3.5 ${favouritedGlazeIds.has(activeGridItem.glaze.id) ? "fill-current" : ""}`} />
-                  {favouritedGlazeIds.has(activeGridItem.glaze.id) ? "Favourited" : "Favourite"}
-                </button>
+                {isGuest ? null : (
+                  <button
+                    type="button"
+                    disabled={pendingFavouriteIds.includes(activeGridItem.glaze.id)}
+                    onClick={() => void handleFavouriteToggle(activeGridItem.glaze.id)}
+                    className={`inline-flex items-center gap-1.5 border px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] transition disabled:opacity-50 ${
+                      favouritedGlazeIds.has(activeGridItem.glaze.id)
+                        ? "border-foreground bg-foreground text-background"
+                        : "border-border bg-white text-muted hover:text-foreground"
+                    }`}
+                  >
+                    <Heart className={`h-3.5 w-3.5 ${favouritedGlazeIds.has(activeGridItem.glaze.id) ? "fill-current" : ""}`} />
+                    {favouritedGlazeIds.has(activeGridItem.glaze.id) ? "Favourited" : "Favourite"}
+                  </button>
+                )}
                 <button
                   type="button"
                   onClick={() => setActiveGridGlazeId(null)}
@@ -262,38 +270,40 @@ export function GlazeCatalogExplorer({
                   <X className="h-4 w-4" />
                 </button>
               </div>
-              {/* Inventory state + links */}
-              <div className="mt-2 flex flex-wrap items-center gap-2">
-                <InventoryStatePicker
-                  status={optimisticInventoryStates[activeGridItem.glaze.id]?.status ?? "none"}
-                  showEmpty={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
-                  allowRemove={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
-                  onChange={(nextStatus) => {
-                    void handleInventoryStateChange(activeGridItem.glaze.id, nextStatus);
-                  }}
-                  pending={pendingGlazeIds.includes(activeGridItem.glaze.id)}
-                  error={ownershipErrors[activeGridItem.glaze.id] ?? null}
-                  tiny
-                />
-                {activeGridItem.glaze.code ? (
-                  <Link
-                    href={`/combinations?q=${encodeURIComponent(activeGridItem.glaze.code)}`}
-                    className="inline-flex items-center border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-foreground"
-                  >
-                    Combinations
-                  </Link>
-                ) : null}
-                {activeGridItem.glaze.brand && getManufacturerUrl(activeGridItem.glaze.brand) ? (
-                  <a
-                    href={getManufacturerUrl(activeGridItem.glaze.brand)!}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-foreground"
-                  >
-                    {activeGridItem.glaze.brand} website
-                  </a>
-                ) : null}
-              </div>
+              {/* Inventory state + links — hidden for guest / studio visitors */}
+              {isGuest ? null : (
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <InventoryStatePicker
+                    status={optimisticInventoryStates[activeGridItem.glaze.id]?.status ?? "none"}
+                    showEmpty={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
+                    allowRemove={Boolean(optimisticInventoryStates[activeGridItem.glaze.id])}
+                    onChange={(nextStatus) => {
+                      void handleInventoryStateChange(activeGridItem.glaze.id, nextStatus);
+                    }}
+                    pending={pendingGlazeIds.includes(activeGridItem.glaze.id)}
+                    error={ownershipErrors[activeGridItem.glaze.id] ?? null}
+                    tiny
+                  />
+                  {activeGridItem.glaze.code ? (
+                    <Link
+                      href={`/combinations?q=${encodeURIComponent(activeGridItem.glaze.code)}`}
+                      className="inline-flex items-center border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-foreground"
+                    >
+                      Combinations
+                    </Link>
+                  ) : null}
+                  {activeGridItem.glaze.brand && getManufacturerUrl(activeGridItem.glaze.brand) ? (
+                    <a
+                      href={getManufacturerUrl(activeGridItem.glaze.brand)!}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-foreground"
+                    >
+                      {activeGridItem.glaze.brand} website
+                    </a>
+                  ) : null}
+                </div>
+              )}
             </div>
 
             <div className="overflow-y-auto overscroll-contain p-4 sm:p-5">
@@ -310,8 +320,8 @@ export function GlazeCatalogExplorer({
 
                 {/* Info column */}
                 <div className="space-y-4">
-                  {/* Buy from store */}
-                  <BuyLinksDropdown glaze={activeGridItem.glaze} />
+                  {/* Buy from store — hidden for guests */}
+                  {isGuest ? null : <BuyLinksDropdown glaze={activeGridItem.glaze} />}
 
                   <div className="flex flex-wrap gap-1.5">
                     <Badge tone={activeGridItem.glaze.sourceType === "commercial" ? "neutral" : "accent"}>
@@ -366,7 +376,7 @@ export function GlazeCatalogExplorer({
 
                   <CommunityImagesPanel target={{ glazeId: activeGridItem.glaze.id }} altPrefix={formatGlazeLabel(activeGridItem.glaze)} />
 
-                  <GlazeCommentsPanel glazeId={activeGridItem.glaze.id} />
+                  {isGuest ? null : <GlazeCommentsPanel glazeId={activeGridItem.glaze.id} />}
                 </div>
               </div>
             </div>

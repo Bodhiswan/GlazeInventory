@@ -682,10 +682,16 @@ export function pickPreferredGlazeImage(
       ? coneMatches
       : atmosphereMatches.length
         ? atmosphereMatches
-        : firingImages;
+        : [];
   const bestFiringImage = [...candidateImages].sort(
     (left, right) => getImageUrlQualityScore(right.imageUrl) - getImageUrlQualityScore(left.imageUrl),
   )[0];
 
-  return bestFiringImage?.imageUrl ?? glaze.imageUrl ?? firingImages[0]?.imageUrl ?? null;
+  // If a cone filter is active but no firing images match, prefer the
+  // catalog image over a wrong-cone firing image.
+  if (bestFiringImage) return bestFiringImage.imageUrl;
+  if (glaze.imageUrl) return glaze.imageUrl;
+  // No preferences active — fall back to any available firing image.
+  if (!preferredCone && !preferredAtmosphere && firingImages.length) return firingImages[0].imageUrl;
+  return firingImages[0]?.imageUrl ?? null;
 }
