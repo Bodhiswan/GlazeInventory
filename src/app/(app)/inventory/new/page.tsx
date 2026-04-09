@@ -7,5 +7,5 @@ export default async function NewInventoryPage({
   searchParams: Promise<{ error?: string }>;
 }) {
   await requireViewer();
-  redirect("/glazes/new");
+  redirect("/glazes/request");
 }

@@ -123,6 +123,33 @@ export default async function AnalyticsPage({
 
   const { stats } = dashboard;
 
+  // Pending brand requests — surface as an alert at the top of the dashboard
+  // so admins notice new ones without digging through the activity feed.
+  // Cast: glaze_brand_requests was added after database.types.ts was generated.
+  const { data: pendingRequests } = await (
+    adminCheck.from("glaze_brand_requests" as never) as unknown as {
+      select: (cols: string) => {
+        eq: (col: string, val: string) => {
+          order: (col: string, opts: { ascending: boolean }) => {
+            limit: (n: number) => Promise<{ data: unknown[] | null }>;
+          };
+        };
+      };
+    }
+  )
+    .select("id, brand_name, notes, created_at, user_id, profiles:profiles(display_name)")
+    .eq("status", "pending")
+    .order("created_at", { ascending: false })
+    .limit(10);
+  const pendingRequestRows = (pendingRequests ?? []) as Array<{
+    id: string;
+    brand_name: string;
+    notes: string | null;
+    created_at: string;
+    user_id: string | null;
+    profiles: { display_name: string | null } | { display_name: string | null }[] | null;
+  }>;
+
   return (
     <div className="space-y-10">
       {/* ── Header ── */}
@@ -155,6 +182,32 @@ export default async function AnalyticsPage({
           ))}
         </div>
       </div>
+
+      {/* ── Brand request alerts ── */}
+      {pendingRequestRows.length > 0 ? (
+        <div className="border border-amber-300 bg-amber-50 p-4">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-700">
+            {pendingRequestRows.length} pending brand request{pendingRequestRows.length === 1 ? "" : "s"}
+          </p>
+          <ul className="mt-3 space-y-2">
+            {pendingRequestRows.map((req) => {
+              const author = Array.isArray(req.profiles) ? req.profiles[0] : req.profiles;
+              return (
+                <li key={req.id} className="text-sm text-amber-900">
+                  <span className="font-semibold">{req.brand_name}</span>
+                  <span className="text-amber-800/80">
+                    {" "}— requested by {author?.display_name ?? "a member"} ·{" "}
+                    {formatDistanceToNow(new Date(req.created_at), { addSuffix: true })}
+                  </span>
+                  {req.notes ? (
+                    <p className="mt-1 text-xs leading-5 text-amber-900/80">{req.notes}</p>
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : null}
 
       {/* ── Stats grid ── */}
       <CollapsibleSection label={`Overview · ${RANGE_LABELS[range]}`}>

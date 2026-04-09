@@ -19,7 +19,7 @@ const baseItems = [
   { href: "/inventory", label: "Inventory", icon: LibraryBig, alsoActive: [] as string[], badge: undefined as string | undefined },
   { href: "/glazes", label: "Library", icon: SwatchBook, alsoActive: [] as string[], badge: undefined as string | undefined },
   { href: "/combinations", label: "Combinations", icon: Layers3, alsoActive: [] as string[], badge: undefined as string | undefined },
-  { href: "/contribute", label: "Contribute", icon: PenLine, alsoActive: ["/publish", "/glazes/new"], badge: "Beta" as string | undefined },
+  { href: "/glazes/request", label: "Request brand", icon: PenLine, alsoActive: ["/contribute", "/publish", "/glazes/new"], badge: undefined as string | undefined },
 ];
 
 const adminItems = [

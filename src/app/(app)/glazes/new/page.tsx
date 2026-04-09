@@ -1,9 +1,7 @@
-// TODO(cleanup): legacy route — kept as a redirect while external links may
-// still point here. Safe to delete (along with src/components/custom-glaze-form.tsx
-// and createCustomGlazeAction in src/app/actions/inventory.ts) once we're confident
-// nothing links to /glazes/new anymore. See AGENTS.md "Pending cleanup".
+// Legacy route — the "add a glaze" flow has been replaced by the brand
+// request form. Anyone who lands here gets sent to the new page.
 import { redirect } from "next/navigation";
 
 export default function NewCustomGlazePage() {
-  redirect("/contribute");
+  redirect("/glazes/request");
 }
