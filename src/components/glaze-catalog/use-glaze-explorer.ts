@@ -7,10 +7,10 @@ import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
 import { getGlazeFamilyTraits } from "@/lib/glaze-metadata";
 import {
+  extractColorAwareQuery,
   extractGlazeColorTraits,
   extractGlazeConeTraits,
   extractGlazeFinishTraits,
-  extractQueryColorIntent,
   buildGlazeSearchIndex,
   matchesGlazeSearch,
   formatGlazeLabel,
@@ -30,6 +30,7 @@ import {
 
 const INITIAL_GLAZE_BATCH = 48;
 const GLAZE_BATCH_STEP = 36;
+const GLAZE_GRADIENT_HUE_OFFSET = 0.173;
 
 export type IndexedGlaze = {
   glaze: Glaze;
@@ -108,7 +109,9 @@ export function useGlazeExplorer({
 
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
-  const queryColorIntent = extractQueryColorIntent(normalizedQuery);
+  const colorAwareQuery = extractColorAwareQuery(deferredQuery);
+  const textQuery = colorAwareQuery.textQuery;
+  const queryColorIntent = colorAwareQuery.colorIntent;
   const previewCone = coneFilters[0] ?? preferredCone;
 
   const indexedGlazes = useMemo<IndexedGlaze[]>(
@@ -239,11 +242,11 @@ export function useGlazeExplorer({
           return false;
         }
 
-        if (!normalizedQuery) {
+        if (!textQuery) {
           return true;
         }
 
-        return matchesGlazeSearch(item.searchText, deferredQuery);
+        return matchesGlazeSearch(item.searchText, textQuery);
       }),
     [
       indexedGlazes,
@@ -254,8 +257,7 @@ export function useGlazeExplorer({
       colorFilters,
       finishFilters,
       coneFilters,
-      normalizedQuery,
-      deferredQuery,
+      textQuery,
     ],
   );
 
@@ -286,11 +288,11 @@ export function useGlazeExplorer({
           return false;
         }
 
-        if (!normalizedQuery) {
+        if (!textQuery) {
           return true;
         }
 
-        return matchesGlazeSearch(item.searchText, deferredQuery);
+        return matchesGlazeSearch(item.searchText, textQuery);
       }),
     [
       indexedGlazes,
@@ -300,8 +302,7 @@ export function useGlazeExplorer({
       colorFilters,
       finishFilters,
       coneFilters,
-      normalizedQuery,
-      deferredQuery,
+      textQuery,
     ],
   );
 
@@ -319,42 +320,50 @@ export function useGlazeExplorer({
 
   const sortedGlazes = useMemo(
     () =>
-      [...filteredGlazes].sort((left, right) => {
+      filteredGlazes
+        .map((item) => ({
+          item,
+          colorScore: getGlazeColorMatchScore(item.glaze, activeColorRankingIntent),
+          exactTextMatch: textQuery
+            ? matchesGlazeSearch(
+                buildGlazeSearchIndex([item.glaze.code, item.glaze.name]),
+                textQuery,
+              )
+            : false,
+        }))
+        .sort((left, right) => {
+          const leftItem = left.item;
+          const rightItem = right.item;
+
         if (isAdmin && !reviewMode) {
           const reviewDelta =
-            Number(left.hasCuratedDescription) - Number(right.hasCuratedDescription);
+            Number(leftItem.hasCuratedDescription) - Number(rightItem.hasCuratedDescription);
 
           if (reviewDelta !== 0) {
             return reviewDelta;
           }
         }
 
-        const colorDelta =
-          getGlazeColorMatchScore(right.glaze, activeColorRankingIntent) -
-          getGlazeColorMatchScore(left.glaze, activeColorRankingIntent);
+        const colorDelta = right.colorScore - left.colorScore;
 
         if (Math.abs(colorDelta) > 0.0001) {
           return colorDelta;
         }
 
-        if (normalizedQuery) {
-          const leftExact = matchesGlazeSearch(
-            buildGlazeSearchIndex([left.glaze.code, left.glaze.name]),
-            deferredQuery,
-          );
-          const rightExact = matchesGlazeSearch(
-            buildGlazeSearchIndex([right.glaze.code, right.glaze.name]),
-            deferredQuery,
-          );
-
-          if (leftExact !== rightExact) {
-            return rightExact ? 1 : -1;
+        if (textQuery && left.exactTextMatch !== right.exactTextMatch) {
+          return right.exactTextMatch ? 1 : -1;
           }
-        }
 
-        return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
-      }),
-    [filteredGlazes, isAdmin, reviewMode, activeColorRankingIntent, normalizedQuery, deferredQuery],
+          return formatGlazeLabel(leftItem.glaze).localeCompare(formatGlazeLabel(rightItem.glaze));
+        })
+        .map(({ item }) => item),
+    [
+      filteredGlazes,
+      isAdmin,
+      reviewMode,
+      activeColorRankingIntent,
+      textQuery,
+    ],
   );
 
   const hasFilters = Boolean(
@@ -365,8 +374,6 @@ export function useGlazeExplorer({
       finishFilters.length ||
       coneFilters.length,
   );
-
-  const [hueOffset] = useState(() => Math.random());
 
   const gradientSortedGlazes = useMemo(
     () =>
@@ -379,9 +386,13 @@ export function useGlazeExplorer({
         }
 
         const leftPos =
-          leftFlow.bucket === 0 ? (leftFlow.position + hueOffset) % 1 : leftFlow.position;
+          leftFlow.bucket === 0
+            ? (leftFlow.position + GLAZE_GRADIENT_HUE_OFFSET) % 1
+            : leftFlow.position;
         const rightPos =
-          rightFlow.bucket === 0 ? (rightFlow.position + hueOffset) % 1 : rightFlow.position;
+          rightFlow.bucket === 0
+            ? (rightFlow.position + GLAZE_GRADIENT_HUE_OFFSET) % 1
+            : rightFlow.position;
 
         if (Math.abs(leftPos - rightPos) > 0.0001) {
           return leftPos - rightPos;
@@ -393,13 +404,13 @@ export function useGlazeExplorer({
 
         return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
       }),
-    [sortedGlazes, hueOffset],
+    [sortedGlazes],
   );
 
   const displayGlazes = useMemo(
     () =>
-      normalizedQuery || activeColorRankingIntent.length ? sortedGlazes : gradientSortedGlazes,
-    [normalizedQuery, activeColorRankingIntent.length, sortedGlazes, gradientSortedGlazes],
+      textQuery || activeColorRankingIntent.length ? sortedGlazes : gradientSortedGlazes,
+    [textQuery, activeColorRankingIntent.length, sortedGlazes, gradientSortedGlazes],
   );
 
   const visibleGradientGlazes = useMemo(
@@ -555,6 +566,7 @@ export function useGlazeExplorer({
     setQuery,
     deferredQuery,
     normalizedQuery,
+    textQuery,
     // Filter state
     brandFilters,
     setBrandFilters,

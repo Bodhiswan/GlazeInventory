@@ -3,6 +3,7 @@ import Link from "next/link";
 import { signOutAction } from "@/app/actions/auth";
 import { updateProfilePreferencesAction } from "@/app/actions/profile";
 import { ChatsTab } from "./chats-tab";
+import { StudioTab } from "./studio-tab";
 import { SectionErrorBoundary } from "@/components/section-error-boundary";
 import { SubmitButton } from "@/components/submit-button";
 import { buttonVariants } from "@/components/ui/button";
@@ -29,7 +30,8 @@ export default async function ProfilePage({
   const query = await searchParams;
   const saved = formatSearchQuery(query.saved);
   const error = formatSearchQuery(query.error);
-  const activeTab = query.tab === "chats" ? "chats" : "profile";
+  const activeTab =
+    query.tab === "chats" ? "chats" : query.tab === "studio" ? "studio" : "profile";
   const activeWith = formatSearchQuery(query.with);
 
   return (
@@ -64,11 +66,25 @@ export default async function ProfilePage({
         >
           Chats
         </Link>
+        <Link
+          href="/profile?tab=studio"
+          className={`border-b-2 px-4 py-2 text-[11px] uppercase tracking-[0.16em] ${
+            activeTab === "studio"
+              ? "border-foreground text-foreground"
+              : "border-transparent text-muted hover:text-foreground"
+          }`}
+        >
+          Studio mode
+        </Link>
       </nav>
 
       {activeTab === "chats" ? (
         <SectionErrorBoundary>
           <ChatsTab viewerUserId={viewer.profile.id} activeOtherId={activeWith || undefined} viewerIsAdmin={viewer.profile.isAdmin === true} />
+        </SectionErrorBoundary>
+      ) : activeTab === "studio" ? (
+        <SectionErrorBoundary>
+          <StudioTab ownerUserId={viewer.profile.id} />
         </SectionErrorBoundary>
       ) : (
         <div className="grid gap-6 xl:grid-cols-[0.95fr_1.05fr]">
@@ -78,10 +94,6 @@ export default async function ProfilePage({
                 <label className="grid gap-2 text-sm font-medium md:col-span-2">
                   Display name
                   <Input name="displayName" defaultValue={viewer.profile.displayName} required />
-                </label>
-                <label className="grid gap-2 text-sm font-medium">
-                  Studio name
-                  <Input name="studioName" defaultValue={viewer.profile.studioName ?? ""} />
                 </label>
                 <label className="grid gap-2 text-sm font-medium">
                   Location

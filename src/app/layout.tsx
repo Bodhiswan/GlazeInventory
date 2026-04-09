@@ -25,11 +25,25 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Glaze Inventory",
-    template: "%s | Glaze Inventory",
+    default: "Glaze Library — Ceramic Glaze Catalog, Combinations & Inventory",
+    template: "%s | Glaze Library",
   },
   description:
-    "Manage your glaze inventory, search glaze colours and cone ranges, and keep track of what is still on your shelf.",
+    "Browse thousands of ceramic glazes from Mayco, AMACO, Coyote, Duncan, and Spectrum. See firing images, glaze combinations, and community results. Free to use.",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      (process.env.VERCEL_URL
+        ? `https://${process.env.VERCEL_URL}`
+        : "http://localhost:3000"),
+  ),
+  openGraph: {
+    type: "website",
+    siteName: "Glaze Library",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

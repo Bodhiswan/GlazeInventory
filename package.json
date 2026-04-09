@@ -14,6 +14,7 @@
     "catalog:external-combos": "python scripts/archive_external_combo_sources.py",
     "catalog:duncan": "python scripts/scrape_duncan_catalog.py",
     "catalog:expansion": "python scripts/scrape_spectrum_speedball_chrysanthos.py",
+    "catalog:clay-art-center": "node scripts/scrape_clay_art_center_catalog.mjs",
     "catalog:vendors": "python scripts/scrape_additional_vendor_catalogs.py",
     "catalog:vendors:traits": "python scripts/infer_vendor_visual_traits.py",
     "catalog:spectrum:images": "python scripts/scrape_spectrum_images.py",

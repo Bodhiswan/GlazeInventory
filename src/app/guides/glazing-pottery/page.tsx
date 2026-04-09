@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";
+import { getBaseUrl } from "@/lib/env";
 
 import { GUIDE_PARTS } from "./guide-data";
 
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 function GuideJsonLd() {
+  const baseUrl = getBaseUrl();
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -22,7 +24,7 @@ function GuideJsonLd() {
       "A deeply-referenced, comprehensive guide to ceramic glaze application, layering, decorative techniques, troubleshooting, and international traditions.",
     author: { "@type": "Organization", name: "Glaze Library" },
     publisher: { "@type": "Organization", name: "Glaze Library" },
-    mainEntityOfPage: "/guides/glazing-pottery",
+    mainEntityOfPage: `${baseUrl}/guides/glazing-pottery`,
   };
   return (
     <script

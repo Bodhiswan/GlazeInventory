@@ -2,11 +2,13 @@ import type { MetadataRoute } from "next";
 
 import { getBaseUrl } from "@/lib/env";
 import { getAllCatalogGlazes, getAllVendorExamples } from "@/lib/catalog";
+import { getPublishedCombinationPairKeys } from "@/lib/data/combinations";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getBaseUrl();
   const glazes = getAllCatalogGlazes();
   const vendorExamples = getAllVendorExamples();
+  const pairKeys = await getPublishedCombinationPairKeys();
 
   const staticPages: MetadataRoute.Sitemap = [
     {
@@ -50,6 +52,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/guides/glazing-pottery/firing`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${baseUrl}/guides/glazing-pottery/troubleshooting`,
       changeFrequency: "monthly",
       priority: 0.8,
@@ -70,5 +77,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  return [...staticPages, ...glazePages, ...vendorExamplePages];
+  const combinationPages: MetadataRoute.Sitemap = pairKeys.map((pairKey) => ({
+    url: `${baseUrl}/combinations/${pairKey}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...glazePages, ...combinationPages, ...vendorExamplePages];
 }

@@ -241,6 +241,11 @@ function normalizeCode(value: string | null | undefined) {
 type VendorVisualProfile = {
   imageColors?: string[];
   imageColorWeights?: Record<string, number>;
+  imagePalette?: Array<{
+    label?: string;
+    hex?: string;
+    weight?: number;
+  }>;
 };
 
 const vendorVisualProfiles = vendorVisualTraits as Record<string, VendorVisualProfile>;
@@ -271,6 +276,52 @@ function getVendorImageColorWeights(glaze: Glaze) {
   return getVendorVisualProfile(glaze)?.imageColorWeights ?? {};
 }
 
+type VendorImagePaletteEntry = {
+  label: string | null;
+  hex: string;
+  weight: number;
+};
+
+function normalizeHexColor(value: string | null | undefined) {
+  if (!value) {
+    return null;
+  }
+
+  const trimmed = value.trim();
+
+  if (/^#[0-9a-f]{6}$/i.test(trimmed)) {
+    return trimmed.toLowerCase();
+  }
+
+  if (/^[0-9a-f]{6}$/i.test(trimmed)) {
+    return `#${trimmed.toLowerCase()}`;
+  }
+
+  return null;
+}
+
+function getVendorImagePalette(glaze: Glaze): VendorImagePaletteEntry[] {
+  const raw = getVendorVisualProfile(glaze)?.imagePalette ?? [];
+
+  return raw
+    .map((entry) => {
+      const hex = normalizeHexColor(entry.hex);
+      const weight = typeof entry.weight === "number" ? entry.weight : 0;
+
+      if (!hex || weight <= 0) {
+        return null;
+      }
+
+      return {
+        label: typeof entry.label === "string" ? entry.label : null,
+        hex,
+        weight,
+      };
+    })
+    .filter((entry): entry is VendorImagePaletteEntry => entry != null)
+    .sort((left, right) => right.weight - left.weight);
+}
+
 function parseHexColor(hex: string) {
   const normalized = hex.replace("#", "");
 
@@ -283,6 +334,82 @@ function parseHexColor(hex: string) {
     g: Number.parseInt(normalized.slice(2, 4), 16),
     b: Number.parseInt(normalized.slice(4, 6), 16),
   };
+}
+
+const hexLabColorCache = new Map<string, { l: number; a: number; b: number } | null>();
+
+function srgbToLinear(channel: number) {
+  const normalized = channel / 255;
+  return normalized <= 0.04045
+    ? normalized / 12.92
+    : ((normalized + 0.055) / 1.055) ** 2.4;
+}
+
+function rgbToLab(r: number, g: number, b: number) {
+  const red = srgbToLinear(r);
+  const green = srgbToLinear(g);
+  const blue = srgbToLinear(b);
+
+  const x = red * 0.4124564 + green * 0.3575761 + blue * 0.1804375;
+  const y = red * 0.2126729 + green * 0.7151522 + blue * 0.072175;
+  const z = red * 0.0193339 + green * 0.119192 + blue * 0.9503041;
+
+  const refX = 0.95047;
+  const refY = 1;
+  const refZ = 1.08883;
+
+  const transform = (value: number) =>
+    value > 0.008856 ? Math.cbrt(value) : (7.787 * value) + (16 / 116);
+
+  const fx = transform(x / refX);
+  const fy = transform(y / refY);
+  const fz = transform(z / refZ);
+
+  return {
+    l: (116 * fy) - 16,
+    a: 500 * (fx - fy),
+    b: 200 * (fy - fz),
+  };
+}
+
+function getHexLabColor(hex: string) {
+  const normalizedHex = normalizeHexColor(hex);
+
+  if (!normalizedHex) {
+    return null;
+  }
+
+  const cached = hexLabColorCache.get(normalizedHex);
+
+  if (cached !== undefined) {
+    return cached;
+  }
+
+  const rgb = parseHexColor(hex);
+
+  if (!rgb) {
+    hexLabColorCache.set(normalizedHex, null);
+    return null;
+  }
+
+  const lab = rgbToLab(rgb.r, rgb.g, rgb.b);
+  hexLabColorCache.set(normalizedHex, lab);
+  return lab;
+}
+
+function getLabDistance(leftHex: string, rightHex: string) {
+  const left = getHexLabColor(leftHex);
+  const right = getHexLabColor(rightHex);
+
+  if (!left || !right) {
+    return Number.POSITIVE_INFINITY;
+  }
+
+  return Math.sqrt(
+    ((left.l - right.l) ** 2) +
+    ((left.a - right.a) ** 2) +
+    ((left.b - right.b) ** 2),
+  );
 }
 
 function rgbToHsv(r: number, g: number, b: number) {
@@ -487,19 +614,82 @@ export function getGlazeSkimDescription(glaze: Glaze) {
   };
 }
 
-export function extractQueryColorIntent(query: string) {
-  const normalized = query.toLowerCase();
-  const directMatches = colorKeywords
-    .filter(({ keyword }) => new RegExp(`\\b${keyword}\\b`, "i").test(normalized))
-    .map(({ label }) => label);
-  const smartGroupMatches = Object.keys(colorSmartGroups).filter((label) =>
-    new RegExp(`\\b${label.toLowerCase()}\\b`, "i").test(normalized),
-  );
+type ColorAwareQuery = {
+  colorIntent: string[];
+  textQuery: string;
+};
 
-  return uniqueValues([...directMatches, ...smartGroupMatches]);
+function getColorKeywordLookup() {
+  const lookup = new Map<string, string>();
+
+  for (const { keyword, label } of colorKeywords) {
+    lookup.set(keyword.toLowerCase(), label);
+  }
+
+  for (const label of Object.keys(colorSmartGroups)) {
+    lookup.set(label.toLowerCase(), label);
+  }
+
+  return lookup;
 }
 
-export function getGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
+const colorKeywordLookup = getColorKeywordLookup();
+
+export function extractColorAwareQuery(query: string): ColorAwareQuery {
+  const normalized = normalizeGlazeSearchText(query);
+
+  if (!normalized) {
+    return { colorIntent: [], textQuery: "" };
+  }
+
+  const tokens = normalized.split(" ").filter(Boolean);
+  const colorIntent: string[] = [];
+  const residualTokens: string[] = [];
+
+  for (const token of tokens) {
+    const matchedColor = colorKeywordLookup.get(token);
+
+    if (matchedColor) {
+      colorIntent.push(matchedColor);
+      continue;
+    }
+
+    residualTokens.push(token);
+  }
+
+  return {
+    colorIntent: uniqueValues(colorIntent),
+    textQuery: residualTokens.join(" "),
+  };
+}
+
+export function extractQueryColorIntent(query: string) {
+  return extractColorAwareQuery(query).colorIntent;
+}
+
+function getPaletteColorSimilarityScore(targetHex: string, palette: VendorImagePaletteEntry[]) {
+  if (!palette.length) {
+    return 0;
+  }
+
+  const bestEntryScore = Math.max(
+    ...palette.map((entry) => {
+      const distance = getLabDistance(targetHex, entry.hex);
+      const similarity = Math.max(0, 1 - distance / 88);
+      return entry.weight * similarity;
+    }),
+  );
+
+  const weightedBlendScore = palette.reduce((total, entry) => {
+    const distance = getLabDistance(targetHex, entry.hex);
+    const similarity = Math.max(0, 1 - distance / 110);
+    return total + (entry.weight * similarity);
+  }, 0);
+
+  return bestEntryScore * 1.35 + weightedBlendScore * 0.85;
+}
+
+function getLegacyGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
   if (!selectedColors.length) {
     return 0;
   }
@@ -555,6 +745,30 @@ export function getGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) 
     );
     const textScore = textTraits.includes(selected) ? 0.04 : allowed.some((color) => textTraits.includes(color)) ? 0.015 : 0;
     return total + exactImageWeight * 1.35 + relatedImageWeight + adjacentWheelWeight + textScore;
+  }, 0);
+}
+
+export function getGlazeColorMatchScore(glaze: Glaze, selectedColors: string[]) {
+  if (!selectedColors.length) {
+    return 0;
+  }
+
+  const palette = getVendorImagePalette(glaze);
+  const textTraits = extractGlazeColorTraits(glaze);
+
+  return selectedColors.reduce((total, selected) => {
+    const targetHex = getColorSwatch(selected);
+    const paletteScore = palette.length
+      ? getPaletteColorSimilarityScore(targetHex, palette)
+      : 0;
+    const legacyScore = palette.length ? 0 : getLegacyGlazeColorMatchScore(glaze, [selected]);
+    const textScore = textTraits.includes(selected)
+      ? 0.045
+      : (colorSmartGroups[selected] ?? [selected]).some((color) => textTraits.includes(color))
+        ? 0.02
+        : 0;
+
+    return total + paletteScore + legacyScore + textScore;
   }, 0);
 }
 

@@ -21,11 +21,14 @@ export function PublicWorkspaceShell({
                 <span className="hidden sm:inline">Glaze Inventory</span>
               </Link>
               <span className="shrink-0 border border-border px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted sm:text-[11px] sm:tracking-[0.16em]">
-                Public combinations
+                Public library
               </span>
             </div>
 
             <div className="flex flex-wrap gap-3">
+              <Link href="/glazes" className={buttonVariants({ variant: "ghost", size: "sm" })}>
+                Glazes
+              </Link>
               <Link href="/combinations" className={buttonVariants({ variant: "ghost", size: "sm" })}>
                 Combinations
               </Link>

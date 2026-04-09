@@ -23,6 +23,8 @@ export function CombinationsBrowser({
   initialQuery = "",
   viewerUserId = null,
   favouriteCombinationIds = [],
+  lockedConeScope = null,
+  availableViews,
 }: {
   examples: VendorCombinationExample[];
   publishedPosts: CombinationPost[];
@@ -34,6 +36,8 @@ export function CombinationsBrowser({
   initialQuery?: string;
   viewerUserId?: string | null;
   favouriteCombinationIds?: string[];
+  lockedConeScope?: "lowfire" | "midfire" | null;
+  availableViews?: CombinationsView[];
 }) {
   const browser = useCombinationsBrowser({
     examples,
@@ -46,6 +50,8 @@ export function CombinationsBrowser({
     initialQuery,
     viewerUserId,
     favouriteCombinationIds,
+    lockedConeScope,
+    availableViews,
   });
 
   return (
@@ -78,6 +84,7 @@ export function CombinationsBrowser({
         resetFilters={browser.resetFilters}
         INITIAL_TILE_BATCH={browser.INITIAL_TILE_BATCH}
         setVisibleCount={browser.setVisibleCount}
+        hideConeFilter={lockedConeScope !== null}
       />
       <CombinationGrid
         activeTile={browser.activeTile}

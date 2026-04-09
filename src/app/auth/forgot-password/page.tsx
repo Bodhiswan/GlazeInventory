@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { sendPasswordResetAction } from "@/app/actions/auth";
 import { SubmitButton } from "@/components/submit-button";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 import { buttonVariants } from "@/components/ui/button";
 import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
@@ -56,6 +57,7 @@ export default async function ForgotPasswordPage({
               required
             />
           </label>
+          <TurnstileWidget />
           <div className="flex flex-wrap gap-3">
             <SubmitButton pendingText="Sending reset link…">Send reset link</SubmitButton>
             <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost" })}>

@@ -9,6 +9,7 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 import { getViewer } from "@/lib/data/users";
 import { getSupabaseEnv } from "@/lib/env";
 import { formatSearchQuery } from "@/lib/utils";
@@ -104,6 +105,7 @@ export async function AuthEntryPage({
                 Forgot password?
               </Link>
             </div>
+            <TurnstileWidget />
             <SubmitButton pendingText="Signing in…" className="w-full">
               Sign in
             </SubmitButton>

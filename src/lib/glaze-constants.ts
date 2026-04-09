@@ -2,8 +2,10 @@ export const COMMERCIAL_GLAZE_BRANDS = [
   // North America
   "AMACO",
   "Chrysanthos",
+  "Clay Art Center",
   "Clayscapes Pottery",
   "Coyote Glazes",
+  "Dick Blick Essentials",
   "Duncan",
   "Georgies",
   "Kentucky Mudworks",

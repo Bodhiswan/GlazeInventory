@@ -188,6 +188,7 @@ export function GlazeFilters({
   onShowAll,
   onClearFilters,
   GLAZE_BATCH_STEP,
+  hideConeFilter = false,
 }: {
   brandFilters: string[];
   setBrandFilters: React.Dispatch<React.SetStateAction<string[]>>;
@@ -227,6 +228,7 @@ export function GlazeFilters({
   onShowAll: () => void;
   onClearFilters: () => void;
   GLAZE_BATCH_STEP: number;
+  hideConeFilter?: boolean;
 }) {
   return (
     <div className="space-y-4">
@@ -364,7 +366,7 @@ export function GlazeFilters({
               </div>
             </FilterSection>
 
-            <FilterSection
+            {hideConeFilter ? null : <FilterSection
               title="Cones"
               optionCount={coneOptions.length}
               selectedCount={coneFilters.length}
@@ -387,7 +389,7 @@ export function GlazeFilters({
                   />
                 ))}
               </div>
-            </FilterSection>
+            </FilterSection>}
           </div>
         ) : null}
       </div>

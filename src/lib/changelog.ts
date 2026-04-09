@@ -4,6 +4,7 @@ export const CHANGES = [
   {
     category: "New",
     items: [
+      "Clay Art Center glazes added — 234 Clay Art Center catalog glazes are now in the library, including Rainbow, P Series, Craftsman, Frost, Raku, Terra Sigillata, and High Fire lines.",
       "Glazing guide expanded — Part V: Firing Considerations is now live, covering oxidation vs. reduction, cones and heatwork, witness cones, ramp and cooling choices, kiln loading, refiring, and commercial glaze firing caveats.",
       "Opulence glaze brand added — 74 Mid-South Opulence glazes are now in the library, searchable, and pickable from the inventory add-glaze flow.",
       "Request a brand — \"Submit a new glaze\" inside the contribute form is replaced with a link to a simple Request-a-brand page; new requests show as an alert in admin analytics. Firing photos and combinations still work as before.",

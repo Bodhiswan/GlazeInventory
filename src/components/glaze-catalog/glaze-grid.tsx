@@ -18,6 +18,7 @@ export function GlazeGrid({
   loadMoreRef,
   visibleCount,
   reviewMode,
+  groupByLine = false,
 }: {
   visibleGradientGlazes: IndexedGlaze[];
   optimisticInventoryStates: Record<string, { inventoryId: string; status: InventoryStatus }>;
@@ -30,7 +31,23 @@ export function GlazeGrid({
   loadMoreRef: RefObject<HTMLDivElement | null>;
   visibleCount: number;
   reviewMode: boolean;
+  groupByLine?: boolean;
 }) {
+  // Group glazes by "Brand · Line" so visitors can browse by product family.
+  const grouped = (() => {
+    if (!groupByLine) return null;
+    const groups = new Map<string, IndexedGlaze[]>();
+    for (const item of visibleGradientGlazes) {
+      const brand = item.glaze.brand?.trim() || "Other";
+      const line = item.glaze.line?.trim();
+      const key = line ? `${brand} · ${line}` : brand;
+      const existing = groups.get(key);
+      if (existing) existing.push(item);
+      else groups.set(key, [item]);
+    }
+    return Array.from(groups.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+  })();
+
   return (
     <div className="space-y-4">
       <div className="overflow-hidden border border-border bg-panel">
@@ -41,18 +58,45 @@ export function GlazeGrid({
           </Badge>
         </div>
 
-        <div className="grid grid-cols-2 gap-1.5 p-1.5 min-[420px]:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
-          {visibleGradientGlazes.map((item) => (
-            <GlazeCard
-              key={item.glaze.id}
-              item={item}
-              optimisticInventoryStates={optimisticInventoryStates}
-              previewCone={previewCone}
-              preferredAtmosphere={preferredAtmosphere}
-              onSelect={onSelectGlaze}
-            />
-          ))}
-        </div>
+        {grouped ? (
+          <div className="space-y-4 p-1.5 sm:p-2">
+            {grouped.map(([label, items]) => (
+              <section key={label} className="space-y-1.5">
+                <div className="flex items-baseline justify-between gap-3 border-b border-border/60 pb-1">
+                  <h3 className="display-font text-sm tracking-tight">{label}</h3>
+                  <span className="text-[10px] uppercase tracking-[0.16em] text-muted">
+                    {items.length}
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-1.5 min-[420px]:grid-cols-3 sm:gap-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+                  {items.map((item) => (
+                    <GlazeCard
+                      key={item.glaze.id}
+                      item={item}
+                      optimisticInventoryStates={optimisticInventoryStates}
+                      previewCone={previewCone}
+                      preferredAtmosphere={preferredAtmosphere}
+                      onSelect={onSelectGlaze}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-1.5 p-1.5 min-[420px]:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+            {visibleGradientGlazes.map((item) => (
+              <GlazeCard
+                key={item.glaze.id}
+                item={item}
+                optimisticInventoryStates={optimisticInventoryStates}
+                previewCone={previewCone}
+                preferredAtmosphere={preferredAtmosphere}
+                onSelect={onSelectGlaze}
+              />
+            ))}
+          </div>
+        )}
       </div>
 
       {hasActiveQuery && visibleCount < displayGlazesLength ? (

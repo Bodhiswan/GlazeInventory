@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { after } from "next/server";
+import type { Metadata } from "next";
 import { Heart } from "lucide-react";
 
 import { toggleGlazeFavouriteAction } from "@/app/actions/glazes";
@@ -14,7 +15,7 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { Panel } from "@/components/ui/panel";
 import { getGlazeStaticDetail, resolveGlazeById } from "@/lib/data/glazes";
 import { getCatalogFiringImages } from "@/lib/catalog";
-import { requireViewer } from "@/lib/data/users";
+import { getViewer } from "@/lib/data/users";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getGlazeFamilyTraits, getManufacturerUrl } from "@/lib/glaze-metadata";
 import {
@@ -22,10 +23,73 @@ import {
   formatGlazeMeta,
   getGlazeSkimDescription,
   pickPreferredGlazeImage,
+  summarizeGlazeColor,
+  summarizeGlazeFinish,
 } from "@/lib/utils";
-import coyoteLocalGallery from "../../../../../data/vendors/coyote-local-gallery.json";
+import coyoteLocalGallery from "../../../../data/vendors/coyote-local-gallery.json";
 import { GlazeUserStateServer } from "./_components/glaze-user-state-server";
 import { GlazeUserStateSkeleton } from "./_components/glaze-user-state-skeleton";
+import { GlazeSignUpCta } from "./_components/glaze-sign-up-cta";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ glazeId: string }>;
+}): Promise<Metadata> {
+  const { glazeId } = await params;
+  const glaze = await resolveGlazeById(glazeId);
+
+  if (!glaze) {
+    return { title: "Glaze not found" };
+  }
+
+  const label = formatGlazeLabel(glaze);
+  const color = summarizeGlazeColor(glaze);
+  const finish = summarizeGlazeFinish(glaze);
+  const traits = [glaze.cone, glaze.atmosphere, finish, color]
+    .filter(Boolean)
+    .join(" · ");
+  const description = traits
+    ? `${label} — ${traits}. See firing images, community results, and application notes.`
+    : `${label} — See firing images, community results, and application notes.`;
+
+  return {
+    title: label,
+    description,
+    alternates: {
+      canonical: `/glazes/${glazeId}`,
+    },
+    openGraph: {
+      title: label,
+      description,
+      ...(glaze.imageUrl ? { images: [{ url: glaze.imageUrl }] } : {}),
+    },
+  };
+}
+
+// ─── Structured data (JSON-LD) ──────────────────────────────────────────────
+
+function GlazeJsonLd({ glaze }: { glaze: Parameters<typeof formatGlazeLabel>[0] & { imageUrl?: string | null; description?: string | null; brand?: string | null } }) {
+  const label = formatGlazeLabel(glaze);
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: label,
+    description: glaze.description ?? `${label} ceramic glaze`,
+    ...(glaze.brand ? { brand: { "@type": "Brand", name: glaze.brand } } : {}),
+    ...(glaze.imageUrl ? { image: glaze.imageUrl } : {}),
+    category: "Ceramic Glaze",
+  };
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
+}
+
+// ─── Page ───────────────────────────────────────────────────────────────────
 
 export default async function GlazeDetailPage({
   params,
@@ -34,7 +98,7 @@ export default async function GlazeDetailPage({
   params: Promise<{ glazeId: string }>;
   searchParams: Promise<{ error?: string; saved?: string }>;
 }) {
-  const viewer = await requireViewer();
+  const viewer = await getViewer();
   const { glazeId } = await params;
   const pageParams = await searchParams;
 
@@ -50,24 +114,26 @@ export default async function GlazeDetailPage({
   }
 
   const { glaze } = detail;
+  const isGuest = !viewer;
 
-  // Track glaze view after the response is sent. `after()` keeps the
-  // serverless instance alive until the work completes, unlike the
-  // previous fire-and-forget IIFE which was getting torn down.
-  after(async () => {
-    const supabase = await createSupabaseServerClient();
-    if (!supabase) return;
-    await supabase.from("analytics_events").insert({
-      event_type: "glaze_view",
-      user_id: viewer.profile.id,
-      glaze_id: null,
-      metadata: {
-        catalog_glaze_id: glaze.id,
-        glaze_name: glaze.name,
-        glaze_brand: glaze.brand ?? null,
-      },
+  // Track glaze view after the response is sent (logged-in users only).
+  if (viewer) {
+    after(async () => {
+      const supabase = await createSupabaseServerClient();
+      if (!supabase) return;
+      await supabase.from("analytics_events").insert({
+        event_type: "glaze_view",
+        user_id: viewer.profile.id,
+        glaze_id: null,
+        metadata: {
+          catalog_glaze_id: glaze.id,
+          glaze_name: glaze.name,
+          glaze_brand: glaze.brand ?? null,
+        },
+      });
     });
-  });
+  }
+
   const coyoteGalleryImages =
     glaze.brand === "Coyote" && glaze.code
       ? (coyoteLocalGallery[glaze.code as keyof typeof coyoteLocalGallery] ?? []).map((image) => ({
@@ -87,17 +153,16 @@ export default async function GlazeDetailPage({
     pickPreferredGlazeImage(
       glaze,
       galleryImages,
-      viewer.profile.preferredCone ?? null,
-      viewer.profile.preferredAtmosphere ?? null,
+      viewer?.profile.preferredCone ?? null,
+      viewer?.profile.preferredAtmosphere ?? null,
     ) ?? glaze.imageUrl;
 
-  // viewerHasFavourited defaults to false here; the actual favourite state
-  // streams in via GlazeUserStateServer. The toggle action uses server state
-  // so the button will always function correctly.
   const viewerHasFavourited = false;
 
   return (
     <div className="space-y-8">
+      <GlazeJsonLd glaze={glaze} />
+
       <PageHeader
         eyebrow="Glaze"
         title={formatGlazeLabel(glaze)}
@@ -125,17 +190,19 @@ export default async function GlazeDetailPage({
                 Combinations
               </Link>
             ) : null}
-            <form action={toggleGlazeFavouriteAction}>
-              <input type="hidden" name="glazeId" value={glaze.id} />
-              <input type="hidden" name="returnTo" value={`/glazes/${glaze.id}`} />
-              <button
-                type="submit"
-                className={buttonVariants({ variant: viewerHasFavourited ? "primary" : "ghost", className: "gap-2" })}
-              >
-                <Heart className={`h-4 w-4 ${viewerHasFavourited ? "fill-current" : ""}`} />
-                {viewerHasFavourited ? "Favourited" : "Favourite"}
-              </button>
-            </form>
+            {isGuest ? null : (
+              <form action={toggleGlazeFavouriteAction}>
+                <input type="hidden" name="glazeId" value={glaze.id} />
+                <input type="hidden" name="returnTo" value={`/glazes/${glaze.id}`} />
+                <button
+                  type="submit"
+                  className={buttonVariants({ variant: viewerHasFavourited ? "primary" : "ghost", className: "gap-2" })}
+                >
+                  <Heart className={`h-4 w-4 ${viewerHasFavourited ? "fill-current" : ""}`} />
+                  {viewerHasFavourited ? "Favourited" : "Favourite"}
+                </button>
+              </form>
+            )}
           </>
         }
       />
@@ -211,15 +278,19 @@ export default async function GlazeDetailPage({
 
       </section>
 
-      <SectionErrorBoundary>
-        <Suspense fallback={<GlazeUserStateSkeleton />}>
-          <GlazeUserStateServer
-            viewerId={viewer.profile.id}
-            glazeId={glaze.id}
-            glazeSourceType={glaze.sourceType}
-          />
-        </Suspense>
-      </SectionErrorBoundary>
+      {isGuest ? (
+        <GlazeSignUpCta glazeName={formatGlazeLabel(glaze)} />
+      ) : (
+        <SectionErrorBoundary>
+          <Suspense fallback={<GlazeUserStateSkeleton />}>
+            <GlazeUserStateServer
+              viewerId={viewer.profile.id}
+              glazeId={glaze.id}
+              glazeSourceType={glaze.sourceType}
+            />
+          </Suspense>
+        </SectionErrorBoundary>
+      )}
     </div>
   );
 }

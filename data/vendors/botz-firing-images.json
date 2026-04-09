@@ -1,0 +1,2126 @@
+[
+  {
+    "brand": "BOTZ",
+    "code": "4001",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4001_EggYellow_BOTZ.jpg?v=1761285330",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4002",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4002_CobaltBlue_BOTZ.jpg?v=1761286157",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4003",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4003_Wine_BOTZ.jpg?v=1761286940",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4004",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4004_Black_BOTZ.jpg?v=1761287605",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4005",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4005_ChromeGreen_BOTZ.jpg?v=1761287901",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4006",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4006_Turquoise_BOTZ.jpg?v=1761287986",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4007",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4007_Rosewood_BOTZ.jpg?v=1761288254",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4008",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4008_SoftGrey_BOTZ.jpg?v=1761288451",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4009",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4009_White_BOTZ.jpg?v=1761288663",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4010",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4010_Chestnut_BOTZ.jpg?v=1761288747",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4011",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4011_Grey_BOTZ.jpg?v=1761288831",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4012",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4012_CapriBlue_BOTZ.jpg?v=1761288913",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4014",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4014_Plum_BOTZ.jpg?v=1761289153",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4015",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4015_FernGreen_BOTZ.jpg?v=1761289220",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4016",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4016_LimeGreen_BOTZ.jpg?v=1761289298",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4017",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4017_SunYellow_BOTZ.jpg?v=1761289369",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4018",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4018_Salmon_BOTZ.jpg?v=1761289447",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4019",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4019_Whiskey_BOTZ.jpg?v=1761289523",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4020",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4020_Mocha_BOTZ_d310518a-f41f-49ed-8538-1094b0bdaea5.jpg?v=1761290135",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4021",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4021_BlueGreen_BOTZ.jpg?v=1761289670",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4042",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4042_Orange_BOTZ.jpg?v=1761289744",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4043",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4043_SunsetRed_BOTZ.jpg?v=1761289818",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "4044",
+    "label": "Reference tile",
+    "cone": "Cone 06 / Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/4044_StrongRed_BOTZ.jpg?v=1761289951",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9020",
+    "label": "Reference tile",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9020_06.jpg?v=1712484053",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9020",
+    "label": "Example 2",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9020_02.jpg?v=1712484053",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9020",
+    "label": "Example 3",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9020_04.jpg?v=1712484053",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9090",
+    "label": "Reference tile",
+    "cone": null,
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_Tusche_9090.jpg.1.jpg?v=1744869636",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9090",
+    "label": "Example 2",
+    "cone": null,
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9020_02_922e7d72-59f9-4b20-806f-832e56df104f.jpg?v=1744869838",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9090",
+    "label": "Example 3",
+    "cone": null,
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9090_Tusche_02.jpg?v=1744869636",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9090",
+    "label": "Example 4",
+    "cone": null,
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9090_Tusche_01.jpg?v=1744869636",
+    "sortOrder": 230
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9101",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9101_00.jpg?v=1765951527",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9101",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9101-9353-9474-9517_1050_Reaction-Line_1-1.jpg?v=1765951527",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9102",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9102_00.jpg?v=1765951649",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9102",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9102_00d.jpg?v=1765951649",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9224",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9224_00.jpg?v=1765952364",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9224",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9224_01.jpg?v=1765952364",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9224",
+    "label": "Example 3",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9224_04.jpg?v=1765952364",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9300",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9300-1050_00.jpg?v=1765953271",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9300",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9300-1150_00.jpg?v=1765953271",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9300",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9300-1250_00.jpg?v=1712460657",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9301",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9301_00-1050.jpg?v=1765953266",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9301",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9301_00-1150.jpg?v=1765953266",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9301",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9301_00-1250.jpg?v=1765952830",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9302",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9302_00-1050.jpg?v=1765953248",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9302",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9302_00-1150.jpg?v=1765953248",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9302",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9302_00-1250.jpg?v=1712461225",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9303",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9303_00-1050.jpg?v=1765953232",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9303",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9303_00-1150.jpg?v=1765953232",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9303",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9303_00-1250.jpg?v=1712461370",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9304",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9304_00-1050.jpg?v=1765953218",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9304",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9304_00-1150.jpg?v=1765953218",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9304",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9304_00-1250.jpg?v=1712461582",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9305",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9305_00-1050.jpg?v=1765953199",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9305",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9305_00-1150.jpg?v=1765953199",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9305",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9305_00-1250.jpg?v=1712461743",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9306",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9306_00-1050.jpg?v=1712462106",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9306",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9306_00-1150.jpg?v=1712462105",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9306",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9306_00-1250.jpg?v=1712462105",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9307",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9307_00-1050.jpg?v=1761278598",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9307",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9307_00-1250.jpg?v=1761278598",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9307",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9307_00-1150.jpg?v=1761278598",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9308",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9308-1050_00.jpg?v=1712462420",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9308",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9308-1150_00.jpg?v=1712462419",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9308",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9308-1250_00.jpg?v=1712462419",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9309",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9309-1050_00.jpg?v=1712462681",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9309",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9309-1150_00.jpg?v=1712462682",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9309",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9309-1250_00.jpg?v=1712462682",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9310",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9310-1050_00.jpg?v=1712462785",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9310",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9310-1150_00.jpg?v=1712462785",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9310",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9310-1250_00.jpg?v=1712462784",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9311",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9311-1050_00.jpg?v=1712462858",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9311",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9311-1150_00.jpg?v=1712462859",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9311",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9311-1250_00.jpg?v=1712462858",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9312",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9312-1050_00.jpg?v=1712463146",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9312",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9312-1150_00.jpg?v=1712463146",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9312",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9312-1250_00.jpg?v=1712463147",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9313",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9313_00_1050.jpg?v=1712463383",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9313",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9313_00_1150.jpg?v=1712463383",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9313",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9313_00_1250_schwarz.jpg?v=1712463384",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9313",
+    "label": "1250\u00b0C sample (variation 2)",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9313_00_1250.jpg?v=1712463384",
+    "sortOrder": 1251
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9314",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9314_00_1050.jpg?v=1712464103",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9314",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9314_00_1150.jpg?v=1712464108",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9314",
+    "label": "1150\u00b0C sample (variation 2)",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9314_00_1150_rot.jpg?v=1712464108",
+    "sortOrder": 1151
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9314",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9314_00_1250.jpg?v=1712464103",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9315",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9315_00_1050.jpg?v=1712464570",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9315",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9315_00_1150.jpg?v=1712464571",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9315",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9315_00_1250.jpg?v=1712464570",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9316",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9316_00_1050.jpg?v=1712482715",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9316",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9316_00_1150.jpg?v=1712482724",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9316",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9316_00_1250.jpg?v=1712482724",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9316",
+    "label": "1150\u00b0C sample (variation 2)",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9316_00_1150_rot.jpg?v=1712482724",
+    "sortOrder": 1151
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9317",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9317-1150-02.png?v=1712482865",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9318",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9318-1150.png?v=1712482954",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9319",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9319-1150.png?v=1712483255",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9343",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9343_00.jpg?v=1765934508",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9343",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9343_02.jpg?v=1765934507",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9348",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9348_00.jpg.1.jpg?v=1765939178",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9348",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9348_01.jpg?v=1765939178",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9352",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9352_00_ad361734-8071-4436-a933-08e232bfb0ac.jpg?v=1765941307",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9353",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9353_00.jpg?v=1765941580",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9450",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9450_00.jpg?v=1765943447",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9450",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9450_01.jpg?v=1765943447",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9541",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9541_00.jpg?v=1765944723",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9541",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9541_02.jpg?v=1765944723",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9542",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9542_00.jpg?v=1765945166",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9542",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9542_02.jpg?v=1765945166",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9545",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9545_00.jpg?v=1765946736",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9545",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9545_07.jpg?v=1765946736",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9589",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9589_00.jpg?v=1765950162",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9589",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9589_02.jpg?v=1765950162",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9606",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9606_00.jpg?v=1765950579",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9606",
+    "label": "Example 2",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9606_01.jpg?v=1765950579",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9611",
+    "label": "Reference tile",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9611_00.jpg?v=1765950873",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9611",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9611_1050_Weisser-Ton.jpg?v=1765950873",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9611",
+    "label": "Example 3",
+    "cone": "Cone 06",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/CeramixAustralia_Botz_PD_9611_01.jpg?v=1765950873",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9620",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9620_00-1050.jpg?v=1712483052",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9620",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9620_00-1150.jpg?v=1712483053",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9620",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9620_00-1250.jpg?v=1712483052",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9621",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9621-1050_00.jpg?v=1712483339",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9621",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9621-1150_00.jpg?v=1712483339",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9621",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9621-1250_00.jpg?v=1712483338",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9622",
+    "label": "1050\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9622-1050_00.jpg?v=1712483425",
+    "sortOrder": 1050
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9622",
+    "label": "1150\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9622-1150_00.jpg.1.jpg?v=1712483425",
+    "sortOrder": 1150
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9622",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 05 / Cone 04 / Cone 8 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9622-1250_00.jpg?v=1712483425",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9801",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9801_00.jpg.1.jpg?v=1742704549",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9801",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9801_9808_02.jpg?v=1742704549",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9801",
+    "label": "Example 3",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9801_9808_9804_01.jpg?v=1742704549",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9802",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9802_00.jpg?v=1742705233",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9802",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9802_9825_01.jpg?v=1742705233",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9802",
+    "label": "Example 3",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9802_9825_9823_01.jpg.1.jpg?v=1742705233",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9803",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9803_00.jpg?v=1742705378",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9803",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9822_9804_9803_01.jpg?v=1742705378",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9804",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9804_00.jpg?v=1742706013",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9804",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9822_9804_9803_03.jpg?v=1742706013",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9804",
+    "label": "Example 3",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9801_9808_9804_02.jpg?v=1742706034",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9805",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9805_00.jpg?v=1742706205",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9805",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9805_02.jpg?v=1742706205",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9805",
+    "label": "Example 3",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9805_9822_01.jpg?v=1742706205",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9806",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9806_00.jpg?v=1742706300",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9807",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9807_00.jpg?v=1742706471",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9807",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9807_01_2.jpg?v=1742706491",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9808",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9808_00.jpg?v=1742706589",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9808",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9801_9808_03.jpg?v=1742706604",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9820",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9820_00.jpg?v=1742706755",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9820",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9820_01.jpg?v=1742706755",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9820",
+    "label": "Example 3",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9821_9820_9826_04.jpg?v=1742706755",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9821",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9821_00.jpg?v=1742706868",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9821",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9821_01.jpg?v=1742706868",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9821",
+    "label": "Example 3",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9821_9820_9826_02.jpg?v=1742706868",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9822",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/Ceramix_BOTZ_9822Flamingo_1.jpg?v=1742706989",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9822",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9822_02.jpg?v=1742706989",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9822",
+    "label": "Example 3",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9822_9804_9803_01_1.jpg?v=1742706990",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9823",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9823_00.jpg?v=1742707105",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9823",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9823_9802_9825_01.jpg?v=1742707106",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9824",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9824_00.jpg?v=1742707200",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9824",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9824_01.jpg?v=1742707200",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9825",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9825_00.jpg?v=1742707289",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9825",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9825_9802_9823_01.jpg?v=1742707289",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9826",
+    "label": "Reference tile",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9826_00.jpg?v=1742707376",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9826",
+    "label": "Example 2",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9826_01.jpg?v=1742707380",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9826",
+    "label": "Example 3",
+    "cone": "Cone 4 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9821_9820_9826_04_1.jpg?v=1742707380",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9861",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9861.png?v=1742707512",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9862",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9862.png?v=1742707659",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9863",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9863.png?v=1723001281",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9864",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9864.png?v=1722997374",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9865",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9865.png?v=1722995733",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9866",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9866_00_1250.jpg?v=1722998125",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9867",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9867_00_1250.jpg?v=1723000470",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9868",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9868_00_1250.jpg?v=1742708933",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9869",
+    "label": "1250\u00b0C sample",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/MK_9869_00_1250.jpg?v=1723001493",
+    "sortOrder": 1250
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9870",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9870_00.jpg?v=1723001850",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9870",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9870_01.jpg?v=1723001906",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9871",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9871_00.jpg?v=1742709127",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9871",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9871_04.jpg?v=1742709127",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9872",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9872_00.jpg?v=1742709364",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9872",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9872_01.jpg?v=1742709364",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9873",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9873_00.jpg?v=1742709616",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9873",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9873_02.jpg.1.jpg?v=1742709616",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9874",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9874_00.jpg?v=1723002082",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9875",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9875_00.jpg?v=1723002235",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9875",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9875_01.jpg?v=1723002239",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9876",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9876_00.jpg?v=1723002408",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9877",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9877_00.jpg?v=1723002563",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9878",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9878_00.jpg?v=1723002680",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9878",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9878_01.jpg?v=1723002693",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9879",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9879_00.jpg?v=1742709817",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9879",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9879_01.jpg?v=1742709817",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9880",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9880_00.jpg?v=1742710015",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9880",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9880_95.jpg?v=1742710015",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9880",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9880_01.jpg?v=1742710015",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9881",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9881_00.jpg?v=1723002870",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9881",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9881_95.jpg?v=1723002885",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9881",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9881_05.jpg?v=1723002902",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9882",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9882_00.jpg?v=1742710247",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9882",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9882_06.jpg?v=1742710247",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9882",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9882_05.jpg?v=1742710247",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9883",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9883_00.jpg?v=1742710434",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9883",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9883_05.jpg?v=1742710434",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9883",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9883_02.jpg.1.jpg?v=1742710434",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9884",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9884_00.jpg?v=1742710641",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9884",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9884_02.jpg?v=1742710641",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9884",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9884_03.jpg?v=1742710641",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9885",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9885_00.jpg?v=1742710849",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9885",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9885_01.jpg?v=1742710849",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9885",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9885_03.jpg?v=1742710850",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9886",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9886_00.jpg?v=1723003091",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9886",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9886_02.jpg?v=1723003100",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9887",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9887_00.jpg?v=1723008295",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9887",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9887_91.jpg?v=1723008358",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9888",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9888_00.jpg?v=1742711127",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9888",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9888_01.jpg.1.jpg?v=1742711127",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9889",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9889_00.jpg?v=1742711313",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9889",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9889_02.jpg?v=1742711313",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9889",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9889_03.jpg?v=1742711313",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9890",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9890_00.jpg?v=1723008578",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9890",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9890_02.jpg?v=1723008626",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9891",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9891_00.jpg?v=1723008718",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9891",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9891_02.jpg?v=1723008784",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9892",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9892_00.jpg?v=1723008934",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9892",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9892_00v.jpg?v=1723008934",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9892",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9892_04.jpg?v=1723008940",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9893",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9893_00.jpg?v=1742711447",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9893",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9893_92.jpg?v=1742711447",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9893",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9893_91.jpg?v=1742711447",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9894",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9894_00.jpg?v=1723009113",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9894",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9894_03.jpg?v=1723009133",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9895",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9895_00.jpg?v=1742711601",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9895",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9895_02.jpg?v=1742711601",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9896",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9896_00.jpg?v=1742711775",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9896",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9896_03.jpg?v=1742711775",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9897",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9897_00.jpg?v=1742711950",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9897",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9897_02.jpg?v=1742711950",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9898",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9898_00.jpg?v=1723009351",
+    "sortOrder": 50
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9898",
+    "label": "Example 2",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9898_71a.jpg?v=1723009351",
+    "sortOrder": 210
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9898",
+    "label": "Example 3",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9898_04.jpg?v=1723009351",
+    "sortOrder": 220
+  },
+  {
+    "brand": "BOTZ",
+    "code": "9899",
+    "label": "Reference tile",
+    "cone": "Cone 6 / Cone 9",
+    "atmosphere": null,
+    "imageUrl": "https://cdn.shopify.com/s/files/1/1786/2955/files/PD_9899_00.jpg?v=1742712129",
+    "sortOrder": 50
+  }
+]

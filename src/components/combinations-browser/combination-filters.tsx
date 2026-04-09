@@ -140,6 +140,7 @@ export interface CombinationFiltersProps {
   resetFilters: () => void;
   INITIAL_TILE_BATCH: number;
   setVisibleCount: Dispatch<SetStateAction<number>>;
+  hideConeFilter?: boolean;
 }
 
 /* ---------------------------------------------------------------------------
@@ -174,6 +175,7 @@ export function CombinationFilters({
   resetFilters,
   INITIAL_TILE_BATCH,
   setVisibleCount,
+  hideConeFilter = false,
 }: CombinationFiltersProps) {
   return (
     <Panel className="space-y-4">
@@ -278,7 +280,7 @@ export function CombinationFilters({
               </div>
             </FilterSection>
 
-            <FilterSection
+            {hideConeFilter ? null : <FilterSection
               title="Cone"
               optionCount={3}
               selectedCount={[showCone5, showCone6, showCone10].filter((v) => !v).length === 0 ? 0 : [showCone5, showCone6, showCone10].filter(Boolean).length}
@@ -299,7 +301,7 @@ export function CombinationFilters({
                   Cone 10
                 </label>
               </div>
-            </FilterSection>
+            </FilterSection>}
 
             {hasFilters ? (
               <button
