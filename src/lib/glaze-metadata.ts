@@ -1,6 +1,20 @@
 import type { Glaze } from "@/lib/types";
 
-export const ACTIVE_GLAZE_BRANDS = ["Mayco", "AMACO", "Coyote", "Duncan", "Spectrum", "Speedball", "Seattle Pottery Supply", "Opulence", "BOTZ"] as const;
+export const ACTIVE_GLAZE_BRANDS = [
+  "Mayco",
+  "AMACO",
+  "Clay Art Center",
+  "Coyote",
+  "Duncan",
+  "Spectrum",
+  "Speedball",
+  "Laguna",
+  "Penguin Pottery",
+  "Dick Blick Essentials",
+  "Seattle Pottery Supply",
+  "Opulence",
+  "BOTZ",
+] as const;
 export const GLAZE_FAMILY_LABELS = [
   "Underglaze",
   "Translucent underglaze",
@@ -90,6 +104,21 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     "French Dimensions™": ["Specialty additive"],
     "Clear Glazes": ["Durable functional"],
   },
+  "Clay Art Center": {
+    "Base Glazes": ["Durable functional"],
+    "Craftsman Glazes": ["Reactive effects"],
+    "Frost Series Glazes": ["Satin / matte functional"],
+    "Glossy Series Glazes": ["Durable functional"],
+    "High Fire Glazes": ["Durable functional"],
+    "Lead-Free Low Fire Glossy Glazes": ["Low-fire gloss color"],
+    "Mica Terra Sigillata": ["Engobe"],
+    "P Series Glazes": ["Durable functional"],
+    "Rainbow Glazes": ["Reactive effects"],
+    "Raku Glazes": ["Reactive effects"],
+    "Satin Matte Glazes": ["Satin / matte functional"],
+    "Strontium Matte Glazes": ["Reactive effects"],
+    "Terra Sigillata": ["Engobe"],
+  },
   Spectrum: {
     "100 Series Crackle Glazes": ["Crawl / crackle"],
     "150 Series Metallic Glazes": ["Reactive effects"],
@@ -126,6 +155,7 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     "Silky Underglaze": ["Underglaze"],
     "Moroccan Fusion": ["Reactive effects"],
     "Moroccan Color": ["Low-fire gloss color"],
+    "Moroccan Sand Series": ["Reactive effects"],
     "Moroccan Sand Clear": ["Durable functional"],
     "Laguna Glazes High-Fire (Cone 10)": ["Durable functional"],
     "Vintage High-Fire (Cone 10)": ["Durable functional"],
@@ -147,6 +177,14 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     "Midfire Glaze - Pearl": ["Satin / matte functional"],
     "Midfire Glaze - Chun": ["Reactive effects"],
   },
+  "Penguin Pottery": {
+    "Flux Series": ["Reactive effects"],
+    "Opaque Series": ["Durable functional"],
+    "Specialty Series": ["Reactive effects"],
+  },
+  "Dick Blick Essentials": {
+    "Gloss Glazes": ["Low-fire gloss color"],
+  },
   BOTZ: {
     Unidekor: ["Underglaze"],
     Earthenware: ["Low-fire gloss color"],
@@ -161,8 +199,12 @@ const BRAND_URLS: Record<string, string> = {
   Mayco: "https://www.maycocolors.com",
   AMACO: "https://www.amaco.com",
   Amaco: "https://www.amaco.com",
+  "Clay Art Center": "https://clayartcenter.net",
   Coyote: "https://www.coyoteclay.com",
   Duncan: "https://www.maycocolors.com/duncan/",
+  "Dick Blick Essentials": "https://www.dickblick.com/products/blick-essentials-gloss-glaze/",
+  Laguna: "https://www.lagunaclay.com",
+  "Penguin Pottery": "https://www.meetceramics.com.au/peguin-pottery",
   Spectrum: "https://www.spectrumglazes.com",
   Speedball: "https://www.speedballart.com",
   BOTZ: "https://www.ceramixaustralia.com.au/collections/botz",

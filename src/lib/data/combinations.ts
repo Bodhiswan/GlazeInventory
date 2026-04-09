@@ -80,6 +80,39 @@ async function getPostCountsByPairKey() {
   }, {});
 }
 
+export async function getPublishedCombinationPairKeys() {
+  const adminClient = createSupabaseAdminClient();
+
+  if (!adminClient) {
+    return Array.from(
+      new Set(
+        demoPosts
+          .filter((post) => post.status === "published" && post.visibility === "members")
+          .map((post) => post.pairKey),
+      ),
+    ).sort();
+  }
+
+  const { data } = await adminClient
+    .from("combination_posts")
+    .select("combination_pairs(pair_key)")
+    .eq("visibility", "members")
+    .eq("status", "published");
+
+  return Array.from(
+    new Set(
+      (data ?? [])
+        .map((row) => {
+          const pairData = (row as Row & { combination_pairs?: Row | Row[] | null })
+            .combination_pairs;
+          const pairSource = Array.isArray(pairData) ? pairData[0] : pairData;
+          return pairSource ? String((pairSource as Row).pair_key) : null;
+        })
+        .filter((pairKey): pairKey is string => Boolean(pairKey)),
+    ),
+  ).sort();
+}
+
 export async function getPairsByIds(
   pairIds: string[],
   clientOverride?: ReturnType<typeof createSupabaseAdminClient> | null,

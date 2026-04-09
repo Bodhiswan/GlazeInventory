@@ -17,10 +17,17 @@ declare global {
 
 const SCRIPT_URL = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
 
-export function TurnstileWidget({ className }: { className?: string }) {
+export function TurnstileWidget({
+  className,
+  inputName = "turnstileToken",
+}: {
+  className?: string;
+  inputName?: string;
+}) {
   const containerRef = useRef<HTMLDivElement>(null);
   const widgetIdRef = useRef<string | null>(null);
   const [verified, setVerified] = useState(false);
+  const [token, setToken] = useState("");
 
   const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
@@ -34,9 +41,21 @@ export function TurnstileWidget({ className }: { className?: string }) {
 
       widgetIdRef.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
-        callback: () => { if (!cancelled) setVerified(true); },
-        "error-callback": () => { if (!cancelled) setVerified(false); },
-        "expired-callback": () => { if (!cancelled) setVerified(false); },
+        callback: (nextToken: string) => {
+          if (cancelled) return;
+          setToken(nextToken);
+          setVerified(true);
+        },
+        "error-callback": () => {
+          if (cancelled) return;
+          setToken("");
+          setVerified(false);
+        },
+        "expired-callback": () => {
+          if (cancelled) return;
+          setToken("");
+          setVerified(false);
+        },
         theme: "light",
       });
     }
@@ -85,6 +104,7 @@ export function TurnstileWidget({ className }: { className?: string }) {
 
   return (
     <div className={className}>
+      <input type="hidden" name={inputName} value={token} />
       <div ref={containerRef} />
       {!verified ? (
         <p className="mt-1 text-center text-[11px] text-muted">

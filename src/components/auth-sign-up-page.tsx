@@ -7,6 +7,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { SetupCallout } from "@/components/setup-callout";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 import { getViewer } from "@/lib/data/users";
 import { getSupabaseEnv } from "@/lib/env";
 import { formatSearchQuery } from "@/lib/utils";
@@ -61,6 +62,7 @@ export async function AuthSignUpPage({
           ) : null}
 
           <form action={signUpWithPasswordAction} className="grid gap-4">
+            {redirectTo ? <input type="hidden" name="redirectTo" value={redirectTo} /> : null}
             <label className="grid gap-2 text-sm font-medium">
               Username
               <Input
@@ -106,6 +108,7 @@ export async function AuthSignUpPage({
                 required
               />
             </label>
+            <TurnstileWidget />
             <SubmitButton pendingText="Creating account…" className="w-full">
               Create account
             </SubmitButton>

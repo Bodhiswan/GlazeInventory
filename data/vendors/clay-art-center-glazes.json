@@ -1,0 +1,2342 @@
+[
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Butter",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/BUTTER-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-butter/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Dragon's Blood",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/DRAGONS-BLOOD-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-dragons-blood/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Electric Teal",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/ELECTRIC-TEAL.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-electric-teal/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Fairy Dust",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/FAIRY-DUST-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-fairy-dust/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Glacier Ice",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/09/GLACIER-ICE-scaled.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-glacier-ice/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Green Fairy",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/GREEN-FAIRY-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-green-fairy/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Huckleberry Breeze",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/HUCKLEBERRY-BREEZE-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-huckleberry-breeze/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Neon Coral",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/NEON-CORAL-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-neon-coral/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Peach Float",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/PEACH-FLOAT-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-peach-float/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Pumpkin",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/PUMPKIN-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-pumpkin/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Rose Red",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/ROSE-RED-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-rose-red/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Seagrass",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/SEAGRASS.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-seagrass/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Snowdrift",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/SNOWDRIFT-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-snowdrift/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Spruce",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/SPRUCE-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-spruce/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Sugar Cookie Icing",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/SUGAR-COOKIE-ICING-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-sugar-cookie-icing/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Tennis",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/09/TENNIS-scaled.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-tennis/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": null,
+    "name": "Unicorn",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2025/05/UNICORN-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-rainbow-unicorn/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE200",
+    "name": "Gold Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE200-Gold-Blush-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-gold-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE201",
+    "name": "Blue Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE201-Blue-Blush-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-blue-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE202",
+    "name": "Green Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE202-Green-Blush-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-green-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE203",
+    "name": "Lilac Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE203-Lilac-Blush-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-lilac-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE204",
+    "name": "Red Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE204-Red-Blush-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-red-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE205",
+    "name": "Grape Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE205-Grape-Blush_2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-grape-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE206",
+    "name": "Copper Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE206-Copper-Blush-2-scaled.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-copper-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE207",
+    "name": "Ultra Silver Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE207-Ultra-Silver-Blush.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-ultra-silver-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE208",
+    "name": "Rona Silver Blush",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE208-Rona-Silver.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-rona-silver-blush/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE300",
+    "name": "Copper Red Brown Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE300-Copper-Red-Brown-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-copper-red-brown-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE301",
+    "name": "Glitter Bronze Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE301-Glitter-Bronze-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-glitter-bronze-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE302",
+    "name": "Gold Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE302-Gold-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-gold-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE303",
+    "name": "Majestic Green Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE303-Majestic-Green-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-majestic-green-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE304",
+    "name": "Red Green Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2022/08/TE304-Red-Green-Metallic-Edit.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-red-green-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE305",
+    "name": "Red Violet Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2022/08/TE305-Red-Violet-Metallic-Edit.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-red-violet-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE306",
+    "name": "Blackstar Blue Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE306-Blackstar-Blue-Metallic.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-blackstar-blue-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE307",
+    "name": "Fine Bronze Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE307-Fine-Bronze-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-fine-bronze-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE109",
+    "name": "Blue $14.95 $24.95 $79.95",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-200-300x300-2-150x150-1-150x150-9.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te109-colored-terra-sigillata-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE308",
+    "name": "Peach Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE308-Peach-Metallic.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-peach-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "code": "TE310",
+    "name": "Spring Green Metallic",
+    "cone": null,
+    "description": "Mica-infused terra sigillata for decorative polished surfaces and atmospheric firing work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TE310-TerraSig_Metallics_Spring-Green.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/cac-mica-infused-terra-sigillata-spring-green-metallic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Base Glazes",
+    "code": "GL203",
+    "name": "Arctic White",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 base glazes from clear to matte for dependable functional surfaces and liner applications.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/arctic-white-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl203-arctic-white/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Base Glazes",
+    "code": "GL204",
+    "name": "GN Matte",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 base glazes from clear to matte for dependable functional surfaces and liner applications.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/GN-MATTE-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl204-gn-matte/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Base Glazes",
+    "code": "GL206",
+    "name": "L A Matte",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 base glazes from clear to matte for dependable functional surfaces and liner applications.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/la-matte-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl206-la-matte/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Base Glazes",
+    "code": "GL200",
+    "name": "PZN 3.5 Clear",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 base glazes from clear to matte for dependable functional surfaces and liner applications.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/pzn-clear-5-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl200-pzn-clear-zinc-free/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Base Glazes",
+    "code": "GL201",
+    "name": "PZN White",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 base glazes from clear to matte for dependable functional surfaces and liner applications.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/PZN-WHITE-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl201-pzn-white/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL209",
+    "name": "Allspice",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/allspice-6-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl209-allspice/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL224",
+    "name": "Amber Teadust",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/amber-teadust-6-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl224-amber-teadust/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL223",
+    "name": "Black Cherry",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/black-cherry-6-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl223-blackcherry/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL221",
+    "name": "Blue Hare's Fur",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/blue-hares-fur-6-600x600-5.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl221-blue-hares-fur/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL225",
+    "name": "Caribbean",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/caribbean-6-600x600-5.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl225-caribbean/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL210",
+    "name": "Cinnamon",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/cinnamon-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl210-cinnamon/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL220",
+    "name": "Crocus",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/crocus-6-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl220-crocus/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL217",
+    "name": "Floating Blue",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/floating-blue-6-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl217-floating-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL215",
+    "name": "Iridescent Blue",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/iridescent-blue-6-600x600-6.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl215-iridescent-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL214",
+    "name": "Iridescent Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/iridescent-green-6-600x600-5.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl214-iridescent-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL219",
+    "name": "Ketchup",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/ketchup-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl219-ketchup/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL211",
+    "name": "Nutmeg",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/nutmeg-6-600x600-6.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl211-nutmeg/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL226",
+    "name": "Opal Sky",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/opal-sky-6-600x600-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl226-opal-sky/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL218",
+    "name": "Plum Red",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/plum-red-6-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl218-plum-red/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL227",
+    "name": "Shore Break",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/SHOREBREAK-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl227-shore-break/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL212",
+    "name": "Stellar Rust",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/stellar-rust-6-600x600-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl212-stellar-rust/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL228",
+    "name": "Stormy Night",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/STORMY-NIGHT-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl228-stormy-night/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL222",
+    "name": "Tidepool",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/tidepool-6-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl222-tidepool/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "code": "GL213",
+    "name": "Vanilla Spice",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 craftsman glazes designed for more varied, expressive surfaces and layered effects.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/vanilla-spice-6-600x600-5.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl213-vanilla-spice/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL906",
+    "name": "Basalt",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/05/BASALT.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl906-basalt/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL900",
+    "name": "Blue Mist",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/BLUE-MIST.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl900-blue-mist/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL916",
+    "name": "Blue Violet",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2022/12/BLUE-VIOLET.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-blue-violet/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL914",
+    "name": "Bone",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/BONE.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl914-bone/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL908",
+    "name": "Cornflower Blue",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/CORNFLOWER-BLUE-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl908-corn-flower-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL901",
+    "name": "Emerald Mist",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/EMERALD-MIST.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl901-emerald-mist/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL919",
+    "name": "Ivory",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/IVORY.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl919-ivory/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL904",
+    "name": "Khaki",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/KHAKI.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl904-khaki/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL913",
+    "name": "Sandy",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/SANDY.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl913-sandy/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL902",
+    "name": "Sea Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/SEA-GREEN.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl902-sea-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "code": "GL905",
+    "name": "Sienna",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Cone 4-6 frost glazes with soft satin surfaces. Frost Satin Clear also works well over underglaze decoration.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/SIENNA.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl905-sienna/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL403",
+    "name": "Black",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/black-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl403-black/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL423",
+    "name": "Blue Fade",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/BLUE-FADE-600x600-7.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl423-blue-fade/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL405",
+    "name": "Blue Green",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/blue-green-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl405-blue-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL401",
+    "name": "Blue Grey",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/blue-grey-1-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-blue-grey/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL418",
+    "name": "Charcoal Grey",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/charcoal-grey-8-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl418-charcoal-grey/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL408",
+    "name": "Cola Green",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/cola-green-7-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl408-cola-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL406",
+    "name": "Dark Blue",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/dark-blue-7-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl406-dark-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL409",
+    "name": "Dark Green",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/dark-green-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-dark-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL404",
+    "name": "Grey Brown",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/grey-brown-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl404-grey-brown/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL417",
+    "name": "Hazelnut Brown",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/hazelnut-brown-7-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl417-hazelnut-brown/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL422",
+    "name": "Hunter Green",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/hunter-green-1-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-hunter-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL414",
+    "name": "Light Blue",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/light-blue-9-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl414-light-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL412",
+    "name": "Milky Clear",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/MILKY-CLEAR-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-milky-clear/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL411",
+    "name": "Off White",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/off-white-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl411-off-white/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL421",
+    "name": "Powder Blue",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/powder-blue-3-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-powder-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL402",
+    "name": "Sandy Tan",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/sandy-tan-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl402-sandy-tan/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL410",
+    "name": "Tan Green",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/tan-green-7-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl410-tan-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL420",
+    "name": "Teal Blue",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/teal-blue-7-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl420-teal-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL407",
+    "name": "Turquoise",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/turquoise-7-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl407-turquoise/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL413",
+    "name": "White",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/white-8-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl413-white/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL416",
+    "name": "Yellow",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/yellow-7-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl416-yellow/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "code": "GL419",
+    "name": "Yellow Green",
+    "cone": "Cone 06 / Cone 6",
+    "description": "Lead-free glossy glazes formulated to fire from cone 06 to cone 6.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/yellow-green-7-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl419-yellow-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD520",
+    "name": "Ash Black",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-192-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld520-ash-black/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD599",
+    "name": "Ash Blue",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-148-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld599-ash-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD598",
+    "name": "Ash Gold",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-152-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld598-ash-gold/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD597",
+    "name": "AW2 White",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-196-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld597-aw2-white-dry/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": null,
+    "name": "AW3 Clear",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-200-300x300-2.png",
+    "sourceUrl": "https://clayartcenter.net/product/cac-high-fire-aw3-clear/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": null,
+    "name": "AW3 Light Blue",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-136-300x300-2.png",
+    "sourceUrl": "https://clayartcenter.net/product/cac-high-fire-aw3-light-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD523",
+    "name": "Bamboo",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-164-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld523-bamboo/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD524",
+    "name": "Bright Brown Black",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-188-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld524-bright-brown-black/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD525",
+    "name": "Bruno's White",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-200-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld525-brunos-black/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD527",
+    "name": "Celadon 2% Ochre",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-144-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld527-celadon-2-ochre/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD526",
+    "name": "Celadon Clear",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-140-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld526-celadon-clear/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD529",
+    "name": "Chun 3% Tin",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/NEW-PHOTO-COMING-SOON-300x300-8.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld529-chun-3-tin/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD528",
+    "name": "Chun Clear",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-172-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld528-chun-clear/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD573",
+    "name": "Chun Mottled Blue",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-168-300x300-3.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld573-chun-mottled-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD531",
+    "name": "Cinnamon",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-176-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld531-cinnamon/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD572",
+    "name": "Derek Emm's Chun",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-204-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld572-derek-emms-chun/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD535",
+    "name": "Eggshell",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-156-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld535-eggshell/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD536",
+    "name": "Ferg",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-184-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld536-ferg/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD533",
+    "name": "Flambe",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-108-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld533-flambe/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD538",
+    "name": "Hoover's Blue",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-84-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld538-hoovers-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD596",
+    "name": "Hpq Red (vegas Red)",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/NEW-PHOTO-COMING-SOON-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld596-hpq-red-copper-red/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD539",
+    "name": "Joe's Waxy",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-96-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld539-joes-waxy/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD540",
+    "name": "Kcnst",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-132-300x300-3.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld540-kcnst/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD542",
+    "name": "Leaches 1% Iron",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-128-300x300-3.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld542-leaches-1/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD543",
+    "name": "Leaches 3% Iron",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-92-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld543-leaches-3-iron/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD541",
+    "name": "Leaches Clear",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-68-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld541-leaches-clear/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD544",
+    "name": "Mamo",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-112-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld544-mamo/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD500",
+    "name": "Maria's Brown",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-76-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld500-marias-brown/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD501",
+    "name": "Maria's Gold",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-136-300x300-3.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld501-marias-gold/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD502",
+    "name": "Maria's White",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-116-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld502-marias-white/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": null,
+    "name": "Oatmeal Powdered Ilmenite",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-80-300x300-2-150x150-1.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-cac-high-fire-oatmeal-powdered-ilmenite/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD504",
+    "name": "Ohata Khaki",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-72-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld504-ohata-khaki/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD505",
+    "name": "Pearly Warren",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-88-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld505-pearly-warren/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD506",
+    "name": "Phil's Iron",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-104-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld506-phils-iron/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD507",
+    "name": "R11",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-120-300x300-1.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld507-r11/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": null,
+    "name": "Red Iron",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-100-300x300-2-150x150-3.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-cac-high-fire-red-iron/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD565",
+    "name": "Regnors Purple",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-124-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld565-regnors-purple/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD568",
+    "name": "Rhodes Black",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-40-300x300-3.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld568-rhodes-black/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD509",
+    "name": "Rich Blue Matte",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-28-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld509-rich-blue-matte/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD546",
+    "name": "Rutile Blue",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-44-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld546-rutile-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD510",
+    "name": "Seacrest Purple",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-32-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld510-seacrest-purple/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD530",
+    "name": "Shaner's Blue",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-64-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld530-shaners-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD570",
+    "name": "Shaner's Clear",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-48-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld570-shaners-clear/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD511",
+    "name": "Shaner's Gold",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-56-300x300-1.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld511-shaners-gold/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD513",
+    "name": "Stoney White",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-20-300x300-1.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld513-stoney-white/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD514",
+    "name": "Tan Matte",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-24-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld514-tan-matte/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD515",
+    "name": "Temmoku",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-36-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld515-temmoku/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD519",
+    "name": "Waxy Black",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-8-4-300x300-2.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld519-waxy-black/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD516",
+    "name": "Waxy Brown",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-52-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld516-waxy-brown/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD517",
+    "name": "Waxy Pale Blue",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-60-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld517-waxy-pale-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD518",
+    "name": "Waxy White",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-16-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld518-waxy-white/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "code": "GLD547",
+    "name": "Yanagihara White",
+    "cone": "Cone 10",
+    "description": "Cone 10 high-fire glazes from reliable clears and copper reds to mattes and ash surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-12-300x300-4.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-high-fire-glaze-gld547-yanagihara/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP01",
+    "name": "Sorbet",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/SORBET-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp01-sorbet/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP02",
+    "name": "Light Crimson",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/LIGHT-CRIMSON-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp02-light-crimson/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP03",
+    "name": "Peach",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/peach-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp03-peach/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP04",
+    "name": "Garnet",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/GARNET-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp04-garnet/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP08",
+    "name": "Celadon Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/celadon-green-10-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp08-celadon-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP09",
+    "name": "Florentine Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/FLORENTINE-GREEN-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp09-florentine-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP10",
+    "name": "French Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/FRENCH-GREEN.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp10-french-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP11",
+    "name": "Peacock Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/PEACOCK-GREEN.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp11-peacock-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP12",
+    "name": "Ultramarine Blue",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/ultramarine-blue-6-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp12-ultramarine-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP15",
+    "name": "Blue Bonnet",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/blue-bonnet-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp15-blue-bonnet/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP16",
+    "name": "Light Blue",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/LIGHT-BLUE-1-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp16-light-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP17",
+    "name": "Orchid",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/orchid-7-600x600-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp17-orchid/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP18",
+    "name": "Mulberry",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/MULBERRY-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp18-mulberry/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP19",
+    "name": "Wisteria",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/wisteria-6-600x600-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp19-wisteria/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP20",
+    "name": "Light Bright Yellow",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/light-bright-yellow-6-600x600-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp20-light-bright-yellow/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP21",
+    "name": "Papaya",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/papaya-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp21-papaya/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP22",
+    "name": "Sagebrush Celadon",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/SAGEBRUSH-CELADON-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp22-sagebrush-celadon/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP23",
+    "name": "Cadet Blue",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/CADET-BLUE-7.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-cac-p-series-p23-cadet-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP24",
+    "name": "Black Magic",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/black-magic-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp24-black-magic/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP25",
+    "name": "P – P25 – Sunset Red",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/sunset-red-6-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp25-sunset-red/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP26",
+    "name": "Tangerine Orange",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/TANGERINE-ORANGE-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp26-tangerine-orange/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP27",
+    "name": "P – P27 – Dark Cobalt",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/DARK-COBALT-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp27-dark-cobalt/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP28",
+    "name": "Clover Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/CLOVER-GREEN-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp28-clover-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP32",
+    "name": "Summer Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/SUMMER-GREEN-300x300.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp32-summer-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP33",
+    "name": "Merlot",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/MERLOT.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp33-merlot/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP34",
+    "name": "Slate Grey",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2010/06/SLATE-GREY.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp34-slate-grey/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP35",
+    "name": "Dove Grey",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2010/06/DOVE-GREY.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp35-dove-grey/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "code": "GLP36",
+    "name": "Blue Ice",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Professional cone 6 gloss glazes designed to yield consistent and reliable results for both the studio and classroom.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2010/06/BLUE-ICE.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-glp36-blue-ice/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG100",
+    "name": "RG101",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/80-20-clear-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg100-80-20-clear/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG101",
+    "name": "80/20 White",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/80-20-white-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg101-80-20-white/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG102",
+    "name": "RG111",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/alligator-patina-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg102-alligator-patina/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG111",
+    "name": "Apple Crackle",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/apple-crackle-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg111-apple-crackle/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG115",
+    "name": "RG123",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/black-luster-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg115-black-luster/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG123",
+    "name": "Blue Gold",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/blue-gold-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg123-blue-gold-dry/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG116",
+    "name": "RG106",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/blue-luster-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg116-blue-luster/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG106",
+    "name": "Copper Halo Wash",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/NEW-PHOTO-COMING-SOON-300x300-12.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg106-copper-halo-wash/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG107",
+    "name": "RG104",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/copper-luster-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg107-copper-luster/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG104",
+    "name": "Copper Penny",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/copper-penny-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg104-copper-penny/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG113",
+    "name": "RG103",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/copper-sands-6-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-cac-raku-copper-sand/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG103",
+    "name": "Dolphin Blue",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/dolphin-blue-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg103-dolphin-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG108",
+    "name": "RG118",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-214-300x300-3.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg108-fc-ball-white-slip/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG118",
+    "name": "Heavy Metal",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/Heavy-Metal-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg118-heavy-metal/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG126",
+    "name": "RG125",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/michigan-patina-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg126-michigan-patina/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG125",
+    "name": "Naked Raku",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/naked-raku-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg125-naked-raku/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG132",
+    "name": "RG120",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-220-300x300-1.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg132-naked-raku-top-coat-dry/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG120",
+    "name": "New Black",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-black-6-600x600-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg120-new-black/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG110",
+    "name": "Pac Man",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/pac-man-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg110-pac-man/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG112",
+    "name": "RG121",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/pipenburg-patina-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg112-pipenburg-patina/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG121",
+    "name": "Plum Blue",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/plum-blue-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg121-plum-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG119",
+    "name": "RG131",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/purple-luster-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg119-purple-luster/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "code": "RG131",
+    "name": "Rainbow Raku",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Mid-range rainbow glazes for bright, expressive cone 4-6 surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/new-photo-coming-soon-226-300x300-3.png",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg131-rainbow-raku/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG134",
+    "name": "Raku Sealer --- --- 5.00 9.00 30.00 ---",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/RG134-1-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg134-raku-sealer/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG109",
+    "name": "RG114",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/red-bronze-6-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg109-red-bronze/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG114",
+    "name": "Red Luster",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/red-luster-6-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg114-red-luster/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "code": "RG105",
+    "name": "RG134",
+    "cone": "Cone 04 / Cone 06",
+    "description": "Specialty raku glazes and companion products for cone 04-06 raku firing.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/tin-can-6-600x600-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-raku-glaze-rg105-tin-can-patina/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL607",
+    "name": "Cantaloupe",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2022/12/CANTALOUPE.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-satin-matte-cantaloupe/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL608",
+    "name": "Cherry Blossom",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/CHERRY-BLOSSOM.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl608-cherry-blossom/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL609",
+    "name": "Cornsilk",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/CORNSILK.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl609-cornsilk/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL610",
+    "name": "Denim",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/DENIM.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl610-denim/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL612",
+    "name": "Eggplant",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/EGGPLANT.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl612-eggplant/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL605",
+    "name": "Fern",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/FERN.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl605-fern/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL600",
+    "name": "Frost Satin Clear",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/FROST-SATIN-CLEAR_.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl600-frost-satin-clear/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL601",
+    "name": "Linen",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/LINEN.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl601-linen/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL604",
+    "name": "Pistachio",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/PISTACHIO.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl604-pistachio/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL602",
+    "name": "Raven",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/RAVEN.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl602-raven/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL611",
+    "name": "Ruby",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/RUBY.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl611-ruby/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL603",
+    "name": "Smoke",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/SMOKE.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl603-smoke/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "code": "GL606",
+    "name": "Tamarack",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Warm cone 5 satin-matte glazes suitable for artware and decorative work.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2012/09/TAMARACK.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl606-tamarack/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Strontium Matte Glazes",
+    "code": "GL806",
+    "name": "Chalk",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Reactive cone 4-6 art glazes with dynamic breaking and varied sculptural surfaces; not intended for food-contact surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2022/12/CHALK.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-chalk/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Strontium Matte Glazes",
+    "code": "GL805",
+    "name": "Coal",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Reactive cone 4-6 art glazes with dynamic breaking and varied sculptural surfaces; not intended for food-contact surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/COAL.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl805-coal/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Strontium Matte Glazes",
+    "code": "GL803",
+    "name": "Forest Green",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Reactive cone 4-6 art glazes with dynamic breaking and varied sculptural surfaces; not intended for food-contact surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/FOREST-GREEN.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl803-forest-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Strontium Matte Glazes",
+    "code": "GL801",
+    "name": "Jade",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Reactive cone 4-6 art glazes with dynamic breaking and varied sculptural surfaces; not intended for food-contact surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/JADE.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl801-jade/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Strontium Matte Glazes",
+    "code": "GL800",
+    "name": "Periwinkle",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Reactive cone 4-6 art glazes with dynamic breaking and varied sculptural surfaces; not intended for food-contact surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/PERIWINKLE.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl800-periwinkle/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Strontium Matte Glazes",
+    "code": "GL804",
+    "name": "Sapphire",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Reactive cone 4-6 art glazes with dynamic breaking and varied sculptural surfaces; not intended for food-contact surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/SAPPHIRE.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl804-sapphire/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Strontium Matte Glazes",
+    "code": "GL802",
+    "name": "Weathered Bronze",
+    "cone": "Cone 4 / Cone 6",
+    "description": "Reactive cone 4-6 art glazes with dynamic breaking and varied sculptural surfaces; not intended for food-contact surfaces.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/2009/06/WEATHERED-BRONZE.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-mid-range-glazes-gl802-weathered-bronze/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE106",
+    "name": "EPK $7.95 $12.95 $40.00",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_epk-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te106-terra-sigillata-epk/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE102",
+    "name": "Gold Art $7.95 $12.95 $40.00",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/Terra-Sigillata_Gold-Art-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te102-terra-sigillata-gold-art/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE104",
+    "name": "Grolleg $7.95 $12.95 $40.00",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_grolleg-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te104-terra-sigillata-grolleg/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE100",
+    "name": "OM4 Ball Clay $7.95 $12.95 $40.00",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_om4-4-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te100-terra-sigillata-om4-ball-clay/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE101",
+    "name": "Red Art $7.95 $12.95 $40.00",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_red-art-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te101-terra-sigillata-red-art/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE105",
+    "name": "Sagger Xx $7.95 $12.95 $40.00",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/Terra-Sigillata_Saggar-XX-600x600-4.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te105-terra-sigillata-sagger-xx/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE108",
+    "name": "Baby Blue $14.95 $24.95 $79.95",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_baby-blue-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te108-colored-terra-sigillata-baby-blue/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE110",
+    "name": "Green $14.95 $24.95 $79.95",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_green-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te110-colored-terra-sigillata-green/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE115",
+    "name": "Lavender $14.95 $24.95 $79.95",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_lavender-4-600x600-1.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te115-colored-terra-sigillata-lavender/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE113",
+    "name": "Orange $14.95 $24.95 $79.95",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_orange-4-600x600-2.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te113-colored-terra-sigillata-orange/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE111",
+    "name": "Pink $14.95 $24.95 $79.95",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_pink-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te111-colored-terra-sigillata-pink/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE114",
+    "name": "Red $14.95 $24.95 $79.95",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_red-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te114-colored-terra-sigillata-red/"
+  },
+  {
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "code": "TE112",
+    "name": "Yellow $14.95 $24.95 $79.95",
+    "cone": null,
+    "description": "Terra sigillata for polished low-fire and atmospheric surfaces, usable as a slip or engobe at higher temperatures.",
+    "imageUrl": "https://clayartcenter.net/wp-content/uploads/terra-sigillata_yellow-4-600x600-3.jpg",
+    "sourceUrl": "https://clayartcenter.net/product/clay-art-center-te112-colored-terra-sigillata-yellow/"
+  }
+]

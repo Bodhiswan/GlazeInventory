@@ -31,21 +31,13 @@ import { GlazeUserStateServer } from "./_components/glaze-user-state-server";
 import { GlazeUserStateSkeleton } from "./_components/glaze-user-state-skeleton";
 import { GlazeSignUpCta } from "./_components/glaze-sign-up-cta";
 
-// ─── SEO: dynamic metadata ──────────────────────────────────────────────────
-
-function resolveGlaze(glazeId: string) {
-  const detail = getGlazeStaticDetail(glazeId);
-  if (detail) return detail.glaze;
-  return null; // async DB lookup skipped for metadata — covers 99% of glazes
-}
-
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ glazeId: string }>;
 }): Promise<Metadata> {
   const { glazeId } = await params;
-  const glaze = resolveGlaze(glazeId);
+  const glaze = await resolveGlazeById(glazeId);
 
   if (!glaze) {
     return { title: "Glaze not found" };

@@ -6,6 +6,7 @@ import { PageHeader } from "@/components/page-header";
 import { GuideErrorReport } from "@/components/guide/guide-error-report";
 import { GuideToc } from "@/components/guide/guide-toc";
 import { GuideTocMobile } from "@/components/guide/guide-toc";
+import { getBaseUrl } from "@/lib/env";
 
 import { GUIDE_PARTS, getGuidePart } from "../guide-data";
 import { ApplicationContent, applicationToc } from "./application-content";
@@ -91,6 +92,7 @@ export default async function GuideSubpage({
 
   const { toc, Component } = entry;
   const { prev, next } = getPrevNext(slug);
+  const baseUrl = getBaseUrl();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -102,7 +104,7 @@ export default async function GuideSubpage({
     isPartOf: {
       "@type": "Article",
       name: "The Complete Guide to Glazing Pottery",
-      url: "/guides/glazing-pottery",
+      url: `${baseUrl}/guides/glazing-pottery`,
     },
   };
 

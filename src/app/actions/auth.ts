@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 import { getBaseUrl } from "@/lib/env";
+import { verifyTurnstile } from "@/lib/turnstile";
 import { revalidateWorkspace, requireLiveSupabase } from "./_shared";
 
 const magicLinkSchema = z.object({
@@ -70,7 +71,31 @@ function friendlyAuthError(message: string): string {
   return message;
 }
 
+async function requireTurnstileOrRedirect(
+  formData: FormData,
+  redirectPath: string,
+) {
+  const token = formData.get("turnstileToken")?.toString() ?? null;
+  const verified = await verifyTurnstile(token);
+
+  if (!verified) {
+    redirect(
+      `${redirectPath}${redirectPath.includes("?") ? "&" : "?"}error=${encodeURIComponent(
+        "Complete the security check and try again.",
+      )}`,
+    );
+  }
+}
+
+function withError(redirectPath: string, message: string) {
+  return `${redirectPath}${redirectPath.includes("?") ? "&" : "?"}error=${encodeURIComponent(
+    message,
+  )}`;
+}
+
 export async function sendMagicLinkAction(formData: FormData) {
+  await requireTurnstileOrRedirect(formData, "/auth/sign-in");
+
   const parsed = magicLinkSchema.safeParse({
     email: formData.get("email")?.toString().trim(),
   });
@@ -102,6 +127,11 @@ export async function sendMagicLinkAction(formData: FormData) {
 export async function signInWithPasswordAction(formData: FormData) {
   const returnTo = formData.get("returnTo")?.toString().trim() || null;
   const safeReturnTo = returnTo && returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/dashboard";
+  const signInPath = returnTo
+    ? `/auth/sign-in?redirectTo=${encodeURIComponent(returnTo)}`
+    : "/auth/sign-in";
+
+  await requireTurnstileOrRedirect(formData, signInPath);
 
   const parsed = passwordSignInSchema.safeParse({
     email: formData.get("email")?.toString().trim(),
@@ -138,6 +168,17 @@ export async function signInWithPasswordAction(formData: FormData) {
 }
 
 export async function signUpWithPasswordAction(formData: FormData) {
+  const redirectTo = formData.get("redirectTo")?.toString().trim() || null;
+  const safeRedirectTo =
+    redirectTo && redirectTo.startsWith("/") && !redirectTo.startsWith("//")
+      ? redirectTo
+      : null;
+  const signUpPath = safeRedirectTo
+    ? `/auth/sign-up?redirectTo=${encodeURIComponent(safeRedirectTo)}`
+    : "/auth/sign-up";
+
+  await requireTurnstileOrRedirect(formData, signUpPath);
+
   const parsed = passwordSignUpSchema.safeParse({
     displayName: formData.get("displayName")?.toString().trim(),
     email: formData.get("email")?.toString().trim(),
@@ -147,13 +188,13 @@ export async function signUpWithPasswordAction(formData: FormData) {
 
   if (!parsed.success) {
     const firstIssue = parsed.error.issues[0]?.message ?? "Check your account details";
-    redirect(`/auth/sign-in?error=${encodeURIComponent(firstIssue)}`);
+    redirect(withError(signUpPath, firstIssue));
   }
 
   const supabase = await createSupabaseServerClient();
 
   if (!supabase) {
-    redirect("/auth/sign-in?error=Supabase%20is%20not%20configured");
+    redirect(withError(signUpPath, "Supabase is not configured"));
   }
 
   // Reject duplicate display names (case-insensitive) before creating the auth user.
@@ -165,7 +206,7 @@ export async function signUpWithPasswordAction(formData: FormData) {
 
   if (existingWithName && existingWithName.length > 0) {
     redirect(
-      `/auth/sign-in?error=${encodeURIComponent("That display name is already taken — please choose another.")}`,
+      withError(signUpPath, "That display name is already taken — please choose another."),
     );
   }
 
@@ -181,10 +222,14 @@ export async function signUpWithPasswordAction(formData: FormData) {
   });
 
   if (error) {
-    redirect(`/auth/sign-in?error=${encodeURIComponent(friendlyAuthError(error.message))}`);
+    redirect(withError(signUpPath, friendlyAuthError(error.message)));
   }
 
-  redirect("/auth/sign-in?registered=1");
+  redirect(
+    safeRedirectTo
+      ? `/auth/sign-in?registered=1&redirectTo=${encodeURIComponent(safeRedirectTo)}`
+      : "/auth/sign-in?registered=1",
+  );
 }
 
 export async function signOutAction() {
@@ -206,6 +251,8 @@ export async function signOutAction() {
 }
 
 export async function sendPasswordResetAction(formData: FormData) {
+  await requireTurnstileOrRedirect(formData, "/auth/forgot-password");
+
   const parsed = passwordResetRequestSchema.safeParse({
     email: formData.get("email")?.toString().trim(),
   });
