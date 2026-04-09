@@ -17,6 +17,7 @@ import { extractConeLabel, getOrderedPostGlazes } from "./combination-utils";
 
 const INITIAL_TILE_BATCH = 48;
 const TILE_BATCH_STEP = 36;
+const COMBINATIONS_SHUFFLE_SEED = 0.38196601125;
 
 export type CombinationsView = "all" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
 const DEFAULT_AVAILABLE_VIEWS: CombinationsView[] = [
@@ -405,21 +406,18 @@ export function useCombinationsBrowser({
     [userExampleTiles, viewerUserId],
   );
 
-  /* Stable random seed per session so shuffle order doesn't change on re-render */
-  const [shuffleSeed] = useState(() => Math.random());
-
   /* Every tile in the full pool (for brand extraction), shuffled for variety */
   const allTiles = useMemo(() => {
     const tiles = [...exampleTiles, ...communityPostTiles, ...userExampleTiles];
     // Fisher-Yates shuffle with seeded PRNG for stability
-    let seed = Math.floor(shuffleSeed * 2147483647) || 1;
+    let seed = Math.floor(COMBINATIONS_SHUFFLE_SEED * 2147483647) || 1;
     for (let i = tiles.length - 1; i > 0; i--) {
       seed = (seed * 16807) % 2147483647;
       const j = Math.floor(seed % (i + 1));
       [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
     }
     return tiles;
-  }, [exampleTiles, communityPostTiles, userExampleTiles, shuffleSeed]);
+  }, [exampleTiles, communityPostTiles, userExampleTiles]);
 
   /* --- view filter counts (for filter tiles) --- */
 

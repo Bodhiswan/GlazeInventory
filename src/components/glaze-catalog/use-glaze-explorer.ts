@@ -30,6 +30,7 @@ import {
 
 const INITIAL_GLAZE_BATCH = 48;
 const GLAZE_BATCH_STEP = 36;
+const GLAZE_GRADIENT_HUE_OFFSET = 0.173;
 
 export type IndexedGlaze = {
   glaze: Glaze;
@@ -388,8 +389,6 @@ export function useGlazeExplorer({
       coneFilters.length,
   );
 
-  const [hueOffset] = useState(() => Math.random());
-
   const gradientSortedGlazes = useMemo(
     () =>
       [...sortedGlazes].sort((left, right) => {
@@ -401,9 +400,13 @@ export function useGlazeExplorer({
         }
 
         const leftPos =
-          leftFlow.bucket === 0 ? (leftFlow.position + hueOffset) % 1 : leftFlow.position;
+          leftFlow.bucket === 0
+            ? (leftFlow.position + GLAZE_GRADIENT_HUE_OFFSET) % 1
+            : leftFlow.position;
         const rightPos =
-          rightFlow.bucket === 0 ? (rightFlow.position + hueOffset) % 1 : rightFlow.position;
+          rightFlow.bucket === 0
+            ? (rightFlow.position + GLAZE_GRADIENT_HUE_OFFSET) % 1
+            : rightFlow.position;
 
         if (Math.abs(leftPos - rightPos) > 0.0001) {
           return leftPos - rightPos;
@@ -415,7 +418,7 @@ export function useGlazeExplorer({
 
         return formatGlazeLabel(left.glaze).localeCompare(formatGlazeLabel(right.glaze));
       }),
-    [sortedGlazes, hueOffset],
+    [sortedGlazes],
   );
 
   const displayGlazes = useMemo(
