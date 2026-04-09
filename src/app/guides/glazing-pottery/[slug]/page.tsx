@@ -10,6 +10,7 @@ import { GuideTocMobile } from "@/components/guide/guide-toc";
 import { GUIDE_PARTS, getGuidePart } from "../guide-data";
 import { ApplicationContent, applicationToc } from "./application-content";
 import { DecorativeContent, decorativeToc } from "./decorative-content";
+import { FiringContent, firingToc } from "./firing-content";
 import { FoundationsContent, foundationsToc } from "./foundations-content";
 import { LayeringContent, layeringToc } from "./layering-content";
 import {
@@ -28,6 +29,7 @@ const CONTENT: Record<
 > = {
   application: { toc: applicationToc, Component: ApplicationContent },
   decorative: { toc: decorativeToc, Component: DecorativeContent },
+  firing: { toc: firingToc, Component: FiringContent },
   foundations: { toc: foundationsToc, Component: FoundationsContent },
   layering: { toc: layeringToc, Component: LayeringContent },
   troubleshooting: {

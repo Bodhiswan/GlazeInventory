@@ -45,7 +45,7 @@ export const GUIDE_PARTS: GuidePart[] = [
     title: "Firing Considerations",
     description:
       "How oxidation, reduction, ramp rate, cooling, and kiln type affect your glaze results.",
-    status: "coming-soon",
+    status: "live",
   },
   {
     slug: "troubleshooting",
