@@ -3,6 +3,8 @@ from __future__ import annotations
 import colorsys
 import concurrent.futures
 import json
+import math
+from collections import deque
 from io import BytesIO
 from pathlib import Path
 
@@ -23,6 +25,11 @@ LAGUNA_INPUT_PATH = Path("data/vendors/laguna-glazes.json")
 NORTHCOTE_INPUT_PATH = Path("data/vendors/northcote-glazes.json")
 BOTZ_INPUT_PATH = Path("data/vendors/botz-glazes.json")
 OUTPUT_PATH = Path("data/vendors/vendor-visual-traits.json")
+BRIGHT_NEUTRAL_CHANNEL_DELTA = 18
+GLARE_MAX_COMPONENT_SHARE = 0.04
+GLARE_MIN_VALUE = 0.955
+GLARE_MAX_SATURATION = 0.12
+WHITE_DOMINANT_SHARE = 0.34
 
 
 def classify_pixel(r: int, g: int, b: int) -> str:
@@ -90,8 +97,12 @@ def classify_pixel(r: int, g: int, b: int) -> str:
     return "Pink"
 
 
+def rgb_to_hsv(r: int, g: int, b: int) -> tuple[float, float, float]:
+    return colorsys.rgb_to_hsv(r / 255, g / 255, b / 255)
+
+
 def is_bright_neutral(r: int, g: int, b: int) -> bool:
-    return max(r, g, b) >= 232 and max(r, g, b) - min(r, g, b) <= 18
+    return max(r, g, b) >= 232 and max(r, g, b) - min(r, g, b) <= BRIGHT_NEUTRAL_CHANNEL_DELTA
 
 
 def infer_background_color(image: Image.Image) -> tuple[int, int, int] | None:
@@ -135,6 +146,116 @@ def matches_background(pixel: tuple[int, int, int], background: tuple[int, int, 
     )
 
 
+def is_glare_candidate(pixel: tuple[int, int, int], background: tuple[int, int, int] | None) -> bool:
+    if matches_background(pixel, background):
+        return False
+
+    red, green, blue = pixel
+    _hue, sat, val = rgb_to_hsv(red, green, blue)
+    return val >= GLARE_MIN_VALUE and sat <= GLARE_MAX_SATURATION
+
+
+def get_center_weight(x: int, y: int, width: int, height: int) -> float:
+    normalized_x = ((x + 0.5) / max(width, 1) - 0.5) * 2
+    normalized_y = ((y + 0.5) / max(height, 1) - 0.5) * 2
+    distance = math.sqrt(normalized_x ** 2 + normalized_y ** 2) / math.sqrt(2)
+    edge_penalty = min(distance, 1.0)
+    return 0.4 + (1 - edge_penalty) ** 1.45
+
+
+def component_has_surface_neighbors(
+    component: list[tuple[int, int]],
+    candidate_mask: list[list[bool]],
+    pixels,
+    width: int,
+    height: int,
+    background: tuple[int, int, int] | None,
+) -> bool:
+    surface_neighbors = 0
+    border_neighbors = 0
+
+    for x, y in component:
+        for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            nx = x + dx
+            ny = y + dy
+
+            if nx < 0 or ny < 0 or nx >= width or ny >= height:
+                continue
+
+            if candidate_mask[ny][nx]:
+                continue
+
+            border_neighbors += 1
+            neighbor = pixels[nx, ny]
+
+            if matches_background(neighbor, background):
+                continue
+
+            red, green, blue = neighbor
+            _hue, sat, val = rgb_to_hsv(red, green, blue)
+            chroma = max(red, green, blue) - min(red, green, blue)
+
+            if sat >= 0.16 or val <= 0.9 or chroma >= 24:
+                surface_neighbors += 1
+
+    if border_neighbors == 0:
+        return False
+
+    return surface_neighbors / border_neighbors >= 0.28
+
+
+def detect_glare_mask(image: Image.Image, background: tuple[int, int, int] | None) -> set[tuple[int, int]]:
+    width, height = image.size
+    pixels = image.load()
+    candidate_mask = [
+        [is_glare_candidate(pixels[x, y], background) for x in range(width)]
+        for y in range(height)
+    ]
+    visited = [[False for _ in range(width)] for _ in range(height)]
+    total_pixels = max(width * height, 1)
+    max_component_pixels = max(8, round(total_pixels * GLARE_MAX_COMPONENT_SHARE))
+    glare_pixels: set[tuple[int, int]] = set()
+
+    for y in range(height):
+        for x in range(width):
+            if visited[y][x] or not candidate_mask[y][x]:
+                continue
+
+            queue = deque([(x, y)])
+            visited[y][x] = True
+            component: list[tuple[int, int]] = []
+
+            while queue:
+                current_x, current_y = queue.popleft()
+                component.append((current_x, current_y))
+
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    nx = current_x + dx
+                    ny = current_y + dy
+
+                    if nx < 0 or ny < 0 or nx >= width or ny >= height:
+                        continue
+
+                    if visited[ny][nx] or not candidate_mask[ny][nx]:
+                        continue
+
+                    visited[ny][nx] = True
+                    queue.append((nx, ny))
+
+            if len(component) > max_component_pixels:
+                continue
+
+            if component_has_surface_neighbors(component, candidate_mask, pixels, width, height, background):
+                glare_pixels.update(component)
+
+    return glare_pixels
+
+
+def rgb_to_hex(rgb: tuple[int, int, int]) -> str:
+    red, green, blue = rgb
+    return f"#{red:02x}{green:02x}{blue:02x}"
+
+
 def normalize_code(value: str | None) -> str:
     return "".join(character for character in (value or "").upper() if character.isalnum())
 
@@ -143,7 +264,7 @@ def make_key(brand: str, code: str | None) -> str:
     return f"{brand}|{normalize_code(code)}"
 
 
-def infer_colors(image_url: str) -> tuple[list[str], dict[str, float]]:
+def infer_colors(image_url: str) -> tuple[list[str], dict[str, float], list[dict[str, object]]]:
     response = requests.get(
         image_url,
         headers={"User-Agent": USER_AGENT},
@@ -161,9 +282,11 @@ def infer_colors(image_url: str) -> tuple[list[str], dict[str, float]]:
         image = image.crop((left, top, right, bottom))
         image.thumbnail((72, 72))
         background_color = infer_background_color(image)
+        glare_pixels = detect_glare_mask(image, background_color)
 
-        counts: dict[str, int] = {}
-        total = 0
+        counts: dict[str, float] = {}
+        rgb_totals: dict[str, tuple[float, float, float]] = {}
+        total = 0.0
 
         pixels = image.load()
 
@@ -172,32 +295,72 @@ def infer_colors(image_url: str) -> tuple[list[str], dict[str, float]]:
                 red, green, blue = pixels[x, y]
                 if matches_background((red, green, blue), background_color):
                     continue
+                if (x, y) in glare_pixels:
+                    continue
                 label = classify_pixel(red, green, blue)
-                counts[label] = counts.get(label, 0) + 1
-                total += 1
+                weight = get_center_weight(x, y, image.width, image.height)
+                counts[label] = counts.get(label, 0.0) + weight
+                current_red, current_green, current_blue = rgb_totals.get(label, (0.0, 0.0, 0.0))
+                rgb_totals[label] = (
+                    current_red + red * weight,
+                    current_green + green * weight,
+                    current_blue + blue * weight,
+                )
+                total += weight
 
-        if total == 0:
+        if total <= 0:
             for y in range(image.height):
                 for x in range(image.width):
                     red, green, blue = pixels[x, y]
                     label = classify_pixel(red, green, blue)
-                    counts[label] = counts.get(label, 0) + 1
-                    total += 1
+                    weight = get_center_weight(x, y, image.width, image.height)
+                    counts[label] = counts.get(label, 0.0) + weight
+                    current_red, current_green, current_blue = rgb_totals.get(label, (0.0, 0.0, 0.0))
+                    rgb_totals[label] = (
+                        current_red + red * weight,
+                        current_green + green * weight,
+                        current_blue + blue * weight,
+                    )
+                    total += weight
 
     ranked = sorted(counts.items(), key=lambda item: item[1], reverse=True)
-    ranked = [(label, count) for label, count in ranked if label != "White"]
-    kept = [label for label, count in ranked if count / max(total, 1) >= 0.045][:5]
+    white_share = counts.get("White", 0.0) / max(total, 1.0)
+
+    if white_share < WHITE_DOMINANT_SHARE and len(ranked) > 1:
+        ranked = [(label, count) for label, count in ranked if label != "White"]
+
+    kept = [label for label, count in ranked if count / max(total, 1.0) >= 0.045][:5]
 
     if not kept:
         kept = [label for label, _count in ranked[:3]]
 
     weights = {
-        label: round(count / max(total, 1), 4)
+        label: round(count / max(total, 1.0), 4)
         for label, count in ranked
-        if count / max(total, 1) >= 0.015
+        if count / max(total, 1.0) >= 0.015
     }
 
-    return kept, weights
+    palette = []
+
+    for label, count in ranked[:4]:
+        if count / max(total, 1.0) < 0.03:
+            continue
+
+        total_red, total_green, total_blue = rgb_totals[label]
+        average_rgb = (
+            round(total_red / max(count, 0.0001)),
+            round(total_green / max(count, 0.0001)),
+            round(total_blue / max(count, 0.0001)),
+        )
+        palette.append(
+            {
+                "label": label,
+                "hex": rgb_to_hex(average_rgb),
+                "weight": round(count / max(total, 1.0), 4),
+            }
+        )
+
+    return kept, weights, palette
 
 
 def process_entry(brand: str, entry: dict[str, str | None]) -> tuple[str, dict[str, object]]:
@@ -209,13 +372,13 @@ def process_entry(brand: str, entry: dict[str, str | None]) -> tuple[str, dict[s
         raise RuntimeError(f"{brand} entry is missing a code.")
 
     if not image_url:
-        return key, {"imageColors": [], "imageColorWeights": {}}
+        return key, {"imageColors": [], "imageColorWeights": {}, "imagePalette": []}
 
     try:
-        colors, weights = infer_colors(image_url)
-        return key, {"imageColors": colors, "imageColorWeights": weights}
+        colors, weights, palette = infer_colors(image_url)
+        return key, {"imageColors": colors, "imageColorWeights": weights, "imagePalette": palette}
     except Exception:
-        return key, {"imageColors": [], "imageColorWeights": {}}
+        return key, {"imageColors": [], "imageColorWeights": {}, "imagePalette": []}
 
 
 def load_json(path: Path) -> object:
