@@ -4,41 +4,35 @@
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
 
-# Local Test Environment
+# Release ownership
 
-## When to use it
-- Any feature that touches data, auth, server actions, or RLS policies.
-- New pages that read from the database.
-- Changes to Supabase migrations.
+- Codex is the default owner for Vercel, production pushes, deploy checks, and live URL verification unless the user explicitly delegates that to another agent.
+- Do not assume a branch push means production is live. Verify the deployed URL after release.
 
-## When to skip it
-- Pure CSS/styling changes.
-- Static content updates.
-- Changes to `demo-data.ts` or client-only logic.
+# Release workflow
 
-## Workflow
-1. Before starting data-touching work, run `npm run dev:test` if not already running.
-2. After making changes, use Claude Preview to open `http://localhost:3000` and visually verify.
-3. Test the happy path AND at least one edge case (logged out, empty data, etc.).
-4. If the feature involves RLS or auth, test as both the seeded test user and as a logged-out visitor.
-5. Before declaring work complete, confirm `npm run build` passes and the dev server renders without console errors.
+Use this whenever the user asks to "push live", "deploy", "publish", or otherwise make changes public.
 
-## Test user
-- **Email:** `test@glazelibrary.app`
-- **Password:** `testpassword123`
-- **Login via Inbucket:** Open `http://localhost:54324` and click the magic link in the test user's inbox.
+1. Make the code/content changes on the working branch.
+2. If the change adds or materially updates a user-facing feature or guide section, update `src/lib/changelog.ts` before the release push.
+3. Run `npm run build` before release when the change affects app code.
+4. If the work is on a feature branch, commit and push that branch first.
+5. Promote the intended release changes to `main` without dragging in unrelated local work.
+6. Verify the production deployment with Vercel tools when available.
+7. Verify the public URL directly after deploy and report the result clearly.
 
-## Key URLs (local)
-| Service          | URL                          |
-|------------------|------------------------------|
-| App              | http://localhost:3000         |
-| Supabase Studio  | http://localhost:54323        |
-| Inbucket (email) | http://localhost:54324        |
-| Supabase API     | http://localhost:54321        |
-| PostgreSQL       | postgresql://postgres:postgres@localhost:54322/postgres |
+# Guide publishing workflow
 
-## Teardown
-Run `npm run dev:test:stop` to stop local Supabase and free Docker resources.
+For guide-section releases, use this checklist:
+
+1. Research files written to the relevant `data/guides/research/<topic>/` folder.
+2. Arbitration notes added to `data/guides/research/arbitration/conflicts.md` when there is a real disagreement.
+3. Content component created under `src/app/guides/glazing-pottery/[slug]/`.
+4. `src/app/guides/glazing-pottery/[slug]/page.tsx` wired to the new content.
+5. `src/app/guides/glazing-pottery/guide-data.ts` updated.
+6. `src/app/sitemap.ts` updated if the section is live.
+7. `src/lib/changelog.ts` updated before the release push.
+8. Production guide URL verified after deploy.
 
 # Pending cleanup
 
