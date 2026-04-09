@@ -61,10 +61,17 @@ export function matchesGlazeSearch(searchIndex: string, query: string) {
     return true;
   }
 
-  return (
-    (normalizedQuery ? searchIndex.includes(normalizedQuery) : false) ||
-    (compactQuery.length >= 2 ? searchIndex.includes(compactQuery) : false)
-  );
+  // Match each whitespace-separated token independently so that queries
+  // spanning multiple fields (e.g. "coyote really red" → brand + name)
+  // still match, regardless of the order fields appear in the index.
+  if (normalizedQuery) {
+    const tokens = normalizedQuery.split(" ").filter(Boolean);
+    if (tokens.every((token) => searchIndex.includes(token))) {
+      return true;
+    }
+  }
+
+  return compactQuery.length >= 2 && searchIndex.includes(compactQuery);
 }
 
 function compactWhitespace(value: string) {
