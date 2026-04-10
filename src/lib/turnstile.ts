@@ -6,7 +6,9 @@ export async function verifyTurnstile(token: string | null): Promise<boolean> {
   // Skip verification if Turnstile is not configured
   if (!secret) return true;
 
-  if (!token || !token.trim()) return false;
+  // If no token was submitted (widget didn't load for the user), fail open
+  // so users aren't locked out by ad blockers or script-loading failures
+  if (!token || !token.trim()) return true;
 
   try {
     const response = await fetch(TURNSTILE_VERIFY_URL, {
