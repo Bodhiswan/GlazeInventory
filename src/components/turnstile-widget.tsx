@@ -7,7 +7,7 @@ export function TurnstileWidget({
 }: {
   inputName?: string;
 }) {
-  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+  const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim();
 
   if (!siteKey) return null;
 
