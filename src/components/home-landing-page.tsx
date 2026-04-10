@@ -73,6 +73,11 @@ export function HomeLandingPage({
             <Link href="/combinations" className={buttonVariants({ variant: "ghost", className: "w-full sm:w-auto" })}>
               Explore combinations
             </Link>
+            {!viewer ? (
+              <Link href="/auth/sign-in" className={buttonVariants({ variant: "ghost", className: "w-full sm:w-auto" })}>
+                Sign in
+              </Link>
+            ) : null}
             <Link href={primaryHref} className={buttonVariants({ className: "w-full sm:w-auto" })}>
               {primaryLabel}
             </Link>
