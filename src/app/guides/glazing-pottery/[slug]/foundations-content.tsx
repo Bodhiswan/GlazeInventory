@@ -4,6 +4,7 @@ import {
   Cite,
   Reference,
 } from "@/components/guide/citation";
+import { GuideVideo } from "@/components/guide/guide-video";
 import type { TocItem } from "@/components/guide/guide-toc";
 
 export const foundationsToc: TocItem[] = [
@@ -235,6 +236,12 @@ export function FoundationsContent() {
           ~5 seconds, or evacuates a drip cup in 15–25 seconds.
           <Cite id="11">Georgies PDF</Cite>
         </p>
+        <GuideVideo
+          pending
+          title="Specific gravity walkthrough"
+          channel="TBD — audit required"
+          note="Looking for a 5–10 min demo of the graduated-cylinder + scale method on a studio glaze bucket. Ideally Sue McLeod Ceramics, John Britt, or an AMACO official video."
+        />
       </GuideSection>
 
       <GuideSection id="deflocculants-flocculants" title="2.3 Deflocculants & Flocculants" level={3}>
@@ -350,6 +357,12 @@ export function FoundationsContent() {
           Tip: place the pot on a banding wheel, spin it, and hold a
           wax-loaded brush against the foot for a clean, even line.
         </p>
+        <GuideVideo
+          pending
+          title="Waxing the foot on a banding wheel"
+          channel="TBD — audit required"
+          note="Short demo of the banding-wheel + loaded brush technique for a clean resist line around the foot. 2–5 min. Ingleton Pottery, Old Forge Creations, or a Seattle Pottery Supply demo would all fit."
+        />
       </GuideSection>
 
       {/* ── References ── */}

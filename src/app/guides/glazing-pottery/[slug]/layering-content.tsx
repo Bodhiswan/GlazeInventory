@@ -4,6 +4,7 @@ import {
   Cite,
   Reference,
 } from "@/components/guide/citation";
+import { GuideVideo } from "@/components/guide/guide-video";
 import type { TocItem } from "@/components/guide/guide-toc";
 
 export const layeringToc: TocItem[] = [
@@ -521,6 +522,12 @@ export function LayeringContent() {
           incompatibility.
           <Cite id="4">Digitalfire Glossary, &ldquo;Glaze Layering&rdquo;</Cite>
         </p>
+        <GuideVideo
+          pending
+          title="Brushing a base coat + reactive top coat"
+          channel="TBD — audit required"
+          note="Looking for a practical demo applying 2–3 base coats with cross-hatched strokes, then brushing a reactive or fluid top coat. Mayco Stroke & Coat + Jungle Gems, or AMACO Potter's Choice over a base, are the most common studio pairings. 6–15 min."
+        />
       </GuideSection>
 
       <GuideSection id="thickness-control" title="10.2 Thickness Control for Multiple Layers" level={3}>
@@ -888,6 +895,12 @@ export function LayeringContent() {
           <Cite id="37">Humanities LibreTexts</Cite>
           <Cite id="36">Ceramic Arts Network, &ldquo;How to Keep Good Records&rdquo;</Cite>
         </p>
+        <GuideVideo
+          pending
+          title="Building a batch of layering test tiles"
+          channel="TBD — audit required"
+          note="Looking for a walk-through that covers vertical + horizontal shapes, labelling on the back, and the advantage of making 50+ tiles in advance. John Britt's 'How to Make Glaze Test Tiles' on Ceramic Arts Network is the canonical pick."
+        />
       </GuideSection>
 
       <GuideSection id="blend-line-testing" title="11.2 Blend-Line Testing" level={3}>
