@@ -12,7 +12,7 @@ async function fetchCustomGlazeFromDb(glazeId: string): Promise<Glaze | null> {
   if (!supabase) return null;
   const { data } = await supabase
     .from("glazes")
-    .select("id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id")
+    .select("id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id,finishes,families,brand_line_id")
     .eq("id", glazeId)
     .eq("source_type", "nonCommercial")
     .maybeSingle();

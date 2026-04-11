@@ -1,0 +1,1370 @@
+[
+  {
+    "id": "300284cc-8c01-5e31-aae5-d69cdd9409d0",
+    "brand": "AMACO",
+    "line": "Celadon",
+    "families": [
+      "Celadon",
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "71bc1dbf-f0a5-533d-acc8-04d57c97e0c8",
+    "brand": "AMACO",
+    "line": "Cosmos",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "7b4e5a97-2a3b-5edf-ac75-a615a6e6acb4",
+    "brand": "AMACO",
+    "line": "Crawls",
+    "families": [
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "2d7fd0f2-dae6-5e81-a220-ec8c3292f2ca",
+    "brand": "AMACO",
+    "line": "Dipping & Layering",
+    "families": [
+      "Durable functional",
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "40c2c6ac-f2f4-5ddf-94a5-38392dc2aef6",
+    "brand": "AMACO",
+    "line": "Dipping Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "cd6de412-7959-511b-a193-592c7884d9c8",
+    "brand": "AMACO",
+    "line": "High Fire",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "32c4b7ee-a5f1-550f-b9f9-797aea83929c",
+    "brand": "AMACO",
+    "line": "Kiln Ice",
+    "families": [
+      "Reactive effects",
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "28ab0741-6210-5e02-9652-70d2efed820e",
+    "brand": "AMACO",
+    "line": "Liquid Underglaze",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "4799eda5-bfb5-5725-9d66-f584fe3e5096",
+    "brand": "AMACO",
+    "line": "Low Fire Gloss",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "daa04c38-b2db-5b22-91b5-5df5dcf41f25",
+    "brand": "AMACO",
+    "line": "Low Fire Matte",
+    "families": [
+      "Low-fire matte color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "846de07f-121e-58c3-b64f-eea3ff0ff176",
+    "brand": "AMACO",
+    "line": "Opalescent",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "d53621ce-b825-5843-bbf8-9466a082d757",
+    "brand": "AMACO",
+    "line": "Phase Glaze",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "d696c57c-b605-599d-9477-942dbf4eab94",
+    "brand": "AMACO",
+    "line": "Potter's Choice",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "f919b266-ee0d-5bcf-9f1d-c0167179ab97",
+    "brand": "AMACO",
+    "line": "Potter's Choice Flux",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "d7ffadac-8582-543d-8b9c-1b4f5aa45d76",
+    "brand": "AMACO",
+    "line": "Satin Matte",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "228bebef-3e96-5838-8446-348ca82326ee",
+    "brand": "AMACO",
+    "line": "Semi-Moist Underglaze",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "bbf7751c-2be0-5507-b1a4-782b98c3adf9",
+    "brand": "AMACO",
+    "line": "Shino",
+    "families": [
+      "Shino",
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "c514c239-763e-5932-9cc1-5d38247bb690",
+    "brand": "AMACO",
+    "line": "Teacher's Palette",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "4bb60f3b-dc63-5a30-9db3-7977698b03e9",
+    "brand": "AMACO",
+    "line": "Teacher's Palette Light",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "1842b070-37e8-564e-a4d0-6534a9d29494",
+    "brand": "AMACO",
+    "line": "Texturizer",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "f62dd2f4-2537-5755-b6a1-f7d7a2ec8a74",
+    "brand": "AMACO",
+    "line": "Velvet Sprayz",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "60a7a6f4-d8c6-5de0-897f-b1354ea51eac",
+    "brand": "AMACO",
+    "line": "Velvet Underglaze",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "3358a9ba-90f9-546a-a964-10b3c64f39e2",
+    "brand": "BOTZ",
+    "line": "Ceramic Ink",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "2811becc-000d-5b6f-a2a3-1509c8ea00be",
+    "brand": "BOTZ",
+    "line": "Earthenware",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "3fcd88c5-2b7a-5e34-a1e3-ef301625ee91",
+    "brand": "BOTZ",
+    "line": "Engobes",
+    "families": [
+      "Engobe"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "da674e54-5016-50c8-983c-60e5e41bc9b9",
+    "brand": "BOTZ",
+    "line": "PRO",
+    "families": [
+      "Durable functional",
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "0f425b57-11cf-52a4-9cd9-a691bbf61faf",
+    "brand": "BOTZ",
+    "line": "Stoneware",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "d5032acb-56f3-5345-a090-3a434f25c8c7",
+    "brand": "BOTZ",
+    "line": "Unidekor",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "c335339b-4988-5e6a-a130-7b7ec5abcadb",
+    "brand": "Clay Art Center",
+    "line": "Base Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "92606262-3a86-5dea-86e3-46347d17581b",
+    "brand": "Clay Art Center",
+    "line": "Craftsman Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "1c688b38-a62a-590a-8351-5900cad79c99",
+    "brand": "Clay Art Center",
+    "line": "Frost Series Glazes",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "aaedc685-db1b-5188-948d-7de977ffdd4b",
+    "brand": "Clay Art Center",
+    "line": "Glossy Series Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "1fffce36-eb99-5490-9b9c-9efe8df85eda",
+    "brand": "Clay Art Center",
+    "line": "High Fire Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "6508e669-ae7f-5588-8067-2908edf54ebe",
+    "brand": "Clay Art Center",
+    "line": "Lead-Free Low Fire Glossy Glazes",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "794a9a81-aac0-5a4c-b8c5-719608d0d30c",
+    "brand": "Clay Art Center",
+    "line": "Mica Terra Sigillata",
+    "families": [
+      "Engobe"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "5f41e766-68bf-5fc7-861f-e8edf8e88b6f",
+    "brand": "Clay Art Center",
+    "line": "P Series Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "3ba767ee-f49f-5ce2-9ccb-168942503d71",
+    "brand": "Clay Art Center",
+    "line": "Rainbow Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "7cf0321c-56d7-52e0-948b-4b31f588070e",
+    "brand": "Clay Art Center",
+    "line": "Raku Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "1a11e663-6076-59cf-ada0-4e5f6927cc4d",
+    "brand": "Clay Art Center",
+    "line": "Satin Matte Glazes",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "3139419e-3268-5080-b38f-272202e191a5",
+    "brand": "Clay Art Center",
+    "line": "Strontium Matte Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "9029b89d-811d-59ec-9a5b-0b390e3895ab",
+    "brand": "Clay Art Center",
+    "line": "Terra Sigillata",
+    "families": [
+      "Engobe"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ea599d4d-26da-51b4-ae73-0f2fee7667b4",
+    "brand": "Coyote",
+    "line": "Archie's Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "b4d6ceb3-f490-5d65-bdfd-cb2a6ea6d0a9",
+    "brand": "Coyote",
+    "line": "Copper & Iron Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "88b88f7b-63b3-52da-a9cc-5f496e61b8a0",
+    "brand": "Coyote",
+    "line": "Enduro-Color Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ea8a509a-dde6-524a-b64a-a8824a324fb4",
+    "brand": "Coyote",
+    "line": "Fantasy Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "4dbf1c3b-29f3-5418-8504-12dc2cd6ac03",
+    "brand": "Coyote",
+    "line": "Frank's Colored Celadon Glazes",
+    "families": [
+      "Celadon"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "7b27a5e0-cf32-57a5-8814-f4803cea9266",
+    "brand": "Coyote",
+    "line": "Gloss Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ac28a047-d305-56b6-a525-efb83f2a0627",
+    "brand": "Coyote",
+    "line": "Matt Glazes & Crawl Glazes",
+    "families": [
+      "Satin / matte functional",
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "61b69819-a50d-529b-8aad-723430184b60",
+    "brand": "Coyote",
+    "line": "Mottled Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "d03c9adc-95c3-5ced-97ce-f2a7a68ce7e4",
+    "brand": "Coyote",
+    "line": "Satin Glazes",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "8acac955-0006-5bbf-b50e-1ecb915afbfd",
+    "brand": "Coyote",
+    "line": "Shino Glazes",
+    "families": [
+      "Shino",
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "51c56214-8533-5236-bf22-86e3b37b56c4",
+    "brand": "Coyote",
+    "line": "Texas Two-Step Oilspot Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "7addf76c-dc47-5cca-9960-8aa61b5e6502",
+    "brand": "Coyote",
+    "line": "Vibro-Color Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ec1f113c-07d7-55c2-8911-3974d905599b",
+    "brand": "Dick Blick Essentials",
+    "line": "Gloss Glazes",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "e32211b2-4c46-5222-a52d-81694301f454",
+    "brand": "Duncan",
+    "line": "Clear Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "8d9562c6-f92c-5bcb-b188-8914c50da996",
+    "brand": "Duncan",
+    "line": "E-Z Stroke® Translucent Underglazes",
+    "families": [
+      "Translucent underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "343aa12e-9b28-590a-9db0-ccd0a8ca89c7",
+    "brand": "Duncan",
+    "line": "French Dimensions™",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "eaf59e88-954b-5f02-a81d-450401f38378",
+    "brand": "Laguna",
+    "line": "Crystal Blossom",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "f3af648d-d8ee-50ec-8c82-42ced7dcbd50",
+    "brand": "Laguna",
+    "line": "Designer Effects - Dry Lake",
+    "families": [
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "2d945e23-f0aa-555a-8cef-6c1e411fac56",
+    "brand": "Laguna",
+    "line": "Designer Effects - Metallic",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "819d88bb-ca51-581f-9c78-c330660614b3",
+    "brand": "Laguna",
+    "line": "EZ Stroke Low-Fire",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "1cec87f6-2169-5261-b91d-07759e121db0",
+    "brand": "Laguna",
+    "line": "Flameware (Cone 10)",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "4736c2d0-8d3c-550e-8ee5-a2fa8e3d910e",
+    "brand": "Laguna",
+    "line": "Laguna Glazes High-Fire (Cone 10)",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ac71a8b4-db08-5a1b-8bfd-978eee373e4b",
+    "brand": "Laguna",
+    "line": "Moroccan Color",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "cf992f22-1a47-58c7-8763-4f80413d7767",
+    "brand": "Laguna",
+    "line": "Moroccan Fusion",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "0225d444-a957-592c-b0c9-55b227345aef",
+    "brand": "Laguna",
+    "line": "Moroccan Sand Clear",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "3bdb1ee8-2a35-5860-b113-c11622eb3452",
+    "brand": "Laguna",
+    "line": "Moroccan Sand Series",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "372a7602-5380-59e3-a62a-317eb9a70108",
+    "brand": "Laguna",
+    "line": "Raku",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "b45f3bb0-b613-502f-82d3-a23655bf7d7a",
+    "brand": "Laguna",
+    "line": "Reactive Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "119fa4c4-f6fe-5455-874d-fcb098e992f7",
+    "brand": "Laguna",
+    "line": "SG Studio Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "66772999-3ce0-51e6-9c83-948e7cf4e6f6",
+    "brand": "Laguna",
+    "line": "Silky Underglaze",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "af445363-b28c-55e8-974c-eceafcac8df2",
+    "brand": "Laguna",
+    "line": "Versa-5",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ab53b0b0-af7a-584f-afb8-56348667d23c",
+    "brand": "Laguna",
+    "line": "Vintage High-Fire (Cone 10)",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "7a9f4ac4-ebf0-5df1-952d-8b79e58b2db1",
+    "brand": "Laguna",
+    "line": "Watercolor Crackle",
+    "families": [
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "34558f2f-b691-5000-8939-6a9eb7cab800",
+    "brand": "Laguna",
+    "line": "Watercolor Mystic",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "0b38c4fb-db6c-58b0-9232-7d4940870975",
+    "brand": "Laguna",
+    "line": "WC High-Fire (Cone 10)",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "2fe60461-ff91-5cd1-8dd8-7bfed7784e82",
+    "brand": "Mayco",
+    "line": "Bead",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "810b1243-590e-595f-81ef-5d0297455931",
+    "brand": "Mayco",
+    "line": "Classic Crackles",
+    "families": [
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "270046e5-c1c4-5626-918f-4322ba67dca3",
+    "brand": "Mayco",
+    "line": "Cobblestone",
+    "families": [
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "9b72988e-d505-5d97-af07-d881481c6927",
+    "brand": "Mayco",
+    "line": "Designer Liner",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "c09e9aa7-39a1-5ecf-9a12-beb1ac92a264",
+    "brand": "Mayco",
+    "line": "E-Z Stroke Translucent Underglazes",
+    "families": [
+      "Translucent underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "1ed393c7-fe07-5d27-9953-e24560d6ccfd",
+    "brand": "Mayco",
+    "line": "Elements",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "d69d9134-5364-5fe2-981c-292336eef161",
+    "brand": "Mayco",
+    "line": "Elements and Elements Chunkies",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "f07dcfd5-144d-5725-915d-11245c7c7ee5",
+    "brand": "Mayco",
+    "line": "Elements Chunkies",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ea4d92ea-ef28-53fb-8cf5-42ce79f85208",
+    "brand": "Mayco",
+    "line": "Flux",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "a90a456b-7a91-506b-a678-6b581ab80d3f",
+    "brand": "Mayco",
+    "line": "Foundations",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "f678e5fd-4ac5-5616-8994-62d647f35b8b",
+    "brand": "Mayco",
+    "line": "French Dimensions",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "27fba5e9-159f-571b-bed3-5a54caa08791",
+    "brand": "Mayco",
+    "line": "Fundamentals Underglaze",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "30fe5276-ea2d-552a-a4d7-ef1b33889306",
+    "brand": "Mayco",
+    "line": "Jungle Gems",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "1e1bc2bb-cac5-544f-b7a6-882c93b748b8",
+    "brand": "Mayco",
+    "line": "Low Fire Clear",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "e9fb2930-a237-52aa-b3ae-fad14c688f87",
+    "brand": "Mayco",
+    "line": "Melt Gloop",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "6a01886b-dbc7-57f4-b3ff-588887b6392b",
+    "brand": "Mayco",
+    "line": "Pottery Cascade",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "60d9ce11-0e77-5ef1-a53d-e5e236b2fcf5",
+    "brand": "Mayco",
+    "line": "Raku",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "68320987-aacf-5eb6-a967-c2c5c4013d9d",
+    "brand": "Mayco",
+    "line": "Snow Gems",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "42c1a2e0-f8a3-55d4-9798-46c4700435e1",
+    "brand": "Mayco",
+    "line": "Snowfall",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "4a1aede2-450d-571e-b075-930e6089bb6d",
+    "brand": "Mayco",
+    "line": "Speckled Stroke & Coat",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "d1f5b4ef-70ea-54e5-8ef9-8fe7aaea16fe",
+    "brand": "Mayco",
+    "line": "Stoneware",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "f2f8094d-5b7a-56d4-9a29-f7fae786919b",
+    "brand": "Mayco",
+    "line": "Stoneware Clear",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "c104849d-93c6-5af9-b8d8-72b0efa24267",
+    "brand": "Mayco",
+    "line": "Stoneware Engobes",
+    "families": [
+      "Engobe"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "7d5cfdf8-2b59-558b-9d88-ebff8d281261",
+    "brand": "Mayco",
+    "line": "Stoneware Specialty",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "4e933687-b3df-5c83-8823-51bf59d18b7f",
+    "brand": "Mayco",
+    "line": "Stroke & Coat",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "f434d2b7-d8e2-5151-8327-8c67fee917bd",
+    "brand": "Mayco",
+    "line": "Washes",
+    "families": [
+      "Specialty additive"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "8f2f10f1-804c-5f38-b933-ad840e523214",
+    "brand": "Northcote",
+    "line": "Midfire Glaze",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ff077b21-69f9-5d71-8099-3fb532732300",
+    "brand": "Northcote",
+    "line": "Midfire Glaze - Chun",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "3a9293bd-2278-536a-a2bf-d9094c31024e",
+    "brand": "Northcote",
+    "line": "Midfire Glaze - Gloss",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "98b0de6a-2ce6-551b-8530-739324c0cad9",
+    "brand": "Northcote",
+    "line": "Midfire Glaze - Pearl",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "13be41a8-b098-5387-ad59-d7f42eace35a",
+    "brand": "Penguin Pottery",
+    "line": "Flux Series",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "0cc0231f-a763-58fd-a8f0-2f8f50b9f3c2",
+    "brand": "Penguin Pottery",
+    "line": "Opaque Series",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "c4618ce5-1fea-5dc7-8c63-6d37c5ccf098",
+    "brand": "Penguin Pottery",
+    "line": "Specialty Series",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "8b645189-7dbf-5be2-8b3d-a2828cb0674e",
+    "brand": "Spectrum",
+    "line": "100 Series Crackle Glazes",
+    "families": [
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "e0d7f2f1-b6a8-5e65-ba43-359ca5ee37d3",
+    "brand": "Spectrum",
+    "line": "1100 Series Clear Crackle Glazes",
+    "families": [
+      "Crawl / crackle"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "fe61f180-5385-52ca-a6cb-4ad24aa24a23",
+    "brand": "Spectrum",
+    "line": "1100 Series Clear Gloss Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "affc9b59-ea00-5608-b7e6-c1273dd492e2",
+    "brand": "Spectrum",
+    "line": "1100 Series Clear Satin Glazes",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "b16aea8e-9051-540f-8349-5645c91fa436",
+    "brand": "Spectrum",
+    "line": "1100 Series Metallic Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "6fbc41e2-d3bc-5ca8-9e50-e4c56eec3d4a",
+    "brand": "Spectrum",
+    "line": "1100 Series Opaque Gloss Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "77ea4a57-2ad6-5525-9b2e-edb96e948f09",
+    "brand": "Spectrum",
+    "line": "1100 Series Opaque Satin Glazes",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "a8156ccc-96cc-58ef-bd47-25c69db3c25e",
+    "brand": "Spectrum",
+    "line": "1100 Series Reactive Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "ed70afc3-377f-58ce-99f4-0e90c7f73ed0",
+    "brand": "Spectrum",
+    "line": "1100 Series Textured Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "104c30d1-e31b-5537-817f-29286be1f890",
+    "brand": "Spectrum",
+    "line": "1200 Series Cone 9/10 Glazes",
+    "families": [
+      "Durable functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "65649b41-c694-5239-8a59-e38dd78da33f",
+    "brand": "Spectrum",
+    "line": "1400 Series Shino Glazes",
+    "families": [
+      "Shino",
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "a5b90ef8-c2d6-557f-b8e2-2f9e6d580beb",
+    "brand": "Spectrum",
+    "line": "1420 Series Ash Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "537f8350-360a-5d7f-9eee-5557eaf2ee56",
+    "brand": "Spectrum",
+    "line": "1430 Series Floating Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "702e45d7-72dd-5164-be8c-46a00cc29f01",
+    "brand": "Spectrum",
+    "line": "1460 Series Celadon Glazes",
+    "families": [
+      "Celadon"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "b936a74a-2a57-58f7-82da-976a2f6a54ba",
+    "brand": "Spectrum",
+    "line": "150 Series Metallic Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "903fd0f3-cec3-5b75-acf5-71b9074d3035",
+    "brand": "Spectrum",
+    "line": "1500 Series NOVA Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "52df0131-bd78-5e53-9fa9-ed23131bde9c",
+    "brand": "Spectrum",
+    "line": "200 Series Rhinestone Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "903efe07-d712-5e6b-a9fa-83ddb73b76a6",
+    "brand": "Spectrum",
+    "line": "250 Series Satin Glazes",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "7324b668-5df0-539d-9c47-ce5d5e6d220c",
+    "brand": "Spectrum",
+    "line": "300 Series Majolica Glazes",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "46793e51-687d-5d0f-8e0f-95d359cfc355",
+    "brand": "Spectrum",
+    "line": "700 Series Opaque Gloss Glazes",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "de85c69c-c062-5ae8-be5e-823b53401bf3",
+    "brand": "Spectrum",
+    "line": "800 Series Semi-Transparent Glazes",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "a1226649-cac9-5e70-97a1-f883deaf5d95",
+    "brand": "Spectrum",
+    "line": "850 Series Raku Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "a6650a0d-09f5-5466-b1e5-c804d73ca005",
+    "brand": "Spectrum",
+    "line": "900 Series Low Stone Glazes",
+    "families": [
+      "Satin / matte functional"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "c4123f82-8924-5852-98ac-54226ad8f353",
+    "brand": "Speedball",
+    "line": "Earthenware Glazes",
+    "families": [
+      "Low-fire gloss color"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "f0893983-bdc5-57dc-a1f3-4f1851e732a1",
+    "brand": "Speedball",
+    "line": "Mid-Fire Flux Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "1a974680-bcf8-5b61-b176-c5a29f6811d9",
+    "brand": "Speedball",
+    "line": "Mid-Fire Glazes",
+    "families": [
+      "Reactive effects"
+    ],
+    "product_url": null,
+    "description": null
+  },
+  {
+    "id": "395b9fb4-d2f8-5f14-b006-42cc7ff03ca2",
+    "brand": "Speedball",
+    "line": "Underglazes",
+    "families": [
+      "Underglaze"
+    ],
+    "product_url": null,
+    "description": null
+  }
+]

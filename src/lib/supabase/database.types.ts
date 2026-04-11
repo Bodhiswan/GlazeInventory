@@ -687,10 +687,41 @@ export type Database = {
         }
         Relationships: []
       }
+      glaze_brand_lines: {
+        Row: {
+          brand: string
+          created_at: string
+          description: string | null
+          families: string[]
+          id: string
+          line: string
+          product_url: string | null
+        }
+        Insert: {
+          brand: string
+          created_at?: string
+          description?: string | null
+          families?: string[]
+          id?: string
+          line: string
+          product_url?: string | null
+        }
+        Update: {
+          brand?: string
+          created_at?: string
+          description?: string | null
+          families?: string[]
+          id?: string
+          line?: string
+          product_url?: string | null
+        }
+        Relationships: []
+      }
       glazes: {
         Row: {
           atmosphere: string | null
           brand: string | null
+          brand_line_id: string | null
           code: string | null
           color_notes: string | null
           cone: string | null
@@ -703,7 +734,9 @@ export type Database = {
           editorial_reviewed_by_user_id: string | null
           editorial_summary: string | null
           editorial_surface: string | null
+          families: string[]
           finish_notes: string | null
+          finishes: string[]
           id: string
           image_url: string | null
           line: string | null
@@ -715,6 +748,7 @@ export type Database = {
         Insert: {
           atmosphere?: string | null
           brand?: string | null
+          brand_line_id?: string | null
           code?: string | null
           color_notes?: string | null
           cone?: string | null
@@ -727,7 +761,9 @@ export type Database = {
           editorial_reviewed_by_user_id?: string | null
           editorial_summary?: string | null
           editorial_surface?: string | null
+          families?: string[]
           finish_notes?: string | null
+          finishes?: string[]
           id?: string
           image_url?: string | null
           line?: string | null
@@ -739,6 +775,7 @@ export type Database = {
         Update: {
           atmosphere?: string | null
           brand?: string | null
+          brand_line_id?: string | null
           code?: string | null
           color_notes?: string | null
           cone?: string | null
@@ -751,7 +788,9 @@ export type Database = {
           editorial_reviewed_by_user_id?: string | null
           editorial_summary?: string | null
           editorial_surface?: string | null
+          families?: string[]
           finish_notes?: string | null
+          finishes?: string[]
           id?: string
           image_url?: string | null
           line?: string | null
@@ -761,6 +800,13 @@ export type Database = {
           source_type?: Database["public"]["Enums"]["glaze_source_type"]
         }
         Relationships: [
+          {
+            foreignKeyName: "glazes_brand_line_id_fkey"
+            columns: ["brand_line_id"]
+            isOneToOne: false
+            referencedRelation: "glaze_brand_lines"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "glazes_created_by_user_id_fkey"
             columns: ["created_by_user_id"]

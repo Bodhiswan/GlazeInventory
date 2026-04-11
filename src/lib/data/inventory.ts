@@ -60,6 +60,12 @@ function normalizeVendorImageUrl(value: string | null) {
 
 export function mapGlaze(row: Partial<GlazeRow>): Glaze {
   const bundledImageUrl = getBundledVendorImageUrl(row.brand ?? null, row.code ?? null);
+  // `finishes` / `families` / `brand_line_id` were added in migration
+  // 20260411120000. They won't be present in rows selected by older callers
+  // that haven't adopted the expanded column list yet; treat them as optional.
+  const finishes = (row as { finishes?: string[] | null }).finishes ?? undefined;
+  const families = (row as { families?: string[] | null }).families ?? undefined;
+  const brandLineId = (row as { brand_line_id?: string | null }).brand_line_id ?? null;
 
   return {
     id: String(row.id),
@@ -81,6 +87,9 @@ export function mapGlaze(row: Partial<GlazeRow>): Glaze {
     finishNotes: row.finish_notes ?? null,
     colorNotes: row.color_notes ?? null,
     recipeNotes: row.recipe_notes ?? null,
+    finishes: Array.isArray(finishes) ? finishes : undefined,
+    families: Array.isArray(families) ? families : undefined,
+    brandLineId,
     createdByUserId: row.created_by_user_id ?? null,
   };
 }
@@ -155,7 +164,7 @@ export function mapInventoryItem(row: InventoryItemWithJoins): InventoryItem {
   };
 }
 
-const INVENTORY_GLAZE_COLUMNS = "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes";
+const INVENTORY_GLAZE_COLUMNS = "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,finishes,families,brand_line_id";
 
 // ─── Exported functions ───────────────────────────────────────────────────────
 
@@ -176,7 +185,7 @@ export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: 
       staticGlazes.map((g) => g.brand).filter((b): b is string => Boolean(b)),
     );
     const cols =
-      "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id";
+      "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id,finishes,families,brand_line_id";
 
     const [customRes, dbOnlyCommercialRes] = await Promise.all([
       supabase.from("glazes").select(cols).eq("source_type", "nonCommercial"),

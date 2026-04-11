@@ -72,6 +72,13 @@ function normalizeVendorImageUrl(value: string | null) {
 
 function rowToGlaze(row: CatalogRow): Glaze {
   const bundled = getBundledVendorImageUrl(row.brand, row.code);
+  // `finishes` / `families` / `brand_line_id` are added by migration
+  // 20260411120000 and backfilled into the catalog JSON. Tolerate their
+  // absence so older catalog builds still parse.
+  const finishes = (row as { finishes?: string[] | null }).finishes ?? undefined;
+  const families = (row as { families?: string[] | null }).families ?? undefined;
+  const brandLineId = (row as { brand_line_id?: string | null }).brand_line_id ?? null;
+
   return {
     id: row.id,
     sourceType: row.source_type === "nonCommercial" ? "nonCommercial" : "commercial",
@@ -92,6 +99,9 @@ function rowToGlaze(row: CatalogRow): Glaze {
     finishNotes: row.finish_notes ?? null,
     colorNotes: row.color_notes ?? null,
     recipeNotes: row.recipe_notes ?? null,
+    finishes: Array.isArray(finishes) ? finishes : undefined,
+    families: Array.isArray(families) ? families : undefined,
+    brandLineId,
     createdByUserId: null,
   };
 }

@@ -454,6 +454,14 @@ function uniqueValues(values: string[]) {
 }
 
 export function extractGlazeFinishTraits(glaze: Glaze) {
+  // Prefer the structured `finishes` column (added in migration
+  // 20260411120000). Fall back to keyword extraction from free-text notes so
+  // legacy glazes and custom glazes without explicit tagging still surface in
+  // the finish filter.
+  if (glaze.finishes && glaze.finishes.length > 0) {
+    return uniqueValues(glaze.finishes);
+  }
+
   const finishText = [glaze.finishNotes, glaze.description].filter(Boolean).join(" ");
   const matches = finishKeywords
     .filter((keyword) => keyword.pattern.test(finishText))

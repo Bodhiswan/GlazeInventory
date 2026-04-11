@@ -90,6 +90,10 @@ async function main() {
   const glazes = await fetchAll("glazes", "created_by_user_id=is.null");
   console.log(`  ${glazes.length} glazes`);
 
+  console.log("Fetching glaze_brand_lines...");
+  const brandLines = await fetchAll("glaze_brand_lines", "", "brand,line");
+  console.log(`  ${brandLines.length} brand/lines`);
+
   console.log("Fetching vendor_combination_examples...");
   const examples = await fetchAll("vendor_combination_examples");
   console.log(`  ${examples.length} examples`);
@@ -158,6 +162,9 @@ async function main() {
   // Write files
   writeFileSync(resolve(outDir, "glazes.json"), JSON.stringify(glazes, null, 2));
   console.log(`Wrote glazes.json`);
+
+  writeFileSync(resolve(outDir, "glaze-brand-lines.json"), JSON.stringify(brandLines, null, 2));
+  console.log(`Wrote glaze-brand-lines.json`);
 
   writeFileSync(resolve(outDir, "combination-examples.json"), JSON.stringify(examplesWithLayers, null, 2));
   console.log(`Wrote combination-examples.json`);

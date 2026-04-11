@@ -81,7 +81,23 @@ export interface Glaze {
   finishNotes?: string | null;
   colorNotes?: string | null;
   recipeNotes?: string | null;
+  // Structured finish labels (Glossy, Matte, Satin, …). Populated via
+  // migration 20260411120000 — prefer these over regex-extracted traits.
+  finishes?: string[];
+  // Structured glaze-family labels (Underglaze, Reactive effects, …) derived
+  // from the glaze_brand_lines taxonomy.
+  families?: string[];
+  brandLineId?: string | null;
   createdByUserId?: string | null;
+}
+
+export interface GlazeBrandLine {
+  id: string;
+  brand: string;
+  line: string;
+  families: string[];
+  productUrl?: string | null;
+  description?: string | null;
 }
 
 export interface InventoryFolder {
