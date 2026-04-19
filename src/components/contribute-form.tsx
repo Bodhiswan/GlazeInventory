@@ -142,26 +142,8 @@ export function ContributeForm({
       e.returnValue = "";
     };
     window.addEventListener("beforeunload", handler);
-
-    const clickHandler = (e: MouseEvent) => {
-      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-      const anchor = (e.target as HTMLElement | null)?.closest("a");
-      if (!anchor) return;
-      const href = anchor.getAttribute("href");
-      if (!href || href.startsWith("#")) return;
-      if (anchor.target && anchor.target !== "_self") return;
-      if (
-        !window.confirm("You have unsaved changes to your contribution. Leave this page?")
-      ) {
-        e.preventDefault();
-        e.stopPropagation();
-      }
-    };
-    document.addEventListener("click", clickHandler, true);
-
     return () => {
       window.removeEventListener("beforeunload", handler);
-      document.removeEventListener("click", clickHandler, true);
     };
   }, [isDirty]);
 
@@ -266,9 +248,10 @@ export function ContributeForm({
                 <button
                   type="button"
                   onClick={() => removeImage(i)}
-                  className="absolute right-1 top-1 border border-border bg-white px-1.5 py-0.5 text-[9px] uppercase tracking-[0.1em] text-muted hover:text-foreground"
+                  aria-label={`Remove photo ${i + 1}`}
+                  className="absolute -right-2 -top-2 flex h-11 w-11 items-center justify-center border border-border bg-white text-muted shadow-sm hover:text-foreground"
                 >
-                  ✕
+                  <Trash2 className="h-4 w-4" aria-hidden="true" />
                 </button>
               </div>
             ))}
@@ -312,7 +295,7 @@ export function ContributeForm({
           <Badge tone={hasTarget ? "success" : "neutral"}>
             {selectedGlazes.length > 0
               ? `${selectedGlazes.length} glaze${selectedGlazes.length === 1 ? "" : "s"} picked`
-              : "Pick a glaze"}
+              : "Glaze required"}
           </Badge>
           <p className="text-sm font-semibold text-foreground">What did you fire?</p>
         </div>
