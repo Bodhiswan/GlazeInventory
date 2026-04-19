@@ -14,10 +14,9 @@ export function revalidateWorkspace() {
     "/inventory",
     "/glazes",
     "/inventory/new",
-    "/glazes/new",
     "/combinations",
     "/community",
-    "/publish",
+    "/contribute",
     "/admin/moderation",
     "/admin/intake",
   ].forEach(

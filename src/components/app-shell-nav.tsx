@@ -21,7 +21,7 @@ const baseItems = [
   { href: "/glazes", label: "Library", icon: SwatchBook, alsoActive: [] as string[], badge: undefined as string | undefined },
   { href: "/combinations", label: "Combinations", icon: Layers3, alsoActive: [] as string[], badge: undefined as string | undefined },
   { href: "/guides/glazing-pottery", label: "Guides", icon: BookOpenText, alsoActive: ["/guides"], badge: undefined as string | undefined },
-  { href: "/contribute", label: "Contribute", icon: PenLine, alsoActive: ["/publish", "/glazes/new", "/glazes/request"], badge: undefined as string | undefined },
+  { href: "/contribute", label: "Contribute", icon: PenLine, alsoActive: ["/glazes/request"], badge: undefined as string | undefined },
 ];
 
 const adminItems = [

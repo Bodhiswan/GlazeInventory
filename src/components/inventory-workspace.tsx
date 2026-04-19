@@ -393,7 +393,7 @@ export function InventoryWorkspace({
         ) : (
           <div className="border border-dashed border-border bg-background px-4 py-6 text-center text-sm text-muted">
             <p>You haven't published any combinations yet.</p>
-            <Link href="/publish" className={cn(buttonVariants({ size: "sm" }), "mt-3")}>
+            <Link href="/contribute" className={cn(buttonVariants({ size: "sm" }), "mt-3")}>
               Share a kiln-tested combination
             </Link>
           </div>

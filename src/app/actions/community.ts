@@ -149,60 +149,6 @@ export async function addGlazeCommentAction(formData: FormData) {
   redirect(returnTo);
 }
 
-export async function uploadCommunityFiringImageAction(formData: FormData): Promise<{ error: string } | { success: true }> {
-  const { viewer, supabase } = await requireContributingMember("/contribute/firing-image");
-
-  const imageFile = formData.get("image");
-  if (!(imageFile instanceof File) || imageFile.size === 0) return { error: "No image provided" };
-  if (imageFile.size > 8 * 1024 * 1024) return { error: "Image must be under 8 MB" };
-
-  const glazeId = (formData.get("glazeId") as string | null) || null;
-  const combinationId = (formData.get("combinationId") as string | null) || null;
-  const combinationType = (formData.get("combinationType") as string | null) || null;
-  const label = (formData.get("label") as string | null)?.trim() || null;
-  const cone = (formData.get("cone") as string | null)?.trim() || null;
-  const atmosphere = (formData.get("atmosphere") as string | null)?.trim() || null;
-
-  if (!glazeId && !combinationId) return { error: "Select a glaze or combination first" };
-
-  const sanitize = (n: string) => n.replace(/[^a-zA-Z0-9.-]/g, "-");
-  const storagePath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(imageFile.name)}`;
-  const buffer = new Uint8Array(await imageFile.arrayBuffer());
-
-  const { error: uploadErr } = await supabase.storage
-    .from("community-firing-images")
-    .upload(storagePath, buffer, { contentType: imageFile.type, upsert: false });
-
-  if (uploadErr) return { error: uploadErr.message };
-
-  const { data: publicData } = supabase.storage.from("community-firing-images").getPublicUrl(storagePath);
-
-  const { data: insertedImage, error: insertErr } = await supabase.from("community_firing_images").insert({
-    glaze_id: glazeId || null,
-    combination_id: combinationId || null,
-    combination_type: combinationId ? combinationType : null,
-    image_url: publicData.publicUrl,
-    storage_path: storagePath,
-    label,
-    cone,
-    atmosphere,
-    uploader_user_id: viewer.profile.id,
-  }).select("id").single();
-
-  if (insertErr) return { error: insertErr.message };
-
-  void awardPoints(
-    viewer.profile.id,
-    viewer.profile.isAdmin ?? false,
-    "firing_photo_uploaded",
-    2,
-    insertedImage?.id,
-    "community_image",
-  );
-
-  return { success: true };
-}
-
 export async function sendDirectMessageAction(formData: FormData): Promise<void> {
   const viewer = await requireViewer();
   const recipientUserId = (formData.get("recipientUserId") as string | null)?.trim();

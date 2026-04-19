@@ -3,12 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { getAllCatalogGlazes } from "@/lib/catalog";
 import { getInventory, getInventoryItem } from "@/lib/data/inventory";
 import { serializeInventoryState } from "@/lib/inventory-state";
-import { CUSTOM_GLAZE_ATMOSPHERE_VALUES, CUSTOM_GLAZE_CONE_VALUES } from "@/lib/glaze-constants";
-import { awardPoints } from "@/lib/points";
-import { normalizeOptional, revalidateWorkspace, requireMemberSupabase, requireContributingMember } from "./_shared";
+import { normalizeOptional, revalidateWorkspace, requireMemberSupabase } from "./_shared";
 
 const catalogSchema = z.object({
   glazeId: z.string().uuid(),
@@ -45,19 +42,6 @@ const inventoryFolderCreateSchema = z.object({
 const inventoryFolderAssignmentSchema = z.object({
   inventoryId: z.string().uuid(),
   folderIds: z.array(z.string().uuid()).max(24),
-});
-
-const customGlazeSchema = z.object({
-  name: z.string().min(2).max(100),
-  brand: z.string().max(80).optional(),
-  line: z.string().max(80).optional(),
-  code: z.string().max(40).optional(),
-  cone: z.enum(CUSTOM_GLAZE_CONE_VALUES),
-  atmosphere: z.enum(CUSTOM_GLAZE_ATMOSPHERE_VALUES).optional(),
-  colors: z.string().max(500).optional(),
-  finishes: z.string().max(300).optional(),
-  notes: z.string().max(500).optional(),
-  personalNotes: z.string().max(500).optional(),
 });
 
 export async function setGlazeInventoryStateAction(input: {
@@ -296,149 +280,6 @@ export async function addCatalogGlazeToInventoryAction(formData: FormData) {
   revalidateWorkspace();
   revalidatePath(returnTo);
   redirect(returnTo);
-}
-
-export async function createCustomGlazeAction(
-  formData: FormData,
-): Promise<{ error: string } | null> {
-  const { viewer, supabase } = await requireContributingMember("/glazes/new");
-  const returnTo = normalizeOptional(formData.get("returnTo")) ?? "/inventory";
-
-  const parsed = customGlazeSchema.safeParse({
-    name: formData.get("name")?.toString().trim(),
-    brand: normalizeOptional(formData.get("brand")) ?? undefined,
-    line: normalizeOptional(formData.get("line")) ?? undefined,
-    code: normalizeOptional(formData.get("code")) ?? undefined,
-    cone: formData.get("cone")?.toString().trim(),
-    atmosphere: normalizeOptional(formData.get("atmosphere")) ?? undefined,
-    colors: normalizeOptional(formData.get("colors")) ?? undefined,
-    finishes: normalizeOptional(formData.get("finishes")) ?? undefined,
-    notes: normalizeOptional(formData.get("notes")) ?? undefined,
-    personalNotes: normalizeOptional(formData.get("personalNotes")) ?? undefined,
-  });
-
-  if (!parsed.success) {
-    const firstIssue = parsed.error.issues[0]?.message ?? "Check the form for errors";
-    return { error: firstIssue };
-  }
-
-  const nameNorm = parsed.data.name.toLowerCase();
-  const brandNorm = parsed.data.brand?.toLowerCase() ?? null;
-
-  // Check against the static catalog for exact name+brand matches
-  const catalogDupe = getAllCatalogGlazes().find(
-    (g) =>
-      g.name.toLowerCase() === nameNorm &&
-      (g.brand?.toLowerCase() ?? null) === brandNorm,
-  );
-  if (catalogDupe) {
-    return { error: `This glaze already exists in the catalog — search for "${parsed.data.name}" in the library.` };
-  }
-
-  // Check the user's own custom glazes for exact duplicates
-  const { data: existingCustom } = await supabase
-    .from("glazes")
-    .select("id,name,brand")
-    .eq("source_type", "nonCommercial")
-    .eq("created_by_user_id", viewer.profile.id)
-    .ilike("name", parsed.data.name);
-
-  const customDupe = (existingCustom ?? []).find(
-    (row) => ((row.brand as string | null)?.toLowerCase() ?? null) === brandNorm,
-  );
-  if (customDupe) {
-    return { error: "You have already added a custom glaze with this name." };
-  }
-
-  const { data: glaze, error: glazeError } = await supabase
-    .from("glazes")
-    .insert({
-      source_type: "nonCommercial",
-      name: parsed.data.name,
-      brand: parsed.data.brand ?? null,
-      line: parsed.data.line ?? null,
-      code: parsed.data.code ?? null,
-      cone: parsed.data.cone,
-      atmosphere: parsed.data.atmosphere ?? null,
-      color_notes: parsed.data.colors ?? null,
-      finish_notes: [parsed.data.finishes, parsed.data.notes].filter(Boolean).join(". ") || null,
-      created_by_user_id: viewer.profile.id,
-    })
-    .select("id")
-    .single();
-
-  if (glazeError || !glaze) {
-    return { error: glazeError?.message ?? "Could not create glaze." };
-  }
-
-  // Track glaze creation event (fire and forget)
-  void supabase.from("analytics_events").insert({
-    event_type: "glaze_create",
-    user_id: viewer.profile.id,
-    glaze_id: null,
-    metadata: { glaze_id: glaze.id, name: parsed.data.name, brand: parsed.data.brand ?? null },
-  });
-
-  const { error: inventoryError } = await supabase.from("inventory_items").insert({
-    user_id: viewer.profile.id,
-    glaze_id: glaze.id,
-    status: "owned",
-    personal_notes:
-      serializeInventoryState({
-        note: parsed.data.personalNotes ?? null,
-        fillLevel: "full",
-        quantity: 1,
-      }) ?? null,
-  });
-
-  if (inventoryError) {
-    return { error: inventoryError.message };
-  }
-
-  void awardPoints(
-    viewer.profile.id,
-    viewer.profile.isAdmin ?? false,
-    "glaze_added",
-    10,
-    glaze.id,
-    "glaze",
-  );
-
-  // --- Upload up to 5 images ---
-  const imageFiles = formData.getAll("images").filter(
-    (f): f is File => f instanceof File && f.size > 0
-  ).slice(0, 5);
-
-  const sanitize = (n: string) => n.replace(/[^a-zA-Z0-9.-]/g, "-");
-  let firstImageUrl: string | null = null;
-  for (let i = 0; i < imageFiles.length; i++) {
-    const imageFile = imageFiles[i];
-    if (imageFile.size > 5 * 1024 * 1024) continue; // skip oversized, don't block submit
-    const imagePath = `${viewer.profile.id}/${crypto.randomUUID()}-${sanitize(imageFile.name)}`;
-    const imageBuffer = new Uint8Array(await imageFile.arrayBuffer());
-    const { error: uploadErr } = await supabase.storage
-      .from("custom-glaze-images")
-      .upload(imagePath, imageBuffer, { contentType: imageFile.type, upsert: false });
-    if (!uploadErr) {
-      const { data: publicData } = supabase.storage.from("custom-glaze-images").getPublicUrl(imagePath);
-      const publicUrl = publicData.publicUrl;
-      await supabase.from("glaze_firing_images").insert({
-        glaze_id: glaze.id,
-        label: "Photo",
-        image_url: publicUrl,
-        sort_order: i,
-      });
-      if (i === 0) firstImageUrl = publicUrl;
-    }
-  }
-  // Set the first uploaded image as the glaze's primary image_url so it
-  // appears in the library/inventory grid (which reads glazes.image_url directly)
-  if (firstImageUrl) {
-    await supabase.from("glazes").update({ image_url: firstImageUrl }).eq("id", glaze.id);
-  }
-
-  revalidateWorkspace();
-  redirect(`${returnTo}?customGlazeAdded=1`);
 }
 
 export async function updateInventoryItemAction(formData: FormData) {
