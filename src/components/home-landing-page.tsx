@@ -86,7 +86,7 @@ export function HomeLandingPage({
 
         <section className="grid flex-1 items-start gap-8 py-12 sm:gap-10 sm:py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.85fr)]">
           <div className="max-w-[640px]">
-            <p className="text-[11px] uppercase tracking-[0.18em] text-sage">
+            <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
               Welcome to the public glaze library
             </p>
             <h1 className="display-font mt-5 text-[clamp(2.8rem,5.5vw,5rem)] leading-[0.92] tracking-[-0.04em]">
@@ -98,7 +98,7 @@ export function HomeLandingPage({
               favourites, and your own personalized workspace.
             </p>
 
-            <div className="mt-5 inline-flex border border-butter/30 bg-tile-butter px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-butter">
+            <div className="mt-5 inline-flex border border-border bg-panel px-3 py-2 text-[11px] uppercase tracking-[0.16em] text-muted">
               No login needed to browse the public library
             </div>
 
@@ -117,21 +117,21 @@ export function HomeLandingPage({
             </div>
 
             <div className="mt-10 grid gap-3 sm:grid-cols-3">
-              <div className="border border-clay/20 bg-tile-terracotta px-4 py-4">
+              <div className="border border-border bg-panel px-4 py-4">
                 <p className="display-font text-3xl tracking-tight">1000s</p>
-                <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-clay">
+                <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-muted">
                   Glazes to browse
                 </p>
               </div>
-              <div className="border border-rose/20 bg-tile-rose px-4 py-4">
+              <div className="border border-border bg-panel px-4 py-4">
                 <p className="display-font text-3xl tracking-tight">1000s</p>
-                <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-rose">
+                <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-muted">
                   Combination results
                 </p>
               </div>
-              <div className="border border-sage/25 bg-tile-sage px-4 py-4">
+              <div className="border border-border bg-panel px-4 py-4">
                 <p className="display-font text-3xl tracking-tight">Free</p>
-                <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-sage">
+                <p className="mt-2 text-[11px] uppercase tracking-[0.16em] text-muted">
                   Public browsing
                 </p>
               </div>
@@ -151,9 +151,9 @@ export function HomeLandingPage({
           </div>
 
           <div className="space-y-5">
-            <div className="border border-clay/20 bg-tile-terracotta p-4 sm:p-5">
-              <div className="border-b border-clay/20 pb-4">
-                <p className="text-[10px] uppercase tracking-[0.18em] text-clay">Start here</p>
+            <div className="border border-border bg-panel p-4 sm:p-5">
+              <div className="border-b border-border pb-4">
+                <p className="text-[10px] uppercase tracking-[0.18em] text-muted">Start here</p>
                 <h2 className="display-font mt-2 text-2xl tracking-tight">
                   Pick the path that matches how you work.
                 </h2>
@@ -168,9 +168,9 @@ export function HomeLandingPage({
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="block border border-clay/15 bg-background/60 px-4 py-4 transition-colors hover:bg-background"
+                    className="block border border-border px-4 py-4 transition-colors hover:bg-background"
                   >
-                    <p className="text-[10px] uppercase tracking-[0.16em] text-clay">
+                    <p className="text-[10px] uppercase tracking-[0.16em] text-muted">
                       {item.eyebrow}
                     </p>
                     <p className="display-font mt-2 text-xl tracking-tight">{item.title}</p>
@@ -180,9 +180,9 @@ export function HomeLandingPage({
               </div>
             </div>
 
-            <div className="border border-rose/25 bg-tile-rose p-4 sm:p-5">
-              <div className="border-b border-rose/20 pb-4">
-                <p className="text-[10px] uppercase tracking-[0.18em] text-rose">Combination preview</p>
+            <div className="border border-border p-4 sm:p-5">
+              <div className="border-b border-border pb-4">
+                <p className="text-[10px] uppercase tracking-[0.18em] text-muted">Combination preview</p>
                 <h2 className="display-font mt-2 text-2xl tracking-tight">
                   Find your next test tile.
                 </h2>
@@ -191,8 +191,8 @@ export function HomeLandingPage({
                 </p>
               </div>
 
-              <div className="mt-4 overflow-hidden border border-rose/20 bg-background/60">
-                <div className="hidden grid-cols-[minmax(0,1.2fr)_minmax(0,1.2fr)_80px] gap-3 border-b border-rose/20 px-4 py-3 text-[10px] uppercase tracking-[0.16em] text-rose sm:grid">
+              <div className="mt-4 overflow-hidden border border-border">
+                <div className="hidden grid-cols-[minmax(0,1.2fr)_minmax(0,1.2fr)_80px] gap-3 border-b border-border px-4 py-3 text-[10px] uppercase tracking-[0.16em] text-muted sm:grid">
                   <span>Top</span>
                   <span>Base</span>
                   <span>Cone</span>
@@ -201,9 +201,9 @@ export function HomeLandingPage({
                   {combinationExamples.map((row, index) => (
                     <div
                       key={`${row.top}-${row.base}`}
-                      className={index < combinationExamples.length - 1 ? "border-b border-rose/15 px-4 py-3.5" : "px-4 py-3.5"}
+                      className={index < combinationExamples.length - 1 ? "border-b border-border px-4 py-3.5" : "px-4 py-3.5"}
                     >
-                      <p className="text-[10px] uppercase tracking-[0.16em] text-rose">{row.cone}</p>
+                      <p className="text-[10px] uppercase tracking-[0.16em] text-muted">{row.cone}</p>
                       <p className="mt-1 font-medium">{row.top}</p>
                       <p className="mt-0.5 text-sm text-muted">over {row.base}</p>
                     </div>
@@ -214,7 +214,7 @@ export function HomeLandingPage({
                     <div
                       key={`${row.top}-${row.base}`}
                       className={`grid grid-cols-[minmax(0,1.2fr)_minmax(0,1.2fr)_80px] gap-3 px-4 py-3.5 text-sm ${
-                        index < combinationExamples.length - 1 ? "border-b border-rose/15" : ""
+                        index < combinationExamples.length - 1 ? "border-b border-border" : ""
                       }`}
                     >
                       <span className="font-medium">{row.top}</span>
@@ -226,12 +226,12 @@ export function HomeLandingPage({
               </div>
 
               <div className="mt-4 flex flex-wrap gap-2 text-[10px] uppercase tracking-[0.14em]">
-                <span className="border border-rose/25 bg-background/60 px-3 py-1.5">Mayco</span>
-                <span className="border border-rose/25 bg-background/60 px-3 py-1.5">AMACO</span>
-                <span className="border border-rose/25 bg-background/60 px-3 py-1.5">Coyote</span>
-                <span className="border border-rose/25 bg-background/60 px-3 py-1.5">Duncan</span>
-                <span className="border border-rose/25 bg-background/60 px-3 py-1.5">Spectrum</span>
-                <span className="border border-rose/25 bg-background/60 px-3 py-1.5">Speedball</span>
+                <span className="border border-border px-3 py-1.5">Mayco</span>
+                <span className="border border-border px-3 py-1.5">AMACO</span>
+                <span className="border border-border px-3 py-1.5">Coyote</span>
+                <span className="border border-border px-3 py-1.5">Duncan</span>
+                <span className="border border-border px-3 py-1.5">Spectrum</span>
+                <span className="border border-border px-3 py-1.5">Speedball</span>
               </div>
 
               <p className="mt-4 text-sm leading-6 text-muted">

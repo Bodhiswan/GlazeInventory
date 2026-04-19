@@ -24,10 +24,10 @@ export default async function DashboardPage() {
       {viewer.mode === "live" ? (
         <section className="space-y-4">
           <div>
-            <p className="text-[11px] uppercase tracking-[0.18em] text-butter">Your points</p>
+            <p className="text-[11px] uppercase tracking-[0.18em] text-muted">Your points</p>
             <h2 className="display-font mt-2 text-3xl tracking-tight">Contribution score</h2>
           </div>
-          <Panel tone="butter" className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <Panel className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="display-font text-5xl tabular-nums text-foreground">
                 {(viewer.profile.points ?? 0).toLocaleString()}
@@ -49,10 +49,10 @@ export default async function DashboardPage() {
       {/* Changelog */}
       <section className="space-y-4">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-sage">What&apos;s new</p>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted">What&apos;s new</p>
           <h2 className="display-font mt-2 text-3xl tracking-tight">Recent updates</h2>
         </div>
-        <Panel tone="sage" className="space-y-5">
+        <Panel className="space-y-5">
           {CHANGES.map((section) => (
             <div key={section.category} className="space-y-2">
               <p className="text-[10px] font-medium uppercase tracking-[0.16em] text-muted">
@@ -77,11 +77,11 @@ export default async function DashboardPage() {
       {/* Weekly leaderboard */}
       <section className="space-y-4">
         <div>
-          <p className="text-[11px] uppercase tracking-[0.18em] text-rose">This week</p>
+          <p className="text-[11px] uppercase tracking-[0.18em] text-muted">This week</p>
           <h2 className="display-font mt-2 text-3xl tracking-tight">Top contributors this week</h2>
         </div>
         {weeklyLeaderboard.length > 0 ? (
-          <div className="divide-y divide-rose/20 border border-rose/20 bg-tile-rose/40">
+          <div className="divide-y divide-border border border-border">
             {weeklyLeaderboard.map((contributor, index) => (
               <div key={contributor.id} className="flex items-center gap-4 px-4 py-3">
                 <span className="w-6 shrink-0 text-right text-sm tabular-nums text-muted">
@@ -100,10 +100,10 @@ export default async function DashboardPage() {
             ))}
           </div>
         ) : (
-          <Panel tone="rose">
+          <Panel>
             <p className="text-sm leading-6 text-muted">
-              No contributions yet this week — be the first to earn points by sharing a
-              combination or uploading a firing photo.
+              No contributions yet this week — be the first to earn points by adding a glaze, sharing a
+              combination, or uploading a firing photo.
             </p>
             <Link
               href="/contribute"
