@@ -4,7 +4,6 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { getAllCatalogGlazes } from "@/lib/catalog";
-import { CUSTOM_GLAZE_ATMOSPHERE_VALUES, CUSTOM_GLAZE_CONE_VALUES } from "@/lib/glaze-constants";
 import { awardPoints } from "@/lib/points";
 import { formatGlazeLabel } from "@/lib/utils";
 
@@ -30,9 +29,6 @@ export async function completeContributionTutorialAction(): Promise<void> {
   revalidateWorkspace();
   revalidatePath("/contribute", "page");
   revalidatePath("/contribute/welcome", "page");
-  // Bust the client router cache too — users who visited /contribute while
-  // it briefly redirected to /glazes/request would otherwise hit the stale
-  // cached redirect after the tutorial action and never reach the form.
   revalidatePath("/", "layout");
   redirect("/contribute");
 }
@@ -40,16 +36,10 @@ export async function completeContributionTutorialAction(): Promise<void> {
 /* ----------------------------------------------------------------------------
  * Unified contribution dispatcher
  * -------------------------------------------------------------------------
- * One action handles all four submission shapes:
+ * Two submission shapes:
  *
- *   1. Firing photo on an existing glaze     → 2 points
- *   2. Firing photo on an existing combo     → 2 points
- *   3. Combination of 2-4 existing glazes    → 5 points
- *   4. New glaze (alone)                     → 10 points
- *   5. New glaze used inside a combination   → 15 points
- *
- * Cases 4 & 5 create a glaze record first; if the combination insert fails
- * we delete the just-created glaze to avoid orphaning it.
+ *   1. Firing photo on a single existing glaze   → 2 points
+ *   2. Combination of 2–4 existing glazes         → 5 points
  * ------------------------------------------------------------------------- */
 
 const sanitize = (n: string) => n.replace(/[^a-zA-Z0-9.-]/g, "-");
@@ -105,173 +95,34 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
     .map((id) => id?.trim())
     .filter(Boolean);
 
-  const addingNewGlaze = formData.get("addNewGlaze")?.toString() === "1";
-
-  // A new glaze and existing glazes can't be submitted together.
-  if (addingNewGlaze && existingGlazeIds.length > 0) {
-    return { error: "Add a new glaze on its own — pick existing glazes separately." };
+  if (existingGlazeIds.length === 0) {
+    return { error: "Pick at least one glaze." };
+  }
+  if (existingGlazeIds.length > 4) {
+    return { error: "A combination can have at most 4 layers." };
   }
 
-  /* ── Validate the new-glaze fields if "add new" was checked ──────────── */
-  let newGlazeData: {
-    name: string;
-    brand: string | null;
-    code: string | null;
-    colors: string | null;
-    finishes: string | null;
-    notes: string | null;
-  } | null = null;
-
-  if (addingNewGlaze) {
-    const name = formData.get("newGlazeName")?.toString().trim() ?? "";
-    if (name.length < 2) return { error: "Give the new glaze a name (at least 2 characters)." };
-    const brand = normalizeOptional(formData.get("newGlazeBrand"));
-    const code = normalizeOptional(formData.get("newGlazeCode"));
-    const colors = normalizeOptional(formData.get("newGlazeColors"));
-    const finishes = normalizeOptional(formData.get("newGlazeFinishes"));
-    const notes = normalizeOptional(formData.get("newGlazeNotes"));
-
-    if (!brand) return { error: "New glazes need a brand or maker." };
-    if (!code) return { error: "New glazes need a product code." };
-    if (!colors) return { error: "Pick at least one colour for the new glaze." };
-    if (!finishes) return { error: "Pick at least one finish for the new glaze." };
-    if (!notes) return { error: "Add a short note about the new glaze." };
-
-    // Catalog dupe check — match on (brand + name) OR (brand + normalized code).
-    // Code normalization strips spaces/dashes/punctuation so "MC123", "MC-123",
-    // and "mc 123" all collide.
-    const normCode = (s: string | null | undefined) => (s ?? "").toLowerCase().replace(/[^a-z0-9]/g, "");
-    const nameNorm = name.toLowerCase();
-    const brandNorm = brand.toLowerCase();
-    const codeNorm = normCode(code);
-    const dupe = getAllCatalogGlazes().find((g) => {
-      const gBrand = g.brand?.toLowerCase() ?? "";
-      if (gBrand !== brandNorm) return false;
-      if (g.name.toLowerCase() === nameNorm) return true;
-      if (codeNorm && normCode(g.code) === codeNorm) return true;
-      return false;
-    });
-    if (dupe) {
-      return {
-        error: `${dupe.brand ?? ""} ${dupe.code ?? ""} ${dupe.name} already exists in the catalog — search for it instead of adding a duplicate.`.trim(),
-      };
-    }
-
-    newGlazeData = { name, brand, code, colors, finishes, notes };
-  }
-
-  /* ── Need *something* to attach this contribution to ─────────────────── */
-  if (existingGlazeIds.length === 0 && !newGlazeData) {
-    return { error: "Pick at least one glaze, or tick \"add a new glaze\"." };
-  }
-
-  /* ── Upload images to the right bucket based on shape ────────────────── */
-  // Combination shape if 2+ total glazes (existing + new)
-  const totalGlazeCount = existingGlazeIds.length + (newGlazeData ? 1 : 0);
-  const isCombination = totalGlazeCount >= 2;
-  const bucket = newGlazeData
-    ? "custom-glaze-images"
-    : isCombination
-      ? "user-combination-images"
-      : "community-firing-images";
+  const isCombination = existingGlazeIds.length >= 2;
+  const bucket = isCombination ? "user-combination-images" : "community-firing-images";
 
   const upload = await uploadImages(supabase, bucket, viewer.profile.id, imageFiles);
   if ("error" in upload) return upload;
   const uploadedUrls = upload.uploaded.map((u) => u.publicUrl);
 
-  /* ── Create the new glaze (if any) BEFORE the combination ────────────── */
-  let createdGlazeId: string | null = null;
-  let createdGlazeLabel = "";
-
-  if (newGlazeData) {
-    if (!CUSTOM_GLAZE_CONE_VALUES.includes(coneValue as (typeof CUSTOM_GLAZE_CONE_VALUES)[number])) {
-      return { error: "Choose a supported cone for the new glaze." };
-    }
-
-    const { data: glazeRow, error: glazeErr } = await supabase
-      .from("glazes")
-      .insert({
-        source_type: "nonCommercial",
-        name: newGlazeData.name,
-        brand: newGlazeData.brand,
-        code: newGlazeData.code,
-        cone: coneValue,
-        atmosphere:
-          atmosphere && CUSTOM_GLAZE_ATMOSPHERE_VALUES.includes(
-            atmosphere as (typeof CUSTOM_GLAZE_ATMOSPHERE_VALUES)[number],
-          )
-            ? atmosphere
-            : null,
-        color_notes: newGlazeData.colors,
-        finish_notes: [newGlazeData.finishes, newGlazeData.notes].filter(Boolean).join(". "),
-        created_by_user_id: viewer.profile.id,
-        image_url: uploadedUrls[0] ?? null,
-      })
-      .select("id")
-      .single();
-
-    if (glazeErr || !glazeRow) {
-      return { error: glazeErr?.message ?? "Could not create the new glaze." };
-    }
-
-    createdGlazeId = glazeRow.id as string;
-    createdGlazeLabel = `${newGlazeData.brand} ${newGlazeData.name}`;
-
-    // Attach all uploaded images to the glaze record
-    for (let i = 0; i < uploadedUrls.length; i++) {
-      await supabase.from("glaze_firing_images").insert({
-        glaze_id: createdGlazeId,
-        label: "Photo",
-        image_url: uploadedUrls[i],
-        sort_order: i,
-      });
-    }
-
-    // Add to inventory as owned
-    await supabase.from("inventory_items").insert({
-      user_id: viewer.profile.id,
-      glaze_id: createdGlazeId,
-      status: "owned",
-    });
-
-    void supabase.from("analytics_events").insert({
-      event_type: "glaze_create",
-      user_id: viewer.profile.id,
-      glaze_id: null,
-      metadata: { glaze_id: createdGlazeId, name: newGlazeData.name, brand: newGlazeData.brand },
-    });
-  }
-
-  /* ── Build the layer list (combination case) ─────────────────────────── */
+  /* ── Combination shape ───────────────────────────────────────────────── */
   if (isCombination) {
     const validCones = new Set(["Cone 06", "Cone 6", "Cone 10"]);
     if (!validCones.has(coneValue)) {
-      // Roll back the just-created glaze if any
-      if (createdGlazeId) {
-        await supabase.from("glazes").delete().eq("id", createdGlazeId);
-      }
       return { error: "Combinations require Cone 06, Cone 6, or Cone 10." };
     }
 
-    const layerIds: string[] = [...existingGlazeIds];
-    if (createdGlazeId) layerIds.push(createdGlazeId);
-
-    if (layerIds.length > 4) {
-      if (createdGlazeId) await supabase.from("glazes").delete().eq("id", createdGlazeId);
-      return { error: "A combination can have at most 4 layers." };
-    }
-
-    // Build a label for the title
     const allCatalog = getAllCatalogGlazes();
     const catalogMap = new Map(allCatalog.map((g) => [g.id, g]));
     const labels: string[] = [];
-    for (const id of layerIds) {
-      if (id === createdGlazeId) {
-        labels.push(createdGlazeLabel);
-      } else if (catalogMap.has(id)) {
+    for (const id of existingGlazeIds) {
+      if (catalogMap.has(id)) {
         labels.push(formatGlazeLabel(catalogMap.get(id)!));
       } else {
-        // Custom glaze owned by viewer
         const { data } = await supabase
           .from("glazes")
           .select("name, brand")
@@ -301,12 +152,10 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
       .single();
 
     if (exampleErr || !exampleRow) {
-      // Roll back the new glaze if we just created one
-      if (createdGlazeId) await supabase.from("glazes").delete().eq("id", createdGlazeId);
       return { error: exampleErr?.message ?? "Could not save combination." };
     }
 
-    const layerRows = layerIds.map((glazeId, index) => ({
+    const layerRows = existingGlazeIds.map((glazeId, index) => ({
       example_id: exampleRow.id,
       glaze_id: glazeId,
       layer_order: index + 1,
@@ -318,7 +167,6 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
 
     if (layerErr) {
       await supabase.from("user_combination_examples").delete().eq("id", exampleRow.id);
-      if (createdGlazeId) await supabase.from("glazes").delete().eq("id", createdGlazeId);
       return { error: layerErr.message };
     }
 
@@ -329,14 +177,11 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
       metadata: {
         example_id: exampleRow.id,
         title,
-        layer_count: layerIds.length,
+        layer_count: existingGlazeIds.length,
         cone: coneValue,
-        included_new_glaze: !!createdGlazeId,
       },
     });
 
-    // Points
-    let totalPoints = 5; // combination
     void awardPoints(
       viewer.profile.id,
       viewer.profile.isAdmin ?? false,
@@ -346,78 +191,43 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
       "combination",
     );
 
-    if (createdGlazeId) {
-      totalPoints += 10;
-      void awardPoints(
-        viewer.profile.id,
-        viewer.profile.isAdmin ?? false,
-        "glaze_added",
-        10,
-        createdGlazeId,
-        "glaze",
-      );
-    }
-
     revalidateWorkspace();
     return {
       success: true,
       redirectTo: "/combinations?view=mine&published=1",
-      pointsAwarded: totalPoints,
+      pointsAwarded: 5,
     };
   }
 
-  /* ── New glaze alone (no combination) ────────────────────────────────── */
-  if (newGlazeData && createdGlazeId && !isCombination) {
-    void awardPoints(
-      viewer.profile.id,
-      viewer.profile.isAdmin ?? false,
-      "glaze_added",
-      10,
-      createdGlazeId,
-      "glaze",
-    );
-    revalidateWorkspace();
-    return {
-      success: true,
-      redirectTo: `/inventory?customGlazeAdded=1`,
-      pointsAwarded: 10,
-    };
-  }
+  /* ── Single existing glaze: firing photo(s) ────────────────────────── */
+  const rows = upload.uploaded.map((img) => ({
+    glaze_id: existingGlazeIds[0],
+    combination_id: null,
+    combination_type: null,
+    image_url: img.publicUrl,
+    storage_path: img.storagePath,
+    label,
+    cone: coneValue,
+    atmosphere,
+    uploader_user_id: viewer.profile.id,
+  }));
 
-  /* ── Single existing glaze: firing photo(s) ──────────────────────────── */
-  if (existingGlazeIds.length === 1) {
-    const rows = upload.uploaded.map((img) => ({
-      glaze_id: existingGlazeIds[0],
-      combination_id: null,
-      combination_type: null,
-      image_url: img.publicUrl,
-      storage_path: img.storagePath,
-      label,
-      cone: coneValue,
-      atmosphere,
-      uploader_user_id: viewer.profile.id,
-    }));
+  const { data: inserted, error: insertErr } = await supabase
+    .from("community_firing_images")
+    .insert(rows)
+    .select("id");
 
-    const { data: inserted, error: insertErr } = await supabase
-      .from("community_firing_images")
-      .insert(rows)
-      .select("id");
+  if (insertErr) return { error: insertErr.message };
 
-    if (insertErr) return { error: insertErr.message };
+  void awardPoints(
+    viewer.profile.id,
+    viewer.profile.isAdmin ?? false,
+    "firing_photo_uploaded",
+    2,
+    inserted?.[0]?.id,
+    "community_image",
+  );
 
-    void awardPoints(
-      viewer.profile.id,
-      viewer.profile.isAdmin ?? false,
-      "firing_photo_uploaded",
-      2,
-      inserted?.[0]?.id,
-      "community_image",
-    );
-
-    revalidateWorkspace();
-    return { success: true, redirectTo: "/contribute?submitted=photo", pointsAwarded: 2 };
-  }
-
-  return { error: "We couldn't figure out what you were trying to submit. Try again." };
+  revalidateWorkspace();
+  return { success: true, redirectTo: "/contribute?submitted=photo", pointsAwarded: 2 };
 }
-

@@ -56,7 +56,7 @@ export default async function ContributeWelcomePage({
           One unified form covers everything. You only fill in what's relevant — the form expands
           as you go.
         </p>
-        <ul className="grid gap-3 sm:grid-cols-3">
+        <ul className="grid gap-3 sm:grid-cols-2">
           <li className="border border-border bg-background p-4">
             <Camera className="mb-2 h-4 w-4 text-muted" aria-hidden="true" />
             <p className="text-sm font-medium text-foreground">A firing photo</p>
@@ -69,13 +69,6 @@ export default async function ContributeWelcomePage({
             <p className="text-sm font-medium text-foreground">A combination</p>
             <p className="mt-1 text-xs leading-5 text-muted">
               Pick two or more glazes you layered, in order, and share the result.
-            </p>
-          </li>
-          <li className="border border-border bg-background p-4">
-            <SwatchBook className="mb-2 h-4 w-4 text-muted" aria-hidden="true" />
-            <p className="text-sm font-medium text-foreground">A glaze that isn't here yet</p>
-            <p className="mt-1 text-xs leading-5 text-muted">
-              Tick "add a new glaze" while searching, fill in the details, and it joins the library.
             </p>
           </li>
         </ul>
@@ -100,7 +93,7 @@ export default async function ContributeWelcomePage({
           </li>
           <li>
             <strong>Name the glazes you actually used.</strong> Search by brand, code, or name. If
-            it's not there, tick the "add new glaze" box and tell us about it.
+            the whole brand is missing, use the "Request a glaze brand" link and we'll add it.
           </li>
           <li>
             <strong>For combinations, get the layer order right</strong> — top layer first. It

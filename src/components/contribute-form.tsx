@@ -11,12 +11,7 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  COMMERCIAL_GLAZE_BRANDS,
-  CUSTOM_GLAZE_COLOR_OPTIONS,
-  CUSTOM_GLAZE_CONE_VALUES,
-  CUSTOM_GLAZE_FINISH_OPTIONS,
-} from "@/lib/glaze-constants";
+import { CUSTOM_GLAZE_CONE_VALUES } from "@/lib/glaze-constants";
 
 // Contributors only ever fire in oxidation OR reduction — "Both" doesn't
 // make sense for a single firing/combo submission.
@@ -28,12 +23,7 @@ export type CombinationOption = { id: string; type: "vendor" | "user"; label: st
 
 const COMBO_CONES = ["Cone 06", "Cone 6", "Cone 10"] as const;
 
-function pointsForShape(args: {
-  selectedGlazeCount: number;
-  addingNewGlaze: boolean;
-}): number {
-  const { selectedGlazeCount, addingNewGlaze } = args;
-  if (addingNewGlaze) return 10;
+function pointsForShape(selectedGlazeCount: number): number {
   if (selectedGlazeCount >= 2) return 5;
   if (selectedGlazeCount === 1) return 2;
   return 0;
@@ -104,16 +94,7 @@ export function ContributeForm({
   const [cone, setCone] = useState<string>("");
   const [atmosphere, setAtmosphere] = useState<string>("");
 
-  /* ── Add new glaze (expandable) ────────────────────────────────────── */
-  const [addNewGlaze, setAddNewGlaze] = useState(false);
-  const [newGlazeName, setNewGlazeName] = useState("");
-  const [newGlazeBrand, setNewGlazeBrand] = useState("");
-  const [newGlazeCode, setNewGlazeCode] = useState("");
-  const [newGlazeColors, setNewGlazeColors] = useState<string[]>([]);
-  const [newGlazeFinishes, setNewGlazeFinishes] = useState<string[]>([]);
-  const [newGlazeNotes, setNewGlazeNotes] = useState("");
-
-  /* ── Combination notes (revealed when 2+ glazes total) ─────────────── */
+  /* ── Combination notes (revealed when 2+ glazes) ───────────────────── */
   const [glazingProcess, setGlazingProcess] = useState("");
   const [notes, setNotes] = useState("");
   const [kilnNotes, setKilnNotes] = useState("");
@@ -123,34 +104,16 @@ export function ContributeForm({
   const [label, setLabel] = useState("");
 
   const isCombination = selectedGlazes.length >= 2;
-  const isFiringPhoto = !addNewGlaze && selectedGlazes.length >= 1;
+  const isFiringPhoto = selectedGlazes.length === 1;
 
-  const points = pointsForShape({
-    selectedGlazeCount: selectedGlazes.length,
-    addingNewGlaze: addNewGlaze,
-  });
+  const points = pointsForShape(selectedGlazes.length);
 
   /* ── Validation ────────────────────────────────────────────────────── */
-  const newGlazeValid =
-    !addNewGlaze ||
-    (newGlazeName.trim().length >= 2 &&
-      newGlazeBrand.trim().length > 0 &&
-      newGlazeCode.trim().length > 0 &&
-      newGlazeColors.length > 0 &&
-      newGlazeFinishes.length > 0 &&
-      newGlazeNotes.trim().length > 0);
-
   const photoCountValid = imageFiles.length >= 1 && imageFiles.length <= 5;
-
-  const hasTarget = selectedGlazes.length > 0 || addNewGlaze;
+  const hasTarget = selectedGlazes.length > 0;
   const coneValid = !!cone && (isCombination ? COMBO_CONES.includes(cone as (typeof COMBO_CONES)[number]) : true);
 
-  const canSubmit =
-    photoCountValid &&
-    hasTarget &&
-    newGlazeValid &&
-    coneValid &&
-    !disabled;
+  const canSubmit = photoCountValid && hasTarget && coneValid && !disabled;
 
   /* ── Submit ────────────────────────────────────────────────────────── */
   const [error, setError] = useState<string | null>(null);
@@ -164,20 +127,13 @@ export function ContributeForm({
     !isPending &&
     (imageFiles.length > 0 ||
       selectedGlazes.length > 0 ||
-      addNewGlaze ||
       cone !== "" ||
       atmosphere !== "" ||
       label !== "" ||
       glazingProcess !== "" ||
       notes !== "" ||
       kilnNotes !== "" ||
-      clayBody !== "" ||
-      newGlazeName !== "" ||
-      newGlazeBrand !== "" ||
-      newGlazeCode !== "" ||
-      newGlazeNotes !== "" ||
-      newGlazeColors.length > 0 ||
-      newGlazeFinishes.length > 0);
+      clayBody !== "");
 
   useEffect(() => {
     if (!isDirty) return;
@@ -187,14 +143,12 @@ export function ContributeForm({
     };
     window.addEventListener("beforeunload", handler);
 
-    // Also intercept SPA link clicks within the document.
     const clickHandler = (e: MouseEvent) => {
       if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       const anchor = (e.target as HTMLElement | null)?.closest("a");
       if (!anchor) return;
       const href = anchor.getAttribute("href");
       if (!href || href.startsWith("#")) return;
-      // External target / new window — let beforeunload handle it
       if (anchor.target && anchor.target !== "_self") return;
       if (
         !window.confirm("You have unsaved changes to your contribution. Leave this page?")
@@ -223,16 +177,6 @@ export function ContributeForm({
 
       selectedGlazes.forEach((g) => data.append("glazeIds", g.id));
 
-      if (addNewGlaze) {
-        data.append("addNewGlaze", "1");
-        data.append("newGlazeName", newGlazeName.trim());
-        data.append("newGlazeBrand", newGlazeBrand.trim());
-        data.append("newGlazeCode", newGlazeCode.trim().toUpperCase());
-        data.append("newGlazeColors", newGlazeColors.join(", "));
-        data.append("newGlazeFinishes", newGlazeFinishes.join(", "));
-        data.append("newGlazeNotes", newGlazeNotes.trim());
-      }
-
       if (isCombination) {
         if (glazingProcess) data.append("glazingProcess", glazingProcess);
         if (notes) data.append("notes", notes);
@@ -248,7 +192,6 @@ export function ContributeForm({
           return;
         }
 
-        // Reset all form state
         setImageFiles([]);
         setQuery("");
         setSelectedGlazes([]);
@@ -259,23 +202,14 @@ export function ContributeForm({
         setNotes("");
         setKilnNotes("");
         setClayBody("");
-        setAddNewGlaze(false);
-        setNewGlazeName("");
-        setNewGlazeBrand("");
-        setNewGlazeCode("");
-        setNewGlazeColors([]);
-        setNewGlazeFinishes([]);
-        setNewGlazeNotes("");
 
         setHasSubmitted(true);
 
-        // Redirect away from /contribute for combinations and new glazes
         if (!res.redirectTo.startsWith("/contribute")) {
           router.push(res.redirectTo);
           return;
         }
 
-        // Stay on the page and show a success banner
         setSuccessMessage(
           `Submitted! +${res.pointsAwarded} point${res.pointsAwarded === 1 ? "" : "s"} — thanks for contributing.`,
         );
@@ -289,13 +223,6 @@ export function ContributeForm({
       atmosphere,
       label,
       selectedGlazes,
-      addNewGlaze,
-      newGlazeName,
-      newGlazeBrand,
-      newGlazeCode,
-      newGlazeColors,
-      newGlazeFinishes,
-      newGlazeNotes,
       isCombination,
       glazingProcess,
       notes,
@@ -385,13 +312,11 @@ export function ContributeForm({
           <Badge tone={hasTarget ? "success" : "neutral"}>
             {selectedGlazes.length > 0
               ? `${selectedGlazes.length} glaze${selectedGlazes.length === 1 ? "" : "s"} picked`
-              : addNewGlaze
-                ? "New glaze ready"
-                : "Pick a glaze"}
+              : "Pick a glaze"}
           </Badge>
           <p className="text-sm font-semibold text-foreground">What did you fire?</p>
         </div>
-        {selectedGlazes.length < 2 && !addNewGlaze ? (
+        {selectedGlazes.length < 2 ? (
           <>
             <p className="text-xs text-muted">
               Pick the <strong className="font-semibold text-foreground">top layer first</strong> — each glaze you add stacks below it.
@@ -469,8 +394,8 @@ export function ContributeForm({
           </div>
         ) : null}
 
-        {/* Search input + results — hidden when adding a new glaze */}
-        {!addNewGlaze && selectedGlazes.length < 4 ? (
+        {/* Search input + results */}
+        {selectedGlazes.length < 4 ? (
           <div className="space-y-2">
             <Input
               value={query}
@@ -503,7 +428,7 @@ export function ContributeForm({
                 </ul>
               ) : (
                 <p className="px-4 py-6 text-sm text-muted">
-                  No matches. Try a shorter search, or add it as a new glaze below.
+                  No matches. Try a shorter search, or request the brand below.
                 </p>
               )}
             </div>
@@ -528,128 +453,6 @@ export function ContributeForm({
           </div>
         ) : null}
       </Panel>
-
-      {/* ── New glaze metadata (expandable) ── */}
-      {addNewGlaze ? (
-        <Panel className="space-y-4">
-          <div className="flex flex-wrap items-center gap-2">
-            <Badge tone={newGlazeValid ? "success" : "neutral"}>
-              {newGlazeValid ? "New glaze details ready" : "New glaze details required"}
-            </Badge>
-            <p className="text-sm font-semibold text-foreground">New glaze</p>
-          </div>
-
-          <datalist id="glaze-brands-list">
-            {COMMERCIAL_GLAZE_BRANDS.map((b) => (
-              <option key={b} value={b} />
-            ))}
-          </datalist>
-
-          <div className="grid gap-3 sm:grid-cols-2">
-            <label className="grid gap-1.5">
-              <span className="text-sm font-medium">Name</span>
-              <Input
-                value={newGlazeName}
-                onChange={(e) => setNewGlazeName(e.target.value)}
-                placeholder="e.g. Temmoku Black"
-                disabled={disabled}
-                className="border-foreground/20 bg-white"
-              />
-            </label>
-            <label className="grid gap-1.5">
-              <span className="text-sm font-medium">Brand</span>
-              <Input
-                list="glaze-brands-list"
-                value={newGlazeBrand}
-                onChange={(e) => setNewGlazeBrand(e.target.value)}
-                placeholder="AMACO, Mayco, Coyote…"
-                disabled={disabled}
-                className="border-foreground/20 bg-white"
-              />
-            </label>
-            <label className="grid gap-1.5 sm:col-span-2">
-              <span className="text-sm font-medium">Product code</span>
-              <Input
-                value={newGlazeCode}
-                onChange={(e) => setNewGlazeCode(e.target.value.toUpperCase())}
-                placeholder="e.g. TB-01"
-                disabled={disabled}
-                className="border-foreground/20 bg-white"
-              />
-            </label>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-sm font-medium">Colours</p>
-            <div className="flex flex-wrap gap-2">
-              {CUSTOM_GLAZE_COLOR_OPTIONS.map((c) => {
-                const selected = newGlazeColors.includes(c);
-                return (
-                  <button
-                    key={c}
-                    type="button"
-                    onClick={() =>
-                      setNewGlazeColors((cur) =>
-                        selected ? cur.filter((x) => x !== c) : [...cur, c],
-                      )
-                    }
-                    disabled={disabled}
-                    className={cn(
-                      "border px-3 py-1.5 text-xs transition",
-                      selected
-                        ? "border-foreground bg-foreground text-white"
-                        : "border-foreground/20 bg-white hover:bg-foreground/[0.04]",
-                    )}
-                  >
-                    {c}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <p className="text-sm font-medium">Finish</p>
-            <div className="flex flex-wrap gap-2">
-              {CUSTOM_GLAZE_FINISH_OPTIONS.map((f) => {
-                const selected = newGlazeFinishes.includes(f);
-                return (
-                  <button
-                    key={f}
-                    type="button"
-                    onClick={() =>
-                      setNewGlazeFinishes((cur) =>
-                        selected ? cur.filter((x) => x !== f) : [...cur, f],
-                      )
-                    }
-                    disabled={disabled}
-                    className={cn(
-                      "border px-3 py-1.5 text-xs transition",
-                      selected
-                        ? "border-foreground bg-foreground text-white"
-                        : "border-foreground/20 bg-white hover:bg-foreground/[0.04]",
-                    )}
-                  >
-                    {f}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <label className="grid gap-1.5">
-            <span className="text-sm font-medium">Notes about this glaze</span>
-            <Textarea
-              value={newGlazeNotes}
-              onChange={(e) => setNewGlazeNotes(e.target.value)}
-              placeholder="Application thickness, surface, recipe source, anything else useful."
-              maxLength={500}
-              disabled={disabled}
-              className="border-foreground/20 bg-white"
-            />
-          </label>
-        </Panel>
-      ) : null}
 
       {/* ── Cone ── */}
       <Panel className="space-y-3">
@@ -768,7 +571,7 @@ export function ContributeForm({
       ) : null}
 
       {/* ── Firing photo label ── */}
-      {isFiringPhoto && !isCombination ? (
+      {isFiringPhoto ? (
         <Panel className="space-y-3">
           <div className="flex flex-wrap items-center gap-2">
             <Badge tone="neutral">Optional</Badge>
