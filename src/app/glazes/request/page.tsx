@@ -18,6 +18,7 @@ export default async function RequestGlazeBrandPage({
   return (
     <div className="space-y-8">
       <PageHeader
+        tone="butter"
         eyebrow="Library"
         title="Request a glaze brand"
         description="Can't find a brand you use? Let us know and we'll look at adding it to the catalog."

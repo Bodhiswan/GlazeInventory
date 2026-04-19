@@ -21,6 +21,7 @@ export default async function CommunityPage({
   return (
     <div className="space-y-8">
       <PageHeader
+        tone="rose"
         eyebrow="Community"
         title="Shared kiln-tested combinations"
         description="Browse what other members have published, then jump into the pair detail page when a result overlaps with your shelf."

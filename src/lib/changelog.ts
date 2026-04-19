@@ -4,6 +4,7 @@ export const CHANGES = [
   {
     category: "New",
     items: [
+      "Warmer palette across the site — clay, rose, butter, and sage accents now colour section headers, owned / wishlist badges, and tinted panels to match the glazes you're browsing.",
       "Clay Art Center glazes added — 234 catalog glazes including Rainbow, P Series, Craftsman, Frost, Raku, Terra Sigillata, and High Fire lines.",
       "BOTZ glazes added — 116 BOTZ glazes now in the library, covering Unidekor underglazes, Earthenware, Stoneware, Engobes, PRO, and Ceramic Ink lines.",
       "Glazing guide expanded — three new sections: Application & Layering, Decorative Techniques, and Firing Considerations are now live.",

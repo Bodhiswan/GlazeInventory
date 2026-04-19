@@ -20,6 +20,7 @@ export default async function ContributePage() {
     return (
       <div className="space-y-8">
         <PageHeader
+          tone="butter"
           eyebrow="Contribute"
           title="Your contributions are paused"
           description="Your account has accrued three strikes from inaccurate submissions, so contributing is paused while we have a look. This isn't a punishment — we just want to keep the library trustworthy."
@@ -42,9 +43,10 @@ export default async function ContributePage() {
   return (
     <div className="space-y-8">
       <PageHeader
+        tone="butter"
         eyebrow="Contribute"
         title="Share what came out of the kiln"
-        description="One form for everything — a firing photo, a layered combination, or a glaze that isn't here yet. The form expands as you go."
+        description="One form for everything — a firing photo or a layered combination. The form expands as you go."
         actions={
           <Link
             href="/contribute/welcome?revisit=1"

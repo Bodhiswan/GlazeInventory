@@ -164,6 +164,7 @@ export default async function GlazeDetailPage({
       <GlazeJsonLd glaze={glaze} />
 
       <PageHeader
+        tone="sage"
         eyebrow="Glaze"
         title={formatGlazeLabel(glaze)}
         description="See the official glaze details, available firing reference images, and studio comments for this glaze."

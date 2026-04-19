@@ -56,7 +56,7 @@ export const InventoryCard = memo(function InventoryCard({
         </div>
 
         <div className="flex flex-wrap gap-1">
-          <Badge tone={item.status === "owned" ? "success" : item.status === "wishlist" ? "accent" : "neutral"}>
+          <Badge tone={item.status === "owned" ? "owned" : item.status === "wishlist" ? "wishlist" : "neutral"}>
             {item.status === "owned" ? "Owned" : item.status === "wishlist" ? "Wishlist" : "Empty"}
           </Badge>
           {item.status === "owned" ? <Badge tone="neutral">{fillLevel}</Badge> : null}

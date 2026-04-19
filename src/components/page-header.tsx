@@ -1,21 +1,50 @@
 import type { ReactNode } from "react";
 
+import { cn } from "@/lib/utils";
+
+type HeaderTone = "default" | "clay" | "rose" | "butter" | "sage";
+
+const eyebrowClasses: Record<HeaderTone, string> = {
+  default: "text-muted",
+  clay: "text-clay",
+  rose: "text-rose",
+  butter: "text-butter",
+  sage: "text-sage",
+};
+
+const borderClasses: Record<HeaderTone, string> = {
+  default: "border-border",
+  clay: "border-clay/40",
+  rose: "border-rose/40",
+  butter: "border-butter/40",
+  sage: "border-sage/40",
+};
+
 export function PageHeader({
   eyebrow,
   title,
   description,
   actions,
+  tone = "default",
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   actions?: ReactNode;
+  tone?: HeaderTone;
 }) {
   return (
-    <div className="flex flex-col gap-4 border-b border-border pb-5 sm:pb-6 lg:flex-row lg:items-end lg:justify-between">
+    <div
+      className={cn(
+        "flex flex-col gap-4 border-b pb-5 sm:pb-6 lg:flex-row lg:items-end lg:justify-between",
+        borderClasses[tone],
+      )}
+    >
       <div className="min-w-0">
         {eyebrow ? (
-          <p className="text-[11px] uppercase tracking-[0.18em] text-muted">{eyebrow}</p>
+          <p className={cn("text-[11px] uppercase tracking-[0.18em]", eyebrowClasses[tone])}>
+            {eyebrow}
+          </p>
         ) : null}
         <h1 className="display-font mt-2 text-[clamp(2rem,7vw,3.6rem)] leading-[0.95] tracking-[-0.03em] text-balance">
           {title}

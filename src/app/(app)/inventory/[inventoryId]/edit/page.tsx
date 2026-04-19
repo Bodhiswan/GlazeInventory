@@ -31,6 +31,7 @@ export default async function EditInventoryItemPage({
   return (
     <div className="space-y-8">
       <PageHeader
+        tone="clay"
         eyebrow="Inventory"
         title={formatGlazeLabel(item.glaze)}
         description="Update private notes, archive the glaze, or refine details for a custom recipe entry that you created."

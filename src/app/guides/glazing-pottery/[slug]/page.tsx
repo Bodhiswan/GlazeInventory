@@ -128,6 +128,7 @@ export default async function GuideSubpage({
       </nav>
 
       <PageHeader
+        tone="sage"
         eyebrow={`Part ${part.number}`}
         title={part.title}
         description={part.description}
