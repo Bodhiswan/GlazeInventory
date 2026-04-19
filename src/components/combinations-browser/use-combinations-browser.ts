@@ -181,18 +181,16 @@ function exampleToTile(example: VendorCombinationExample): CombinationTile {
 }
 
 function userExampleToTile(ue: UserCombinationExample): CombinationTile {
-  // ue.layers is bottom-up — reverse so the stacked tile renders top → bottom.
-  const tileLayers: TileLayer[] = [...ue.layers].reverse().map((l) => ({
+  // ue.layers is sorted ASC by layer_order; layer_order 1 is the top layer,
+  // so rendering in order already gives top → bottom.
+  const tileLayers: TileLayer[] = ue.layers.map((l) => ({
     code: l.glaze?.code ?? null,
     name: l.glaze?.name ?? "Glaze",
   }));
 
-  // ue.layers comes bottom-up (layer_order ASC). Reverse for display so the
-  // top layer is shown first — matching the form's "top over bottom" mental
-  // model — and join with "/".
-  const layerLabels = [...ue.layers]
-    .reverse()
-    .map((l) => (l.glaze ? (l.glaze.code ?? l.glaze.name ?? "Glaze") : "Glaze"));
+  const layerLabels = ue.layers.map((l) =>
+    l.glaze ? (l.glaze.code ?? l.glaze.name ?? "Glaze") : "Glaze",
+  );
   const title = layerLabels.length >= 1 ? layerLabels.join("/") : "User combination";
 
   const ownership: TileOwnership = ue.viewerOwnsAllGlazes

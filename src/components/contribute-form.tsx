@@ -306,8 +306,8 @@ export function ContributeForm({
   );
 
   /* ── Render ────────────────────────────────────────────────────────── */
-  // Storage is top-down: selectedGlazes[0] = top layer, [length-1] = bottom.
-  // Server reverses this so DB layer_order 1 = bottom.
+  // selectedGlazes is top-down: [0] = top layer. Server persists in the same
+  // order, so DB layer_order 1 = top.
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-6">
