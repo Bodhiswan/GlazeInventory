@@ -40,7 +40,6 @@ export default function GlazingPotteryGuidePage() {
       <GuideJsonLd />
 
       <PageHeader
-        tone="sage"
         eyebrow="Guide"
         title="The Complete Guide to Glazing Pottery"
         description="A deeply-referenced guide to glaze application, layering, surface techniques, troubleshooting, and international ceramic traditions. Built from books, manufacturer data, academic research, and practitioner knowledge."

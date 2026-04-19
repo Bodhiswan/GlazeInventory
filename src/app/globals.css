@@ -15,17 +15,6 @@
   --tile-hover: #ece8e4;
   --radius: 0px;
 
-  /* Glaze palette — shared with bodhiswan.com. Pastels for panel/section
-     backgrounds, saturated accents for eyebrows / CTAs / badges. */
-  --tile-terracotta: #efe1d4;
-  --clay: #b56a4d;
-  --tile-rose: #edd7da;
-  --rose: #a66a76;
-  --tile-butter: #efe8d0;
-  --butter: #b59149;
-  --tile-sage: #e6eadc;
-  --sage: #6b7a56;
-
   /* Canonical spacing — use these contexts, not ad-hoc Tailwind values */
   --space-inner: 1rem;     /* padding inside cards/panels    → p-4 sm:p-5 lg:p-6 */
   --space-gap: 1.25rem;    /* gap between sibling components → gap-4 sm:gap-5 */
@@ -42,14 +31,6 @@
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-accent-3: var(--accent-3);
-  --color-clay: var(--clay);
-  --color-rose: var(--rose);
-  --color-butter: var(--butter);
-  --color-sage: var(--sage);
-  --color-tile-terracotta: var(--tile-terracotta);
-  --color-tile-rose: var(--tile-rose);
-  --color-tile-butter: var(--tile-butter);
-  --color-tile-sage: var(--tile-sage);
   --font-sans: var(--font-inter);
   --font-display: var(--font-crimson-text);
 }

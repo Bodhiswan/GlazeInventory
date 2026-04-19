@@ -81,7 +81,6 @@ export default async function VendorCombinationExamplePage({
   return (
     <div className="space-y-8">
       <PageHeader
-        tone="rose"
         eyebrow="Combination example"
         title={example.title}
         description={`Imported from ${example.sourceVendor}. Layer order, source photos, and glaze links are preserved here so you can move from inspiration to a test tile faster.`}

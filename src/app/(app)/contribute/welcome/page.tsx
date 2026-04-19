@@ -24,7 +24,6 @@ export default async function ContributeWelcomePage({
   return (
     <div className="space-y-8">
       <PageHeader
-        tone="butter"
         eyebrow="Contribute · Welcome"
         title="Welcome to the kiln circle"
         description="Every photo you share helps another potter avoid a misfire or find their next favourite glaze. Thank you for being here — here's a quick tour before you start."

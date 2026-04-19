@@ -117,7 +117,6 @@ export default async function CombinationDetailPage({
       />
 
       <PageHeader
-        tone="rose"
         eyebrow="Combination detail"
         title={`${detail.glazes[0].name} + ${detail.glazes[1].name}`}
         description={

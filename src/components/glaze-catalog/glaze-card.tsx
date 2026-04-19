@@ -64,8 +64,8 @@ export function GlazeCard({
         </div>
 
         <div className="flex flex-wrap gap-1">
-          {currentStatus === "owned" ? <Badge tone="owned">Owned</Badge> : null}
-          {currentStatus === "wishlist" ? <Badge tone="wishlist">Wishlist</Badge> : null}
+          {currentStatus === "owned" ? <Badge tone="success">Owned</Badge> : null}
+          {currentStatus === "wishlist" ? <Badge tone="accent">Wishlist</Badge> : null}
           {currentStatus === "archived" ? <Badge tone="neutral">Empty</Badge> : null}
         </div>
       </div>
