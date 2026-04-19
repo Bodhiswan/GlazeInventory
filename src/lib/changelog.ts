@@ -16,6 +16,7 @@ export const CHANGES = [
   {
     category: "Fixed",
     items: [
+      "Contribution uploads from mobile — raised server upload cap so multi-photo combination and new-glaze submissions no longer fail with an error page.",
       "Duplicate glazes no longer appear when filtering by brand.",
       "Browser hydration issues on catalog pages resolved.",
       "Signed-in shell now renders correctly on guide pages.",

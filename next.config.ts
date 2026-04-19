@@ -61,7 +61,7 @@ const remotePatterns: RemotePattern[] = [
 const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
-      bodySizeLimit: "2mb",
+      bodySizeLimit: "45mb",
     },
   },
   images: {
