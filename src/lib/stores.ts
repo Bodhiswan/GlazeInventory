@@ -6,8 +6,10 @@
  * some strip hyphens from codes, some use full names, some need brand
  * prefixes — so each store provides its own `buildUrl` function.
  *
- * Stores also carry a product-level inventory so we only show "Buy" links
+ * Most stores carry a product-level inventory so we only show "Buy" links
  * for glazes the store actually stocks (even if out of stock temporarily).
+ * Search-only stores fall back to brand-level checks until we have a local
+ * product scrape for them.
  */
 
 import clayKingData from "@data/stores/clay-king-us.json";
@@ -100,6 +102,47 @@ function makeCarriesCheck(
   };
 }
 
+function makeBrandCarriesCheck(
+  brands: string[],
+): (glaze: { code: string | null; name: string; brand: string | null }) => boolean {
+  const carriedBrands = new Set(brands);
+  return (glaze) => {
+    const brand = (glaze.brand ?? "").toLowerCase();
+    return Boolean(brand && carriedBrands.has(brand));
+  };
+}
+
+const bathPottersBrands = [
+  "amaco",
+  "bath potters",
+  "bath potters supplies",
+  "botz",
+  "glost",
+  "kiwi",
+  "mayco",
+  "spectrum",
+  "terracolor",
+];
+
+const potterycraftsBrands = [
+  "amaco",
+  "botz",
+  "duncan",
+  "mayco",
+  "potterycrafts",
+  "spectrum",
+  "terracolor",
+];
+
+const scarvaBrands = [
+  "amaco",
+  "botz",
+  "chrysanthos",
+  "mayco",
+  "scarva",
+  "spectrum",
+];
+
 // ─── Per-store indexes ─────────────────────────────────────────────────────────
 
 const potteryPaintsCarries = makeCarriesCheck(
@@ -121,6 +164,10 @@ const theCeramicShopCarries = makeCarriesCheck(
   buildProductIndex(theCeramicShopData.products),
   buildNameIndex(theCeramicShopData.products),
 );
+
+const bathPottersCarries = makeBrandCarriesCheck(bathPottersBrands);
+const potterycraftsCarries = makeBrandCarriesCheck(potterycraftsBrands);
+const scarvaCarries = makeBrandCarriesCheck(scarvaBrands);
 
 // ─── Store URL strategies ──────────────────────────────────────────────────────
 
@@ -161,6 +208,32 @@ function theCeramicShopUrl(glaze: { code: string | null; name: string }): string
   return `https://theceramicshop.com/store/search.asp?keyword=${encodeURIComponent(query)}`;
 }
 
+/**
+ * Bath Potters Supplies (UK) - site search uses path-based search URLs.
+ */
+function bathPottersUrl(glaze: { code: string | null; name: string }): string {
+  const query = glaze.code ?? glaze.name;
+  return `https://www.bathpotters.co.uk/search/${encodeURIComponent(query)}`;
+}
+
+/**
+ * Potterycrafts (UK) - Shopify search.
+ */
+function potterycraftsUrl(glaze: { code: string | null; name: string }): string {
+  const query = glaze.code ?? glaze.name;
+  return `https://potterycrafts.co.uk/search?q=${encodeURIComponent(query)}`;
+}
+
+/**
+ * Scarva (UK) - site-scoped Google search.
+ * Their site can block automated direct requests, so this mirrors the
+ * Glaze Queen approach and still lands users on product results.
+ */
+function scarvaUrl(glaze: { code: string | null; name: string }): string {
+  const query = glaze.code ?? glaze.name;
+  return `https://www.google.com/search?q=site%3Ascarva.com+${encodeURIComponent(query)}`;
+}
+
 // ─── Store registry ────────────────────────────────────────────────────────────
 
 export const retailStores: RetailStore[] = [
@@ -183,6 +256,36 @@ export const retailStores: RetailStore[] = [
     brands: ["amaco", "coyote", "mayco", "spectrum", "laguna", "speedball", "duncan"],
     buildUrl: clayKingUrl,
     carries: clayKingCarries,
+  },
+  {
+    id: "bath-potters-uk",
+    name: "Bath Potters",
+    region: "UK",
+    country: "GB",
+    url: "https://www.bathpotters.co.uk",
+    brands: bathPottersBrands,
+    buildUrl: bathPottersUrl,
+    carries: bathPottersCarries,
+  },
+  {
+    id: "potterycrafts-uk",
+    name: "Potterycrafts",
+    region: "UK",
+    country: "GB",
+    url: "https://potterycrafts.co.uk",
+    brands: potterycraftsBrands,
+    buildUrl: potterycraftsUrl,
+    carries: potterycraftsCarries,
+  },
+  {
+    id: "scarva-uk",
+    name: "Scarva",
+    region: "UK",
+    country: "GB",
+    url: "https://www.scarva.com",
+    brands: scarvaBrands,
+    buildUrl: scarvaUrl,
+    carries: scarvaCarries,
   },
   {
     id: "glazequeen-us",
