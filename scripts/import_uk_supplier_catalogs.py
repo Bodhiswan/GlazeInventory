@@ -148,6 +148,59 @@ def remove_duplicate_bath_powders(rows: list[dict[str, object | None]]) -> list[
     return output
 
 
+def potterycrafts_form_family(row: dict[str, object | None]) -> str | None:
+    name = str(row.get("name") or "").lower()
+    line = str(row.get("line") or "").lower()
+    if "decorating slip" in name or "decorating slip" in line:
+        return "decorating slip"
+    if "on-glaze" in name or "on glaze" in name or "on-glaze" in line:
+        return "on-glaze"
+    if "underglaze" in name or "underglaze" in line:
+        return "underglaze"
+    if "raku" in name or "raku" in line:
+        return "raku glaze"
+    if "stoneware" in name or "stoneware" in line:
+        return "stoneware glaze"
+    if "earthenware" in name or "earthenware" in line:
+        return "earthenware glaze"
+    return None
+
+
+def potterycrafts_form_root(row: dict[str, object | None]) -> tuple[str, str] | None:
+    family = potterycrafts_form_family(row)
+    if not family:
+        return None
+
+    root = str(row.get("name") or "").lower()
+    root = re.sub(r"\b(powdered|powder|liquid|brush[ -]?on)\b", " ", root)
+    root = re.sub(
+        r"\b(underglaze|underglazes|decorating slip|decorating slips|on-glaze|on glaze|colour|colours|color|colors|glaze|glazes)\b",
+        " ",
+        root,
+    )
+    root = re.sub(r"[^a-z0-9]+", " ", root).strip()
+    return (family, root) if root else None
+
+
+def remove_duplicate_potterycrafts_powders(rows: list[dict[str, object | None]]) -> list[dict[str, object | None]]:
+    non_powder_roots = {
+        root
+        for row in rows
+        if not re.search(r"\bpowder(?:ed)?\b", str(row.get("name") or ""), re.I)
+        and (root := potterycrafts_form_root(row))
+    }
+
+    output: list[dict[str, object | None]] = []
+    for row in rows:
+        is_powder = bool(re.search(r"\bpowder(?:ed)?\b", str(row.get("name") or ""), re.I))
+        root = potterycrafts_form_root(row)
+        if is_powder and root in non_powder_roots:
+            continue
+        output.append(row)
+
+    return output
+
+
 def infer_color_notes(name: str, description: str | None = None) -> str | None:
     haystack = name.lower()
     labels: list[str] = []
@@ -370,7 +423,7 @@ def scrape_potterycrafts() -> list[dict[str, object | None]]:
             )
         )
 
-    return rows
+    return remove_duplicate_potterycrafts_powders(rows)
 
 
 def build_scarva_rows() -> list[dict[str, object | None]]:

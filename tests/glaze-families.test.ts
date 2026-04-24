@@ -92,3 +92,14 @@ test("keeps Bath Potters powder rows only when no brush-on equivalent exists", (
   assert.equal(bathGlazes.some((glaze) => glaze.code === "EB10P"), false);
   assert.equal(bathGlazes.some((glaze) => glaze.code === "BP25P-1"), true);
 });
+
+test("keeps Potterycrafts powder rows only when no liquid equivalent exists", () => {
+  const potterycraftsGlazes = getAllCatalogGlazes().filter((glaze) => glaze.brand === "Potterycrafts");
+
+  assert.equal(potterycraftsGlazes.length, 219);
+  assert.equal(potterycraftsGlazes.some((glaze) => glaze.code === "P4101"), false);
+  assert.equal(potterycraftsGlazes.some((glaze) => glaze.code === "P4151"), true);
+  assert.equal(potterycraftsGlazes.some((glaze) => glaze.code === "P4279"), false);
+  assert.equal(potterycraftsGlazes.some((glaze) => glaze.code === "P4309"), true);
+  assert.equal(potterycraftsGlazes.some((glaze) => glaze.code === "P2073"), true);
+});

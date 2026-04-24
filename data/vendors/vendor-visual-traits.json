@@ -55554,34 +55554,6 @@
       }
     ]
   },
-  "Potterycrafts|P1980": {
-    "imageColors": [
-      "Grey",
-      "Cream"
-    ],
-    "imageColorWeights": {
-      "Grey": 0.4346,
-      "Cream": 0.3076,
-      "Green": 0.0348
-    },
-    "imagePalette": [
-      {
-        "label": "Grey",
-        "hex": "#d9dcd4",
-        "weight": 0.4346
-      },
-      {
-        "label": "Cream",
-        "hex": "#e1e1db",
-        "weight": 0.3076
-      },
-      {
-        "label": "Green",
-        "hex": "#a1ab8a",
-        "weight": 0.0348
-      }
-    ]
-  },
   "Potterycrafts|P4455": {
     "imageColors": [
       "Yellow"
@@ -56873,22 +56845,6 @@
       }
     ]
   },
-  "Potterycrafts|P4360": {
-    "imageColors": [
-      "Yellow"
-    ],
-    "imageColorWeights": {
-      "Yellow": 0.9724,
-      "Gold": 0.0229
-    },
-    "imagePalette": [
-      {
-        "label": "Yellow",
-        "hex": "#a89027",
-        "weight": 0.9724
-      }
-    ]
-  },
   "Potterycrafts|P2043": {
     "imageColors": [
       "Grey"
@@ -57213,28 +57169,6 @@
       }
     ]
   },
-  "Potterycrafts|P4367": {
-    "imageColors": [
-      "Pink",
-      "Burgundy"
-    ],
-    "imageColorWeights": {
-      "Pink": 0.7392,
-      "Burgundy": 0.2445
-    },
-    "imagePalette": [
-      {
-        "label": "Pink",
-        "hex": "#9d4b6b",
-        "weight": 0.7392
-      },
-      {
-        "label": "Burgundy",
-        "hex": "#5f1d2f",
-        "weight": 0.2445
-      }
-    ]
-  },
   "Potterycrafts|P2573": {
     "imageColors": [
       "Red",
@@ -57487,47 +57421,6 @@
         "label": "Teal",
         "hex": "#279ea4",
         "weight": 0.1908
-      }
-    ]
-  },
-  "Potterycrafts|P4370": {
-    "imageColors": [
-      "Burgundy",
-      "Pink",
-      "Maroon",
-      "Grey",
-      "Lavender"
-    ],
-    "imageColorWeights": {
-      "Burgundy": 0.4963,
-      "Pink": 0.1933,
-      "Maroon": 0.1055,
-      "Grey": 0.0535,
-      "Lavender": 0.0516,
-      "Brown": 0.0463,
-      "Orange": 0.0241,
-      "Black": 0.0198
-    },
-    "imagePalette": [
-      {
-        "label": "Burgundy",
-        "hex": "#543343",
-        "weight": 0.4963
-      },
-      {
-        "label": "Pink",
-        "hex": "#714466",
-        "weight": 0.1933
-      },
-      {
-        "label": "Maroon",
-        "hex": "#362627",
-        "weight": 0.1055
-      },
-      {
-        "label": "Grey",
-        "hex": "#3b3839",
-        "weight": 0.0535
       }
     ]
   },
@@ -59606,21 +59499,6 @@
       }
     ]
   },
-  "Potterycrafts|P4355": {
-    "imageColors": [
-      "Yellow"
-    ],
-    "imageColorWeights": {
-      "Yellow": 0.9992
-    },
-    "imagePalette": [
-      {
-        "label": "Yellow",
-        "hex": "#c9c55e",
-        "weight": 0.9992
-      }
-    ]
-  },
   "Potterycrafts|P2515": {
     "imageColors": [
       "Orange",
@@ -59919,35 +59797,6 @@
         "label": "Green",
         "hex": "#336d3c",
         "weight": 0.9947
-      }
-    ]
-  },
-  "Potterycrafts|P4348": {
-    "imageColors": [
-      "Teal",
-      "Blue",
-      "Aqua"
-    ],
-    "imageColorWeights": {
-      "Teal": 0.8182,
-      "Blue": 0.1127,
-      "Aqua": 0.0646
-    },
-    "imagePalette": [
-      {
-        "label": "Teal",
-        "hex": "#037890",
-        "weight": 0.8182
-      },
-      {
-        "label": "Blue",
-        "hex": "#1d4e81",
-        "weight": 0.1127
-      },
-      {
-        "label": "Aqua",
-        "hex": "#099baa",
-        "weight": 0.0646
       }
     ]
   },
@@ -60259,29 +60108,6 @@
         "label": "Yellow",
         "hex": "#9e9780",
         "weight": 0.0319
-      }
-    ]
-  },
-  "Potterycrafts|P4287": {
-    "imageColors": [
-      "Red",
-      "Coral"
-    ],
-    "imageColorWeights": {
-      "Red": 0.5441,
-      "Coral": 0.4155,
-      "Pink": 0.0253
-    },
-    "imagePalette": [
-      {
-        "label": "Red",
-        "hex": "#e35445",
-        "weight": 0.5441
-      },
-      {
-        "label": "Coral",
-        "hex": "#eb8b69",
-        "weight": 0.4155
       }
     ]
   },
@@ -60733,29 +60559,6 @@
       }
     ]
   },
-  "Potterycrafts|P4279": {
-    "imageColors": [
-      "Teal",
-      "Aqua"
-    ],
-    "imageColorWeights": {
-      "Teal": 0.7239,
-      "Aqua": 0.2362,
-      "Navy": 0.0281
-    },
-    "imagePalette": [
-      {
-        "label": "Teal",
-        "hex": "#0d7f88",
-        "weight": 0.7239
-      },
-      {
-        "label": "Aqua",
-        "hex": "#42b0b6",
-        "weight": 0.2362
-      }
-    ]
-  },
   "Potterycrafts|P4274": {
     "imageColors": [
       "Orange",
@@ -60855,67 +60658,6 @@
       }
     ]
   },
-  "Potterycrafts|P4197": {
-    "imageColors": [
-      "Red"
-    ],
-    "imageColorWeights": {
-      "Red": 0.9994
-    },
-    "imagePalette": [
-      {
-        "label": "Red",
-        "hex": "#cd3b34",
-        "weight": 0.9994
-      }
-    ]
-  },
-  "Potterycrafts|P4126": {
-    "imageColors": [
-      "Red"
-    ],
-    "imageColorWeights": {
-      "Red": 0.9996
-    },
-    "imagePalette": [
-      {
-        "label": "Red",
-        "hex": "#cc433f",
-        "weight": 0.9996
-      }
-    ]
-  },
-  "Potterycrafts|P4123": {
-    "imageColors": [
-      "Amber"
-    ],
-    "imageColorWeights": {
-      "Amber": 0.93,
-      "Cream": 0.0219
-    },
-    "imagePalette": [
-      {
-        "label": "Amber",
-        "hex": "#e5d5bc",
-        "weight": 0.93
-      }
-    ]
-  },
-  "Potterycrafts|P4125": {
-    "imageColors": [
-      "Red"
-    ],
-    "imageColorWeights": {
-      "Red": 0.9966
-    },
-    "imagePalette": [
-      {
-        "label": "Red",
-        "hex": "#e54f40",
-        "weight": 0.9966
-      }
-    ]
-  },
   "Potterycrafts|P4124": {
     "imageColors": [
       "Black",
@@ -60952,28 +60694,6 @@
       }
     ]
   },
-  "Potterycrafts|P4144": {
-    "imageColors": [
-      "Orange",
-      "Gold"
-    ],
-    "imageColorWeights": {
-      "Orange": 0.7681,
-      "Gold": 0.2277
-    },
-    "imagePalette": [
-      {
-        "label": "Orange",
-        "hex": "#ed712d",
-        "weight": 0.7681
-      },
-      {
-        "label": "Gold",
-        "hex": "#f38331",
-        "weight": 0.2277
-      }
-    ]
-  },
   "Potterycrafts|P4127": {
     "imageColors": [
       "Gold"
@@ -60986,43 +60706,6 @@
         "label": "Gold",
         "hex": "#ee9c2f",
         "weight": 0.9968
-      }
-    ]
-  },
-  "Potterycrafts|P4128": {
-    "imageColors": [
-      "Orange",
-      "Gold"
-    ],
-    "imageColorWeights": {
-      "Orange": 0.952,
-      "Gold": 0.048
-    },
-    "imagePalette": [
-      {
-        "label": "Orange",
-        "hex": "#a75425",
-        "weight": 0.952
-      },
-      {
-        "label": "Gold",
-        "hex": "#a65923",
-        "weight": 0.048
-      }
-    ]
-  },
-  "Potterycrafts|P4122": {
-    "imageColors": [
-      "Pink"
-    ],
-    "imageColorWeights": {
-      "Pink": 0.9856
-    },
-    "imagePalette": [
-      {
-        "label": "Pink",
-        "hex": "#f1508d",
-        "weight": 0.9856
       }
     ]
   },
@@ -61109,58 +60792,6 @@
       }
     ]
   },
-  "Potterycrafts|P4109": {
-    "imageColors": [
-      "Teal"
-    ],
-    "imageColorWeights": {
-      "Teal": 0.9278,
-      "Navy": 0.0353,
-      "Green": 0.022
-    },
-    "imagePalette": [
-      {
-        "label": "Teal",
-        "hex": "#254947",
-        "weight": 0.9278
-      },
-      {
-        "label": "Navy",
-        "hex": "#1b2935",
-        "weight": 0.0353
-      }
-    ]
-  },
-  "Potterycrafts|P4113": {
-    "imageColors": [
-      "Teal",
-      "Aqua",
-      "Grey"
-    ],
-    "imageColorWeights": {
-      "Teal": 0.5446,
-      "Aqua": 0.2169,
-      "Grey": 0.2107,
-      "Cream": 0.0197
-    },
-    "imagePalette": [
-      {
-        "label": "Teal",
-        "hex": "#718b9a",
-        "weight": 0.5446
-      },
-      {
-        "label": "Aqua",
-        "hex": "#8ca1aa",
-        "weight": 0.2169
-      },
-      {
-        "label": "Grey",
-        "hex": "#a4adaf",
-        "weight": 0.2107
-      }
-    ]
-  },
   "Potterycrafts|P4120": {
     "imageColors": [
       "Red",
@@ -61180,78 +60811,6 @@
         "label": "Pink",
         "hex": "#9b3749",
         "weight": 0.285
-      }
-    ]
-  },
-  "Potterycrafts|P4110": {
-    "imageColors": [
-      "Orange",
-      "Brown",
-      "Maroon"
-    ],
-    "imageColorWeights": {
-      "Orange": 0.6172,
-      "Brown": 0.2032,
-      "Maroon": 0.1396,
-      "Red": 0.0304
-    },
-    "imagePalette": [
-      {
-        "label": "Orange",
-        "hex": "#361e14",
-        "weight": 0.6172
-      },
-      {
-        "label": "Brown",
-        "hex": "#1f140c",
-        "weight": 0.2032
-      },
-      {
-        "label": "Maroon",
-        "hex": "#1f0e0b",
-        "weight": 0.1396
-      },
-      {
-        "label": "Red",
-        "hex": "#803f33",
-        "weight": 0.0304
-      }
-    ]
-  },
-  "Potterycrafts|P4108": {
-    "imageColors": [
-      "Olive"
-    ],
-    "imageColorWeights": {
-      "Olive": 0.9952
-    },
-    "imagePalette": [
-      {
-        "label": "Olive",
-        "hex": "#323b19",
-        "weight": 0.9952
-      }
-    ]
-  },
-  "Potterycrafts|P4111": {
-    "imageColors": [
-      "Aqua",
-      "Teal"
-    ],
-    "imageColorWeights": {
-      "Aqua": 0.7518,
-      "Teal": 0.2463
-    },
-    "imagePalette": [
-      {
-        "label": "Aqua",
-        "hex": "#3aa7b3",
-        "weight": 0.7518
-      },
-      {
-        "label": "Teal",
-        "hex": "#1c8c9e",
-        "weight": 0.2463
       }
     ]
   },
@@ -61293,88 +60852,6 @@
       }
     ]
   },
-  "Potterycrafts|P4112": {
-    "imageColors": [
-      "Orange",
-      "Brown",
-      "Olive",
-      "Maroon"
-    ],
-    "imageColorWeights": {
-      "Orange": 0.4012,
-      "Brown": 0.3191,
-      "Olive": 0.1085,
-      "Maroon": 0.0959,
-      "Burgundy": 0.0333,
-      "Black": 0.0192
-    },
-    "imagePalette": [
-      {
-        "label": "Orange",
-        "hex": "#2f180e",
-        "weight": 0.4012
-      },
-      {
-        "label": "Brown",
-        "hex": "#18110c",
-        "weight": 0.3191
-      },
-      {
-        "label": "Olive",
-        "hex": "#11100c",
-        "weight": 0.1085
-      },
-      {
-        "label": "Maroon",
-        "hex": "#1d0c09",
-        "weight": 0.0959
-      }
-    ]
-  },
-  "Potterycrafts|P4103": {
-    "imageColors": [
-      "Blue"
-    ],
-    "imageColorWeights": {
-      "Blue": 0.9875
-    },
-    "imagePalette": [
-      {
-        "label": "Blue",
-        "hex": "#546cab",
-        "weight": 0.9875
-      }
-    ]
-  },
-  "Potterycrafts|P4106": {
-    "imageColors": [
-      "Orange",
-      "Maroon",
-      "Red"
-    ],
-    "imageColorWeights": {
-      "Orange": 0.5633,
-      "Maroon": 0.3127,
-      "Red": 0.1203
-    },
-    "imagePalette": [
-      {
-        "label": "Orange",
-        "hex": "#432114",
-        "weight": 0.5633
-      },
-      {
-        "label": "Maroon",
-        "hex": "#4a201a",
-        "weight": 0.3127
-      },
-      {
-        "label": "Red",
-        "hex": "#7f362d",
-        "weight": 0.1203
-      }
-    ]
-  },
   "Potterycrafts|P4105": {
     "imageColors": [
       "Burgundy",
@@ -61404,21 +60881,6 @@
       }
     ]
   },
-  "Potterycrafts|P4107": {
-    "imageColors": [
-      "Green"
-    ],
-    "imageColorWeights": {
-      "Green": 0.9943
-    },
-    "imagePalette": [
-      {
-        "label": "Green",
-        "hex": "#6ba054",
-        "weight": 0.9943
-      }
-    ]
-  },
   "Potterycrafts|P3550": {
     "imageColors": [
       "Grey",
@@ -61438,43 +60900,6 @@
         "label": "White",
         "hex": "#dfe8e1",
         "weight": 0.3983
-      }
-    ]
-  },
-  "Potterycrafts|P4101": {
-    "imageColors": [
-      "Navy",
-      "Teal",
-      "Black",
-      "Indigo"
-    ],
-    "imageColorWeights": {
-      "Navy": 0.4041,
-      "Teal": 0.2866,
-      "Black": 0.1829,
-      "Indigo": 0.0898,
-      "Green": 0.0156
-    },
-    "imagePalette": [
-      {
-        "label": "Navy",
-        "hex": "#060e1e",
-        "weight": 0.4041
-      },
-      {
-        "label": "Teal",
-        "hex": "#010808",
-        "weight": 0.2866
-      },
-      {
-        "label": "Black",
-        "hex": "#000000",
-        "weight": 0.1829
-      },
-      {
-        "label": "Indigo",
-        "hex": "#010105",
-        "weight": 0.0898
       }
     ]
   },
@@ -61623,28 +61048,6 @@
         "label": "Cream",
         "hex": "#e3e1ca",
         "weight": 0.0308
-      }
-    ]
-  },
-  "Potterycrafts|P4102": {
-    "imageColors": [
-      "Aqua",
-      "Teal"
-    ],
-    "imageColorWeights": {
-      "Aqua": 0.8633,
-      "Teal": 0.1348
-    },
-    "imagePalette": [
-      {
-        "label": "Aqua",
-        "hex": "#43a7b9",
-        "weight": 0.8633
-      },
-      {
-        "label": "Teal",
-        "hex": "#288ea3",
-        "weight": 0.1348
       }
     ]
   },
@@ -61821,21 +61224,6 @@
       }
     ]
   },
-  "Potterycrafts|P1983": {
-    "imageColors": [
-      "Yellow"
-    ],
-    "imageColorWeights": {
-      "Yellow": 0.9965
-    },
-    "imagePalette": [
-      {
-        "label": "Yellow",
-        "hex": "#d9ce85",
-        "weight": 0.9965
-      }
-    ]
-  },
   "Potterycrafts|P2581": {
     "imageColors": [
       "Cream",
@@ -61861,23 +61249,6 @@
         "label": "Amber",
         "hex": "#92877b",
         "weight": 0.0405
-      }
-    ]
-  },
-  "Potterycrafts|P1985": {
-    "imageColors": [
-      "Orange"
-    ],
-    "imageColorWeights": {
-      "Orange": 0.9581,
-      "Coral": 0.0207,
-      "Red": 0.018
-    },
-    "imagePalette": [
-      {
-        "label": "Orange",
-        "hex": "#9c4f37",
-        "weight": 0.9581
       }
     ]
   },
