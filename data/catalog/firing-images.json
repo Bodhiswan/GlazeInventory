@@ -36644,5 +36644,435 @@
       "imageUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1106.jpg",
       "sortOrder": 50
     }
+  ],
+  "975939f3-16dc-4d12-a265-16ac7d89289b": [
+    {
+      "id": "4a527eee-b22a-5b0e-856a-2cd58a5fc7b9",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/662/3865/ProductImages_SM-51__63433.1722962425.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "9ba9c263-6041-4da6-8ccb-9bca46eeffc9": [
+    {
+      "id": "06ab8beb-3134-588c-bcc9-da2b9c6b89ce",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2296/3691/HF-1_Black_37000A_6x6_Square_Tile_WEB__79155.1708018287.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "a2c6eb3a-13d8-4dbf-bc0a-4f3a62f46f76": [
+    {
+      "id": "e02f529a-8b63-5d63-9e30-fe350cc03155",
+      "label": "Reference tile",
+      "cone": "Cone 5",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2070/3244/C-32_Ochre_Cone5_Chip-HiRes__71498.1663157610.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "d24be591-a79e-4d11-8043-cb0bcf7c890e": [
+    {
+      "id": "f4f5a1f7-6fb0-5360-a9b1-e8d4771363c9",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2103/3281/PC-71Flambe_GlazeChip_6x6__44221.1663170895.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "ecc65292-a858-4f45-93df-7c609a87de5a": [
+    {
+      "id": "175ccb1b-d151-5c62-9b80-05014d5d83dc",
+      "label": "Reference tile",
+      "cone": "Cone 5",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2066/3240/C-25_Downpour_Cone5_Chip-hiRes__46866.1663156666.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "9f96435e-3a62-43ae-b9ce-e23430f4af86": [
+    {
+      "id": "3da00887-4901-56b3-8c5e-2c41bff3c8d6",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2101/3279/PC-67_6x6_Label_Tile_Chip__16686.1663170316.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "6317f029-947a-4e4b-bfc7-19cbab89ab4e": [
+    {
+      "id": "8a401585-8d4f-52f7-b902-3aa8586988ac",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2100/3278/PC_CosmicOilspot_6x6Labeltile_WEB__76300.1663170137.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "795e6888-86a6-4739-a100-35babd0c4794": [
+    {
+      "id": "375f06b3-d9e0-5c13-8b86-396bd12a9d28",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2098/3276/PC-64_Aventurine__46364.1663169684.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "d55dcd59-bed1-4dc5-8b7e-ccabfe79018e": [
+    {
+      "id": "1c2c6427-6222-5279-911a-b2cd81c4e0fa",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2097/3275/PC-63_Cosmic_Tea_Dust__35816.1663169398.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "6ec63d63-591b-46e6-be1a-5361bf63d92e": [
+    {
+      "id": "20cae802-6130-52c6-8ca8-48fe334df350",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2094/3272/PC-47_6x6_Label_Tile_Chip-hires__26762.1663168805.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "6601cd3a-b73a-4578-926f-2a4a9a1c7489": [
+    {
+      "id": "fbba15aa-86c4-5310-b948-83a5fba3c7aa",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2092/3270/PC-26_6x6_Label_Tile_Chip-hires__00493.1663168137.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "ded69213-4930-4fd2-a509-b8f50b2ad12f": [
+    {
+      "id": "92ea4206-1119-5669-8769-cdfef2966d8e",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2093/3271/PC-38_Iron_Yellow__39409.1663168567.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "689681ad-0b33-40b1-96c3-1c5c07a2c1c1": [
+    {
+      "id": "f07126f1-df2d-535c-b37a-0f7bd120fd56",
+      "label": "Reference tile",
+      "cone": "Cone 5",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2068/3242/C-29_Deep_Sea_Cone5_Chip-HiRes__73310.1663157062.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "89742745-3445-408c-92d7-40ead42939c4": [
+    {
+      "id": "8da7ecf1-c506-54db-ac91-3b7c5e435105",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2091/3269/PC-24_Sapphire_Float__80525.1663167957.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "fbcb629d-0348-4bb8-b5c2-040e78c4f419": [
+    {
+      "id": "e8d5937c-1650-5b26-83b0-267b88e68f68",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/404/2757/C-41_Pear__71036.1659539373.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "0323ac36-7bbe-4719-82c2-f2d7d40ff496": [
+    {
+      "id": "c511d130-08a0-5e1a-aa2c-d2d3eba152b7",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2090/3268/PC-22_6x6_Label_Tile_Chip__14122.1663167729.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "2dd737ce-8cfc-4b1a-8b94-68e03992a6a1": [
+    {
+      "id": "229fb4f2-1ed4-5384-b1ec-ce7b3ae1631b",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2099/3277/PC_BlackAventuring_6x6Labeltile_WEB__70396.1663169904.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "629136c6-62e0-483a-bc37-7511553d25bf": [
+    {
+      "id": "7ff0c23c-e604-5bad-8d0a-48c7c53bc6af",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2088/3266/PC_PurpleCrystal_6x6Labeltile_WEB__54000.1663165185.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "356c6b2c-444c-420c-bf7c-08a8fadd869c": [
+    {
+      "id": "3abd80a4-a5e9-5fad-9df4-b4532e42f299",
+      "label": "Reference tile",
+      "cone": "Cone 5",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2072/3246/C-55_Poppy_Cone5_Chip-HiRes__73668.1663157878.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "e363174a-9da8-4186-976a-bf318ecb9b3a": [
+    {
+      "id": "c8f04111-2ea6-544c-b063-200b8b15a791",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/403/2758/C-40_Aqua__34265.1659539477.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "170079f2-f3de-448c-bff0-34885500a902": [
+    {
+      "id": "c7070c63-2f4f-5fbe-961c-fb5090ee67f0",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2084/3260/PC-9VintageGold_GlazeChip_6x6__83854.1663164155.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "dd1dca5d-3797-46bb-bd6c-51432e1e8193": [
+    {
+      "id": "109da5e8-45c9-59fa-9a1c-546f8f314275",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/447/2698/Vase_Mini_HF-55_Jensen__70089.1659534600.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "f3847960-6011-44b5-9480-7f3279b48321": [
+    {
+      "id": "d6f5f30e-5898-51b8-b5ee-92fc7b99c339",
+      "label": "Reference tile",
+      "cone": "Cone 5",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2064/3238/C-19_Glacier_Cone5_Chip-HiRes__70305.1663156356.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "3aeb8ae5-a6e8-47c5-a929-e4806eaa536d": [
+    {
+      "id": "ad7a9810-6c25-5ff3-a2da-846c6bce380f",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/402/2759/C-36_Iron__00407.1659539614.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "ad7f102a-8ef3-4d72-a6e2-e29567676cf3": [
+    {
+      "id": "2b3cd039-6d96-5f98-8b1b-8f4ed686daf7",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/697/1987/tp-42-granny-smith-square-hires__13741.1659372885.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "a2b0c4fa-1355-4272-8b6d-3b72e61106f9": [
+    {
+      "id": "47825b58-06b7-5ff1-8931-5df7c0e542b9",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2302/3697/HF-142_Chartreuse_35510M_6x6_Square_Tile_WEB__97561.1708020213.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "57405419-7f53-42bd-ae14-5786c31ba0c8": [
+    {
+      "id": "44757634-202e-5511-98bd-8e6310999086",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2300/3695/HF-129_Baby_Blue_35506F_6x6_Square_Tile_WEB__07507.1708019910.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "4c75b475-33a2-45cf-a566-ddf7e295caec": [
+    {
+      "id": "f0c151fa-3ff5-5019-9c41-e29f1b433342",
+      "label": "Reference tile",
+      "cone": "Cone 5",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2062/3236/C-5_Charcoal_Cone5_Chip-HiRes__07124.1663155672.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "187a1d03-0ec3-4fc1-909a-08a156bc7bed": [
+    {
+      "id": "228ac953-b22e-5baf-a30f-e996ab731283",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2301/3696/HF-127_China_Blue_35503A_6x6_Square_Tile_WEB__02160.1708020069.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "19ed08c5-952f-4eb9-8038-4cd5575a766d": [
+    {
+      "id": "44f51568-9eb8-578c-9eef-47969f0f1f74",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/448/2697/Vase_Mini_HF-56_Jensen__48059.1659534449.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "6d5c3ac4-5099-4b4d-93f4-19529901dc24": [
+    {
+      "id": "8e2429ae-32ff-57a5-8f88-4a0db4fd776b",
+      "label": "Reference tile",
+      "cone": null,
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2299/3694/HF-125_Turquoise_35505E_6x6_Square_Tile_WEB__99015.1708018968.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "626f322c-ded4-4c2f-91d8-87cf9ee6434f": [
+    {
+      "id": "fade6b83-0b39-5f27-bd98-8b0519ae012e",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2243/3556/TPL-03_Onyx__09294.1694487533.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "852e529c-4676-450e-b659-6832bb696ffd": [
+    {
+      "id": "6746a4a5-a832-58fb-9f8e-daa53722f05f",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2244/3557/TPL-05_Quartz__29000.1694487534.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "43b38bbf-2a17-4c47-9028-d174fd650962": [
+    {
+      "id": "181684e5-0d8c-51dd-9bad-b85e4ad4c301",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2247/3560/TPL-23_Aquamarine__25211.1694487535.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "f19a3b5b-2024-408e-ab07-842d591c20a3": [
+    {
+      "id": "70809697-aa3b-50b6-8104-8fec80ad055a",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2248/3561/TPL-27_Zircon__49912.1694487535.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "614b4e30-305d-481c-beb8-8b4d06e14f47": [
+    {
+      "id": "f5a7b125-1a50-5c1c-8328-afd48177be22",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2249/3562/TPL-28_Sapphire__62521.1694487536.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "77a8eb98-acde-4fb3-bbbe-92ca26e1ab87": [
+    {
+      "id": "2480518b-268b-5321-9e5e-7a9a687d3ac1",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2250/3563/TPL-34_Jasper__96276.1694487536.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "04e96686-6001-46ec-88e3-9e0d1daf74c8": [
+    {
+      "id": "985179b8-10d6-5cce-8919-ab515bf115a8",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2246/3559/TPL-44_Peridot__09998.1694487535.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "5f77472d-d677-4641-9abc-bd39b39c6ab2": [
+    {
+      "id": "72ec5452-09a6-5822-9759-be989a010e9c",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2245/3558/TPL-45_Emerald__51140.1694487534.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "985bc461-d343-4f74-81c7-af72ecf2675d": [
+    {
+      "id": "df032776-2ec5-5816-a1e5-38e2bf1da0f2",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2254/3567/TPL-55_Tanzanite__82600.1694487538.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "d50376b1-55a0-4c1d-b5bd-5aac0e7c2386": [
+    {
+      "id": "5f484842-f0d4-5665-9608-280e193db202",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2253/3566/TPL-59_Ruby__18226.1694487537.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "66345f68-85ce-4cf1-aa43-e017409597e0": [
+    {
+      "id": "ffd0db02-61fa-5d68-b986-28e7ff3ce4b8",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2251/3564/TPL-63_Citrine__82883.1694487536.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
+  "243df021-d8a5-4e38-bbcf-471dea74fdfc": [
+    {
+      "id": "f324ff3b-ed78-56da-a6fc-0cd983a665dc",
+      "label": "Reference tile",
+      "cone": "Cone 05",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2252/3565/TPL-66_Fire-Opal__20883.1694487537.jpg?c=1",
+      "sortOrder": 50
+    }
   ]
 }

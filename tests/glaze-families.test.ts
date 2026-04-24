@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { getAllCatalogGlazes } from "../src/lib/catalog";
+import { getAllCatalogFiringImages, getAllCatalogGlazes } from "../src/lib/catalog";
 import { ACTIVE_GLAZE_BRANDS, getGlazeFamilyTraits } from "../src/lib/glaze-metadata";
 import { buildGlazeSearchIndex, extractGlazeColorTraits, matchesGlazeSearch } from "../src/lib/utils";
 import type { Glaze } from "../src/lib/types";
@@ -102,4 +102,12 @@ test("keeps Potterycrafts powder rows only when no liquid equivalent exists", ()
   assert.equal(potterycraftsGlazes.some((glaze) => glaze.code === "P4279"), false);
   assert.equal(potterycraftsGlazes.some((glaze) => glaze.code === "P4309"), true);
   assert.equal(potterycraftsGlazes.some((glaze) => glaze.code === "P2073"), true);
+});
+
+test("gives every active AMACO glaze at least one reference firing image", () => {
+  const amacoGlazes = getAllCatalogGlazes().filter((glaze) => glaze.brand === "AMACO");
+  const firingImageMap = getAllCatalogFiringImages();
+
+  assert.ok(amacoGlazes.length > 0);
+  assert.equal(amacoGlazes.every((glaze) => (firingImageMap.get(glaze.id) ?? []).length > 0), true);
 });

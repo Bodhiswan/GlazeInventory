@@ -1,9 +1,10 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v10";
+export const CHANGELOG_KEY = "glaze-library-changelog-v11";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
+      "More AMACO firing images — every active AMACO glaze now has at least one official reference firing image.",
       "Clay Art Center glazes added — 234 catalog glazes including Rainbow, P Series, Craftsman, Frost, Raku, Terra Sigillata, and High Fire lines.",
       "UK supplier catalogs added — Bath Potters, Potterycrafts, and Scarva now appear in library filters with searchable lines, colors, finishes, and family tags.",
       "UK supplier buy links added — Scarva, Bath Potters, and Potterycrafts now appear where they match catalog brands.",
