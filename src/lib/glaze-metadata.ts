@@ -14,6 +14,9 @@ export const ACTIVE_GLAZE_BRANDS = [
   "Seattle Pottery Supply",
   "Opulence",
   "BOTZ",
+  "Bath Potters",
+  "Potterycrafts",
+  "Scarva",
 ] as const;
 export const GLAZE_FAMILY_LABELS = [
   "Underglaze",
@@ -193,6 +196,28 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     PRO: ["Durable functional", "Reactive effects"],
     "Ceramic Ink": ["Specialty additive"],
   },
+  "Bath Potters": {
+    "Bath Potters Decorating Slips": ["Engobe"],
+    "Bath Potters Stoneware Brush-On Glazes": ["Durable functional", "Reactive effects"],
+    "Bath Potters Raku Brush-On Glazes": ["Reactive effects"],
+    "Bath Potters Earthenware Powder Glazes": ["Low-fire gloss color"],
+    "Bath Potters Stoneware Glaze Powders": ["Durable functional", "Reactive effects"],
+    "Bath Potters Earthenware Brush-On Glazes": ["Low-fire gloss color"],
+  },
+  Potterycrafts: {
+    "Decorating Slips": ["Engobe"],
+    "Underglazes": ["Underglaze"],
+    "On-Glaze Colours": ["Low-fire gloss color"],
+    "Raku Glazes": ["Reactive effects"],
+    "Stoneware Powder Glazes": ["Durable functional", "Reactive effects"],
+    "Earthenware Powder Glazes": ["Low-fire gloss color"],
+  },
+  Scarva: {
+    "Earthstone ColourCoat Earthenware": ["Durable functional"],
+    "Earthstone ColourCoat Stoneware": ["Durable functional"],
+    "Earthstone Earthenware Underglazes": ["Underglaze"],
+    "Earthstone Stoneware Underglazes": ["Underglaze"],
+  },
 };
 
 const BRAND_URLS: Record<string, string> = {
@@ -208,6 +233,9 @@ const BRAND_URLS: Record<string, string> = {
   Spectrum: "https://www.spectrumglazes.com",
   Speedball: "https://www.speedballart.com",
   BOTZ: "https://www.ceramixaustralia.com.au/collections/botz",
+  "Bath Potters": "https://www.bathpotters.co.uk",
+  Potterycrafts: "https://potterycrafts.co.uk",
+  Scarva: "https://www.scarva.com",
 };
 
 export function getManufacturerUrl(brand: string | null | undefined): string | null {

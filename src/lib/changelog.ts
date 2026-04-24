@@ -1,10 +1,11 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v7";
+export const CHANGELOG_KEY = "glaze-library-changelog-v8";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
       "Clay Art Center glazes added — 234 catalog glazes including Rainbow, P Series, Craftsman, Frost, Raku, Terra Sigillata, and High Fire lines.",
+      "UK supplier catalogs added — Bath Potters, Potterycrafts, and Scarva now appear in library filters with searchable lines, colors, finishes, and family tags.",
       "UK supplier buy links added — Scarva, Bath Potters, and Potterycrafts now appear where they match catalog brands.",
       "BOTZ glazes added — 116 BOTZ glazes now in the library, covering Unidekor underglazes, Earthenware, Stoneware, Engobes, PRO, and Ceramic Ink lines.",
       "Glazing guide expanded — three new sections: Application & Layering, Decorative Techniques, and Firing Considerations are now live.",

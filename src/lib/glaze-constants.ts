@@ -19,6 +19,7 @@ export const COMMERCIAL_GLAZE_BRANDS = [
   "The Ceramic Shop",
   "Tucker's Glazes",
   // UK & Ireland
+  "Bath Potters",
   "Bath Potters Supplies",
   "Potclays",
   "Potterycrafts",
