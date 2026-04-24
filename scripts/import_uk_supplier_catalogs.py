@@ -121,6 +121,33 @@ def normalize_code(code: str | None) -> str | None:
     return normalized or None
 
 
+def bath_glaze_root_code(row: dict[str, object | None]) -> str | None:
+    code = re.sub(r"-1$", "", str(row.get("code") or "").upper())
+    if not code:
+        return None
+    match = re.match(r"^(BP\d+|EB\d+)(?:SB|P)?$", code)
+    return match.group(1) if match else None
+
+
+def remove_duplicate_bath_powders(rows: list[dict[str, object | None]]) -> list[dict[str, object | None]]:
+    brush_on_roots = {
+        root
+        for row in rows
+        if (root := bath_glaze_root_code(row))
+        and row.get("line") in {"Bath Potters Stoneware Brush-On Glazes", "Bath Potters Earthenware Brush-On Glazes"}
+    }
+
+    output: list[dict[str, object | None]] = []
+    for row in rows:
+        is_powder = row.get("line") in {"Bath Potters Stoneware Glaze Powders", "Bath Potters Earthenware Powder Glazes"}
+        root = bath_glaze_root_code(row)
+        if is_powder and root in brush_on_roots:
+            continue
+        output.append(row)
+
+    return output
+
+
 def infer_color_notes(name: str, description: str | None = None) -> str | None:
     haystack = name.lower()
     labels: list[str] = []
@@ -255,7 +282,7 @@ def scrape_bath_potters() -> list[dict[str, object | None]]:
                 )
             )
 
-    return rows
+    return remove_duplicate_bath_powders(rows)
 
 
 def potterycrafts_line(product: dict[str, object]) -> tuple[str, str | None]:
@@ -421,7 +448,9 @@ def update_catalog(rows: list[dict[str, object | None]]) -> None:
         for row in catalog
         if row.get("brand") not in {"Bath Potters", "Potterycrafts", "Scarva"}
     ]
-    catalog.extend(rows)
+    catalog.extend(
+        sorted(rows, key=lambda row: (str(row.get("brand") or ""), str(row.get("line") or ""), str(row.get("code") or ""), str(row.get("name") or "")))
+    )
     CATALOG_PATH.write_text(json.dumps(catalog, indent=2) + "\n", encoding="utf-8")
 
 

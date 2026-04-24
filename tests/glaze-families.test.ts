@@ -83,3 +83,12 @@ test("maps UK supplier lines into family tags and color search traits", () => {
     true,
   );
 });
+
+test("keeps Bath Potters powder rows only when no brush-on equivalent exists", () => {
+  const bathGlazes = getAllCatalogGlazes().filter((glaze) => glaze.brand === "Bath Potters");
+
+  assert.equal(bathGlazes.length, 91);
+  assert.equal(bathGlazes.some((glaze) => glaze.code === "BP11P"), false);
+  assert.equal(bathGlazes.some((glaze) => glaze.code === "EB10P"), false);
+  assert.equal(bathGlazes.some((glaze) => glaze.code === "BP25P-1"), true);
+});
