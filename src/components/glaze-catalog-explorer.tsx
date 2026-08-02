@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Heart, Search, X } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
@@ -20,6 +20,8 @@ import { cn, formatGlazeLabel, getGlazeSkimDescription } from "@/lib/utils";
 import { useGlazeExplorer } from "@/components/glaze-catalog/use-glaze-explorer";
 import { GlazeFilters } from "@/components/glaze-catalog/glaze-filters";
 import { GlazeGrid } from "@/components/glaze-catalog/glaze-grid";
+import { GlazeViewOptions } from "@/components/glaze-catalog/glaze-view-options";
+import type { GlazeGroupingMode } from "@/components/glaze-catalog/glaze-view-options";
 import { ScrollRevealSearch } from "@/components/scroll-reveal-search";
 
 export function GlazeCatalogExplorer({
@@ -35,7 +37,7 @@ export function GlazeCatalogExplorer({
   reviewMode,
   favouriteGlazeIds = [],
   hideConeFilter = false,
-  groupByLine = false,
+  enableViewModes = false,
 }: {
   glazes: Glaze[];
   brandCounts: Array<[string, number]>;
@@ -49,8 +51,10 @@ export function GlazeCatalogExplorer({
   reviewMode: boolean;
   favouriteGlazeIds?: string[];
   hideConeFilter?: boolean;
-  groupByLine?: boolean;
+  enableViewModes?: boolean;
 }) {
+  const [groupingMode, setGroupingMode] = useState<GlazeGroupingMode>("none");
+
   const {
     query,
     setQuery,
@@ -254,6 +258,10 @@ export function GlazeCatalogExplorer({
             />
           </div>
 
+          {enableViewModes ? (
+            <GlazeViewOptions value={groupingMode} onChange={setGroupingMode} />
+          ) : null}
+
           {sortedGlazes.length ? (
             <GlazeGrid
               visibleGradientGlazes={visibleGradientGlazes}
@@ -267,7 +275,7 @@ export function GlazeCatalogExplorer({
               loadMoreRef={loadMoreRef}
               visibleCount={visibleCount}
               reviewMode={reviewMode}
-              groupByLine={groupByLine}
+              groupingMode={enableViewModes ? groupingMode : "none"}
             />
           ) : (
             <Panel>

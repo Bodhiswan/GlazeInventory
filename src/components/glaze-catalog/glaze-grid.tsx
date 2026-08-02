@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import type { InventoryStatus } from "@/lib/types";
 import { GlazeCard } from "@/components/glaze-catalog/glaze-card";
 import type { IndexedGlaze } from "@/components/glaze-catalog/use-glaze-explorer";
+import type { GlazeGroupingMode } from "@/components/glaze-catalog/glaze-view-options";
 
 export function GlazeGrid({
   visibleGradientGlazes,
@@ -18,7 +19,7 @@ export function GlazeGrid({
   loadMoreRef,
   visibleCount,
   reviewMode,
-  groupByLine = false,
+  groupingMode = "none",
 }: {
   visibleGradientGlazes: IndexedGlaze[];
   optimisticInventoryStates: Record<string, { inventoryId: string; status: InventoryStatus }>;
@@ -31,16 +32,35 @@ export function GlazeGrid({
   loadMoreRef: RefObject<HTMLDivElement | null>;
   visibleCount: number;
   reviewMode: boolean;
-  groupByLine?: boolean;
+  groupingMode?: GlazeGroupingMode;
 }) {
-  // Group glazes by "Brand · Line" so visitors can browse by product family.
+  // Keep each glaze in one section so optional grouping never duplicates tiles.
   const grouped = (() => {
-    if (!groupByLine) return null;
+    if (groupingMode === "none") return null;
+
+    const getGroupLabel = (item: IndexedGlaze) => {
+      switch (groupingMode) {
+        case "brand":
+          return item.glaze.brand?.trim() || "Other";
+        case "family":
+          return item.familyTraits[0] || "Other";
+        case "finish":
+          return item.finishTraits[0] || "Other";
+        case "color":
+          return item.colorTraits[0] || "Other";
+        case "line": {
+          const brand = item.glaze.brand?.trim();
+          const line = item.glaze.line?.trim();
+          return [brand, line].filter(Boolean).join(" · ") || "Other";
+        }
+        case "cone":
+          return item.coneTraits[0] || item.glaze.cone?.trim() || "Other";
+      }
+    };
+
     const groups = new Map<string, IndexedGlaze[]>();
     for (const item of visibleGradientGlazes) {
-      const brand = item.glaze.brand?.trim() || "Other";
-      const line = item.glaze.line?.trim();
-      const key = line ? `${brand} · ${line}` : brand;
+      const key = getGroupLabel(item);
       const existing = groups.get(key);
       if (existing) existing.push(item);
       else groups.set(key, [item]);

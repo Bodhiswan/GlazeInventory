@@ -71,7 +71,7 @@ export default async function StudioLibraryPage({
           reviewMode={false}
           favouriteGlazeIds={[]}
           hideConeFilter={true}
-          groupByLine={true}
+          enableViewModes={true}
         />
       )}
     </div>

@@ -1,4 +1,4 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v13";
+export const CHANGELOG_KEY = "glaze-library-changelog-v14";
 
 export const CHANGES = [
   {
@@ -16,6 +16,7 @@ export const CHANGES = [
       "Refreshed public homepage — updated hero and layout for first-time visitors.",
       "Color-aware glaze search — search results now rank glazes by how closely they match a color query.",
       "Studio pages — public studio profiles with shareable URLs, plus a single-step studio creation flow.",
+      "Studio library view modes — use the compact grid by default or group shared glazes by brand, family, finish, colour, product line, or cone.",
       "Guides link in the app header for quicker access to the glazing guide.",
     ],
   },
