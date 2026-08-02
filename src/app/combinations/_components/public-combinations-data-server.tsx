@@ -8,6 +8,7 @@ import type { CombinationsView } from "@/components/combinations-browser/use-com
 
 const PUBLIC_AVAILABLE_VIEWS: CombinationsView[] = [
   "all",
+  "new",
   "user",
   "manufacturer",
 ];

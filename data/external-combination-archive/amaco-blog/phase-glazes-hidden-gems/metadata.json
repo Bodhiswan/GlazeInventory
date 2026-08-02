@@ -1,0 +1,120 @@
+{
+  "id": "amaco-blog/phase-glazes-hidden-gems",
+  "sourceType": "amaco-blog-post",
+  "sourceName": "AMACO Blog",
+  "title": "Phase Glazes: Hidden Gems!",
+  "sourceUrl": "https://amaco.com/resources/blog/phase-glazes-hidden-gems",
+  "cone": "Cone 6",
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "Phase Glazes: Hidden Gems! The Phase Glaze series is a bit of a hidden gem! Luxurious colors with a mottled effect, the Phase glazes (PG) are different from most other Amaco glazes. I love the opaque colors and the ways I can use them both alone and with other glaze colors. Read on for some of my favorite things about the PG glazes: Opaque – even on black or brown clays PG glazes are fully opaque Thicker coats give a darker spotted effect Great as accents with a minimal amount of glaze Add fluidity to glazes Great for peacock effects under darker glazes, even under Ancient Copper 1-2-3 coats: One coat of PG-55 Floating Lavender. It's still slightly translucent. Two coats of PG-55 Floating Lavender. The mottled effect is visible near the left edge of the tile. Three coats of PG-55 Floating Lavender. You can see the mottling over the whole tile. Phase glazes look great over PC-17 Honey Flux or any of the Potter's Choice Flux glazes. PG-55 Floating Lavender was applied as a stripe just at the rim on top of 2 coats of PC-17 Honey Flux. Fired to cone 6. You can see how much the Phase glaze runs over the Honey Flux. Phase glazes are opaque, even on dark clay or underglazes. From top left, PG-55 Floating Lavender, PG-54 Lunar Pink, PG-42 Teal Drift, and PG-24 Night Rain, all on 32M Dark Chocolate Clay from Amaco. Fired to cone 5. Use Phase glazes for the Peacock glazing technique . This detail shows the rim of a bowl where we applied PG-42 Teal Drift dots, PC-17 Honey Flux swoops, then covered over all of it with 2 coats of PC-56 Ancient Copper. Fired to cone 6. PG-42 Teal Drift and PC-56 Ancient Copper, on a 32M Dark Chocolate cup, with just a slight overlap. Two coats of PG-24 Night Rain over two coats of Celadon C-1 Obsidian . Fired to cone 6. Night Rain was only applied to the top half of the cup. For less movement, try firing at cone 5. Tips for working with Phase glazes: Phase glazes can run, especially when layered! When using them over another glaze, one or two coats is enough. Three or more coats can cause bubbling. These colors are thick and opaque, so be aware that the color of the clay, subtle texture, and underglaze patterns will not show through. They can be mixed for more varied tones; try it out! Happy glazing! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "PG-55",
+      "name": "Floating Lavender",
+      "line": "Phase Glaze"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-17",
+      "name": "Honey Flux",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PG-54",
+      "name": "Lunar Pink",
+      "line": "Phase Glaze"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PG-42",
+      "name": "Teal Drift",
+      "line": "Phase Glaze"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PG-24",
+      "name": "Night Rain",
+      "line": "Phase Glaze"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-56",
+      "name": "Ancient Copper",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-01",
+      "name": "Obsidian",
+      "line": "Celadon"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900cda415a64",
+      "sha256": "f357b190aefca25196e4b352d118e700312eb735dc1c22ec8af3c78b99f8957d",
+      "width": 3768,
+      "height": 3145
+    },
+    {
+      "fileName": "02.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900ce1132ea0",
+      "sha256": "720c812a29b0cca556c0b07af4a276be2eea41b6ea0cb768e9d66b40bc1b82b2",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "03.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900ce9b3fcac",
+      "sha256": "68fecfd9f154e5d56d2d5e1108815f20d09e55a9caa61a2f1a68d882f1385427",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "04.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900cef74c55f",
+      "sha256": "5ac21aa878958ffa5ba5bc8c787617001696651eb43d31eb54f4b9257ae39ce9",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "05.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900d029452f2",
+      "sha256": "c122a5c0600b1cb6b0ec4aaed317389047655f1300c504764fb58aabf2e68942",
+      "width": 4032,
+      "height": 3024
+    },
+    {
+      "fileName": "06.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900d08687a83",
+      "sha256": "f357b190aefca25196e4b352d118e700312eb735dc1c22ec8af3c78b99f8957d",
+      "width": 3768,
+      "height": 3145
+    },
+    {
+      "fileName": "07.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900d1cf15122",
+      "sha256": "0577fceae6a553803b9adb730c0f206c63106f9be78c9a8e3ff384a1d2ada4eb",
+      "width": 4032,
+      "height": 3024
+    },
+    {
+      "fileName": "08.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900d3ec2a8a6",
+      "sha256": "921898d05d2ed9838c7998a6605b145edec9f513c3cbb3edfb29eaccb696d16f",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "09.jpg",
+      "remoteUrl": "https://amaco.com/asset/6900d45d75a77",
+      "sha256": "16d0eea0deeafe8a23a361a995cb94e08e4d7e0ec413676735ec392f0406a72a",
+      "width": 1800,
+      "height": 1800
+    }
+  ]
+}

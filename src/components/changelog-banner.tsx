@@ -14,13 +14,17 @@ export function ChangelogBanner({ unreadMessages = 0 }: { unreadMessages?: numbe
   const hasUnread = unreadChangelog || unreadMessages > 0;
 
   useEffect(() => {
+    let frame: number | null = null;
     try {
       if (!localStorage.getItem(CHANGELOG_KEY)) {
-        setUnreadChangelog(true);
+        frame = window.requestAnimationFrame(() => setUnreadChangelog(true));
       }
     } catch {
       // localStorage unavailable
     }
+    return () => {
+      if (frame !== null) window.cancelAnimationFrame(frame);
+    };
   }, []);
 
   useEffect(() => {
@@ -64,7 +68,7 @@ export function ChangelogBanner({ unreadMessages = 0 }: { unreadMessages?: numbe
         aria-expanded={open}
         aria-haspopup="dialog"
         aria-label={hasUnread ? "Notifications (unread)" : "Notifications"}
-        className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center border border-border bg-panel/40 hover:bg-panel/60"
+        className="relative inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-panel/40 hover:bg-panel/60"
       >
         <Bell className={`h-4 w-4 ${hasUnread ? "text-red-500" : "text-foreground"}`} />
         {hasUnread ? (
@@ -89,7 +93,7 @@ export function ChangelogBanner({ unreadMessages = 0 }: { unreadMessages?: numbe
               <Link
                 href="/profile?tab=chats"
                 onClick={() => setOpen(false)}
-                className="mt-2 flex items-center justify-between gap-3 border border-red-300 bg-red-50 px-3 py-2 text-sm text-red-800 hover:bg-red-100"
+                className="mt-2 flex min-h-11 items-center justify-between gap-3 border border-red-300 bg-red-50 px-3 py-3 text-sm text-red-800 hover:bg-red-100"
               >
                 <span>
                   {unreadMessages} unread message{unreadMessages === 1 ? "" : "s"}

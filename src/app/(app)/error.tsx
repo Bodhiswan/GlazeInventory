@@ -1,10 +1,11 @@
 "use client";
 
+import Link from "next/link";
+
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 
 export default function AppError({
-  error,
   reset,
 }: {
   error: Error & { digest?: string };
@@ -27,9 +28,9 @@ export default function AppError({
           <button onClick={reset} className={buttonVariants({})}>
             Try again
           </button>
-          <a href="/dashboard" className={buttonVariants({ variant: "ghost" })}>
+          <Link href="/dashboard" className={buttonVariants({ variant: "ghost" })}>
             Back to dashboard
-          </a>
+          </Link>
         </div>
       </Panel>
     </div>

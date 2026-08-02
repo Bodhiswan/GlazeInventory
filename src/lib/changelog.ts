@@ -1,9 +1,12 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v11";
+export const CHANGELOG_KEY = "glaze-library-changelog-v12";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
+      "New filters - the Library can show glazes added this week, and Combinations can show pairings that use newly added glazes.",
+      "Coyote combinations added - official Shino-over-Black and Texas Two-Step overlap results now appear in Combinations.",
+      "More AMACO combinations - 58 official AMACO blog and tutorial combinations added from source-backed resource pages.",
       "More AMACO firing images — every active AMACO glaze now has at least one official reference firing image.",
       "Clay Art Center glazes added — 234 catalog glazes including Rainbow, P Series, Craftsman, Frost, Raku, Terra Sigillata, and High Fire lines.",
       "UK supplier catalogs added — Bath Potters, Potterycrafts, and Scarva now appear in library filters with searchable lines, colors, finishes, and family tags.",
@@ -25,6 +28,7 @@ export const CHANGES = [
       "Duplicate glazes no longer appear when filtering by brand.",
       "Browser hydration issues on catalog pages resolved.",
       "Signed-in shell now renders correctly on guide pages.",
+      "Spectrum catalogue images repaired — legacy colours such as 1137 and 1138 now use checked-in reference tiles instead of unreliable remote image links.",
     ],
   },
   {

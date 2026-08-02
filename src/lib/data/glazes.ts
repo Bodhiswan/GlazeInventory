@@ -3,7 +3,12 @@ import type { Glaze, GlazeComment, GlazeDetail, InventoryItem } from "@/lib/type
 import type { Database } from "@/lib/supabase/database.types";
 import { getSupabase } from "@/lib/data/users";
 import { attachTagSummariesToGlazes } from "@/lib/data/tags";
-import { mapGlaze, mapInventoryItem, type InventoryItemWithJoins } from "@/lib/data/inventory";
+import {
+  fetchInventoryGlazes,
+  mapGlaze,
+  mapInventoryItem,
+  type InventoryItemWithJoins,
+} from "@/lib/data/inventory";
 
 // Fetch a custom (nonCommercial) glaze directly from Supabase — used as a
 // fallback whenever a glaze id isn't present in the bundled catalog JSON.
@@ -55,7 +60,7 @@ export async function getGlazeUserState(viewerId: string, glazeId: string) {
   ] = await Promise.all([
     supabase
       .from("inventory_items")
-      .select("id,user_id,glaze_id,status,fill_level,quantity,personal_notes,glaze:glazes(*),inventory_item_folders(folder:inventory_folders(*))")
+      .select("id,user_id,glaze_id,status,personal_notes,inventory_item_folders(folder:inventory_folders(*))")
       .eq("user_id", viewerId)
       .eq("glaze_id", glazeId)
       .limit(1),
@@ -82,9 +87,18 @@ export async function getGlazeUserState(viewerId: string, glazeId: string) {
     createdAt: String(row.created_at),
   }));
 
+  const inventoryRow = inventoryRows?.[0] as unknown as InventoryItemWithJoins | undefined;
+  const inventoryGlazes = await fetchInventoryGlazes(supabase, inventoryRow ? [inventoryRow] : []);
+  const viewerInventoryItem = inventoryRow
+    ? mapInventoryItem({
+        ...inventoryRow,
+        glaze: inventoryGlazes.get(inventoryRow.glaze_id) ?? null,
+      })
+    : null;
+
   return {
     comments,
-    viewerInventoryItem: inventoryRows?.length ? mapInventoryItem(inventoryRows[0] as unknown as InventoryItemWithJoins) : null,
+    viewerInventoryItem,
     viewerHasFavourited: Boolean(favouriteRows?.length),
   };
 }
@@ -121,7 +135,7 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
   ] = await Promise.all([
     supabase
       .from("inventory_items")
-      .select("id,user_id,glaze_id,status,personal_notes,glaze:glazes(*),inventory_item_folders(folder:inventory_folders(*))")
+      .select("id,user_id,glaze_id,status,personal_notes,inventory_item_folders(folder:inventory_folders(*))")
       .eq("user_id", viewerId)
       .eq("glaze_id", glazeId)
       .limit(1),
@@ -157,16 +171,21 @@ export async function getGlazeDetail(viewerId: string, glazeId: string): Promise
     };
   });
 
+  const inventoryRow = inventoryRows?.[0] as unknown as InventoryItemWithJoins | undefined;
+  const inventoryGlazes = await fetchInventoryGlazes(supabase, inventoryRow ? [inventoryRow] : []);
+  const viewerInventoryItem = inventoryRow
+    ? mapInventoryItem({
+        ...inventoryRow,
+        glaze: inventoryGlazes.get(inventoryRow.glaze_id) ?? null,
+      })
+    : null;
+
   return {
     glaze,
     firingImages,
     comments,
-    viewerOwnsGlaze: inventoryRows?.length
-      ? mapInventoryItem(inventoryRows[0] as unknown as InventoryItemWithJoins).status === "owned"
-      : false,
-    viewerInventoryItem: inventoryRows?.length
-      ? mapInventoryItem(inventoryRows[0] as unknown as InventoryItemWithJoins)
-      : null,
+    viewerOwnsGlaze: viewerInventoryItem?.status === "owned",
+    viewerInventoryItem,
     viewerHasFavourited: Boolean(favouriteRows?.length),
   };
 }

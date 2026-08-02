@@ -32,15 +32,22 @@ type TagRow = (typeof tagsJson)[number];
 
 const SPECTRUM_LOCAL_IMAGES = spectrumLocalImagesJson as Record<string, string>;
 const SPEEDBALL_LOCAL_IMAGES = speedballLocalImagesJson as Record<string, string>;
+// These two Coyote records have verified official remote images but no checked-in
+// local asset. Keep the remote URL instead of pointing the browser at a 404 path.
+const COYOTE_REMOTE_FALLBACK_CODES = new Set(["MBG215", "MBG221"]);
 
-function getBundledVendorImageUrl(brand: string | null, code: string | null) {
+function getBundledVendorImageUrl(brand: string | null, code: string | null, sourceImageUrl: string | null) {
   if (brand === "Coyote" && code?.trim()) {
+    if (COYOTE_REMOTE_FALLBACK_CODES.has(code.trim().toUpperCase())) return null;
     return `/vendor-images/coyote/${code.toLowerCase()}.jpg`;
   }
   if (brand === "Spectrum" && code?.trim()) {
+    // Spectrum's old WordPress image host is unreliable. Prefer the checked-in
+    // image for every mapped code, even when the catalogue still has a legacy
+    // remote URL.
     return SPECTRUM_LOCAL_IMAGES[code] ?? null;
   }
-  if (brand === "Speedball" && code?.trim()) {
+  if (brand === "Speedball" && code?.trim() && !sourceImageUrl?.trim()) {
     return SPEEDBALL_LOCAL_IMAGES[code] ?? null;
   }
   return null;
@@ -71,7 +78,7 @@ function normalizeVendorImageUrl(value: string | null) {
 }
 
 function rowToGlaze(row: CatalogRow): Glaze {
-  const bundled = getBundledVendorImageUrl(row.brand, row.code);
+  const bundled = getBundledVendorImageUrl(row.brand, row.code, row.image_url ?? null);
   return {
     id: row.id,
     sourceType: row.source_type === "nonCommercial" ? "nonCommercial" : "commercial",
@@ -92,6 +99,7 @@ function rowToGlaze(row: CatalogRow): Glaze {
     finishNotes: row.finish_notes ?? null,
     colorNotes: row.color_notes ?? null,
     recipeNotes: row.recipe_notes ?? null,
+    createdAt: row.created_at ?? null,
     createdByUserId: null,
   };
 }
@@ -156,15 +164,24 @@ function buildFiringImageIndex() {
   const map = new Map<string, GlazeFiringImage[]>();
   const raw = firingImagesJson as Record<string, FiringImageEntry[]>;
   for (const [glazeId, images] of Object.entries(raw)) {
+    const mappedImages = images.map((img) => ({
+      id: img.id,
+      label: img.label,
+      cone: img.cone ?? null,
+      atmosphere: img.atmosphere ?? null,
+      imageUrl: normalizeVendorImageUrl(img.imageUrl) ?? img.imageUrl,
+    }));
+    const glaze = _glazes.byId.get(glazeId);
+    const localSpectrumImage =
+      glaze?.brand === "Spectrum" && glaze.imageUrl?.startsWith("/vendor-images/spectrum/")
+        ? glaze.imageUrl
+        : null;
+
     map.set(
       glazeId,
-      images.map((img) => ({
-        id: img.id,
-        label: img.label,
-        cone: img.cone ?? null,
-        atmosphere: img.atmosphere ?? null,
-        imageUrl: normalizeVendorImageUrl(img.imageUrl) ?? img.imageUrl,
-      })),
+      localSpectrumImage
+        ? mappedImages.map((image) => ({ ...image, imageUrl: localSpectrumImage }))
+        : mappedImages,
     );
   }
   return map;

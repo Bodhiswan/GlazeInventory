@@ -162170,5 +162170,3153 @@
         "source_image_url": "https://amaco.com/asset/642503313c0c5/C-1_Obsidian.jpg?w=140&h=140&fit=crop"
       }
     ]
+  },
+  {
+    "id": "5053a5cc-fb80-56c5-a3ca-8c0c4f3e5a75",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "try-something-new-magic-forest-glaze-combination-pcf-74-river-birch-over-pc-21-arctic-blue-over-pc-42-seaweed",
+    "source_url": "https://amaco.com/resources/blog/try-something-new-magic-forest-glaze-combination",
+    "title": "PCF-74 River Birch over PC-21 Arctic Blue over PC-42 Seaweed",
+    "image_url": "https://amaco.com/asset/682363d65a28a/MagicForestGlazeTechnique_970pxWidth_May2025.jpg?w=1170&fit=max",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "I’m bringing you a great glaze layering combination that’s light and fresh with a slightly magical iridescence. It reminds me of misty mornings in the forest when the air seems to have an opalescent gleam. I start with TWO coats of PCF-74 River Birch, all over. River Birch has the creaminess of Honey Flux with dark brown runny specks. This combo can be done with any Potter’s Choice Flux (PCF) glaze as the base, so give other ones a try if you like. I love the look with River Birch. Once those two coats of River Birch are dry I follow up with ONE coat of PC-21 Arctic Blue all over the River Birch. Let it dry completely. Last, I use dots or stripes of PC-42 Seaweed. Seaweed is a runner, so keep it near the top of the piece and let it flow a little. Fire to cone 6. This combo looks beautiful on either textured or smooth vertical forms, and will work on horizontal surfaces, though the Seaweed won’t get as much movement. Watch the live video where I describe the process here: https://www.youtube.com/watch?... Happy Glazing! ~Cara Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "88f59d19-1622-5ec1-a98c-1f34fb203e69",
+        "glaze_id": "76565f64-d1ea-424c-9696-c6771d81dc42",
+        "glaze_code": "PCF-74",
+        "glaze_name": "River Birch",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "17523e76-6954-51e7-a5b1-d71b2d3543a3",
+        "glaze_id": "4be4549a-eba4-4934-b486-9ddd9e1e2ed6",
+        "glaze_code": "PC-21",
+        "glaze_name": "Arctic Blue",
+        "layer_order": 1,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "d7cfe61b-bb88-54d7-8807-c61d4f4bdbb6",
+        "glaze_id": "b57f2b1d-588e-4a64-aebb-ea77ebfc6fc9",
+        "glaze_code": "PC-42",
+        "glaze_name": "Seaweed",
+        "layer_order": 2,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "b13970a7-580d-51ba-b85c-2826aaca1d85",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "embrace-spontaneity-with-crawls-glazes-cr-17-flux-crawl-over-cr-18-speckled-flux-crawl",
+    "source_url": "https://amaco.com/resources/blog/embrace-spontaneity-with-crawls-glazes",
+    "title": "CR-17 Flux Crawl over CR-18 Speckled Flux Crawl",
+    "image_url": "https://amaco.com/asset/683a05b7d29cd/CR-58-over-PC-33.jpeg?w=1170&fit=max",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "When used over a Celadon glaze, all Crawls glazes are food safe. When used over bare clay or a Velvet underglaze, they are food-safe but not suitable for food since they can’t be adequately cleaned. We do not test the Crawls layered over glazes other than the Celadons. In addition to the nine Rainbow Crawls we also have: CR-17 FLUX Crawl CR-18 Speckled FLUX Crawl The Flux Crawls are based on our popular Potter’s Choice Flux glazes, but with a crawl effect to make a mottled, fluid appearance when layered over other glazes. With Flux Crawls you can create a Frozen Pond effect without making dots, just apply over a Celadon glaze. The Flux crawls will create a frosty mottled pattern over the Celadon.",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "c3776b61-b8a1-52fb-b6fa-a0685deaebe1",
+        "glaze_id": "c5d86e6b-fbe5-411b-8719-a92ac9ec5c33",
+        "glaze_code": "CR-17",
+        "glaze_name": "Flux Crawl",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "58e2b520-5075-51f0-8dd2-d27e28291689",
+        "glaze_id": "29fa7808-15d9-4716-b5fe-e52400775c09",
+        "glaze_code": "CR-18",
+        "glaze_name": "Speckled Flux Crawl",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "82bd8de8-baae-5a26-8fbb-9f565be32d78",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "embrace-spontaneity-with-crawls-glazes-c-10-snow-over-cr-1-black",
+    "source_url": "https://amaco.com/resources/blog/embrace-spontaneity-with-crawls-glazes",
+    "title": "C-10 Snow over CR-1 Black",
+    "image_url": "https://amaco.com/asset/683a0622f41aa/CR-20_Unfired_3Coat_WEB.jpg?w=1170&fit=max",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "What makes Amaco Crawls different from other crawl or bead glazes? Amaco crawls are different from other crawl or bead glazes in that they are specifically meant to work with Amaco glazes, like the Celadons, as well as creating a bead effect when used alone or on Velvet underglaze. Can you apply Celadon OVER the Crawls? We haven’t tested that, but as the Crawls will create the cracking pattern under the Celadon glaze, you’d have the beaded texture. What I have tried is applying a Celadon over a fired Crawl glaze, (as well as a Satin Matt and a Potter’s Choice Flux glaze), and the results were interesting! The Crawls stayed in place under the glaze, giving a nubbly texture like scales or welts. Shown below is C-10 Snow applied over a previously fired CR-1 Black Crawl and refired to cone 5.",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "8e0dee82-9512-5072-ab77-7154dff5dd92",
+        "glaze_id": "cd3174e3-7eb3-4397-80a6-93ac7ab1522e",
+        "glaze_code": "C-10",
+        "glaze_name": "Snow",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "99a95835-a435-5c1d-8eff-506c70db83a9",
+        "glaze_id": "6e12401f-3678-4a24-9972-aa8905dac326",
+        "glaze_code": "CR-1",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "264a4997-8569-53b5-a9cf-16bbd6c0e0b7",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "exploring-phase-glazes-pg-24-night-rain-over-pg-42-teal-drift-over-pg-54-lunar-pink",
+    "source_url": "https://amaco.com/resources/blog/exploring-phase-glazes",
+    "title": "PG-24 Night Rain over PG-42 Teal Drift over PG-54 Lunar Pink",
+    "image_url": "https://amaco.com/asset/68489c330f120",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Introduced in 2024, our Phase Glaze line is one to keep on your studio shelves! These cheerfully colored opaque glazes for cone 5-6 develop a subtle mottling where they’re thick. They’re stable when used alone. When layered with other glazes, they can flow dramatically. The colors in the Phase Glaze line are: PG-24 Night Rain PG-42 Teal Drift PG -55 Floating Lavender PG-54 Lunar Pink The Phase glazes, PG for short, are opaque, even at one coat, with just a small amount of break on texture. Even on darker clay bodies like Amaco Milk and Dark Chocolate clays, the PG glazes show brightly.",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "5e615663-dc7f-505b-a93e-567a07ff6377",
+        "glaze_id": "f4787a2c-ee49-4a89-9652-a582211c02c5",
+        "glaze_code": "PG-24",
+        "glaze_name": "Night Rain",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "22f287e3-c46e-521e-ba9d-4f85ae0b7c93",
+        "glaze_id": "1a82a3a0-782f-48fd-ba4a-7f419de8a9ab",
+        "glaze_code": "PG-42",
+        "glaze_name": "Teal Drift",
+        "layer_order": 1,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "f24f7e60-fa13-560b-b27d-e2f4d1922ff2",
+        "glaze_id": "b47b8a88-2b04-4541-8159-30e3d7614077",
+        "glaze_code": "PG-54",
+        "glaze_name": "Lunar Pink",
+        "layer_order": 2,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "852a5b9d-a39c-5b07-a75c-aac9499607c7",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "exploring-phase-glazes-pc-17-honey-flux-over-pc-56-ancient-copper",
+    "source_url": "https://amaco.com/resources/blog/exploring-phase-glazes",
+    "title": "PC-17 Honey Flux over PC-56 Ancient Copper",
+    "image_url": "https://amaco.com/asset/6848960948174",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Phase glazes can also be used as a base for other glazes. My tip when layering is not to go too thick with PGs or you may have some bubbling. PG glazes are also great for the Peacock technique, where dots and swoops of glaze are applied in a way that creates an arrangement like peacock feathers when the glazes run. To create the Peacock glaze effect use dots of a Phase glaze, swoops of PC-17 Honey Flux, and cover the whole surface with PC-56 Ancient Copper. Fire to cone 6. 1. Use a graphite pencil to create a guideline on the curved area of the bowl. I put the bowl on a banding wheel and turned it while holding the pencil in place to make the line.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "6ad99ed9-d06b-5ae2-bd0b-002214a10405",
+        "glaze_id": "2c98c94a-8e2a-4cfc-90e6-d3ef4f8032de",
+        "glaze_code": "PC-17",
+        "glaze_name": "Honey Flux",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "7ded992c-db13-5f91-b844-dd67326f27dd",
+        "glaze_id": "ad20563f-2908-44ed-8d2b-99c421638c76",
+        "glaze_code": "PC-56",
+        "glaze_name": "Ancient Copper",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "f514ce19-91f8-5dc1-854e-fca74ba23d5f",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "exploring-phase-glazes-pg-42-teal-drift-with-pg-55-floating-lavender",
+    "source_url": "https://amaco.com/resources/blog/exploring-phase-glazes",
+    "title": "PG-42 Teal Drift with PG-55 Floating Lavender",
+    "image_url": "https://amaco.com/asset/68489a5786ad7",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Phase glazes can also be intermixed for variations of the colors. Below is an example of PG-42 Teal Drift mixed with PG-55 Lavender Float in equal parts.",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "daccf760-c918-51e6-897a-13c5d21f0091",
+        "glaze_id": "1a82a3a0-782f-48fd-ba4a-7f419de8a9ab",
+        "glaze_code": "PG-42",
+        "glaze_name": "Teal Drift",
+        "layer_order": 0,
+        "connector_to_next": "with",
+        "source_image_url": null
+      },
+      {
+        "id": "293d8146-15d7-5dc7-873e-0ac08993cfc1",
+        "glaze_id": "ea48bd7a-7ac8-478f-bda3-f7cbd907153d",
+        "glaze_code": "PG-55",
+        "glaze_name": "Floating Lavender",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "7fcfa69d-bb7e-5b77-9adc-8f3ac42904fa",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "dip-into-color-dl-42-river-moss-over-dl-1-ebony",
+    "source_url": "https://amaco.com/resources/blog/dip-into-color",
+    "title": "DL-42 River Moss over DL-1 Ebony",
+    "image_url": "https://amaco.com/asset/685c0d216fc2c",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "DL-42 River Moss over DL-1 Ebony",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "a87b3f93-30a8-5a35-86ca-25f064496156",
+        "glaze_id": "1316011f-57f1-4bb0-afba-09e06944f407",
+        "glaze_code": "DL-42",
+        "glaze_name": "River Moss",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "db656a91-f908-52f8-bca7-6872fecd1fe2",
+        "glaze_id": "dc65ebfe-2cad-4d91-9080-c2b8e6c6712a",
+        "glaze_code": "DL-01",
+        "glaze_name": "Ebony",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "2e5a23ee-e7d5-55af-a045-f6088cffc811",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "dip-into-color-dl-11-enamel-white-over-dl-27-storm-cloud",
+    "source_url": "https://amaco.com/resources/blog/dip-into-color",
+    "title": "DL-11 Enamel White over DL-27 Storm Cloud",
+    "image_url": "https://amaco.com/asset/685c0d444f725",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "DL-11 Enamel White over DL-27 Storm Cloud",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "fb6998e1-61fb-5750-80ee-5fd7cc592ff0",
+        "glaze_id": "9a689a00-809e-4688-beef-a2b2545c0e15",
+        "glaze_code": "DL-11",
+        "glaze_name": "Enamel White",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "e4daaff1-4421-55b4-a776-cbc3c52a8837",
+        "glaze_id": "a960c604-18bb-4429-8441-565af2bd000b",
+        "glaze_code": "DL-27",
+        "glaze_name": "Storm Cloud",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "5d556fa8-8e18-5815-a477-9f97ddf91984",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "dip-into-color-dl-63-over-dl-12-midnight-blue",
+    "source_url": "https://amaco.com/resources/blog/dip-into-color",
+    "title": "DL-63 over DL-12 Midnight Blue",
+    "image_url": "https://amaco.com/asset/685c0d526f59b",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "DL-63 over DL-12 Midnight Blue",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "703a68f5-480f-5bc7-a454-0ea4b8228ea5",
+        "glaze_id": "c87823fe-9f6d-4084-9756-1248941bfb87",
+        "glaze_code": "DL-63",
+        "glaze_name": "Stardust",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "b5009750-0353-5a65-a3d4-adbe0e01bc77",
+        "glaze_id": "e45eee6d-21c3-48d9-8cec-56bca9fb7c13",
+        "glaze_code": "DL-12",
+        "glaze_name": "Midnight Blue",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "abc0dfbd-52f8-591c-91c2-50b0c57818cd",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "dip-into-color-pc-31-oatmeal-over-dl-33-low-tide",
+    "source_url": "https://amaco.com/resources/blog/dip-into-color",
+    "title": "PC-31 Oatmeal over DL-33 Low Tide",
+    "image_url": "https://amaco.com/asset/685c0d6e2033a",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "1 brushed coat of PC-31 Oatmeal over DL-33 Low Tide Try out PCs over DL glazes to increase your glaze palette!",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "684de96d-20f6-5c6a-8fe2-7fbbceb4e536",
+        "glaze_id": "9c82e0bd-cb61-4d53-9603-35b3e53ec1af",
+        "glaze_code": "PC-31",
+        "glaze_name": "Oatmeal",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "128498a4-c435-5cba-afd1-89f7799debd2",
+        "glaze_id": "860c42e5-b920-4c20-8a5e-5c2ae7ff28ce",
+        "glaze_code": "DL-33",
+        "glaze_name": "Low Tide",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "1884b5b6-c289-5a2a-b7e7-0da18af4c0f8",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "amaco-fall-layering-favorites-pc-57-smokey-merlot-over-sh-46-matcha-matte",
+    "source_url": "https://amaco.com/resources/blog/amaco-fall-layering-favorites",
+    "title": "PC-57 Smokey Merlot over SH-46 Matcha Matte",
+    "image_url": "https://amaco.com/asset/68cc437446a09",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "This combination reminds me of fields of ripe wheat, bales of straw, and cornfields. Warm and welcoming as a pot of honey, I love the depth these two yellow glazes give each other. 2 coats over 2 coats, fired to cone 6 on A-Mix White Stoneware. Blackberry Harvest PC-57 Smokey Merlot over SH-46 Matcha Matte Shino",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "d29e8512-1bec-5e0d-bc54-8894ec04f8fc",
+        "glaze_id": "0bb8c2d0-3cc8-4cc1-afb7-8cdbdad210a8",
+        "glaze_code": "PC-57",
+        "glaze_name": "Smokey Merlot",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "e05b188e-2758-50ef-81b6-658009a96fdf",
+        "glaze_id": "0cb7098b-5ac9-4206-84a4-1ddf9b94fee5",
+        "glaze_code": "SH-46",
+        "glaze_name": "Matcha Matte",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "25493e56-9e1d-5608-81a5-51be18e819e9",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "amaco-fall-layering-favorites-cr-61-speckled-yellow-over-sm-53-cayenne",
+    "source_url": "https://amaco.com/resources/blog/amaco-fall-layering-favorites",
+    "title": "CR-61 Speckled Yellow over SM-53 Cayenne",
+    "image_url": "https://amaco.com/asset/68cc447d0ff1f",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Crawls over Satin Mattes are really stable, and so much fun! To me this combo looks like an ear of corn, or dry cracked earth. I want to drink a hot cider from it on a cool evening. 2 coats of CR-61 Speckled Yellow over 3 coats of SM-53 Cayenne, fired to cone 5 on A-Mix White Stoneware. Now I’m going to have a cup of cocoa and enjoy the cooler weather. What are your favorite fall glazes and glaze combinations? Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "1480d23d-6e40-52e8-814c-dfb1ea202739",
+        "glaze_id": "bcdd9370-8cff-445b-bf59-0df6286bb0b7",
+        "glaze_code": "CR-61",
+        "glaze_name": "Speckled Yellow",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "5e200fad-67b9-51cb-97bc-ea7e206e6bbc",
+        "glaze_id": "0f154324-9ded-4dcf-99d2-839c942f2de4",
+        "glaze_code": "SM-53",
+        "glaze_name": "Cayenne",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "fd7b0cc2-0f6d-5aad-987b-ae861206437f",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "halloween-glaze-roundup-sm-53-cayenne-over-sm-68-orange",
+    "source_url": "https://amaco.com/resources/blog/halloween-glaze-roundup",
+    "title": "SM-53 Cayenne over SM-68 Orange",
+    "image_url": "https://amaco.com/asset/68e694fd6fd27",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "SM-53 Cayenne This russet satin glaze is perfect for rustic pumpkins. Want a more vivid Orange? Try out SM-68 Orange.",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "07fc210f-7a4a-5703-b8ec-9cd9835537f6",
+        "glaze_id": "0f154324-9ded-4dcf-99d2-839c942f2de4",
+        "glaze_code": "SM-53",
+        "glaze_name": "Cayenne",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "328ea0ce-89ee-5a0f-9986-004c7617a032",
+        "glaze_id": "233db9e9-5229-4a4c-8c48-1ff7501085be",
+        "glaze_code": "SM-68",
+        "glaze_name": "Orange",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "dd525c92-aff6-5ebf-8f35-f99ddda097f2",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "halloween-glaze-roundup-cr-41-lime-over-c-01-obsidian",
+    "source_url": "https://amaco.com/resources/blog/halloween-glaze-roundup",
+    "title": "CR-41 Lime over C-01 Obsidian",
+    "image_url": "https://amaco.com/asset/68e6959333366",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "CR-41 Lime Crawl over C-1 Obsidian Creepy crawly Lime Crawl over any of the glazes listed will create the look of a toxic shell.",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "c0dcd470-71dc-5e40-a2f5-ad741b648ba3",
+        "glaze_id": "4cb5a00c-000b-4c12-a3b2-3070d003726b",
+        "glaze_code": "CR-41",
+        "glaze_name": "Lime",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "7dbd8e05-52ff-5744-8bf8-82fce26c1236",
+        "glaze_id": "234fa669-0269-476b-aaef-c6a8ce8a5433",
+        "glaze_code": "C-01",
+        "glaze_name": "Obsidian",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "220108e8-7d41-57b5-9056-7a8a3deb748a",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "halloween-glaze-roundup-sh-52-hibiscus-matte-over-pc-63-cosmic-tea-dust",
+    "source_url": "https://amaco.com/resources/blog/halloween-glaze-roundup",
+    "title": "SH-52 Hibiscus Matte over PC-63 Cosmic Tea Dust",
+    "image_url": "https://amaco.com/asset/68e695d78c6c4",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "SH-52 Hibiscus Matte Shino All the Matte Shino glazes are wonderful for Halloween, but my favorite is Hibiscus Matte Shino. A warm red like maple leaves in autumn, this glaze shows off texture and gives a warm rustic tone to any piece it’s on. Brown where thin, apply heavier coats to get the lighter red. Beautiful when layered with glazes like PC-63 Cosmic Oil Spot. Enjoy the season and get your spooky glaze on! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "d8802187-a8c3-52f0-92e0-2fd4c961c391",
+        "glaze_id": "3eb8eb6d-0469-4514-83b8-b2d444054631",
+        "glaze_code": "SH-52",
+        "glaze_name": "Hibiscus Matte",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "821bbb6a-4b58-5939-882f-ec2ee021b175",
+        "glaze_id": "d55dcd59-bed1-4dc5-8b7e-ccabfe79018e",
+        "glaze_code": "PC-63",
+        "glaze_name": "Cosmic Tea Dust",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "03ac4acb-1630-59c6-ac71-90be408eadef",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "hidden-gems-dipping-and-layering-glazes-dl-12-midnight-blue-over-dl-27-storm-cloud",
+    "source_url": "https://amaco.com/resources/blog/hidden-gems-dipping-and-layering-glazes",
+    "title": "DL-12 Midnight Blue over DL-27 Storm Cloud",
+    "image_url": "https://amaco.com/asset/68e92b2687d9d",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Stormy Oil Spot DL-12 Enamel White over DL-27 Storm Cloud; Cone 6, no hold. This combination creates a dramatic mottled effect, like caps on a rough ocean or reflections on a pond. Make sure to stay light with the Storm Cloud as it can pinhole if it’s too thick.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "9170f5c5-34ab-534a-a9bb-63f0798a4d46",
+        "glaze_id": "e45eee6d-21c3-48d9-8cec-56bca9fb7c13",
+        "glaze_code": "DL-12",
+        "glaze_name": "Midnight Blue",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "3fec415b-5fb6-565d-8e1f-3bacbb24c092",
+        "glaze_id": "a960c604-18bb-4429-8441-565af2bd000b",
+        "glaze_code": "DL-27",
+        "glaze_name": "Storm Cloud",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "c7d8a2e3-2504-54c8-9a75-5c872438fde6",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "hidden-gems-dipping-and-layering-glazes-dl-33-low-tide-over-dl-11-enamel-white-over-pc-31-oatmeal",
+    "source_url": "https://amaco.com/resources/blog/hidden-gems-dipping-and-layering-glazes",
+    "title": "DL-33 Low Tide over DL-11 Enamel White over PC-31 Oatmeal",
+    "image_url": "https://amaco.com/asset/68e92b3926b66",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Morning Fog DL-33 Low Tide over DL-11 Enamel White; Cone 6, no hold. This combo is more subtle and patient than some of the other combos listed, but it reminds me of misty mornings and evenings in the countryside. Low Tide is also spectacular as a base with PC-31 Oatmeal brushed over.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "c1a25f54-f76f-577e-b506-2dfa7291ed5b",
+        "glaze_id": "860c42e5-b920-4c20-8a5e-5c2ae7ff28ce",
+        "glaze_code": "DL-33",
+        "glaze_name": "Low Tide",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "5e232c13-90e4-5344-b043-9ac3030e0e1c",
+        "glaze_id": "9a689a00-809e-4688-beef-a2b2545c0e15",
+        "glaze_code": "DL-11",
+        "glaze_name": "Enamel White",
+        "layer_order": 1,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "d868c766-7189-5fac-9d9e-48b5294e31ef",
+        "glaze_id": "9c82e0bd-cb61-4d53-9603-35b3e53ec1af",
+        "glaze_code": "PC-31",
+        "glaze_name": "Oatmeal",
+        "layer_order": 2,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "f590936a-86c7-5966-9239-b4330fbd1a6d",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "hidden-gems-dipping-and-layering-glazes-dl-25-coastline-over-dl-20-floating-blue",
+    "source_url": "https://amaco.com/resources/blog/hidden-gems-dipping-and-layering-glazes",
+    "title": "DL-25 Coastline over DL-20 Floating Blue",
+    "image_url": "https://amaco.com/asset/68e92b4db2ac8",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Surfer Blue DL-25 Coastline over DL-20 Floating Blue; Cone 6, no hold. Just look at those spots and drips! Like a waterfall of color, this combo has so much movement, and it’s just an entrancing blue!",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "1ec8e8c7-0145-5137-a552-3a974394f374",
+        "glaze_id": "781a199d-f641-478e-a682-4899ca986f6f",
+        "glaze_code": "DL-25",
+        "glaze_name": "Coastline",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "3d6f52a3-4c95-5764-b4b5-9d49dca662b1",
+        "glaze_id": "34bc2b7e-4a04-4cc8-9089-3ab5e93321de",
+        "glaze_code": "DL-20",
+        "glaze_name": "Floating Blue",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "bf43049e-d66d-5984-9a30-3d1fc1ee8f57",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "hidden-gems-dipping-and-layering-glazes-dl-70-oxblood-over-dl-42-river-moss",
+    "source_url": "https://amaco.com/resources/blog/hidden-gems-dipping-and-layering-glazes",
+    "title": "DL-70 Oxblood over DL-42 River Moss",
+    "image_url": "https://amaco.com/asset/68e92b59b1746",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Enchanted Lake DL-70 Copper Red over DL-42 River Moss; Cone 6, no hold. I know what you’re thinking: that can’t be right! Copper Red and River Moss interact in such an unusual way it’s hard to believe it’s real. To me this looks like a bit of magic on a cup.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "2fb89595-c63c-50aa-bdd6-ab5210f0d560",
+        "glaze_id": "69a9a6b4-9ee9-4732-8c5e-c797346986b3",
+        "glaze_code": "DL-70",
+        "glaze_name": "Oxblood",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "65bb6f18-6b1d-5087-8e66-6e893448a613",
+        "glaze_id": "1316011f-57f1-4bb0-afba-09e06944f407",
+        "glaze_code": "DL-42",
+        "glaze_name": "River Moss",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "676e5246-aaef-5442-affc-3885d062f85d",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "hidden-gems-dipping-and-layering-glazes-dl-59-brick-red-over-dl-42-river-moss",
+    "source_url": "https://amaco.com/resources/blog/hidden-gems-dipping-and-layering-glazes",
+    "title": "DL-59 Brick Red over DL-42 River Moss",
+    "image_url": "https://amaco.com/asset/68e92b666f2b2",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Secret Garden DL-59 Brick Red over DL-42 River Moss; Cone 6, no hold. A combo with high drama, Brick Red and River Moss combine red and green in a way that’s more moody than holiday themed.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "b9813bcc-5c9d-5ceb-ac0d-38bbfbaf5676",
+        "glaze_id": "83dbc961-06df-488b-b819-8ddbe4da3ad2",
+        "glaze_code": "DL-59",
+        "glaze_name": "Brick Red",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "7468d705-2490-57eb-9f22-486fbc05b147",
+        "glaze_id": "1316011f-57f1-4bb0-afba-09e06944f407",
+        "glaze_code": "DL-42",
+        "glaze_name": "River Moss",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "753a280d-9c51-5421-b11a-9ecae9b7cf9a",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "hidden-gems-dipping-and-layering-glazes-dl-60-honeycomb-over-dl-01-ebony",
+    "source_url": "https://amaco.com/resources/blog/hidden-gems-dipping-and-layering-glazes",
+    "title": "DL-60 Honeycomb over DL-01 Ebony",
+    "image_url": "https://amaco.com/asset/68e92b761eff4",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Night Magic DL-60 Honeycomb over DL-1 Ebony; Cone 6, no hold. This combination surprised me with its visual texture and contrast. I love how Honeycomb flows and changes color into greens and taupe over Ebony. Share your results with us on socials! Happy glazing!! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "69201ead-c680-515a-8962-c4aca59f9b2d",
+        "glaze_id": "52fc00f1-8ebe-4ae7-80bb-308f2774a3e7",
+        "glaze_code": "DL-60",
+        "glaze_name": "Honeycomb",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "dc2bc459-691d-507d-90a6-ced04ce1cef2",
+        "glaze_id": "dc65ebfe-2cad-4d91-9080-c2b8e6c6712a",
+        "glaze_code": "DL-01",
+        "glaze_name": "Ebony",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "9173f55c-8647-5d31-9ce4-fe627309971b",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "phase-glazes-hidden-gems-pc-17-honey-flux-over-pg-55-floating-lavender",
+    "source_url": "https://amaco.com/resources/blog/phase-glazes-hidden-gems",
+    "title": "PC-17 Honey Flux over PG-55 Floating Lavender",
+    "image_url": "https://amaco.com/asset/6900d029452f2",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Phase glazes look great over PC-17 Honey Flux or any of the Potter's Choice Flux glazes. PG-55 Floating Lavender was applied as a stripe just at the rim on top of 2 coats of PC-17 Honey Flux. Fired to cone 6. You can see how much the Phase glaze runs over the Honey Flux.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "ade77bb8-b1cb-51ae-9284-d83375681f1c",
+        "glaze_id": "2c98c94a-8e2a-4cfc-90e6-d3ef4f8032de",
+        "glaze_code": "PC-17",
+        "glaze_name": "Honey Flux",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "69a906c6-d178-553b-b739-9bf8d8d85a40",
+        "glaze_id": "ea48bd7a-7ac8-478f-bda3-f7cbd907153d",
+        "glaze_code": "PG-55",
+        "glaze_name": "Floating Lavender",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "7d09f8db-b205-59ad-9dfc-09102d3c7903",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "phase-glazes-hidden-gems-pg-42-teal-drift-over-pc-17-honey-flux-over-pc-56-ancient-copper",
+    "source_url": "https://amaco.com/resources/blog/phase-glazes-hidden-gems",
+    "title": "PG-42 Teal Drift over PC-17 Honey Flux over PC-56 Ancient Copper",
+    "image_url": "https://amaco.com/asset/6900d1cf15122",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Use Phase glazes for the Peacock glazing technique . This detail shows the rim of a bowl where we applied PG-42 Teal Drift dots, PC-17 Honey Flux swoops, then covered over all of it with 2 coats of PC-56 Ancient Copper. Fired to cone 6.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "79a0fb43-2130-5707-be39-f9c50d96357f",
+        "glaze_id": "1a82a3a0-782f-48fd-ba4a-7f419de8a9ab",
+        "glaze_code": "PG-42",
+        "glaze_name": "Teal Drift",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "2cb691dc-7756-5355-965b-e5d4924335de",
+        "glaze_id": "2c98c94a-8e2a-4cfc-90e6-d3ef4f8032de",
+        "glaze_code": "PC-17",
+        "glaze_name": "Honey Flux",
+        "layer_order": 1,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "effad371-943c-57e5-8c86-907a790333bd",
+        "glaze_id": "ad20563f-2908-44ed-8d2b-99c421638c76",
+        "glaze_code": "PC-56",
+        "glaze_name": "Ancient Copper",
+        "layer_order": 2,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "28dcc5f4-7a78-5479-9066-5bc0a6408b77",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "phase-glazes-hidden-gems-pg-42-teal-drift-over-pc-56-ancient-copper",
+    "source_url": "https://amaco.com/resources/blog/phase-glazes-hidden-gems",
+    "title": "PG-42 Teal Drift over PC-56 Ancient Copper",
+    "image_url": "https://amaco.com/asset/6900d3ec2a8a6",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "PG-42 Teal Drift and PC-56 Ancient Copper, on a 32M Dark Chocolate cup, with just a slight overlap.",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "efb34ace-b2d0-5412-833a-eeedebbe1233",
+        "glaze_id": "1a82a3a0-782f-48fd-ba4a-7f419de8a9ab",
+        "glaze_code": "PG-42",
+        "glaze_name": "Teal Drift",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "460a114b-967e-5aba-bc3b-5b0c51aa3ff1",
+        "glaze_id": "ad20563f-2908-44ed-8d2b-99c421638c76",
+        "glaze_code": "PC-56",
+        "glaze_name": "Ancient Copper",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "ff667cfa-01bf-5e58-8dd1-5ecaece6db73",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "phase-glazes-hidden-gems-pg-24-night-rain-with-c-01-obsidian",
+    "source_url": "https://amaco.com/resources/blog/phase-glazes-hidden-gems",
+    "title": "PG-24 Night Rain with C-01 Obsidian",
+    "image_url": "https://amaco.com/asset/6900d45d75a77",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Two coats of PG-24 Night Rain over two coats of Celadon C-1 Obsidian . Fired to cone 6. Night Rain was only applied to the top half of the cup. For less movement, try firing at cone 5. Tips for working with Phase glazes: Phase glazes can run, especially when layered! When using them over another glaze, one or two coats is enough. Three or more coats can cause bubbling. These colors are thick and opaque, so be aware that the color of the clay, subtle texture, and underglaze patterns will not show through. They can be mixed for more varied tones; try it out! Happy glazing! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "c3ab6f79-3559-5b0a-acf4-3c83ed1323e7",
+        "glaze_id": "f4787a2c-ee49-4a89-9652-a582211c02c5",
+        "glaze_code": "PG-24",
+        "glaze_name": "Night Rain",
+        "layer_order": 0,
+        "connector_to_next": "with",
+        "source_image_url": null
+      },
+      {
+        "id": "cda54cb3-c3a3-524b-8d91-da93f8ca6841",
+        "glaze_id": "234fa669-0269-476b-aaef-c6a8ce8a5433",
+        "glaze_code": "C-01",
+        "glaze_name": "Obsidian",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "d7ecbcf5-c037-5dca-8f2f-7a0a13a989c4",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "new-potters-choice-glazes-for-2025-pc-69-cosmic-gold-dust-over-pc-14-lapis-flow",
+    "source_url": "https://amaco.com/resources/blog/new-potters-choice-glazes-for-2025",
+    "title": "PC-69 Cosmic Gold Dust over PC-14 Lapis Flow",
+    "image_url": "https://amaco.com/asset/69138a55b02f7",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "We especially love how Serpentine Green looks with the new PC-69 Cosmic Gold Dust, shown on this bamboo-textured plate. PC-14 Lapis Flow",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "f36e90fa-d3f9-51cc-88be-e766610b5029",
+        "glaze_id": "be1c5b1b-c2fd-415c-999c-85c1de0fc743",
+        "glaze_code": "PC-69",
+        "glaze_name": "Cosmic Gold Dust",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "7f4a4075-f04d-56fa-aad0-95f9ed528a3a",
+        "glaze_id": "4167f6e6-73ef-43f8-90ef-c43a0721965e",
+        "glaze_code": "PC-14",
+        "glaze_name": "Lapis Flow",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "90aa1d69-c70c-59d0-a725-c92e2fb23543",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "new-potters-choice-glazes-for-2025-c-57-mulberry-over-pc-18-tuscan-blue",
+    "source_url": "https://amaco.com/resources/blog/new-potters-choice-glazes-for-2025",
+    "title": "C-57 Mulberry over PC-18 Tuscan Blue",
+    "image_url": "https://amaco.com/asset/69138e1971c0c",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "My favorite use of Lapis Flow is layered over C-57 Mulberry Celadon for a mystical combo of deep purple and vivid blue. Fired to cone 6. PC-18 Tuscan B lue",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "dc92ad3c-5fda-54bc-ae83-ff35e32039a9",
+        "glaze_id": "aea7efe4-abbe-4ef8-a120-54ed90f78750",
+        "glaze_code": "C-57",
+        "glaze_name": "Mulberry",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "627021cf-d298-570d-a759-32bf8d2a96ed",
+        "glaze_id": "4ed2b8ab-f2bb-4511-9c20-83b113ff8084",
+        "glaze_code": "PC-18",
+        "glaze_name": "Tuscan Blue",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "e3ac8c05-12ee-5e63-818e-ed7e8d061dd1",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "new-potters-choice-glazes-for-2025-pc-22-blue-stone-over-pc-19-moon-river",
+    "source_url": "https://amaco.com/resources/blog/new-potters-choice-glazes-for-2025",
+    "title": "PC-22 Blue Stone over PC-19 Moon River",
+    "image_url": "https://amaco.com/asset/69138e41d9e19",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Tuscan Blue is a rich, satiny indigo glaze that pools dark blue and breaks green. A darker, more vibrant version of PC-22 Blue Stone, Tuscan Blue gives Mediterranean Sea vibes. Perfect for functional ware or sculpture, Tuscan Blue highlights textured surfaces. PC-19 Moon River",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "dcdd4114-ab9b-5c1d-874f-8b06096e1a69",
+        "glaze_id": "0323ac36-7bbe-4719-82c2-f2d7d40ff496",
+        "glaze_code": "PC-22",
+        "glaze_name": "Blue Stone",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "bf782f5f-20b9-573d-8522-7c86f875e221",
+        "glaze_id": "427eb166-dac8-4365-b5b7-a51986e5d839",
+        "glaze_code": "PC-19",
+        "glaze_name": "Moon River",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "86500098-f4fc-5e92-8d93-ea5d3f421bc4",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "new-potters-choice-glazes-for-2025-pc-53-ancient-jasper-over-pc-69-cosmic-gold-dust",
+    "source_url": "https://amaco.com/resources/blog/new-potters-choice-glazes-for-2025",
+    "title": "PC-53 Ancient Jasper over PC-69 Cosmic Gold Dust",
+    "image_url": "https://amaco.com/asset/69138f20d03ba",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "This mug was glazed with Moon River over a band of PC-53 Ancient Jasper and fired to cone 6. PC-69 Cosmic Gold Dust",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "801c18cc-db1f-52bb-880e-f9daafe4074c",
+        "glaze_id": "a2a1305e-5768-430b-a01d-e503b66dfd86",
+        "glaze_code": "PC-53",
+        "glaze_name": "Ancient Jasper",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "699f4aee-9e63-5364-8a91-e50d4e90b73a",
+        "glaze_id": "be1c5b1b-c2fd-415c-999c-85c1de0fc743",
+        "glaze_code": "PC-69",
+        "glaze_name": "Cosmic Gold Dust",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "cdfb6478-6f3a-5784-b81e-41d94b36f93d",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "winter-glazes-of-2025-c-10-snow-over-c-49-rainforest",
+    "source_url": "https://amaco.com/resources/blog/winter-glazes-of-2025",
+    "title": "C-10 Snow over C-49 Rainforest",
+    "image_url": "https://amaco.com/asset/69209ea75fea0",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Naturally, C-10 Snow is the go-to for winter, whether you’re making a snowman or a bowl. Try it over C-49 Rainforest for a mottled blue-green and white effect. The plate shown below was created by applying a vinyl stencil to the bisque bowl, then applying 2 coats of Rainforest. Once the glaze had dried, the stencil was removed, and the plate was glazed with 2 coats of Snow. It was fired to cone 6.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "fcdd5ecf-48ed-5352-9ac9-93d0bb42d98f",
+        "glaze_id": "cd3174e3-7eb3-4397-80a6-93ac7ab1522e",
+        "glaze_code": "C-10",
+        "glaze_name": "Snow",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "e62a7ab9-275d-5253-8b80-04c8b997289a",
+        "glaze_id": "7ff93a89-6130-4b5d-b95e-d361ac5a35bd",
+        "glaze_code": "C-49",
+        "glaze_name": "Rainforest",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "6214e182-7047-572b-99b9-bf3fb12674ee",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "favorite-winter-layering-combinations-c-27-storm-over-c-10-snow",
+    "source_url": "https://amaco.com/resources/blog/favorite-winter-layering-combinations",
+    "title": "C-27 Storm over C-10 Snow",
+    "image_url": "https://amaco.com/asset/6939aedee7b70",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Let it snow! We love the way these two Celadons interact, creating a snowy effect! For this cup, we applied star-shaped stickers, then applied 2 coats of C-27 Storm , a deep blue glaze with a hint of green. When the glaze was dry, we removed the stickers and covered the cup with 2 coats of C-10 Snow . Snow creates this oil-spot effect over some glazes, like Storm and Rainforest, from the Celadon series, and Ancient Copper and Deep Firebrick from the Potter’s Choice family. This cup was fired to cone 5 on A-Mix White Stoneware.",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "169b5465-cb05-585b-95ed-69331cbadc1f",
+        "glaze_id": "d3eeac6a-2c5a-435f-9a74-fd4ef92dd9ed",
+        "glaze_code": "C-27",
+        "glaze_name": "Storm",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "56859100-f644-50f2-884b-de863b54b969",
+        "glaze_id": "cd3174e3-7eb3-4397-80a6-93ac7ab1522e",
+        "glaze_code": "C-10",
+        "glaze_name": "Snow",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "67fdf85a-0196-5136-b39e-ffce731c8f34",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "favorite-winter-layering-combinations-pc-53-ancient-jasper-over-pc-21-arctic-blue",
+    "source_url": "https://amaco.com/resources/blog/favorite-winter-layering-combinations",
+    "title": "PC-53 Ancient Jasper over PC-21 Arctic Blue",
+    "image_url": "https://amaco.com/asset/6939af2060c3e",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "For a more earthy and mysterious vibe, we love PC-53 Ancient Jasper over PC-21 Arctic Blue . This cup is 2 coats of Arctic Blue all over followed by 2 coats of Ancient Jasper on the upper half of the cup. The way Ancient Jasper flows over Arctic Blue evokes cold winter sky and bare tree bark. Fired to cone 6 on A-Mix White Stoneware.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "384a32ed-3bf4-501f-8e3b-8d0bc0740de5",
+        "glaze_id": "a2a1305e-5768-430b-a01d-e503b66dfd86",
+        "glaze_code": "PC-53",
+        "glaze_name": "Ancient Jasper",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "70742903-2c6c-5617-93a8-1162ecb20adf",
+        "glaze_id": "4be4549a-eba4-4934-b486-9ddd9e1e2ed6",
+        "glaze_code": "PC-21",
+        "glaze_name": "Arctic Blue",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "19338a03-6250-50d7-80fe-d376509697e9",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "favorite-winter-layering-combinations-pc-48-art-deco-green-over-pc-45-dark-green",
+    "source_url": "https://amaco.com/resources/blog/favorite-winter-layering-combinations",
+    "title": "PC-48 Art Deco Green over PC-45 Dark Green",
+    "image_url": "https://amaco.com/asset/6939af64e0370",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Want a combo that reminds you of evergreen branches? Two coats of PC-48 Art Deco Green over PC-45 Dark Green gives that feathery pine needle vibe. Very glossy and a little runny, but so pretty! This cup was fired to cone 6 on A-Mix White Stoneware.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "01bcbe32-6ca5-5a29-8414-f4db0c199f9a",
+        "glaze_id": "f137798d-fed6-48c6-9467-c0df509b9cce",
+        "glaze_code": "PC-48",
+        "glaze_name": "Art Deco Green",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "e3d602e7-04e7-5dfa-985d-a627dd7911b6",
+        "glaze_id": "59bef3c9-02e6-4e55-873c-7c998baf2759",
+        "glaze_code": "PC-45",
+        "glaze_name": "Dark Green",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "a24df49b-6ce8-5bf9-b3d0-7ec6ece64948",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "favorite-winter-layering-combinations-pc-17-honey-flux-over-pc-61-textured-amber",
+    "source_url": "https://amaco.com/resources/blog/favorite-winter-layering-combinations",
+    "title": "PC-17 Honey Flux over PC-61 Textured Amber",
+    "image_url": "https://amaco.com/asset/6939afa10cc59",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Sometimes you get stunning results from unlikely places. We were blown away by this combination. We started with 2 coats of Honey Flux PC-17 all over, then applied 2 coats of PC-61 Textured Amber in a narrow stripe. The cup was fired to cone 6 on A-Mix White Stoneware. The colors these two glazes create remind me of a foamy caramel latte. Be careful when applying these, as the Textured Amber layered over Honey Flux can run.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "2b012d8b-3f97-526b-bab7-11165f0f83f2",
+        "glaze_id": "2c98c94a-8e2a-4cfc-90e6-d3ef4f8032de",
+        "glaze_code": "PC-17",
+        "glaze_name": "Honey Flux",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "aa2a3c6d-6c9f-571f-b291-14343ac85593",
+        "glaze_id": "c22bc4b9-ea09-43e5-bd30-c9c489cbcc5d",
+        "glaze_code": "PC-61",
+        "glaze_name": "Textured Amber",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "ba748f18-eef0-5bc5-8c8c-8775d429bfa6",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "favorite-winter-layering-combinations-pc-25-textured-turquoise-over-pc-09-vintage-gold",
+    "source_url": "https://amaco.com/resources/blog/favorite-winter-layering-combinations",
+    "title": "PC-25 Textured Turquoise over PC-09 Vintage Gold",
+    "image_url": "https://amaco.com/asset/6939afc744a5e",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Lastly, for decorative pieces like this little candleholder, we love the look of PC-25 Textured Turquoise applied in a single stripe over 2 generous coats of PC-9 Vintage Gold . It creates runny drips of iridescent pale green on the reflective gold surface. Best firing tips for Vintage Gold: fire to cone 5 with a 15-20 minute hold to create a very slow cone 6, and glaze only the outside of pieces.",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "f2b34c07-0d05-53ef-bab9-6379278d19c8",
+        "glaze_id": "29c2379a-c1a1-493c-9f8d-6b9a57adff51",
+        "glaze_code": "PC-25",
+        "glaze_name": "Textured Turquoise",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "416d3cd9-b88a-5a93-9977-9f5c33a390c5",
+        "glaze_id": "170079f2-f3de-448c-bff0-34885500a902",
+        "glaze_code": "PC-09",
+        "glaze_name": "Vintage Gold",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "df6aad65-d9d3-522e-8a8c-13bcc9833914",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "kick-off-2026-with-amaco-glazes-c-65-tangelo-over-sh-51-hibiscus-gloss",
+    "source_url": "https://amaco.com/resources/blog/kick-off-2026-with-amaco-glazes",
+    "title": "C-65 Tangelo over SH-51 Hibiscus Gloss",
+    "image_url": "https://amaco.com/asset/69616b9863410",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Feel fresh and bright with warm orange colors like C-65 Tangelo or SH-51 Hibiscus Gloss Shino. Tangelo is a soft orange glaze, translucent, and stable. Use it over white clay for the best results and a pop of color.",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "ee22c9b1-d94a-5267-90f3-ca8d214968ac",
+        "glaze_id": "f18dbe08-26fa-4390-93ef-200916370dfb",
+        "glaze_code": "C-65",
+        "glaze_name": "Tangelo",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "3481da71-4524-58da-863d-3ee06642ad91",
+        "glaze_id": "a0eb0677-1fe6-4f92-887b-3d15b16392c4",
+        "glaze_code": "SH-51",
+        "glaze_name": "Hibiscus Gloss",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "dadecec2-ee90-530e-b1df-35a892e7053b",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "kick-off-2026-with-amaco-glazes-pc-57-smokey-merlot-over-pc-12-blue-midnight",
+    "source_url": "https://amaco.com/resources/blog/kick-off-2026-with-amaco-glazes",
+    "title": "PC-57 Smokey Merlot over PC-12 Blue Midnight",
+    "image_url": "https://amaco.com/asset/69616c65aa8af",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Soften your mood with PC-57 Smokey Merlot, a hazy purple glaze. Smokey Merlot is beautiful on its own but also gives a dramatic pop when layered over glazes like Obsidian or Honey Flux. Layer over PC-12 Blue Midnight for a deep royal purple color.",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "13ada3c4-09cc-5498-81b8-4e7d32246756",
+        "glaze_id": "0bb8c2d0-3cc8-4cc1-afb7-8cdbdad210a8",
+        "glaze_code": "PC-57",
+        "glaze_name": "Smokey Merlot",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "30138bfc-d7a0-5226-8ed7-3c1bb62191f5",
+        "glaze_id": "24f0c699-b795-4414-aed2-314beae475ee",
+        "glaze_code": "PC-12",
+        "glaze_name": "Blue Midnight",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "493f376b-ddd5-5a36-bbc5-26bb180492e8",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "great-glaze-combos-to-try-out-in-2026-pc-25-textured-turquoise-over-pc-19-moon-river",
+    "source_url": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+    "title": "PC-25 Textured Turquoise over PC-19 Moon River",
+    "image_url": "https://amaco.com/asset/69839df4d9f3a",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Green Milk Glass Soft pale aqua of Textured Turquoise flowing over the creamy milk glass of Moon River is perfect for textured pieces that need some drama! 2 coats PC-25 Textured Turquoise over 2 coats PC-19 Moon River , cone 6",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "b74ce227-605e-5ce9-a255-c0d8d079e68d",
+        "glaze_id": "29c2379a-c1a1-493c-9f8d-6b9a57adff51",
+        "glaze_code": "PC-25",
+        "glaze_name": "Textured Turquoise",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "14823450-14b8-5236-93b2-4c5deaba9941",
+        "glaze_id": "427eb166-dac8-4365-b5b7-a51986e5d839",
+        "glaze_code": "PC-19",
+        "glaze_name": "Moon River",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "f4088adc-e10a-571c-ab69-a4e03b1c9e2f",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "great-glaze-combos-to-try-out-in-2026-pc-14-lapis-flow-over-pc-25-textured-turquoise",
+    "source_url": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+    "title": "PC-14 Lapis Flow over PC-25 Textured Turquoise",
+    "image_url": "https://amaco.com/asset/69839e367ca09",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Electric Storm She’s a runner! Lapis Flow is a dramatic fluid indigo over Textured Turquoise. Be careful, these are both fluid glazes, so you want to use them where they won’t flow onto your kiln shelf! 2 coats PC-14 Lapis Flow over 2 coats PC-25 Textured Turquoise , fired to cone 6 on A-Mix White Stoneware",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "753e493e-be18-52e2-9eba-94c9680f8146",
+        "glaze_id": "4167f6e6-73ef-43f8-90ef-c43a0721965e",
+        "glaze_code": "PC-14",
+        "glaze_name": "Lapis Flow",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "8afd83ce-23bb-5a75-a131-b2d41e4f8464",
+        "glaze_id": "29c2379a-c1a1-493c-9f8d-6b9a57adff51",
+        "glaze_code": "PC-25",
+        "glaze_name": "Textured Turquoise",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "fddfd2bd-29ab-5c05-a019-b12fd401e668",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "great-glaze-combos-to-try-out-in-2026-pc-53-ancient-jasper-over-pc-15-satin-oribe",
+    "source_url": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+    "title": "PC-53 Ancient Jasper over PC-15 Satin Oribe",
+    "image_url": "https://amaco.com/asset/69839e60a3f34",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware If you want a bright POP of color",
+    "application_notes": "Ancient Oribe Ancient Jasper creates an almost metallic luster when applied over Satin Oribe. The contrast between the deep bronze of Ancient Jasper and the satiny coolness of Satin Oribe is eye-catching! 2 coats PC-53 Ancient Jasper over 2 coats PC-15 Satin Oribe , cone 6, A-Mix White Stoneware If you want a bright POP of color...",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "48c598e0-aeb2-592d-90d7-5ce670a4cbf3",
+        "glaze_id": "a2a1305e-5768-430b-a01d-e503b66dfd86",
+        "glaze_code": "PC-53",
+        "glaze_name": "Ancient Jasper",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "26aa9ddd-bf06-5b53-9b65-ed8901237e8b",
+        "glaze_id": "4735d40f-fda1-451b-a262-0725e3cd66a8",
+        "glaze_code": "PC-15",
+        "glaze_name": "Satin Oribe",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "246e6d24-0d9e-55d1-a598-04934508cfe9",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "great-glaze-combos-to-try-out-in-2026-cr-41-lime-over-c-41-pear",
+    "source_url": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+    "title": "CR-41 Lime over C-41 Pear",
+    "image_url": "https://amaco.com/asset/69839e8f59c7c",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Citrus Fruit This combination creates a very subtle visual texture on a vivid chartreuse surface. Try Crawls on any Celadon glaze for a dramatic pairing that’s good for functional ware while being bold and exciting. 2 coats CR-41 Lime over 3 coats CR-41 Pear , cone 6 on A-Mix White Stoneware",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "760dffe4-a5cc-5d0d-abfe-cf14e3f82cb9",
+        "glaze_id": "4cb5a00c-000b-4c12-a3b2-3070d003726b",
+        "glaze_code": "CR-41",
+        "glaze_name": "Lime",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "bdfa4f52-583e-5837-a112-b8eb2e80de96",
+        "glaze_id": "fbcb629d-0348-4bb8-b5c2-040e78c4f419",
+        "glaze_code": "C-41",
+        "glaze_name": "Pear",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "a7bd37d8-4a7b-50cb-8228-daf1e6cb2468",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "great-glaze-combos-to-try-out-in-2026-c-10-snow-over-pg-42-teal-drift",
+    "source_url": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+    "title": "C-10 Snow over PG-42 Teal Drift",
+    "image_url": "https://amaco.com/asset/69839eb88a0f7",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A- Mix White Stoneware If you want subtle",
+    "application_notes": "Whitecaps This combination is like whitecaps on a Caribbean sea. Snow floats lightly over the deep intensity of Teal Drift. C-10 Snow in a drizzled line over 2 coats PG-42 Teal Drift , cone 6, A- Mix White Stoneware If you want subtle , sophisticated combinations ...",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "aee0ec1a-32a2-5e5e-b57f-92f0d80132fa",
+        "glaze_id": "cd3174e3-7eb3-4397-80a6-93ac7ab1522e",
+        "glaze_code": "C-10",
+        "glaze_name": "Snow",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "1e2299e0-01b4-5cd5-87e6-2f0b1010d228",
+        "glaze_id": "1a82a3a0-782f-48fd-ba4a-7f419de8a9ab",
+        "glaze_code": "PG-42",
+        "glaze_name": "Teal Drift",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "9f35a8a3-b958-5a0d-822f-b110601436f2",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "great-glaze-combos-to-try-out-in-2026-pcf-54-flux-blossom-over-sm-03-marble",
+    "source_url": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+    "title": "PCF-54 Flux Blossom over SM-03 Marble",
+    "image_url": "https://amaco.com/asset/69839ed87a7d1",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Pink Marble Soft powder pink on palest gray gives a serene and gentle vibe. This cup wears 3 coats PCF-54 Flux Blossom inside and over the lip, slightly overlapping 3 coats SM-3 Marble Satin Matte. Cone 6, A-Mix White Stoneware.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "be3fae20-6500-5912-ac73-6d8fe16c7d08",
+        "glaze_id": "f9aedab9-3d2e-4893-bebe-f12d7f5126c3",
+        "glaze_code": "PCF-54",
+        "glaze_name": "Flux Blossom",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "ae81fab5-9651-5cf2-8843-7db15da58725",
+        "glaze_id": "f5716673-9a3e-4816-bcea-71924139a942",
+        "glaze_code": "SM-03",
+        "glaze_name": "Marble",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "aa8f3672-d388-5f79-ba95-7c181af734e5",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "great-glaze-combos-to-try-out-in-2026-pc-32-albany-slip-brown-over-dl-01-ebony",
+    "source_url": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+    "title": "PC-32 Albany Slip Brown over DL-01 Ebony",
+    "image_url": "https://amaco.com/asset/69839fed7d711",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Gray Web This combination creates a lovely visual texture in an unexpected color. We brushed 2 coats of PC-32 Albany Slip Brown over a single dip of DL-1 Ebony for this mysterious look. Cone 6. A combination that won’t run onto your kiln shelf...",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "262054c9-1f35-51b7-b2e0-22ce4acc6552",
+        "glaze_id": "2ea02b94-6525-4dc1-ab93-d1f66090c911",
+        "glaze_code": "PC-32",
+        "glaze_name": "Albany Slip Brown",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "7e9b3efc-ae08-5ca2-9376-828a8235ebf8",
+        "glaze_id": "dc65ebfe-2cad-4d91-9080-c2b8e6c6712a",
+        "glaze_code": "DL-01",
+        "glaze_name": "Ebony",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "e216cab2-41e6-5d1e-8ab3-f57aa3efcc2e",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "great-glaze-combos-to-try-out-in-2026-pc-43-toasted-sage-over-c-29-deep-sea",
+    "source_url": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+    "title": "PC-43 Toasted Sage over C-29 Deep Sea",
+    "image_url": "https://amaco.com/asset/6983a02108a25",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Toasted Cloud Toasted Sage layered over a Celadon creates a cloud of soft gray shading to taupe where it’s thinner. Apply in “drips” as we did here to give the appearance of runniness without risk to your kiln shelf. 2 coats PC-34 Toasted Sage over 2 coats C-29 Deep Sea . Cone 6, A-Mix White Stoneware. A combination that is cozy and earthy ...",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "bd8fc641-4a75-596a-973a-da144e286d57",
+        "glaze_id": "c882dac6-15d1-4802-ac90-3af37ceee57e",
+        "glaze_code": "PC-43",
+        "glaze_name": "Toasted Sage",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "22d5af32-4f17-5339-9f78-2fb474fb70dd",
+        "glaze_id": "689681ad-0b33-40b1-96c3-1c5c07a2c1c1",
+        "glaze_code": "C-29",
+        "glaze_name": "Deep Sea",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "5cf58c19-ec3e-5236-b62b-8aed2febad40",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "valentines-day-glazes-pc-55-chun-plum-over-pc-17-honey-flux",
+    "source_url": "https://amaco.com/resources/blog/valentines-day-glazes",
+    "title": "PC-55 Chun Plum over PC-17 Honey Flux",
+    "image_url": "https://amaco.com/asset/698b9da22da3a",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "PC-55 Chun Plum over PC-17 Honey Flux creates a soft, warm pink flowing effect and is so very satisfying. This is the combo for vintage Valentines lovers. 2 coats Chun Plum over Honey Flux, fired to cone 6 on A-Mix White Stoneware.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "afe9dff8-cb70-5ff9-a24e-22c404577104",
+        "glaze_id": "9136b15f-5a6e-462b-996d-2232765e95df",
+        "glaze_code": "PC-55",
+        "glaze_name": "Chun Plum",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "ef972e6d-b362-5855-b80f-9cd6fb2f1806",
+        "glaze_id": "2c98c94a-8e2a-4cfc-90e6-d3ef4f8032de",
+        "glaze_code": "PC-17",
+        "glaze_name": "Honey Flux",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "ca436dc6-bb40-5eba-bd82-cffa2c91fad9",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "valentines-day-glazes-pc-57-smokey-merlot-over-pcf-54-flux-blossom",
+    "source_url": "https://amaco.com/resources/blog/valentines-day-glazes",
+    "title": "PC-57 Smokey Merlot over PCF-54 Flux Blossom",
+    "image_url": "https://amaco.com/asset/698b9e606d848",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "PC-57 Smokey Merlot over PCF-54 Flux Blossom , a purple and pale pink combo, this is great on dark clays as well as light. For those who like their Valentines a little moody. 2 coats of Smokey Merlot applied over 2 generous coats of Flux Blossom, fired to cone 6 on A-Mix White Stoneware.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "0b7023a1-1042-5c9a-a6da-01df8823cffc",
+        "glaze_id": "0bb8c2d0-3cc8-4cc1-afb7-8cdbdad210a8",
+        "glaze_code": "PC-57",
+        "glaze_name": "Smokey Merlot",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "a8d7405c-1628-57e5-a239-67229f17fc95",
+        "glaze_id": "f9aedab9-3d2e-4893-bebe-f12d7f5126c3",
+        "glaze_code": "PCF-54",
+        "glaze_name": "Flux Blossom",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "d665ddc2-9c56-5687-9684-23e54499ca1b",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "valentines-day-glazes-pcf-54-flux-blossom-over-c-53-weeping-plum",
+    "source_url": "https://amaco.com/resources/blog/valentines-day-glazes",
+    "title": "PCF-54 Flux Blossom over C-53 Weeping Plum",
+    "image_url": "https://amaco.com/asset/698b9e8eec7d6",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Use PCF-54 Flux Blossom over C-53 Weeping Plum for a lacy valentine. 2 coats of Flux Blossom over 2 coats of Weeping Plum, fired to cone 6 on A-Mix White Stoneware.",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "7f2ad29c-b3ff-5093-b5ae-af6ebf08b5cb",
+        "glaze_id": "f9aedab9-3d2e-4893-bebe-f12d7f5126c3",
+        "glaze_code": "PCF-54",
+        "glaze_name": "Flux Blossom",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "245daf3e-0281-5768-aca9-a0f5192bbf7a",
+        "glaze_id": "9a599c31-292f-47f6-8738-76066153fb48",
+        "glaze_code": "C-53",
+        "glaze_name": "Weeping Plum",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "d2e82d2d-24ae-5ed1-9b53-b8efd420e2fc",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "valentines-day-glazes-co-06-supernova-over-v-317-coral-underglaze",
+    "source_url": "https://amaco.com/resources/blog/valentines-day-glazes",
+    "title": "CO-06 Supernova over V-317 Coral Underglaze",
+    "image_url": "https://amaco.com/asset/698b9f0b51c05",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Try out CO-6 Supernova over V-317 Coral pink underglaze for an iridescent pink. 3 coats Supernova over 3 coats Coral Velvet, fired to cone 5 on A-Mix White Stoneware.",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "607656f6-456f-5ae5-9306-09891afa30a7",
+        "glaze_id": "12858078-dd7c-404f-a143-f1b05ec2cb10",
+        "glaze_code": "CO-06",
+        "glaze_name": "Supernova",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "efd87213-421a-5b27-9548-066e5837ba60",
+        "glaze_id": "ada6a926-c335-4a82-839a-cde8ddd8f34c",
+        "glaze_code": "V-317",
+        "glaze_name": "Coral Underglaze",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "2a206e4e-0874-58eb-bf0d-28adb1095e99",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "valentines-day-glazes-cr-51-speckled-pink-over-c-54-snapdragon",
+    "source_url": "https://amaco.com/resources/blog/valentines-day-glazes",
+    "title": "CR-51 Speckled Pink over C-54 Snapdragon",
+    "image_url": "https://amaco.com/asset/698b9f976c799",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware dish",
+    "application_notes": "We used CR-51 Speckled Pink Crawl over C-54 Snapdragon Celadon for a colorful and unusual glaze effect, perfect for the person who’s one-of-a-kind. For this little A-Mix White Stoneware dish, we brushed on two coats of Snapdragon Celadon. When the glaze was dry, we applied heart-shaped stickers and applied 2 coats of Speckled Pink Crawl glaze. We removed the stickers and fired to cone 5. Share your Valentine's Day creations with us on social media using #howIAmaco. Happy Glazing! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "b72d7810-57b6-5155-b742-7d6a4b89361e",
+        "glaze_id": "00c35341-6d4f-4100-b5e0-8ff648067d2b",
+        "glaze_code": "CR-51",
+        "glaze_name": "Speckled Pink",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "023f0653-4b7a-5f9a-84ab-8bca924d8532",
+        "glaze_id": "0a4bf7f1-4b10-4f25-b20f-7d2f26a3cccd",
+        "glaze_code": "C-54",
+        "glaze_name": "Snapdragon",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "3414fa94-5b25-5783-8e95-736a6015243f",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "spring-glaze-combinations-pc-55-chun-plum-over-pcf-54-flux-blossom",
+    "source_url": "https://amaco.com/resources/blog/spring-glaze-combinations",
+    "title": "PC-55 Chun Plum over PCF-54 Flux Blossom",
+    "image_url": "https://amaco.com/asset/69d7ccb52e8b5",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware cup and fired it to cone 6",
+    "application_notes": "Lovely pinks combine to create this lovely heirloom rose-looking glaze. We applied 2 coats of PC-55 Chun Plum over 2 coats of PCF-54 Flux Blossom on this A-Mix White Stoneware cup and fired it to cone 6. Green Growth",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "8d5005e2-a882-5ba6-8ecd-9b28215f3eb0",
+        "glaze_id": "9136b15f-5a6e-462b-996d-2232765e95df",
+        "glaze_code": "PC-55",
+        "glaze_name": "Chun Plum",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "f583c071-45d5-5584-b3c2-8f806af6528d",
+        "glaze_id": "f9aedab9-3d2e-4893-bebe-f12d7f5126c3",
+        "glaze_code": "PCF-54",
+        "glaze_name": "Flux Blossom",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "39ee330b-e4ca-5e76-8ce4-004833c8a109",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "spring-glaze-combinations-pc-46-lustrous-jade-over-c-42-saguaro",
+    "source_url": "https://amaco.com/resources/blog/spring-glaze-combinations",
+    "title": "PC-46 Lustrous Jade over C-42 Saguaro",
+    "image_url": "https://amaco.com/asset/69d7cccd62415",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware cup and fired it to cone 6",
+    "application_notes": "Like budding plants, this combo is bright and tender. We applied 2 coats of PC-46 Lustrous Jade over 2 coats of C-42 Saguaro to this A-Mix White Stoneware cup and fired it to cone 6. Lavender Flowers",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "8699ea01-c0b1-5005-bd3c-3de60124e1c4",
+        "glaze_id": "30c33b3a-abf2-4767-961e-c430ca1d9d90",
+        "glaze_code": "PC-46",
+        "glaze_name": "Lustrous Jade",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "a92d3172-dc24-584d-ad6f-16e676473bb2",
+        "glaze_id": "a87c830b-5035-4bb9-8b1d-42686c1a5e3c",
+        "glaze_code": "C-42",
+        "glaze_name": "Saguaro",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "382884a4-c0d0-5d88-96b6-2764ba3832ec",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "spring-glaze-combinations-pc-17-honey-flux-over-c-56-lavender",
+    "source_url": "https://amaco.com/resources/blog/spring-glaze-combinations",
+    "title": "PC-17 Honey Flux over C-56 Lavender",
+    "image_url": "https://amaco.com/asset/69d7ccf23ec8f",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware cup and fired it to cone 5",
+    "application_notes": "Delicately colored, we love this combination of Honey Flux with Celadon. We applied 2 coats of PC-17 Honey Flux over 3 coats of C-56 Lavender to this A-Mix White Stoneware cup and fired it to cone 5. Lavender can turn blue if fired above cone 6. Lemon Yellow",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "f4623b5e-bcf7-50d6-b00a-46ae87e60c3b",
+        "glaze_id": "2c98c94a-8e2a-4cfc-90e6-d3ef4f8032de",
+        "glaze_code": "PC-17",
+        "glaze_name": "Honey Flux",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "4fa7cee2-2e58-5630-968b-5d7344649ad7",
+        "glaze_id": "9598f3a2-dba0-42fe-8ab9-bb5a9843e8ff",
+        "glaze_code": "C-56",
+        "glaze_name": "Lavender",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "f2799802-46e3-5204-9eb5-a5d4e8732912",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "spring-glaze-combinations-c-11-mixing-clear-with-c-60-marigold-with-v-361-jet-black-underglaze",
+    "source_url": "https://amaco.com/resources/blog/spring-glaze-combinations",
+    "title": "C-11 Mixing Clear with C-60 Marigold with V-361 Jet Black Underglaze",
+    "image_url": "https://amaco.com/asset/69d7cd12912e4",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Don’t forget that several Amaco glazes lines are mixable! We created this lemony-yellow by mixing equal parts C-11 Mixing Clear and C-60 Marigold. It’s perfect for pairing with underglazes, like V-361 Jet Black, used here to paint the flowers. The inside of the cup is Marigold alone, to show how the mixture on the outside is much lighter. A-Mix White Stoneware, fired to cone 5. Coral Pink",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "3ef8e8bf-7d75-5096-bdc7-3bd9a24aa8d0",
+        "glaze_id": "39b593b4-ae18-41c1-9cfc-dcd703b2b4fe",
+        "glaze_code": "C-11",
+        "glaze_name": "Mixing Clear",
+        "layer_order": 0,
+        "connector_to_next": "with",
+        "source_image_url": null
+      },
+      {
+        "id": "b7dcefb0-7413-5c8c-b5a2-7b03fa25863d",
+        "glaze_id": "951b814d-5707-4030-b3bf-53b95b1070ae",
+        "glaze_code": "C-60",
+        "glaze_name": "Marigold",
+        "layer_order": 1,
+        "connector_to_next": "with",
+        "source_image_url": null
+      },
+      {
+        "id": "c8b85d8a-d0e2-583e-9bd4-38017efa6499",
+        "glaze_id": "73d523a6-db91-4aa2-865a-c4cce5704a7c",
+        "glaze_code": "V-361",
+        "glaze_name": "Jet Black Underglaze",
+        "layer_order": 2,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "dfb080b3-121b-5184-9e87-03c184320f36",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "spring-glaze-combinations-sm-11-white-with-sm-51-red",
+    "source_url": "https://amaco.com/resources/blog/spring-glaze-combinations",
+    "title": "SM-11 White with SM-51 Red",
+    "image_url": "https://amaco.com/asset/69d7cd44e3d06",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware",
+    "application_notes": "Satin Mattes are also mixable! To create this warm pink, we mixed 4 parts SM-11 White with 1 part SM-51 Red. It was fired to cone 5 on A-Mix White Stoneware.",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "84fe8187-c71a-5f23-ae70-50d5c3f4d975",
+        "glaze_id": "730764da-15d5-48c2-ad29-ec8fa086fb5d",
+        "glaze_code": "SM-11",
+        "glaze_name": "White",
+        "layer_order": 0,
+        "connector_to_next": "with",
+        "source_image_url": null
+      },
+      {
+        "id": "0b0545b6-2b93-5204-beb3-afadd0dd9617",
+        "glaze_id": "975939f3-16dc-4d12-a265-16ac7d89289b",
+        "glaze_code": "SM-51",
+        "glaze_name": "Red",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "fd7fc13b-b15d-554e-8b47-8c83d4a852a9",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "spring-glaze-combinations-pc-20-blue-rutile-over-pcf-21-ocean-drift",
+    "source_url": "https://amaco.com/resources/blog/spring-glaze-combinations",
+    "title": "PC-20 Blue Rutile over PCF-21 Ocean Drift",
+    "image_url": "https://amaco.com/asset/69d7cd908cab9",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "clay_body": "A-Mix White Stoneware cup and fired it to cone 6",
+    "application_notes": "A serene blue rounds out our palette of Spring colors. So dreamy and calm! We applied 2 coats of PC-20 Blue Rutile over 2 coats of PCF-21 Ocean Breeze to this A-Mix White Stoneware cup and fired it to cone 6. Try out some of these combos or create your own and share them with us on social media using #howiamaco. Happy glazing! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+    "firing_notes": "Cone 6",
+    "layers": [
+      {
+        "id": "2b3f4632-05c3-5c0c-a112-588ba116fd39",
+        "glaze_id": "48946885-fc65-42ae-b917-4312f1ae723b",
+        "glaze_code": "PC-20",
+        "glaze_name": "Blue Rutile",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "b6533de1-aa6e-5e33-8823-92d589078f8d",
+        "glaze_id": "445ddf56-9683-43cb-b0cc-431acd8f2d6c",
+        "glaze_code": "PCF-21",
+        "glaze_name": "Ocean Drift",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "328d719d-2253-5df0-8646-965167ed0bc6",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "peacock-feather-effect-with-layering-pc-glazes-pc-42-seaweed-over-pc-32-albany-slip-brown",
+    "source_url": "https://amaco.com/resources/tutorials/peacock-feather-effect-with-layering-pc-glazes",
+    "title": "PC-42 Seaweed over PC-32 Albany Slip Brown",
+    "image_url": "https://amaco.com/asset/64e903b0779ee",
+    "cone": null,
+    "atmosphere": null,
+    "clay_body": null,
+    "application_notes": "Fill your slip trailer with the second glaze. Apply as dots, stripes, or another pattern. PC 42 Seaweed over PC 32 Albany Slip Brown",
+    "firing_notes": null,
+    "layers": [
+      {
+        "id": "16a8b2a5-1946-5c73-9b23-27f5aa346655",
+        "glaze_id": "b57f2b1d-588e-4a64-aebb-ea77ebfc6fc9",
+        "glaze_code": "PC-42",
+        "glaze_name": "Seaweed",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "06d84341-c82e-5785-b34c-112e44ca78cd",
+        "glaze_id": "2ea02b94-6525-4dc1-ab93-d1f66090c911",
+        "glaze_code": "PC-32",
+        "glaze_name": "Albany Slip Brown",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "55a00f5d-61df-52d3-832f-3770ee92cfb3",
+    "source_vendor": "AMACO",
+    "source_collection": "blog-combinations",
+    "source_key": "peacock-feather-effect-with-layering-pc-glazes-pc-42-seaweed-over-pc-32-albany-slip-brown-over-pc-61-textured-amber",
+    "source_url": "https://amaco.com/resources/tutorials/peacock-feather-effect-with-layering-pc-glazes",
+    "title": "PC-42 Seaweed over PC-32 Albany Slip Brown over PC-61 Textured Amber",
+    "image_url": "https://amaco.com/asset/64e903f2b7d65",
+    "cone": "Cone 5",
+    "atmosphere": null,
+    "clay_body": "A-Mix Clay 11",
+    "application_notes": "PC 42 Seaweed applied as dots over PC 32 Albany Slip Brown. A-Mix Clay 11, fired to Cone 5. PC 37 Smoked Sienna over PC 61 Textured Amber",
+    "firing_notes": "Cone 5",
+    "layers": [
+      {
+        "id": "d7afa13b-1ac1-513b-9ff1-4123b6d7abfa",
+        "glaze_id": "b57f2b1d-588e-4a64-aebb-ea77ebfc6fc9",
+        "glaze_code": "PC-42",
+        "glaze_name": "Seaweed",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "35f65b26-5dcd-569c-9a95-81a2c59e2d18",
+        "glaze_id": "2ea02b94-6525-4dc1-ab93-d1f66090c911",
+        "glaze_code": "PC-32",
+        "glaze_name": "Albany Slip Brown",
+        "layer_order": 1,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "ffa5f220-19d1-5dad-917d-7cc148cf5307",
+        "glaze_id": "c22bc4b9-ea09-43e5-bd30-c9c489cbcc5d",
+        "glaze_code": "PC-61",
+        "glaze_name": "Textured Amber",
+        "layer_order": 2,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "6b9bd3d8-a537-5ce9-a160-5946cef7f2e0",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-blue-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Blue Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/blueshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "6f4d4d47-bf13-5bf7-9430-902b14c683a5",
+        "glaze_id": "cb2a01d3-dcfd-40d1-a5c1-1982860f39db",
+        "glaze_code": "MBG043",
+        "glaze_name": "Blue Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "42decd60-7d8d-5da3-a5b6-7e30cfc4844d",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "bdd54057-5541-5618-8250-93844550b23d",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-butterscotch-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Butterscotch Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/butterscotchshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "67190e77-f00a-5bfe-b043-7074a27ce67d",
+        "glaze_id": "51e63771-3805-4d38-a962-5234f96d5ac6",
+        "glaze_code": "MBG086",
+        "glaze_name": "Butterscotch Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "b746014a-ae5d-5e95-8c51-716f70ba374a",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "df3fa572-f86b-56d1-9478-18819bf3ef8c",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-cedar-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Cedar Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/cedarshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "6df086e7-18cd-50ec-acfd-66a9a75fcea3",
+        "glaze_id": "6acf1af5-bb4c-4b80-a29e-a2b00f9ae442",
+        "glaze_code": "MBG087",
+        "glaze_name": "Cedar Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "ff77f120-c91a-5224-9472-7662b49370a1",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "0247aad0-9093-55e5-96e0-1e60655d289c",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-desert-sage-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Desert Sage over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/desertsageoverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "52c135ad-494b-5316-9ef0-baa4d05fb76b",
+        "glaze_id": "f73814c7-a3fd-4915-885c-b8dfaa32f523",
+        "glaze_code": "MBG061",
+        "glaze_name": "Desert Sage",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "d7bf06e1-6dab-581e-beaf-b73c045d371d",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "a5f6cd9f-1293-5528-bb8b-fd914c0c143a",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-espresso-bean-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Espresso Bean over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/espressooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "77398e36-edfb-55f6-b9aa-87f41040f39b",
+        "glaze_id": "2b26ba3c-5be6-4e90-a2ea-1c548a0157a7",
+        "glaze_code": "MBG059",
+        "glaze_name": "Espresso Bean",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "decb2b21-b2de-5764-96b7-72b831a9806a",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "a15f290b-020e-53e7-a084-4c72b0824dfc",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-goldenrod-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Goldenrod Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/goldenrodshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "d468b0c9-a0bd-581b-bb44-192ccd6bc263",
+        "glaze_id": "30d87267-ed65-4976-aea4-a20c6420a67c",
+        "glaze_code": "MBG088",
+        "glaze_name": "Goldenrod Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "3be91f1f-7c31-5d30-8436-61386d5d711c",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "c8bb47ba-ddcd-586e-a2f6-b732fe942a7b",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-green-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Green Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/greenshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "eab5bcb7-32f8-5ae0-b005-3a44b0ac7ec1",
+        "glaze_id": "f8824408-ff0a-4cb3-922f-fffdc4de0577",
+        "glaze_code": "MBG044",
+        "glaze_name": "Green Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "4a59d48f-2099-5114-babc-624ceda252e8",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "397aeb1c-947c-5f8a-b6b5-7ce66dddc8b4",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-leopard-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Leopard Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/leopardshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "d322b6b4-e994-5cc6-91b1-24ff2eeb039c",
+        "glaze_id": "cc96e178-f8ee-4bc2-a755-2af52aae2001",
+        "glaze_code": "MBG089",
+        "glaze_name": "Leopard Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "8b7df564-c1ab-5598-a53d-175a894c3218",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "1c9d32ef-ee81-57f8-af24-7a15fc4de317",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-light-blue-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Light Blue Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/lbshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "2f6a2408-cf06-5ae5-b0bf-9c479a4c79b7",
+        "glaze_id": "44b10109-ad1c-4f85-bcd5-e48f374b42a2",
+        "glaze_code": "MBG067",
+        "glaze_name": "Light Blue Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "128e2be5-8e72-5dfd-8bcf-d5981358e03f",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "fd66277c-b8a5-5b9f-b1b7-dd8de2a92c49",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-light-green-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Light Green Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/lgshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "2d280253-f097-5f90-aaf1-b5c628fb48ab",
+        "glaze_id": "591d45b8-baa9-4802-b19c-460c99975a1a",
+        "glaze_code": "MBG068",
+        "glaze_name": "Light Green Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "212a27d6-8733-5c99-a815-45b5f606c258",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "fb98714d-1899-5c35-8f5d-e0cdf1644168",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-light-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Light Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/lightshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "03f102d6-2847-5878-9cf2-affd7afd79c0",
+        "glaze_id": "26c41fde-a417-4891-b6fd-ba8c02f81e92",
+        "glaze_code": "MBG045",
+        "glaze_name": "Light Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "0f856a90-5636-5a8c-9069-78699f18f9da",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "26eebb7d-afbb-5e1c-962d-f237a6c58c8a",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-mocha-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Mocha Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/mochashinooverblack.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "2c41b334-9c76-5595-8152-21e46dd03939",
+        "glaze_id": "3252521e-e84c-43cf-b4a2-a46fea8bce60",
+        "glaze_code": "MBG090",
+        "glaze_name": "Mocha Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "ea515913-96d9-5dff-9408-f273b05b095d",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "83d0e3fe-bcc0-5cb4-a114-47e2afd15149",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-pistachio-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Pistachio Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/pistachioshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "5e131b80-d847-5498-a0fc-acfd544a8402",
+        "glaze_id": "88e7b267-a41f-49fb-a754-de067f72710d",
+        "glaze_code": "MBG093",
+        "glaze_name": "Pistachio Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "75bdfa14-746d-573b-8c0c-fc05e9c1c6b1",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "7b14efe3-6a2d-5832-bede-2d9fe1777422",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-plum-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Plum Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/plumshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "b34e95d7-741b-530a-ae50-a26571240127",
+        "glaze_id": "7984a64c-f533-4f3a-a2c0-4b13a4e085b1",
+        "glaze_code": "MBG092",
+        "glaze_name": "Plum Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "53ab22c9-b981-5e79-8920-f4a3573e337c",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "ceff6689-cda6-5f30-aa72-76ab0533c85b",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-sandstone-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Sandstone Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/sandstoneshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "60d43174-aee5-58b1-87e8-febb6d58c8ef",
+        "glaze_id": "19cdafad-ecae-41fe-bda5-f61848ca202c",
+        "glaze_code": "MBG094",
+        "glaze_name": "Sandstone Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "79f4227b-b7a8-54ab-982d-4efd46450d24",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "cb0a0169-8b01-504d-b670-dd8204bbeb45",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/shinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "f84df6ed-4c4c-5387-835c-6d82ac72a75c",
+        "glaze_id": "cca36220-d7b4-48f7-9206-b34576fdbecb",
+        "glaze_code": "MBG042",
+        "glaze_name": "Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "47f88ff5-5568-5eea-90aa-301a6cc785f4",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "48730ceb-8ff8-56aa-9e4a-a881b0108604",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-steel-gray-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Steel Gray Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/steelgrayshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "1949c1ac-8f9b-5619-a1b1-02bdcf47c563",
+        "glaze_id": "d580bac1-e2b7-444c-ab93-945f4ecbc1d3",
+        "glaze_code": "MBG096",
+        "glaze_name": "Steel Gray Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "5d11fcba-0cdc-5ba3-a3f1-5335e27ca35e",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "4336e52c-3c88-5e97-a42c-afe162a4d490",
+    "source_vendor": "Coyote",
+    "source_collection": "shino-over-black",
+    "source_key": "shino-over-black-sunrise-shino-over-black",
+    "source_url": "https://www.coyoteclay.com/ShinoOverlap.html",
+    "title": "Sunrise Shino over Black",
+    "image_url": "https://www.coyoteclay.com/Images/Shino%20Overlap%20Cups/Thumbs/sunriseshinooverblackshadow.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": "Speckled buff clay",
+    "application_notes": "Official Coyote Shino overlap result. Coyote describes these as Shino glazes layered over Gloss Black; brushing guidance is 3 coats of Black, then 2 to 3 coats of the Shino color.",
+    "firing_notes": "Official Coyote page says the sample cups were fired between witness cone 5 and cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "5a28745d-4543-5d62-ba3f-3d141a441c5d",
+        "glaze_id": "89732d5a-e937-48b2-908f-f64e9952f55e",
+        "glaze_code": "MBG097",
+        "glaze_name": "Sunrise Shino",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "4b003b73-3ddd-5dbb-9dad-133110f491a9",
+        "glaze_id": "0997b1db-8539-4ebf-b452-ad9dec6f640b",
+        "glaze_code": "MBG002",
+        "glaze_name": "Black",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "85f3d5e5-3e76-59bb-bcd8-3a93d8f9f422",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-blue-moon-over-licorice",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Blue Moon over Licorice",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTblue%20moon%20over%20licorice.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "9c3d6766-a373-5527-a155-7ca31623ec39",
+        "glaze_id": "da8b4e7d-1b48-4d75-aff5-55883dd4da3c",
+        "glaze_code": "MBG150",
+        "glaze_name": "Blue Moon",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "bd6d6700-2095-5dda-9b6a-4c0a37cb052b",
+        "glaze_id": "dfe0d0a8-a9bc-42e8-a0e8-1657a51d8bb6",
+        "glaze_code": "MBG140",
+        "glaze_name": "Licorice",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "0b2c742c-fd53-50ad-b408-65a3c6ca81a4",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-blue-moon-over-coffee-bean",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Blue Moon over Coffee Bean",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTblue%20moon%20over%20coffee.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "10155754-62eb-526d-84bf-680d59809866",
+        "glaze_id": "da8b4e7d-1b48-4d75-aff5-55883dd4da3c",
+        "glaze_code": "MBG150",
+        "glaze_name": "Blue Moon",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "b52a1c92-b608-52be-93e3-1b3e446d6609",
+        "glaze_id": "479635cd-8697-4542-9fd9-4ef749173efa",
+        "glaze_code": "MBG141",
+        "glaze_name": "Coffee Bean",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "dc3649c6-4ca7-5ad4-85a0-f040e74a578f",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-blue-moon-over-brick-red",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Blue Moon over Brick Red",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTblue%20moon%20over%20brick.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "edcdf08b-60d7-56b9-a80a-86538c7ab8ac",
+        "glaze_id": "da8b4e7d-1b48-4d75-aff5-55883dd4da3c",
+        "glaze_code": "MBG150",
+        "glaze_name": "Blue Moon",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "6a51de6c-a8e0-5e4d-a579-9218f8ddcaa0",
+        "glaze_id": "f22975fd-a45e-4621-a7a4-1d3b5228c777",
+        "glaze_code": "MBG142",
+        "glaze_name": "Brick Red",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "1e1cea83-8efb-576f-9021-1bcae48ef50c",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-birch-over-licorice",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Birch over Licorice",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTbirch%20over%20licorice.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "12cda5f4-baae-586c-9813-0afffb7f4aba",
+        "glaze_id": "f2ae446c-350e-4db0-b517-14ad578ccacf",
+        "glaze_code": "MBG151",
+        "glaze_name": "Birch",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "80e3863d-4a68-5a45-b48f-066a0890dc40",
+        "glaze_id": "dfe0d0a8-a9bc-42e8-a0e8-1657a51d8bb6",
+        "glaze_code": "MBG140",
+        "glaze_name": "Licorice",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "a44c9afa-d9c9-5eab-abd7-32743aa62b62",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-birch-over-coffee-bean",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Birch over Coffee Bean",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTbirch%20over%20coffee.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "69b2657d-00f3-5b61-b388-d1365f1dfd92",
+        "glaze_id": "f2ae446c-350e-4db0-b517-14ad578ccacf",
+        "glaze_code": "MBG151",
+        "glaze_name": "Birch",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "c5b6a031-2a17-528e-acc8-9ed7c7d0df94",
+        "glaze_id": "479635cd-8697-4542-9fd9-4ef749173efa",
+        "glaze_code": "MBG141",
+        "glaze_name": "Coffee Bean",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "3617be37-fee2-5f61-b3c8-6824962ac76b",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-birch-over-brick-red",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Birch over Brick Red",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTbirch%20over%20brick.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "e20cbfc1-d77b-548e-8c84-19247619d36c",
+        "glaze_id": "f2ae446c-350e-4db0-b517-14ad578ccacf",
+        "glaze_code": "MBG151",
+        "glaze_name": "Birch",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "35a888c2-6659-5593-a2de-0b278cd6da62",
+        "glaze_id": "f22975fd-a45e-4621-a7a4-1d3b5228c777",
+        "glaze_code": "MBG142",
+        "glaze_name": "Brick Red",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "d0c69332-357f-541b-9d74-e68c28265523",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-texas-rose-over-licorice",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Texas Rose over Licorice",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTrose%20over%20licorice.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "cae265d3-8538-5a2c-bb39-6261abb137ce",
+        "glaze_id": "deea2ae6-c1c8-4b9a-b500-671ed879d7ea",
+        "glaze_code": "MBG152",
+        "glaze_name": "Texas Rose",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "62d2e40d-5c3b-56ed-b162-e730f754c0b2",
+        "glaze_id": "dfe0d0a8-a9bc-42e8-a0e8-1657a51d8bb6",
+        "glaze_code": "MBG140",
+        "glaze_name": "Licorice",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "067b76fc-6c60-55e9-8cb5-988a36bc5c02",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-texas-rose-over-coffee-bean",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Texas Rose over Coffee Bean",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTrose%20over%20coffee.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "5d4f8b9b-ee6a-50d1-9f2f-d200c282d7f3",
+        "glaze_id": "deea2ae6-c1c8-4b9a-b500-671ed879d7ea",
+        "glaze_code": "MBG152",
+        "glaze_name": "Texas Rose",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "0121bfe4-1d2d-5d7b-bb36-45b757f2a54e",
+        "glaze_id": "479635cd-8697-4542-9fd9-4ef749173efa",
+        "glaze_code": "MBG141",
+        "glaze_name": "Coffee Bean",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "8ea7c50c-3af0-5679-99e5-784d663be1ca",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-texas-rose-over-brick-red",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Texas Rose over Brick Red",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTrose%20over%20brick.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "9f6c7c96-4703-5edc-8a30-a42ba9210c9d",
+        "glaze_id": "deea2ae6-c1c8-4b9a-b500-671ed879d7ea",
+        "glaze_code": "MBG152",
+        "glaze_name": "Texas Rose",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "9a03d9fb-e057-597a-a113-0d3ed611d8fd",
+        "glaze_id": "f22975fd-a45e-4621-a7a4-1d3b5228c777",
+        "glaze_code": "MBG142",
+        "glaze_name": "Brick Red",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "c40d4188-70a4-5347-8e12-abe718004616",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-marshmallow-over-licorice",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Marshmallow over Licorice",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTMarshmallow%20over%20Licorice%20RC.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "ea89bc13-273c-5833-9517-3335f271cf2a",
+        "glaze_id": "68b2aa30-bc0d-4e18-8834-ed203cf13a13",
+        "glaze_code": "MBG153",
+        "glaze_name": "Marshmallow",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "5573e82e-26ad-5970-9438-8c66345cb6b7",
+        "glaze_id": "dfe0d0a8-a9bc-42e8-a0e8-1657a51d8bb6",
+        "glaze_code": "MBG140",
+        "glaze_name": "Licorice",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "abb0633a-07f9-5afc-8df6-c1989c1827b5",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-marshmallow-over-coffee-bean",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Marshmallow over Coffee Bean",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTmarshmallow%20over%20coffee.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "e6d170d5-cbf9-5441-89d5-8b6a9b64f22b",
+        "glaze_id": "68b2aa30-bc0d-4e18-8834-ed203cf13a13",
+        "glaze_code": "MBG153",
+        "glaze_name": "Marshmallow",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "226694c6-291b-52ec-8b65-ec915a5cdea5",
+        "glaze_id": "479635cd-8697-4542-9fd9-4ef749173efa",
+        "glaze_code": "MBG141",
+        "glaze_name": "Coffee Bean",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "1a91372a-a9be-5416-85b7-a74e24d33b11",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-marshmallow-over-brick-red",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Marshmallow over Brick Red",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTmarshmallow%20over%20brick.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "dcbb9489-b640-5870-8446-6df21ff0a99a",
+        "glaze_id": "68b2aa30-bc0d-4e18-8834-ed203cf13a13",
+        "glaze_code": "MBG153",
+        "glaze_name": "Marshmallow",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "00aaf719-d9f8-5b84-a667-78ee80d8f516",
+        "glaze_id": "f22975fd-a45e-4621-a7a4-1d3b5228c777",
+        "glaze_code": "MBG142",
+        "glaze_name": "Brick Red",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "909f0cf0-ee1c-5a08-b035-20c612a53df0",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-sea-mist-over-licorice",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Sea Mist over Licorice",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTsea%20mist%20over%20licorice.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "d421b342-97dd-549a-b6ce-1839f27eedf6",
+        "glaze_id": "d4cbf264-1308-4f24-86ca-4e2c049286fe",
+        "glaze_code": "MBG154",
+        "glaze_name": "Sea Mist",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "8eae22b1-654a-57fb-bbe4-ffd3952a6354",
+        "glaze_id": "dfe0d0a8-a9bc-42e8-a0e8-1657a51d8bb6",
+        "glaze_code": "MBG140",
+        "glaze_name": "Licorice",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "2c575dd2-0d0e-538c-88e2-7f86fa65e80e",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-sea-mist-over-coffee-bean",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Sea Mist over Coffee Bean",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTsea%20mist%20over%20coffee.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "7a410c58-9eb9-5a11-b1e6-57809ecd6c3b",
+        "glaze_id": "d4cbf264-1308-4f24-86ca-4e2c049286fe",
+        "glaze_code": "MBG154",
+        "glaze_name": "Sea Mist",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "01d0bd9d-abb8-5f74-a799-2fa258d46d42",
+        "glaze_id": "479635cd-8697-4542-9fd9-4ef749173efa",
+        "glaze_code": "MBG141",
+        "glaze_name": "Coffee Bean",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
+  },
+  {
+    "id": "ab7c4f0b-3f2c-5634-b716-faedfd5e1f3f",
+    "source_vendor": "Coyote",
+    "source_collection": "texas-two-step",
+    "source_key": "texas-two-step-sea-mist-over-brick-red",
+    "source_url": "https://www.coyoteclay.com/TwoStep.html",
+    "title": "Sea Mist over Brick Red",
+    "image_url": "https://www.coyoteclay.com/Images/RC%20Tiles/TTsea%20mist%20over%20brick.jpg",
+    "cone": "Cone 6",
+    "atmosphere": "Electric",
+    "clay_body": null,
+    "application_notes": "Official Coyote Texas Two-Step result. Coyote describes the system as a Step One undercoat covered by a Step Two overcoat, with thicker applications producing larger spots.",
+    "firing_notes": "Official Coyote page says these oilspot combinations fire to cone 6 in an electric kiln.",
+    "layers": [
+      {
+        "id": "e356a6bb-156d-58d7-8664-a0ae758d43d7",
+        "glaze_id": "d4cbf264-1308-4f24-86ca-4e2c049286fe",
+        "glaze_code": "MBG154",
+        "glaze_name": "Sea Mist",
+        "layer_order": 0,
+        "connector_to_next": "over",
+        "source_image_url": null
+      },
+      {
+        "id": "fb2e3a4f-844a-5df2-8515-7188dbfb09f2",
+        "glaze_id": "f22975fd-a45e-4621-a7a4-1d3b5228c777",
+        "glaze_code": "MBG142",
+        "glaze_name": "Brick Red",
+        "layer_order": 1,
+        "connector_to_next": null,
+        "source_image_url": null
+      }
+    ]
   }
 ]

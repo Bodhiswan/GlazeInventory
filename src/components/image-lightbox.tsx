@@ -38,6 +38,14 @@ export function ImageLightbox({
     return () => window.removeEventListener("keydown", handler);
   }, [onClose, prev, next]);
 
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, []);
+
   const image = images[index];
   if (!image) return null;
 
@@ -46,6 +54,9 @@ export function ImageLightbox({
 
   return (
     <div
+      role="dialog"
+      aria-modal="true"
+      aria-label="Firing image viewer"
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/85"
       onClick={onClose}
     >
@@ -57,7 +68,7 @@ export function ImageLightbox({
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center border border-white/20 bg-black/50 text-white transition hover:bg-black/70"
+          className="absolute right-3 top-3 flex h-11 w-11 items-center justify-center border border-white/20 bg-black/50 text-white transition hover:bg-black/70 sm:right-4 sm:top-4"
           aria-label="Close"
         >
           <X className="h-4 w-4" />
@@ -93,7 +104,7 @@ export function ImageLightbox({
             <button
               type="button"
               onClick={prev}
-              className="absolute left-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/50 text-white transition hover:bg-black/70"
+              className="absolute left-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-white/20 bg-black/50 text-white transition hover:bg-black/70 sm:left-4"
               aria-label="Previous image"
             >
               <ChevronLeft className="h-5 w-5" />
@@ -101,7 +112,7 @@ export function ImageLightbox({
             <button
               type="button"
               onClick={next}
-              className="absolute right-4 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center border border-white/20 bg-black/50 text-white transition hover:bg-black/70"
+              className="absolute right-3 top-1/2 flex h-11 w-11 -translate-y-1/2 items-center justify-center border border-white/20 bg-black/50 text-white transition hover:bg-black/70 sm:right-4"
               aria-label="Next image"
             >
               <ChevronRight className="h-5 w-5" />
@@ -113,9 +124,14 @@ export function ImageLightbox({
                   key={i}
                   type="button"
                   onClick={() => setIndex(() => i)}
-                  className={`h-1.5 w-1.5 rounded-full transition-colors ${i === index ? "bg-white" : "bg-white/30"}`}
+                  className="flex h-8 min-w-8 items-center justify-center"
                   aria-label={`Go to image ${i + 1}`}
-                />
+                >
+                  <span
+                    aria-hidden="true"
+                    className={`h-1.5 rounded-full transition-colors ${i === index ? "w-3 bg-white" : "w-1.5 bg-white/30"}`}
+                  />
+                </button>
               ))}
             </div>
           </>
@@ -124,4 +140,3 @@ export function ImageLightbox({
     </div>
   );
 }
-

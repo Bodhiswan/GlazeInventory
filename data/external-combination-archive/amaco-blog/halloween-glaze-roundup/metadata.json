@@ -1,0 +1,154 @@
+{
+  "id": "amaco-blog/halloween-glaze-roundup",
+  "sourceType": "amaco-blog-post",
+  "sourceName": "AMACO Blog",
+  "title": "Hallowe'en Glaze Roundup",
+  "sourceUrl": "https://amaco.com/resources/blog/halloween-glaze-roundup",
+  "cone": "Cone 6",
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "Hallowe'en Glaze Roundup Halloween is creeping up fast, and these glazes are a must for your collection! PC-63 Cosmic Tea Dust Who doesn’t want the sparkle at Halloween? This dark glaze shimmers while being super stable. Layer it over Obsidian for a glittery black. Perfect for cauldrons. PC-63 over C-1 | Cone 6 SM-53 Cayenne This russet satin glaze is perfect for rustic pumpkins. Want a more vivid Orange? Try out SM-68 Orange. C-57 Mulberry A deep purple, Mulberry is perfect for a variety of Halloween-themed uses. Mulberry is slightly translucent, making it perfect for textured pieces. Do some ghostly water etching on white clay and see them appear like magic. C-1 Obsidian Nothing captures Halloween quite like a pitch-black glaze—and Obsidian nails it! Glossy yet stiff, Obsidian stays right where you put it. It’s gorgeous alone, and a great base for layering, too! CR-41 Lime Crawl over C-1 Obsidian Creepy crawly Lime Crawl over any of the glazes listed will create the look of a toxic shell. CR-41 over C-1 | Cone 6 PC-29 Deep Olive Speckle A calm, cool green, Deep Olive Speckle is a glaze for a more refined Halloween. Deep Olive Speckle is translucent enough to use over underglaze decorations, perfect for your favorite zombie transfers. CO-6 Supernova All the Cosmos glazes are gorgeous and enchanting, but Supernova is my favorite for an otherworldly appearance. A translucent cream glaze that develops iridescent crystals in firing, Supernova shines like a moon. Use it as an accent or over a large decorative item. SH-52 Hibiscus Matte Shino All the Matte Shino glazes are wonderful for Halloween, but my favorite is Hibiscus Matte Shino. A warm red like maple leaves in autumn, this glaze shows off texture and gives a warm rustic tone to any piece it’s on. Brown where thin, apply heavier coats to get the lighter red. Beautiful when layered with glazes like PC-63 Cosmic Oil Spot. Enjoy the season and get your spooky glaze on! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "PC-63",
+      "name": "Cosmic Tea Dust",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-01",
+      "name": "Obsidian",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "SM-53",
+      "name": "Cayenne",
+      "line": "Satin Matte"
+    },
+    {
+      "brand": "AMACO",
+      "code": "SM-68",
+      "name": "Orange",
+      "line": "Satin Matte"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-57",
+      "name": "Mulberry",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "CR-41",
+      "name": "Lime",
+      "line": "Crawls"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-29",
+      "name": "Deep Olive Speckle",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "SH-52",
+      "name": "Hibiscus Matte",
+      "line": "Shino"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e694f0e8f53",
+      "sha256": "0dbb27f12ff0b6ed7785a50a3b1eef41c5ee051f62614dc950392a52bedeaeb8",
+      "width": 1200,
+      "height": 1200
+    },
+    {
+      "fileName": "02.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e69e7416f74",
+      "sha256": "0f549c19113d51cd576211086fb97469dc5c8f736122884ad9ba13f46677bc55",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "03.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e694fd6fd27",
+      "sha256": "1475e284d6921ae984d4a00e257770f27c599712880abb5bc2668d41b2d7ac17",
+      "width": 1200,
+      "height": 1200
+    },
+    {
+      "fileName": "04.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e695078bc7d",
+      "sha256": "c80a94a6ffb8cfd580653fc3fd84d859aa192bb7a8e7eb7c64ed12b1f6338a9d",
+      "width": 1200,
+      "height": 638
+    },
+    {
+      "fileName": "05.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e91e0db26ba",
+      "sha256": "774078ca5720f6ef6feb4608692b8f9b0cabaccc93aaf4737c2e07237f025722",
+      "width": 4032,
+      "height": 3024
+    },
+    {
+      "fileName": "06.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e6950f138ef",
+      "sha256": "a240ea16938d2b26061c2b13b76bc10b26c692ced264edf8e46e1b353e23df07",
+      "width": 1200,
+      "height": 738
+    },
+    {
+      "fileName": "07.png",
+      "remoteUrl": "https://amaco.com/asset/68e6959333366",
+      "sha256": "ead6a48cd3768140e4ecbc07f45a8a8afb3a16506f982dcdf726fb1f08038c64",
+      "width": 550,
+      "height": 1004
+    },
+    {
+      "fileName": "08.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e69eb12acc7",
+      "sha256": "a450bfa0e2fd462f7107245a686df1bd4e9325b9bc5c25d1d076bb4f9575db16",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "09.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e695a68d065",
+      "sha256": "0cbc0735451c7dec613a3a44359b9a72a7cfb8116c8c6c0876d2b6c680cf677b",
+      "width": 1000,
+      "height": 1034
+    },
+    {
+      "fileName": "10.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e69ec9b9cda",
+      "sha256": "663ace78149b764fb3ff8ac1ede51cf166bda4389654ea4e57bf26387d3a8484",
+      "width": 900,
+      "height": 1200
+    },
+    {
+      "fileName": "11.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e695b4cbe9a",
+      "sha256": "54fe75d834b2afc0c0c37488f5efee74137c03ac6474f11794ce7280c2828bb2",
+      "width": 1200,
+      "height": 686
+    },
+    {
+      "fileName": "12.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e91e23b3058",
+      "sha256": "e90868f1e0a88ddf2c91f1bd18c1946d712ce115f3bc680caa892873ca34ff09",
+      "width": 4032,
+      "height": 3024
+    },
+    {
+      "fileName": "13.jpg",
+      "remoteUrl": "https://amaco.com/asset/68e695d78c6c4",
+      "sha256": "d2bd368fe8d3d5097e1b3f8f58e7dceb340b2ab4735176b0550f3987556cf4f3",
+      "width": 900,
+      "height": 1200
+    }
+  ]
+}

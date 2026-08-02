@@ -1,0 +1,142 @@
+{
+  "id": "amaco-blog/spring-glaze-combinations",
+  "sourceType": "amaco-blog-post",
+  "sourceName": "AMACO Blog",
+  "title": "AMACO Spring Glaze Combinations",
+  "sourceUrl": "https://amaco.com/resources/blog/spring-glaze-combinations",
+  "cone": "Cone 6",
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "Spring Glaze Combinations! Springtime always makes me feel like getting out in the fresh air and enjoying the plants awakening. To celebrate the changing season, we have a bouquet of lovely glaze combinations. Rose Petal Lovely pinks combine to create this lovely heirloom rose-looking glaze. We applied 2 coats of PC-55 Chun Plum over 2 coats of PCF-54 Flux Blossom on this A-Mix White Stoneware cup and fired it to cone 6. Green Growth Like budding plants, this combo is bright and tender. We applied 2 coats of PC-46 Lustrous Jade over 2 coats of C-42 Saguaro to this A-Mix White Stoneware cup and fired it to cone 6. Lavender Flowers Delicately colored, we love this combination of Honey Flux with Celadon. We applied 2 coats of PC-17 Honey Flux over 3 coats of C-56 Lavender to this A-Mix White Stoneware cup and fired it to cone 5. Lavender can turn blue if fired above cone 6. Lemon Yellow Don’t forget that several Amaco glazes lines are mixable! We created this lemony-yellow by mixing equal parts C-11 Mixing Clear and C-60 Marigold. It’s perfect for pairing with underglazes, like V-361 Jet Black, used here to paint the flowers. The inside of the cup is Marigold alone, to show how the mixture on the outside is much lighter. A-Mix White Stoneware, fired to cone 5. Coral Pink Satin Mattes are also mixable! To create this warm pink, we mixed 4 parts SM-11 White with 1 part SM-51 Red. It was fired to cone 5 on A-Mix White Stoneware. You can see the colorants in Red are very strong, so use less than you might expect. Bluebells A serene blue rounds out our palette of Spring colors. So dreamy and calm! We applied 2 coats of PC-20 Blue Rutile over 2 coats of PCF-21 Ocean Breeze to this A-Mix White Stoneware cup and fired it to cone 6. Try out some of these combos or create your own and share them with us on social media using #howiamaco. Happy glazing! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "PC-55",
+      "name": "Chun Plum",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PCF-54",
+      "name": "Flux Blossom",
+      "line": "Potter's Choice Flux"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-46",
+      "name": "Lustrous Jade",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-42",
+      "name": "Saguaro",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-17",
+      "name": "Honey Flux",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-56",
+      "name": "Lavender",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-11",
+      "name": "Mixing Clear",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-60",
+      "name": "Marigold",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "V-361",
+      "name": "Jet Black Underglaze",
+      "line": "Velvet Underglaze"
+    },
+    {
+      "brand": "AMACO",
+      "code": "SM-11",
+      "name": "White",
+      "line": "Satin Matte"
+    },
+    {
+      "brand": "AMACO",
+      "code": "SM-51",
+      "name": "Red",
+      "line": "Satin Matte"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-20",
+      "name": "Blue Rutile",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PCF-21",
+      "name": "Ocean Drift",
+      "line": "Potter's Choice Flux"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/69d7ccb52e8b5",
+      "sha256": "263ad8c20bd89f9f1a582a00444903b72f7f0353cbf59913d609bd210da1a385",
+      "width": 2250,
+      "height": 2445
+    },
+    {
+      "fileName": "02.jpg",
+      "remoteUrl": "https://amaco.com/asset/69d7cccd62415",
+      "sha256": "2c1649b85433a9da6bbd59c7533085e7c06ba4489374f51339ab6d67f3027709",
+      "width": 2865,
+      "height": 3243
+    },
+    {
+      "fileName": "03.jpg",
+      "remoteUrl": "https://amaco.com/asset/69d7ccf23ec8f",
+      "sha256": "11ecc62607f7aa165fb02a4044e2a183445a6bf212396a701e023842f41abfbd",
+      "width": 2667,
+      "height": 2854
+    },
+    {
+      "fileName": "04.jpg",
+      "remoteUrl": "https://amaco.com/asset/69d7cd12912e4",
+      "sha256": "e56c8fc4c518ebe8561c62eb99cae954a577920efceb8a36336a9c609b0304d7",
+      "width": 2222,
+      "height": 2641
+    },
+    {
+      "fileName": "05.jpg",
+      "remoteUrl": "https://amaco.com/asset/69d7cd44e3d06",
+      "sha256": "19690a89a76d6f33f75e9978f21efac1130519d12b364aa9a16bbb26867c6ec2",
+      "width": 2798,
+      "height": 2908
+    },
+    {
+      "fileName": "06.png",
+      "remoteUrl": "https://amaco.com/asset/69d7cd7cc0b8f",
+      "sha256": "c15b77c5347df82433c1ff3d36d3141cd8f6c209a4164f6fd5dfea757cba9bd1",
+      "width": 1076,
+      "height": 230
+    },
+    {
+      "fileName": "07.jpg",
+      "remoteUrl": "https://amaco.com/asset/69d7cd908cab9",
+      "sha256": "0a8f46c70e6e66b4b319405b3571f924470d140b2d70d9a4b65b6bd553736ba5",
+      "width": 2414,
+      "height": 2512
+    }
+  ]
+}

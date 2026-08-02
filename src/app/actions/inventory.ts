@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
+import { getCatalogGlazeById } from "@/lib/catalog";
 import { getInventory, getInventoryItem } from "@/lib/data/inventory";
 import { serializeInventoryState } from "@/lib/inventory-state";
 import { normalizeOptional, revalidateWorkspace, requireMemberSupabase } from "./_shared";
@@ -44,6 +45,26 @@ const inventoryFolderAssignmentSchema = z.object({
   folderIds: z.array(z.string().uuid()).max(24),
 });
 
+async function isAvailableInventoryGlaze(
+  supabase: Awaited<ReturnType<typeof requireMemberSupabase>>["supabase"],
+  glazeId: string,
+) {
+  if (getCatalogGlazeById(glazeId)) {
+    return true;
+  }
+
+  const { data } = await supabase.from("glazes").select("id").eq("id", glazeId).maybeSingle();
+  return Boolean(data);
+}
+
+function formatInventoryWriteError(message: string | null | undefined) {
+  if (message?.includes("inventory_items_glaze_id_fkey")) {
+    return "The glaze catalog is updating. Refresh the page and try again.";
+  }
+
+  return message ?? "Could not update this glaze.";
+}
+
 export async function setGlazeInventoryStateAction(input: {
   glazeId: string;
   status: "none" | "owned" | "wishlist" | "archived";
@@ -71,7 +92,7 @@ export async function setGlazeInventoryStateAction(input: {
     if (error) {
       return {
         success: false as const,
-        message: error.message,
+        message: formatInventoryWriteError(error.message),
       };
     }
 
@@ -82,6 +103,13 @@ export async function setGlazeInventoryStateAction(input: {
       success: true as const,
       status: "none" as const,
       inventoryId: null,
+    };
+  }
+
+  if (!(await isAvailableInventoryGlaze(supabase, parsed.data.glazeId))) {
+    return {
+      success: false as const,
+      message: "That glaze is no longer available.",
     };
   }
 
@@ -109,7 +137,7 @@ export async function setGlazeInventoryStateAction(input: {
   if (error || !data) {
     return {
       success: false as const,
-      message: error?.message ?? "Could not update this glaze.",
+      message: formatInventoryWriteError(error?.message),
     };
   }
 
@@ -258,6 +286,10 @@ export async function addCatalogGlazeToInventoryAction(formData: FormData) {
 
   const returnTo = parsed.data.returnTo ?? "/glazes";
 
+  if (!(await isAvailableInventoryGlaze(supabase, parsed.data.glazeId))) {
+    redirect(`${returnTo}?error=${encodeURIComponent("That glaze is no longer available.")}`);
+  }
+
   const { error } = await supabase.from("inventory_items").upsert(
     {
       user_id: viewer.profile.id,
@@ -274,7 +306,7 @@ export async function addCatalogGlazeToInventoryAction(formData: FormData) {
   );
 
   if (error) {
-    redirect(`${returnTo}?error=${encodeURIComponent(error.message)}`);
+    redirect(`${returnTo}?error=${encodeURIComponent(formatInventoryWriteError(error.message))}`);
   }
 
   revalidateWorkspace();
@@ -366,7 +398,7 @@ export async function toggleInventoryEmptyAction(input: { inventoryId: string; e
   if (error) {
     return {
       success: false as const,
-      message: error.message,
+      message: formatInventoryWriteError(error.message),
     };
   }
 
@@ -422,7 +454,7 @@ export async function updateInventoryItemNotesAction(input: {
   if (error) {
     return {
       success: false as const,
-      message: error.message,
+      message: formatInventoryWriteError(error.message),
     };
   }
 
@@ -483,6 +515,13 @@ export async function updateGlazeInventoryAmountAction(input: {
     };
   }
 
+  if (!(await isAvailableInventoryGlaze(supabase, parsed.data.glazeId))) {
+    return {
+      success: false as const,
+      message: "That glaze is no longer available.",
+    };
+  }
+
   const inventory = await getInventory(viewer.profile.id);
   const existing = inventory.find((item) => item.glazeId === parsed.data.glazeId);
 
@@ -504,7 +543,7 @@ export async function updateGlazeInventoryAmountAction(input: {
   if (error) {
     return {
       success: false as const,
-      message: error.message,
+      message: formatInventoryWriteError(error.message),
     };
   }
 

@@ -881,6 +881,12 @@ export function pickPreferredGlazeImage(
     return glaze.imageUrl;
   }
 
+  // Spectrum's legacy firing-image records point at an unreliable WordPress
+  // host. Keep the checked-in tile as the primary image whenever one exists.
+  if (glaze.brand === "Spectrum" && glaze.imageUrl?.startsWith("/vendor-images/spectrum/")) {
+    return glaze.imageUrl;
+  }
+
   const exactMatches = firingImages.filter((image) =>
     matchesFiringImagePreference(image, preferredCone, preferredAtmosphere),
   );

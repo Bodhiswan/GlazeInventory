@@ -26,7 +26,7 @@ export default async function ContributeWelcomePage({
       <PageHeader
         eyebrow="Contribute · Welcome"
         title="Welcome to the kiln circle"
-        description="Every photo you share helps another potter avoid a misfire or find their next favourite glaze. Thank you for being here — here's a quick tour before you start."
+        description="Every photo you share helps another potter avoid a misfire or find their next favourite glaze. Thank you for being here — here&apos;s a quick tour before you start."
       />
 
       {/* ── Slide 1: Why we share ── */}
@@ -39,7 +39,7 @@ export default async function ContributeWelcomePage({
         </div>
         <p className="text-sm leading-6 text-foreground/90">
           Glaze testing is slow, expensive, and full of surprises. When you share a result — even a
-          messy one — you're saving someone else a wasted firing. The library only works because
+          messy one — you&apos;re saving someone else a wasted firing. The library only works because
           potters like you take a moment to document what came out of the kiln.
         </p>
       </Panel>
@@ -53,7 +53,7 @@ export default async function ContributeWelcomePage({
           <p className="text-[10px] uppercase tracking-[0.18em] text-muted">What you can share</p>
         </div>
         <p className="text-sm leading-6 text-foreground/90">
-          One unified form covers everything. You only fill in what's relevant — the form expands
+          One unified form covers everything. You only fill in what&apos;s relevant — the form expands
           as you go.
         </p>
         <ul className="grid gap-3 sm:grid-cols-2">
@@ -61,7 +61,7 @@ export default async function ContributeWelcomePage({
             <Camera className="mb-2 h-4 w-4 text-muted" aria-hidden="true" />
             <p className="text-sm font-medium text-foreground">A firing photo</p>
             <p className="mt-1 text-xs leading-5 text-muted">
-              Attach a fired result to a glaze that's already in the library.
+              Attach a fired result to a glaze that&apos;s already in the library.
             </p>
           </li>
           <li className="border border-border bg-background p-4">
@@ -93,7 +93,7 @@ export default async function ContributeWelcomePage({
           </li>
           <li>
             <strong>Name the glazes you actually used.</strong> Search by brand, code, or name. If
-            the whole brand is missing, use the "Request a glaze brand" link and we'll add it.
+            the whole brand is missing, use the &quot;Request a glaze brand&quot; link and we&apos;ll add it.
           </li>
           <li>
             <strong>For combinations, get the layer order right</strong> — top layer first. It
@@ -112,12 +112,12 @@ export default async function ContributeWelcomePage({
         </div>
         <p className="text-sm leading-6 text-foreground/90">
           Every submission gets a quick review to keep the library trustworthy. If a contribution has
-          a few too many mistakes — wrong cone, mismatched glazes, blurry photo — we'll let you
+          a few too many mistakes — wrong cone, mismatched glazes, blurry photo — we&apos;ll let you
           know and apply a strike.
         </p>
         <p className="text-sm leading-6 text-foreground/90">
-          <strong>Three strikes</strong> pauses new contributions until we have a chat. It's not a
-          punishment — it just means something in the workflow needs a tune-up. We'd rather catch it
+          <strong>Three strikes</strong> pauses new contributions until we have a chat. It&apos;s not a
+          punishment — it just means something in the workflow needs a tune-up. We&apos;d rather catch it
           early than have other members work from inaccurate data.
         </p>
       </Panel>
@@ -125,7 +125,7 @@ export default async function ContributeWelcomePage({
       {/* ── Submit ── */}
       <form action={completeContributionTutorialAction} className="flex flex-wrap items-center justify-between gap-3 border-t border-border pt-6">
         <p className="text-sm text-muted">
-          That's everything. Share what you've made — someone out there is about to learn from it.
+          That&apos;s everything. Share what you&apos;ve made — someone out there is about to learn from it.
         </p>
         <Button type="submit">{isRevisit ? "Back to contributing" : "I'm ready — let's go"}</Button>
       </form>

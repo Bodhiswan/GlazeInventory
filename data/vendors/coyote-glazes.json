@@ -503,11 +503,11 @@
     "brand": "Coyote",
     "line": "Fantasy Glazes",
     "code": "MBG211",
-    "name": "Unicorn Horn",
+    "name": "Azure Dream",
     "cone": "Cone 6",
-    "description": "Unicorn Horn is one of the most versatile and surprising glazes we have ever made. Varying from pearlescent white, to mottled ivory, to ancient yellow, this magical glaze is perfect for buff clays with lots of texture. Fantasy Glazes can vary dramatically in appearance depending on the clay body used, the thickness of application, and in some cases, the firing. They can be runny, so it's important to test carefully.",
-    "imageUrl": "https://www.coyoteclay.com/Images/250%20Tiles/Unicorn%20Horn%20MBG215.jpg",
-    "sourceUrl": "https://www.coyoteclay.com/Glazes/UnicornHorn.html"
+    "description": "A deep striking blue that cascades over texture, Azure Dream is the most popular Fantasy glaze with our own students and studio members. Pots covered in this glaze have a way of stopping people in their tracks. Fantasy Glazes can vary dramatically in appearance depending on the clay body used, the thickness of application, and in some cases, the firing. They can be runny, so it's important to test carefully.",
+    "imageUrl": "https://www.coyoteclay.com/Images/250%20Tiles/Azure%20Dream%20MBG211.jpg",
+    "sourceUrl": "https://www.coyoteclay.com/Glazes/AzureDream.html"
   },
   {
     "brand": "Coyote",
@@ -583,11 +583,11 @@
     "brand": "Coyote",
     "line": "Fantasy Glazes",
     "code": "MBG220",
-    "name": "Phoenix Egg",
+    "name": "Hydra Scale",
     "cone": "Cone 6",
-    "description": "A translucent brown with mesmerizing rivulets, Phoenix Egg can display a dazzling array of colors. Under the right circumstances, amber, coffee, purple and blue tones can show across a surface, and gold crystals can even form in the areas where the glaze cools slowest. Fantasy Glazes can vary dramatically in appearance depending on the clay body used, the thickness of application, and in some cases, the firing. They can be runny, so it's important to test carefully.",
-    "imageUrl": "https://www.coyoteclay.com/Images/2021/Tiles/PhoenixEgg.jpg",
-    "sourceUrl": "https://www.coyoteclay.com/Glazes/PhoenixEgg.html"
+    "description": "Fantasy Glazes can vary dramatically in appearance depending on the clay body used, the thickness of application, and in some cases, the firing. They can be runny, so it's important to test carefully.",
+    "imageUrl": "https://www.coyoteclay.com/Images/2021/Tiles/HydraScale.jpg",
+    "sourceUrl": "https://www.coyoteclay.com/Glazes/HydraScale.html"
   },
   {
     "brand": "Coyote",
@@ -1628,5 +1628,25 @@
     "description": "Maybe our most requested glaze, Turquoise Lake has the same color as our popular Turquoise Matt but in a smooth, glossy, and food safe finish! Vibro-Colors are as stable and reliable as Enduro-Color Liner Glazes, but loaded up with colorant for a vibrant pop. They do not run, resist scratching and crazing, and look pretty much the same in all firing cycles.",
     "imageUrl": "https://www.coyoteclay.com/Images/250%20Tiles/Turquoise%20Lake.jpg",
     "sourceUrl": "https://www.coyoteclay.com/Glazes/TurquoiseLake.html"
-  }
+  },
+{
+  "brand": "Coyote",
+  "line": "Fantasy Glazes",
+  "code": "MBG215",
+  "name": "Unicorn Horn",
+  "cone": "Cone 6",
+  "description": "Unicorn Horn is one of the most versatile and surprising glazes we have ever made. Varying from pearlescent white, to mottled ivory, to ancient yellow, this magical glaze is perfect for buff clays with lots of texture. Fantasy Glazes can vary dramatically in appearance depending on the clay body used, the thickness of application, and in some cases, the firing. They can be runny, so it's important to test carefully.",
+  "imageUrl": "https://www.coyoteclay.com/Images/250%20Tiles/Unicorn%20Horn%20MBG215.jpg",
+  "sourceUrl": "https://www.coyoteclay.com/Glazes/UnicornHorn.html"
+},
+{
+  "brand": "Coyote",
+  "line": "Fantasy Glazes",
+  "code": "MBG221",
+  "name": "Phoenix Egg",
+  "cone": "Cone 6",
+  "description": "A translucent brown with mesmerizing rivulets, Phoenix Egg can display a dazzling array of colors. Under the right circumstances, amber, coffee, purple and blue tones can show across a surface, and gold crystals can even form in the areas where the glaze cools slowest. Fantasy Glazes can vary dramatically in appearance depending on the clay body used, the thickness of application, and in some cases, the firing. They can be runny, so it's important to test carefully.",
+  "imageUrl": "https://www.coyoteclay.com/Images/2021/Tiles/PhoenixEgg.jpg",
+  "sourceUrl": "https://www.coyoteclay.com/Glazes/PhoenixEgg.html"
+}
 ]

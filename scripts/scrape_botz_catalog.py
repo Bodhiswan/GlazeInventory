@@ -149,7 +149,7 @@ def summarise_description(line: str, body_html: str) -> str | None:
         paragraph
         for paragraph in paragraphs
         if paragraph
-        and not paragraph.upper() in {"NOTES/APPLICATION", "PROPERTIES", "PRODUCT IMAGES", "FEATURES", "HIGHLIGHTS"}
+        and paragraph.upper() not in {"NOTES/APPLICATION", "PROPERTIES", "PRODUCT IMAGES", "FEATURES", "HIGHLIGHTS"}
         and not paragraph.lower().startswith("view the entire")
         and not paragraph.lower().startswith("display the effects at different firing temperatures")
         and not re.fullmatch(r"botz(?:\s+\w+)*\s+(glazes|engobes|ceramic colours)", paragraph, re.I)

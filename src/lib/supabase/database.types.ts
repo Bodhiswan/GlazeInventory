@@ -866,13 +866,6 @@ export type Database = {
         }
         Relationships: [
           {
-            foreignKeyName: "inventory_items_glaze_id_fkey"
-            columns: ["glaze_id"]
-            isOneToOne: false
-            referencedRelation: "glazes"
-            referencedColumns: ["id"]
-          },
-          {
             foreignKeyName: "inventory_items_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false

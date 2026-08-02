@@ -37,8 +37,20 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
 
   // Close menu whenever the route changes
   useEffect(() => {
-    setOpen(false);
+    const frame = window.requestAnimationFrame(() => setOpen(false));
+    return () => window.cancelAnimationFrame(frame);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setOpen(false);
+    }
+
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
   const isItemActive = (item: (typeof items)[number]) =>
     pathname === item.href ||
@@ -52,7 +64,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
   return (
     <>
       {/* Desktop: inline links */}
-      <nav className="hidden items-center sm:flex" aria-label="Main navigation">
+      <nav className="hidden items-center lg:flex" aria-label="Main navigation">
         {items.map((item) => {
           const Icon = item.icon;
           const isActive = isItemActive(item);
@@ -81,7 +93,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
       </nav>
 
       {/* Mobile: hamburger dropdown */}
-      <div className="relative sm:hidden">
+      <div className="relative lg:hidden">
         {open && (
           <div
             className="fixed inset-0 z-40"
@@ -93,7 +105,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
         <button
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
-          aria-haspopup="true"
+          aria-haspopup="menu"
           aria-label={open ? "Close navigation menu" : "Open navigation menu"}
           className={cn(
             "relative z-50 flex items-center gap-2 border px-3 py-2 text-[11px] uppercase tracking-[0.12em] transition-[background-color,color,border-color] duration-200 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-foreground/10",
@@ -111,7 +123,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
         </button>
 
         {open && (
-          <div className="absolute left-1/2 top-full z-50 mt-1 min-w-[220px] -translate-x-1/2 border border-border bg-background shadow-md">
+          <div role="menu" className="absolute left-1/2 top-full z-50 mt-1 min-w-[220px] -translate-x-1/2 border border-border bg-background shadow-md">
             {items.map((item) => {
               const Icon = item.icon;
               const isActive = isItemActive(item);
@@ -119,6 +131,7 @@ export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {
                 <Link
                   key={item.href}
                   href={item.href}
+                  role="menuitem"
                   aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "flex items-center gap-3 border-b border-border px-4 py-3 text-[11px] uppercase tracking-[0.12em] transition-colors duration-200 last:border-b-0",

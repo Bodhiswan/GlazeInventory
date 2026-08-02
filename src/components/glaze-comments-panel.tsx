@@ -28,13 +28,19 @@ export function GlazeCommentsPanel({ glazeId }: { glazeId: string }) {
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
-    setComments([]);
+    const resetFrame = window.requestAnimationFrame(() => {
+      setLoading(true);
+      setComments([]);
+    });
 
     const supabase = createSupabaseBrowserClient();
     if (!supabase) {
-      setLoading(false);
-      return;
+      const stopFrame = window.requestAnimationFrame(() => setLoading(false));
+      return () => {
+        cancelled = true;
+        window.cancelAnimationFrame(resetFrame);
+        window.cancelAnimationFrame(stopFrame);
+      };
     }
 
     supabase
@@ -58,7 +64,10 @@ export function GlazeCommentsPanel({ glazeId }: { glazeId: string }) {
         setLoading(false);
       });
 
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(resetFrame);
+    };
   }, [glazeId]);
 
   function handleSubmit(e: React.FormEvent) {
@@ -99,13 +108,19 @@ export function CombinationCommentsPanel({ exampleId }: { exampleId: string }) {
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
-    setComments([]);
+    const resetFrame = window.requestAnimationFrame(() => {
+      setLoading(true);
+      setComments([]);
+    });
 
     const supabase = createSupabaseBrowserClient();
     if (!supabase) {
-      setLoading(false);
-      return;
+      const stopFrame = window.requestAnimationFrame(() => setLoading(false));
+      return () => {
+        cancelled = true;
+        window.cancelAnimationFrame(resetFrame);
+        window.cancelAnimationFrame(stopFrame);
+      };
     }
 
     supabase
@@ -129,7 +144,10 @@ export function CombinationCommentsPanel({ exampleId }: { exampleId: string }) {
         setLoading(false);
       });
 
-    return () => { cancelled = true; };
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(resetFrame);
+    };
   }, [exampleId]);
 
   function handleSubmit(e: React.FormEvent) {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 import { Panel } from "@/components/ui/panel";
 
@@ -26,18 +27,15 @@ export default function CombinationsError({
           Combinations hit a snag.
         </h1>
         <p className="mt-4 text-sm leading-6 text-muted">
-          {error.message || "An unexpected error occurred."}
+          We couldn&apos;t load the combinations right now. Try again, or return to the combinations page.
         </p>
-        {error.digest ? (
-          <p className="mt-2 text-xs text-muted">Digest: {error.digest}</p>
-        ) : null}
         <div className="mt-6 flex items-center justify-center gap-3">
           <button onClick={reset} className={buttonVariants({})}>
             Try again
           </button>
-          <a href="/dashboard" className={buttonVariants({ variant: "ghost" })}>
-            Back to dashboard
-          </a>
+          <Link href="/combinations" className={buttonVariants({ variant: "ghost" })}>
+            Back to combinations
+          </Link>
         </div>
       </Panel>
     </main>

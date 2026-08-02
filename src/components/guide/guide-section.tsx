@@ -16,7 +16,7 @@ export function GuideSection({
       : "display-font mt-1 text-[clamp(1.15rem,3vw,1.5rem)] leading-[1.1] tracking-[-0.01em]";
 
   return (
-    <section id={id} className="scroll-mt-24">
+    <section id={id} className="scroll-mt-28 lg:scroll-mt-24">
       <Tag className={styles}>{title}</Tag>
       <div className="mt-4 space-y-4 text-sm leading-7 text-muted">
         {children}

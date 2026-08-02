@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Panel } from "@/components/ui/panel";
-import { buttonVariants } from "@/components/ui/button";
 
 const KEY = "glaze-library-points-help-dismissed-v1";
 
@@ -23,12 +22,15 @@ export function DashboardPointsHelp() {
   const [hydrated, setHydrated] = useState(false);
 
   useEffect(() => {
-    setHydrated(true);
-    try {
-      if (localStorage.getItem(KEY)) setDismissed(true);
-    } catch {
-      // ignore
-    }
+    const frame = window.requestAnimationFrame(() => {
+      setHydrated(true);
+      try {
+        if (localStorage.getItem(KEY)) setDismissed(true);
+      } catch {
+        // ignore
+      }
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   if (hydrated && dismissed) return null;

@@ -3,7 +3,7 @@
     {
       "id": "amaco-blog",
       "label": "AMACO Blog combo posts",
-      "entryCount": 6
+      "entryCount": 22
     },
     {
       "id": "coyote-shino-over-black",
@@ -11,16 +11,16 @@
       "entryCount": 18
     }
   ],
-  "entryCount": 24,
+  "entryCount": 40,
   "entries": [
     {
-      "id": "amaco-blog/try-something-new-magic-forest-glaze-combination",
+      "id": "amaco-blog/2025-glaze-roundup",
       "sourceType": "amaco-blog-post",
-      "title": "Try Something New: Magic Forest Glaze Combination",
-      "sourceUrl": "https://amaco.com/resources/blog/try-something-new-magic-forest-glaze-combination",
-      "metadataPath": "data/external-combination-archive/amaco-blog/try-something-new-magic-forest-glaze-combination/metadata.json",
-      "imageCount": 1,
-      "matchedGlazeCount": 3
+      "title": "2025 AMACO Glaze Roundup!",
+      "sourceUrl": "https://amaco.com/resources/blog/2025-glaze-roundup",
+      "metadataPath": "data/external-combination-archive/amaco-blog/2025-glaze-roundup/metadata.json",
+      "imageCount": 7,
+      "matchedGlazeCount": 0
     },
     {
       "id": "amaco-blog/amaco-fall-layering-favorites",
@@ -32,6 +32,24 @@
       "matchedGlazeCount": 10
     },
     {
+      "id": "amaco-blog/dip-into-color",
+      "sourceType": "amaco-blog-post",
+      "title": "DIP Into Color!",
+      "sourceUrl": "https://amaco.com/resources/blog/dip-into-color",
+      "metadataPath": "data/external-combination-archive/amaco-blog/dip-into-color/metadata.json",
+      "imageCount": 9,
+      "matchedGlazeCount": 11
+    },
+    {
+      "id": "amaco-blog/dipping-and-layering-glazes-tips-and-tricks-for-success",
+      "sourceType": "amaco-blog-post",
+      "title": "Dipping & Layering Glazes: Tips & Tricks for Success!",
+      "sourceUrl": "https://amaco.com/resources/blog/dipping-and-layering-glazes-tips-and-tricks-for-success",
+      "metadataPath": "data/external-combination-archive/amaco-blog/dipping-and-layering-glazes-tips-and-tricks-for-success/metadata.json",
+      "imageCount": 5,
+      "matchedGlazeCount": 0
+    },
+    {
       "id": "amaco-blog/dipping-layering-glazes-tips-tricks-for-success",
       "sourceType": "amaco-blog-post",
       "title": "Dipping & Layering Glazes: Tips & Tricks for Success!",
@@ -39,6 +57,69 @@
       "metadataPath": "data/external-combination-archive/amaco-blog/dipping-layering-glazes-tips-tricks-for-success/metadata.json",
       "imageCount": 5,
       "matchedGlazeCount": 0
+    },
+    {
+      "id": "amaco-blog/embrace-spontaneity-with-crawls-glazes",
+      "sourceType": "amaco-blog-post",
+      "title": "Embrace Spontaneity with Crawl Glazes",
+      "sourceUrl": "https://amaco.com/resources/blog/embrace-spontaneity-with-crawls-glazes",
+      "metadataPath": "data/external-combination-archive/amaco-blog/embrace-spontaneity-with-crawls-glazes/metadata.json",
+      "imageCount": 9,
+      "matchedGlazeCount": 17
+    },
+    {
+      "id": "amaco-blog/exploring-phase-glazes",
+      "sourceType": "amaco-blog-post",
+      "title": "Exploring PHASE glazes",
+      "sourceUrl": "https://amaco.com/resources/blog/exploring-phase-glazes",
+      "metadataPath": "data/external-combination-archive/amaco-blog/exploring-phase-glazes/metadata.json",
+      "imageCount": 12,
+      "matchedGlazeCount": 12
+    },
+    {
+      "id": "amaco-blog/favorite-winter-layering-combinations",
+      "sourceType": "amaco-blog-post",
+      "title": "Favorite Winter Layering Combinations with AMACO Glazes",
+      "sourceUrl": "https://amaco.com/resources/blog/favorite-winter-layering-combinations",
+      "metadataPath": "data/external-combination-archive/amaco-blog/favorite-winter-layering-combinations/metadata.json",
+      "imageCount": 6,
+      "matchedGlazeCount": 12
+    },
+    {
+      "id": "amaco-blog/getting-to-know-the-teachers-palette-glaze-family",
+      "sourceType": "amaco-blog-post",
+      "title": "Getting To Know The Teacher's Palette Glaze Family",
+      "sourceUrl": "https://amaco.com/resources/blog/getting-to-know-the-teachers-palette-glaze-family",
+      "metadataPath": "data/external-combination-archive/amaco-blog/getting-to-know-the-teachers-palette-glaze-family/metadata.json",
+      "imageCount": 6,
+      "matchedGlazeCount": 1
+    },
+    {
+      "id": "amaco-blog/great-glaze-combos-to-try-out-in-2026",
+      "sourceType": "amaco-blog-post",
+      "title": "Great AMACO glaze combos to try out in 2026",
+      "sourceUrl": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
+      "metadataPath": "data/external-combination-archive/amaco-blog/great-glaze-combos-to-try-out-in-2026/metadata.json",
+      "imageCount": 10,
+      "matchedGlazeCount": 17
+    },
+    {
+      "id": "amaco-blog/halloween-glaze-roundup",
+      "sourceType": "amaco-blog-post",
+      "title": "Hallowe'en Glaze Roundup",
+      "sourceUrl": "https://amaco.com/resources/blog/halloween-glaze-roundup",
+      "metadataPath": "data/external-combination-archive/amaco-blog/halloween-glaze-roundup/metadata.json",
+      "imageCount": 13,
+      "matchedGlazeCount": 8
+    },
+    {
+      "id": "amaco-blog/hidden-gems-dipping-and-layering-glazes",
+      "sourceType": "amaco-blog-post",
+      "title": "Hidden Gems: Dipping & Layering Glazes",
+      "sourceUrl": "https://amaco.com/resources/blog/hidden-gems-dipping-and-layering-glazes",
+      "metadataPath": "data/external-combination-archive/amaco-blog/hidden-gems-dipping-and-layering-glazes/metadata.json",
+      "imageCount": 6,
+      "matchedGlazeCount": 27
     },
     {
       "id": "amaco-blog/hidden-gems-dipping-layering-glazes",
@@ -50,22 +131,85 @@
       "matchedGlazeCount": 25
     },
     {
-      "id": "amaco-blog/favorite-winter-layering-combinations",
+      "id": "amaco-blog/kick-off-2026-with-amaco-glazes",
       "sourceType": "amaco-blog-post",
-      "title": "Favorite Winter Layering Combinations",
-      "sourceUrl": "https://amaco.com/resources/blog/favorite-winter-layering-combinations",
-      "metadataPath": "data/external-combination-archive/amaco-blog/favorite-winter-layering-combinations/metadata.json",
+      "title": "Kick Off 2026 with Amaco glazes!",
+      "sourceUrl": "https://amaco.com/resources/blog/kick-off-2026-with-amaco-glazes",
+      "metadataPath": "data/external-combination-archive/amaco-blog/kick-off-2026-with-amaco-glazes/metadata.json",
       "imageCount": 9,
-      "matchedGlazeCount": 11
+      "matchedGlazeCount": 9
     },
     {
-      "id": "amaco-blog/great-glaze-combos-to-try-out-in-2026",
+      "id": "amaco-blog/new-cosmos-glazes-for-2026",
       "sourceType": "amaco-blog-post",
-      "title": "Great glaze combos to try out in 2026",
-      "sourceUrl": "https://amaco.com/resources/blog/great-glaze-combos-to-try-out-in-2026",
-      "metadataPath": "data/external-combination-archive/amaco-blog/great-glaze-combos-to-try-out-in-2026/metadata.json",
-      "imageCount": 13,
-      "matchedGlazeCount": 14
+      "title": "New Cosmos Glazes",
+      "sourceUrl": "https://amaco.com/resources/blog/new-cosmos-glazes-for-2026",
+      "metadataPath": "data/external-combination-archive/amaco-blog/new-cosmos-glazes-for-2026/metadata.json",
+      "imageCount": 21,
+      "matchedGlazeCount": 0
+    },
+    {
+      "id": "amaco-blog/new-potters-choice-glazes-for-2025",
+      "sourceType": "amaco-blog-post",
+      "title": "NEW Potter's Choice Glazes For 2025",
+      "sourceUrl": "https://amaco.com/resources/blog/new-potters-choice-glazes-for-2025",
+      "metadataPath": "data/external-combination-archive/amaco-blog/new-potters-choice-glazes-for-2025/metadata.json",
+      "imageCount": 9,
+      "matchedGlazeCount": 8
+    },
+    {
+      "id": "amaco-blog/peacock-feather-effect-with-layering-pc-glazes",
+      "sourceType": "amaco-tutorial",
+      "title": "Peacock Feather Effect with layering PC glazes",
+      "sourceUrl": "https://amaco.com/resources/tutorials/peacock-feather-effect-with-layering-pc-glazes",
+      "metadataPath": "data/external-combination-archive/amaco-blog/peacock-feather-effect-with-layering-pc-glazes/metadata.json",
+      "imageCount": 9,
+      "matchedGlazeCount": 4
+    },
+    {
+      "id": "amaco-blog/phase-glazes-hidden-gems",
+      "sourceType": "amaco-blog-post",
+      "title": "Phase Glazes: Hidden Gems!",
+      "sourceUrl": "https://amaco.com/resources/blog/phase-glazes-hidden-gems",
+      "metadataPath": "data/external-combination-archive/amaco-blog/phase-glazes-hidden-gems/metadata.json",
+      "imageCount": 9,
+      "matchedGlazeCount": 7
+    },
+    {
+      "id": "amaco-blog/spring-glaze-combinations",
+      "sourceType": "amaco-blog-post",
+      "title": "AMACO Spring Glaze Combinations",
+      "sourceUrl": "https://amaco.com/resources/blog/spring-glaze-combinations",
+      "metadataPath": "data/external-combination-archive/amaco-blog/spring-glaze-combinations/metadata.json",
+      "imageCount": 7,
+      "matchedGlazeCount": 13
+    },
+    {
+      "id": "amaco-blog/try-something-new-magic-forest-glaze-combination",
+      "sourceType": "amaco-blog-post",
+      "title": "Try Something New: Magic Forest Glaze Combination",
+      "sourceUrl": "https://amaco.com/resources/blog/try-something-new-magic-forest-glaze-combination",
+      "metadataPath": "data/external-combination-archive/amaco-blog/try-something-new-magic-forest-glaze-combination/metadata.json",
+      "imageCount": 1,
+      "matchedGlazeCount": 3
+    },
+    {
+      "id": "amaco-blog/valentines-day-glazes",
+      "sourceType": "amaco-blog-post",
+      "title": "AMACO Valentine's Day Glazes",
+      "sourceUrl": "https://amaco.com/resources/blog/valentines-day-glazes",
+      "metadataPath": "data/external-combination-archive/amaco-blog/valentines-day-glazes/metadata.json",
+      "imageCount": 9,
+      "matchedGlazeCount": 13
+    },
+    {
+      "id": "amaco-blog/winter-glazes-of-2025",
+      "sourceType": "amaco-blog-post",
+      "title": "AMACO Winter Glazes of 2025",
+      "sourceUrl": "https://amaco.com/resources/blog/winter-glazes-of-2025",
+      "metadataPath": "data/external-combination-archive/amaco-blog/winter-glazes-of-2025/metadata.json",
+      "imageCount": 7,
+      "matchedGlazeCount": 7
     },
     {
       "id": "coyote-shino-over-black/blue-shino-over-black",

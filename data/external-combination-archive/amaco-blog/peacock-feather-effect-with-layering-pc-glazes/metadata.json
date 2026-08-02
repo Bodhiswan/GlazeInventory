@@ -1,0 +1,102 @@
+{
+  "id": "amaco-blog/peacock-feather-effect-with-layering-pc-glazes",
+  "sourceType": "amaco-tutorial",
+  "sourceName": "AMACO Tutorial",
+  "title": "Peacock Feather Effect with layering PC glazes",
+  "sourceUrl": "https://amaco.com/resources/tutorials/peacock-feather-effect-with-layering-pc-glazes",
+  "cone": "Cone 6",
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "document.documentElement.className = document.documentElement.className.replace('no-js', 'js'); Peacock Feather Effect with layering PC glazes | AMACO Brent { \"@context\": \"https://schema.org\", \"@type\": \"Organization\", \"url\": \"https://amaco.com\", \"logo\": \"https://amaco.com/themes/amaco\" } window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-C3JSM6P79T', { 'anonymize_ip': false }); Skip to main content Edit Page Style Guide Control Panel VS-361 Black Sprayz is temporarily unavailable. We’re working to restock as soon as possible. Facebook Instagram Twitter YouTube Pinterest Find a Distributor Glazes & Underglazes Glazes & Underglazes Underglazes Velvet Underglaze Velvet Sprayz Liquid Underglaze Semi-Moist Underglazes Underglazes Chalk Crayons and Pencils Ceramic Inks Low Fire Glazes Low Fire Gloss Low Fire Matte Opalescent Teacher's Palette Teacher's Palette Light Dipping Glazes Mid-High Fire Glazes Crawls Kiln Ice Potter's Choice Potter's Choice Flux Celadon Cosmos High Fire Satin Matte Shino Dipping & Layering Phase Glazes Specialty Glazes Texturizer Glaze Additives & Aids Shop All Equipment Equipment Brent Brent Wheels Wheel Accessories Slab Rollers Slab Roller Accessories Extruders Carts & Ceramic Furniture Bats Kilns Excel Kilns Kiln Supplies Parts Brent Studio Equipment Kiln Parts Shop All Tools Tools Banding Wheels Clay Tools Texture Rollers Glaze Tools Clays Clays Ceramic Clay Air Dry Clay Self Hardening Clay Modeling Clay Mixed Media Mixed Media Metallic Finish Modeling & Mold Making Nail Hole Filler Resources Resources Clay, Glazes, & Underglazes Guide Find A Distributor Lesson Plans Resource Documents Tutorials Layering Glossary of Terms ACMI & AMACO Hurricane Relief Support Blog Search Account Cart Toggle menu panel Search products by name or application: Search Search Close Search Amaco Alerts Breadcrumbs Home Resources Tutorials Peacock Feather Effect With Layering Pc Glazes Peacock Feather Effect with layering PC glazes Certain glazes in combination will flux strongly and flow. Layering these active fluxing glazes with dots or stripes can make the flow a decorative element. Supplies AMACO Slip Trailer PC-42 Seaweed PC-32 Albany Slip Brown PC-37 Smoked Sienna PC-61 Textured Amber A-Mix White Stoneware No.11 Buff Stoneware Clay 46 Share Lesson Plan Email Lesson Plan Facebook Print Lesson Plan Twitter Copy Link Pinterest Steps 1. Video 2. Active fluxing glazes 3. Use a slip trailer to apply second glaze 4. PC 42 Seaweed over PC 32 Albany Slip Brown 5. PC 37 Smoked Sienna over PC 61 Textured Amber Video Active fluxing glazes We've found that certain combinations of Potters Choice glazes, when layered, give an effect much like peacock feathers. These active fluxing glazes can result in beautiful effects, especially when the layering is done in a dot or stripe pattern. Brush on 3 coats of glaze and let dry to the touch. Use a slip trailer to apply second glaze Fill your slip trailer with the second glaze. Apply as dots, stripes, or another pattern. PC 42 Seaweed over PC 32 Albany Slip Brown PC 42 Seaweed applied as dots over PC 32 Albany Slip Brown. A-Mix Clay 11, fired to Cone 5. PC 37 Smoked Sienna over PC 61 Textured Amber PC 37 Smoked Sienna applied as diagonal stripes over PC 61 Textured Amber. Buff Stoneware clay 46, fired to cone 6. Similar Lesson Plans ClayHowTo Super Simple Silkscreens: Printing with Underglazes Help is on the way. In this workshop we will use common craft store materials to make frameless silk-screens to print onto clay. Learn More ClayHowTo Press & Print on Moist Clay In this video we demo how to make stamps to print and press on moist clay slabs creating texture and color at the same time. Once your slabs are textured, we demonstrate how to build simple cylinders which can be modified to create a wide variety of forms. Learn More ClayHowTo Newbie Clay NEWBIE CLAY is a brief guide with information to help you start on your clay journey, including video links for making, firing, and glazing your ceramic projects, definitions of common terms in clay, and guidance for choosing your materials. Learn More But wait, there’s more... Be the first to know when it comes to exclusive offers, tips, gift ideas, and new products. Shop Menu Find a Distributor Glazes & Underglazes Equipment Tools Clays Mixed Media Explore Menu AMACO Create Lesson Plans AMACO Blog Tutorials Layering Glossary Terms Support Menu Web Shipping & Privacy Policy Safety Information Returns Warranty Company Menu Contact Us Our Story Hours & Location ACMI & AMACO Careers Events Facebook Instagram Twitter YouTube Pinterest ©2026 American Art Clay Co, Inc. Sitemap Privacy Policy Terms and Conditions eCommerce web design by efelle Search Submit Search Find a Distributor Glazes & Underglazes Glazes & Underglazes Menu Underglazes Velvet Underglaze Velvet Sprayz Liquid Underglaze Semi-Moist Underglazes Underglazes Chalk Crayons and Pencils Ceramic Inks Low Fire Glazes Low Fire Gloss Low Fire Matte Opalescent Teacher's Palette Teacher's Palette Light Dipping Glazes Mid-High Fire Glazes Crawls Kiln Ice Potter's Choice Potter's Choice Flux Celadon Cosmos High Fire Satin Matte Shino Dipping & Layering Phase Glazes Specialty Glazes Texturizer Glaze Additives & Aids Shop All Equipment Equipment Menu Brent Brent Wheels Wheel Accessories Slab Rollers Slab Roller Accessories Extruders Carts & Ceramic Furniture Bats Kilns Excel Kilns Kiln Supplies Parts Brent Studio Equipment Kiln Parts Shop All Tools Tools Menu Banding Wheels Clay Tools Texture Rollers Glaze Tools Clays Clays Menu Ceramic Clay Air Dry Clay Self Hardening Clay Modeling Clay Mixed Media Mixed Media Menu Metallic Finish Modeling & Mold Making Nail Hole Filler Resources Resources Menu Clay, Glazes, & Underglazes Guide Find A Distributor Lesson Plans Resource Documents Tutorials Layering Glossary of Terms ACMI & AMACO Hurricane Relief Support Blog My Account function support_format_webp() { var elem = document.createElement('canvas'); if (!!(elem.getContext && elem.getContext('2d'))) { // was able or not to get WebP representation return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0; } else { // very old browser like IE 8, canvas not supported return false; } } if (!support_format_webp()) { let images = document.querySelectorAll('img'); let length = images.length for(i = 0; i < length; i++) { var image = images[i]; let src = image.getAttribute('src'); let dataSrc = image.getAttribute('data-src'); if (src) { src = src.replace('webp','png'); image.setAttribute('src', src); } if (dataSrc) { dataSrc = dataSrc.replace('webp','png'); image.setAttribute('data-src', dataSrc); } } } window._locale = 'en'; window._settings = { \"website_url\": \"https://amaco.com\", \"website_title\": \"AMACO Brent\", \"website_logo\": \"https://amaco.com/themes/amaco/assets/images/amaco-brent.svg\", \"public_path\": \"https://amaco.com/themes/amaco/assets\", \"vue_enabled\": true, \"api_url\": \"https://amaco.com/\", \"csrf_token\": \"m7EwgeZ0RWngWh1vUJiH3sqBnrYWv1ZdB0OM6X4t\", \"is_production\": true, \"messages\": {\"new_tab\": \"(Opens in a new window)\", \"new_site\": \"(Opens an external site)\", \"new_site_tab\": \"(Opens an external site in a new window)\"} };",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "PC-42",
+      "name": "Seaweed",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-32",
+      "name": "Albany Slip Brown",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-37",
+      "name": null,
+      "line": null
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-61",
+      "name": "Textured Amber",
+      "line": "Potter's Choice"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/64e9026e0c3e4/large_PeacockFeathers_PC-42_over_PC-32.jpg?w=690&h=932&fit=crop",
+      "sha256": "5f24d3da083fd196ac3a3b133381c623e6449dc0222ca0bbead01496dad6f433",
+      "width": 690,
+      "height": 932
+    },
+    {
+      "fileName": "02.jpg",
+      "remoteUrl": "https://amaco.com/asset/64e9026e0c3e4/large_PeacockFeathers_PC-42_over_PC-32.jpg?w=470&h=635&fit=crop",
+      "sha256": "3123836e25172923f9667d78580500b40ef4a941bdcb62850c7ddec68bb035fb",
+      "width": 470,
+      "height": 635
+    },
+    {
+      "fileName": "03.png",
+      "remoteUrl": "https://amaco.com/asset/64e9037ed8e83",
+      "sha256": "8a588a4084d5b76ad729248125260aa2979d57956324174bf2200929fb70fd2b",
+      "width": 1024,
+      "height": 584
+    },
+    {
+      "fileName": "04.png",
+      "remoteUrl": "https://amaco.com/asset/64e903b0779ee",
+      "sha256": "2c4e15498ea18323cb856e5b1a5e29b97f80376de05536b1550f55ed5ac4832e",
+      "width": 1024,
+      "height": 636
+    },
+    {
+      "fileName": "05.png",
+      "remoteUrl": "https://amaco.com/asset/64e903f2b7d65",
+      "sha256": "f24eb2a35303a63ea9120a71af35eb9ae5187877fa7d47459a8e84b8e1fae8c9",
+      "width": 1024,
+      "height": 731
+    },
+    {
+      "fileName": "06.png",
+      "remoteUrl": "https://amaco.com/asset/64e90424c45d3",
+      "sha256": "2a828053cf04ac4bc736bd4a22cafaf6802a3e4adb98d5a5a60d73038d5a2583",
+      "width": 1024,
+      "height": 683
+    },
+    {
+      "fileName": "07.jpg",
+      "remoteUrl": "https://amaco.com/asset/64e78d7092c33/large_IMG_2474.jpeg?w=545&h=339&fit=crop",
+      "sha256": "90742fc9ca45ee3d97d344a0e1d9f004d7e942b0a5dbab1aa669aaf331aefb0c",
+      "width": 545,
+      "height": 339
+    },
+    {
+      "fileName": "08.jpg",
+      "remoteUrl": "https://amaco.com/asset/64e78f7c43e07/large_Variation.jpg?w=545&h=339&fit=crop",
+      "sha256": "13d44e788a062bbbbea19da8b3bf882ff3914f8e46ec92c273c3794b739f6221",
+      "width": 545,
+      "height": 339
+    },
+    {
+      "fileName": "09.png",
+      "remoteUrl": "https://amaco.com/asset/64e7918d60a81/large_Screen_Shot_2021-10-15_at_2.12.12_PM.png?w=545&h=339&fit=crop",
+      "sha256": "f4eeebfca793aeae11ca5d4aeeaa3335dbb8b3f340d4fc477b1a9d2ffb278eef",
+      "width": 545,
+      "height": 339
+    }
+  ]
+}

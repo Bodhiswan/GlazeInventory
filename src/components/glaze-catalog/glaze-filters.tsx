@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { cn, getColorSwatch } from "@/lib/utils";
 
-type FilterSectionKey = "brands" | "families" | "colors" | "finishes" | "cones";
+type FilterSectionKey = "new" | "brands" | "families" | "colors" | "finishes" | "cones";
 
 const FilterTile = memo(function FilterTile({
   value,
@@ -148,6 +148,8 @@ export function GlazeFilters({
   // Filter values
   brandFilters,
   setBrandFilters,
+  newOnly,
+  setNewOnly,
   familyFilters,
   setFamilyFilters,
   colorFilters,
@@ -172,6 +174,7 @@ export function GlazeFilters({
   colorOptionCounts,
   finishOptionCounts,
   coneOptionCounts,
+  newGlazeCount,
   currentBrandCounts,
   // Filter summary
   selectedFilterCount,
@@ -192,6 +195,8 @@ export function GlazeFilters({
 }: {
   brandFilters: string[];
   setBrandFilters: React.Dispatch<React.SetStateAction<string[]>>;
+  newOnly: boolean;
+  setNewOnly: React.Dispatch<React.SetStateAction<boolean>>;
   familyFilters: string[];
   setFamilyFilters: React.Dispatch<React.SetStateAction<string[]>>;
   colorFilters: string[];
@@ -214,6 +219,7 @@ export function GlazeFilters({
   colorOptionCounts: Map<string, number>;
   finishOptionCounts: Map<string, number>;
   coneOptionCounts: Map<string, number>;
+  newGlazeCount: number;
   currentBrandCounts: Map<string, number>;
   selectedFilterCount: number;
   selectedFilterLabels: string[];
@@ -242,7 +248,7 @@ export function GlazeFilters({
           <span className="space-y-1">
             <span className="block text-sm font-medium text-foreground">Filters</span>
             <span className="block text-[10px] uppercase tracking-[0.16em] text-muted">
-              Expand sections by brand, family, color, finish, and cone
+              Expand sections by new, brand, family, color, finish, and cone
             </span>
           </span>
           <span className="flex items-center gap-2">
@@ -255,6 +261,31 @@ export function GlazeFilters({
 
         {filtersOpen ? (
           <div className="grid gap-3 border-t border-border px-3 py-3 sm:px-4 sm:py-4">
+            {newGlazeCount > 0 ? (
+              <FilterSection
+                title="New"
+                optionCount={1}
+                selectedCount={newOnly ? 1 : 0}
+                open={openFilterSections.new}
+                onToggle={() =>
+                  setOpenFilterSections((current) => toggleFilterSection(current, "new"))
+                }
+              >
+                <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+                  <FilterTile
+                    value="New"
+                    count={newGlazeCount}
+                    countLabel={`${newGlazeCount} added this week`}
+                    checked={newOnly}
+                    onToggle={() => {
+                      setNewOnly((current) => !current);
+                      onVisibleCountReset();
+                    }}
+                  />
+                </div>
+              </FilterSection>
+            ) : null}
+
             <FilterSection
               title="Brands"
               optionCount={brandOptions.length}
@@ -435,6 +466,9 @@ export function GlazeFilters({
           values={selectedFilterLabels}
           onRemove={(value) => {
             setBrandFilters((current) => current.filter((option) => option !== value));
+            if (value === "New") {
+              setNewOnly(false);
+            }
             setFamilyFilters((current) => current.filter((option) => option !== value));
             setColorFilters((current) => current.filter((option) => option !== value));
             setFinishFilters((current) => current.filter((option) => option !== value));

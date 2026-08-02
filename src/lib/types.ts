@@ -81,6 +81,7 @@ export interface Glaze {
   finishNotes?: string | null;
   colorNotes?: string | null;
   recipeNotes?: string | null;
+  createdAt?: string | null;
   createdByUserId?: string | null;
 }
 

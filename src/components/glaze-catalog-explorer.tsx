@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Heart, Search, X } from "lucide-react";
+import { useEffect } from "react";
 
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
@@ -12,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
+import { PageHeader } from "@/components/page-header";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
 import { getManufacturerUrl } from "@/lib/glaze-metadata";
 import { cn, formatGlazeLabel, getGlazeSkimDescription } from "@/lib/utils";
@@ -53,6 +55,8 @@ export function GlazeCatalogExplorer({
     setQuery,
     brandFilters,
     setBrandFilters,
+    newOnly,
+    setNewOnly,
     familyFilters,
     setFamilyFilters,
     colorFilters,
@@ -86,6 +90,7 @@ export function GlazeCatalogExplorer({
     colorOptionCounts,
     finishOptionCounts,
     coneOptionCounts,
+    newGlazeCount,
     sortedGlazes,
     displayGlazes,
     visibleGradientGlazes,
@@ -115,8 +120,29 @@ export function GlazeCatalogExplorer({
     reviewMode,
   });
 
+  useEffect(() => {
+    if (!activeGridItem) return;
+
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setActiveGridGlazeId(null);
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [activeGridItem, setActiveGridGlazeId]);
+
   return (
     <div className="space-y-6">
+      <PageHeader
+        eyebrow={isGuest ? "Public library" : "Your workspace"}
+        title="Glaze library"
+        description="Search commercial and community glazes by brand, colour, finish, cone, or firing reference."
+      />
       {isAdmin ? (
         <div className="flex justify-end">
           <Link
@@ -146,6 +172,8 @@ export function GlazeCatalogExplorer({
             <GlazeFilters
               brandFilters={brandFilters}
               setBrandFilters={setBrandFilters}
+              newOnly={newOnly}
+              setNewOnly={setNewOnly}
               familyFilters={familyFilters}
               setFamilyFilters={setFamilyFilters}
               colorFilters={colorFilters}
@@ -168,6 +196,7 @@ export function GlazeCatalogExplorer({
               colorOptionCounts={colorOptionCounts}
               finishOptionCounts={finishOptionCounts}
               coneOptionCounts={coneOptionCounts}
+              newGlazeCount={newGlazeCount}
               currentBrandCounts={currentBrandCounts}
               selectedFilterCount={selectedFilterCount}
               selectedFilterLabels={selectedFilterLabels}
@@ -186,6 +215,7 @@ export function GlazeCatalogExplorer({
               onShowAll={() => setVisibleCount(displayGlazes.length)}
               onClearFilters={() => {
                 setQuery("");
+                setNewOnly(false);
                 setBrandFilters([]);
                 setFamilyFilters([]);
                 setColorFilters([]);
@@ -230,6 +260,9 @@ export function GlazeCatalogExplorer({
 
       {activeGridItem ? (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="glaze-detail-title"
           className="fixed inset-0 z-40 flex items-end justify-center bg-[#2d1c16]/35 p-2 sm:items-center sm:p-4"
           onClick={() => setActiveGridGlazeId(null)}
         >
@@ -239,12 +272,12 @@ export function GlazeCatalogExplorer({
           >
             {/* Sticky header — title + favourite + close */}
             <div className="border-b border-border px-4 py-3 sm:px-5">
-              <div className="flex items-center gap-3">
+              <div className="flex items-start gap-3">
                 <div className="min-w-0 flex-1">
                   <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
                     {activeGridItem.glaze.brand} {activeGridItem.glaze.code}
                   </p>
-                  <h3 className="truncate text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeGridItem.glaze.name}</h3>
+                  <h3 id="glaze-detail-title" className="line-clamp-2 text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeGridItem.glaze.name}</h3>
                 </div>
                 {isGuest ? null : (
                   <button
@@ -264,7 +297,7 @@ export function GlazeCatalogExplorer({
                 <button
                   type="button"
                   onClick={() => setActiveGridGlazeId(null)}
-                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
+                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
                   aria-label="Close glaze details"
                 >
                   <X className="h-4 w-4" />

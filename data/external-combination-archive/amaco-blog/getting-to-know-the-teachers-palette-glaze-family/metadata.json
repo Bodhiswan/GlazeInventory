@@ -1,0 +1,63 @@
+{
+  "id": "amaco-blog/getting-to-know-the-teachers-palette-glaze-family",
+  "sourceType": "amaco-blog-post",
+  "sourceName": "AMACO Blog",
+  "title": "Getting To Know The Teacher's Palette Glaze Family",
+  "sourceUrl": "https://amaco.com/resources/blog/getting-to-know-the-teachers-palette-glaze-family",
+  "cone": null,
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "Getting to know the Teacher's Palette Glaze Family Want the ease of paint in a low-fire glaze, without any need for a clear glaze over it? Welcome to Teacher’s Palette glazes! This one glaze family can be used so many ways! Teacher’s Palette glazes: Apply like paint Opaque, bright color, even over dark clay Mix like paint for custom colors and ombre effects Stiff, so they stay where you put them Glossy without a clear glaze Can be used with a clear glaze and will stay in place and hold their color All food safe All non-toxic and suitable for the classroom Gouache painting method Use TP glaze like gouache or tempera paints. One coat will be translucent, increasing coats will be more opaque. If using in layers, work from light to dark colors for maximum coverage, but even white will show up over black. Starry Night Palette, Teacher's Palette glazes on white clay Watercolor painting method TPs can be used like watercolors, either mixed with water for increased transparency or dried out in a pan and painted like a traditional dry watercolor pan. Plant Studies with Teacher's Palette Glazes Watercolor Flower Lesson Plan Majolica style method Imitate the look and feel of traditional majolica ware by painting pieces with 2 coats of TP-11 Cotton. Apply colors of TP over Cotton in patterns. Any areas left unpainted by darker colors will still be glossy when fired. Bowls painted with TP-11 cotton and various TP glazes on Sedona Red 67M clay “Scratching the Surface” Lesson Plan Teacher’s Palette glazes can also be used for a modified Sgraffito method on glazed commercial tiles. Use plain field tiles and apply Teacher’s Palette over the tile, then scratch through with a tool to create a design and fire to cone 05. Find the lesson plan here: https://amaco.com/resources/lesson-plans/scratching-the-surface-glaze-on-glaze-technique In addition to Teacher's Palette glazes, we have Teacher’s Palette LIGHT glazes! TPLs have all the qualities of the Teacher’s Palette glazes, PLUS: Transparent colors with the same base as the TP glazes Can be mixed with other TPLs or with the TP glazes for custom colors and varied transparency TPL Flower Tiles Teacher’s Palette Light Glazes can be used over underglazes, including the Amaco Ceramic Inks! Find out more ways to use the Teacher’s Palette glazes here . Happy Glazing! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "TP-11",
+      "name": "Cotton",
+      "line": "Teacher's Palette"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/691cb16f0e125",
+      "sha256": "2bbc8f7c8d4799d9f235db04be60aa2a247a0399d2005e25c01737604fa81026",
+      "width": 3000,
+      "height": 2400
+    },
+    {
+      "fileName": "02.jpg",
+      "remoteUrl": "https://amaco.com/asset/691cb93edcb6e",
+      "sha256": "29b29a5703ceff005df0e5e7eb41ff77ecb6a0798ae2b00c3299ee818b4eabd0",
+      "width": 4592,
+      "height": 3064
+    },
+    {
+      "fileName": "03.jpg",
+      "remoteUrl": "https://amaco.com/asset/691cba9105065",
+      "sha256": "0f48e01234d5f0c4ff04c910ef5f951c02ca823053234f2b1409e0c815b6bf7d",
+      "width": 5472,
+      "height": 3648
+    },
+    {
+      "fileName": "04.png",
+      "remoteUrl": "https://amaco.com/asset/691cbb4ea61fc",
+      "sha256": "24f979eaf1a398b0e4315a8c59b0d123fc0001e021d28f6b890aefeace436e24",
+      "width": 2914,
+      "height": 2460
+    },
+    {
+      "fileName": "05.jpg",
+      "remoteUrl": "https://amaco.com/asset/691cbbf3be443",
+      "sha256": "fd1fe91d77c8940b18bfc35f3b2baf041b3993de6e0496c89fa0322391a214f0",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "06.jpg",
+      "remoteUrl": "https://amaco.com/asset/691cbc8cdf5b8",
+      "sha256": "6e4a6a936f2b32cf9f8f12b12021dc93bfe7c6a3360c24510eb3f8d830ebcd30",
+      "width": 1440,
+      "height": 1440
+    }
+  ]
+}

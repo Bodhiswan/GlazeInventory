@@ -2,6 +2,7 @@
 
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { Trash2 } from "lucide-react";
 
 import { submitContributionAction } from "@/app/actions/contribute";
@@ -422,17 +423,17 @@ export function ContributeForm({
         {selectedGlazes.length === 0 ? (
           <div className="space-y-2 border-t border-foreground/10 pt-4">
             <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted">
-              Can't find your glaze in the search?
+              Can&apos;t find your glaze in the search?
             </p>
             <p className="text-xs text-muted">
-              If a whole brand is missing from the library, request it and we'll import the catalog.
+              If a whole brand is missing from the library, request it and we&apos;ll import the catalog.
             </p>
-            <a
+            <Link
               href="/glazes/request"
               className="block w-full border border-dashed border-foreground/30 bg-white px-4 py-3 text-center text-sm font-semibold uppercase tracking-[0.14em] hover:bg-foreground/[0.04]"
             >
               Request a glaze brand →
-            </a>
+            </Link>
           </div>
         ) : null}
       </Panel>

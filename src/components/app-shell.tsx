@@ -33,7 +33,7 @@ export async function AppShell({
 
             <div className="flex min-w-0 items-center justify-end gap-1.5 sm:pl-3">
               {viewer.mode === "demo" ? (
-                <span className="shrink-0 border border-border px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted">
+                <span className="hidden shrink-0 border border-border px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted sm:inline-flex">
                   Preview data
                 </span>
               ) : null}

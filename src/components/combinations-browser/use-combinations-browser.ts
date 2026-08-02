@@ -12,6 +12,7 @@ import type {
   UserCombinationExample,
   VendorCombinationExample,
 } from "@/lib/types";
+import { isCreatedWithinNewWindow } from "@/lib/new-items";
 import { formatGlazeLabel } from "@/lib/utils";
 import { extractConeLabel, getOrderedPostGlazes } from "./combination-utils";
 
@@ -19,9 +20,10 @@ const INITIAL_TILE_BATCH = 48;
 const TILE_BATCH_STEP = 36;
 const COMBINATIONS_SHUFFLE_SEED = 0.38196601125;
 
-export type CombinationsView = "all" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
+export type CombinationsView = "all" | "new" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
 const DEFAULT_AVAILABLE_VIEWS: CombinationsView[] = [
   "all",
+  "new",
   "possible",
   "plus1",
   "mine",
@@ -264,6 +266,22 @@ export function extractTileBrands(tile: CombinationTile): string[] {
   return [];
 }
 
+function tileUsesNewGlaze(tile: CombinationTile) {
+  if (tile.example) {
+    return tile.example.layers.some((layer) => isCreatedWithinNewWindow(layer.glaze?.createdAt));
+  }
+
+  if (tile.userExample) {
+    return tile.userExample.layers.some((layer) => isCreatedWithinNewWindow(layer.glaze?.createdAt));
+  }
+
+  if (tile.post) {
+    return (tile.post.glazes ?? []).some((glaze) => isCreatedWithinNewWindow(glaze.createdAt));
+  }
+
+  return false;
+}
+
 /* ---------------------------------------------------------------------------
  * Hook props / return types
  * ------------------------------------------------------------------------ */
@@ -453,6 +471,11 @@ export function useCombinationsBrowser({
     [exampleTiles],
   );
 
+  const newGlazeTiles = useMemo(
+    () => allTiles.filter(tileUsesNewGlaze),
+    [allTiles],
+  );
+
   /* --- brand options --- */
 
   const brandOptions = useMemo(() => {
@@ -484,6 +507,9 @@ export function useCombinationsBrowser({
     switch (view) {
       case "mine":
         tiles = mineTiles;
+        break;
+      case "new":
+        tiles = newGlazeTiles;
         break;
       case "possible":
         tiles = possibleTiles;
@@ -554,7 +580,7 @@ export function useCombinationsBrowser({
     }
 
     return tiles;
-  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone5, showCone6, showCone10, lockedConeScope, allTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles]);
+  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone5, showCone6, showCone10, lockedConeScope, allTiles, newGlazeTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles]);
 
   const activeTile = useMemo(
     () => activeTiles.find((t) => t.id === activeTileId) ?? null,
@@ -598,13 +624,16 @@ export function useCombinationsBrowser({
   /* --- view filter definitions ------------------------------------------ */
 
   const baseViewFilters: { key: CombinationsView; label: string; count: number }[] = [
+    { key: "new", label: "New glazes", count: newGlazeTiles.length },
     { key: "possible", label: "Possible combinations", count: possibleTiles.length },
     { key: "plus1", label: "+1 combinations", count: plus1Tiles.length },
     { key: "mine", label: "My combinations", count: mineTiles.length },
     { key: "user", label: "User combinations", count: userExampleTiles.length + communityPostTiles.length },
     { key: "manufacturer", label: "Manufacturer combinations", count: manufacturerTiles.length },
   ];
-  const viewFilters = baseViewFilters.filter((filter) => allowedViewSet.has(filter.key));
+  const viewFilters = baseViewFilters.filter(
+    (filter) => allowedViewSet.has(filter.key) && (filter.key !== "new" || filter.count > 0),
+  );
 
   const viewLabel =
     view === "all" ? "All combinations"

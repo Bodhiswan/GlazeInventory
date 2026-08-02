@@ -11,6 +11,7 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { StatTile } from "@/components/ui/stat-tile";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
+import { PageHeader } from "@/components/page-header";
 import { Select } from "@/components/ui/select";
 import { getUserPointsRank } from "@/lib/data/admin";
 import { requireViewer } from "@/lib/data/users";
@@ -36,6 +37,11 @@ export default async function ProfilePage({
 
   return (
     <div className="space-y-8">
+      <PageHeader
+        eyebrow="Your workspace"
+        title="Profile"
+        description="Set the defaults that shape your library and firing references."
+      />
       {saved ? (
         <FormBanner variant="success">Profile preferences saved.</FormBanner>
       ) : null}

@@ -90,7 +90,7 @@ export function FiringContent() {
           oxidation. AMACO describes Potter&apos;s Choice as offering mid-range
           reduction looks in oxidation, and its self-reducing copper-red family is
           designed to create a reduction-like red effect inside the glaze itself.
-          <Cite id="7">AMACO Potter's Choice Advantage</Cite>
+          <Cite id="7">AMACO Potter&apos;s Choice Advantage</Cite>
           <Cite id="8">AMACO PC-70 Copper Red</Cite>{" "}
           These are powerful commercial tools, but they still depend heavily on
           thickness, cone, and clay body.

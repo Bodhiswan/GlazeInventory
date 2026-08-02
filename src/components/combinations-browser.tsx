@@ -11,6 +11,7 @@ import { useCombinationsBrowser } from "./combinations-browser/use-combinations-
 import type { CombinationsView } from "./combinations-browser/use-combinations-browser";
 import { CombinationFilters } from "./combinations-browser/combination-filters";
 import { CombinationGrid } from "./combinations-browser/combination-grid";
+import { PageHeader } from "@/components/page-header";
 
 export function CombinationsBrowser({
   examples,
@@ -56,6 +57,11 @@ export function CombinationsBrowser({
 
   return (
     <div className="space-y-6">
+      <PageHeader
+        eyebrow={viewerUserId ? "Your workspace" : "Public library"}
+        title="Glaze combinations"
+        description="Explore tested pairings, check what your shelf can make, and save ideas for your next firing."
+      />
       <CombinationFilters
         query={browser.query}
         setQuery={browser.setQuery}

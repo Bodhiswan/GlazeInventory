@@ -59,19 +59,7 @@ def main() -> None:
     data: list[dict] = json.loads(JSON_PATH.read_text(encoding="utf-8"))
     print(f"  {len(data)} combinations loaded")
 
-    # Step 1: fetch glaze ID map from DB
-    print("Fetching Mayco glaze codes from DB...")
-    glaze_sql = """
-\\copy (
-  select regexp_replace(upper(coalesce(code, '')), '[^A-Z0-9]', '', 'g') as norm_code, id::text
-  from glazes
-  where brand = 'Mayco' and created_by_user_id is null
-) to stdout with csv;
-"""
-    # We'll build the glaze map inline via a separate lookup table in SQL instead.
-    # Simpler: just use the same subquery pattern from the original migration.
-
-    # Step 2: delete existing (layers cascade automatically)
+    # Step 1: delete existing (layers cascade automatically)
     print("Deleting existing Mayco glaze-combinations data...")
     run_sql(
         "delete from public.vendor_combination_examples where source_vendor = 'Mayco' and source_collection = 'glaze-combinations';",

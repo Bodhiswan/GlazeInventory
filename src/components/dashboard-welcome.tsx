@@ -29,11 +29,6 @@ const TILE_POOL = [
 
 export function DashboardWelcome({ displayName }: { displayName: string }) {
   const [tourOpen, setTourOpen] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
-
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
 
   const firstName = displayName.split(" ")[0];
 
@@ -78,8 +73,7 @@ export function DashboardWelcome({ displayName }: { displayName: string }) {
         <div className="space-y-5 px-6 pb-6 pt-4 sm:px-8 sm:pb-8">
           <div className="space-y-2">
             <p className="text-[11px] uppercase tracking-[0.18em] text-muted">
-              Welcome{hydrated ? ", " : ""}
-              {hydrated ? firstName : ""}
+              Welcome, {firstName}
             </p>
             <h1 className="display-font text-3xl tracking-tight sm:text-4xl">
               Your glaze shelf, searchable and shared.
@@ -139,9 +133,9 @@ const TUTORIAL_STEPS: TourStep[] = [
     eyebrow: "Step 1 · Discover",
     title: "Browse thousands of real glazes",
     hook: "Mayco, AMACO, Coyote, Duncan, Spectrum, Speedball, Seattle Pottery Supply — all in one place.",
-    body: "Filter by brand, family, colour, finish, or cone. Every glaze has real firing photos from potters like you — not just a marketing swatch.",
+    body: "Filter by brand, family, colour, finish, or cone. Many entries include firing photos from potters like you — not just a marketing swatch.",
     bullets: [
-      "5,000+ commercial glazes with firing photos",
+      "A growing catalogue of commercial and community glazes",
       "Smart search across code, name, and keyword",
       "Save favourites with one tap",
     ],
@@ -157,7 +151,7 @@ const TUTORIAL_STEPS: TourStep[] = [
     bullets: [
       "Mark as Owned, Wishlist, or Empty",
       "Folders for projects and studio days",
-      "Restock reminders when jars run low",
+      "Full, half, and low shelf levels",
     ],
     cta: { href: "/inventory", label: "Set up your inventory" },
     visual: "inventory",
@@ -170,7 +164,7 @@ const TUTORIAL_STEPS: TourStep[] = [
     body: "Open any combination to see exactly which glazes were layered, in what order, and on what clay body. Filter to only combinations you can make with what you already own.",
     bullets: [
       "Thousands of tested combinations",
-      "&apos;Can I make this?&apos; filter based on your shelf",
+      "'Can I make this?' filter based on your shelf",
       "Firing photos from the community",
     ],
     cta: { href: "/combinations", label: "Explore combinations" },
@@ -193,13 +187,13 @@ const TUTORIAL_STEPS: TourStep[] = [
   {
     icon: MessageCircle,
     eyebrow: "Step 5 · Connect",
-    title: "You&apos;re not glazing alone",
-    hook: "Message admins, browse community firings, and see who&apos;s been helping this week.",
-    body: "Glaze Inventory is a small, friendly community. If something&apos;s missing or broken, just send a message — a real person will read it.",
+    title: "You’re not glazing alone",
+    hook: "Message admins, browse community firings, and see who’s been helping this week.",
+    body: "Glaze Inventory is a small, friendly community. If something’s missing or broken, just send a message — a real person will read it.",
     bullets: [
       "Direct messaging with admins",
       "Community firing photo feed",
-      "Weekly &apos;People to thank&apos; leaderboard",
+      "Weekly 'People to thank' leaderboard",
     ],
     cta: { href: "/community", label: "Visit the community" },
     visual: "community",
@@ -217,7 +211,7 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
 
   useEffect(() => {
     if (!open) return;
-    setStep(0);
+    const resetFrame = window.requestAnimationFrame(() => setStep(0));
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape") onClose();
       if (event.key === "ArrowRight") setStep((s) => Math.min(s + 1, TUTORIAL_STEPS.length - 1));
@@ -228,6 +222,7 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
     const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
+      window.cancelAnimationFrame(resetFrame);
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = prevOverflow;
     };
@@ -243,18 +238,19 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
     <div
       role="dialog"
       aria-modal="true"
-      aria-label="Site tour"
+      aria-labelledby="tour-title"
+      aria-describedby="tour-hook"
       className="fixed inset-0 z-50 flex items-end justify-center bg-black/60 p-0 backdrop-blur-sm sm:items-center sm:p-4"
       onClick={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
     >
-      <div className="relative flex w-full max-w-4xl flex-col overflow-hidden border border-border bg-panel shadow-2xl sm:h-[640px] sm:max-h-[90vh] sm:flex-row">
+      <div className="relative flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-panel shadow-2xl sm:h-[640px] sm:max-h-[90vh] sm:flex-row">
         <button
           type="button"
           onClick={onClose}
           aria-label="Close tour"
-          className="absolute right-3 top-3 z-20 rounded-full bg-white/80 p-1.5 text-muted backdrop-blur transition-colors hover:bg-white hover:text-foreground"
+          className="absolute right-1 top-1 z-20 flex h-11 w-11 items-center justify-center rounded-full bg-white/80 text-muted backdrop-blur transition-colors hover:bg-white hover:text-foreground"
         >
           <X className="h-4 w-4" />
         </button>
@@ -280,11 +276,11 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
               </p>
             </div>
 
-            <h2 className="display-font text-2xl leading-tight tracking-tight sm:text-3xl">
+            <h2 id="tour-title" className="display-font text-2xl leading-tight tracking-tight sm:text-3xl">
               <Decoded text={current.title} />
             </h2>
 
-            <p className="text-sm font-medium leading-6 text-foreground/90 sm:text-base">
+            <p id="tour-hook" className="text-sm font-medium leading-6 text-foreground/90 sm:text-base">
               <Decoded text={current.hook} />
             </p>
 
@@ -320,8 +316,8 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
           </div>
 
           {/* Footer */}
-          <div className="flex flex-shrink-0 items-center justify-between gap-3 border-t border-foreground/10 px-6 py-4 sm:px-8">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-shrink-0 flex-col gap-3 border-t border-foreground/10 px-6 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+            <div className="flex items-center justify-between gap-3">
               <div className="flex gap-1.5">
                 {TUTORIAL_STEPS.map((_, index) => (
                   <button
@@ -329,17 +325,22 @@ function TutorialModal({ open, onClose }: { open: boolean; onClose: () => void }
                     type="button"
                     onClick={() => setStep(index)}
                     aria-label={`Go to step ${index + 1}`}
-                    className={`h-1.5 rounded-full transition-all ${
-                      index === step ? "w-6 bg-foreground" : "w-1.5 bg-foreground/25 hover:bg-foreground/40"
-                    }`}
-                  />
+                    className="flex h-8 min-w-8 items-center justify-center"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className={`h-1.5 rounded-full transition-all ${
+                        index === step ? "w-6 bg-foreground" : "w-1.5 bg-foreground/25 hover:bg-foreground/40"
+                      }`}
+                    />
+                  </button>
                 ))}
               </div>
               <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
                 {step + 1} / {TUTORIAL_STEPS.length}
               </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex justify-end gap-2">
               {step > 0 ? (
                 <button
                   type="button"

@@ -352,7 +352,7 @@ export async function getUserCombinationExamples(viewerId: string) {
   if (missingIds.length > 0) {
     const { data: dbGlazes } = await supabase
       .from("glazes")
-      .select("id,source_type,name,brand,line,code,cone,image_url,description")
+      .select("id,source_type,name,brand,line,code,cone,image_url,description,created_at")
       .in("id", missingIds);
     for (const g of dbGlazes ?? []) {
       dbGlazeMap.set(String(g.id), {
@@ -365,6 +365,7 @@ export async function getUserCombinationExamples(viewerId: string) {
         cone: g.cone ? String(g.cone) : null,
         description: g.description ? String(g.description) : null,
         imageUrl: g.image_url ? String(g.image_url) : null,
+        createdAt: g.created_at ? String(g.created_at) : null,
       });
     }
   }

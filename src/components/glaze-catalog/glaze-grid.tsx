@@ -68,7 +68,7 @@ export function GlazeGrid({
                     {items.length}
                   </span>
                 </div>
-                <div className="grid grid-cols-2 gap-1.5 min-[420px]:grid-cols-3 sm:gap-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+                <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3 sm:gap-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
                   {items.map((item) => (
                     <GlazeCard
                       key={item.glaze.id}
@@ -84,7 +84,7 @@ export function GlazeGrid({
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-1.5 p-1.5 min-[420px]:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
+          <div className="grid grid-cols-2 gap-1.5 p-1.5 sm:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 2xl:grid-cols-7">
             {visibleGradientGlazes.map((item) => (
               <GlazeCard
                 key={item.glaze.id}

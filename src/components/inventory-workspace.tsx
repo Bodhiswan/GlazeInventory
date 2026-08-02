@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Heart, Search, X } from "lucide-react";
-import { type ReactNode, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeScanner } from "@/components/glaze-scanner";
@@ -13,6 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
+import { PageHeader } from "@/components/page-header";
 import { Textarea } from "@/components/ui/textarea";
 import { deleteUserCombinationAction } from "@/app/actions/combinations";
 import { updateInventoryItemNotesAction } from "@/app/actions/inventory";
@@ -197,7 +198,6 @@ export function InventoryWorkspace({
     totalCounts,
     preferredImages,
     activeItem,
-    activeItemId,
     setActiveItemId,
     pendingGlazeIds,
     statusErrors,
@@ -217,8 +217,29 @@ export function InventoryWorkspace({
     favouriteGlazeIds,
   });
 
+  useEffect(() => {
+    if (!activeItem) return;
+
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setActiveItemId(null);
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [activeItem, setActiveItemId]);
+
   return (
     <div className="space-y-6">
+      <PageHeader
+        eyebrow="Your workspace"
+        title="Inventory"
+        description="Keep a quick, useful record of what is on your shelf, what you want next, and what you have used up."
+      />
       <Panel className="space-y-4">
         <div className="space-y-2">
           <span className="text-sm font-semibold text-foreground">Add a glaze</span>
@@ -302,7 +323,7 @@ export function InventoryWorkspace({
         onToggle={() => toggleSection("combinations")}
       >
         {myUserExamples.length || myCombinationPosts.length ? (
-          <div className="grid grid-cols-2 gap-2 min-[420px]:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4 xl:grid-cols-5">
             {myUserExamples.map((ue) => (
               <div
                 key={ue.id}
@@ -392,7 +413,7 @@ export function InventoryWorkspace({
           </div>
         ) : (
           <div className="border border-dashed border-border bg-background px-4 py-6 text-center text-sm text-muted">
-            <p>You haven't published any combinations yet.</p>
+            <p>You haven&apos;t published any combinations yet.</p>
             <Link href="/contribute" className={cn(buttonVariants({ size: "sm" }), "mt-3")}>
               Share a kiln-tested combination
             </Link>
@@ -416,6 +437,9 @@ export function InventoryWorkspace({
 
       {activeItem ? (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="inventory-glaze-detail-title"
           className="fixed inset-0 z-40 flex items-end justify-center bg-[#2d1c16]/35 p-2 sm:items-center sm:p-4"
           onClick={() => setActiveItemId(null)}
         >
@@ -425,12 +449,12 @@ export function InventoryWorkspace({
           >
             {/* Sticky header — title + favourite + close */}
             <div className="border-b border-border px-4 py-3 sm:px-5">
-              <div className="flex items-center gap-3">
+              <div className="flex items-start gap-3">
                 <div className="min-w-0 flex-1">
                   <p className="text-[10px] uppercase tracking-[0.14em] text-muted">
                     {[activeItem.glaze.brand, activeItem.glaze.code].filter(Boolean).join(" ")}
                   </p>
-                  <h2 className="truncate text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeItem.glaze.name}</h2>
+                  <h2 id="inventory-glaze-detail-title" className="line-clamp-2 text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeItem.glaze.name}</h2>
                 </div>
                 <button
                   type="button"
@@ -448,7 +472,7 @@ export function InventoryWorkspace({
                 <button
                   type="button"
                   onClick={() => setActiveItemId(null)}
-                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
+                  className="inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border bg-white text-foreground transition hover:-translate-y-px"
                   aria-label="Close inventory glaze details"
                 >
                   <X className="h-4 w-4" />

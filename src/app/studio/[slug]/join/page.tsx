@@ -30,7 +30,7 @@ export default async function StudioJoinPage({
 
       <Panel className="flex flex-col items-center gap-3">
         <Link
-          href={`/auth/sign-in?next=${encodeURIComponent(`/studio/${slug}/library`)}`}
+          href={`/auth/sign-up?redirectTo=${encodeURIComponent(`/studio/${slug}/library`)}`}
           className={buttonVariants({})}
         >
           Create a free account

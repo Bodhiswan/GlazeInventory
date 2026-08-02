@@ -17,10 +17,6 @@ export function RecipientCombobox({ names }: { names: string[] }) {
   }, [value, names]);
 
   useEffect(() => {
-    setHighlight(0);
-  }, [value]);
-
-  useEffect(() => {
     function onDocClick(e: MouseEvent) {
       if (!wrapRef.current?.contains(e.target as Node)) setOpen(false);
     }
@@ -42,6 +38,7 @@ export function RecipientCombobox({ names }: { names: string[] }) {
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
+          setHighlight(0);
           setOpen(true);
         }}
         onFocus={() => setOpen(true)}

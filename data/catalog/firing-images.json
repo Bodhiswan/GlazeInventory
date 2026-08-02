@@ -1,4 +1,14 @@
 {
+  "6affe1fa-42e3-49a8-810a-2d6e69dcab19": [
+    {
+      "id": "ad7c7e75-7c82-4d49-a08a-7e0d9c63a10a",
+      "label": "Reference tile",
+      "cone": "Cone 6",
+      "atmosphere": null,
+      "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2297/3692/HF-10_Clear_37001B_6x6_Square_Tile_WEB__15248.1708018570.jpg?c=1",
+      "sortOrder": 50
+    }
+  ],
   "00011e20-9e19-452f-9086-050603b880ff": [
     {
       "id": "c35eeda5-d084-492a-8294-8a7bf44f84bc",

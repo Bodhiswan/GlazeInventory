@@ -46,7 +46,8 @@ export function GuideErrorReport({
   useEffect(() => {
     if (state.status !== "success") return;
     formRef.current?.reset();
-    setSelectedSectionId(toc[0]?.id ?? "");
+    const frame = window.requestAnimationFrame(() => setSelectedSectionId(toc[0]?.id ?? ""));
+    return () => window.cancelAnimationFrame(frame);
   }, [state.status, toc]);
 
   return (

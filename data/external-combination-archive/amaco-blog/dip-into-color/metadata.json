@@ -1,0 +1,144 @@
+{
+  "id": "amaco-blog/dip-into-color",
+  "sourceType": "amaco-blog-post",
+  "sourceName": "AMACO Blog",
+  "title": "DIP Into Color!",
+  "sourceUrl": "https://amaco.com/resources/blog/dip-into-color",
+  "cone": null,
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "DIP Into Color! The Dipping and Layering series is designed for layering dipped or poured glazes to achieve the stunning effects of Amaco’s brushing glazes with added ease. They are meant to create great layering combinations, so with just a few buckets of glaze you have hundreds of color combinations and options. Use DL’s together with brushing glazes for even more possibilities! Recognizable Favorites! The DL glazes are inspired by and based on some of your favorite Amaco brushing glazes from the Potter’s Choice and Celadon lines. Time saving! Dipping or pouring is a quick method for glazing production series of ware. The DL glazes give you the beautiful results you love from Amaco glazes available for large production batches, classroom glaze offerings, and more. Easy to use! The DL glazes are easy to mix – use one gallon of distilled water, your own bucket, and one box of DL glaze will make enough glaze for 80 standard sized mugs. No need to measure Specific Gravity. Economical ! One bucket of DL glaze equals roughly 10 pints of glaze, making the DL glazes more cost-effective. I love using the DL glazes when I have a series of pots I want to be consistent and quick. I use Amaco Liquid wax on the foot, dip 2-3 seconds in one color, allow to dry to the touch and then dip in another color 2 seconds or pour for a different effect. Some of my favorite combos include: DL-42 River Moss over DL-1 Ebony DL-11 Enamel White over DL-27 Storm Cloud DL-63 over DL-12 Midnight Blue 1 brushed coat of PC-31 Oatmeal over DL-33 Low Tide Try out PCs over DL glazes to increase your glaze palette! DL-11 Enamel White /DL-70 Oxblood We released five new colors in the past year: DL-12 Midnight Blue, a navy, almost black glaze, with a deep blue float where thick. DL-25 Coastline , glossy turquoise glaze that transitions to a green-beige hue where thin. DL-27 Storm Cloud , a deep navy glaze that pools and accentuates texture. DL-59 Brick Red , opaque vivid red speckled glaze that breaks translucent where thin. DL-63 Stardust , dark brown to black glaze with sparkles that shift between silver and copper. This brings our Dipping and Layering offerings up to 13 colors. What do you get when you purchase Amaco Dipping & Layering glaze? It arrives in a box, saving space and shipping costs. Open the box and you will find: mixing instructions, a color-accurate label sticker for your bucket with the batch code, and the bag of dry glaze. Remember: Always wear a well-fitting respirator when using dry glaze materials. Get your glazing done with DL glazes. You can find DL glazes, as well as more combinations and information on using them, at our website or where you buy Amaco glazes. Check them out, I know you’re going to love them! Happy Glazing! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "DL-42",
+      "name": "River Moss",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-01",
+      "name": "Ebony",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-11",
+      "name": "Enamel White",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-27",
+      "name": "Storm Cloud",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-63",
+      "name": "Stardust",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-12",
+      "name": "Midnight Blue",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-31",
+      "name": "Oatmeal",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-33",
+      "name": "Low Tide",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-70",
+      "name": "Oxblood",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-25",
+      "name": "Coastline",
+      "line": "Dipping & Layering"
+    },
+    {
+      "brand": "AMACO",
+      "code": "DL-59",
+      "name": "Brick Red",
+      "line": "Dipping & Layering"
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0df100087",
+      "sha256": "67f1f880d051b0ace6084374c2549918f72e0dfcedbec436e98a3bfa191351b8",
+      "width": 3258,
+      "height": 4073
+    },
+    {
+      "fileName": "02.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0cfa177a7",
+      "sha256": "9e232014dec6aa8e8e2b93e49369ef49b2c6536afdfdb5f301de21a6b3994e2a",
+      "width": 612,
+      "height": 792
+    },
+    {
+      "fileName": "03.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0d12989ab",
+      "sha256": "e9acfc2ac206d46497b7351cf7cf815eb98c6f094c16f33d2cd74f612cc02904",
+      "width": 1024,
+      "height": 775
+    },
+    {
+      "fileName": "04.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0d216fc2c",
+      "sha256": "a3b5138b77832caa66149342e098ee6965a76c3a70d915f292a944004ea1ef41",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "05.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0d444f725",
+      "sha256": "192c200a0c5e20321767c39e75a44c327c9c1925aa25b42549a5969628e1569e",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "06.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0d526f59b",
+      "sha256": "9925d8eb85c52c193e815adfb71da29cd75a419b9492d41c0122b9eb3f951c86",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "07.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0d6e2033a",
+      "sha256": "23c9421031a2c09b55c8ef3f4d41daaec6532ade63ef03001dca09491394d89d",
+      "width": 869,
+      "height": 1024
+    },
+    {
+      "fileName": "08.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0d8160894",
+      "sha256": "b4a199a2e13a6b6f14afc6c512493adfc7a063188a2ceeb2d2003963230c940a",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "09.jpg",
+      "remoteUrl": "https://amaco.com/asset/685c0d900deec",
+      "sha256": "f04d5fe88204169074ea08678744046c182e516468f6119be875f48557d270f7",
+      "width": 1280,
+      "height": 1280
+    }
+  ]
+}

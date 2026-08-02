@@ -1,7 +1,7 @@
 import { cache } from "react";
 
 import { demoGlazes, demoInventory, demoInventoryFolders } from "@/lib/demo-data";
-import { getAllCatalogGlazes } from "@/lib/catalog";
+import { getAllCatalogGlazes, getCatalogGlazeById } from "@/lib/catalog";
 import { parseInventoryState } from "@/lib/inventory-state";
 import { formatGlazeLabel } from "@/lib/utils";
 import type { Glaze, InventoryFolder, InventoryItem } from "@/lib/types";
@@ -81,6 +81,7 @@ export function mapGlaze(row: Partial<GlazeRow>): Glaze {
     finishNotes: row.finish_notes ?? null,
     colorNotes: row.color_notes ?? null,
     recipeNotes: row.recipe_notes ?? null,
+    createdAt: row.created_at ?? null,
     createdByUserId: row.created_by_user_id ?? null,
   };
 }
@@ -130,16 +131,24 @@ export function mapInventoryFoldersFromJoinRows(value: FolderJoinEntry[] | unkno
 }
 
 export type InventoryItemWithJoins = InventoryItemRow & {
-  glaze: GlazeRow | GlazeRow[] | null;
-  inventory_item_folders: (Omit<InventoryItemFolderRow, "inventory_item_id"> & {
+  glaze?: Partial<GlazeRow> | Partial<GlazeRow>[] | null;
+  inventory_item_folders?: (Omit<InventoryItemFolderRow, "inventory_item_id"> & {
     folder: InventoryFolderRow | InventoryFolderRow[] | null;
   })[];
 };
 
-export function mapInventoryItem(row: InventoryItemWithJoins): InventoryItem {
+export function mapInventoryItem(row: InventoryItemWithJoins): InventoryItem | null {
   const glazeRow = Array.isArray(row.glaze) ? row.glaze[0] : row.glaze;
   const inventoryState = parseInventoryState(row.personal_notes ?? null);
   const folders = mapInventoryFoldersFromJoinRows(row.inventory_item_folders);
+  const glaze = getCatalogGlazeById(row.glaze_id) ?? (glazeRow ? mapGlaze(glazeRow) : null);
+
+  // Catalog glazes use stable IDs from the bundled JSON. If a stale or
+  // deleted custom row is ever left behind, omit it rather than rendering a
+  // misleading blank inventory card.
+  if (!glaze) {
+    return null;
+  }
 
   return {
     id: row.id,
@@ -151,11 +160,40 @@ export function mapInventoryItem(row: InventoryItemWithJoins): InventoryItem {
     quantity: inventoryState.quantity,
     folders,
     folderIds: folders.map((folder) => folder.id),
-    glaze: mapGlaze(glazeRow as Partial<GlazeRow>),
+    glaze,
   };
 }
 
-const INVENTORY_GLAZE_COLUMNS = "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes";
+const INVENTORY_GLAZE_COLUMNS =
+  "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,editorial_summary,editorial_surface,editorial_application,editorial_firing,created_at,created_by_user_id";
+type SupabaseClient = NonNullable<Awaited<ReturnType<typeof getSupabase>>>;
+
+/**
+ * Resolve only database-backed glazes for inventory rows that are not part of
+ * the bundled catalog. Inventory rows intentionally store the catalog's
+ * semantic glaze ID, so this cannot rely on a PostgREST glaze relationship.
+ */
+export async function fetchInventoryGlazes(
+  supabase: SupabaseClient,
+  rows: Array<Pick<InventoryItemRow, "glaze_id">>,
+) {
+  const databaseGlazeIds = Array.from(
+    new Set(rows.map((row) => row.glaze_id).filter((id) => !getCatalogGlazeById(id))),
+  );
+
+  if (!databaseGlazeIds.length) {
+    return new Map<string, Partial<GlazeRow>>();
+  }
+
+  const { data } = await supabase
+    .from("glazes")
+    .select(INVENTORY_GLAZE_COLUMNS)
+    .in("id", databaseGlazeIds);
+
+  return new Map(
+    (data ?? []).map((row) => [String(row.id), row as Partial<GlazeRow>] as const),
+  );
+}
 
 // ─── Exported functions ───────────────────────────────────────────────────────
 
@@ -176,7 +214,7 @@ export const getCatalogGlazes = cache(async function getCatalogGlazes(viewerId: 
       staticGlazes.map((g) => g.brand).filter((b): b is string => Boolean(b)),
     );
     const cols =
-      "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_by_user_id";
+      "id,source_type,name,brand,line,code,cone,description,image_url,atmosphere,finish_notes,color_notes,recipe_notes,created_at,created_by_user_id";
 
     const [customRes, dbOnlyCommercialRes] = await Promise.all([
       supabase.from("glazes").select(cols).eq("source_type", "nonCommercial"),
@@ -239,11 +277,20 @@ export const getInventory = cache(async function getInventory(viewerId: string) 
 
   const { data } = await supabase
     .from("inventory_items")
-    .select(`id,user_id,glaze_id,status,personal_notes,glaze:glazes(${INVENTORY_GLAZE_COLUMNS}),inventory_item_folders(folder:inventory_folders(*))`)
+    .select("id,user_id,glaze_id,status,personal_notes,inventory_item_folders(folder:inventory_folders(*))")
     .eq("user_id", viewerId)
     .order("created_at", { ascending: false });
 
-  const inventory = (data ?? []).map((row) => mapInventoryItem(row as unknown as InventoryItemWithJoins));
+  const rows = (data ?? []) as unknown as InventoryItemWithJoins[];
+  const databaseGlazes = await fetchInventoryGlazes(supabase, rows);
+  const inventory = rows
+    .map((row) =>
+      mapInventoryItem({
+        ...row,
+        glaze: databaseGlazes.get(row.glaze_id) ?? null,
+      }),
+    )
+    .filter((item): item is InventoryItem => Boolean(item));
 
   return inventory;
 });

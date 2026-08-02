@@ -23,7 +23,7 @@ import type {
   VendorCombinationExample,
 } from "@/lib/types";
 import { formatGlazeLabel, pickPreferredGlazeImage } from "@/lib/utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { CombinationTile } from "./use-combinations-browser";
 import {
   extractConeLabel,
@@ -574,6 +574,22 @@ export function CombinationGrid({
   setVisibleCount,
   TILE_BATCH_STEP,
 }: CombinationGridProps) {
+  useEffect(() => {
+    if (!activeTile) return;
+
+    function onKey(event: KeyboardEvent) {
+      if (event.key === "Escape") setActiveTileId(null);
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [activeTile, setActiveTileId]);
+
   return (
     <>
       {/* tile grid */}
@@ -589,7 +605,7 @@ export function CombinationGrid({
               </Badge>
             </div>
 
-            <div className="grid grid-cols-2 gap-1.5 p-1.5 min-[420px]:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            <div className="grid grid-cols-2 gap-1.5 p-1.5 sm:grid-cols-3 sm:gap-2 sm:p-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
               {visibleTiles.map((tile) => (
                 <button
                   key={tile.id}
@@ -708,6 +724,9 @@ export function CombinationGrid({
       {/* detail modal overlay */}
       {activeTile ? (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="combination-detail-title"
           className="fixed inset-0 z-40 flex items-end justify-center bg-[#2d1c16]/35 p-2 sm:items-center sm:p-4"
           onClick={() => setActiveTileId(null)}
         >
@@ -715,12 +734,12 @@ export function CombinationGrid({
             className="flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-background sm:mt-[4vh]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-center gap-3 border-b border-border px-4 py-3 sm:px-5">
+            <div className="flex items-start gap-3 border-b border-border px-4 py-3 sm:px-5">
               <div className="min-w-0 flex-1">
                 {activeTile.subtitle ? (
                   <p className="text-[10px] uppercase tracking-[0.14em] text-muted">{activeTile.subtitle}</p>
                 ) : null}
-                <h3 className="truncate text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeTile.title}</h3>
+                <h3 id="combination-detail-title" className="line-clamp-2 text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeTile.title}</h3>
               </div>
               {(() => {
                 const combinationId = activeTile.example?.id ?? activeTile.post?.id ?? activeTile.userExample?.id ?? null;

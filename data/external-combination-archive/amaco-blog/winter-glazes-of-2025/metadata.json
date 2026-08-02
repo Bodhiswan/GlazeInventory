@@ -1,0 +1,106 @@
+{
+  "id": "amaco-blog/winter-glazes-of-2025",
+  "sourceType": "amaco-blog-post",
+  "sourceName": "AMACO Blog",
+  "title": "AMACO Winter Glazes of 2025",
+  "sourceUrl": "https://amaco.com/resources/blog/winter-glazes-of-2025",
+  "cone": "Cone 6",
+  "atmosphere": null,
+  "clayBody": null,
+  "description": "Winter Glazes of 2025 Winter is chilly weather and holiday time with our families and friends. It’s also time for wrapping up the year. Let’s explore some Amaco glaze colors we really love for winter. Cool and soft really describes PCF-19 Cirrus Flow . Pale blue and fluid, it’s a lovely accent for layering or by itself. For a rich holiday color, try out PC-59 Deep Firebrick . This very stable warm red glaze can be used in a variety of ways, from mugs to candelabras. Try it with a juicy coat of Deep Olive Speckle or Lustrous Jade for an interesting contrast. The Celadon line is a staple for so many artists, with a wide selection of colors in a stable glaze base. Try C-20 Cobalt for a deep blue. Naturally, C-10 Snow is the go-to for winter, whether you’re making a snowman or a bowl. Try it over C-49 Rainforest for a mottled blue-green and white effect. The plate shown below was created by applying a vinyl stencil to the bisque bowl, then applying 2 coats of Rainforest. Once the glaze had dried, the stencil was removed, and the plate was glazed with 2 coats of Snow. It was fired to cone 6. Making something with a lot of texture and want that classic glossy evergreen tree look? Go with PC-45 Dark Green . This traditional green glaze breaks clear on texture and pools a lovely green. Use Dark Green on white clay for the best contrast. Make something glittery and festive for the holiday season with P C-9 Vintage Gold . A metallic glaze with golden haloed crystals, Vintage Gold is a decorative glaze perfect for a variety of uses. Fire to cone 5 with a 30-minute hold (or a very slow cone 6) for the best results. No list of winter glazes could be complete without mentioning our Kiln Ice glazes. Whether it’s K I-11 Snow Drift or KI-42 Frozen Fern , the snowflake crackle of Kiln Ice glazes are all perfect for a wintery look. Use them on trinket dishes, lidded jars, or hanging ornaments for the appearance of ice. We'd love to see your creations with any of these colors. You can share them with us by posting on social media using #howiamaco Happy glazing! Share Blog Post Email Blog Post Facebook Print Blog Post Twitter Copy Link Pinterest",
+  "matchedGlazes": [
+    {
+      "brand": "AMACO",
+      "code": "PCF-19",
+      "name": "Cirrus Flow",
+      "line": "Potter's Choice Flux"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-59",
+      "name": "Deep Firebrick",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-20",
+      "name": "Cobalt",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-10",
+      "name": "Snow",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-49",
+      "name": "Rainforest",
+      "line": "Celadon"
+    },
+    {
+      "brand": "AMACO",
+      "code": "PC-45",
+      "name": "Dark Green",
+      "line": "Potter's Choice"
+    },
+    {
+      "brand": "AMACO",
+      "code": "C-9",
+      "name": null,
+      "line": null
+    }
+  ],
+  "images": [
+    {
+      "fileName": "01.jpg",
+      "remoteUrl": "https://amaco.com/asset/69209dec065e1",
+      "sha256": "ac7fff991b4e5e880fac7cb89280e86bfcd473f107bbb1d50ced71dd88f76355",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "02.jpg",
+      "remoteUrl": "https://amaco.com/asset/69209e6679a61",
+      "sha256": "2701398cfe692fdfa8ad42783d918609f9e68b52fc46eee7cce45d8262b4987f",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "03.jpg",
+      "remoteUrl": "https://amaco.com/asset/69209ea75fea0",
+      "sha256": "983a43288ac7cea689d3d942b9b2ca498bf4c296b61b994cc4a88b27be795996",
+      "width": 3900,
+      "height": 2324
+    },
+    {
+      "fileName": "04.png",
+      "remoteUrl": "https://amaco.com/asset/692daba43c6c4",
+      "sha256": "fd06c0f804d5e14ae1b9e460ccde07bc23cee3239a00552fdf86665cb4c03977",
+      "width": 1910,
+      "height": 1900
+    },
+    {
+      "fileName": "05.jpg",
+      "remoteUrl": "https://amaco.com/asset/69209ec16e743",
+      "sha256": "5333e4b2c52e8a35f2626a8353746e38d45d2c9d4fb534b127c964926e77fa7a",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "06.jpg",
+      "remoteUrl": "https://amaco.com/asset/69209eeb7debc",
+      "sha256": "81a11411bd89898a28ea816babb4e2749e3a7d2d7d6caeef0b29e133d625943d",
+      "width": 1800,
+      "height": 1800
+    },
+    {
+      "fileName": "07.jpg",
+      "remoteUrl": "https://amaco.com/asset/6920a0e43a71a",
+      "sha256": "6d0134636f391e594754e302c9b1c852122d6d0dd76b9ad14c766e05e5ea5317",
+      "width": 1800,
+      "height": 1800
+    }
+  ]
+}

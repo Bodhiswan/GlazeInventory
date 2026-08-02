@@ -13,7 +13,6 @@ from PIL import Image
 
 
 USER_AGENT = "GlazeInventoryCatalogBot/1.0 (+https://glazeinventory.com)"
-MAYCO_INPUT_PATH = Path("data/vendors/mayco-glazes.json")
 MAYCO_EXISTING_PATH = Path("data/vendors/mayco-visual-traits.json")
 AMACO_INPUT_PATH = Path("data/vendors/amaco-glazes.json")
 COYOTE_INPUT_PATH = Path("data/vendors/coyote-glazes.json")

@@ -6,6 +6,7 @@ import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
 import { toggleFavouriteInlineAction } from "@/app/actions/glazes";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
 import { getGlazeFamilyTraits } from "@/lib/glaze-metadata";
+import { isCreatedWithinNewWindow } from "@/lib/new-items";
 import {
   extractColorAwareQuery,
   extractGlazeColorTraits,
@@ -45,6 +46,7 @@ export type IndexedGlaze = {
   firingImages: GlazeFiringImage[];
   hasPreferredExamples: boolean;
   hasCuratedDescription: boolean;
+  isNew: boolean;
   searchText: string;
 };
 
@@ -86,10 +88,12 @@ export function useGlazeExplorer({
   const [colorFilters, setColorFilters] = useState<string[]>([]);
   const [finishFilters, setFinishFilters] = useState<string[]>([]);
   const [coneFilters, setConeFilters] = useState<string[]>([]);
+  const [newOnly, setNewOnly] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [openFilterSections, setOpenFilterSections] = useState<
-    Record<"brands" | "families" | "colors" | "finishes" | "cones", boolean>
+    Record<"new" | "brands" | "families" | "colors" | "finishes" | "cones", boolean>
   >({
+    new: true,
     brands: false,
     families: false,
     colors: false,
@@ -138,6 +142,7 @@ export function useGlazeExplorer({
             matchesFiringImagePreference(image, preferredCone, preferredAtmosphere),
           ),
           hasCuratedDescription: hasCuratedGlazeDescription(glaze),
+          isNew: isCreatedWithinNewWindow(glaze.createdAt),
           searchText: buildGlazeSearchIndex([
             glaze.code,
             glaze.name,
@@ -222,6 +227,10 @@ export function useGlazeExplorer({
           return false;
         }
 
+        if (newOnly && !item.isNew) {
+          return false;
+        }
+
         if (brandFilters.length && !brandFilters.includes(item.glaze.brand ?? "")) {
           return false;
         }
@@ -252,6 +261,7 @@ export function useGlazeExplorer({
       indexedGlazes,
       restrictToPreferredExamples,
       reviewMode,
+      newOnly,
       brandFilters,
       familyFilters,
       colorFilters,
@@ -269,6 +279,10 @@ export function useGlazeExplorer({
         }
 
         if (reviewMode && item.hasCuratedDescription) {
+          return false;
+        }
+
+        if (newOnly && !item.isNew) {
           return false;
         }
 
@@ -298,6 +312,7 @@ export function useGlazeExplorer({
       indexedGlazes,
       restrictToPreferredExamples,
       reviewMode,
+      newOnly,
       familyFilters,
       colorFilters,
       finishFilters,
@@ -369,6 +384,7 @@ export function useGlazeExplorer({
   const hasFilters = Boolean(
     query.trim() ||
       brandFilters.length ||
+      newOnly ||
       familyFilters.length ||
       colorFilters.length ||
       finishFilters.length ||
@@ -438,11 +454,13 @@ export function useGlazeExplorer({
 
   const selectedFilterCount =
     brandFilters.length +
+    Number(newOnly) +
     familyFilters.length +
     colorFilters.length +
     finishFilters.length +
     coneFilters.length;
   const selectedFilterLabels = [
+    ...(newOnly ? ["New"] : []),
     ...brandFilters,
     ...familyFilters,
     ...colorFilters,
@@ -570,6 +588,8 @@ export function useGlazeExplorer({
     // Filter state
     brandFilters,
     setBrandFilters,
+    newOnly,
+    setNewOnly,
     familyFilters,
     setFamilyFilters,
     colorFilters,
@@ -610,6 +630,7 @@ export function useGlazeExplorer({
     colorOptionCounts,
     finishOptionCounts,
     coneOptionCounts,
+    newGlazeCount: indexedGlazes.filter((item) => item.isNew).length,
     filteredGlazes,
     currentBrandCounts,
     sortedGlazes,
