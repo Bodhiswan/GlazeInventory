@@ -22,6 +22,7 @@ import { CommunityImagesPanel } from "@/components/community-images-panel";
 import { GlazeImageGallery } from "@/components/glaze-image-gallery";
 import { InventoryGrid } from "@/components/inventory-workspace/inventory-grid";
 import { useInventoryWorkspace } from "@/components/inventory-workspace/use-inventory-workspace";
+import { ScrollRevealSearch } from "@/components/scroll-reveal-search";
 import type {
   CombinationPost,
   GlazeFiringImage,
@@ -240,6 +241,18 @@ export function InventoryWorkspace({
         title="Inventory"
         description="Keep a quick, useful record of what is on your shelf, what you want next, and what you have used up."
       />
+      <ScrollRevealSearch>
+        <div className="flex items-center gap-3 border border-foreground/14 bg-white px-3 py-2.5 sm:px-4">
+          <Search className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+          <Input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            aria-label="Search your inventory"
+            placeholder="Search your inventory"
+            className="border-0 bg-transparent px-0 text-base shadow-none"
+          />
+        </div>
+      </ScrollRevealSearch>
       <Panel className="space-y-4">
         <div className="space-y-2">
           <span className="text-sm font-semibold text-foreground">Add a glaze</span>

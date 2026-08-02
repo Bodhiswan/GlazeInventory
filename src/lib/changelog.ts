@@ -1,4 +1,4 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v12";
+export const CHANGELOG_KEY = "glaze-library-changelog-v13";
 
 export const CHANGES = [
   {
@@ -29,6 +29,8 @@ export const CHANGES = [
       "Browser hydration issues on catalog pages resolved.",
       "Signed-in shell now renders correctly on guide pages.",
       "Spectrum catalogue images repaired — legacy colours such as 1137 and 1138 now use checked-in reference tiles instead of unreliable remote image links.",
+      "Search dock on long pages — scroll upward slightly to bring the Library, Combinations, Inventory, or Community search back below the sticky header.",
+      "Coyote Regular tiles — split Regular/Slow primary images are processed so only the Regular tile appears in the catalog card.",
     ],
   },
   {

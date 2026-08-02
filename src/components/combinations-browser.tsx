@@ -1,5 +1,7 @@
 "use client";
 
+import { Search, X } from "lucide-react";
+
 import type {
   CombinationPost,
   GlazeFiringImage,
@@ -7,6 +9,8 @@ import type {
   UserCombinationExample,
   VendorCombinationExample,
 } from "@/lib/types";
+import { Input } from "@/components/ui/input";
+import { ScrollRevealSearch } from "@/components/scroll-reveal-search";
 import { useCombinationsBrowser } from "./combinations-browser/use-combinations-browser";
 import type { CombinationsView } from "./combinations-browser/use-combinations-browser";
 import { CombinationFilters } from "./combinations-browser/combination-filters";
@@ -62,6 +66,50 @@ export function CombinationsBrowser({
         title="Glaze combinations"
         description="Explore tested pairings, check what your shelf can make, and save ideas for your next firing."
       />
+      <ScrollRevealSearch>
+        <div className="grid gap-2 sm:grid-cols-2">
+          <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-2.5 sm:px-4">
+            <Search className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+            <Input
+              value={browser.query}
+              onChange={(event) => browser.setQuery(event.target.value)}
+              aria-label="Search combinations by glaze"
+              placeholder="Search a glaze, code, or keyword"
+              className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
+            />
+            {browser.query.trim() ? (
+              <button
+                type="button"
+                onClick={() => browser.setQuery("")}
+                aria-label="Clear first combination search"
+                className="text-muted hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            ) : null}
+          </div>
+          <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-2.5 sm:px-4">
+            <Search className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+            <Input
+              value={browser.query2}
+              onChange={(event) => browser.setQuery2(event.target.value)}
+              aria-label="Search combinations by a second glaze"
+              placeholder="And another glaze to narrow down"
+              className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
+            />
+            {browser.query2.trim() ? (
+              <button
+                type="button"
+                onClick={() => browser.setQuery2("")}
+                aria-label="Clear second combination search"
+                className="text-muted hover:text-foreground"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            ) : null}
+          </div>
+        </div>
+      </ScrollRevealSearch>
       <CombinationFilters
         query={browser.query}
         setQuery={browser.setQuery}

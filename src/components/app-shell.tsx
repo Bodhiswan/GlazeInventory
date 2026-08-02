@@ -17,7 +17,10 @@ export async function AppShell({
   return (
     <div className="min-h-screen">
       <div className="mx-auto flex min-h-screen w-full max-w-[1500px] flex-col gap-4 px-3 py-3 sm:gap-5 sm:px-4 sm:py-4 lg:px-6">
-        <header className="sticky top-0 z-30 -mx-3 border-b border-border bg-background/95 px-3 sm:-mx-4 sm:px-4 lg:-mx-6 lg:px-6">
+        <header
+          data-app-shell-header
+          className="sticky top-0 z-30 -mx-3 border-b border-border bg-background/95 px-3 sm:-mx-4 sm:px-4 lg:-mx-6 lg:px-6"
+        >
           <div className="grid grid-cols-[auto_1fr_auto] items-center gap-0 py-3 sm:py-4">
             <Link
               href="/dashboard"

@@ -10,7 +10,10 @@ export function PublicWorkspaceShell({
   return (
     <div className="min-h-screen">
       <div className="mx-auto flex min-h-screen w-full max-w-[1500px] flex-col gap-4 px-3 py-3 sm:gap-5 sm:px-4 sm:py-4 lg:px-6">
-        <header className="sticky top-0 z-30 -mx-3 border-b border-border bg-background/95 px-3 sm:-mx-4 sm:px-4 lg:-mx-6 lg:px-6">
+        <header
+          data-app-shell-header
+          className="sticky top-0 z-30 -mx-3 border-b border-border bg-background/95 px-3 sm:-mx-4 sm:px-4 lg:-mx-6 lg:px-6"
+        >
           <div className="flex items-center justify-between gap-3 py-3 sm:py-4">
             <div className="flex min-w-0 items-center gap-2 sm:gap-3">
               <Link

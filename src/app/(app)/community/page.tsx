@@ -4,6 +4,7 @@ import { Search } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
+import { ScrollRevealSearch } from "@/components/scroll-reveal-search";
 import { requireViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 import { CommunityPostsServer } from "./_components/community-posts-server";
@@ -26,8 +27,23 @@ export default async function CommunityPage({
         description="Browse what other members have published, then jump into the pair detail page when a result overlaps with your shelf."
       />
 
+      <ScrollRevealSearch>
+        <Panel>
+          <form className="flex items-center gap-3" role="search">
+            <Search className="h-4 w-4 text-muted" aria-hidden="true" />
+            <Input
+              name="q"
+              defaultValue={query}
+              aria-label="Search community combinations"
+              placeholder="Search community combinations"
+              className="border-0 bg-transparent px-0"
+            />
+          </form>
+        </Panel>
+      </ScrollRevealSearch>
+
       <Panel>
-        <form className="flex items-center gap-3">
+        <form className="flex items-center gap-3" role="search">
           <Search className="h-4 w-4 text-muted" />
           <Input
             name="q"

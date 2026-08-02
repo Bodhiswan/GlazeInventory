@@ -11,6 +11,7 @@
     "catalog:amaco:combinations": "python scripts/scrape_amaco_combinations.py",
     "catalog:amaco:blog-combinations": "python scripts/apply_amaco_blog_combinations.py",
     "catalog:coyote:combinations": "python scripts/apply_coyote_combinations.py",
+    "catalog:coyote:regular-tiles": "python scripts/crop_coyote_regular_tiles.py",
     "catalog:amaco:combinations:export": "python scripts/export_amaco_combination_checkpoint.py",
     "catalog:amaco:combination-images": "python scripts/archive_amaco_combination_images.py",
     "catalog:external-combos": "python scripts/archive_external_combo_sources.py",

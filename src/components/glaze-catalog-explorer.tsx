@@ -20,6 +20,7 @@ import { cn, formatGlazeLabel, getGlazeSkimDescription } from "@/lib/utils";
 import { useGlazeExplorer } from "@/components/glaze-catalog/use-glaze-explorer";
 import { GlazeFilters } from "@/components/glaze-catalog/glaze-filters";
 import { GlazeGrid } from "@/components/glaze-catalog/glaze-grid";
+import { ScrollRevealSearch } from "@/components/scroll-reveal-search";
 
 export function GlazeCatalogExplorer({
   glazes,
@@ -143,6 +144,31 @@ export function GlazeCatalogExplorer({
         title="Glaze library"
         description="Search commercial and community glazes by brand, colour, finish, cone, or firing reference."
       />
+      <ScrollRevealSearch>
+        <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-2.5 sm:px-4">
+          <Search className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
+          <Input
+            value={query}
+            onChange={(event) => {
+              setQuery(event.target.value);
+              setVisibleCount(INITIAL_GLAZE_BATCH);
+            }}
+            aria-label="Search the glaze library"
+            placeholder="Search the glaze library"
+            className="border-0 bg-transparent px-0 text-base shadow-none placeholder:text-muted/75"
+          />
+          {query.trim() ? (
+            <button
+              type="button"
+              onClick={() => setQuery("")}
+              aria-label="Clear glaze library search"
+              className="text-muted hover:text-foreground"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          ) : null}
+        </div>
+      </ScrollRevealSearch>
       {isAdmin ? (
         <div className="flex justify-end">
           <Link
