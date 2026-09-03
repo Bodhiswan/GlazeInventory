@@ -1,4 +1,4 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v14";
+export const CHANGELOG_KEY = "glaze-library-changelog-v15";
 
 export const CHANGES = [
   {
@@ -25,7 +25,7 @@ export const CHANGES = [
     items: [
       "Potterycrafts duplicates removed — powder rows are hidden when the same colour already exists as a liquid underglaze, decorating slip, or on-glaze colour.",
       "Bath Potters duplicates removed — powder rows are hidden when the same glaze already exists as a brush-on glaze.",
-      "Contribution uploads from mobile — raised server upload cap so multi-photo combination and new-glaze submissions no longer fail with an error page.",
+      "Contribution uploads fixed — photos now upload directly to storage, so large mobile photos and multi-photo submissions no longer hit an error page.",
       "Duplicate glazes no longer appear when filtering by brand.",
       "Browser hydration issues on catalog pages resolved.",
       "Signed-in shell now renders correctly on guide pages.",

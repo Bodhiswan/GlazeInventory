@@ -4,6 +4,12 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import { getAllCatalogGlazes } from "@/lib/catalog";
+import {
+  getContributionImageBucket,
+  isOwnedContributionImagePath,
+  MAX_CONTRIBUTION_IMAGE_BYTES,
+  MAX_CONTRIBUTION_IMAGE_COUNT,
+} from "@/lib/contribution-images";
 import { awardPoints } from "@/lib/points";
 import { formatGlazeLabel } from "@/lib/utils";
 
@@ -42,8 +48,6 @@ export async function completeContributionTutorialAction(): Promise<void> {
  *   2. Combination of 2–4 existing glazes         → 5 points
  * ------------------------------------------------------------------------- */
 
-const sanitize = (n: string) => n.replace(/[^a-zA-Z0-9.-]/g, "-");
-
 type SubmitResult = { error: string } | { success: true; redirectTo: string; pointsAwarded: number };
 
 interface UploadedImage {
@@ -51,23 +55,33 @@ interface UploadedImage {
   storagePath: string;
 }
 
-async function uploadImages(
+async function verifyUploadedImages(
   supabase: Awaited<ReturnType<typeof requireMemberSupabase>>["supabase"],
   bucket: string,
   userId: string,
-  files: File[],
+  paths: string[],
 ): Promise<{ uploaded: UploadedImage[] } | { error: string }> {
-  const uploaded: UploadedImage[] = [];
-  for (const file of files) {
-    const path = `${userId}/${crypto.randomUUID()}-${sanitize(file.name)}`;
-    const buffer = new Uint8Array(await file.arrayBuffer());
-    const { error: upErr } = await supabase.storage
-      .from(bucket)
-      .upload(path, buffer, { contentType: file.type, upsert: false });
-    if (upErr) return { error: upErr.message };
-    const { data: pub } = supabase.storage.from(bucket).getPublicUrl(path);
-    uploaded.push({ publicUrl: pub.publicUrl, storagePath: path });
+  for (const path of paths) {
+    if (!isOwnedContributionImagePath(path, userId)) {
+      return { error: "One of the uploaded photos is invalid. Please choose it again." };
+    }
+
+    const { data: info, error } = await supabase.storage.from(bucket).info(path);
+    if (error || !info) {
+      return { error: "One of the uploaded photos could not be verified. Please try again." };
+    }
+    if (info.size && info.size > MAX_CONTRIBUTION_IMAGE_BYTES) {
+      return { error: "Each image must be under 8 MB." };
+    }
+    if (info.contentType && !info.contentType.startsWith("image/")) {
+      return { error: "Only image uploads are supported." };
+    }
   }
+
+  const uploaded = paths.map((path) => {
+    const { data: pub } = supabase.storage.from(bucket).getPublicUrl(path);
+    return { publicUrl: pub.publicUrl, storagePath: path };
+  });
   return { uploaded };
 }
 
@@ -75,14 +89,14 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
   const { viewer, supabase } = await requireContributingMember("/contribute");
 
   /* ── Parse common fields ─────────────────────────────────────────────── */
-  const imageFiles = (formData.getAll("images") as unknown[])
-    .filter((f): f is File => f instanceof File && f.size > 0);
+  const uploadedImagePaths = formData
+    .getAll("uploadedImagePaths")
+    .map((value) => value.toString().trim())
+    .filter(Boolean);
 
-  if (imageFiles.length === 0) return { error: "Add at least one photo." };
-  if (imageFiles.length > 5) return { error: "You can upload up to 5 photos." };
-  for (const file of imageFiles) {
-    if (!file.type.startsWith("image/")) return { error: "Only image uploads are supported." };
-    if (file.size > 8 * 1024 * 1024) return { error: "Each image must be under 8 MB." };
+  if (uploadedImagePaths.length === 0) return { error: "Add at least one photo." };
+  if (uploadedImagePaths.length > MAX_CONTRIBUTION_IMAGE_COUNT) {
+    return { error: "You can upload up to 5 photos." };
   }
 
   const coneValue = formData.get("coneValue")?.toString().trim() ?? "";
@@ -103,9 +117,14 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
   }
 
   const isCombination = existingGlazeIds.length >= 2;
-  const bucket = isCombination ? "user-combination-images" : "community-firing-images";
+  const bucket = getContributionImageBucket(existingGlazeIds.length);
 
-  const upload = await uploadImages(supabase, bucket, viewer.profile.id, imageFiles);
+  const upload = await verifyUploadedImages(
+    supabase,
+    bucket,
+    viewer.profile.id,
+    uploadedImagePaths,
+  );
   if ("error" in upload) return upload;
   const uploadedUrls = upload.uploaded.map((u) => u.publicUrl);
 

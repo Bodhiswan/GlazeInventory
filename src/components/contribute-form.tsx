@@ -12,7 +12,13 @@ import { FormBanner } from "@/components/ui/form-banner";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
 import { Textarea } from "@/components/ui/textarea";
+import {
+  getContributionImageBucket,
+  MAX_CONTRIBUTION_IMAGE_BYTES,
+  sanitizeContributionImageName,
+} from "@/lib/contribution-images";
 import { CUSTOM_GLAZE_CONE_VALUES } from "@/lib/glaze-constants";
+import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 // Contributors only ever fire in oxidation OR reduction — "Both" doesn't
 // make sense for a single firing/combo submission.
@@ -32,9 +38,11 @@ function pointsForShape(selectedGlazeCount: number): number {
 
 export function ContributeForm({
   glazes,
+  userId,
   disabled = false,
 }: {
   glazes: Glaze[];
+  userId: string;
   disabled?: boolean;
 }) {
   const router = useRouter();
@@ -153,7 +161,6 @@ export function ContributeForm({
       e.preventDefault();
       setError(null);
       const data = new FormData();
-      imageFiles.forEach(({ file }) => data.append("images", file));
       data.append("coneValue", cone);
       if (atmosphere) data.append("atmosphere", atmosphere);
       if (label) data.append("label", label);
@@ -168,36 +175,86 @@ export function ContributeForm({
       }
 
       startTransition(async () => {
-        const res = await submitContributionAction(data);
-        if ("error" in res) {
+        const bucket = getContributionImageBucket(selectedGlazes.length);
+        const supabase = createSupabaseBrowserClient();
+        const uploadedPaths: string[] = [];
+
+        const removeUploadedFiles = async () => {
+          if (supabase && uploadedPaths.length > 0) {
+            await supabase.storage.from(bucket).remove(uploadedPaths);
+          }
+        };
+
+        try {
+          if (!supabase) {
+            setError("Photo uploads are temporarily unavailable. Please try again later.");
+            return;
+          }
+
+          for (const { file } of imageFiles) {
+            if (!file.type.startsWith("image/")) {
+              setError("Only image uploads are supported.");
+              await removeUploadedFiles();
+              return;
+            }
+            if (file.size > MAX_CONTRIBUTION_IMAGE_BYTES) {
+              setError("Each image must be under 8 MB.");
+              await removeUploadedFiles();
+              return;
+            }
+
+            const path = `${userId}/${crypto.randomUUID()}-${sanitizeContributionImageName(file.name)}`;
+            const { error: uploadError } = await supabase.storage.from(bucket).upload(path, file, {
+              cacheControl: "31536000",
+              contentType: file.type,
+              upsert: false,
+            });
+            if (uploadError) {
+              setError(`Could not upload your photo: ${uploadError.message}`);
+              await removeUploadedFiles();
+              return;
+            }
+            uploadedPaths.push(path);
+            data.append("uploadedImagePaths", path);
+          }
+
+          const res = await submitContributionAction(data);
+          if ("error" in res) {
+            await removeUploadedFiles();
+            setSuccessMessage(null);
+            setError(res.error);
+            return;
+          }
+
+          imageFiles.forEach(({ preview }) => URL.revokeObjectURL(preview));
+          setImageFiles([]);
+          setQuery("");
+          setSelectedGlazes([]);
+          setCone("");
+          setAtmosphere("");
+          setLabel("");
+          setGlazingProcess("");
+          setNotes("");
+          setKilnNotes("");
+          setClayBody("");
+
+          setHasSubmitted(true);
+
+          if (!res.redirectTo.startsWith("/contribute")) {
+            router.push(res.redirectTo);
+            return;
+          }
+
+          setSuccessMessage(
+            `Submitted! +${res.pointsAwarded} point${res.pointsAwarded === 1 ? "" : "s"} — thanks for contributing.`,
+          );
+          setHasSubmitted(false);
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } catch {
+          await removeUploadedFiles();
           setSuccessMessage(null);
-          setError(res.error);
-          return;
+          setError("We couldn't submit your contribution. Your form is still here, so please try again.");
         }
-
-        setImageFiles([]);
-        setQuery("");
-        setSelectedGlazes([]);
-        setCone("");
-        setAtmosphere("");
-        setLabel("");
-        setGlazingProcess("");
-        setNotes("");
-        setKilnNotes("");
-        setClayBody("");
-
-        setHasSubmitted(true);
-
-        if (!res.redirectTo.startsWith("/contribute")) {
-          router.push(res.redirectTo);
-          return;
-        }
-
-        setSuccessMessage(
-          `Submitted! +${res.pointsAwarded} point${res.pointsAwarded === 1 ? "" : "s"} — thanks for contributing.`,
-        );
-        setHasSubmitted(false);
-        window.scrollTo({ top: 0, behavior: "smooth" });
       });
     },
     [
@@ -212,6 +269,7 @@ export function ContributeForm({
       kilnNotes,
       clayBody,
       router,
+      userId,
     ],
   );
 

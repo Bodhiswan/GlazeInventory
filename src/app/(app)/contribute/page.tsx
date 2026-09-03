@@ -55,7 +55,7 @@ export default async function ContributePage() {
         }
       />
 
-      <ContributeForm glazes={catalogGlazes} />
+      <ContributeForm glazes={catalogGlazes} userId={viewer.profile.id} />
 
       {/* ── People to thank ── */}
       {leaderboard.length > 0 ? (
