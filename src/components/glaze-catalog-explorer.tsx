@@ -16,7 +16,7 @@ import { Panel } from "@/components/ui/panel";
 import { PageHeader } from "@/components/page-header";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
 import { getManufacturerUrl } from "@/lib/glaze-metadata";
-import { cn, formatGlazeLabel, getGlazeSkimDescription } from "@/lib/utils";
+import { formatGlazeLabel, getGlazeSkimDescription } from "@/lib/utils";
 import { useGlazeExplorer } from "@/components/glaze-catalog/use-glaze-explorer";
 import { GlazeFilters } from "@/components/glaze-catalog/glaze-filters";
 import { GlazeGrid } from "@/components/glaze-catalog/glaze-grid";
@@ -76,7 +76,6 @@ export function GlazeCatalogExplorer({
     setOpenFilterSections,
     visibleCount,
     setVisibleCount,
-    activeGridGlazeId,
     setActiveGridGlazeId,
     optimisticInventoryStates,
     pendingGlazeIds,
@@ -274,7 +273,6 @@ export function GlazeCatalogExplorer({
               hasActiveQuery={hasActiveQuery}
               loadMoreRef={loadMoreRef}
               visibleCount={visibleCount}
-              reviewMode={reviewMode}
               groupingMode={enableViewModes ? groupingMode : "none"}
             />
           ) : (

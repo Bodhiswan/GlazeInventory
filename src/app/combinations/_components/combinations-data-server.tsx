@@ -9,6 +9,7 @@ import {
   getVendorCombinationExamples,
 } from "@/lib/data/combinations";
 import type { InventoryStatus, UserProfile } from "@/lib/types";
+import { compactCombinationBrowserPayload } from "@/lib/combination-browser-payload";
 
 export async function CombinationsDataServer({
   profile,
@@ -29,7 +30,12 @@ export async function CombinationsDataServer({
     getFavouriteIds(profile.id, "combination"),
   ]);
   const userExamples = (userExamplesRaw ?? []).filter((ue) => ue && ue.id);
-  const myPosts = publishedPosts.filter((post) => post.authorUserId === profile.id);
+  const compactPayload = compactCombinationBrowserPayload({
+    examples,
+    publishedPosts,
+    userExamples,
+  });
+  const myPosts = compactPayload.publishedPosts.filter((post) => post.authorUserId === profile.id);
   const inventoryStatusByGlazeId = ownership.reduce<Record<string, InventoryStatus>>((map, item) => {
     map[item.glazeId] = item.status;
     return map;
@@ -37,17 +43,17 @@ export async function CombinationsDataServer({
 
   // Collect all glaze IDs from examples, posts, and user examples for firing images
   const allGlazeIds = new Set<string>();
-  for (const ex of examples) {
-    for (const layer of ex.layers) {
+  for (const example of compactPayload.examples) {
+    for (const layer of example.layers) {
       if (layer.glaze?.id) allGlazeIds.add(layer.glaze.id);
     }
   }
-  for (const post of publishedPosts) {
+  for (const post of compactPayload.publishedPosts) {
     for (const glaze of post.glazes ?? []) {
       allGlazeIds.add(glaze.id);
     }
   }
-  for (const ue of userExamples) {
+  for (const ue of compactPayload.userExamples) {
     for (const layer of ue.layers) {
       if (layer.glaze?.id) allGlazeIds.add(layer.glaze.id);
     }
@@ -62,10 +68,10 @@ export async function CombinationsDataServer({
         </FormBanner>
       ) : null}
       <CombinationsBrowser
-        examples={examples}
-        publishedPosts={publishedPosts}
+        examples={compactPayload.examples}
+        publishedPosts={compactPayload.publishedPosts}
         myPosts={myPosts}
-        userExamples={userExamples}
+        userExamples={compactPayload.userExamples}
         glazeFiringImages={glazeFiringImages}
         inventoryStatusByGlazeId={inventoryStatusByGlazeId}
         initialView={selectedView}

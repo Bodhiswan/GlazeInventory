@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import { HomeLandingPage } from "@/components/home-landing-page";
-import { getViewer } from "@/lib/data/users";
 import { formatSearchQuery } from "@/lib/utils";
 
 export const metadata: Metadata = {
@@ -26,10 +24,9 @@ export default async function HomePage({
   }>;
 }) {
   const params = await searchParams;
-  const viewer = await getViewer();
   const code = formatSearchQuery(params.code);
   const next = formatSearchQuery(params.next);
-  const authError = formatSearchQuery(params.error_description) ?? formatSearchQuery(params.error);
+  const authError = formatSearchQuery(params.error_description) || formatSearchQuery(params.error);
   const errorCode = formatSearchQuery(params.error_code);
 
   if (code) {
@@ -53,5 +50,5 @@ export default async function HomePage({
     redirect(`/auth/forgot-password?error=${encodeURIComponent(message)}`);
   }
 
-  return <HomeLandingPage viewer={viewer} />;
+  redirect("/glazes");
 }

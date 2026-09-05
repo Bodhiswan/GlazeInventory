@@ -6,6 +6,8 @@ import {
 } from "@/lib/data/combinations";
 import type { CombinationsView } from "@/components/combinations-browser/use-combinations-browser";
 
+import { compactCombinationBrowserPayload } from "@/lib/combination-browser-payload";
+
 const PUBLIC_AVAILABLE_VIEWS: CombinationsView[] = [
   "all",
   "new",
@@ -51,14 +53,16 @@ export async function PublicCombinationsDataServer({
     getPublishedCombinationPosts("public", { publicRead: true }),
   ]);
 
+  const compactPayload = compactCombinationBrowserPayload({ examples, publishedPosts, userExamples: [] });
+
   const glazeFiringImages = getGlazeFiringImageMap(
-    collectPublicGlazeIds(examples, publishedPosts),
+    collectPublicGlazeIds(compactPayload.examples, compactPayload.publishedPosts),
   );
 
   return (
     <CombinationsBrowser
-      examples={examples}
-      publishedPosts={publishedPosts}
+      examples={compactPayload.examples}
+      publishedPosts={compactPayload.publishedPosts}
       myPosts={[]}
       userExamples={[]}
       glazeFiringImages={glazeFiringImages}
