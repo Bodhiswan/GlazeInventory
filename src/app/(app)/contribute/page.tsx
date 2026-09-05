@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 import { ContributeForm } from "@/components/contribute-form";
 import { PageHeader } from "@/components/page-header";
@@ -7,13 +6,11 @@ import { getLeaderboard } from "@/lib/data/admin";
 import { getCatalogGlazes } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
 
-export default async function ContributePage() {
+export default async function ContributePage({ searchParams }: { searchParams: Promise<{ glaze?: string | string[]; cone?: string }> }) {
+  const params = await searchParams;
+  const initialGlazeIds = [...new Set(typeof params.glaze === "string" ? [params.glaze] : params.glaze ?? [])].slice(0, 4);
+  const initialCone = params.cone ?? "";
   const viewer = await requireViewer();
-
-  // ── Tutorial gate ──────────────────────────────────────────────────
-  if (!viewer.profile.contributionTutorialCompletedAt) {
-    redirect("/contribute/welcome");
-  }
 
   // ── Locked-out members (3-strike system) ───────────────────────────
   if (viewer.profile.contributionsDisabled && !viewer.profile.isAdmin) {
@@ -44,7 +41,7 @@ export default async function ContributePage() {
       <PageHeader
         eyebrow="Contribute"
         title="Share what came out of the kiln"
-        description="One form for everything — a firing photo, a layered combination, or a glaze that isn't here yet. The form expands as you go."
+        description="Share a fired result at Cone 6 or Cone 10. Use photos you have permission to share, and record the actual glaze order and firing conditions."
         actions={
           <Link
             href="/contribute/welcome?revisit=1"
@@ -55,7 +52,7 @@ export default async function ContributePage() {
         }
       />
 
-      <ContributeForm glazes={catalogGlazes} userId={viewer.profile.id} />
+      <ContributeForm glazes={catalogGlazes} userId={viewer.profile.id} initialGlazeIds={initialGlazeIds} initialCone={initialCone} />
 
       {/* ── People to thank ── */}
       {leaderboard.length > 0 ? (

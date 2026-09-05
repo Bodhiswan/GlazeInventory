@@ -17,7 +17,7 @@ import {
   MAX_CONTRIBUTION_IMAGE_BYTES,
   sanitizeContributionImageName,
 } from "@/lib/contribution-images";
-import { CUSTOM_GLAZE_CONE_VALUES } from "@/lib/glaze-constants";
+import { RESULT_CONES, isResultCone } from "@/lib/result-cones";
 import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
 
 // Contributors only ever fire in oxidation OR reduction — "Both" doesn't
@@ -28,7 +28,7 @@ import { buildGlazeSearchIndex, cn, matchesGlazeSearch } from "@/lib/utils";
 
 export type CombinationOption = { id: string; type: "vendor" | "user"; label: string; sub?: string };
 
-const COMBO_CONES = ["Cone 06", "Cone 6", "Cone 10"] as const;
+
 
 function pointsForShape(selectedGlazeCount: number): number {
   if (selectedGlazeCount >= 2) return 5;
@@ -40,10 +40,14 @@ export function ContributeForm({
   glazes,
   userId,
   disabled = false,
+  initialGlazeIds = [],
+  initialCone = "",
 }: {
   glazes: Glaze[];
   userId: string;
   disabled?: boolean;
+  initialGlazeIds?: string[];
+  initialCone?: string;
 }) {
   const router = useRouter();
 
@@ -67,7 +71,7 @@ export function ContributeForm({
   /* ── Glaze selection ───────────────────────────────────────────────── */
   const [query, setQuery] = useState("");
   const deferredQuery = useDeferredValue(query);
-  const [selectedGlazes, setSelectedGlazes] = useState<Glaze[]>([]);
+  const [selectedGlazes, setSelectedGlazes] = useState<Glaze[]>(() => [...new Set(initialGlazeIds)].slice(0, 4).flatMap(id => { const glaze = glazes.find(g => g.id === id); return glaze ? [glaze] : []; }));
 
   const filteredGlazes = useMemo(() => {
     const selectedIds = new Set(selectedGlazes.map((g) => g.id));
@@ -100,7 +104,7 @@ export function ContributeForm({
   }
 
   /* ── Cone & atmosphere ─────────────────────────────────────────────── */
-  const [cone, setCone] = useState<string>("");
+  const [cone, setCone] = useState<string>(isResultCone(initialCone) ? initialCone : "");
   const [atmosphere, setAtmosphere] = useState<string>("");
 
   /* ── Combination notes (revealed when 2+ glazes) ───────────────────── */
@@ -120,7 +124,7 @@ export function ContributeForm({
   /* ── Validation ────────────────────────────────────────────────────── */
   const photoCountValid = imageFiles.length >= 1 && imageFiles.length <= 5;
   const hasTarget = selectedGlazes.length > 0;
-  const coneValid = !!cone && (isCombination ? COMBO_CONES.includes(cone as (typeof COMBO_CONES)[number]) : true);
+  const coneValid = isResultCone(cone);
 
   const canSubmit = photoCountValid && hasTarget && coneValid && !disabled;
 
@@ -131,12 +135,14 @@ export function ContributeForm({
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   /* ── Unsaved-changes guard ─────────────────────────────────────────── */
+  const [initialSelection] = useState(() => selectedGlazes.map(glaze => glaze.id).join(","));
+  const [initialSelectedCone] = useState(cone);
   const isDirty =
     !hasSubmitted &&
     !isPending &&
     (imageFiles.length > 0 ||
-      selectedGlazes.length > 0 ||
-      cone !== "" ||
+      selectedGlazes.map(glaze => glaze.id).join(",") !== initialSelection ||
+      cone !== initialSelectedCone ||
       atmosphere !== "" ||
       label !== "" ||
       glazingProcess !== "" ||
@@ -503,7 +509,7 @@ export function ContributeForm({
           <p className="text-sm font-semibold text-foreground">Firing temperature</p>
         </div>
         <div className="flex flex-wrap gap-2">
-          {(isCombination ? COMBO_CONES : CUSTOM_GLAZE_CONE_VALUES).map((c) => {
+          {RESULT_CONES.map((c) => {
             const selected = cone === c;
             return (
               <button
@@ -524,7 +530,7 @@ export function ContributeForm({
           })}
         </div>
         {isCombination ? (
-          <p className="text-xs text-muted">Combinations support Cone 06, 6, or 10.</p>
+          <p className="text-xs text-muted">Share results fired to Cone 6 or Cone 10.</p>
         ) : null}
       </Panel>
 

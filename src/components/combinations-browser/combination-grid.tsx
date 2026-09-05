@@ -1,6 +1,8 @@
 "use client";
+import { contributionUrl } from "@/lib/result-cones";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Heart, X } from "lucide-react";
 import type { Dispatch, RefObject, SetStateAction } from "react";
 
@@ -469,6 +471,7 @@ function UserExampleDetail({
           <p className="text-sm text-muted">
             <span className="font-semibold text-foreground">By:</span> {userExample.authorName}
           </p>
+          {userExample.clayBody ? <p className="text-sm text-muted">Clay body: {userExample.clayBody}</p> : null}
           {userExample.glazingProcess ? (
             <p className="text-sm leading-6 text-muted">
               <span className="font-semibold text-foreground">Process:</span> {userExample.glazingProcess}
@@ -669,7 +672,7 @@ export function CombinationGrid({
 
                     <div className="flex flex-wrap gap-1">
                       {tile.cone ? <Badge tone="neutral">{tile.cone}</Badge> : null}
-                      <Badge tone={tile.badgeTone}>{tile.badgeLabel}</Badge>
+                      {viewerUserId ? <Badge tone={tile.badgeTone}>{tile.badgeLabel}</Badge> : null}
                     </div>
                   </div>
                 </button>
@@ -714,6 +717,8 @@ export function CombinationGrid({
               ? "No combination exists yet that only uses glazes on your shelf. Switch to All combinations or add more glazes to your inventory."
               : view === "plus1"
               ? "No combination is just one glaze away from your shelf. Try adding more glazes to your inventory."
+              : view === "saved"
+              ? "No saved combinations yet. Open a combination and choose Favourite to keep it here."
               : view === "mine"
               ? "You haven't published any combinations yet. Share a kiln-tested result to see it here."
               : "Try a glaze code, glaze name, cone, or clay body to narrow the results."}
@@ -734,13 +739,17 @@ export function CombinationGrid({
             className="flex max-h-[92dvh] w-full max-w-4xl flex-col overflow-hidden border border-border bg-background sm:mt-[4vh]"
             onClick={(event) => event.stopPropagation()}
           >
-            <div className="flex items-start gap-3 border-b border-border px-4 py-3 sm:px-5">
+            <div className="flex flex-wrap items-start gap-3 border-b border-border px-4 py-3 sm:px-5">
               <div className="min-w-0 flex-1">
                 {activeTile.subtitle ? (
                   <p className="text-[10px] uppercase tracking-[0.14em] text-muted">{activeTile.subtitle}</p>
                 ) : null}
                 <h3 id="combination-detail-title" className="line-clamp-2 text-lg font-semibold leading-tight text-foreground sm:text-2xl">{activeTile.title}</h3>
               </div>
+              <Link href={contributionUrl(
+                (activeTile.example?.layers ?? activeTile.userExample?.layers)?.map(l => l.glaze?.id ?? l.glazeId).filter((id): id is string => Boolean(id))
+                  ?? (activeTile.post ? getOrderedPostGlazes(activeTile.post).map(g => g.id) : []), activeTile.cone
+              )} className={buttonVariants({ variant: "secondary", size: "sm" })}>Add my result</Link>
               {(() => {
                 const combinationId = activeTile.example?.id ?? activeTile.post?.id ?? activeTile.userExample?.id ?? null;
                 if (!combinationId || !viewerUserId) return null;

@@ -1,4 +1,6 @@
 "use client";
+import { useBrowseSession } from "@/components/use-browse-session";
+import { RESULT_CONES, matchesResultCone, isResultCone } from "@/lib/result-cones";
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
@@ -68,6 +70,7 @@ export interface UseGlazeExplorerProps {
   favouriteGlazeIds: string[];
   isAdmin: boolean;
   reviewMode: boolean;
+  defaultCone?: string | null;
 }
 
 export function useGlazeExplorer({
@@ -81,13 +84,14 @@ export function useGlazeExplorer({
   favouriteGlazeIds,
   isAdmin,
   reviewMode,
+  defaultCone = "Cone 6",
 }: UseGlazeExplorerProps) {
   const [query, setQuery] = useState("");
   const [brandFilters, setBrandFilters] = useState<string[]>([]);
   const [familyFilters, setFamilyFilters] = useState<string[]>([]);
   const [colorFilters, setColorFilters] = useState<string[]>([]);
   const [finishFilters, setFinishFilters] = useState<string[]>([]);
-  const [coneFilters, setConeFilters] = useState<string[]>([]);
+  const [coneFilters, setConeFilters] = useState<string[]>(defaultCone ? [defaultCone] : []);
   const [newOnly, setNewOnly] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [openFilterSections, setOpenFilterSections] = useState<
@@ -111,12 +115,20 @@ export function useGlazeExplorer({
   const [pendingFavouriteIds, setPendingFavouriteIds] = useState<string[]>([]);
   const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
+  useBrowseSession("glazes", { query, brandFilters, familyFilters, colorFilters, finishFilters, coneFilters, newOnly, visibleCount }, saved => {
+    if (typeof saved.query !== "string" || ![saved.brandFilters, saved.familyFilters, saved.colorFilters, saved.finishFilters, saved.coneFilters].every(Array.isArray)) return;
+    setQuery(saved.query); setBrandFilters(saved.brandFilters); setFamilyFilters(saved.familyFilters);
+    setColorFilters(saved.colorFilters); setFinishFilters(saved.finishFilters);
+    setConeFilters(saved.coneFilters.filter(cone => RESULT_CONES.some(supported => supported === cone)));
+    setNewOnly(saved.newOnly === true); setVisibleCount(Math.max(INITIAL_GLAZE_BATCH, Number(saved.visibleCount) || INITIAL_GLAZE_BATCH));
+  });
+
   const deferredQuery = useDeferredValue(query);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
   const colorAwareQuery = extractColorAwareQuery(deferredQuery);
   const textQuery = colorAwareQuery.textQuery;
   const queryColorIntent = colorAwareQuery.colorIntent;
-  const previewCone = coneFilters[0] ?? preferredCone;
+  const previewCone = coneFilters[0] ?? (preferredCone && isResultCone(preferredCone) ? preferredCone : "Cone 6");
 
   const indexedGlazes = useMemo<IndexedGlaze[]>(
     () =>
@@ -125,7 +137,7 @@ export function useGlazeExplorer({
         const familyTraits = getGlazeFamilyTraits(glaze);
         const colorTraits = extractGlazeColorTraits(glaze);
         const finishTraits = extractGlazeFinishTraits(glaze);
-        const coneTraits = extractGlazeConeTraits(glaze);
+        const coneTraits = [...new Set([...extractGlazeConeTraits(glaze), ...RESULT_CONES.filter(cone => (firingImageMap[glaze.id] ?? []).some(image => matchesResultCone(image.cone, [cone])))])];
 
         return {
           glaze,
@@ -388,7 +400,7 @@ export function useGlazeExplorer({
       familyFilters.length ||
       colorFilters.length ||
       finishFilters.length ||
-      coneFilters.length,
+      coneFilters.join() !== (defaultCone ?? ""),
   );
 
   const gradientSortedGlazes = useMemo(

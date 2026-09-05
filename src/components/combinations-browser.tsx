@@ -15,7 +15,7 @@ import { useCombinationsBrowser } from "./combinations-browser/use-combinations-
 import type { CombinationsView } from "./combinations-browser/use-combinations-browser";
 import { CombinationFilters } from "./combinations-browser/combination-filters";
 import { CombinationGrid } from "./combinations-browser/combination-grid";
-import { PageHeader } from "@/components/page-header";
+
 
 export function CombinationsBrowser({
   examples,
@@ -60,12 +60,8 @@ export function CombinationsBrowser({
   });
 
   return (
-    <div className="space-y-6">
-      <PageHeader
-        eyebrow={viewerUserId ? "Your workspace" : "Public library"}
-        title="Glaze combinations"
-        description="Explore tested pairings, check what your shelf can make, and save ideas for your next firing."
-      />
+    <div className="space-y-3">
+      <h1 className="display-font text-3xl tracking-tight">Glaze combinations</h1>
       <ScrollRevealSearch>
         <div className="grid gap-2 sm:grid-cols-2">
           <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-2.5 sm:px-4">
@@ -118,26 +114,15 @@ export function CombinationsBrowser({
         view={browser.view}
         setView={browser.setView}
         viewFilters={browser.viewFilters}
-        viewLabel={browser.viewLabel}
         brandFilters={browser.brandFilters}
         setBrandFilters={browser.setBrandFilters}
         brandOptions={browser.brandOptions}
-        brandOptionCounts={browser.brandOptionCounts}
-        showCone5={browser.showCone5}
-        setShowCone5={browser.setShowCone5}
         showCone6={browser.showCone6}
         setShowCone6={browser.setShowCone6}
         showCone10={browser.showCone10}
         setShowCone10={browser.setShowCone10}
-        filtersOpen={browser.filtersOpen}
-        setFiltersOpen={browser.setFiltersOpen}
-        openFilterSections={browser.openFilterSections}
-        setOpenFilterSections={browser.setOpenFilterSections}
-        activeTilesLength={browser.activeTiles.length}
         hasFilters={browser.hasFilters}
         resetFilters={browser.resetFilters}
-        INITIAL_TILE_BATCH={browser.INITIAL_TILE_BATCH}
-        setVisibleCount={browser.setVisibleCount}
         hideConeFilter={lockedConeScope !== null}
       />
       <CombinationGrid

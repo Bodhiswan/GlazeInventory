@@ -19,7 +19,7 @@ export async function CombinationsDataServer({
 }: {
   profile: UserProfile;
   initialQuery: string;
-  selectedView: "all" | "new" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
+  selectedView: "saved" | "all" | "new" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
   justPublished: boolean;
 }) {
   const [examples, publishedPosts, ownership, userExamplesRaw, favouriteCombinationIds] = await Promise.all([

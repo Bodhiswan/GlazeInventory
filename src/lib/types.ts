@@ -185,6 +185,7 @@ export interface UserCombinationExampleLayer {
 }
 
 export interface UserCombinationExample {
+  clayBody?: string | null;
   id: string;
   authorUserId: string;
   authorName: string;

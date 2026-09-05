@@ -1,5 +1,6 @@
 "use client";
 
+import { matchesResultCone } from "@/lib/result-cones";
 import { useEffect, useState } from "react";
 
 import type { LightboxImage } from "@/components/image-lightbox";
@@ -34,7 +35,9 @@ export function useCommunityImages({ target, altPrefix }: UseCommunityImagesProp
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    fetchCommunityImages(target).then(setImages);
+    let active = true;
+    fetchCommunityImages(target).then(rows => { if (active) setImages(rows.filter(row => matchesResultCone(row.cone))); }).catch(() => { if (active) setImages([]); });
+    return () => { active = false; };
   }, ["glazeId" in target ? target.glazeId : target.combinationId]);
 
   const lightboxImages: LightboxImage[] = (images ?? []).map((img) => ({

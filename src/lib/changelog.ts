@@ -1,9 +1,12 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v16";
+export const CHANGELOG_KEY = "glaze-library-changelog-v17";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
+      "Cone 6 by default — the library and combinations browser open at Cone 6, with Cone 10 available when needed.",
+      "Quicker browsing — compact filters, Can make and Saved shortcuts, and remembered searches and scroll position.",
+      "Add my result — start from a glaze or combination with the glazes preselected, and open your result after publishing.",
       "New filters - the Library can show glazes added this week, and Combinations can show pairings that use newly added glazes.",
       "Coyote combinations added - official Shino-over-Black and Texas Two-Step overlap results now appear in Combinations.",
       "More AMACO combinations - 58 official AMACO blog and tutorial combinations added from source-backed resource pages.",

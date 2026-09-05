@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { isResultCone } from "@/lib/result-cones";
 import { getAllCatalogGlazes } from "@/lib/catalog";
 import {
   getContributionImageBucket,
@@ -100,7 +101,7 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
   }
 
   const coneValue = formData.get("coneValue")?.toString().trim() ?? "";
-  if (!coneValue) return { error: "Pick a cone before submitting." };
+  if (!isResultCone(coneValue)) return { error: "Choose Cone 6 or Cone 10 for your fired result." };
 
   const atmosphere = normalizeOptional(formData.get("atmosphere"));
   const label = normalizeOptional(formData.get("label"));
@@ -130,11 +131,6 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
 
   /* ── Combination shape ───────────────────────────────────────────────── */
   if (isCombination) {
-    const validCones = new Set(["Cone 06", "Cone 6", "Cone 10"]);
-    if (!validCones.has(coneValue)) {
-      return { error: "Combinations require Cone 06, Cone 6, or Cone 10." };
-    }
-
     const allCatalog = getAllCatalogGlazes();
     const catalogMap = new Map(allCatalog.map((g) => [g.id, g]));
     const labels: string[] = [];
@@ -213,7 +209,7 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
     revalidateWorkspace();
     return {
       success: true,
-      redirectTo: "/combinations?view=mine&published=1",
+      redirectTo: `/combinations?view=mine&published=1&result=${exampleRow.id}`,
       pointsAwarded: 5,
     };
   }
@@ -248,5 +244,5 @@ export async function submitContributionAction(formData: FormData): Promise<Subm
   );
 
   revalidateWorkspace();
-  return { success: true, redirectTo: "/contribute?submitted=photo", pointsAwarded: 2 };
+  return { success: true, redirectTo: `/glazes/${encodeURIComponent(existingGlazeIds[0])}`, pointsAwarded: 2 };
 }

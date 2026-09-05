@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Heart, Search, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { BuyLinksDropdown } from "@/components/buy-links-dropdown";
 import { GlazeCommentsPanel } from "@/components/glaze-comments-panel";
@@ -13,7 +13,7 @@ import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Panel } from "@/components/ui/panel";
-import { PageHeader } from "@/components/page-header";
+import { matchesResultCone, contributionUrl } from "@/lib/result-cones";
 import type { Glaze, GlazeFiringImage, InventoryStatus } from "@/lib/types";
 import { getManufacturerUrl } from "@/lib/glaze-metadata";
 import { formatGlazeLabel, getGlazeSkimDescription } from "@/lib/utils";
@@ -25,11 +25,11 @@ import type { GlazeGroupingMode } from "@/components/glaze-catalog/glaze-view-op
 import { ScrollRevealSearch } from "@/components/scroll-reveal-search";
 
 export function GlazeCatalogExplorer({
-  glazes,
+  glazes: allGlazes,
   brandCounts,
   inventoryStates,
   isGuest,
-  firingImageMap,
+  firingImageMap: allFiringImages,
   preferredCone,
   preferredAtmosphere,
   restrictToPreferredExamples,
@@ -53,6 +53,12 @@ export function GlazeCatalogExplorer({
   hideConeFilter?: boolean;
   enableViewModes?: boolean;
 }) {
+  const firingImageMap = useMemo(() => hideConeFilter ? allFiringImages : Object.fromEntries(
+    Object.entries(allFiringImages).map(([id, images]) => [id, images.filter(image => matchesResultCone(image.cone))])
+  ), [allFiringImages, hideConeFilter]);
+  const glazes = useMemo(() => hideConeFilter ? allGlazes : allGlazes.filter(glaze =>
+    matchesResultCone(glaze.cone) || firingImageMap[glaze.id]?.length
+  ), [allGlazes, firingImageMap, hideConeFilter]);
   const [groupingMode, setGroupingMode] = useState<GlazeGroupingMode>("none");
 
   const {
@@ -122,6 +128,7 @@ export function GlazeCatalogExplorer({
     favouriteGlazeIds,
     isAdmin,
     reviewMode,
+    defaultCone: hideConeFilter ? null : "Cone 6",
   });
 
   useEffect(() => {
@@ -141,12 +148,8 @@ export function GlazeCatalogExplorer({
   }, [activeGridItem, setActiveGridGlazeId]);
 
   return (
-    <div className="space-y-6">
-      <PageHeader
-        eyebrow={isGuest ? "Public library" : "Your workspace"}
-        title="Glaze library"
-        description="Search commercial and community glazes by brand, colour, finish, cone, or firing reference."
-      />
+    <div className="space-y-3">
+      <h1 className="display-font text-3xl tracking-tight">Glaze library</h1>
       <ScrollRevealSearch>
         <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-2.5 sm:px-4">
           <Search className="h-4 w-4 shrink-0 text-muted" aria-hidden="true" />
@@ -183,9 +186,9 @@ export function GlazeCatalogExplorer({
         </div>
       ) : null}
       <section className="grid gap-5">
-        <Panel className="space-y-5">
+        <div className="space-y-3">
           <div className="space-y-4">
-            <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-3 sm:px-4 sm:py-4">
+            <div className="flex items-center gap-3 border border-foreground/20 bg-white px-3 py-1 sm:px-4">
               <Search className="h-4 w-4 text-muted" />
               <Input
                 value={query}
@@ -249,7 +252,7 @@ export function GlazeCatalogExplorer({
                 setFamilyFilters([]);
                 setColorFilters([]);
                 setFinishFilters([]);
-                setConeFilters([]);
+                setConeFilters(hideConeFilter ? [] : ["Cone 6"]);
                 setVisibleCount(INITIAL_GLAZE_BATCH);
               }}
               GLAZE_BATCH_STEP={GLAZE_BATCH_STEP}
@@ -287,7 +290,7 @@ export function GlazeCatalogExplorer({
               </p>
             </Panel>
           )}
-        </Panel>
+        </div>
       </section>
 
       {activeGridItem ? (
@@ -349,14 +352,6 @@ export function GlazeCatalogExplorer({
                     error={ownershipErrors[activeGridItem.glaze.id] ?? null}
                     tiny
                   />
-                  {activeGridItem.glaze.code ? (
-                    <Link
-                      href={`/combinations?q=${encodeURIComponent(activeGridItem.glaze.code)}`}
-                      className="inline-flex items-center border border-border bg-white px-3 py-1.5 text-[10px] uppercase tracking-[0.14em] text-muted transition hover:text-foreground"
-                    >
-                      Combinations
-                    </Link>
-                  ) : null}
                   {activeGridItem.glaze.brand && getManufacturerUrl(activeGridItem.glaze.brand) ? (
                     <a
                       href={getManufacturerUrl(activeGridItem.glaze.brand)!}
@@ -372,6 +367,8 @@ export function GlazeCatalogExplorer({
             </div>
 
             <div className="overflow-y-auto overscroll-contain p-4 sm:p-5">
+              <Link href={contributionUrl([activeGridItem.glaze.id], coneFilters[0])} className={buttonVariants({ variant: "secondary", size: "sm" })}>Add my result</Link>
+              {activeGridItem.glaze.code ? <Link href={`/combinations?q=${encodeURIComponent(activeGridItem.glaze.code)}`} className={buttonVariants({ variant: "ghost", size: "sm" })}>See combinations</Link> : null}
               <div className="grid gap-5 lg:grid-cols-[minmax(0,220px)_1fr]">
                 {/* Images column — gallery with lightbox */}
                 <div className="mx-auto w-full max-w-[280px] lg:mx-0">

@@ -23,9 +23,7 @@ export function PublicWorkspaceShell({
                 <span className="sm:hidden">G.I.</span>
                 <span className="hidden sm:inline">Glaze Inventory</span>
               </Link>
-              <span className="shrink-0 border border-border px-3 py-2 text-[10px] uppercase tracking-[0.14em] text-muted sm:text-[11px] sm:tracking-[0.16em]">
-                Public library
-              </span>
+
             </div>
 
             <PublicWorkspaceNav />

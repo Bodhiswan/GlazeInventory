@@ -106,7 +106,8 @@ export async function requireViewer() {
       const pathname = headerList.get("x-next-pathname") ?? headerList.get("x-invoke-path");
 
       if (pathname && pathname !== "/" && pathname !== "/auth/sign-in") {
-        signInUrl = `/auth/sign-in?redirectTo=${encodeURIComponent(pathname)}`;
+        const returnTo = headerList.get("x-next-return-to") ?? pathname;
+        signInUrl = `/auth/sign-in?redirectTo=${encodeURIComponent(returnTo)}`;
       }
     } catch {
       /* headers unavailable outside request context */

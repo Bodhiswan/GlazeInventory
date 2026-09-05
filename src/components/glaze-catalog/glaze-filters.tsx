@@ -168,12 +168,10 @@ export function GlazeFilters({
   familyOptions,
   colorOptions,
   finishOptions,
-  coneOptions,
   brandOptionCounts,
   familyOptionCounts,
   colorOptionCounts,
   finishOptionCounts,
-  coneOptionCounts,
   newGlazeCount,
   currentBrandCounts,
   // Filter summary
@@ -238,19 +236,14 @@ export function GlazeFilters({
 }) {
   return (
     <div className="space-y-4">
-      <div className="overflow-hidden border border-border/80 bg-panel">
+      <div>
         <button
           type="button"
           onClick={() => setFiltersOpen((current) => !current)}
-          className="flex w-full items-center justify-between gap-3 px-4 py-3 text-left transition-colors hover:bg-white/55"
+          className="flex items-center gap-3 py-1 text-left"
           aria-expanded={filtersOpen}
         >
-          <span className="space-y-1">
-            <span className="block text-sm font-medium text-foreground">Filters</span>
-            <span className="block text-[10px] uppercase tracking-[0.16em] text-muted">
-              Expand sections by new, brand, family, color, finish, and cone
-            </span>
-          </span>
+          <span className="text-sm">Filters</span>
           <span className="flex items-center gap-2">
             {selectedFilterCount ? <Badge tone="neutral">{selectedFilterCount} selected</Badge> : null}
             <ChevronDown
@@ -261,6 +254,12 @@ export function GlazeFilters({
 
         {filtersOpen ? (
           <div className="grid gap-3 border-t border-border px-3 py-3 sm:px-4 sm:py-4">
+            {!hideConeFilter && <div className="flex flex-wrap gap-2" aria-label="Firing cone">
+              {[{label: "Cone 6 & 10", values: []}, {label: "Cone 6", values: ["Cone 6"]}, {label: "Cone 10", values: ["Cone 10"]}].map(option =>
+                <button key={option.label} type="button" aria-pressed={coneFilters.join() === option.values.join()}
+                  onClick={() => { setConeFilters(option.values); onVisibleCountReset(); }}
+                  className={cn("border px-3 py-2 text-sm", coneFilters.join() === option.values.join() ? "border-foreground bg-foreground text-white" : "border-border bg-white")}>{option.label}</button>)}
+            </div>}
             {newGlazeCount > 0 ? (
               <FilterSection
                 title="New"
@@ -397,30 +396,7 @@ export function GlazeFilters({
               </div>
             </FilterSection>
 
-            {hideConeFilter ? null : <FilterSection
-              title="Cones"
-              optionCount={coneOptions.length}
-              selectedCount={coneFilters.length}
-              open={openFilterSections.cones}
-              onToggle={() =>
-                setOpenFilterSections((current) => toggleFilterSection(current, "cones"))
-              }
-            >
-              <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-                {coneOptions.map((option) => (
-                  <FilterTile
-                    key={option}
-                    value={option}
-                    count={coneOptionCounts.get(option)}
-                    checked={coneFilters.includes(option)}
-                    onToggle={(value) => {
-                      setConeFilters((current) => toggleValue(current, value));
-                      onVisibleCountReset();
-                    }}
-                  />
-                ))}
-              </div>
-            </FilterSection>}
+
           </div>
         ) : null}
       </div>

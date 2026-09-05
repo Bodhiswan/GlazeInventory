@@ -15,8 +15,8 @@ export const metadata: Metadata = {
   },
 };
 
-const validViews = new Set(["all", "new", "possible", "plus1", "mine", "user", "manufacturer"]);
-type CombinationsView = "all" | "new" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
+const validViews = new Set(["saved", "all", "new", "possible", "plus1", "mine", "user", "manufacturer"]);
+type CombinationsView = "saved" | "all" | "new" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
 
 export default async function CombinationsPage({
   searchParams,

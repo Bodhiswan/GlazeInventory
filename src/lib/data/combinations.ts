@@ -400,6 +400,7 @@ export async function getUserCombinationExamples(viewerId: string) {
       atmosphere: row.atmosphere ? String(row.atmosphere) : null,
       glazingProcess: row.glazing_process ? String(row.glazing_process) : null,
       notes: row.notes ? String(row.notes) : null,
+      clayBody: row.clay_body ? String(row.clay_body) : null,
       kilnNotes: row.kiln_notes ? String(row.kiln_notes) : null,
       status: "published" as const,
       createdAt: String(row.created_at),

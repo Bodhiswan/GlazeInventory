@@ -1,4 +1,6 @@
 "use client";
+import { useBrowseSession } from "@/components/use-browse-session";
+import { matchesResultCone } from "@/lib/result-cones";
 
 import { useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 
@@ -20,13 +22,14 @@ const INITIAL_TILE_BATCH = 48;
 const TILE_BATCH_STEP = 36;
 const COMBINATIONS_SHUFFLE_SEED = 0.38196601125;
 
-export type CombinationsView = "all" | "new" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
+export type CombinationsView = "saved" | "all" | "new" | "possible" | "plus1" | "mine" | "user" | "manufacturer";
 const DEFAULT_AVAILABLE_VIEWS: CombinationsView[] = [
   "all",
   "new",
   "possible",
   "plus1",
   "mine",
+  "saved",
   "user",
   "manufacturer",
 ];
@@ -319,11 +322,8 @@ export function useCombinationsBrowser({
   const [query2, setQuery2] = useState("");
   const [view, setView] = useState<CombinationsView>(initialView);
   const [brandFilters, setBrandFilters] = useState<string[]>([]);
-  const [showCone5, setShowCone5] = useState(true);
   const [showCone6, setShowCone6] = useState(true);
-  const [showCone10, setShowCone10] = useState(true);
-  const [filtersOpen, setFiltersOpen] = useState(false);
-  const [openFilterSections, setOpenFilterSections] = useState<Record<string, boolean>>({});
+  const [showCone10, setShowCone10] = useState(false);
   const [activeTileId, setActiveTileId] = useState<string | null>(null);
   const [inventoryStatusByGlazeId, setInventoryStatusByGlazeId] = useState(initialInventoryStatusByGlazeId);
   const [favouritedCombinationIds, setFavouritedCombinationIds] = useState<Set<string>>(() => new Set(favouriteCombinationIds));
@@ -334,11 +334,22 @@ export function useCombinationsBrowser({
   const deferredQuery2 = useDeferredValue(query2);
   const normalizedQuery = deferredQuery.trim().toLowerCase();
   const normalizedQuery2 = deferredQuery2.trim().toLowerCase();
+  const restoringSession = useBrowseSession(`combinations:${viewerUserId ?? "guest"}:${initialView}:${initialQuery}`, {
+    query, query2, view, brandFilters, showCone6, showCone10, visibleCount,
+  }, saved => {
+    if (typeof saved.query !== "string" || typeof saved.query2 !== "string" || !Array.isArray(saved.brandFilters)) return;
+    setQuery(saved.query); setQuery2(saved.query2);
+    setView(availableViews.includes(saved.view) ? saved.view : "all");
+    setBrandFilters(saved.brandFilters.filter(value => typeof value === "string"));
+    setShowCone6(saved.showCone6 !== false); setShowCone10(saved.showCone10 !== false);
+    setVisibleCount(Math.max(INITIAL_TILE_BATCH, Math.min(Number(saved.visibleCount) || INITIAL_TILE_BATCH, allTiles.length)));
+  });
+
   const allowedViewSet = useMemo(() => new Set(availableViews), [availableViews]);
 
   useEffect(() => {
-    setView(allowedViewSet.has(initialView) ? initialView : "all");
-  }, [allowedViewSet, initialView]);
+    if (!restoringSession.current) setView(allowedViewSet.has(initialView) ? initialView : "all");
+  }, [allowedViewSet, initialView, restoringSession]);
 
   useEffect(() => {
     if (!allowedViewSet.has(view)) {
@@ -389,9 +400,8 @@ export function useCombinationsBrowser({
     setQuery("");
     setQuery2("");
     setBrandFilters([]);
-    setShowCone5(true);
     setShowCone6(true);
-    setShowCone10(true);
+    setShowCone10(false);
     setVisibleCount(INITIAL_TILE_BATCH);
   }
 
@@ -424,7 +434,7 @@ export function useCombinationsBrowser({
 
   /* Every tile in the full pool (for brand extraction), shuffled for variety */
   const allTiles = useMemo(() => {
-    const tiles = [...exampleTiles, ...communityPostTiles, ...userExampleTiles];
+    const tiles = [...exampleTiles, ...communityPostTiles, ...userExampleTiles].filter(tile => lockedConeScope || matchesResultCone(tile.cone));
     // Fisher-Yates shuffle with seeded PRNG for stability
     let seed = Math.floor(COMBINATIONS_SHUFFLE_SEED * 2147483647) || 1;
     for (let i = tiles.length - 1; i > 0; i--) {
@@ -433,33 +443,29 @@ export function useCombinationsBrowser({
       [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
     }
     return tiles;
-  }, [exampleTiles, communityPostTiles, userExampleTiles]);
+  }, [exampleTiles, communityPostTiles, userExampleTiles, lockedConeScope]);
 
   /* --- view filter counts (for filter tiles) --- */
 
-  const possibleTiles = useMemo(
-    () => allTiles.filter((t) => {
-      if (t.example) return t.example.viewerOwnsAllGlazes;
-      if (t.userExample) return t.userExample.viewerOwnsAllGlazes;
-      return false;
-    }),
-    [allTiles],
-  );
-
-  const plus1Tiles = useMemo(
-    () => allTiles.filter((t) => {
-      if (t.example) {
-        return !t.example.viewerOwnsAllGlazes &&
-          t.example.viewerOwnedLayerCount >= t.example.layers.length - 1;
-      }
-      if (t.userExample) {
-        return !t.userExample.viewerOwnsAllGlazes &&
-          t.userExample.viewerOwnedLayerCount >= t.userExample.layers.length - 1;
-      }
-      return false;
-    }),
-    [allTiles],
-  );
+  const ownership = useMemo(() => new Map(allTiles.map((tile) => {
+    const ids = tile.example?.layers.map(l => l.glaze?.id ?? l.glazeId)
+      ?? tile.userExample?.layers.map(l => l.glaze?.id ?? l.glazeId)
+      ?? tile.post?.glazes?.map(g => g.id) ?? [];
+    const owned = ids.filter(id => id && inventoryStatusByGlazeId[id] === "owned").length;
+    return [tile.id, { total: ids.length, owned }];
+  })), [allTiles, inventoryStatusByGlazeId]);
+  const possibleTiles = useMemo(() => allTiles.filter(t => {
+    const counts = ownership.get(t.id)!;
+    return counts.total > 0 && counts.owned === counts.total;
+  }), [allTiles, ownership]);
+  const plus1Tiles = useMemo(() => allTiles.filter(t => {
+    const counts = ownership.get(t.id)!;
+    return counts.total > 1 && counts.owned === counts.total - 1;
+  }), [allTiles, ownership]);
+  const savedTiles = useMemo(() => allTiles.filter(t => {
+    const id = t.example?.id ?? t.userExample?.id ?? t.post?.id;
+    return id && favouritedCombinationIds.has(id);
+  }), [allTiles, favouritedCombinationIds]);
 
   const mineTiles = useMemo(
     () => [...myPostTiles, ...myUserExampleTiles],
@@ -488,23 +494,15 @@ export function useCombinationsBrowser({
     return Array.from(brandSet).sort((a, b) => a.localeCompare(b));
   }, [allTiles]);
 
-  const brandOptionCounts = useMemo(() => {
-    const counts = new Map<string, number>();
-    for (const tile of allTiles) {
-      const brands = new Set(extractTileBrands(tile));
-      for (const brand of brands) {
-        counts.set(brand, (counts.get(brand) ?? 0) + 1);
-      }
-    }
-    return counts;
-  }, [allTiles]);
-
   /* --- apply view + brand + search filters ----------------------------- */
 
   const activeTiles = useMemo(() => {
     let tiles: CombinationTile[];
 
     switch (view) {
+      case "saved":
+        tiles = savedTiles;
+        break;
       case "mine":
         tiles = mineTiles;
         break;
@@ -550,17 +548,8 @@ export function useCombinationsBrowser({
         return tokens.some((t) => t === "5" || t === "6");
       });
     } else {
-      tiles = tiles.filter((tile) => {
-        const cone = tile.cone ?? "";
-        const isCone5 = /\bcone\s+5\b/i.test(cone);
-        const isCone6 = /\bcone\s+6\b/i.test(cone);
-        const isCone10 = /\bcone\s+10\b/i.test(cone);
-        if (isCone5 && showCone5) return true;
-        if (isCone6 && showCone6) return true;
-        if (isCone10 && showCone10) return true;
-        if (isCone5 || isCone6 || isCone10) return false;
-        return !cone;
-      });
+      const cones = [...(showCone6 ? ["Cone 6"] : []), ...(showCone10 ? ["Cone 10"] : [])];
+      tiles = tiles.filter(tile => matchesResultCone(tile.cone, cones));
     }
 
     // Text search — both queries must match (AND) so users can narrow combos
@@ -579,20 +568,36 @@ export function useCombinationsBrowser({
       tiles = tiles.filter((tile) => matchesQuery(tile, normalizedQuery2));
     }
 
-    return tiles;
-  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone5, showCone6, showCone10, lockedConeScope, allTiles, newGlazeTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles]);
+    return tiles.map(tile => {
+      const counts = ownership.get(tile.id);
+      if (!counts || !tile.example && !tile.userExample) return tile;
+      const complete = counts.total > 0 && counts.owned === counts.total;
+      return { ...tile, badgeLabel: complete ? "Can make" : `${counts.owned}/${counts.total} owned`, badgeTone: complete ? "success" as const : "accent" as const };
+    });
+  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone6, showCone10, lockedConeScope, allTiles, newGlazeTiles, possibleTiles, plus1Tiles, mineTiles, userExampleTiles, communityPostTiles, manufacturerTiles, savedTiles, ownership]);
+
+  const openedPublishedResult = useRef<string | null>(null);
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get("result");
+    if (!id || openedPublishedResult.current === id) return;
+    const tile = activeTiles.find(t => t.userExample?.id === id);
+    if (tile) {
+      openedPublishedResult.current = id;
+      setActiveTileId(tile.id);
+    }
+  }, [activeTiles]);
 
   const activeTile = useMemo(
     () => activeTiles.find((t) => t.id === activeTileId) ?? null,
     [activeTiles, activeTileId],
   );
 
-  const hasFilters = view !== "all" || brandFilters.length > 0 || query.trim().length > 0 || query2.trim().length > 0 || !showCone5 || !showCone6 || !showCone10;
+  const hasFilters = view !== "all" || brandFilters.length > 0 || query.trim().length > 0 || query2.trim().length > 0 || !showCone6 || showCone10;
 
   /* Reset visible count when filters change */
   useEffect(() => {
-    setVisibleCount(INITIAL_TILE_BATCH);
-  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone5, showCone6, showCone10]);
+    if (!restoringSession.current) setVisibleCount(INITIAL_TILE_BATCH);
+  }, [view, normalizedQuery, normalizedQuery2, brandFilters, showCone6, showCone10, restoringSession]);
 
   /* Progressive rendering — load more tiles as the user scrolls */
   const visibleTiles = useMemo(
@@ -625,8 +630,9 @@ export function useCombinationsBrowser({
 
   const baseViewFilters: { key: CombinationsView; label: string; count: number }[] = [
     { key: "new", label: "New glazes", count: newGlazeTiles.length },
-    { key: "possible", label: "Possible combinations", count: possibleTiles.length },
-    { key: "plus1", label: "+1 combinations", count: plus1Tiles.length },
+    { key: "possible", label: "Can make", count: possibleTiles.length },
+    { key: "plus1", label: "Need one more glaze", count: plus1Tiles.length },
+    { key: "saved", label: "Saved", count: savedTiles.length },
     { key: "mine", label: "My combinations", count: mineTiles.length },
     { key: "user", label: "User combinations", count: userExampleTiles.length + communityPostTiles.length },
     { key: "manufacturer", label: "Manufacturer combinations", count: manufacturerTiles.length },
@@ -654,19 +660,11 @@ export function useCombinationsBrowser({
     brandFilters,
     setBrandFilters,
     brandOptions,
-    brandOptionCounts,
     // Cone filters
-    showCone5,
-    setShowCone5,
     showCone6,
     setShowCone6,
     showCone10,
     setShowCone10,
-    // Filter panel
-    filtersOpen,
-    setFiltersOpen,
-    openFilterSections,
-    setOpenFilterSections,
     // Tile data
     activeTiles,
     activeTile,
