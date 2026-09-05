@@ -63,3 +63,7 @@ supabase/.temp
 data/guides/research/
 
 .vercel
+
+# Local image backup files; manifests retain provenance.
+/data/private-image-archive/
+/data/image-archive/

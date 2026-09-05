@@ -10,3 +10,12 @@
 /dev.err
 /dev-runtime.log
 /vendor-image-download.log
+
+# Local backups and release workspaces are never deployment assets.
+/data/image-archive
+/data/private-image-archive
+/data/vendors/library-image-archive.json
+/data/vendors/library-image-recoveries.json
+/data/vendors/library-image-archive-verification.json
+/output
+/.worktrees

@@ -1,4 +1,4 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v15";
+export const CHANGELOG_KEY = "glaze-library-changelog-v16";
 
 export const CHANGES = [
   {
@@ -13,7 +13,8 @@ export const CHANGES = [
       "UK supplier buy links added — Scarva, Bath Potters, and Potterycrafts now appear where they match catalog brands.",
       "BOTZ glazes added — 116 BOTZ glazes now in the library, covering Unidekor underglazes, Earthenware, Stoneware, Engobes, PRO, and Ceramic Ink lines.",
       "Glazing guide expanded — three new sections: Application & Layering, Decorative Techniques, and Firing Considerations are now live.",
-      "Refreshed public homepage — updated hero and layout for first-time visitors.",
+      "Sign-in visibility fixed — button labels stay readable across desktop and mobile.",
+      "Straight into the library — opening the site now takes you directly to glaze search, filters, and tiles.",
       "Color-aware glaze search — search results now rank glazes by how closely they match a color query.",
       "Studio pages — public studio profiles with shareable URLs, plus a single-step studio creation flow.",
       "Studio library view modes — use the compact grid by default or group shared glazes by brand, family, finish, colour, product line, or cone.",

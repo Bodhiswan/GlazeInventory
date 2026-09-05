@@ -17,7 +17,7 @@ export function PublicWorkspaceShell({
           <div className="flex items-center justify-between gap-3 py-3 sm:py-4">
             <div className="flex min-w-0 items-center gap-2 sm:gap-3">
               <Link
-                href="/"
+                href="/glazes"
                 className="display-font shrink-0 border border-border bg-panel px-3 py-2 text-lg leading-none tracking-tight sm:text-xl"
               >
                 <span className="sm:hidden">G.I.</span>

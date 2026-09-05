@@ -18,7 +18,6 @@ export function GlazeGrid({
   hasActiveQuery,
   loadMoreRef,
   visibleCount,
-  reviewMode,
   groupingMode = "none",
 }: {
   visibleGradientGlazes: IndexedGlaze[];
@@ -31,7 +30,6 @@ export function GlazeGrid({
   hasActiveQuery: boolean;
   loadMoreRef: RefObject<HTMLDivElement | null>;
   visibleCount: number;
-  reviewMode: boolean;
   groupingMode?: GlazeGroupingMode;
 }) {
   // Keep each glaze in one section so optional grouping never duplicates tiles.

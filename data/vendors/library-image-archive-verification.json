@@ -1,0 +1,375 @@
+{
+  "generatedAt": "2026-09-05T03:46:44Z",
+  "catalogueSources": 11620,
+  "catalogueStatus": {
+    "verified": 11610,
+    "failed": 10
+  },
+  "categories": {
+    "Glaze primary images": {
+      "references": 3060,
+      "sourceCopy": 3031,
+      "alternateReference": 19,
+      "missing": 10
+    },
+    "Glaze firing images": {
+      "references": 4286,
+      "sourceCopy": 4286
+    },
+    "Combination result images": {
+      "references": 4730,
+      "sourceCopy": 4730
+    },
+    "Combination layer reference images": {
+      "references": 9695,
+      "sourceCopy": 9695
+    },
+    "Archived vendor source images": {
+      "references": 602,
+      "sourceCopy": 564,
+      "alternateReference": 38
+    }
+  },
+  "uploadedImages": {
+    "downloaded": 457
+  },
+  "databaseRecords": 21531,
+  "databaseTables": 12,
+  "additionalHistoricalRecordImages": {
+    "downloaded": 29,
+    "verified": 721
+  },
+  "verifiedDistinctFiles": 11627,
+  "verifiedBytes": 3173893730,
+  "verificationFailures": [],
+  "unavailableSources": [
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Low-Sol-Tin-Opaque-Powder-Glaze.jpg?v=1734613294",
+      "error": "404 Client Error: Not Found for url: https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Low-Sol-Tin-Opaque-Powder-Glaze.jpg?v=1734613294"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Rockingham-Mid-Temperature-Powder-Glaze_b94e8034-2c44-4b6b-9992-bd13d437772d.jpg?v=1721147984",
+      "error": "curl: (22) The requested URL returned error: 404"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Maelstrom-Speckled-Powder-Glaze.jpg?v=1762515132",
+      "error": "curl: (22) The requested URL returned error: 404"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Oiled-Bronze-Effect-Powder-Glaze_6f4417e4-4c7a-497b-9a0d-882292a6f51c.jpg?v=1727268280",
+      "error": "curl: (22) The requested URL returned error: 404"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Turquoise-Green-Powder-Glaze_c4337e29-de17-4022-a25f-39a8ba6484ca.jpg?v=1721147973",
+      "error": "curl: (22) The requested URL returned error: 404"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Verdegris-Effect-Powder-Glaze_8cb2029f-404c-4a00-bb6b-4f5c0f8e1a5e.jpg?v=1721147973",
+      "error": "curl: (22) The requested URL returned error: 404"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Purple-Leadfree-Liquid-On-Glaze.jpg?v=1736249219",
+      "error": "curl: (22) The requested URL returned error: 404"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/p-2559-chun-classic.jpg?v=1728662319",
+      "error": "curl: (22) The requested URL returned error: 404"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Nordic-Sea-Foam-Blue-Powder-Glaze_98ce52bc-9f0f-46e8-9172-af7a23f8f44d.jpg?v=1722584762",
+      "error": "curl: (22) The requested URL returned error: 404"
+    },
+    {
+      "url": "https://cdn.shopify.com/s/files/1/0865/4399/1066/files/Potterycrafts-Dusky-Orange-Liquid-Underglaze.jpg?v=1729860559",
+      "error": "curl: (22) The requested URL returned error: 404"
+    }
+  ],
+  "alternateReferences": [
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83453.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms10_Tobacco_Glaze.jpg",
+      "path": "data/image-archive/7c/7c636a5953f3f851bec1c6ac699760c4e03e763a8ff8bf88b7e1ef6e4e164224.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83467.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms17_Golden_Green_Glaze.jpg",
+      "path": "data/image-archive/9e/9e880767eefb1ade6de5136a5c795ccac9c708a0d4798431a0ff1c66283807f5.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83496.webp",
+      "sourceUrl": "https://static.wixstatic.com/media/e5330f_912d96c5c627424e82759532ec0b0465~mv2_d_1650_1200_s_2.png",
+      "path": "data/image-archive/cb/cba7d42b28a9fe9e966f5318f561bbc00aedb56b3467aadf56821cc6c55e742a.png"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83533.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms59_Walnut_Glaze.jpg",
+      "path": "data/image-archive/9f/9f13b8e998d4e7fa0c6199bf4b2b22f1ccf502d5eaa75f1c0d6b985e0e7f01b6.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83539.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms66_Plum_Glaze.jpg",
+      "path": "data/image-archive/e9/e9d59343716cb491ec81aab966f3b5322aab8cbd7395225f1aa6d86253376aaf.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83542.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms68_Almond_Glaze.jpg",
+      "path": "data/image-archive/22/22995aa9211cdec5e6333bae7ee979acf629e37e93d9d11e0b0c043af9204892.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83544.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms69_Almond_Spice_Glaze.jpg",
+      "path": "data/image-archive/9d/9d001c721f8d887b08188498d9dede37e017a3f217a0a620f31638b2d322f378.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83545.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms71_French_Blue_Glaze.jpg",
+      "path": "data/image-archive/84/84fbcd00f1a0076083a42e758749cec0e08727bc11136cb6916106327435d0c6.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83551.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms75_Chive_Glaze.jpg",
+      "path": "data/image-archive/26/26853af27e55cb382c9656bd0cf831737088f3fa681dd195bf68b41183a58f7b.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83552.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms76_Sea_Foam_Glaze.jpg",
+      "path": "data/image-archive/c2/c2afadbd80e9567d55b85f00f6ebc3cc4769ae7ad1ac9911eb9a5039135a5432.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83556.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms79_Alfred_Blue_Glaze.jpg",
+      "path": "data/image-archive/49/490ff1d26776d658fbc2452674793c043d52eed4b978f5e7b73078e4626db179.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83557.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms80_Dutch_Blue_Glaze.jpg",
+      "path": "data/image-archive/78/78f5b4a0165fff7e06b96e945fe71bf72277edd7832b39080c9ac5a85f624e47.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83558.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms81_Wedgewood_Glaze.jpg",
+      "path": "data/image-archive/b6/b6a7bf8a20ed08f081d7443226a48c467ba713a9ff271b56a27627608cbb3d05.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83559.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms82_Sky_Blue_Glaze.jpg",
+      "path": "data/image-archive/b0/b0785372c2d0141a0105cf78d7f73644b07ced739ded858900f2cc170b59f6a7.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83560.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms83_Maroon_Glaze.jpg",
+      "path": "data/image-archive/21/21b78a3bffbb3f4bcc6c9e4249701f927d433c929c8ee857b71401e1ca26a267.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83563.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms85_Peach_Blush_Glaze.jpg",
+      "path": "data/image-archive/5b/5b42ab56e3ff75235495ecf71c01cb3f72975b1693c06b6cfac5b71097053cac.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83565.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms86_Peanut_Butter_Glaze.jpg",
+      "path": "data/image-archive/5f/5f11bfb9bc16c149923f8b6977592f90a753956efe67f4c0a5317a540efc7077.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83566.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms89_Dark_Gray_Glaze.jpg",
+      "path": "data/image-archive/4f/4f78aee3a2ad2089d2780594c91aa5c6c33781d56b05f87775ffe53689387245.jpg"
+    },
+    {
+      "originalUrl": "https://www.porcelainandceramics.com/wp-content/uploads/2026/03/20260309_83569.webp",
+      "sourceUrl": "https://www.axner.com/ProductImages/glazes/laguna/ms90_Blackberry_Wine_Glaze.jpg",
+      "path": "data/image-archive/6b/6b424e65b464105f7e6ba3e6a3d6155b98cbcc08b71ef9e5f7abf65387d2bc82.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1108.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1108.jpg",
+      "path": "public/vendor-images/spectrum/1108.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1110.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1110.jpg",
+      "path": "public/vendor-images/spectrum/1110.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1112.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1112.jpg",
+      "path": "public/vendor-images/spectrum/1112.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1113.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1113.jpg",
+      "path": "public/vendor-images/spectrum/1113.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1115.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1115.jpg",
+      "path": "public/vendor-images/spectrum/1115.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1120.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1120.jpg",
+      "path": "public/vendor-images/spectrum/1120.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1121.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1121.jpg",
+      "path": "public/vendor-images/spectrum/1121.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1131.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1131.jpg",
+      "path": "public/vendor-images/spectrum/1131.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1158.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1158.jpg",
+      "path": "public/vendor-images/spectrum/1158.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1169.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1169.jpg",
+      "path": "public/vendor-images/spectrum/1169.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1173.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1173.jpg",
+      "path": "public/vendor-images/spectrum/1173.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1184.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1184.jpg",
+      "path": "public/vendor-images/spectrum/1184.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1195.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1195.jpg",
+      "path": "public/vendor-images/spectrum/1195.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1196.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1196.jpg",
+      "path": "public/vendor-images/spectrum/1196.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/1201.jpg",
+      "sourceUrl": "/vendor-images/spectrum/1201.jpg",
+      "path": "public/vendor-images/spectrum/1201.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/850.jpg",
+      "sourceUrl": "/vendor-images/spectrum/850.jpg",
+      "path": "public/vendor-images/spectrum/850.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/852.jpg",
+      "sourceUrl": "/vendor-images/spectrum/852.jpg",
+      "path": "public/vendor-images/spectrum/852.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/853.jpg",
+      "sourceUrl": "/vendor-images/spectrum/853.jpg",
+      "path": "public/vendor-images/spectrum/853.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/855.jpg",
+      "sourceUrl": "/vendor-images/spectrum/855.jpg",
+      "path": "public/vendor-images/spectrum/855.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/861.jpg",
+      "sourceUrl": "/vendor-images/spectrum/861.jpg",
+      "path": "public/vendor-images/spectrum/861.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/863.jpg",
+      "sourceUrl": "/vendor-images/spectrum/863.jpg",
+      "path": "public/vendor-images/spectrum/863.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/864.jpg",
+      "sourceUrl": "/vendor-images/spectrum/864.jpg",
+      "path": "public/vendor-images/spectrum/864.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/865.jpg",
+      "sourceUrl": "/vendor-images/spectrum/865.jpg",
+      "path": "public/vendor-images/spectrum/865.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/866.jpg",
+      "sourceUrl": "/vendor-images/spectrum/866.jpg",
+      "path": "public/vendor-images/spectrum/866.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/870.jpg",
+      "sourceUrl": "/vendor-images/spectrum/870.jpg",
+      "path": "public/vendor-images/spectrum/870.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/871.jpg",
+      "sourceUrl": "/vendor-images/spectrum/871.jpg",
+      "path": "public/vendor-images/spectrum/871.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/872.jpg",
+      "sourceUrl": "/vendor-images/spectrum/872.jpg",
+      "path": "public/vendor-images/spectrum/872.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/873.jpg",
+      "sourceUrl": "/vendor-images/spectrum/873.jpg",
+      "path": "public/vendor-images/spectrum/873.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/874.jpg",
+      "sourceUrl": "/vendor-images/spectrum/874.jpg",
+      "path": "public/vendor-images/spectrum/874.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/875.jpg",
+      "sourceUrl": "/vendor-images/spectrum/875.jpg",
+      "path": "public/vendor-images/spectrum/875.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/878.jpg",
+      "sourceUrl": "/vendor-images/spectrum/878.jpg",
+      "path": "public/vendor-images/spectrum/878.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/882.jpg",
+      "sourceUrl": "/vendor-images/spectrum/882.jpg",
+      "path": "public/vendor-images/spectrum/882.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/883.jpg",
+      "sourceUrl": "/vendor-images/spectrum/883.jpg",
+      "path": "public/vendor-images/spectrum/883.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/884.jpg",
+      "sourceUrl": "/vendor-images/spectrum/884.jpg",
+      "path": "public/vendor-images/spectrum/884.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/887.jpg",
+      "sourceUrl": "/vendor-images/spectrum/887.jpg",
+      "path": "public/vendor-images/spectrum/887.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/888.jpg",
+      "sourceUrl": "/vendor-images/spectrum/888.jpg",
+      "path": "public/vendor-images/spectrum/888.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/889.jpg",
+      "sourceUrl": "/vendor-images/spectrum/889.jpg",
+      "path": "public/vendor-images/spectrum/889.jpg"
+    },
+    {
+      "originalUrl": "https://www.spectrumglazes.com/wp-content/uploads/2020/02/890.jpg",
+      "sourceUrl": "/vendor-images/spectrum/890.jpg",
+      "path": "public/vendor-images/spectrum/890.jpg"
+    }
+  ],
+  "note": "A local backup snapshot, not a change to website delivery. Existing generated tiles and vendor placeholders remain placeholders. Alternate references are not verified copies of missing original photos."
+}
