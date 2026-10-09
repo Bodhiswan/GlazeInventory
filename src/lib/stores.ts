@@ -17,6 +17,8 @@ import glazeQueenData from "@data/stores/glazequeen-us.json";
 import potteryPaintsData from "@data/stores/pottery-paints-au.json";
 import theCeramicShopData from "@data/stores/theceramicshop-us.json";
 
+import { storeLinksById } from "@/lib/store-links";
+
 // ─── Types ─────────────────────────────────────────────────────────────────────
 
 interface StoreProduct {
@@ -171,67 +173,12 @@ const scarvaCarries = makeBrandCarriesCheck(scarvaBrands);
 
 // ─── Store URL strategies ──────────────────────────────────────────────────────
 
-/**
- * Pottery Paints (AU) — WooCommerce search.
- * Their product titles drop hyphens from codes (e.g. "PC25" not "PC-25"),
- * so we strip hyphens/spaces before searching.
- */
-function potteryPaintsUrl(glaze: { code: string | null; name: string }): string {
-  const query = glaze.code ? glaze.code.replace(/[-\s]/g, "") : glaze.name;
-  return `https://potterypaints.com.au/?s=${encodeURIComponent(query)}&post_type=product`;
-}
-
-/**
- * Clay King (US) — WooCommerce search.
- * They keep hyphens in codes (e.g. "PC-25"), so we pass the code as-is.
- */
-function clayKingUrl(glaze: { code: string | null; name: string }): string {
-  const query = glaze.code ?? glaze.name;
-  return `https://clay-king.com/?s=${encodeURIComponent(query)}&post_type=product`;
-}
-
-/**
- * Glaze Queen (US) — site search via Google.
- * Their site blocks direct search requests, so we use a site-scoped Google search.
- */
-function glazeQueenUrl(glaze: { code: string | null; name: string }): string {
-  const query = glaze.code ?? glaze.name;
-  return `https://www.google.com/search?q=site%3Aglazequeen.com+${encodeURIComponent(query)}`;
-}
-
-/**
- * The Ceramic Shop (US) — Nitrosell search.
- * Uses keyword search at /store/search.asp. Hyphens in codes work fine.
- */
-function theCeramicShopUrl(glaze: { code: string | null; name: string }): string {
-  const query = glaze.code ?? glaze.name;
-  return `https://theceramicshop.com/store/search.asp?keyword=${encodeURIComponent(query)}`;
-}
-
-/**
- * Bath Potters Supplies (UK) - site search uses path-based search URLs.
- */
-function bathPottersUrl(glaze: { code: string | null; name: string }): string {
-  const query = glaze.code ?? glaze.name;
-  return `https://www.bathpotters.co.uk/search/${encodeURIComponent(query)}`;
-}
-
-/**
- * Potterycrafts (UK) - Shopify search.
- */
-function potterycraftsUrl(glaze: { code: string | null; name: string }): string {
-  const query = glaze.code ?? glaze.name;
-  return `https://potterycrafts.co.uk/search?q=${encodeURIComponent(query)}`;
-}
-
-/**
- * Scarva (UK) - site-scoped Google search.
- * Their site can block automated direct requests, so this mirrors the
- * Glaze Queen approach and still lands users on product results.
- */
-function scarvaUrl(glaze: { code: string | null; name: string }): string {
-  const query = glaze.code ?? glaze.name;
-  return `https://www.google.com/search?q=site%3Ascarva.com+${encodeURIComponent(query)}`;
+// Search-URL builders live in store-links.ts so client components can use them
+// without bundling the product lists above.
+function urlBuilder(id: string): RetailStore["buildUrl"] {
+  const store = storeLinksById.get(id);
+  if (!store) throw new Error(`Unknown store: ${id}`);
+  return store.buildUrl;
 }
 
 // ─── Store registry ────────────────────────────────────────────────────────────
@@ -244,7 +191,7 @@ export const retailStores: RetailStore[] = [
     country: "AU",
     url: "https://potterypaints.com.au",
     brands: ["amaco", "coyote", "mayco", "spectrum", "laguna", "northcote"],
-    buildUrl: potteryPaintsUrl,
+    buildUrl: urlBuilder("pottery-paints-au"),
     carries: potteryPaintsCarries,
   },
   {
@@ -254,7 +201,7 @@ export const retailStores: RetailStore[] = [
     country: "US",
     url: "https://clay-king.com",
     brands: ["amaco", "coyote", "mayco", "spectrum", "laguna", "speedball", "duncan"],
-    buildUrl: clayKingUrl,
+    buildUrl: urlBuilder("clay-king-us"),
     carries: clayKingCarries,
   },
   {
@@ -264,7 +211,7 @@ export const retailStores: RetailStore[] = [
     country: "GB",
     url: "https://www.bathpotters.co.uk",
     brands: bathPottersBrands,
-    buildUrl: bathPottersUrl,
+    buildUrl: urlBuilder("bath-potters-uk"),
     carries: bathPottersCarries,
   },
   {
@@ -274,7 +221,7 @@ export const retailStores: RetailStore[] = [
     country: "GB",
     url: "https://potterycrafts.co.uk",
     brands: potterycraftsBrands,
-    buildUrl: potterycraftsUrl,
+    buildUrl: urlBuilder("potterycrafts-uk"),
     carries: potterycraftsCarries,
   },
   {
@@ -284,7 +231,7 @@ export const retailStores: RetailStore[] = [
     country: "GB",
     url: "https://www.scarva.com",
     brands: scarvaBrands,
-    buildUrl: scarvaUrl,
+    buildUrl: urlBuilder("scarva-uk"),
     carries: scarvaCarries,
   },
   {
@@ -294,7 +241,7 @@ export const retailStores: RetailStore[] = [
     country: "US",
     url: "https://glazequeen.com",
     brands: ["amaco", "coyote", "mayco", "spectrum", "laguna", "speedball"],
-    buildUrl: glazeQueenUrl,
+    buildUrl: urlBuilder("glazequeen-us"),
     carries: glazeQueenCarries,
   },
   {
@@ -304,7 +251,7 @@ export const retailStores: RetailStore[] = [
     country: "US",
     url: "https://theceramicshop.com",
     brands: ["amaco", "coyote", "mayco", "spectrum", "speedball", "laguna"],
-    buildUrl: theCeramicShopUrl,
+    buildUrl: urlBuilder("theceramicshop-us"),
     carries: theCeramicShopCarries,
   },
 ];

@@ -1,9 +1,14 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v17";
+export const CHANGELOG_KEY = "glaze-library-changelog-v18";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
+      "New Cone 6 layout: Glazes, Combos and My shelf under one simple header, with a detail panel for every glaze and combo. Prefer the old site? \"Use the classic site\" is in the footer.",
+      "Cone 6 photos first: glaze cards show the Cone 6 tile instead of the Cone 10 one wherever the manufacturer has both.",
+      "Find a pair: on Combos, add a second glaze to see tested combinations that use both.",
+      "Buy this glaze: store links for Australia, the US and the UK on every glaze, with your country first.",
+      "Account page: your profile, messages and studio mode in one place.",
       "Cone 6 by default — the library and combinations browser open at Cone 6, with Cone 10 available when needed.",
       "Quicker browsing — compact filters, Can make and Saved shortcuts, and remembered searches and scroll position.",
       "Add my result — start from a glaze or combination with the glazes preselected, and open your result after publishing.",

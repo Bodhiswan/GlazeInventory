@@ -3,13 +3,19 @@ import { type NextRequest, NextResponse } from "next/server";
 
 import { getSupabaseEnv } from "@/lib/env";
 
-export async function updateSession(request: NextRequest) {
+/**
+ * Refreshes the Supabase session. When `rewriteTo` is set, the request is served
+ * from that internal route (the Cone 6 layout) while keeping the public URL.
+ */
+export async function updateSession(request: NextRequest, rewriteTo?: URL) {
   const env = getSupabaseEnv();
   const continueRequest = () => {
     const headers = new Headers(request.headers);
     headers.set("x-next-pathname", request.nextUrl.pathname);
     headers.set("x-next-return-to", `${request.nextUrl.pathname}${request.nextUrl.search}`);
-    return NextResponse.next({ request: { headers } });
+    return rewriteTo
+      ? NextResponse.rewrite(rewriteTo, { request: { headers } })
+      : NextResponse.next({ request: { headers } });
   };
 
   if (!env) {

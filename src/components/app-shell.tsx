@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { AppShellNav } from "@/components/app-shell-nav";
 import { ChangelogBanner } from "@/components/changelog-banner";
+import { NewLayoutLink } from "@/components/new-layout-link";
 import { getUnreadDirectMessageCount } from "@/lib/data/community";
 import type { Viewer } from "@/lib/types";
 
@@ -58,6 +59,8 @@ export async function AppShell({
         <main id="main-content" className="min-w-0 pb-6">
           {children}
         </main>
+
+        <NewLayoutLink />
       </div>
     </div>
   );

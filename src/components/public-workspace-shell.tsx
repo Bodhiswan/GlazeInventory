@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { PublicWorkspaceNav } from "@/components/public-workspace-nav";
+import { NewLayoutLink } from "@/components/new-layout-link";
 
 export function PublicWorkspaceShell({
   children,
@@ -33,6 +34,8 @@ export function PublicWorkspaceShell({
         <main id="main-content" className="min-w-0 pb-6">
           {children}
         </main>
+
+        <NewLayoutLink />
       </div>
     </div>
   );
