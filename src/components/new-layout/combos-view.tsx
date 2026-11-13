@@ -28,7 +28,7 @@ export function CombosView({ potterCombos, member }: { potterCombos: NLCombo[]; 
     if (get("view") !== "mine" && !get("result")) return;
     const result = get("result");
     update({ view: null, published: null, result: null, v: "saved", combo: result || null }, { keepPage: true });
-    if (get("published")) toast("Result published. It's under Saved & mine.");
+    if (get("published")) toast("Result published. It's under Liked & mine.");
   }, [get, toast, update]);
 
   const viewParam = member ? "all" : get("v") || "all";
@@ -74,11 +74,11 @@ export function CombosView({ potterCombos, member }: { potterCombos: NLCombo[]; 
   const hint = q && q2 ? "Combos that use both glazes." : ({
     make: "Every layer in these combos is already on your shelf.",
     near: "Buy one more jar to make any of these. The missing glaze is marked.",
-    saved: "Combos you saved and results you posted.",
+    saved: "Combos you liked and results you posted.",
     potters: "Results posted by potters using Glaze Inventory.",
   } as Partial<Record<View, string>>)[view];
 
-  const tabs: [View, string][] = [["all", "All"], ["make", "I can make"], ["near", "One glaze away"], ["saved", "Saved & mine"]];
+  const tabs: [View, string][] = [["all", "All"], ["make", "I can make"], ["near", "One glaze away"], ["saved", "Liked & mine"]];
   if (potterCombos.length) tabs.push(["potters", "From potters"]);
 
   return (
@@ -141,7 +141,7 @@ export function CombosView({ potterCombos, member }: { potterCombos: NLCombo[]; 
       ) : view === "make" ? (
         <Empty title="Nothing you can make yet" action={<Link className="nl-btn" href="/glazes">Browse glazes</Link>}>Mark the glazes you own as “I have it” and matching combos show up here.</Empty>
       ) : view === "saved" ? (
-        <Empty title="No saved combos" action={<Link className="nl-btn primary" href="/contribute">Add result</Link>}>Open any combo and choose Save, or post your own firing result.</Empty>
+        <Empty title="No liked combos" action={<Link className="nl-btn primary" href="/contribute">Add result</Link>}>Open any combo and choose Like, or post your own firing result.</Empty>
       ) : (
         <Empty title="No combos match" action={<button type="button" className="nl-btn" onClick={() => update({ q: null, q2: null, with: null })}>Clear search</button>}>Try a glaze code like “SW-116”, or clear the search.</Empty>
       )}

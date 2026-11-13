@@ -15,6 +15,38 @@ const ACTION_CAPS: Partial<Record<PointsAction, number>> = {
 };
 
 /**
+ * Gives the author of a member result one point when someone likes it.
+ * Each person counts once per result, however often they like and unlike it.
+ */
+export async function awardLikePoint(likerId: string, exampleId: string): Promise<void> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return;
+
+  const { data: example } = await admin
+    .from("user_combination_examples")
+    .select("author_user_id")
+    .eq("id", exampleId)
+    .maybeSingle();
+  // Brand combinations have no author; liking your own result earns nothing.
+  if (!example || example.author_user_id === likerId) return;
+
+  const referenceType = `like:${likerId}`;
+  const { count } = await admin
+    .from("points_ledger")
+    .select("id", { count: "exact", head: true })
+    .eq("reference_id", exampleId)
+    .eq("reference_type", referenceType);
+  if (count) return;
+
+  const { data: author } = await admin
+    .from("profiles")
+    .select("is_admin")
+    .eq("id", example.author_user_id)
+    .maybeSingle();
+  await awardPoints(example.author_user_id, Boolean(author?.is_admin), "upvote_received", 1, exampleId, referenceType);
+}
+
+/**
  * Award points to a user. No-ops for admins.
  * Writes a ledger row and recomputes the cached total on profiles from all ledger rows.
  */

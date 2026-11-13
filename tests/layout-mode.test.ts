@@ -39,3 +39,10 @@ test("the internal /n tree is never public", () => {
   assert.deepEqual(routeForLayout("/n/glazes", "new"), { type: "redirect", pathname: "/glazes" });
   assert.deepEqual(routeForLayout("/n/glazes", "classic"), { type: "redirect", pathname: "/glazes" });
 });
+
+test("member portfolios use the Cone 6 layout in both modes", () => {
+  for (const mode of ["new", "classic"] as const) {
+    assert.deepEqual(routeForLayout(`/potters/${id}`, mode), { type: "rewrite", pathname: `/n/potters/${id}` });
+  }
+  assert.equal(routeForLayout("/potters/not-an-id", "new"), null);
+});

@@ -11,7 +11,10 @@ import type {
   AdminStudio,
   AdminUserAccount,
   BrandRequest,
+  CommentFilter,
   GuideReport,
+  LikesOverview,
+  MemberPortfolio,
   ModerationState,
   Submission,
   SubmissionKind,
@@ -58,6 +61,59 @@ const allSubmissions: Submission[] = [
   submission("firingImage", 6, "Speckled buff clay", "Cone 6 · on a glaze", "approved"),
 ];
 
+const pieces = [
+  { id: "demo-piece-1", authorId: kira.id, title: "Sea Salt over Tiger's Eye", imageUrl: demoGlazes[0].imageUrl ?? null, likes: 14, comments: 3, createdAt: daysAgo(1) },
+  { id: "demo-piece-2", authorId: kira.id, title: "Honey Flux under Celadon", imageUrl: demoGlazes[1].imageUrl ?? null, likes: 9, comments: 1, createdAt: daysAgo(9) },
+  { id: "demo-piece-3", authorId: bodhi.id, title: "Two dips of Norse Blue", imageUrl: demoGlazes[0].imageUrl ?? null, likes: 4, comments: 0, createdAt: daysAgo(2) },
+];
+
+export function portfolios(search: string): MemberPortfolio[] {
+  const term = search.trim().toLowerCase();
+  return [kira, bodhi]
+    .map((member) => {
+      const own = pieces.filter((piece) => piece.authorId === member.id);
+      return {
+        memberId: member.id,
+        memberName: member.displayName,
+        studioName: member.studioName ?? null,
+        pieces: own.length,
+        likes: own.reduce((sum, piece) => sum + piece.likes, 0),
+        comments: own.reduce((sum, piece) => sum + piece.comments, 0),
+        latestAt: own[0]?.createdAt ?? daysAgo(1),
+        covers: own.flatMap((piece) => (piece.imageUrl ? [piece.imageUrl] : [])),
+      };
+    })
+    .filter((entry) => !term || entry.memberName.toLowerCase().includes(term));
+}
+
+export function likes(): LikesOverview {
+  return {
+    stats: { total: 412, last7d: 37, onCombinations: 148, onGlazes: 264 },
+    topCombinations: pieces.map((piece) => ({
+      kind: "combination" as const,
+      id: piece.id,
+      label: piece.title,
+      href: null,
+      ownerId: piece.authorId,
+      ownerName: piece.authorId === kira.id ? kira.displayName : bodhi.displayName,
+      likes: piece.likes,
+    })),
+    topGlazes: demoGlazes.slice(0, 3).map((glaze, index) => ({
+      kind: "glaze" as const,
+      id: glaze.id,
+      label: `${glaze.brand} ${glaze.name}`,
+      href: `/glazes/${glaze.id}`,
+      ownerId: null,
+      ownerName: null,
+      likes: 31 - index * 7,
+    })),
+    recent: [
+      { id: "demo-like-1", userId: bodhi.id, userName: bodhi.displayName, kind: "combination", label: pieces[0].title, href: null, createdAt: daysAgo(0.2) },
+      { id: "demo-like-2", userId: kira.id, userName: kira.displayName, kind: "glaze", label: `${demoGlazes[0].brand} ${demoGlazes[0].name}`, href: `/glazes/${demoGlazes[0].id}`, createdAt: daysAgo(1) },
+    ],
+  };
+}
+
 export function submissions(
   kind: SubmissionKind,
   filter: { state?: ModerationState; authorId?: string },
@@ -83,7 +139,7 @@ export function counts(): AdminCounts {
   };
 }
 
-export function comments(filter: { authorId?: string }): AdminComment[] {
+export function comments(filter: CommentFilter): AdminComment[] {
   const all: AdminComment[] = [
     {
       kind: "glaze",
@@ -106,7 +162,13 @@ export function comments(filter: { authorId?: string }): AdminComment[] {
       createdAt: daysAgo(2),
     },
   ];
-  return all.filter((comment) => !filter.authorId || comment.authorId === filter.authorId);
+  const term = filter.search?.trim().toLowerCase();
+  return all.filter(
+    (comment) =>
+      (!filter.authorId || comment.authorId === filter.authorId) &&
+      (!filter.kind || comment.kind === filter.kind) &&
+      (!term || comment.body.toLowerCase().includes(term)),
+  );
 }
 
 export function brandRequests(): BrandRequest[] {
@@ -181,6 +243,9 @@ export function userAccount(userId: string): AdminUserAccount | null {
     createdAt: daysAgo(90),
     submissions: allSubmissions.filter((item) => item.authorId === userId),
     comments: comments({ authorId: userId }),
+    portfolio: pieces.filter((piece) => piece.authorId === userId),
+    likesGiven: userId === kira.id ? 12 : 5,
+    likesReceived: pieces.filter((piece) => piece.authorId === userId).reduce((sum, piece) => sum + piece.likes, 0),
     ledger: [
       { id: "demo-ledger-1", action: "combination_shared", points: 20, voided: false, createdAt: daysAgo(2) },
       { id: "demo-ledger-2", action: "combination_shared", points: 20, voided: true, createdAt: daysAgo(14) },

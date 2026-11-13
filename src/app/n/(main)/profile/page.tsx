@@ -61,6 +61,12 @@ export default async function AccountPage({ searchParams }: { searchParams: Prom
             <div className="nl-actions"><SubmitButton pendingText="Saving…" className="nl-btn primary">Save profile</SubmitButton></div>
           </form>
 
+          <div className="nl-box">
+            <h2>Your portfolio</h2>
+            <p className="nl-note">A public page with every firing result you have posted. Share the link to show off your combos; other potters can like and comment on them.</p>
+            <div className="nl-actions"><Link className="nl-btn" href={`/potters/${viewer.profile.id}`}>View your portfolio</Link></div>
+          </div>
+
           <form action={updatePasswordAction} className="nl-box">
             <h2>Change password</h2>
             <div className="nl-field"><label htmlFor="password">New password</label>

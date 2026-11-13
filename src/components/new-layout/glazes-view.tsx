@@ -126,7 +126,7 @@ export function GlazesView({ initialGlazes, member }: { initialGlazes: NLGlaze[]
             {member ? null : (
               <>
                 <label className="nl-toggle"><input type="checkbox" checked={onShelf} onChange={(event) => update({ s: event.target.checked ? "1" : null })} />Only my shelf</label>
-                {state.viewer ? <label className="nl-toggle"><input type="checkbox" checked={savedOnly} onChange={(event) => update({ saved: event.target.checked ? "1" : null })} />Saved</label> : null}
+                {state.viewer ? <label className="nl-toggle"><input type="checkbox" checked={savedOnly} onChange={(event) => update({ saved: event.target.checked ? "1" : null })} />Liked</label> : null}
               </>
             )}
             <label className="nl-sr" htmlFor="sort">Sort</label>

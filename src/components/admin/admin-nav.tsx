@@ -3,8 +3,11 @@
 import {
   BarChart3,
   Download,
+  Heart,
+  Images,
   Inbox,
   LayoutDashboard,
+  MessageSquare,
   ShieldCheck,
   Store,
   Users,
@@ -23,7 +26,10 @@ export interface AdminNavCounts {
 const ITEMS = [
   { href: "/admin", label: "Overview", icon: LayoutDashboard, count: null },
   { href: "/admin/moderation", label: "Moderation", icon: ShieldCheck, count: "moderation" },
+  { href: "/admin/comments", label: "Comments", icon: MessageSquare, count: null },
   { href: "/admin/users", label: "Members", icon: Users, count: null },
+  { href: "/admin/portfolios", label: "Portfolios", icon: Images, count: null },
+  { href: "/admin/likes", label: "Likes", icon: Heart, count: null },
   { href: "/admin/requests", label: "Requests", icon: Inbox, count: "requests" },
   { href: "/admin/studios", label: "Studios", icon: Store, count: null },
   { href: "/admin/analytics", label: "Analytics", icon: BarChart3, count: null },

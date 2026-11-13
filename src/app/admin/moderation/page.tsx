@@ -1,12 +1,10 @@
 import { moderatePostAction } from "@/app/actions/admin";
 import { actionClass, EmptyNote, Tabs } from "@/components/admin/admin-ui";
-import { CommentRow } from "@/components/admin/comment-row";
 import { SubmissionCard } from "@/components/admin/submission-card";
 import { PageHeader } from "@/components/page-header";
 import { PostCard } from "@/components/post-card";
 import {
   getAdminCounts,
-  getRecentComments,
   getReportedPostsQueue,
   getSubmissions,
   MODERATION_STATES,
@@ -59,20 +57,6 @@ async function SubmissionQueue({ type, state }: { type: string; state: Moderatio
       ) : (
         <EmptyNote>{state === "pending" ? `No ${noun} waiting for review.` : `No ${state} ${noun}.`}</EmptyNote>
       )}
-    </div>
-  );
-}
-
-async function CommentList() {
-  const comments = await getRecentComments();
-  if (!comments.length) return <EmptyNote>No comments yet.</EmptyNote>;
-
-  return (
-    <div className="space-y-3">
-      <p className="text-xs text-muted">The {comments.length} most recent comments on glazes and combinations.</p>
-      {comments.map((comment) => (
-        <CommentRow key={`${comment.kind}-${comment.id}`} comment={comment} />
-      ))}
     </div>
   );
 }
@@ -130,7 +114,6 @@ export default async function ModerationPage({
     { key: "combinations", label: "Combinations", count: counts.pendingCombinations },
     { key: "glazes", label: "Custom glazes", count: counts.pendingGlazes },
     { key: "photos", label: "Firing photos", count: counts.pendingPhotos },
-    { key: "comments", label: "Comments" },
     { key: "reports", label: "Reported posts", count: counts.openReports },
   ].map((tab) => ({ ...tab, href: `/admin/moderation?type=${tab.key}` }));
 
@@ -142,13 +125,11 @@ export default async function ModerationPage({
       <PageHeader
         eyebrow="Admin"
         title="Moderation"
-        description="Review what members submit. Approving keeps an item; rejecting voids its points and adds a strike to the author — three strikes turn off their contributions."
+        description="Review what members submit. Approving keeps an item; rejecting voids its points and adds a strike to the author — three strikes turn off their contributions. Comments have their own section."
       />
       <Tabs tabs={tabs} active={type} label="Content type" />
 
-      {type === "comments" ? (
-        <CommentList />
-      ) : type === "reports" ? (
+      {type === "reports" ? (
         <ReportedPosts />
       ) : (
         <SubmissionQueue type={type} state={state} />
