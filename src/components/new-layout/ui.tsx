@@ -133,7 +133,7 @@ export function LayerRows({ combo, showState }: { combo: NLCombo; showState: boo
 export function ComboCard({ combo, onOpen, member }: { combo: NLCombo; onOpen: () => void; member?: boolean }) {
   const { catalog, savedCombos } = useNL();
   if (!catalog) return null;
-  const badge = member ? null : combo.potter?.mine ? "Your result" : combo.potter ? "Potter's result" : savedCombos.has(combo.id) ? "Saved" : null;
+  const badge = member ? null : combo.potter?.mine ? "Your result" : combo.potter ? "Potter's result" : savedCombos.has(combo.id) ? "Liked" : null;
   return (
     <button type="button" className="nl-ccard" onClick={onOpen} aria-label={comboName(combo, catalog.byId)}>
       <div className="nl-thumb" style={{ "--sw": comboSwatch(combo, catalog.byId) } as React.CSSProperties}>

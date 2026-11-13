@@ -221,9 +221,9 @@ export function NLProvider({ initial, children }: { initial: NLViewerState; chil
     const wasSaved = (type === "glaze" ? savedGlazes : savedCombos).has(id);
     flip(!wasSaved);
     const result = await toggleFavouriteInlineAction(type, id);
-    if (result.error) { flip(wasSaved); toast("Couldn't save that. Try again."); return; }
+    if (result.error) { flip(wasSaved); toast("Couldn't save your like. Try again."); return; }
     flip(result.favourited);
-    toast(result.favourited ? "Saved." : "Removed from saved.");
+    toast(result.favourited ? "Liked. It's saved to your list." : "Like removed.");
   }, [requireAccount, savedCombos, savedGlazes, toast]);
 
   const addPotterCombos = useCallback((combos: NLCombo[]) => {

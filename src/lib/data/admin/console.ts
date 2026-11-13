@@ -135,6 +135,55 @@ export interface AdminUserAccount {
   submissions: Submission[];
   comments: AdminComment[];
   ledger: Array<{ id: string; action: string; points: number; voided: boolean; createdAt: string }>;
+  /** Published combinations: what the member shows off. */
+  portfolio: PortfolioPiece[];
+  likesGiven: number;
+  likesReceived: number;
+}
+
+export interface PortfolioPiece {
+  id: string;
+  title: string;
+  imageUrl: string | null;
+  likes: number;
+  comments: number;
+  createdAt: string;
+}
+
+export interface MemberPortfolio {
+  memberId: string;
+  memberName: string;
+  studioName: string | null;
+  pieces: number;
+  likes: number;
+  comments: number;
+  latestAt: string;
+  covers: string[];
+}
+
+export interface LikedItem {
+  kind: "glaze" | "combination";
+  id: string;
+  label: string;
+  href: string | null;
+  ownerId: string | null;
+  ownerName: string | null;
+  likes: number;
+}
+
+export interface LikesOverview {
+  stats: { total: number; last7d: number; onCombinations: number; onGlazes: number };
+  topCombinations: LikedItem[];
+  topGlazes: LikedItem[];
+  recent: Array<{
+    id: string;
+    userId: string;
+    userName: string;
+    kind: "glaze" | "combination";
+    label: string;
+    href: string | null;
+    createdAt: string;
+  }>;
 }
 
 export async function requireAdminViewer() {
@@ -378,7 +427,14 @@ export async function getSubmissions(
 
 // ─── Comments ────────────────────────────────────────────────────────────────
 
-export async function getRecentComments(filter: { authorId?: string; limit?: number } = {}): Promise<AdminComment[]> {
+export interface CommentFilter {
+  authorId?: string;
+  kind?: CommentKind;
+  search?: string;
+  limit?: number;
+}
+
+export async function getRecentComments(filter: CommentFilter = {}): Promise<AdminComment[]> {
   const admin = createSupabaseAdminClient();
   if (!admin) return demo.comments(filter);
 
@@ -390,12 +446,19 @@ export async function getRecentComments(filter: { authorId?: string; limit?: num
     comboQuery = comboQuery.eq("author_user_id", filter.authorId);
   }
 
+  // Strip characters that have meaning inside a PostgREST pattern.
+  const term = (filter.search ?? "").replace(/[,()%*\\]/g, " ").trim();
+  if (term) {
+    glazeQuery = glazeQuery.ilike("body", `%${term}%`);
+    comboQuery = comboQuery.ilike("body", `%${term}%`);
+  }
+
   const [glazeRes, comboRes] = await Promise.all([
-    glazeQuery.order("created_at", { ascending: false }).limit(limit),
-    comboQuery.order("created_at", { ascending: false }).limit(limit),
+    filter.kind === "combination" ? null : glazeQuery.order("created_at", { ascending: false }).limit(limit),
+    filter.kind === "glaze" ? null : comboQuery.order("created_at", { ascending: false }).limit(limit),
   ]);
-  const glazeRows = glazeRes.data ?? [];
-  const comboRows = comboRes.data ?? [];
+  const glazeRows = glazeRes?.data ?? [];
+  const comboRows = comboRes?.data ?? [];
 
   const glazeIds = [...new Set(glazeRows.map((row) => String(row.glaze_id)))];
   const exampleIds = [...new Set(comboRows.map((row) => String(row.example_id)))];
@@ -550,8 +613,10 @@ export async function getAdminUserAccount(userId: string): Promise<AdminUserAcco
   const admin = createSupabaseAdminClient();
   if (!admin) return demo.userAccount(userId);
 
-  const [profileRes, combos, glazes, photos, comments, ledgerRes] = await Promise.all([
+  const [profileRes, portfolio, givenRes, combos, glazes, photos, comments, ledgerRes] = await Promise.all([
     admin.from("profiles").select("*").eq("id", userId).maybeSingle(),
+    getPortfolioPieces(admin, userId),
+    admin.from("user_favourites").select("id", { count: "exact", head: true }).eq("user_id", userId),
     getSubmissions("combination", { authorId: userId, limit: 30 }),
     getSubmissions("glaze", { authorId: userId, limit: 30 }),
     getSubmissions("firingImage", { authorId: userId, limit: 30 }),
@@ -579,6 +644,9 @@ export async function getAdminUserAccount(userId: string): Promise<AdminUserAcco
     createdAt: String(profile.created_at),
     submissions: [...combos, ...glazes, ...photos].sort((a, b) => b.createdAt.localeCompare(a.createdAt)),
     comments,
+    portfolio,
+    likesGiven: givenRes.count ?? 0,
+    likesReceived: portfolio.reduce((sum, piece) => sum + piece.likes, 0),
     ledger: (ledgerRes.data ?? []).map((row) => ({
       id: String(row.id),
       action: String(row.action),
@@ -586,5 +654,208 @@ export async function getAdminUserAccount(userId: string): Promise<AdminUserAcco
       voided: Boolean(row.voided),
       createdAt: String(row.created_at),
     })),
+  };
+}
+
+// ─── Likes and portfolios ────────────────────────────────────────────────────
+//
+// A "like" is a row in `user_favourites` (the heart / save on a glaze or
+// combination). A member's portfolio is their published combinations.
+
+function tally(values: string[]) {
+  const counts = new Map<string, number>();
+  for (const value of values) counts.set(value, (counts.get(value) ?? 0) + 1);
+  return counts;
+}
+
+/** Likes and comments per combination id. */
+async function engagementFor(admin: AdminClient, exampleIds: string[]) {
+  if (!exampleIds.length) return { likes: new Map<string, number>(), comments: new Map<string, number>() };
+  // A long id list would overflow the request URL, so read everything instead;
+  // ids that are not in the list are simply never looked up.
+  const narrow = exampleIds.length <= 100;
+  const likeQuery = admin.from("user_favourites").select("target_id").eq("target_type", "combination");
+  const commentQuery = admin.from("combination_comments").select("example_id");
+  const [likeRes, commentRes] = await Promise.all([
+    narrow ? likeQuery.in("target_id", exampleIds) : likeQuery.limit(20000),
+    narrow ? commentQuery.in("example_id", exampleIds) : commentQuery.limit(20000),
+  ]);
+  return {
+    likes: tally((likeRes.data ?? []).map((row) => String(row.target_id))),
+    comments: tally((commentRes.data ?? []).map((row) => String(row.example_id))),
+  };
+}
+
+async function getPortfolioPieces(admin: AdminClient, userId: string): Promise<PortfolioPiece[]> {
+  const { data } = await admin
+    .from("user_combination_examples")
+    .select("id, title, image_paths, created_at")
+    .eq("author_user_id", userId)
+    .eq("status", "published")
+    .order("created_at", { ascending: false })
+    .limit(60);
+  const rows = data ?? [];
+  const { likes, comments } = await engagementFor(admin, rows.map((row) => String(row.id)));
+
+  return rows.map((row) => ({
+    id: String(row.id),
+    title: row.title || "Untitled combination",
+    imageUrl: row.image_paths?.[0] ?? null,
+    likes: likes.get(String(row.id)) ?? 0,
+    comments: comments.get(String(row.id)) ?? 0,
+    createdAt: String(row.created_at),
+  }));
+}
+
+/** Every member with at least one published combination, biggest portfolio first. */
+export async function getPortfolios(search = ""): Promise<MemberPortfolio[]> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return demo.portfolios(search);
+
+  const { data } = await admin
+    .from("user_combination_examples")
+    .select("id, author_user_id, image_paths, created_at")
+    .eq("status", "published")
+    .order("created_at", { ascending: false })
+    .limit(1000);
+  const rows = data ?? [];
+  if (!rows.length) return [];
+
+  const authorIds = [...new Set(rows.map((row) => String(row.author_user_id)))];
+  const [{ likes, comments }, profileRes] = await Promise.all([
+    engagementFor(admin, rows.map((row) => String(row.id))),
+    admin.from("profiles").select("id, display_name, studio_name").in("id", authorIds),
+  ]);
+  const profiles = new Map((profileRes.data ?? []).map((profile) => [String(profile.id), profile]));
+
+  const byMember = new Map<string, MemberPortfolio>();
+  for (const row of rows) {
+    const memberId = String(row.author_user_id);
+    const profile = profiles.get(memberId);
+    const entry: MemberPortfolio = byMember.get(memberId) ?? {
+      memberId,
+      memberName: profile?.display_name || "Unnamed member",
+      studioName: profile?.studio_name ?? null,
+      pieces: 0,
+      likes: 0,
+      comments: 0,
+      latestAt: String(row.created_at),
+      covers: [],
+    };
+    entry.pieces += 1;
+    entry.likes += likes.get(String(row.id)) ?? 0;
+    entry.comments += comments.get(String(row.id)) ?? 0;
+    const cover = row.image_paths?.[0];
+    if (cover && entry.covers.length < 5) entry.covers.push(cover);
+    byMember.set(memberId, entry);
+  }
+
+  const term = search.trim().toLowerCase();
+  return [...byMember.values()]
+    .filter(
+      (entry) =>
+        !term || entry.memberName.toLowerCase().includes(term) || entry.studioName?.toLowerCase().includes(term),
+    )
+    .sort((a, b) => b.pieces - a.pieces || b.likes - a.likes);
+}
+
+export async function getLikesOverview(): Promise<LikesOverview> {
+  const admin = createSupabaseAdminClient();
+  if (!admin) return demo.likes();
+
+  const head = { count: "exact", head: true } as const;
+  const weekAgo = new Date(Date.now() - 7 * 86400000).toISOString();
+  const [total, last7d, onCombinations, onGlazes, rowsRes] = await Promise.all([
+    admin.from("user_favourites").select("id", head),
+    admin.from("user_favourites").select("id", head).gte("created_at", weekAgo),
+    admin.from("user_favourites").select("id", head).eq("target_type", "combination"),
+    admin.from("user_favourites").select("id", head).eq("target_type", "glaze"),
+    admin
+      .from("user_favourites")
+      .select("id, user_id, target_type, target_id, created_at")
+      .order("created_at", { ascending: false })
+      .limit(5000),
+  ]);
+  const rows = rowsRes.data ?? [];
+  const recentRows = rows.slice(0, 30);
+
+  const top = (type: string) =>
+    [...tally(rows.filter((row) => row.target_type === type).map((row) => String(row.target_id)))]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 10);
+  const topCombos = top("combination");
+  const topGlazes = top("glaze");
+
+  const idsOf = (type: string, ranked: Array<[string, number]>) => [
+    ...new Set([
+      ...ranked.map(([id]) => id),
+      ...recentRows.filter((row) => row.target_type === type).map((row) => String(row.target_id)),
+    ]),
+  ];
+  const comboIds = idsOf("combination", topCombos);
+  const glazeIds = idsOf("glaze", topGlazes);
+
+  const [comboRes, glazeRes] = await Promise.all([
+    comboIds.length
+      ? admin.from("user_combination_examples").select("id, title, author_user_id").in("id", comboIds)
+      : null,
+    glazeIds.length ? admin.from("glazes").select("id, name, brand").in("id", glazeIds) : null,
+  ]);
+  const combos = new Map((comboRes?.data ?? []).map((combo) => [String(combo.id), combo]));
+  const glazes = new Map((glazeRes?.data ?? []).map((glaze) => [String(glaze.id), glaze]));
+  const names = await displayNames(admin, [
+    ...recentRows.map((row) => row.user_id),
+    ...(comboRes?.data ?? []).map((combo) => combo.author_user_id),
+  ]);
+
+  // Likes on brand-published combinations have no member behind them.
+  const describe = (type: string, id: string) => {
+    if (type === "glaze") {
+      const glaze = glazes.get(id);
+      return {
+        label: glaze ? [glaze.brand, glaze.name].filter(Boolean).join(" ") : "A glaze",
+        href: `/glazes/${id}`,
+        ownerId: null,
+        ownerName: null,
+      };
+    }
+    const combo = combos.get(id);
+    return combo
+      ? {
+          label: combo.title || "Untitled combination",
+          href: `/combinations/examples/${id}`,
+          ownerId: String(combo.author_user_id),
+          ownerName: names.get(String(combo.author_user_id)) ?? "Unknown",
+        }
+      : { label: "A brand combination", href: null, ownerId: null, ownerName: null };
+  };
+
+  return {
+    stats: {
+      total: total.count ?? 0,
+      last7d: last7d.count ?? 0,
+      onCombinations: onCombinations.count ?? 0,
+      onGlazes: onGlazes.count ?? 0,
+    },
+    topCombinations: topCombos.map(([id, likes]) => ({
+      kind: "combination" as const,
+      id,
+      likes,
+      ...describe("combination", id),
+    })),
+    topGlazes: topGlazes.map(([id, likes]) => ({ kind: "glaze" as const, id, likes, ...describe("glaze", id) })),
+    recent: recentRows.map((row) => {
+      const kind = row.target_type === "glaze" ? ("glaze" as const) : ("combination" as const);
+      const target = describe(kind, String(row.target_id));
+      return {
+        id: String(row.id),
+        userId: String(row.user_id),
+        userName: names.get(String(row.user_id)) ?? "Unknown",
+        kind,
+        label: target.label,
+        href: target.href,
+        createdAt: String(row.created_at),
+      };
+    }),
   };
 }

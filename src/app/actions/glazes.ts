@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { getAllCatalogGlazes } from "@/lib/catalog";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { awardPoints } from "@/lib/points";
+import { awardLikePoint, awardPoints } from "@/lib/points";
 import { setGlazeInventoryStateAction } from "@/app/actions/inventory";
 import { getCatalogGlazes } from "@/lib/data/inventory";
 import { requireViewer } from "@/lib/data/users";
@@ -140,6 +140,7 @@ export async function toggleFavouriteInlineAction(
       target_id: targetId,
     });
     if (error) return { favourited: false, error: error.message };
+    if (targetType === "combination") await awardLikePoint(viewer.profile.id, targetId);
     revalidateWorkspace();
     return { favourited: true };
   }

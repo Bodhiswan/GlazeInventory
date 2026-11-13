@@ -1,9 +1,12 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v18";
+export const CHANGELOG_KEY = "glaze-library-changelog-v19";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
+      "Portfolios: every potter now has a public page with all the firing results they have posted. Find yours under Account, and share the link.",
+      "Likes: tap Like on any glaze or combo to save it to your list. Everyone can see how many likes it has, and a like on your result earns you a point.",
+      "Comments: ask a question or leave a note on any glaze or potter's result, straight from its panel.",
       "New Cone 6 layout: Glazes, Combos and My shelf under one simple header, with a detail panel for every glaze and combo. Prefer the old site? \"Use the classic site\" is in the footer.",
       "Cone 6 photos first: glaze cards show the Cone 6 tile instead of the Cone 10 one wherever the manufacturer has both.",
       "Find a pair: on Combos, add a second glaze to see tested combinations that use both.",

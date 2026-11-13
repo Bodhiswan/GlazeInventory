@@ -8,6 +8,8 @@ import { getFavouriteIds, getUnreadDirectMessageCount } from "@/lib/data/communi
 import { getInventory, getInventoryFolders } from "@/lib/data/inventory";
 import { getStudioForOwner } from "@/lib/data/studios";
 import { getViewer } from "@/lib/data/users";
+import { demoProfiles } from "@/lib/demo-data";
+import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import type { UserCombinationExample } from "@/lib/types";
 import { getCone6Catalog, toNLGlaze } from "./catalog";
 import { isCone6 } from "./cone";
@@ -110,6 +112,64 @@ export async function getMyResults(viewerId: string, extraGlazes: NLGlaze[] = []
   return { combos: examples.map((example) => potterCombo(example, viewerId)), glazes: [...glazes.values()] };
 }
 
+export interface NLPotter {
+  id: string;
+  name: string;
+  studio: string | null;
+  /** Likes across everything in the portfolio. */
+  likes: number;
+}
+
+/**
+ * A member's public portfolio: every result they have published, at any cone.
+ * Returns null when there is no such member.
+ */
+export async function getPotterPortfolio(
+  potterId: string,
+  viewerId: string | null,
+  extraGlazes: NLGlaze[] = [],
+): Promise<{ potter: NLPotter; combos: NLCombo[]; glazes: NLGlaze[] } | null> {
+  const admin = createSupabaseAdminClient();
+  let name: string | null = null;
+  let studio: string | null = null;
+  if (admin) {
+    const { data } = await admin.from("profiles").select("display_name, studio_name").eq("id", potterId).maybeSingle();
+    if (!data) return null;
+    name = data.display_name;
+    studio = data.studio_name;
+  } else {
+    const profile = demoProfiles.find((candidate) => candidate.id === potterId);
+    if (!profile) return null;
+    name = profile.displayName;
+    studio = profile.studioName ?? null;
+  }
+
+  const examples = await getUserCombinationExamples(viewerId ?? "public-guest-viewer", potterId);
+  const known = new Set([...getCone6Catalog().glazes, ...extraGlazes].map((glaze) => glaze.id));
+  const glazes = new Map<string, NLGlaze>();
+  for (const example of examples) {
+    for (const layer of example.layers) {
+      if (!known.has(layer.glazeId) && layer.glaze && !glazes.has(layer.glazeId)) glazes.set(layer.glazeId, toNLGlaze(layer.glaze));
+    }
+  }
+
+  let likes = 0;
+  if (admin && examples.length) {
+    const { count } = await admin
+      .from("user_favourites")
+      .select("id", { count: "exact", head: true })
+      .eq("target_type", "combination")
+      .in("target_id", examples.slice(0, 100).map((example) => example.id));
+    likes = count ?? 0;
+  }
+
+  return {
+    potter: { id: potterId, name: name || "A potter", studio, likes },
+    combos: examples.map((example) => potterCombo(example, viewerId)),
+    glazes: [...glazes.values()],
+  };
+}
+
 function potterCombo(example: UserCombinationExample, viewerId: string | null): NLCombo {
   // Posted layers are stored top layer first, the same as vendor combos.
   const layers = [...example.layers].sort((a, b) => a.layerOrder - b.layerOrder);
@@ -125,6 +185,7 @@ function potterCombo(example: UserCombinationExample, viewerId: string | null): 
     layers: layers.map((layer, i) => ({ g: layer.glazeId, to: i < layers.length - 1 ? "Over" : null })),
     ...(isCone6(example.cone) ? {} : { cone: example.cone }),
     potter: {
+      id: example.authorUserId,
       name: example.authorName,
       date: new Date(example.createdAt).toLocaleDateString("en-AU", { day: "numeric", month: "short", year: "numeric" }),
       mine: example.authorUserId === viewerId,

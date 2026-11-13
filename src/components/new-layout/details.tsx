@@ -6,7 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { comboSwatch, COLOR_SWATCH, namedPalette, swatch } from "@/lib/new-layout/colour";
 import { isCone6 } from "@/lib/new-layout/cone";
 import type { NLCombo, NLFillLevel, NLGlaze } from "@/lib/new-layout/types";
-import { createSupabaseBrowserClient } from "@/lib/supabase/browser";
+import { addCombinationCommentInlineAction, addGlazeCommentInlineAction } from "@/app/actions/community";
+import { getEngagementAction, type Engagement, type EngagementComment } from "@/app/actions/engagement";
 import { useNL } from "./provider";
 import { BuyList, comboName, glazeLabel, Photo, plural } from "./ui";
 
@@ -19,36 +20,99 @@ export interface MemberContext {
 
 const FILL_TEXT: Record<NLFillLevel, string> = { full: "Full", half: "About half", low: "Running low" };
 
-/** Read-only: the newest comments from the classic site. */
-function Comments({ kind, id }: { kind: "glaze" | "combination"; id: string }) {
-  const [comments, setComments] = useState<{ id: string; body: string; author: string; date: string }[]>([]);
+type Kind = "glaze" | "combination";
+
+/**
+ * Likes and comments for one glaze or combination. `liked` is the viewer's own
+ * like, which the provider flips straight away, so the count follows it without
+ * waiting for the server.
+ */
+function useEngagement(kind: Kind, id: string, liked: boolean) {
+  const [loaded, setLoaded] = useState<{ key: string; data: Engagement; likedThen: boolean } | null>(null);
+  const likedRef = useRef(liked);
+  useEffect(() => { likedRef.current = liked; }, [liked]);
+  const key = `${kind}:${id}`;
   useEffect(() => {
-    const supabase = createSupabaseBrowserClient();
-    if (!supabase) return;
     let cancelled = false;
-    const columns = "id, body, created_at, author:profiles(display_name)";
-    const query = kind === "glaze"
-      ? supabase.from("glaze_comments").select(columns).eq("glaze_id", id)
-      : supabase.from("combination_comments").select(columns).eq("example_id", id);
-    query
-      .order("created_at", { ascending: false })
-      .limit(5)
-      .then(({ data }) => {
-        if (cancelled || !data) return;
-        setComments((data as unknown as { id: string; body: string; created_at: string; author: { display_name?: string } | { display_name?: string }[] | null }[]).map((row) => {
-          const author = Array.isArray(row.author) ? row.author[0] : row.author;
-          return { id: row.id, body: row.body, author: author?.display_name ?? "A potter", date: new Date(row.created_at).toLocaleDateString("en-AU", { day: "numeric", month: "short", year: "numeric" }) };
-        }));
-      });
+    getEngagementAction(kind, id)
+      .then((data) => { if (!cancelled) setLoaded({ key: `${kind}:${id}`, data, likedThen: likedRef.current }); })
+      .catch(() => undefined);
     return () => { cancelled = true; };
   }, [kind, id]);
-  if (!comments.length) return null;
+  const current = loaded?.key === key ? loaded : null;
+  return {
+    likes: Math.max(0, (current?.data.likes ?? 0) + Number(liked) - Number(current?.likedThen ?? liked)),
+    comments: current?.data.comments ?? [],
+    addComment: (comment: EngagementComment) =>
+      setLoaded((value) => (value ? { ...value, data: { ...value.data, comments: [comment, ...value.data.comments] } } : value)),
+  };
+}
+
+function LikeButton({ kind, id, likes }: { kind: Kind; id: string; likes: number }) {
+  const { savedGlazes, savedCombos, toggleSaved } = useNL();
+  const liked = (kind === "glaze" ? savedGlazes : savedCombos).has(id);
+  return (
+    <button type="button" className={`nl-btn ${liked ? "" : "primary"}`} aria-pressed={liked} onClick={() => void toggleSaved(kind, id)}>
+      {liked ? "♥ Liked" : "♡ Like"}{likes ? <span className="nl-like-count">{likes.toLocaleString("en")}</span> : null}
+    </button>
+  );
+}
+
+/** Comments with a box to add one. Guests are sent to sign in when they post. */
+function Comments({ kind, id, comments, onAdd, readOnly }: {
+  kind: Kind;
+  id: string;
+  comments: EngagementComment[];
+  onAdd: (comment: EngagementComment) => void;
+  readOnly?: boolean;
+}) {
+  const { state, requireAccount, toast } = useNL();
+  const [body, setBody] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
+  if (readOnly && !comments.length) return null;
+
+  async function post(event: React.FormEvent) {
+    event.preventDefault();
+    const text = body.trim();
+    if (text.length < 2) { setError("Write a few words first."); return; }
+    if (!requireAccount()) return;
+    setBusy(true);
+    setError("");
+    const result = await (kind === "glaze" ? addGlazeCommentInlineAction(id, text) : addCombinationCommentInlineAction(id, text))
+      .catch(() => ({ error: "Couldn't post that. Try again." } as { error?: string; authorName?: string }));
+    setBusy(false);
+    if (result.error) { setError(result.error); return; }
+    onAdd({
+      id: `new-${Date.now()}`,
+      body: text,
+      authorId: state.viewer?.id ?? "",
+      author: result.authorName ?? state.viewer?.name ?? "You",
+      date: new Date().toLocaleDateString("en-AU", { day: "numeric", month: "short", year: "numeric" }),
+    });
+    setBody("");
+    toast("Comment posted.");
+  }
+
   return (
     <section aria-labelledby={`comments-${id}`} className="nl-comments">
-      <h3 id={`comments-${id}`}>What potters said</h3>
+      <h3 id={`comments-${id}`}>Comments{comments.length ? <span className="nl-muted"> · {comments.length}</span> : null}</h3>
+      {readOnly ? null : (
+        <form className="nl-comment-form" onSubmit={post}>
+          <label className="nl-sr" htmlFor={`comment-box-${id}`}>Add a comment</label>
+          <textarea id={`comment-box-${id}`} className="nl-textarea" value={body} maxLength={1000} placeholder={kind === "glaze" ? "How has this glaze behaved for you?" : "Ask a question or say what you think"}
+            onChange={(event) => { setBody(event.target.value); setError(""); }} />
+          {error ? <p className="nl-note" role="alert" style={{ color: "var(--nl-warn, #9a3b2a)" }}>{error}</p> : null}
+          <div className="nl-actions"><button type="submit" className="nl-btn small" disabled={busy}>{busy ? "Posting…" : "Post comment"}</button></div>
+        </form>
+      )}
       {comments.map((comment) => (
-        <div key={comment.id} className="nl-comment"><b>{comment.author}</b> <span className="nl-muted">· {comment.date}</span><br />{comment.body}</div>
+        <div key={comment.id} className="nl-comment">
+          {comment.authorId ? <Link className="nl-comment-author" href={`/potters/${comment.authorId}`}>{comment.author}</Link> : <b>{comment.author}</b>}{" "}
+          <span className="nl-muted">· {comment.date}</span><br />{comment.body}
+        </div>
       ))}
+      {!comments.length ? <p className="nl-note">No comments yet. Be the first.</p> : null}
     </section>
   );
 }
@@ -88,9 +152,10 @@ export function GlazeDetail({ glaze, member, onOpenCombo, titleTag = "h2" }: {
   onOpenCombo: (id: string) => void;
   titleTag?: "h1" | "h2";
 }) {
-  const { catalog, shelf, status, setStatus, setFill, setFolders, state, savedGlazes, toggleSaved, owned } = useNL();
+  const { catalog, shelf, status, setStatus, setFill, setFolders, state, savedGlazes, owned } = useNL();
   // The panel remounts this per glaze (key={glaze.id}), so the photo index starts at 0.
   const [photoIndex, setPhotoIndex] = useState(0);
+  const engagement = useEngagement("glaze", glaze.id, savedGlazes.has(glaze.id));
   const current = status(glaze.id);
   const entry = shelf[glaze.id];
   const allCombos = catalog?.combosByGlaze.get(glaze.id) ?? [];
@@ -183,9 +248,7 @@ export function GlazeDetail({ glaze, member, onOpenCombo, titleTag = "h2" }: {
             </div>
           ) : null}
           <div className="nl-actions">
-            <button type="button" className="nl-btn" aria-pressed={savedGlazes.has(glaze.id)} onClick={() => void toggleSaved("glaze", glaze.id)}>
-              {savedGlazes.has(glaze.id) ? "♥ Saved" : "♡ Save glaze"}
-            </button>
+            <LikeButton kind="glaze" id={glaze.id} likes={engagement.likes} />
           </div>
         </>
       )}
@@ -217,7 +280,7 @@ export function GlazeDetail({ glaze, member, onOpenCombo, titleTag = "h2" }: {
         )}
       </section>
 
-      <Comments kind="glaze" id={glaze.id} />
+      <Comments kind="glaze" id={glaze.id} comments={engagement.comments} onAdd={engagement.addComment} readOnly={Boolean(member)} />
 
       {member ? null : (
         <div className="nl-actions">
@@ -234,12 +297,12 @@ export function ComboDetail({ combo, member, onOpenGlaze, titleTag = "h2" }: {
   onOpenGlaze: (id: string) => void;
   titleTag?: "h1" | "h2";
 }) {
-  const { catalog, status, setStatus, missing, savedCombos, toggleSaved } = useNL();
+  const { catalog, status, setStatus, missing, savedCombos } = useNL();
+  const engagement = useEngagement("combination", combo.id, savedCombos.has(combo.id));
   if (!catalog) return null;
   const Title = titleTag;
   const apply = [...combo.layers].reverse();
   const need = missing(combo);
-  const saved = savedCombos.has(combo.id);
   const firingKnown = combo.layers.every((layer) => isCone6(catalog.byId.get(layer.g)?.cone));
   return (
     <>
@@ -281,14 +344,16 @@ export function ComboDetail({ combo, member, onOpenGlaze, titleTag = "h2" }: {
       </dl>
       <p className="nl-note">This is a recorded result. Your clay, application and kiln can change the finish.</p>
       <div className="nl-actions">
-        {member || combo.potter?.mine ? null : (
-          <button type="button" className={`nl-btn ${saved ? "" : "primary"}`} aria-pressed={saved} onClick={() => void toggleSaved("combination", combo.id)}>
-            {saved ? "✓ Saved" : "Save combo"}
-          </button>
+        {member ? null : combo.potter?.mine ? (
+          <span className="nl-note">♥ {plural(engagement.likes, "like")} on your result</span>
+        ) : (
+          <LikeButton kind="combination" id={combo.id} likes={engagement.likes} />
         )}
+        {combo.potter && !member ? <Link className="nl-btn quiet" href={`/potters/${combo.potter.id}`}>{combo.potter.mine ? "Your portfolio" : `More from ${combo.potter.name}`}</Link> : null}
         {combo.url ? <a className="nl-btn quiet" href={combo.url} target="_blank" rel="noopener noreferrer">View on {combo.vendor} site ↗</a> : null}
       </div>
-      {combo.potter ? null : <Comments kind="combination" id={combo.id} />}
+      {/* Only potters' results take comments; brand test tiles have nowhere to store them. */}
+      {combo.potter ? <Comments kind="combination" id={combo.id} comments={engagement.comments} onAdd={engagement.addComment} readOnly={Boolean(member)} /> : null}
     </>
   );
 }

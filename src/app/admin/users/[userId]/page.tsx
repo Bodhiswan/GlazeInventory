@@ -52,9 +52,11 @@ export default async function AdminUserPage({ params }: { params: Promise<{ user
         </p>
       </header>
 
-      <section className="grid grid-cols-2 gap-3 md:grid-cols-4">
+      <section className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
         <StatTile label="Points" value={account.points.toLocaleString()} />
         <StatTile label="Strikes" value={`${account.strikes} / 3`} accent={account.strikes > 0} />
+        <StatTile label="Likes received" value={account.likesReceived.toLocaleString()} sublabel={`${account.likesGiven.toLocaleString()} given`} />
+        <StatTile label="Comments" value={account.comments.length} />
         <StatTile label="Submissions" value={account.submissions.length} />
         <StatTile
           label="Inventory items"
@@ -101,6 +103,51 @@ export default async function AdminUserPage({ params }: { params: Promise<{ user
             </Link>
           </div>
         </div>
+      </section>
+
+      <section id="portfolio" className="scroll-mt-6 space-y-3">
+        <SectionTitle
+          aside={
+            <>
+              {account.portfolio.length} published ·{" "}
+              <Link href={`/potters/${account.id}`} className={linkClass}>
+                View public portfolio
+              </Link>
+            </>
+          }
+        >
+          Portfolio
+        </SectionTitle>
+        {account.portfolio.length ? (
+          <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+            {account.portfolio.map((piece) => (
+              <li key={piece.id} className="border border-border bg-panel-strong">
+                {piece.imageUrl ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={piece.imageUrl} alt="" loading="lazy" className="aspect-square w-full bg-background object-cover" />
+                ) : (
+                  <div className="aspect-square w-full bg-background" />
+                )}
+                <div className="space-y-1 p-3">
+                  <p className="truncate text-sm font-medium" title={piece.title}>
+                    <Link href={`/combinations/examples/${piece.id}`} className={linkClass}>
+                      {piece.title}
+                    </Link>
+                  </p>
+                  <p className="text-xs text-muted">
+                    {piece.likes} like{piece.likes === 1 ? "" : "s"} · {piece.comments} comment
+                    {piece.comments === 1 ? "" : "s"}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <EmptyNote>No published combinations yet.</EmptyNote>
+        )}
+        <p className="text-xs text-muted">
+          To take a piece down, reject it or set its visibility to hidden under Submissions below.
+        </p>
       </section>
 
       <section className="space-y-3">

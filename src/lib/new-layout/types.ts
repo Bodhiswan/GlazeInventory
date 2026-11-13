@@ -49,7 +49,7 @@ export interface NLCombo {
   /** Only set when the combo isn't Cone 6 (old links and a person's own results). */
   cone?: string;
   /** Set for results posted by potters rather than manufacturers. */
-  potter?: { name: string; date: string; mine: boolean };
+  potter?: { id: string; name: string; date: string; mine: boolean };
 }
 
 export interface NLCatalog {

@@ -320,19 +320,20 @@ export async function getVendorCombinationExample(
   return result ?? null;
 }
 
-export async function getUserCombinationExamples(viewerId: string) {
+export async function getUserCombinationExamples(viewerId: string, authorId?: string) {
   const supabase = await getSupabase();
 
   if (!supabase) {
     return [] as UserCombinationExample[];
   }
 
-  const { data: exampleRows } = await supabase
+  let exampleQuery = supabase
     .from("user_combination_examples")
     .select("*, user_combination_example_layers(*), profiles!author_user_id(display_name)")
-    .eq("status", "published")
-    .order("created_at", { ascending: false })
-    .limit(200);
+    .eq("status", "published");
+  // One member's results (their portfolio) rather than the newest from everyone.
+  if (authorId) exampleQuery = exampleQuery.eq("author_user_id", authorId);
+  const { data: exampleRows } = await exampleQuery.order("created_at", { ascending: false }).limit(200);
 
   if (!exampleRows?.length) {
     return [] as UserCombinationExample[];
