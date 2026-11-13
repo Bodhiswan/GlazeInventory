@@ -1,4 +1,5 @@
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
+import { demoProfiles } from "@/lib/demo-data";
 import { parseInventoryState } from "@/lib/inventory-state";
 import type {
   LeaderboardEntry,
@@ -781,6 +782,7 @@ export interface AdminUserRow {
   isAdmin: boolean;
   isAnonymous: boolean;
   contributionsDisabled: boolean;
+  strikes: number;
   createdAt: string;
   points: number;
   inventoryCount: number;
@@ -788,37 +790,58 @@ export interface AdminUserRow {
   glazeCount: number;
 }
 
+export type AdminUserFilter = "all" | "admins" | "flagged" | "disabled";
+
 export async function getAllUsersForAdmin({
   search = "",
+  filter = "all",
+  sort = "newest",
   limit = 50,
   offset = 0,
 }: {
   search?: string;
+  filter?: AdminUserFilter;
+  sort?: "newest" | "points";
   limit?: number;
   offset?: number;
 }): Promise<{ rows: AdminUserRow[]; total: number }> {
   const admin = createSupabaseAdminClient();
-  if (!admin) return { rows: [], total: 0 };
-
-  // Fetch auth users for email data
-  const { data: authData } = await admin.auth.admin.listUsers({ page: 1, perPage: 10000 });
-  const emailMap = new Map<string, string>();
-  for (const u of authData?.users ?? []) {
-    emailMap.set(u.id, u.email ?? "");
+  if (!admin) {
+    // Preview mode: list the sample profiles.
+    const rows = demoProfiles.map((profile, index) => ({
+      id: profile.id,
+      displayName: profile.displayName,
+      email: profile.email ?? "",
+      isAdmin: Boolean(profile.isAdmin),
+      isAnonymous: false,
+      contributionsDisabled: false,
+      strikes: index === 1 ? 1 : 0,
+      createdAt: new Date(Date.now() - (index + 1) * 86400000).toISOString(),
+      points: index === 1 ? 140 : 35,
+      inventoryCount: 0,
+      combinationCount: 0,
+      glazeCount: 0,
+    }));
+    return { rows, total: rows.length };
   }
 
   let query = admin
     .from("profiles")
     .select(
-      "id, display_name, is_admin, contributions_disabled, created_at, points",
+      "id, display_name, email, is_admin, contributions_disabled, contribution_strikes, created_at, points",
       { count: "exact" },
     )
-    .order("created_at", { ascending: false })
+    .order(sort === "points" ? "points" : "created_at", { ascending: false })
     .range(offset, offset + limit - 1);
 
-  if (search) {
-    query = query.ilike("display_name", `%${search}%`);
+  // Strip characters that have meaning inside a PostgREST `or` filter.
+  const term = search.replace(/[,()%*\\]/g, " ").trim();
+  if (term) {
+    query = query.or(`display_name.ilike.%${term}%,email.ilike.%${term}%`);
   }
+  if (filter === "admins") query = query.eq("is_admin", true);
+  if (filter === "flagged") query = query.gt("contribution_strikes", 0);
+  if (filter === "disabled") query = query.eq("contributions_disabled", true);
 
   const { data, count, error } = await query;
   if (error || !data) return { rows: [], total: 0 };
@@ -844,10 +867,11 @@ export async function getAllUsersForAdmin({
     return {
       id,
       displayName: String(r.display_name ?? "(no name)"),
-      email: emailMap.get(id) ?? "",
+      email: r.email ?? "",
       isAdmin: Boolean(r.is_admin),
       isAnonymous: false,
       contributionsDisabled: Boolean(r.contributions_disabled),
+      strikes: Number(r.contribution_strikes ?? 0),
       createdAt: String(r.created_at),
       points: Number(r.points ?? 0),
       inventoryCount: invCounts.get(id) ?? 0,

@@ -1,5 +1,6 @@
 "use server";
 
+import type { SupabaseClient } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { z } from "zod";
@@ -40,6 +41,11 @@ const externalExamplePublishSchema = z.object({
   intakeId: z.string().uuid(),
 });
 
+/** Refreshes every admin screen, including the sidebar's pending counts. */
+function revalidateAdmin() {
+  revalidatePath("/admin", "layout");
+}
+
 function buildExternalExampleReturnPath(intakeId: string, suffix?: string) {
   const basePath = `/admin/intake/${intakeId}`;
   return suffix ? `${basePath}?${suffix}` : basePath;
@@ -69,14 +75,15 @@ export async function moderatePostAction(formData: FormData) {
   const status = formData.get("status")?.toString() === "published" ? "published" : "hidden";
 
   if (!postId) {
-    redirect("/admin/moderation?error=Missing%20post%20id");
+    redirect("/admin/moderation?type=reports");
   }
 
   await supabase.from("combination_posts").update({ status }).eq("id", postId);
   await supabase.from("reports").update({ status: "resolved" }).eq("post_id", postId);
 
   revalidateWorkspace();
-  redirect("/admin/moderation?saved=1");
+  revalidateAdmin();
+  redirect("/admin/moderation?type=reports");
 }
 
 export async function updateExternalExampleGlazeMatchAction(formData: FormData) {
@@ -363,8 +370,7 @@ export async function adminApproveSubmissionAction(formData: FormData): Promise<
     .update({ moderation_state: "approved" })
     .eq("id", id);
 
-  revalidatePath("/admin/analytics/moderation");
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
   revalidatePath("/combinations");
 }
 
@@ -402,8 +408,7 @@ export async function adminRejectSubmissionAction(formData: FormData): Promise<v
     });
   }
 
-  revalidatePath("/admin/analytics/moderation");
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
   revalidatePath("/combinations");
 }
 
@@ -424,8 +429,7 @@ export async function adminReopenSubmissionAction(formData: FormData): Promise<v
     .update({ moderation_state: "pending" })
     .eq("id", id);
 
-  revalidatePath("/admin/analytics/moderation");
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
   revalidatePath("/combinations");
 }
 
@@ -454,8 +458,7 @@ export async function adminPermanentDeleteSubmissionAction(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   await (admin as any).from(targetTable(target)).delete().eq("id", id);
 
-  revalidatePath("/admin/analytics/moderation");
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
 }
 
 export async function adminDeleteCustomGlazeAction(formData: FormData): Promise<void> {
@@ -479,7 +482,7 @@ export async function adminDeleteCustomGlazeAction(formData: FormData): Promise<
 
   await admin.from("glazes").delete().eq("id", glazeId);
 
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
 }
 
 export async function adminEditCustomGlazeAction(formData: FormData): Promise<void> {
@@ -517,8 +520,7 @@ export async function adminEditCustomGlazeAction(formData: FormData): Promise<vo
     await admin.from("glazes").update(update).eq("id", glazeId);
   }
 
-  revalidatePath("/admin/analytics/moderation");
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
 }
 
 export async function adminFlagFalseContributionAction(input: {
@@ -573,7 +575,7 @@ export async function adminFlagFalseContributionAction(input: {
     })
     .eq("id", input.authorUserId);
 
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
   return { success: true };
 }
 
@@ -593,7 +595,7 @@ export async function adminArchiveCombinationAction(formData: FormData): Promise
     .update({ status: action === "archive" ? "hidden" : "published" })
     .eq("id", exampleId);
 
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
   revalidatePath("/combinations");
 }
 
@@ -624,8 +626,7 @@ export async function adminEditCombinationAction(formData: FormData): Promise<vo
     await admin.from("user_combination_examples").update(update).eq("id", exampleId);
   }
 
-  revalidatePath("/admin/analytics/moderation");
-  revalidatePath("/admin/analytics");
+  revalidateAdmin();
   revalidatePath("/combinations");
 }
 
@@ -712,7 +713,7 @@ export async function adminEditCommunityFiringImageAction(formData: FormData): P
     await admin.from("community_firing_images").update(update).eq("id", imageId);
   }
 
-  revalidatePath("/admin/analytics/moderation");
+  revalidateAdmin();
 }
 
 export async function adminDeleteCommunityFiringImageAction(formData: FormData): Promise<void> {
@@ -727,5 +728,77 @@ export async function adminDeleteCommunityFiringImageAction(formData: FormData):
 
   await admin.from("community_firing_images").delete().eq("id", imageId);
 
-  revalidatePath("/admin/analytics/moderation");
+  revalidateAdmin();
+}
+
+// ─── Admin console: members, comments, requests ──────────────────────────────
+
+async function requireAdminClient() {
+  await requireAdminSupabase();
+  const admin = createSupabaseAdminClient();
+  if (!admin) {
+    throw new Error("SUPABASE_SERVICE_ROLE_KEY is not configured");
+  }
+  return admin;
+}
+
+const uuid = z.string().uuid();
+
+/** Turns a member's ability to contribute off or back on. */
+export async function adminSetContributionsDisabledAction(formData: FormData): Promise<void> {
+  const admin = await requireAdminClient();
+  const userId = uuid.safeParse(formData.get("userId"));
+  if (!userId.success) return;
+
+  await admin
+    .from("profiles")
+    .update({ contributions_disabled: formData.get("disabled") === "true" })
+    .eq("id", userId.data);
+
+  revalidateAdmin();
+}
+
+/** Clears a member's strikes and re-enables contributing. */
+export async function adminResetStrikesAction(formData: FormData): Promise<void> {
+  const admin = await requireAdminClient();
+  const userId = uuid.safeParse(formData.get("userId"));
+  if (!userId.success) return;
+
+  await admin
+    .from("profiles")
+    .update({ contribution_strikes: 0, contributions_disabled: false })
+    .eq("id", userId.data);
+
+  revalidateAdmin();
+}
+
+export async function adminDeleteCommentAction(formData: FormData): Promise<void> {
+  const admin = await requireAdminClient();
+  const id = uuid.safeParse(formData.get("id"));
+  const kind = formData.get("kind");
+  if (!id.success || (kind !== "glaze" && kind !== "combination")) return;
+
+  await admin
+    .from(kind === "glaze" ? "glaze_comments" : "combination_comments")
+    .delete()
+    .eq("id", id.data);
+
+  revalidateAdmin();
+  revalidatePath("/glazes");
+  revalidatePath("/combinations");
+}
+
+export async function adminSetBrandRequestStatusAction(formData: FormData): Promise<void> {
+  const admin = await requireAdminClient();
+  const id = uuid.safeParse(formData.get("id"));
+  const status = z.enum(["pending", "added", "declined"]).safeParse(formData.get("status"));
+  if (!id.success || !status.success) return;
+
+  // Cast: glaze_brand_requests was added after database.types.ts was generated.
+  await (admin as unknown as SupabaseClient)
+    .from("glaze_brand_requests")
+    .update({ status: status.data })
+    .eq("id", id.data);
+
+  revalidateAdmin();
 }

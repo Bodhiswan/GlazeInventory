@@ -21,13 +21,14 @@ export function ClassicSwitchLink() {
   );
 }
 
-export function Footer() {
+export function Footer({ admin = false }: { admin?: boolean }) {
   return (
     <footer className="nl-footer">
       <div className="nl-footer-in">
         <span>Glaze Inventory · Cone 6</span>
         <Link href="/guides/glazing-pottery">Glazing guides</Link>
         <Link href="/glazes/request">Request a glaze</Link>
+        {admin ? <Link href="/admin">Admin</Link> : null}
         <span className="nl-spacer" />
         <ClassicSwitchLink />
       </div>
@@ -68,7 +69,7 @@ export function Shell({ children }: { children: ReactNode }) {
         </div>
       </header>
       <main id="main-content" className="nl-main" tabIndex={-1}>{children}</main>
-      <Footer />
+      <Footer admin={viewer?.isAdmin} />
       <Suspense fallback={null}><PanelHost /></Suspense>
     </>
   );
