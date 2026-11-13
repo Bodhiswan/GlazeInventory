@@ -3,14 +3,13 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  BarChart3,
   BookOpenText,
   ChevronDown,
   Layers3,
   LibraryBig,
   PenLine,
+  ShieldCheck,
   SwatchBook,
-  Users,
 } from "lucide-react";
 import { usePathname } from "next/navigation";
 
@@ -25,8 +24,7 @@ const baseItems = [
 ];
 
 const adminItems = [
-  { href: "/admin/analytics", label: "Analytics", icon: BarChart3, alsoActive: [] as string[], badge: undefined as string | undefined },
-  { href: "/admin/users", label: "Users", icon: Users, alsoActive: [] as string[], badge: undefined as string | undefined },
+  { href: "/admin", label: "Admin", icon: ShieldCheck, alsoActive: [] as string[], badge: undefined as string | undefined },
 ];
 
 export function AppShellNav({ isAdmin }: Readonly<{ isAdmin: boolean }>) {

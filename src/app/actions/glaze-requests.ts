@@ -39,6 +39,6 @@ export async function requestGlazeBrandAction(formData: FormData) {
     metadata: { brand_name: brand, notes: notes ?? null },
   });
 
-  revalidatePath("/admin/analytics");
+  revalidatePath("/admin", "layout");
   redirect(`${RETURN_TO}?saved=1`);
 }

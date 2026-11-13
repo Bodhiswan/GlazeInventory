@@ -176,7 +176,7 @@ export default async function AnalyticsPage({
           description={`Showing activity for the ${RANGE_LABELS[range]}.`}
         />
         <Link
-          href="/admin/analytics/moderation"
+          href="/admin/moderation"
           className="border border-border bg-panel px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.12em] hover:bg-foreground hover:text-background"
         >
           Moderation queue →
@@ -265,7 +265,7 @@ export default async function AnalyticsPage({
                       ) : null}
                       <p className="mt-0.5 text-[10px] text-muted">
                         {event.userId ? (
-                          <Link href={`/admin/analytics/${event.userId}`} className="hover:text-foreground">
+                          <Link href={`/admin/users/${event.userId}`} className="hover:text-foreground">
                             {event.userDisplayName ?? "Unknown user"}
                           </Link>
                         ) : "Anonymous"} · {formatDistanceToNow(new Date(event.createdAt), { addSuffix: true })}
@@ -375,7 +375,7 @@ export default async function AnalyticsPage({
                     </Link>
                     <p className="mt-0.5 text-[10px] text-muted">
                       by{" "}
-                      <Link href={`/admin/analytics/${glaze.creatorId}`} className="hover:text-foreground">
+                      <Link href={`/admin/users/${glaze.creatorId}`} className="hover:text-foreground">
                         {glaze.creatorName}
                       </Link>
                     </p>
@@ -455,7 +455,7 @@ export default async function AnalyticsPage({
                   <span>
                     {report.userId ? (
                       <Link
-                        href={`/admin/analytics/${report.userId}`}
+                        href={`/admin/users/${report.userId}`}
                         className="hover:text-foreground"
                       >
                         {report.userDisplayName ?? "Unknown user"}
@@ -490,7 +490,7 @@ export default async function AnalyticsPage({
                 <div key={user.id} className="flex items-center gap-3 px-4 py-2.5">
                   <div className="min-w-0 flex-1">
                     <Link
-                      href={`/admin/analytics/${user.id}`}
+                      href={`/admin/users/${user.id}`}
                       className="block truncate text-xs font-medium text-foreground underline decoration-border underline-offset-2 hover:decoration-foreground"
                     >
                       {user.displayName ?? user.email}

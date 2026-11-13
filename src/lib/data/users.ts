@@ -12,7 +12,8 @@ type Row = Record<string, unknown>;
 
 const demoViewer: Viewer = {
   mode: "demo",
-  profile: demoProfiles[0],
+  // Preview mode is read-only, so the sample viewer can see the admin console.
+  profile: { ...demoProfiles[0], isAdmin: true },
 };
 
 const publicGuestViewer: Viewer = {
