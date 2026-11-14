@@ -854,7 +854,7 @@
     "line": "Kiln Ice",
     "code": "KI-11",
     "name": "Snow Drift",
-    "cone": null,
+    "cone": "Cone 5 / Cone 6",
     "description": "KI -11 Snow Drift is a diffused, milky white glaze The Kiln Ice glazes are modeled after traditional Guan or Snowflake glazes. They feature a delicate network of fine hairline cracks (known as \u201ccrazing\u201d). Kiln Ice glazes are translucent, but become slightly opaque where the cracks form, creating a beautiful, multi-layered visual texture. Differences in glaze application and firing technique may affect end results These glazes are food safe, but due to durability, they are not recommended for food surfaces.",
     "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2348/3945/KI-11_3C_over32M_Cone5_WEB__58637.1741099636.jpg?c=1",
     "sourceUrl": "https://shop.amaco.com/ki-11-snow-drift/"
@@ -864,7 +864,7 @@
     "line": "Kiln Ice",
     "code": "KI-18",
     "name": "Arctic Blush",
-    "cone": null,
+    "cone": "Cone 5 / Cone 6",
     "description": "KI-18 Arctic Blush is a pastel pink glaze, with a delicate, milky quality The Kiln Ice glazes are modeled after traditional Guan or Snowflake glazes. They feature a delicate network of fine hairline cracks (known as \u201ccrazing\u201d). Kiln Ice glazes are translucent, but become slightly opaque where the cracks form, creating a beautiful, multi-layered visual texture. Differences in glaze application and firing technique may affect end results These glazes are food safe, but due to durability, they are not recommended for food surfaces.",
     "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2349/3951/KI-18_1280pxX1280px_Website__11058.1741103396.jpg?c=1",
     "sourceUrl": "https://shop.amaco.com/ki-18-arctic-blush/"
@@ -874,7 +874,7 @@
     "line": "Kiln Ice",
     "code": "KI-21",
     "name": "Winter Glass",
-    "cone": null,
+    "cone": "Cone 5 / Cone 6",
     "description": "KI-21 Winter Glass is a pastel, frosty blue The Kiln Ice glazes are modeled after traditional Guan or Snowflake glazes. They feature a delicate network of fine hairline cracks (known as \u201ccrazing\u201d). Kiln Ice glazes are translucent, but become slightly opaque where the cracks form, creating a beautiful, multi-layered visual texture. Differences in glaze application and firing technique may affect end results These glazes are food safe, but due to durability, they are not recommended for food surfaces.",
     "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2350/3955/KI-21_1280pxX1280px_Website__03615.1741103939.jpg?c=1",
     "sourceUrl": "https://shop.amaco.com/ki-21-winter-glass/"
@@ -884,7 +884,7 @@
     "line": "Kiln Ice",
     "code": "KI-27",
     "name": "Glacial Lake",
-    "cone": null,
+    "cone": "Cone 5 / Cone 6",
     "description": "KI-27 Glacial Lake is a vibrant, blue-green hue The Kiln Ice glazes are modeled after traditional Guan or Snowflake glazes. They feature a delicate network of fine hairline cracks (known as \u201ccrazing\u201d). Kiln Ice glazes are translucent, but become slightly opaque where the cracks form, creating a beautiful, multi-layered visual texture. Differences in glaze application and firing technique may affect end results These glazes are food safe, but due to durability, they are not recommended for food surfaces.",
     "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2351/3957/KI-27_1280pxX1280px_Website__98722.1741106655.jpg?c=1",
     "sourceUrl": "https://shop.amaco.com/ki-27-glacial-lake/"
@@ -894,7 +894,7 @@
     "line": "Kiln Ice",
     "code": "KI-46",
     "name": "Frozen Fern",
-    "cone": null,
+    "cone": "Cone 5 / Cone 6",
     "description": "KI-46 Frozen Fern is a muddled yellow-green hue The Kiln Ice glazes are modeled after traditional Guan or Snowflake glazes. They feature a delicate network of fine hairline cracks (known as \u201ccrazing\u201d). Kiln Ice glazes are translucent, but become slightly opaque where the cracks form, creating a beautiful, multi-layered visual texture. Differences in glaze application and firing technique may affect end results These glazes are food safe, but due to durability, they are not recommended for food surfaces.",
     "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2352/3964/KI-46_1280pxX1280px_Website__37477.1741107309.jpg?c=1",
     "sourceUrl": "https://shop.amaco.com/ki-46-frozen-fern/"
@@ -904,7 +904,7 @@
     "line": "Kiln Ice",
     "code": "KI-68",
     "name": "Honey Crystal",
-    "cone": null,
+    "cone": "Cone 5 / Cone 6",
     "description": "KI-68 Honey Crystal is a warm, golden, and buttery yellow color The Kiln Ice glazes are modeled after traditional Guan or Snowflake glazes. They feature a delicate network of fine hairline cracks (known as \u201ccrazing\u201d). Kiln Ice glazes are translucent, but become slightly opaque where the cracks form, creating a beautiful, multi-layered visual texture. Differences in glaze application and firing technique may affect end results These glazes are food safe, but due to durability, they are not recommended for food surfaces.",
     "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2353/3966/KI-68_1280pxX1280px_Website__94634.1741107589.jpg?c=1",
     "sourceUrl": "https://shop.amaco.com/ki-68-honey-crystal/"
@@ -3768,5 +3768,95 @@
     "description": "Blood Orange is a fiery tangerine color at Cone 05 which intensifies under a clear glaze. When fired to Cone 5 and Cone 10, it becomes slightly darker.",
     "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2281/3656/V-392_BloodOrange_Cone05_WebsiteSwatch__01108.1707239038.jpg?c=1",
     "sourceUrl": "https://shop.amaco.com/v-392-blood-orange-underglaze/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Pearlescent",
+    "code": "P-01",
+    "name": "Black Pearl",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Black Pearl is a fluid, gray-black glaze with iridescent mottling where it is thick. Brush three coats onto Cone 04 bisque and fire to Cone 5-6. Too thin an application fires dry with no crystals; too thick gives a rough surface and more flow. It layers well over AMACO Celadons, Potter's Choice and Satin Matte glazes, and can run when paired with a runny glaze.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2379/4661/P-1_BlackPearl_Square_WEB__72485.1786804616.jpg?c=1",
+    "sourceUrl": "https://shop.amaco.com/p-01-black-pearl/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Pearlescent",
+    "code": "P-10",
+    "name": "Opal Mist",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Opal Mist is a fluid, white glaze with iridescent mottling where it is thick. Brush three coats onto Cone 04 bisque and fire to Cone 5-6. Too thin an application fires dry with no crystals; too thick gives a rough surface and more flow. It layers well over AMACO Celadons, Potter's Choice and Satin Matte glazes, and can run when paired with a runny glaze.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2380/4669/P-10_OpalMist_Square_WEB__01471.1786805552.jpg?c=1",
+    "sourceUrl": "https://shop.amaco.com/p-10-opal-mist/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Pearlescent",
+    "code": "P-20",
+    "name": "Aqua Shimmer",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Aqua Shimmer is a fluid, soft turquoise glaze with iridescent mottling where it is thick. Brush three coats onto Cone 04 bisque and fire to Cone 5-6. Too thin an application fires dry with no crystals; too thick gives a rough surface and more flow. It layers well over AMACO Celadons, Potter's Choice and Satin Matte glazes, and can run when paired with a runny glaze.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2381/4682/P-20_AquaShimmer_Square_WEB__77737.1786809030.jpg?c=1",
+    "sourceUrl": "https://shop.amaco.com/p-20-aqua-shimmer/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Pearlescent",
+    "code": "P-30",
+    "name": "Umber Glow",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Umber Glow is a fluid, warm brown glaze with iridescent mottling where it is thick. Brush three coats onto Cone 04 bisque and fire to Cone 5-6. Too thin an application fires dry with no crystals; too thick gives a rough surface and more flow. It layers well over AMACO Celadons, Potter's Choice and Satin Matte glazes, and can run when paired with a runny glaze.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2382/4699/P-30_UmberGlow_Square_WEB__86595.1786806894.jpg?c=1",
+    "sourceUrl": "https://shop.amaco.com/p-30-umber-glow/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Pearlescent",
+    "code": "P-40",
+    "name": "Limelight",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Limelight is a fluid, spring green glaze with iridescent mottling where it is thick. Brush three coats onto Cone 04 bisque and fire to Cone 5-6. Too thin an application fires dry with no crystals; too thick gives a rough surface and more flow. It layers well over AMACO Celadons, Potter's Choice and Satin Matte glazes, and can run when paired with a runny glaze.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2383/4720/P-40_Limelight_Square_WEB__31363.1786809011.jpg?c=1",
+    "sourceUrl": "https://shop.amaco.com/p-40-limelight/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Pearlescent",
+    "code": "P-50",
+    "name": "Pink Calcite",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Pink Calcite is a fluid, mauve glaze with iridescent mottling where it is thick. Brush three coats onto Cone 04 bisque and fire to Cone 5-6. Too thin an application fires dry with no crystals; too thick gives a rough surface and more flow. It layers well over AMACO Celadons, Potter's Choice and Satin Matte glazes, and can run when paired with a runny glaze.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2384/4745/P-50_PinkCalcite_Square_WEB__83845.1786809002.jpg?c=1",
+    "sourceUrl": "https://shop.amaco.com/p-50-pink-calcite/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Pearlescent",
+    "code": "P-60",
+    "name": "Sun Pearl",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Sun Pearl is a fluid, soft yellow glaze with iridescent mottling where it is thick. Brush three coats onto Cone 04 bisque and fire to Cone 5-6. Too thin an application fires dry with no crystals; too thick gives a rough surface and more flow. It layers well over AMACO Celadons, Potter's Choice and Satin Matte glazes, and can run when paired with a runny glaze.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2385/4774/P-60_SunPearl_Square_WEB__68414.1786808755.jpg?c=1",
+    "sourceUrl": "https://shop.amaco.com/p-60-sun-pearl/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Pearlescent",
+    "code": "P-65",
+    "name": "Sienna Frost",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Sienna Frost is a fluid, orange-tan glaze with iridescent mottling where it is thick. Brush three coats onto Cone 04 bisque and fire to Cone 5-6. Too thin an application fires dry with no crystals; too thick gives a rough surface and more flow. It layers well over AMACO Celadons, Potter's Choice and Satin Matte glazes, and can run when paired with a runny glaze.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2386/4807/P-65_SiennaFrost_Square_WEB__91134.1786809426.jpg?c=1",
+    "sourceUrl": "https://shop.amaco.com/p-65-sienna-frost/"
+  },
+  {
+    "brand": "AMACO",
+    "line": "Cosmos",
+    "code": "CO-13",
+    "name": "Mars Crystal",
+    "cone": "Cone 5 / Cone 6",
+    "description": "Mars Crystal is a highly fluid, dark brick red glaze with silvery, iridescent crystals. It is opaque and breaks darker. AMACO no longer lists it in the current Cosmos range.",
+    "imageUrl": "https://cdn11.bigcommerce.com/s-3lp7y1nlae/products/2784/images/5752/CO-13_MarsCrystal_6x6_SquareTile_WEB__92833.1704470376.386.513.jpg?c=1",
+    "sourceUrl": "https://stoneleafpottery.com/co-13-mars-crystal/"
   }
 ]

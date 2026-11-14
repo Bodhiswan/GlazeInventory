@@ -18,9 +18,11 @@ export const COMMERCIAL_GLAZE_BRANDS = [
   "Speedball",
   "The Ceramic Shop",
   "Tucker's Glazes",
+  "Wizard Glaze",
   // UK & Ireland
   "Bath Potters",
   "Bath Potters Supplies",
+  "Glost Glaze",
   "Potclays",
   "Potterycrafts",
   "Scarva",
