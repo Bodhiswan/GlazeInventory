@@ -13183,5 +13183,86 @@
     "atmosphere": null,
     "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2252/3565/TPL-66_Fire-Opal__20883.1694487537.jpg?c=1",
     "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "P-01",
+    "label": "Reference tile",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2379/4661/P-1_BlackPearl_Square_WEB__72485.1786804616.jpg?c=1",
+    "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "P-10",
+    "label": "Reference tile",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2380/4669/P-10_OpalMist_Square_WEB__01471.1786805552.jpg?c=1",
+    "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "P-20",
+    "label": "Reference tile",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2381/4682/P-20_AquaShimmer_Square_WEB__77737.1786809030.jpg?c=1",
+    "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "P-30",
+    "label": "Reference tile",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2382/4699/P-30_UmberGlow_Square_WEB__86595.1786806894.jpg?c=1",
+    "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "P-40",
+    "label": "Reference tile",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2383/4720/P-40_Limelight_Square_WEB__31363.1786809011.jpg?c=1",
+    "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "P-50",
+    "label": "Reference tile",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2384/4745/P-50_PinkCalcite_Square_WEB__83845.1786809002.jpg?c=1",
+    "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "P-60",
+    "label": "Reference tile",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2385/4774/P-60_SunPearl_Square_WEB__68414.1786808755.jpg?c=1",
+    "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "P-65",
+    "label": "Reference tile",
+    "cone": "Cone 6",
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-a0h9fhqogk/images/stencil/1280x1280/products/2386/4807/P-65_SiennaFrost_Square_WEB__91134.1786809426.jpg?c=1",
+    "sortOrder": 50
+  },
+  {
+    "brand": "AMACO",
+    "code": "CO-13",
+    "label": "Reference tile",
+    "cone": null,
+    "atmosphere": null,
+    "imageUrl": "https://cdn11.bigcommerce.com/s-3lp7y1nlae/products/2784/images/5752/CO-13_MarsCrystal_6x6_SquareTile_WEB__92833.1704470376.386.513.jpg?c=1",
+    "sortOrder": 50
   }
 ]

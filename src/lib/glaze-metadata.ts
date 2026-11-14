@@ -17,6 +17,9 @@ export const ACTIVE_GLAZE_BRANDS = [
   "Bath Potters",
   "Potterycrafts",
   "Scarva",
+  "Kentucky Mudworks",
+  "Wizard Glaze",
+  "Glost Glaze",
 ] as const;
 export const GLAZE_FAMILY_LABELS = [
   "Underglaze",
@@ -82,6 +85,7 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     "Potter's Choice": ["Reactive effects"],
     "Potter's Choice Flux": ["Reactive effects"],
     Cosmos: ["Reactive effects"],
+    Pearlescent: ["Reactive effects"],
     "Kiln Ice": ["Reactive effects", "Crawl / crackle"],
     "Phase Glaze": ["Reactive effects"],
     Crawls: ["Crawl / crackle"],
@@ -218,6 +222,23 @@ const brandLineFamilyMap: Record<string, Record<string, GlazeFamilyLabel[]>> = {
     "Earthstone Earthenware Underglazes": ["Underglaze"],
     "Earthstone Stoneware Underglazes": ["Underglaze"],
   },
+  "Kentucky Mudworks": {
+    Glazes: ["Reactive effects"],
+    "Decorating Slips": ["Engobe"],
+  },
+  "Wizard Glaze": {
+    Gloop: ["Reactive effects"],
+    Meltdown: ["Reactive effects"],
+    "Creepy Crawl": ["Crawl / crackle"],
+    "Mystic Mold": ["Crawl / crackle"],
+    "Magic Puff": ["Reactive effects"],
+    "Fruity Pebbles": ["Crawl / crackle"],
+    "Special Effects": ["Reactive effects"],
+  },
+  "Glost Glaze": {
+    "Functional Glazes": ["Durable functional"],
+    "Sculptural Glazes": ["Reactive effects", "Crawl / crackle"],
+  },
 };
 
 const BRAND_URLS: Record<string, string> = {
@@ -236,6 +257,9 @@ const BRAND_URLS: Record<string, string> = {
   "Bath Potters": "https://www.bathpotters.co.uk",
   Potterycrafts: "https://potterycrafts.co.uk",
   Scarva: "https://www.scarva.com",
+  "Kentucky Mudworks": "https://kymudworks.com",
+  "Wizard Glaze": "https://wizardglaze.com",
+  "Glost Glaze": "https://glost-glaze.com",
 };
 
 export function getManufacturerUrl(brand: string | null | undefined): string | null {
