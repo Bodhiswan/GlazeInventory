@@ -163,9 +163,14 @@ export async function getPotterPortfolio(
     likes = count ?? 0;
   }
 
+  const displayName = name || "A potter";
   return {
-    potter: { id: potterId, name: name || "A potter", studio, likes },
-    combos: examples.map((example) => potterCombo(example, viewerId)),
+    potter: { id: potterId, name: displayName, studio, likes },
+    // Signed-out visitors can't read author names with the results, so use the profile's.
+    combos: examples.map((example) => {
+      const combo = potterCombo(example, viewerId);
+      return combo.potter ? { ...combo, potter: { ...combo.potter, name: displayName } } : combo;
+    }),
     glazes: [...glazes.values()],
   };
 }

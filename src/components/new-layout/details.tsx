@@ -349,7 +349,7 @@ export function ComboDetail({ combo, member, onOpenGlaze, titleTag = "h2" }: {
         ) : (
           <LikeButton kind="combination" id={combo.id} likes={engagement.likes} />
         )}
-        {combo.potter && !member ? <Link className="nl-btn quiet" href={`/potters/${combo.potter.id}`}>{combo.potter.mine ? "Your portfolio" : `More from ${combo.potter.name}`}</Link> : null}
+        {combo.potter && !member ? <Link className="nl-btn quiet" href={`/potters/${combo.potter.id}`}>{combo.potter.mine ? "Your portfolio" : combo.potter.name === "Unknown" ? "More from this potter" : `More from ${combo.potter.name}`}</Link> : null}
         {combo.url ? <a className="nl-btn quiet" href={combo.url} target="_blank" rel="noopener noreferrer">View on {combo.vendor} site ↗</a> : null}
       </div>
       {/* Only potters' results take comments; brand test tiles have nowhere to store them. */}
