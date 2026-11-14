@@ -1,9 +1,10 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v20";
+export const CHANGELOG_KEY = "glaze-library-changelog-v21";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
+      "New Australian supplier: Pottery Supplies in Milton, Brisbane now appears under Buy this glaze for the Mayco, AMACO and Northcote glazes it stocks.",
       "Requested glazes added: 108 glazes from your requests, including the eight new AMACO Pearlescent glazes, Mayco Peppered Plum, AMACO Mars Crystal, and three new brands: Kentucky Mudworks, Wizard Glaze and Glost Glaze. AMACO Kiln Ice glazes now show in the Cone 6 library too.",
       "Portfolios: every potter now has a public page with all the firing results they have posted. Find yours under Account, and share the link.",
       "Likes: tap Like on any glaze or combo to save it to your list. Everyone can see how many likes it has, and a like on your result earns you a point.",
