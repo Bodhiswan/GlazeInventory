@@ -29,6 +29,18 @@ function potteryPaintsUrl(glaze: StoreLinkGlaze): string {
 }
 
 /**
+ * Pottery Supplies (Milton, Brisbane, AU) — WooCommerce search.
+ * Their Northcote titles carry the code (e.g. "BMG450"), which contains ours
+ * ("MG450"). Mayco and AMACO titles use the shop's own SKUs ("SW118P",
+ * "AMPC-15"), so those brands are searched by glaze name instead.
+ */
+function potterySuppliesUrl(glaze: StoreLinkGlaze): string {
+  const byCode = glaze.brand?.toLowerCase() === "northcote" && glaze.code;
+  const query = byCode ? glaze.code! : glaze.name;
+  return `https://www.potterysuppliesonline.com.au/?s=${encodeURIComponent(query)}&post_type=product`;
+}
+
+/**
  * Clay King (US) — WooCommerce search.
  * They keep hyphens in codes (e.g. "PC-25"), so we pass the code as-is.
  */
@@ -84,6 +96,7 @@ function scarvaUrl(glaze: StoreLinkGlaze): string {
 /** In display order. */
 export const storeLinks: StoreLink[] = [
   { id: "pottery-paints-au", name: "Pottery Paints", region: "AUS", country: "AU", url: "https://potterypaints.com.au", buildUrl: potteryPaintsUrl },
+  { id: "pottery-supplies-au", name: "Pottery Supplies (Milton)", region: "AUS", country: "AU", url: "https://www.potterysuppliesonline.com.au", buildUrl: potterySuppliesUrl },
   { id: "clay-king-us", name: "Clay King", region: "USA", country: "US", url: "https://clay-king.com", buildUrl: clayKingUrl },
   { id: "bath-potters-uk", name: "Bath Potters", region: "UK", country: "GB", url: "https://www.bathpotters.co.uk", buildUrl: bathPottersUrl },
   { id: "potterycrafts-uk", name: "Potterycrafts", region: "UK", country: "GB", url: "https://potterycrafts.co.uk", buildUrl: potterycraftsUrl },

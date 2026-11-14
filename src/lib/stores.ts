@@ -15,6 +15,7 @@
 import clayKingData from "@data/stores/clay-king-us.json";
 import glazeQueenData from "@data/stores/glazequeen-us.json";
 import potteryPaintsData from "@data/stores/pottery-paints-au.json";
+import potterySuppliesData from "@data/stores/pottery-supplies-au.json";
 import theCeramicShopData from "@data/stores/theceramicshop-us.json";
 
 import { storeLinksById } from "@/lib/store-links";
@@ -152,6 +153,11 @@ const potteryPaintsCarries = makeCarriesCheck(
   buildNameIndex(potteryPaintsData.products),
 );
 
+const potterySuppliesCarries = makeCarriesCheck(
+  buildProductIndex(potterySuppliesData.products),
+  buildNameIndex(potterySuppliesData.products),
+);
+
 const clayKingCarries = makeCarriesCheck(
   buildProductIndex(clayKingData.products),
   buildNameIndex(clayKingData.products),
@@ -193,6 +199,16 @@ export const retailStores: RetailStore[] = [
     brands: ["amaco", "coyote", "mayco", "spectrum", "laguna", "northcote"],
     buildUrl: urlBuilder("pottery-paints-au"),
     carries: potteryPaintsCarries,
+  },
+  {
+    id: "pottery-supplies-au",
+    name: "Pottery Supplies (Milton)",
+    region: "AUS",
+    country: "AU",
+    url: "https://www.potterysuppliesonline.com.au",
+    brands: ["amaco", "mayco", "northcote"],
+    buildUrl: urlBuilder("pottery-supplies-au"),
+    carries: potterySuppliesCarries,
   },
   {
     id: "clay-king-us",
