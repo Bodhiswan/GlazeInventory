@@ -25,12 +25,13 @@ export function Photo({ src, alt = "" }: { src: string | null; alt?: string }) {
   return <img src={src} alt={alt} loading="lazy" decoding="async" referrerPolicy="no-referrer" onError={() => setFailedSrc(src)} />;
 }
 
-export function Icon({ name }: { name: "glaze" | "combos" | "shelf" | "plus" | "close" | "search" | "up" | "down" | "user" }) {
+export function Icon({ name }: { name: "glaze" | "combos" | "shelf" | "book" | "plus" | "close" | "search" | "up" | "down" | "user" }) {
   const common = { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: 1.8, "aria-hidden": true } as const;
   switch (name) {
     case "glaze": return <svg {...common}><path d="M8 3h8M9 3v4.5c0 .8-.4 1.5-1 2A6.5 6.5 0 0 0 5.5 15c0 3.6 2.9 6 6.5 6s6.5-2.4 6.5-6A6.5 6.5 0 0 0 16 9.5c-.6-.5-1-1.2-1-2V3" /><path d="M6 14.5c2.2-1 4-1 6 0s3.8 1 6 0" /></svg>;
     case "combos": return <svg {...common}><path d="M3 9.5 12 5l9 4.5-9 4.5z" /><path d="m3 14.5 9 4.5 9-4.5" /></svg>;
     case "shelf": return <svg {...common}><path d="M3 20h18M3 12h18M5 12V5h4v7M10 12V7h4v5M16 12V4h3v8M6 20v-5h3v5M12 20v-6h4v6" /></svg>;
+    case "book": return <svg {...common}><path d="M12 6.5C10.2 5.2 7.8 4.5 4 4.5v13c3.8 0 6.2.7 8 2 1.8-1.3 4.2-2 8-2v-13c-3.8 0-6.2.7-8 2zM12 6.5v13" /></svg>;
     case "plus": return <svg {...common} strokeWidth={2}><path d="M12 5v14M5 12h14" /></svg>;
     case "close": return <svg {...common} strokeWidth={2}><path d="M6 6l12 12M18 6 6 18" /></svg>;
     case "search": return <svg {...common} strokeWidth={2}><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>;

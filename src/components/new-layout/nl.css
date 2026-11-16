@@ -43,10 +43,10 @@
 .nl .nl-topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--nl-bg) 94%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--nl-line); }
 .nl .nl-topbar-in { max-width: 1240px; margin: 0 auto; padding: 0 16px; height: var(--nl-bar-h); display: flex; align-items: center; gap: 20px; }
 .nl .nl-brand { display: flex; align-items: baseline; gap: 10px; text-decoration: none; color: var(--nl-ink); }
-.nl .nl-brand b { font-family: var(--nl-display); font-size: 22px; font-weight: 600; }
+.nl .nl-brand b { font-family: var(--nl-display); font-size: 22px; font-weight: 600; white-space: nowrap; }
 .nl .nl-cone-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--nl-muted); border: 1px solid var(--nl-line); padding: 2px 7px; border-radius: 999px; white-space: nowrap; }
 .nl .nl-nav { display: flex; gap: 4px; margin-left: 8px; }
-.nl .nl-nav a { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: var(--nl-r); text-decoration: none; color: var(--nl-muted); font-weight: 500; }
+.nl .nl-nav a { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; white-space: nowrap; border-radius: var(--nl-r); text-decoration: none; color: var(--nl-muted); font-weight: 500; }
 .nl .nl-nav a:hover, .nl .nl-nav a[aria-current="page"] { color: var(--nl-ink); background: var(--nl-panel); }
 .nl .nl-nav svg { width: 20px; height: 20px; flex: none; }
 .nl .nl-count { font-size: 12px; font-variant-numeric: tabular-nums; background: var(--nl-surface); border: 1px solid var(--nl-line); border-radius: 999px; padding: 0 7px; line-height: 18px; }
@@ -298,6 +298,16 @@
 .nl .nl-loading { padding: 64px 0; text-align: center; color: var(--nl-muted); }
 
 /* Phones: nav moves to a bottom tab bar */
+/* Four tabs need the room: drop the button and account labels before anything wraps. */
+@media (max-width: 1120px) {
+  .nl .nl-add-label, .nl .nl-account-name { display: none; }
+  .nl .nl-nav a { padding: 0 10px; }
+}
+
+@media (min-width: 761px) and (max-width: 920px) {
+  .nl .nl-nav svg, .nl .nl-brand .nl-cone-tag { display: none; }
+}
+
 @media (max-width: 760px) {
   .nl { --nl-bar-h: 56px; }
   .nl .nl-topbar { backdrop-filter: none; background: var(--nl-bg); }

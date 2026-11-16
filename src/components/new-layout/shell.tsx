@@ -12,6 +12,7 @@ const NAV = [
   { href: "/glazes", label: "Glazes", icon: "glaze" as const },
   { href: "/combinations", label: "Combos", icon: "combos" as const },
   { href: "/inventory", label: "My shelf", icon: "shelf" as const },
+  { href: "/guides/glazing-pottery", label: "Resources", icon: "book" as const },
 ];
 
 export function ClassicSwitchLink() {
