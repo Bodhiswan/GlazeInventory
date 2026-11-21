@@ -21,6 +21,9 @@ const UUID = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
 
 const PORTFOLIO = new RegExp(`^/potters/${UUID}$`, "i");
 
+/** Browse pages (by colour, finish, type, brand and line). */
+const BROWSE = /^\/cone-6-glazes(\/[a-z0-9-]+)?$/;
+
 const REWRITES: RegExp[] = [
   /^\/glazes$/,
   new RegExp(`^/glazes/${UUID}$`, "i"),
@@ -40,8 +43,8 @@ export function routeForLayout(pathname: string, mode: LayoutMode): LayoutRoute 
     return { type: "redirect", pathname: path.slice(2) || "/" };
   }
 
-  // Member portfolios only exist in the Cone 6 layout, so both layouts share them.
-  if (PORTFOLIO.test(path)) return { type: "rewrite", pathname: `/n${path}` };
+  // Member portfolios and browse pages only exist in the Cone 6 layout, so both layouts share them.
+  if (PORTFOLIO.test(path) || BROWSE.test(path)) return { type: "rewrite", pathname: `/n${path}` };
 
   if (mode === "classic") return null;
 

@@ -40,6 +40,14 @@ test("the internal /n tree is never public", () => {
   assert.deepEqual(routeForLayout("/n/glazes", "classic"), { type: "redirect", pathname: "/glazes" });
 });
 
+test("browse pages use the Cone 6 layout in both modes", () => {
+  for (const mode of ["new", "classic"] as const) {
+    assert.deepEqual(routeForLayout("/cone-6-glazes", mode), { type: "rewrite", pathname: "/n/cone-6-glazes" });
+    assert.deepEqual(routeForLayout("/cone-6-glazes/amaco-potters-choice", mode), { type: "rewrite", pathname: "/n/cone-6-glazes/amaco-potters-choice" });
+  }
+  assert.equal(routeForLayout("/cone-6-glazes/a/b", "classic"), null);
+});
+
 test("member portfolios use the Cone 6 layout in both modes", () => {
   for (const mode of ["new", "classic"] as const) {
     assert.deepEqual(routeForLayout(`/potters/${id}`, mode), { type: "rewrite", pathname: `/n/potters/${id}` });

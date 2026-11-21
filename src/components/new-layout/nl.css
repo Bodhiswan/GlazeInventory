@@ -339,3 +339,22 @@
 @media (prefers-reduced-motion: reduce) {
   .nl *, .nl-scrim { animation: none !important; transition: none !important; }
 }
+
+/* Browse pages (/cone-6-glazes): plain-link versions of the library for search engines and sharing */
+.nl .nl-browse { display: flex; flex-direction: column; gap: 28px; }
+.nl .nl-browse-head { display: grid; gap: 10px; max-width: 72ch; }
+.nl .nl-browse-head p { margin: 0; }
+.nl .nl-crumbs { display: flex; flex-wrap: wrap; gap: 6px; font-size: 13px; color: var(--nl-muted); list-style: none; margin: 0; padding: 0; }
+.nl .nl-crumbs li + li::before { content: "›"; margin-right: 6px; }
+.nl .nl-crumbs a { color: var(--nl-muted); }
+.nl .nl-crumbs a:hover { color: var(--nl-ink); }
+.nl .nl-browse-list { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.nl a.nl-chip { text-decoration: none; }
+.nl a.nl-ccard { text-decoration: none; }
+.nl .nl-ccard-name { font-weight: 600; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
+.nl .nl-browse-section { display: grid; gap: 12px; }
+.nl .nl-browse-section > p { margin: 0; max-width: 72ch; }
+.nl .nl-browse-more { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.nl .nl-tips { display: grid; gap: 8px; margin: 0; padding-left: 20px; max-width: 72ch; }
+.nl .nl-browse-foot { border-top: 1px solid var(--nl-line); margin-top: 32px; padding-top: 20px; display: grid; gap: 10px; }
+.nl .nl-browse-foot h2 { font-size: 19px; }

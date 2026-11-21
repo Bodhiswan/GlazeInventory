@@ -4,9 +4,28 @@ export type GuidePart = {
   title: string;
   description: string;
   status: "live" | "coming-soon";
+  /** Shown instead of "Part N" for pages outside the numbered sequence. */
+  label?: string;
+  /** Search-result title and description, when they should differ from the card. */
+  metaTitle?: string;
+  metaDescription?: string;
 };
 
+export const partLabel = (part: GuidePart) => part.label ?? `Part ${part.number}`;
+
 export const GUIDE_PARTS: GuidePart[] = [
+  {
+    slug: "choosing-a-glaze",
+    number: "0",
+    label: "Start here",
+    title: "How to Choose a Glaze",
+    description:
+      "Which cone, glossy or matte, what food safe really means, whether it will run, and how far to trust the photo on the jar.",
+    status: "live",
+    metaTitle: "How to Choose a Pottery Glaze: Cone, Finish, Food Safety & Fit",
+    metaDescription:
+      "A referenced guide to choosing a commercial pottery glaze: cone 6 vs cone 06, glossy vs matte, what food safe and dinnerware safe mean, which glazes run, and how many coats to apply.",
+  },
   {
     slug: "foundations",
     number: "I",

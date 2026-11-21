@@ -1,9 +1,11 @@
-export const CHANGELOG_KEY = "glaze-library-changelog-v22";
+export const CHANGELOG_KEY = "glaze-library-changelog-v23";
 
 export const CHANGES = [
   {
     category: "New",
     items: [
+      "Browse by colour, finish, type and brand — new pages list every Cone 6 glaze that's blue, matte, celadon, AMACO Potter's Choice and so on, each with its fired photo and combinations. Find them from the footer or under the Glazes list.",
+      "How to choose a glaze — a new referenced guide covering cone 6 vs cone 06, glossy vs matte, what food safe means, which glazes run, and how many coats to apply.",
       "Resources tab: the glazing guides now sit in the top bar next to My shelf.",
       "New Australian supplier: Pottery Supplies in Milton, Brisbane now appears under Buy this glaze for the Mayco, AMACO and Northcote glazes it stocks.",
       "Requested glazes added: 108 glazes from your requests, including the eight new AMACO Pearlescent glazes, Mayco Peppered Plum, AMACO Mars Crystal, and three new brands: Kentucky Mudworks, Wizard Glaze and Glost Glaze. AMACO Kiln Ice glazes now show in the Cone 6 library too.",

@@ -22,9 +22,20 @@ export function getSupabaseAdminEnv() {
   return { url, serviceRoleKey };
 }
 
+/** The public address of the live site. Canonical URLs, the sitemap and emailed links all use it. */
+export const PRODUCTION_URL = "https://glazeinventory.com";
+
+/**
+ * The site's own address, without a trailing slash.
+ *
+ * Production must never fall back to VERCEL_URL: that is the address of one
+ * deployment (glaze-library-abc123.vercel.app), and using it made every canonical
+ * tag and sitemap entry point search engines away from the real domain.
+ */
 export function getBaseUrl() {
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
-  );
+  const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "");
+  if (explicit) return explicit;
+  if (process.env.VERCEL_ENV === "production") return PRODUCTION_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "http://localhost:3000";
 }

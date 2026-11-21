@@ -5,12 +5,12 @@ import { PageHeader } from "@/components/page-header";
 import { Panel } from "@/components/ui/panel";
 import { getBaseUrl } from "@/lib/env";
 
-import { GUIDE_PARTS } from "./guide-data";
+import { GUIDE_PARTS, partLabel } from "./guide-data";
 
 export const metadata: Metadata = {
   title: "The Complete Guide to Glazing Pottery",
   description:
-    "A deeply-referenced, comprehensive guide to ceramic glaze application, layering, decorative techniques, troubleshooting, and international traditions.",
+    "A referenced guide to glazing pottery: how to choose a glaze, application methods, layering, decorative techniques, firing, and fixing glaze defects.",
   alternates: { canonical: "/guides/glazing-pottery" },
 };
 
@@ -90,7 +90,7 @@ function GuidePartCard({
     >
       <div className="flex items-center gap-2">
         <span className="text-[11px] uppercase tracking-[0.18em] text-muted">
-          Part {part.number}
+          {partLabel(part)}
         </span>
         {!isLive ? (
           <span className="border border-border px-2 py-0.5 text-[10px] uppercase tracking-[0.14em] text-muted">

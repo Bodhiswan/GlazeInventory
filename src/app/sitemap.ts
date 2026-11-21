@@ -3,6 +3,8 @@ import type { MetadataRoute } from "next";
 import { getBaseUrl } from "@/lib/env";
 import { getAllCatalogGlazes, getAllVendorExamples } from "@/lib/catalog";
 import { getPublishedCombinationPairKeys } from "@/lib/data/combinations";
+import { getCollections } from "@/lib/new-layout/collections";
+import { GUIDE_PARTS } from "@/app/guides/glazing-pottery/guide-data";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = getBaseUrl();
@@ -10,58 +12,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const vendorExamples = getAllVendorExamples();
   const pairKeys = await getPublishedCombinationPairKeys();
 
+  // The home page redirects to /glazes, so it isn't listed.
   const staticPages: MetadataRoute.Sitemap = [
-    {
-      url: baseUrl,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/glazes`,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/combinations`,
-      changeFrequency: "weekly",
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery`,
-      changeFrequency: "weekly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/foundations`,
-      changeFrequency: "monthly",
+    { url: `${baseUrl}/glazes`, changeFrequency: "weekly", priority: 1 },
+    { url: `${baseUrl}/combinations`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/cone-6-glazes`, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${baseUrl}/guides/glazing-pottery`, changeFrequency: "weekly", priority: 0.85 },
+    ...GUIDE_PARTS.filter((part) => part.status === "live").map((part) => ({
+      url: `${baseUrl}/guides/glazing-pottery/${part.slug}`,
+      changeFrequency: "monthly" as const,
       priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/application`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/layering`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/decorative`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/firing`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/guides/glazing-pottery/troubleshooting`,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
+    })),
   ];
+
+  const browsePages: MetadataRoute.Sitemap = getCollections().map((collection) => ({
+    url: `${baseUrl}/cone-6-glazes/${collection.slug}`,
+    changeFrequency: "weekly" as const,
+    priority: collection.kind === "line" ? 0.7 : 0.85,
+  }));
 
   const glazePages: MetadataRoute.Sitemap = glazes.map((glaze) => ({
     url: `${baseUrl}/glazes/${glaze.id}`,
@@ -83,5 +51,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...glazePages, ...combinationPages, ...vendorExamplePages];
+  return [...staticPages, ...browsePages, ...glazePages, ...combinationPages, ...vendorExamplePages];
 }

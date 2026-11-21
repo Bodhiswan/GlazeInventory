@@ -8,8 +8,9 @@ import { GuideToc } from "@/components/guide/guide-toc";
 import { GuideTocMobile } from "@/components/guide/guide-toc";
 import { getBaseUrl } from "@/lib/env";
 
-import { GUIDE_PARTS, getGuidePart } from "../guide-data";
+import { GUIDE_PARTS, getGuidePart, partLabel } from "../guide-data";
 import { ApplicationContent, applicationToc } from "./application-content";
+import { ChoosingContent, choosingToc } from "./choosing-content";
 import { DecorativeContent, decorativeToc } from "./decorative-content";
 import { FiringContent, firingToc } from "./firing-content";
 import { FoundationsContent, foundationsToc } from "./foundations-content";
@@ -28,6 +29,7 @@ const CONTENT: Record<
     Component: React.ComponentType;
   }
 > = {
+  "choosing-a-glaze": { toc: choosingToc, Component: ChoosingContent },
   application: { toc: applicationToc, Component: ApplicationContent },
   decorative: { toc: decorativeToc, Component: DecorativeContent },
   firing: { toc: firingToc, Component: FiringContent },
@@ -58,10 +60,13 @@ export async function generateMetadata({
   const part = getGuidePart(slug);
   if (!part || part.status !== "live") return {};
 
+  const title = part.metaTitle ?? `${part.title} — The Complete Guide to Glazing Pottery`;
+  const description = part.metaDescription ?? part.description;
   return {
-    title: `${part.title} — The Complete Guide to Glazing Pottery`,
-    description: part.description,
+    title,
+    description,
     alternates: { canonical: `/guides/glazing-pottery/${slug}` },
+    openGraph: { type: "article", title, description },
   };
 }
 
@@ -97,8 +102,10 @@ export default async function GuideSubpage({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
-    name: `${part.title} — The Complete Guide to Glazing Pottery`,
-    description: part.description,
+    headline: part.metaTitle ?? `${part.title} — The Complete Guide to Glazing Pottery`,
+    name: part.metaTitle ?? `${part.title} — The Complete Guide to Glazing Pottery`,
+    description: part.metaDescription ?? part.description,
+    mainEntityOfPage: `${baseUrl}/guides/glazing-pottery/${slug}`,
     author: { "@type": "Organization", name: "Glaze Library" },
     publisher: { "@type": "Organization", name: "Glaze Library" },
     isPartOf: {
@@ -124,11 +131,11 @@ export default async function GuideSubpage({
           Glazing Pottery Guide
         </Link>
         <span className="mx-2">›</span>
-        <span className="text-foreground">Part {part.number}</span>
+        <span className="text-foreground">{partLabel(part)}</span>
       </nav>
 
       <PageHeader
-        eyebrow={`Part ${part.number}`}
+        eyebrow={partLabel(part)}
         title={part.title}
         description={part.description}
         actions={<GuideErrorReport guideSlug={slug} guideTitle={part.title} toc={toc} />}
@@ -159,7 +166,7 @@ export default async function GuideSubpage({
               ← Previous
             </span>
             <span className="text-sm group-hover:text-foreground text-muted">
-              Part {prev.number}: {prev.title}
+              {partLabel(prev)}: {prev.title}
             </span>
           </Link>
         ) : (
@@ -174,7 +181,7 @@ export default async function GuideSubpage({
               Next →
             </span>
             <span className="text-sm group-hover:text-foreground text-muted">
-              Part {next.number}: {next.title}
+              {partLabel(next)}: {next.title}
             </span>
           </Link>
         ) : (

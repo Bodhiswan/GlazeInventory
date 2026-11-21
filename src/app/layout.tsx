@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Crimson_Text, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { ClarityAnalytics } from "@/components/clarity-analytics";
+import { getBaseUrl } from "@/lib/env";
 import "./globals.css";
 
 const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID;
@@ -30,12 +31,7 @@ export const metadata: Metadata = {
   },
   description:
     "Browse thousands of ceramic glazes from Mayco, AMACO, Coyote, Duncan, and Spectrum. See firing images, glaze combinations, and community results. Free to use.",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ??
-      (process.env.VERCEL_URL
-        ? `https://${process.env.VERCEL_URL}`
-        : "http://localhost:3000"),
-  ),
+  metadataBase: new URL(getBaseUrl()),
   openGraph: {
     type: "website",
     siteName: "Glaze Library",
@@ -45,6 +41,20 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
 };
+
+/** Tells search engines what the site is called and which address is the real one. */
+function siteJsonLd() {
+  const url = getBaseUrl();
+  return JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Glaze Library",
+    alternateName: "Glaze Inventory",
+    url,
+    description:
+      "A free catalogue of commercial ceramic glazes with fired photos, layering combinations and a shelf for tracking the glazes you own.",
+  });
+}
 
 export default function RootLayout({
   children,
@@ -64,6 +74,7 @@ export default function RootLayout({
         >
           Skip to content
         </a>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: siteJsonLd() }} />
         {children}
         <Analytics />
         {clarityProjectId ? <ClarityAnalytics projectId={clarityProjectId} /> : null}

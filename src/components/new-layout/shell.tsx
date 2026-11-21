@@ -27,6 +27,8 @@ export function Footer({ admin = false }: { admin?: boolean }) {
     <footer className="nl-footer">
       <div className="nl-footer-in">
         <span>Glaze Inventory · Cone 6</span>
+        <Link href="/cone-6-glazes">Browse by colour &amp; brand</Link>
+        <Link href="/guides/glazing-pottery/choosing-a-glaze">How to choose a glaze</Link>
         <Link href="/guides/glazing-pottery">Glazing guides</Link>
         <Link href="/glazes/request">Request a glaze</Link>
         {admin ? <Link href="/admin">Admin</Link> : null}
